@@ -68,15 +68,47 @@ public static class HelperUtilities
     }
 
 
-
-
-    public static bool ValidateCheckOver100<T>(UnityEngine.Object thisObject, string fieldName, T value) where T : IComparable
+    /// <summary>
+    /// 입력으로 들어온 수가 100 이하인지 확인
+    /// </summary>
+    public static bool ValidateCheckOverHundred<T>(UnityEngine.Object thisObject, string fieldName, T value) where T : IComparable
     {
         T hundred = (T)Convert.ChangeType(100, typeof(T));
 
         if (value.CompareTo(hundred) > 100)
         {
             Debug.Log(fieldName + " is over 100 and must be below 100 in object " + thisObject.name.ToString());
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// 입력으로 들어온 수가 0 미만인지 확인
+    /// </summary>
+    public static bool ValidateCheckUnderZero<T>(UnityEngine.Object thisObject, string fieldName, T value) where T : IComparable
+    {
+        T zero = (T)Convert.ChangeType(0, typeof(T));
+
+        if (value.CompareTo(zero) < 0)
+        {
+            Debug.Log(fieldName + " is under 0 and must be above 0 in object " + thisObject.name.ToString());
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// 입력으로 들어온 수가 0~100 사이인지 확인
+    /// </summary>
+    public static bool ValidateRange0To100<T>(UnityEngine.Object thisObject, string fieldName, T value) where T : IComparable
+    {
+        T zero = (T)Convert.ChangeType(0, typeof(T));
+        T hundred = (T)Convert.ChangeType(100, typeof(T));
+
+        if (value.CompareTo(zero) < 0 || value.CompareTo(hundred) > 0)
+        {
+            Debug.Log(fieldName + " is not between 0 or 100 in object " + thisObject.name.ToString());
             return true;
         }
         return false;

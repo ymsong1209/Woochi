@@ -10,6 +10,6 @@ public class DungeonInfoSO : ScriptableObject
     [Header("MONSTER INFO FOR LEVEL")]
     #endregion Header MONSTERINFO
 
-    public List<BaseCharacter> Enemy = new List<BaseCharacter>();
+    public List<BaseCharacter> EnemyList = new List<BaseCharacter>();
 
 }
