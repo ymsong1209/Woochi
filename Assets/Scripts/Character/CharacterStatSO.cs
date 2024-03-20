@@ -5,7 +5,6 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CharacterStat_", menuName = "Scriptable Objects/Character/CharacterStat")]
-[assembly: InternalsVisibleTo("BaseCharacter")]
 public class CharacterStatSO : ScriptableObject
 {
 

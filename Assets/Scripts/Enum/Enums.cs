@@ -40,3 +40,11 @@ public enum SkillType
     Buff,               // 버프, 디버프 관련
     END
 }
+
+/// <summary>
+/// Observer pattern에 사용할 EventType
+/// </summary>
+public enum EventType
+{
+
+}

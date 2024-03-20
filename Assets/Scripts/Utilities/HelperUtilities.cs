@@ -99,6 +99,21 @@ public static class HelperUtilities
     }
 
     /// <summary>
+    /// 입력으로 들어온 수가 1 이상인지 확인
+    /// </summary>
+    public static bool ValidateCheckOverOne<T>(UnityEngine.Object thisObject, string fieldName, T value) where T : IComparable
+    {
+        T one = (T)Convert.ChangeType(1, typeof(T));
+
+        if (value.CompareTo(1) <= 0)
+        {
+            Debug.Log(fieldName + " is not over 1 in object " + thisObject.name.ToString());
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>
     /// 입력으로 들어온 수가 0~100 사이인지 확인
     /// </summary>
     public static bool ValidateRange0To100<T>(UnityEngine.Object thisObject, string fieldName, T value) where T : IComparable
@@ -113,6 +128,8 @@ public static class HelperUtilities
         }
         return false;
     }
+
+
 
 
 }

@@ -12,9 +12,10 @@ public class SkillSO : ScriptableObject
 
     #endregion Header SKILL BASICS
 
-    [SerializeField] private string skillName;
-    [SerializeField] private SkillRadius skillRadius = SkillRadius.SingularAlly;
-    [SerializeField] private SkillType skillType = SkillType.Attack;
+    [SerializeField] private string             skillName;
+    [SerializeField] private SkillRadius        skillRadius;
+    [SerializeField] private SkillType          skillType;
+    [SerializeField] private BaseBuff           buff;
 
     #region Header SKILL STATS
     [Space(10)]
@@ -22,8 +23,8 @@ public class SkillSO : ScriptableObject
 
     #endregion Header SKILL STATS
 
-    [SerializeField] private int baseMinStat;   // 최소 피해 계수
-    [SerializeField] private int baseMaxStat;   // 최대 피해 계수
-    [SerializeField] private int baseMultStat;  // 피해량 계수
+    [SerializeField] private int baseMinStat;       // 최소 계수
+    [SerializeField] private int baseMaxStat;       // 최대 계수
+    [SerializeField] private int baseMultiplier;    // 피해량 계수
 
 }
