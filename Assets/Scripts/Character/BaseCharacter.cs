@@ -15,13 +15,13 @@ public class BaseCharacter : MonoBehaviour
 
     #endregion Header CHARACTER STATS
     #region Character Stats
-    [SerializeField]            private Health health;
-    [SerializeField,ReadOnly]   private int speed;
-    [SerializeField,ReadOnly]   private int defense;
-    [SerializeField,ReadOnly]   private int crit;
-    [SerializeField,ReadOnly]   private int accuracy;
-    [SerializeField,ReadOnly]   private int evasion;
-    [SerializeField,ReadOnly]   private int resist;
+    [SerializeField]            private Health  health;
+    [SerializeField,ReadOnly]   private int     speed;
+    [SerializeField,ReadOnly]   private int     defense;
+    [SerializeField,ReadOnly]   private int     crit;
+    [SerializeField,ReadOnly]   private int     accuracy;
+    [SerializeField,ReadOnly]   private int     evasion;
+    [SerializeField,ReadOnly]   private int     resist;
     #endregion
 
 
@@ -33,7 +33,11 @@ public class BaseCharacter : MonoBehaviour
     #endregion Header BATTLE STATS
     #region BATTLE STATS
     [SerializeField, ReadOnly] private bool             isDead;
+    /// <summary>
+    /// 나에게 적용된 버프
+    /// </summary>
                                public  List<BaseBuff>   activeBuffs;
+                               protected bool           isAlly;      
     #endregion BATTLE STATS
 
 
@@ -106,6 +110,8 @@ public class BaseCharacter : MonoBehaviour
     }
 
     public bool IsDead => isDead;
+
+    public bool IsAlly => isAlly;
     #endregion
 
 }

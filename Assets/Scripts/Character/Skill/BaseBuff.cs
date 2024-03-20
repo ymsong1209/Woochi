@@ -28,9 +28,17 @@ public class BaseBuff : MonoBehaviour
     /// <summary>
     /// 자신의 차례가 됐을때 적용
     /// </summary>
-    public virtual void ApplyTurnBuff()
+    public virtual void ApplyBuffWhenMyTurn()
     {
         --buffDurationTurns;
+    }
+
+    /// <summary>
+    /// 라운드가 끝날때 적용되는 버프
+    /// </summary>
+    public virtual void ApplyRoundEndBuff()
+    {
+
     }
 
     public virtual void RemoveBuff()

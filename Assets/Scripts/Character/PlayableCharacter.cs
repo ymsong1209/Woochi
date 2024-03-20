@@ -19,6 +19,7 @@ public class PlayableCharacter : BaseCharacter
 
     public override void Initialize(){
         base.Initialize();
+        base.isAlly = true;
         isSkillSelected = false;
     }
 

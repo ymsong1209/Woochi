@@ -6,7 +6,7 @@ using UnityEngine.PlayerLoop;
 
 public class BattleManager : SingletonMonobehaviour<GameManager>
 {
-    private bool                isInCombat = false;
+   
     private BattleState         CurState;
     private BaseCharacter       currentCharacter;
 
@@ -15,18 +15,6 @@ public class BattleManager : SingletonMonobehaviour<GameManager>
     /// </summary>
     [SerializeField] private Queue<BaseCharacter> CharacterQueue = new Queue<BaseCharacter>();
 
-    void Start()
-    {
-        
-    }
-
-    
-    void Update()
-    {
-        if (isInCombat == false) return;
-
-        
-    }
 
     /// <summary>
     /// DungeonInfoSO 정보를 받아와서 아군과 적군 위치값 설정
@@ -54,8 +42,8 @@ public class BattleManager : SingletonMonobehaviour<GameManager>
 
         #endregion
 
-        #region PreBattle 상태로 넘어감
-        PreBattle();
+        #region PreRound 상태로 넘어감
+        PreRound();
         #endregion
 
     }
@@ -63,15 +51,11 @@ public class BattleManager : SingletonMonobehaviour<GameManager>
     /// <summary>
     /// 캐릭터들의 버프 정리
     /// </summary>
-    void PreBattle()
+    void PreRound()
     {
-        CurState = BattleState.Prebattle;
+        CurState = BattleState.PreRound;
         CheckPreBuffs();
         DetermineOrder();
-         PostTurn,      
-         VictoryCheck,  
-         PostBattle,    
-         END
     }
 
     /// <summary>
@@ -139,6 +123,7 @@ public class BattleManager : SingletonMonobehaviour<GameManager>
     /// </summary>
     void CharacterTurn()
     {
+        CurState = BattleState.CharacterTurn;
         while(CharacterQueue.Count > 0)
         {
             currentCharacter = CharacterQueue.Dequeue();
@@ -147,7 +132,79 @@ public class BattleManager : SingletonMonobehaviour<GameManager>
 
                 continue;
             }
-            currentCharacter.
+           
         }
+    }
+
+   
+
+    /// <summary>
+    /// 라운드가 끝날때 적용되는 버프 실행 후, 승리 조건 체크
+    /// </summary>
+    void PostRound()
+    {
+        CurState = BattleState.PostRound;
+        CheckPostBuffs();
+        //적군이 모두 죽으면 PostBattle로 넘어감. 아닐시 다시 PreRound로 돌아감
+        if(VictoryCheck())
+        {
+            PostBattle();
+        }
+        else
+        {
+            PreRound();
+        }
+    }
+
+    void CheckPostBuffs()
+    {
+        int characterCount = CharacterQueue.Count;
+        for (int i = 0; i < characterCount; i++)
+        {
+            // Queue에서 항목을 제거
+            BaseCharacter character = CharacterQueue.Dequeue();
+
+            foreach (BaseBuff buff in character.activeBuffs)
+            {
+                buff.ApplyRoundEndBuff();
+                //죽음 체크
+                character.CheckDead();
+            }
+
+            // 수정된 character를 Queue의 뒤쪽에 다시 추가합니다.
+            CharacterQueue.Enqueue(character);
+        }
+    }
+
+    /// <summary>
+    /// 적군이 모두 죽었는지 확인
+    /// </summary>
+    bool VictoryCheck()
+    {
+        bool Victory = true;
+        // Queue에 있는 요소 하나씩 꺼내서 List에 집어넣음
+        foreach (BaseCharacter character in CharacterQueue)
+        {
+            if (Victory == false) continue;
+            //적군인 경우
+            if(character.IsAlly == false)
+            {
+                //적군이 살아있을 경우
+                if(character.IsDead == false)
+                {
+                    Victory = false;
+                    break;
+                }
+            }
+        }
+        return Victory;
+    }
+
+    /// <summary>
+    /// 보상 정산 후, 전투 종료
+    /// </summary>
+    void PostBattle()
+    {
+
     }
 }

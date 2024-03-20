@@ -13,9 +13,12 @@ public class SkillSO : ScriptableObject
     #endregion Header SKILL BASICS
 
     [SerializeField] private string             skillName;
-    [SerializeField] private SkillRadius        skillRadius;
+    [SerializeField] private SkillRadius        skillRadius;    
     [SerializeField] private SkillType          skillType;
-    [SerializeField] private BaseBuff           buff;
+    /// <summary>
+    /// 스킬 적중시 적용시킬 버프 리스트
+    /// </summary>
+    [SerializeField] private List<BaseBuff>     bufflist;       
 
     #region Header SKILL STATS
     [Space(10)]
