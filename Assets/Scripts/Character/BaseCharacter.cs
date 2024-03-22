@@ -37,11 +37,32 @@ public class BaseCharacter : MonoBehaviour
     /// 나에게 적용된 버프
     /// </summary>
                                public  List<BaseBuff>   activeBuffs;
-                               protected bool           isAlly;      
+                               protected bool           isAlly;
     #endregion BATTLE STATS
 
+    #region 버프 처리
+    public void ApplyTurnStartBuffs()
+    {
+        for (int i = activeBuffs.Count - 1; i >= 0; i--)
+        {
+            activeBuffs[i].ApplyBuffWhenMyTurn();
+
+            // 버프 지속 시간이 0이면 리스트에서 해당 버프 제거
+            if (activeBuffs[i].BuffDurationTurns <= 0)
+            {
+                // 버프가 지워지면서 실행되어야할 함수들
+                activeBuffs[i].RemoveBuff();
+
+                // 리스트에서 해당 버프 제거
+                activeBuffs.RemoveAt(i);
+            }
+        }
+    }
+
+    #endregion
 
 
+    #region 기본 스탯 초기화
     /// <summary>
     /// 기본 스탯 초기화
     /// </summary>
@@ -58,7 +79,7 @@ public class BaseCharacter : MonoBehaviour
         health.MaxHealth = characterStat.BaseHealth;
         health.CurHealth = characterStat.BaseHealth;
     }
-
+    #endregion 기본 스탯 초기화
 
     #region 죽음 처리
     /// <summary>
