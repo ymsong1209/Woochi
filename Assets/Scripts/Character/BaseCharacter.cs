@@ -7,7 +7,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class BaseCharacter : MonoBehaviour
 {
-    CharacterStatSO characterStat;
+    [SerializeField] private CharacterStatSO characterStat;
     #region Header CHARACTER STATS
 
     [Space(10)]
@@ -24,6 +24,10 @@ public class BaseCharacter : MonoBehaviour
     [SerializeField,ReadOnly]   private int     resist;
     #endregion
 
+    #region Header SpecializedStats
+    [Tooltip("특정 위치에서 Spawn되게 하고 싶으면 값 입력.")]
+    [SerializeField] private Vector3 spawnLocation;
+    #endregion
 
     #region Header BATTLE STATS
 
@@ -32,13 +36,16 @@ public class BaseCharacter : MonoBehaviour
 
     #endregion Header BATTLE STATS
     #region BATTLE STATS
-    [SerializeField, ReadOnly] private bool             isDead;
+    [SerializeField, ReadOnly] private bool      isDead;
     /// <summary>
     /// 나에게 적용된 버프
     /// </summary>
-                               public  List<BaseBuff>   activeBuffs;
-                               protected bool           isAlly;
+    public  List<BaseBuff>   activeBuffs;
+    protected bool           isAlly;
+    public  List<BaseSkill>  skills;
     #endregion BATTLE STATS
+
+
 
     #region 버프 처리
     public void ApplyTurnStartBuffs()
@@ -87,7 +94,7 @@ public class BaseCharacter : MonoBehaviour
     /// </summary>
     public void CheckDead()
     {
-        if(health.CurHealth <= 0)
+        if(health.CheckHealthZero())
         {
             SetDead(true);
         }
@@ -95,6 +102,15 @@ public class BaseCharacter : MonoBehaviour
     public virtual void SetDead(bool _dead)
     {
         isDead = _dead;
+    }
+
+    //캐릭터 완전 삭제
+    public virtual void Destroy()
+    {
+        foreach(BaseBuff buff in activeBuffs)
+        {
+            Destroy(buff);
+        }
     }
     #endregion 죽음 처리
 
@@ -131,8 +147,8 @@ public class BaseCharacter : MonoBehaviour
     }
 
     public bool IsDead => isDead;
-
     public bool IsAlly => isAlly;
+    public Vector3 SpawnLocation => spawnLocation;
     #endregion
 
 }

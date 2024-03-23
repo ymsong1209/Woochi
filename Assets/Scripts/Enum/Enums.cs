@@ -11,6 +11,7 @@ public enum GameState
 
 public enum BattleState
 {
+    IDLE,               // 비전투
     Initialization,     // 전투 방의 정보를 가져옴, 캐릭터들의 위치값 설정
     PreRound,           // 전투 시작 전 캐릭터 버프 처리
     DetermineOrder,     // 캐릭터들의 속도값에 맞춰서 순서 결정
@@ -36,8 +37,13 @@ public enum SkillType
 {
     Attack,             // 공격 관련
     Heal,               // 힐 관련
-    Buff,               // 버프, 디버프 관련
     END
+}
+
+public enum BuffType
+{
+    Buff,               // 버프, 디버프 관련
+    Cleanse,            // 정화 관련
 }
 
 /// <summary>

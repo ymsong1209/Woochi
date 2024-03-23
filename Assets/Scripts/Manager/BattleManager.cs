@@ -2,55 +2,75 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.PlayerLoop;
 using UnityEngine.TextCore.Text;
 
-public class BattleManager : SingletonMonobehaviour<GameManager>
+public class BattleManager : SingletonMonobehaviour<BattleManager>
 {
    
     private BattleState         CurState;
-    private BaseCharacter       currentCharacter;   //현재 누구 차례인지
+    private GameObject          currentCharacterGameObject;     //현재 누구 차례인지
+    private int                 currentRound;                   //현재 몇 라운드인지
+
+    #region 아군과 적군의 위치값
+    [SerializeField] private Transform[] allyPosition = new Transform[7];
+    [SerializeField] private Transform[] enemyPosition = new Transform[7];
+    #endregion
+
 
     /// <summary>
-    /// 아군이랑 적군을 CharacterList에 채움
+    /// 아군이랑 적군의 싸움 순서
     /// </summary>
-    [SerializeField] private Queue<BaseCharacter> CharacterQueue = new Queue<BaseCharacter>();
+    [SerializeField] private Queue<GameObject> combatQueue = new Queue<GameObject>();
+    [SerializeField, ReadOnly] private List<GameObject> allyFormation = new List<GameObject>();
+    [SerializeField, ReadOnly] private List<GameObject> EnemyFormation = new List<GameObject>();
 
-    private void Update()
+    private void Start()
     {
-        if(CurState == BattleState.CharacterTurn)
-        {
-
-        }
+        CurState = BattleState.IDLE;
     }
-
 
     /// <summary>
     /// DungeonInfoSO 정보를 받아와서 아군과 적군 위치값 설정
     /// </summary>
-    void InitializeBattle(DungeonInfoSO dungeon)
+    public void InitializeBattle(DungeonInfoSO dungeon)
     {
         CurState = BattleState.Initialization;
         if (dungeon == null) { Debug.LogError("Null Dungeon"); return; }
 
-        #region CharacterQueue 초기화
-        CharacterQueue.Clear();
-        #endregion
+        currentRound = 0;
+        combatQueue.Clear();
+        allyFormation.Clear();
+        EnemyFormation.Clear();
 
         #region 아군과 적군 배치
         // DungeonInfo내에 있는 적들을 알맞은 곳에 배치
-        foreach (BaseCharacter enemy in dungeon.EnemyList)
+        int EnemyTotalSize = 0;
+        for(int i = 0;i<dungeon.EnemyList.Count; ++i)
         {
-            CharacterQueue.Enqueue(enemy);
+            GameObject enemyGameObject = dungeon.EnemyList[i];
+            combatQueue.Enqueue(enemyGameObject);
+            EnemyFormation.Add(enemyGameObject);
+            if(enemyGameObject.GetComponent<BaseCharacter>().SpawnLocation != new Vector3(0, 0, 0))
+            {
+                Instantiate(enemyGameObject, enemyPosition[EnemyTotalSize]);
+            }
+        }
+        foreach (GameObject enemyGameObject in dungeon.EnemyList)
+        {
+            combatQueue.Enqueue(enemyGameObject);
             //Todo : 캐릭터를 알맞은 곳에 배치
-            Transform trans = enemy.transform;
-            Instantiate(enemy,trans);
+            Transform trans = enemyGameObject.transform;
+            Instantiate(enemyGameObject, trans);
         }
        
-        foreach(BaseCharacter ally in GameManager.GetInstance.Allies)
-        {
-            CharacterQueue.Enqueue(ally);
+        foreach(GameObject allyGameObject in GameManager.GetInstance.Allies)
+        { 
+            combatQueue.Enqueue(allyGameObject);
             //Todo : 아군 캐릭터 알맞게 배치
+            Transform trans = allyGameObject.transform;   //임시 코드
+            Instantiate(allyGameObject, trans);           //임시 코드
         }
 
         #endregion
@@ -67,7 +87,17 @@ public class BattleManager : SingletonMonobehaviour<GameManager>
     void PreRound()
     {
         CurState = BattleState.PreRound;
+        ++currentRound;
         CheckPreBuffs();
+        //버프로 인한 캐릭터 사망 확인
+        if (CheckVictory(combatQueue))
+        {
+            PostBattle(true);
+        }
+        else if (CheckDefeat(combatQueue))
+        {
+            PostBattle(false);
+        }
         DetermineOrder();
     }
 
@@ -76,11 +106,12 @@ public class BattleManager : SingletonMonobehaviour<GameManager>
     /// </summary>
     void CheckPreBuffs()
     {
-        int characterCount = CharacterQueue.Count;
+        int characterCount = combatQueue.Count;
         for (int i = 0; i < characterCount; i++)
         {
             // Queue에서 항목을 제거
-            BaseCharacter character = CharacterQueue.Dequeue();
+            GameObject characterGameObject = combatQueue.Dequeue();
+            BaseCharacter character = characterGameObject.GetComponent<BaseCharacter>();
 
             foreach (BaseBuff buff in character.activeBuffs)
             {
@@ -89,8 +120,8 @@ public class BattleManager : SingletonMonobehaviour<GameManager>
                 character.CheckDead();
             }
 
-            // 수정된 character를 Queue의 뒤쪽에 다시 추가합니다.
-            CharacterQueue.Enqueue(character);
+            // 수정된 character를 Queue의 뒤쪽에 다시 추가.
+            combatQueue.Enqueue(characterGameObject);
         }
 
     }
@@ -110,24 +141,24 @@ public class BattleManager : SingletonMonobehaviour<GameManager>
     /// </summary>
     void SortBattleOrder()
     {
-        List<BaseCharacter> SortList = new List<BaseCharacter>();
+        List<GameObject> SortList = new List<GameObject>();
 
         // Queue에 있는 요소 하나씩 꺼내서 List에 집어넣음
-        foreach (BaseCharacter character in CharacterQueue)
+        foreach (GameObject character in combatQueue)
         {
             SortList.Add(character);
         }
 
         // List 내부의 characters를 Speed 속성을 기준으로 내림차순 정렬
-        SortList.Sort((character1, character2) => character2.Speed.CompareTo(character1.Speed));
+        SortList.Sort((character1, character2) => character2.GetComponent<BaseCharacter>().Speed.CompareTo(character1.GetComponent<BaseCharacter>().Speed));
 
         // Queue를 비우고
-        CharacterQueue.Clear();
+        combatQueue.Clear();
 
-        // 정렬된 List 내부의 characters를 다시 CharacterQueue에 집어넣음
-        foreach (BaseCharacter character in SortList)
+        // 정렬된 List 내부의 characters를 다시 combatQueue에 집어넣음
+        foreach (GameObject character in SortList)
         {
-            CharacterQueue.Enqueue(character);
+            combatQueue.Enqueue(character);
         }
     }
 
@@ -139,95 +170,127 @@ public class BattleManager : SingletonMonobehaviour<GameManager>
         CurState = BattleState.CharacterTurn;
         //캐릭터별로 행동
         StartCoroutine(HandleCharacterTurns());
+       
     }
 
     IEnumerator HandleCharacterTurns()
     {
-        List<BaseCharacter> processedCharacters = new List<BaseCharacter>();
+        List<GameObject> processedCharacters = new List<GameObject>();
 
-        while (CharacterQueue.Count > 0)
+        while (combatQueue.Count > 0)
         {
-            currentCharacter = CharacterQueue.Dequeue();
+            currentCharacterGameObject = combatQueue.Dequeue();
+            BaseCharacter currentCharacter = currentCharacterGameObject.GetComponent<BaseCharacter>();
 
             if (currentCharacter.IsDead)
             {
-                processedCharacters.Add(currentCharacter);
+                processedCharacters.Add(currentCharacterGameObject);
                 continue;
             }
 
             // 차례가 됐을 때 버프 적용
             currentCharacter.ApplyTurnStartBuffs();
 
-
-
             yield return StartCoroutine(WaitForSkillSelection(currentCharacter));
 
             // 스킬 사용으로 인한 속도 변경 처리
-            ReorderCharacterQueue(processedCharacters);
+            ReordercombatQueue(processedCharacters);
 
-            processedCharacters.Add(currentCharacter);
+            processedCharacters.Add(currentCharacterGameObject);
+
+            // 승리 조건 체크
+            if (CheckVictory(processedCharacters) && CheckVictory(combatQueue))
+            {
+                PostBattle(true);
+                yield break;
+            }
+            //패배 조건 체크
+            else if (CheckDefeat(processedCharacters) && CheckDefeat(combatQueue))
+            {
+                PostBattle(false);
+                yield break;
+            }
+
 
             yield return new WaitForSeconds(1f); // 스킬 애니메이션 등을 위한 대기 시간
         }
 
+        //모든 캐릭터의 턴이 끝났을 때 실행
         PostRound();
     }
 
+    /// <summary>
+    /// 임시로 만든 함수. 대량 수정 필요
+    /// </summary>
     IEnumerator WaitForSkillSelection(BaseCharacter character)
     {
-        // 스킬 선택 UI 활성화
-        // 예: skillSelectionUI.ShowForCharacter(character);
-
         bool skillSelected = false;
+       
         BaseSkill selectedSkill = null;
+        int selectedSkillIndex = -1;
 
-        // 스킬이 선택될 때까지 대기
-        // 이 부분은 실제 UI 구현에 따라 달라질 수 있습니다.
-        // 예를 들어, 스킬 선택 버튼이 클릭되면 아래의 람다 함수를 호출하도록 설정
-        skillSelectionUI.OnSkillSelected += (skill) =>
+        // 스킬 선택을 위한 임시 UI 메시지
+        Debug.Log("Press 1 or 2 to select a skill for " + character.name);
+
+        while (!skillSelected)
         {
-            selectedSkill = skill;
-            skillSelected = true;
-        };
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                // 여기서는 예시로 첫 번째 스킬을 선택했다고 가정.
+                Debug.Log("Skill 1 selected");
+                selectedSkill = character.skills[0];
+                selectedSkillIndex = 0;
+                skillSelected = true;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                // 두 번째 스킬이 선택되었다고 가정.
+                Debug.Log("Skill 2 selected");
+                selectedSkill = character.skills[1];
+                selectedSkillIndex = 1;
+                skillSelected = true;
+            }
 
-        // 스킬이 선택될 때까지 무한 대기
-        yield return new WaitUntil(() => skillSelected);
-
-        // 선택된 스킬 실행
-        if (selectedSkill != null)
-        {
-            yield return StartCoroutine(ExecuteSkill(selectedSkill, character));
+            yield return null; // 다음 프레임까지 대기
         }
 
-        // 스킬 선택 UI 비활성화
-        // 예: skillSelectionUI.Hide();
+        // 선택된 스킬을 사용하는 로직
+        if (selectedSkill != null && selectedSkillIndex != -1)
+        {
+            // 적군의 0번째 캐릭터에게 스킬을 쓴다고 가정
+            BaseCharacter temporaryEnemy = EnemyFormation[0].GetComponent<BaseCharacter>();
+            BaseCharacter temporaryCaster = allyFormation[0].GetComponent<BaseCharacter>();
+
+            yield return StartCoroutine(ExecuteSkill(selectedSkillIndex, temporaryCaster, temporaryEnemy));
+        }
     }
 
-    IEnumerator ExecuteSkill(BaseSkill skill, BaseCharacter character)
+    // 스킬 실행 로직 구현
+    IEnumerator ExecuteSkill(int _skillindex, BaseCharacter _caster, BaseCharacter _receiver)
     {
-        // 스킬 실행 로직 구현
-        // 예: 애니메이션 재생, 대미지 계산 등
+        BaseSkill skill = _caster.skills[_skillindex];
+
         yield return new WaitForSeconds(1f); // 예시로 1초 대기
     }
 
-    void ReorderCharacterQueue(List<BaseCharacter> processedCharacters)
+    void ReordercombatQueue(List<GameObject> processedCharacters)
     {
-        List<BaseCharacter> allCharacters = new List<BaseCharacter>(processedCharacters);
+        List<GameObject> allCharacters = new List<GameObject>(processedCharacters);
 
-        // CharacterQueue에 남아 있는 캐릭터를 모두 allCharacters 리스트에 추가
-        while (CharacterQueue.Count > 0)
+        // combatQueue에 남아 있는 캐릭터를 모두 allCharacters 리스트에 추가
+        while (combatQueue.Count > 0)
         {
-            allCharacters.Add(CharacterQueue.Dequeue());
+            allCharacters.Add(combatQueue.Dequeue());
         }
 
         // allCharacters 리스트를 속도에 따라 재정렬
-        allCharacters.Sort((character1, character2) => character2.Speed.CompareTo(character1.Speed));
+        allCharacters.Sort((character1, character2) => character2.GetComponent<BaseCharacter>().Speed.CompareTo(character1.GetComponent<BaseCharacter>().Speed));
 
-        // 재정렬된 리스트를 바탕으로 CharacterQueue 재구성
-        CharacterQueue.Clear();
-        foreach (BaseCharacter character in allCharacters)
+        // 재정렬된 리스트를 바탕으로 combatQueue 재구성
+        combatQueue.Clear();
+        foreach (GameObject character in allCharacters)
         {
-            CharacterQueue.Enqueue(character);
+            combatQueue.Enqueue(character);
         }
     }
 
@@ -240,11 +303,14 @@ public class BattleManager : SingletonMonobehaviour<GameManager>
         CurState = BattleState.PostRound;
         CheckPostBuffs();
         //적군이 모두 죽으면 PostBattle로 넘어감. 아닐시 다시 PreRound로 돌아감
-        if(VictoryCheck())
+        if(CheckVictory(combatQueue))
         {
-            PostBattle();
+            PostBattle(true);
         }
-        else
+        else if (CheckDefeat(combatQueue))
+        {
+            PostBattle(false);
+        }
         {
             PreRound();
         }
@@ -252,11 +318,12 @@ public class BattleManager : SingletonMonobehaviour<GameManager>
 
     void CheckPostBuffs()
     {
-        int characterCount = CharacterQueue.Count;
+        int characterCount = combatQueue.Count;
         for (int i = 0; i < characterCount; i++)
         {
             // Queue에서 항목을 제거
-            BaseCharacter character = CharacterQueue.Dequeue();
+            GameObject characterGameObject = combatQueue.Dequeue();
+            BaseCharacter character = characterGameObject.GetComponent<BaseCharacter>();
 
             foreach (BaseBuff buff in character.activeBuffs)
             {
@@ -266,63 +333,66 @@ public class BattleManager : SingletonMonobehaviour<GameManager>
             }
 
             // 수정된 character를 Queue의 뒤쪽에 다시 추가합니다.
-            CharacterQueue.Enqueue(character);
+            combatQueue.Enqueue(characterGameObject);
         }
     }
 
     /// <summary>
     /// 적군이 모두 죽었는지 확인
     /// </summary>
-    bool VictoryCheck()
+    bool CheckVictory(IEnumerable<GameObject> characters)
     {
-        bool Victory = true;
-        // Queue에 있는 요소 하나씩 꺼내서 List에 집어넣음
-        foreach (BaseCharacter character in CharacterQueue)
+
+        foreach (GameObject characterGameObject in characters)
         {
-            if (Victory == false) continue;
-            //적군인 경우
-            if(character.IsAlly == false)
+            BaseCharacter character = characterGameObject.GetComponent<BaseCharacter>();
+            if (!character.IsAlly && !character.IsDead)
             {
-                //적군이 살아있을 경우
-                if(character.IsDead == false)
-                {
-                    Victory = false;
-                    break;
-                }
+                return false; // 살아있는 적군이 있으므로 승리하지 않음
             }
         }
-        return Victory;
+        return true;
     }
 
     /// <summary>
     /// 아군이 모두 죽었는지 확인
     /// </summary>
-    bool DefeatCheck()
+    bool CheckDefeat(IEnumerable<GameObject> characters)
     {
-        bool Defeat = true;
-        // Queue에 있는 요소 하나씩 꺼내서 List에 집어넣음
-        foreach (BaseCharacter character in CharacterQueue)
+        foreach (GameObject characterGameObject in characters)
         {
-            if (Defeat == false) continue;
-            //아군인 경우
-            if (character.IsAlly )
+            BaseCharacter character = characterGameObject.GetComponent<BaseCharacter>();
+            if (character.IsAlly && !character.IsDead)
             {
-                //아군이 살아있을 경우
-                if (character.IsDead == false)
-                {
-                    Defeat = false;
-                    break;
-                }
+                return false; // 살아있는 아군이 있으므로 패배하지 않음
             }
         }
-        return Defeat;
+        return true;
     }
 
     /// <summary>
     /// 보상 정산 후, 전투 종료
     /// </summary>
-    void PostBattle()
+    void PostBattle(bool _victory)
     {
-
+        //승리시
+        if (_victory)
+        {
+            //승리 화면 뜬 후 보상 정산
+        }
+        else
+        {
+            //패배 화면 뜨기
+        }
+        //적군인 경우 삭제
+        while (combatQueue.Count > 0)
+        {
+            BaseCharacter curchar = combatQueue.Dequeue().GetComponent<BaseCharacter>();
+            if(curchar.IsAlly == false)
+            {
+                curchar.Destroy();
+            }
+        }
+        combatQueue.Clear();
     }
 }

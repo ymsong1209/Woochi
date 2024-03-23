@@ -8,23 +8,52 @@ public class BaseSkill
     [SerializeField] protected SkillSO skillSO;
 
     
-    public virtual void SetSelect(bool _selected)
+    public virtual void ApplySkill(BaseCharacter _Opponent)
     {
-
-    }
-   
-    public virtual void ActivateSkill()
-    {
-        //스킬 테두리 icon이 빛나야함
-
-        //skillSO
+        //버프 적용
+        foreach (GameObject ApplybuffGameobject in skillSO.bufflist)
+        {
+            BaseBuff BufftoApply = ApplybuffGameobject.GetComponent<BaseBuff>();
+            ApplyBuff(_Opponent, BufftoApply);
+        }
 
     }
 
-    #region Validation
-    private void OnValidate()
+    public virtual bool ApplyBuff(BaseCharacter _Opponent, BaseBuff _buff)
     {
-        
+        //버프 적용
+        foreach (BaseBuff opponentbuff in _Opponent.activeBuffs)
+        {
+            if (!opponentbuff.ValidateApplyBuff(_buff.BuffType))
+            {
+                return false;
+            }
+        }
+        //모든 검사 끝났으면 버프 적용 가능
+        return true;
     }
-    #endregion
+
+    public virtual void ApplyStat(BaseCharacter _Opponent, int _minDamage, int _maxDamage, int _multiplier, SkillType _type)
+    {
+        switch(_type)
+        {
+            case SkillType.Attack:
+            {
+                Health opponentHealth = _Opponent.gameObject.GetComponent<Health>();
+               
+            }
+            break;
+            case SkillType.Heal:
+            {
+            
+            }
+            break;
+        }
+    }
+
+
+    #region Getter Setter
+    public string Name => skillSO.name;
+    #endregion Getter Setter
+
 }

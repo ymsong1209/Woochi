@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CharacterStat_", menuName = "Scriptable Objects/Character/CharacterStat")]
+[CreateAssetMenu(fileName = "CS_", menuName = "Scriptable Objects/Character/CharacterStat")]
 public class CharacterStatSO : ScriptableObject
 {
 
@@ -34,10 +34,7 @@ public class CharacterStatSO : ScriptableObject
     [SerializeField] private int    baseResist;
    
 
-    #region Header SpecializedStats
-    [Tooltip("특정 위치에서 Spawn되게 하고 싶으면 값 입력.")]
-    [SerializeField] private Vector3 spawnLocation;
-    #endregion
+   
 
 
     #region Getter Method
@@ -50,7 +47,7 @@ public class CharacterStatSO : ScriptableObject
     public int BaseAccuracy => baseAccuracy;
     public int BaseEvasion => baseEvasion;
     public int BaseResist => baseResist;
-    public Vector3 SpawnLocation => spawnLocation;
+   
     #endregion
 
 

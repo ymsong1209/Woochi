@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e287271d0041ee4e8e43ace29639629, type: 3}
   m_Name: Dungeon_Dummy
   m_EditorClassIdentifier: 
-  levelName: 
-  Enemy: []
+  EnemyList:
+  - {fileID: 2712134958714646014, guid: 6a7b34608a8243f439f2cd5a7d835580, type: 3}

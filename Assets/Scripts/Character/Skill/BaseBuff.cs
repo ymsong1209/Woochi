@@ -11,6 +11,7 @@ public class BaseBuff : MonoBehaviour
     /// buffDurationTurns가 -1이면 영구지속 버프
     /// </summary>
     [SerializeField] protected int buffDurationTurns;
+    [SerializeField] protected BuffType buffType;
 
     public virtual void AddBuff(BaseCharacter _buffOwner)
     {
@@ -51,11 +52,24 @@ public class BaseBuff : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// _bufftype이 나에게 적용될 수 있는지 확인
+    /// </summary>
+    public virtual bool ValidateApplyBuff(BuffType _bufftype)
+    {
+        return true;
+    }
+
     #region Getter Setter
     public int BuffDurationTurns
     {
         get { return buffDurationTurns; }
         set { buffDurationTurns = value; }
+    }
+    public BuffType BuffType
+    {
+        get { return buffType; }
+        set { buffType = value; }
     }
     #endregion Getter Setter
 
