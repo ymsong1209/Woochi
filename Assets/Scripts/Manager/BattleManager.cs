@@ -14,8 +14,30 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     private int                 currentRound;                   //현재 몇 라운드인지
 
     #region 아군과 적군의 위치값
-    [SerializeField] private Transform[] allyPosition = new Transform[7];
-    [SerializeField] private Transform[] enemyPosition = new Transform[7];
+    /// <summary>
+    /// 크기가 1인 아군 위치값 
+    /// 0~3 : 1열~4열 
+    /// </summary>
+    [SerializeField] private Vector3[] allySinglePosition = new Vector3[4];
+    /// <summary>
+    /// 크기가 2인 아군 위치값
+    /// 0 : 1~2열 사이
+    /// 1 : 2~3열 사이
+    /// 2 : 3~4열 사이
+    /// </summary>
+    [SerializeField] private Vector3[] allyMultiplePosition = new Vector3[3];
+    /// <summary>
+    /// 크기가 1인 적군 위치값 
+    /// 0~3 : 1열~4열 
+    /// </summary>
+    [SerializeField] private Vector3[] enemySinglePosition = new Vector3[4];
+    /// <summary>
+    /// 크기가 2인 적군 위치값
+    /// 0 : 1~2열 사이
+    /// 1 : 2~3열 사이
+    /// 2 : 3~4열 사이
+    /// </summary>
+    [SerializeField] private Vector3[] enemyMultiplePosition = new Vector3[3];
     #endregion
 
 
@@ -23,8 +45,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// 아군이랑 적군의 싸움 순서
     /// </summary>
     [SerializeField] private Queue<GameObject> combatQueue = new Queue<GameObject>();
-    [SerializeField, ReadOnly] private List<GameObject> allyFormation = new List<GameObject>();
-    [SerializeField, ReadOnly] private List<GameObject> EnemyFormation = new List<GameObject>();
+    [SerializeField, ReadOnly] private GameObject[] allyFormation = new GameObject[4];
+    [SerializeField, ReadOnly] private GameObject[] EnemyFormation = new GameObject[4];
 
     private void Start()
     {
@@ -41,39 +63,110 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         currentRound = 0;
         combatQueue.Clear();
-        allyFormation.Clear();
-        EnemyFormation.Clear();
+        for(int i = 0;i<allyFormation.Length; ++i)
+        {
+            allyFormation[i] = null;
+        }
+        for(int i = 0;i<EnemyFormation.Length; ++i)
+        {
+            EnemyFormation[i] = null;
+        }
 
         #region 아군과 적군 배치
+        #region 적군 배치
         // DungeonInfo내에 있는 적들을 알맞은 곳에 배치
         int EnemyTotalSize = 0;
         for(int i = 0;i<dungeon.EnemyList.Count; ++i)
         {
             GameObject enemyGameObject = dungeon.EnemyList[i];
+            BaseCharacter enemyCharacter = enemyGameObject.GetComponent<BaseCharacter>();
+            
+            //전투 순서에 삽입
             combatQueue.Enqueue(enemyGameObject);
-            EnemyFormation.Add(enemyGameObject);
-            if(enemyGameObject.GetComponent<BaseCharacter>().SpawnLocation != new Vector3(0, 0, 0))
+            EnemyFormation[i] = enemyGameObject;
+
+            //위치값을 정해야하는 특수한 객체가 아니면 enemyPosition대로 정상 소환
+            int enemySize = enemyCharacter.Size;
+            if (enemyCharacter.IsSpawnSpecific == false)
             {
-                Instantiate(enemyGameObject, enemyPosition[EnemyTotalSize]);
+                //크기가 1인 적군
+                if (enemySize == 1)
+                {
+                    Instantiate(enemyGameObject, enemySinglePosition[EnemyTotalSize], Quaternion.identity);
+                    ++EnemyTotalSize;
+                }
+                //크기가 2인 적군
+                else if (enemySize == 2) {
+                    Instantiate(enemyGameObject, enemyMultiplePosition[EnemyTotalSize], Quaternion.identity);
+                    EnemyTotalSize += 2;
+                }
+            }
+            //위치를 정해줘야하는 특수한 객체
+            else
+            {
+                //크기가 1인 적군
+                if (enemySize == 1)
+                {
+                    Instantiate(enemyGameObject, enemyCharacter.SpawnLocation, enemyCharacter.SpawnRotation);
+                    ++EnemyTotalSize;
+                }
+                //크기가 2인 적군
+                else if (enemySize == 2)
+                {
+                    Instantiate(enemyGameObject, enemyCharacter.SpawnLocation, enemyCharacter.SpawnRotation);
+                    EnemyTotalSize += 2;
+                }
             }
         }
-        foreach (GameObject enemyGameObject in dungeon.EnemyList)
+        if (EnemyTotalSize > 4) Debug.LogError("EnemyTotalSize over 4");
+        #endregion 적군 배치
+        #region 아군 배치
+        int AllyTotalSize = 0;
+        for (int i = 0; i < GameManager.GetInstance.Allies.Count; ++i)
         {
-            combatQueue.Enqueue(enemyGameObject);
-            //Todo : 캐릭터를 알맞은 곳에 배치
-            Transform trans = enemyGameObject.transform;
-            Instantiate(enemyGameObject, trans);
-        }
-       
-        foreach(GameObject allyGameObject in GameManager.GetInstance.Allies)
-        { 
-            combatQueue.Enqueue(allyGameObject);
-            //Todo : 아군 캐릭터 알맞게 배치
-            Transform trans = allyGameObject.transform;   //임시 코드
-            Instantiate(allyGameObject, trans);           //임시 코드
-        }
+            GameObject allyGameObject = GameManager.GetInstance.Allies[i];
+            BaseCharacter allyCharacter = allyGameObject.GetComponent<BaseCharacter>();
 
-        #endregion
+            //전투 순서에 삽입
+            combatQueue.Enqueue(allyGameObject);
+            EnemyFormation[i] = allyGameObject;
+
+            //위치값을 정해야하는 특수한 객체가 아니면 allyPosition대로 정상 소환
+            int allySize = allyCharacter.Size;
+            if (allyCharacter.IsSpawnSpecific == false)
+            {
+                //크기가 1인 아군
+                if (allySize == 1)
+                {
+                    Instantiate(allyGameObject, allySinglePosition[AllyTotalSize], Quaternion.identity);
+                    ++AllyTotalSize;
+                }
+                //크기가 2인 아군
+                else if (allySize == 2)
+                {
+                    Instantiate(allyGameObject, allyMultiplePosition[AllyTotalSize], Quaternion.identity);
+                    AllyTotalSize += 2;
+                }
+            }
+            //위치를 정해줘야하는 특수한 객체
+            else
+            {
+                //크기가 1인 아군
+                if (allySize == 1)
+                {
+                    Instantiate(allyGameObject, allyCharacter.SpawnLocation, allyCharacter.SpawnRotation);
+                    ++AllyTotalSize;
+                }
+                //크기가 2인 아군
+                else if (allySize == 2)
+                {
+                    Instantiate(allyGameObject, allyCharacter.SpawnLocation, allyCharacter.SpawnRotation);
+                    AllyTotalSize += 2;
+                }
+            }
+        }
+        #endregion 아군 배치
+        #endregion 아군과 적군 배치
 
         #region PreRound 상태로 넘어감
         PreRound();

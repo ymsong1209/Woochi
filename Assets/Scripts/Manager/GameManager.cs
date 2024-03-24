@@ -31,6 +31,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 BattleManager.GetInstance.InitializeBattle(temporaryDungeon);
+                gameState = GameState.BATTLE;
             }
         }
     }

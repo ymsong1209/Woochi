@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ public class BaseCharacter : MonoBehaviour
     #endregion Header CHARACTER STATS
     #region Character Stats
     [SerializeField]            private Health  health;
+    [SerializeField]            private int     size = 1;
     [SerializeField,ReadOnly]   private int     speed;
     [SerializeField,ReadOnly]   private int     defense;
     [SerializeField,ReadOnly]   private int     crit;
@@ -26,7 +28,9 @@ public class BaseCharacter : MonoBehaviour
 
     #region Header SpecializedStats
     [Tooltip("특정 위치에서 Spawn되게 하고 싶으면 값 입력.")]
-    [SerializeField] private Vector3 spawnLocation;
+    [SerializeField] private bool       isSpawnSpecific = false;
+    [SerializeField] private Vector3    spawnLocation;
+    [SerializeField] private Quaternion spawnRotation;
     #endregion
 
     #region Header BATTLE STATS
@@ -115,6 +119,8 @@ public class BaseCharacter : MonoBehaviour
     #endregion 죽음 처리
 
     #region Getter Setter
+    public int Size => size;
+
     public int Speed
     {
         get { return speed; }
@@ -148,7 +154,9 @@ public class BaseCharacter : MonoBehaviour
 
     public bool IsDead => isDead;
     public bool IsAlly => isAlly;
+    public bool IsSpawnSpecific => isSpawnSpecific;
     public Vector3 SpawnLocation => spawnLocation;
+    public Quaternion SpawnRotation => spawnRotation;
     #endregion
 
 }
