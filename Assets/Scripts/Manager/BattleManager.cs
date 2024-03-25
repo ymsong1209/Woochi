@@ -80,7 +80,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         {
             GameObject enemyGameObject = dungeon.EnemyList[i];
             BaseCharacter enemyCharacter = enemyGameObject.GetComponent<BaseCharacter>();
-            
+
+            //턴 소비 체크
+            enemyCharacter.IsTurnUsed = false;
+            //전투 시작시 적용되는 버프 적용
+            enemyCharacter.ApplyBuff(BuffTiming.BattleStart);
+
             //전투 순서에 삽입
             combatQueue.Enqueue(enemyGameObject);
             EnemyFormation[i] = enemyGameObject;
@@ -130,6 +135,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             //전투 순서에 삽입
             combatQueue.Enqueue(allyGameObject);
             EnemyFormation[i] = allyGameObject;
+
+            //턴 소비 체크
+            allyCharacter.IsTurnUsed = false;
+            //전투 시작 시 적용되는 버프 적용
+            allyCharacter.ApplyBuff(BuffTiming.BattleStart);
 
             //위치값을 정해야하는 특수한 객체가 아니면 allyPosition대로 정상 소환
             int allySize = allyCharacter.Size;
@@ -206,12 +216,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             GameObject characterGameObject = combatQueue.Dequeue();
             BaseCharacter character = characterGameObject.GetComponent<BaseCharacter>();
 
-            foreach (BaseBuff buff in character.activeBuffs)
-            {
-                buff.ApplyRoundStartBuff();
-                //죽음 체크
-                character.CheckDead();
-            }
+            character.ApplyBuff(BuffTiming.RoundStart);
 
             // 수정된 character를 Queue의 뒤쪽에 다시 추가.
             combatQueue.Enqueue(characterGameObject);
@@ -225,35 +230,60 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     void DetermineOrder()
     {
         CurState = BattleState.DetermineOrder;
-        SortBattleOrder();
+        //캐릭터를 속도순으로 정렬하면서 모두 전투에 참여할 수 있또록 변경
+        ReordercombatQueue(true);
         CharacterTurn();
     }
 
     /// <summary>
-    /// 캐릭터들을 속도순으로 정렬
+    /// combatQueue를 다시 속도순으로 정렬, ResetTurnUsed를 true로 하면 모든 캐릭터가 턴을 다시 쓸 수 있음
     /// </summary>
-    void SortBattleOrder()
+    void ReordercombatQueue(bool _ResetTurnUsed = false)
     {
-        List<GameObject> SortList = new List<GameObject>();
+        List<GameObject> allCharacters = new List<GameObject>();
 
-        // Queue에 있는 요소 하나씩 꺼내서 List에 집어넣음
-        foreach (GameObject character in combatQueue)
+        // combatQueue에 남아 있는 캐릭터를 모두 allCharacters 리스트에 추가
+        while (combatQueue.Count > 0)
         {
-            SortList.Add(character);
+            allCharacters.Add(combatQueue.Dequeue());
         }
 
-        // List 내부의 characters를 Speed 속성을 기준으로 내림차순 정렬
-        SortList.Sort((character1, character2) => character2.GetComponent<BaseCharacter>().Speed.CompareTo(character1.GetComponent<BaseCharacter>().Speed));
+        // allCharacters 리스트를 속도에 따라 재정렬
+        allCharacters.Sort((character1, character2) => character2.GetComponent<BaseCharacter>().Speed.CompareTo(character1.GetComponent<BaseCharacter>().Speed));
 
-        // Queue를 비우고
+        // 재정렬된 리스트를 바탕으로 combatQueue 재구성
         combatQueue.Clear();
+        foreach (GameObject character in allCharacters)
+        {
+            if (_ResetTurnUsed)
+            {
+                character.GetComponent<BaseCharacter>().IsTurnUsed = false;
+            }
+            combatQueue.Enqueue(character);
+        }
+    }
 
-        // 정렬된 List 내부의 characters를 다시 combatQueue에 집어넣음
-        foreach (GameObject character in SortList)
+    void ReordercombatQueue(List<GameObject> processedCharacters)
+    {
+        List<GameObject> allCharacters = new List<GameObject>(processedCharacters);
+
+        // combatQueue에 남아 있는 캐릭터를 모두 allCharacters 리스트에 추가
+        while (combatQueue.Count > 0)
+        {
+            allCharacters.Add(combatQueue.Dequeue());
+        }
+
+        // allCharacters 리스트를 속도에 따라 재정렬
+        allCharacters.Sort((character1, character2) => character2.GetComponent<BaseCharacter>().Speed.CompareTo(character1.GetComponent<BaseCharacter>().Speed));
+
+        // 재정렬된 리스트를 바탕으로 combatQueue 재구성
+        combatQueue.Clear();
+        foreach (GameObject character in allCharacters)
         {
             combatQueue.Enqueue(character);
         }
     }
+
 
     /// <summary>
     /// 캐릭터들의 행동 시작
@@ -275,16 +305,17 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             currentCharacterGameObject = combatQueue.Dequeue();
             BaseCharacter currentCharacter = currentCharacterGameObject.GetComponent<BaseCharacter>();
 
-            if (currentCharacter.IsDead)
+            if (currentCharacter.IsDead || currentCharacter.IsTurnUsed)
             {
                 processedCharacters.Add(currentCharacterGameObject);
                 continue;
             }
 
-            // 차례가 됐을 때 버프 적용
-            currentCharacter.ApplyTurnStartBuffs();
-
-            yield return StartCoroutine(WaitForSkillSelection(currentCharacter));
+            // 자신의 차례가 됐을 때 버프 적용
+            if (currentCharacter.ApplyBuff(BuffTiming.TurnStart))
+            {
+                yield return StartCoroutine(WaitForSkillSelection(currentCharacter));
+            };
 
             // 스킬 사용으로 인한 속도 변경 처리
             ReordercombatQueue(processedCharacters);
@@ -303,9 +334,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 PostBattle(false);
                 yield break;
             }
-
-
-            yield return new WaitForSeconds(1f); // 스킬 애니메이션 등을 위한 대기 시간
+        }
+        //ProcessedCharacter에 있는 캐릭터들 다시 characterQueue에 삽입
+        foreach(GameObject characters in processedCharacters)
+        {
+            combatQueue.Enqueue(characters);
         }
 
         //모든 캐릭터의 턴이 끝났을 때 실행
@@ -366,26 +399,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         yield return new WaitForSeconds(1f); // 예시로 1초 대기
     }
 
-    void ReordercombatQueue(List<GameObject> processedCharacters)
-    {
-        List<GameObject> allCharacters = new List<GameObject>(processedCharacters);
 
-        // combatQueue에 남아 있는 캐릭터를 모두 allCharacters 리스트에 추가
-        while (combatQueue.Count > 0)
-        {
-            allCharacters.Add(combatQueue.Dequeue());
-        }
-
-        // allCharacters 리스트를 속도에 따라 재정렬
-        allCharacters.Sort((character1, character2) => character2.GetComponent<BaseCharacter>().Speed.CompareTo(character1.GetComponent<BaseCharacter>().Speed));
-
-        // 재정렬된 리스트를 바탕으로 combatQueue 재구성
-        combatQueue.Clear();
-        foreach (GameObject character in allCharacters)
-        {
-            combatQueue.Enqueue(character);
-        }
-    }
 
 
     /// <summary>
@@ -417,13 +431,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             // Queue에서 항목을 제거
             GameObject characterGameObject = combatQueue.Dequeue();
             BaseCharacter character = characterGameObject.GetComponent<BaseCharacter>();
-
-            foreach (BaseBuff buff in character.activeBuffs)
-            {
-                buff.ApplyRoundEndBuff();
-                //죽음 체크
-                character.CheckDead();
-            }
+            character.ApplyBuff(BuffTiming.RoundEnd);
 
             // 수정된 character를 Queue의 뒤쪽에 다시 추가합니다.
             combatQueue.Enqueue(characterGameObject);
@@ -484,8 +492,10 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             if(curchar.IsAlly == false)
             {
                 curchar.Destroy();
+                Destroy(curchar.gameObject);
             }
         }
         combatQueue.Clear();
+        GameManager.GetInstance.SelectRoom();
     }
 }

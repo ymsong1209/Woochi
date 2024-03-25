@@ -15,11 +15,12 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     void Start()
     {
-        gameState = GameState.SELECTROOM;
+        SelectRoom();
         foreach (GameObject go in allies)
         {
-            BaseAllyCharacter character = go.GetComponent<BaseAllyCharacter>();
+            BaseCharacter character = go.GetComponent<BaseCharacter>();
             character.Initialize();
+            character.IsAlly = true;
         }
     }
 
@@ -30,10 +31,17 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                BattleManager.GetInstance.InitializeBattle(temporaryDungeon);
                 gameState = GameState.BATTLE;
+                Debug.Log("GameState : Battle");
+                BattleManager.GetInstance.InitializeBattle(temporaryDungeon);
             }
         }
+    }
+
+    public void SelectRoom()
+    {
+        gameState = GameState.SELECTROOM;
+        Debug.Log("GameState : SelectRoom");
     }
 
     #region Getter Setter

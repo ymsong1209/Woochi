@@ -44,7 +44,19 @@ public enum BuffType
 {
     Buff,               // 버프, 디버프 관련
     Cleanse,            // 정화 관련
+    END
 }
+
+public enum BuffTiming
+{
+    BattleStart,
+    RoundStart,
+    RoundEnd,
+    TurnStart,
+    BattleEnd,
+    END
+}
+
 
 /// <summary>
 /// Observer pattern에 사용할 EventType

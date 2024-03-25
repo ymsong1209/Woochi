@@ -13,43 +13,74 @@ public class BaseBuff : MonoBehaviour
     [SerializeField] protected int buffDurationTurns;
     [SerializeField] protected BuffType buffType;
 
+    /// <summary>
+    /// 버프를 추가
+    /// </summary>
     public virtual void AddBuff(BaseCharacter _buffOwner)
     {
         buffOwner = _buffOwner;
     }
 
     /// <summary>
-    /// 라운드가 시작될때 적용되는 버프
-    /// </summary>
-    public virtual void ApplyRoundStartBuff()
+    /// 전투가 시작될때 적용되는 버프 효과
+    /// 사용 후 캐릭터가 살아있으면 true 반환
+    /// <returns></returns>
+    public virtual bool ApplyBattleStartBuff()
     {
+        if (buffOwner.CheckDead() == false) return true;
+        return false;
+    }
 
+    /// <summary>
+    /// 라운드가 시작될때 적용되는 버프
+    /// 버프 효과 사용 후 캐릭터가 살아있으면 true반환
+    /// </summary>
+    public virtual bool ApplyRoundStartBuff()
+    {
+        if (buffOwner.CheckDead() == false) return true;
+        return false;
     }
 
     /// <summary>
     /// 자신의 차례가 됐을때 적용
+    /// 버프 효과 사용 후 캐릭터가 살아있으면 true반환
     /// </summary>
-    public virtual void ApplyBuffWhenMyTurn()
+    public virtual bool ApplyTurnStartBuff()
     {
         --buffDurationTurns;
+        if (buffOwner.CheckDead() == false) return true;
+        return false;
     }
 
     /// <summary>
     /// 라운드가 끝날때 적용되는 버프
+    /// 버프 효과 사용 후 캐릭터가 살아있으면 true반환
     /// </summary>
-    public virtual void ApplyRoundEndBuff()
+    public virtual bool ApplyRoundEndBuff()
     {
-
+        if (buffOwner.CheckDead() == false) return true;
+        return false;
     }
 
-    public virtual void RemoveBuff()
+    /// <summary>
+    /// 전투가 끝난 후 적용되는 버프 효과, default로 버프가 제거되게 함
+    /// 사용 후 캐릭터 살아있으면 true 반환
+    /// </summary>
+    public virtual bool ApplyBattleEndBuff()
     {
-        if(buffOwner == null)
-        {
-            Debug.LogError("No BuffOwner"); return;
-        }
+        RemoveBuff();
+        if (buffOwner.CheckDead() == false) return true;
+        return false;
+    }
 
-
+    /// <summary>
+    /// 버프 제거
+    /// 버프 제거 후 캐릭터가 살아있으면 true반환
+    /// </summary>
+    public virtual bool RemoveBuff()
+    {
+        if (buffOwner.CheckDead() == false) return true;
+        return false;
     }
 
     /// <summary>

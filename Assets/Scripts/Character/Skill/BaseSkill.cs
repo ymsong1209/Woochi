@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class BaseSkill
@@ -10,6 +11,9 @@ public class BaseSkill
     
     public virtual void ApplySkill(BaseCharacter _Opponent)
     {
+
+
+
         //버프 적용
         foreach (GameObject ApplybuffGameobject in skillSO.bufflist)
         {
@@ -18,6 +22,7 @@ public class BaseSkill
         }
 
     }
+
 
     public virtual bool ApplyBuff(BaseCharacter _Opponent, BaseBuff _buff)
     {

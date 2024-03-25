@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
@@ -44,29 +45,81 @@ public class BaseCharacter : MonoBehaviour
     /// <summary>
     /// 나에게 적용된 버프
     /// </summary>
-    public  List<BaseBuff>   activeBuffs;
-    protected bool           isAlly;
-    public  List<BaseSkill>  skills;
+    public   List<BaseBuff>   activeBuffs;
+    public   List<BaseSkill>  skills;
+    protected bool            isAlly;
+    private bool isTurnUsed; //한 라운드 내에서 자신의 턴을 사용했을 경우
+
     #endregion BATTLE STATS
 
 
 
     #region 버프 처리
-    public void ApplyTurnStartBuffs()
+    /// <summary>
+    /// 버프 적용 시점에 따라 적절한 버프 처리 함수 호출
+    /// 버프 효과 사용 후 캐릭터가 살아있으면 true반환
+    /// 죽었을 경우엔 캐릭터가 가지고 있는 모든 버프 제거 후 사망 처리
+    /// </summary>
+    public bool ApplyBuff(BuffTiming timing)
+    {
+        switch (timing)
+        {
+            case BuffTiming.RoundStart:
+                return ApplyBuffs(buff => buff.ApplyRoundStartBuff());
+            case BuffTiming.RoundEnd:
+                return ApplyBuffs(buff => buff.ApplyRoundEndBuff());
+            case BuffTiming.TurnStart:
+                return ApplyBuffs(buff => buff.ApplyTurnStartBuff());
+            default:
+                throw new ArgumentOutOfRangeException(nameof(timing), $"Unsupported buff timing: {timing}");
+        }
+    }
+
+    private bool ApplyBuffs(Func<BaseBuff, bool> applyBuffMethod)
     {
         for (int i = activeBuffs.Count - 1; i >= 0; i--)
         {
-            activeBuffs[i].ApplyBuffWhenMyTurn();
-
-            // 버프 지속 시간이 0이면 리스트에서 해당 버프 제거
-            if (activeBuffs[i].BuffDurationTurns <= 0)
+            if (!applyBuffMethod(activeBuffs[i]))
             {
-                // 버프가 지워지면서 실행되어야할 함수들
-                activeBuffs[i].RemoveBuff();
-
-                // 리스트에서 해당 버프 제거
-                activeBuffs.RemoveAt(i);
+                return HandleDeath();
             }
+
+            if (ShouldRemoveBuff(activeBuffs[i]))
+            {
+                RemoveBuffAtIndex(i);
+            }
+        }
+        return true;
+    }
+
+    private bool ShouldRemoveBuff(BaseBuff buff)
+    {
+        return buff.BuffDurationTurns <= 0;
+    }
+
+    private void RemoveBuffAtIndex(int index)
+    {
+        if (!activeBuffs[index].RemoveBuff())
+        {
+            // Buff가 제거되면서 캐릭터가 사망하는 경우는 여기서 다루지 않음
+            // 이 함수는 단순히 버프를 제거하는 역할만 수행함
+        }
+        activeBuffs.RemoveAt(index);
+    }
+
+    private bool HandleDeath()
+    {
+        RemoveAllBuff();
+        return false;
+    }
+
+    public void RemoveAllBuff()
+    {
+        //모든 버프 순회
+        for (int i = activeBuffs.Count - 1; i >= 0; i--)
+        {
+            activeBuffs[i].RemoveBuff();
+            activeBuffs.RemoveAt(i);
         }
     }
 
@@ -96,12 +149,14 @@ public class BaseCharacter : MonoBehaviour
     /// <summary>
     /// Character가 죽었는지 확인
     /// </summary>
-    public void CheckDead()
+    public bool CheckDead()
     {
         if(health.CheckHealthZero())
         {
             SetDead(true);
+            return true;
         }
+        return false;
     }
     public virtual void SetDead(bool _dead)
     {
@@ -153,10 +208,20 @@ public class BaseCharacter : MonoBehaviour
     }
 
     public bool IsDead => isDead;
-    public bool IsAlly => isAlly;
+    public bool IsAlly
+    {
+        get { return isAlly; }
+        set { isAlly = value; }
+    }
     public bool IsSpawnSpecific => isSpawnSpecific;
     public Vector3 SpawnLocation => spawnLocation;
     public Quaternion SpawnRotation => spawnRotation;
+
+    public bool IsTurnUsed
+    {
+        get { return isTurnUsed; }
+        set { isTurnUsed = value; }
+    }
     #endregion
 
 }

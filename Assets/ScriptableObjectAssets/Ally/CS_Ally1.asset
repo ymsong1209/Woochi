@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c4bbbce2a03c2d4a95b7ced04f3ebb7, type: 3}
-  m_Name: CS_DummyEnemy0
+  m_Name: CS_Ally1
   m_EditorClassIdentifier: 
-  characterName: DummyEnemy0
-  baseHealth: 90
-  size: 1
-  baseSpeed: 13
-  baseDefense: 13
-  baseCrit: 13
-  baseAccuracy: 13
-  baseEvasion: 13
-  baseResist: 13
-  spawnLocation: {x: 50, y: 0, z: 0}
+  characterName: Ally1
+  baseHealth: 120
+  baseSpeed: 25
+  baseDefense: 12
+  baseCrit: 12
+  baseAccuracy: 12
+  baseEvasion: 12
+  baseResist: 12
