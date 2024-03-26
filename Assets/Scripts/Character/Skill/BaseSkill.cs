@@ -26,10 +26,10 @@ public class BaseSkill
 
     #endregion Header SKILL STATS
 
-    [SerializeField] private int minStat;       // 최소 계수
-    [SerializeField] private int maxStat;       // 최대 계수
-    [SerializeField] private int multiplier;    // 피해량 계수
-    [SerializeField] private int skillAccuracy;     // 스킬 명중 수치
+    [SerializeField] private float minStat;       // 최소 계수
+    [SerializeField] private float maxStat;       // 최대 계수
+    [SerializeField] private float multiplier;    // 피해량 계수
+    [SerializeField] private float skillAccuracy; // 스킬 명중 수치
 
     public void Initialize()
     {
@@ -46,9 +46,9 @@ public class BaseSkill
     {
         //아군 보호 스킬등으로 보호 할 수 있음
         //최종적으로 공격해야하는 적 판정
-        BaseCharacter opponet = CheckOpponentValid(_Opponent);
+        BaseCharacter opponent = CheckOpponentValid(_Opponent);
 
-        if(opponet == null)
+        if(opponent == null)
         {
             Debug.LogError("opponent is null");
             return;
@@ -57,22 +57,32 @@ public class BaseSkill
         //명중 체크
         if (CheckAccuracy() == false) return;
         //회피 체크
-        if (CheckEvasion(opponet) == false) return;
-        else
+        if (CheckEvasion(opponent) == false) return;
+        
+        //치명타일 경우 바로 버프 적용
+        if (CheckCrit())
         {
-            //대미지 로직 적용
-            
-        }
-        //버프 체크
-        if (CheckApplyBuff(opponet))
-        {
+
+            ApplyStat(opponent, minStat, maxStat, multiplier, skillType, true);
+
             //버프 적용
             foreach (GameObject ApplybuffGameobject in skillSO.bufflist)
             {
                 BaseBuff BufftoApply = ApplybuffGameobject.GetComponent<BaseBuff>();
-                ApplyBuff(opponet, BufftoApply);
+                ApplyBuff(opponent, BufftoApply);
             }
         }
+        //치명타가 아닌 경우 저항 판정
+        else if(CheckApplyBuff(opponent))
+        {
+            //적이 저항 실패하면 버프 적용
+            foreach (GameObject ApplybuffGameobject in skillSO.bufflist)
+            {
+                BaseBuff BufftoApply = ApplybuffGameobject.GetComponent<BaseBuff>();
+                ApplyBuff(opponent, BufftoApply);
+            }
+        }
+        
     }
 
     BaseCharacter CheckOpponentValid(BaseCharacter _Opponent)
@@ -125,6 +135,16 @@ public class BaseSkill
         return false;
     }
 
+    /// <summary>
+    /// 치명타 판정이 성공하면 true 반환
+    /// </summary>
+    private bool CheckCrit()
+    {
+        int RandomValue = Random.Range(0, 100);
+        if (RandomValue < skillOwner.Crit) return true;
+        return false;
+    }
+
     public virtual void ApplyBuff(BaseCharacter _Opponent, BaseBuff _buff)
     {
         //같은 버프를 넣으려는 경우 중첩 횟수를 더함
@@ -139,19 +159,28 @@ public class BaseSkill
         _Opponent.activeBuffs.Add(_buff);
     }
 
-    public virtual void ApplyStat(BaseCharacter _Opponent, int _minDamage, int _maxDamage, int _multiplier, SkillType _type)
+    public virtual void ApplyStat(BaseCharacter _Opponent, float _minStat, float _maxStat, float _multiplier, SkillType _type, bool _isCrit)
     {
-        switch(_type)
+        Health opponentHealth = _Opponent.gameObject.GetComponent<Health>();
+        //최소, 최대 대미지 사이의 수치를 고름
+        float RandomStat = Random.Range(_minStat, _maxStat);
+        //피해량 계수를 곱함
+        RandomStat *= _multiplier;
+       
+        switch (_type)
         {
             case SkillType.Attack:
             {
-                Health opponentHealth = _Opponent.gameObject.GetComponent<Health>();
-               
+                //방어 스탯을 뺌
+                RandomStat = RandomStat * (100 - _Opponent.Defense);
+                if (_isCrit) RandomStat = RandomStat * 2;
+                opponentHealth.ApplyDamage((int)RandomStat);
             }
             break;
             case SkillType.Heal:
             {
-            
+                if (_isCrit) RandomStat = RandomStat * 2;
+                opponentHealth.Heal((int)RandomStat);
             }
             break;
         }
@@ -161,9 +190,15 @@ public class BaseSkill
     #region Getter Setter
     public string Name => skillSO.name;
 
-    public int MinStat => minStat;
-    public int MaxStat => maxStat;
-    public int Multiplier => multiplier;
+    public float MinStat => minStat;
+    public float MaxStat => maxStat;
+    public float Multiplier => multiplier;
+
+    public BaseCharacter SkillOwner
+    {
+        get { return skillOwner; }
+        set { skillOwner = value; }
+    }
 
     #endregion Getter Setter
 

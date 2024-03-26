@@ -6,21 +6,21 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int maxHealth;
-    [SerializeField] private int curHealth;
-    [SerializeField] private int shield;
+    [SerializeField] private float maxHealth;
+    [SerializeField] private float curHealth;
+    [SerializeField] private float shield;
 
     /// <summary>
     /// 대미지를 받는 공식, _penetrate가 true일 경우에는 쉴드를 뚫는 관통형 대미지
     /// </summary>
     /// <param name="_damage"></param>
     /// <param name="_penetrate">_penetrate가 true일 경우에는 쉴드를 뚫는 관통형 대미지 </param>
-    public void ApplyDamage(int _damage, bool _penetrate = false)
+    public void ApplyDamage(float _damage, bool _penetrate = false)
     {
         //관통형 대미지인경우
         if (_penetrate)
         {
-            CurHealth -= _damage;
+            curHealth -= _damage;
         }
         //비관통형 대미지인경우 쉴드 먼저 까임
         else
@@ -42,18 +42,15 @@ public class Health : MonoBehaviour
         shield = 0;
     }
 
-    void Heal(int _healamount)
+    public void Heal(int _healamount)
     {
-        CurHealth += _healamount;
-        if (CurHealth > maxHealth)
-        {
-            CurHealth = maxHealth;
-        }
+        curHealth += _healamount;
+        curHealth = Mathf.Clamp(curHealth, 0, maxHealth);
     }
 
     public bool CheckHealthZero()
     {
-        if (CurHealth <= 0)
+        if (curHealth <= 0)
         {
             //관통형 대미지로 체력이 0이 될수 있음
             shield = 0;
@@ -66,7 +63,7 @@ public class Health : MonoBehaviour
 
     #region Getter Setter
 
-    public int MaxHealth
+    public float MaxHealth
     {
         get { return maxHealth; }
         set { 
@@ -74,7 +71,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    public int CurHealth
+    public float CurHealth
     {
         get { return curHealth; }
         set { curHealth = value; }

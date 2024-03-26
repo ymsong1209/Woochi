@@ -18,13 +18,13 @@ public class BaseCharacter : MonoBehaviour
     #endregion Header CHARACTER STATS
     #region Character Stats
     [SerializeField]            private Health  health;
-    [SerializeField]            private int     size = 1;
-    [SerializeField,ReadOnly]   private int     speed;
-    [SerializeField,ReadOnly]   private int     defense;
-    [SerializeField,ReadOnly]   private int     crit;
-    [SerializeField,ReadOnly]   private int     accuracy;
-    [SerializeField,ReadOnly]   private int     evasion;
-    [SerializeField,ReadOnly]   private int     resist;
+    [SerializeField]            private float   size = 1;
+    [SerializeField,ReadOnly]   private float   speed;
+    [SerializeField,ReadOnly]   private float   defense;
+    [SerializeField,ReadOnly]   private float   crit;
+    [SerializeField,ReadOnly]   private float   accuracy;
+    [SerializeField,ReadOnly]   private float   evasion;
+    [SerializeField,ReadOnly]   private float   resist;
     #endregion
 
     #region Header SpecializedStats
@@ -142,6 +142,10 @@ public class BaseCharacter : MonoBehaviour
         health = GetComponent<Health>();
         health.MaxHealth = characterStat.BaseHealth;
         health.CurHealth = characterStat.BaseHealth;
+        foreach(BaseSkill skill in skills)
+        {
+            skill.SkillOwner = this;
+        }
     }
     #endregion 기본 스탯 초기화
 
@@ -174,34 +178,34 @@ public class BaseCharacter : MonoBehaviour
     #endregion 죽음 처리
 
     #region Getter Setter
-    public int Size => size;
+    public float Size => size;
 
-    public int Speed
+    public float Speed
     {
         get { return speed; }
         set { speed = value; }
     }
-    public int Defense
+    public float Defense
     {
         get { return defense; }
         set { defense = value; }
     }
-    public int Crit
+    public float Crit
     {
         get { return crit; }
         set { crit = value; }
     }
-    public int Accuracy
+    public float Accuracy
     {
         get { return accuracy; }
         set { accuracy = value; }
     }
-    public int Evasion
+    public float Evasion
     {
         get { return evasion; }
         set { evasion = value; }
     }
-    public int Resist
+    public float Resist
     {
         get { return resist; }
         set { resist = value; }

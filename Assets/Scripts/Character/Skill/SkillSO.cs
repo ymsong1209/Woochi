@@ -27,20 +27,20 @@ public class SkillSO : ScriptableObject
 
     #endregion Header SKILL STATS
 
-    [SerializeField] private int baseMinStat;       // 최소 계수
-    [SerializeField] private int baseMaxStat;       // 최대 계수
-    [SerializeField] private int baseMultiplier;    // 피해량 계수
-    [SerializeField] private int baseSkillAccuracy;     // 스킬 명중 수치
+    [SerializeField] private float baseMinStat;       // 최소 계수
+    [SerializeField] private float baseMaxStat;       // 최대 계수
+    [SerializeField] private float baseMultiplier;    // 피해량 계수
+    [SerializeField] private float baseSkillAccuracy;     // 스킬 명중 수치
 
     #region Getter Setter
     public SkillRadius SkillRadius => skillRadius;
 
     public SkillType SkillType => skillType;
-    public int BaseMinStat => baseMinStat;
-    public int BaseMaxStat => baseMaxStat;
-    public int BaseMultiplier => baseMultiplier;
+    public float BaseMinStat => baseMinStat;
+    public float BaseMaxStat => baseMaxStat;
+    public float BaseMultiplier => baseMultiplier;
 
-    public int BaseSkillAccuracy => baseSkillAccuracy;
+    public float BaseSkillAccuracy => baseSkillAccuracy;
     #endregion
 
 }
