@@ -314,6 +314,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             // 자신의 차례가 됐을 때 버프 적용
             if (currentCharacter.ApplyBuff(BuffTiming.TurnStart))
             {
+                //버프 처리 후 살아있으면 스킬 선택 후 사용
                 yield return StartCoroutine(WaitForSkillSelection(currentCharacter));
             };
 
@@ -389,6 +390,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
             yield return StartCoroutine(ExecuteSkill(selectedSkillIndex, temporaryCaster, temporaryEnemy));
         }
+
+        character.IsTurnUsed = true;
     }
 
     // 스킬 실행 로직 구현

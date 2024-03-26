@@ -28,9 +28,9 @@ public class CharacterStatSO : ScriptableObject
     [SerializeField] private int    baseSpeed;
     [SerializeField] private int    baseDefense;
     [SerializeField] private int    baseCrit;
-    [SerializeField] private int    baseAccuracy;
-    [SerializeField] private int    baseEvasion;
-    [SerializeField] private int    baseResist;
+    [SerializeField] private int    baseAccuracy;   //명중
+    [SerializeField] private int    baseEvasion;    //회피
+    [SerializeField] private int    baseResist;     //저항
    
 
    

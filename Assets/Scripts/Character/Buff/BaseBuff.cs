@@ -8,9 +8,14 @@ public class BaseBuff : MonoBehaviour
 
     [SerializeField] protected BaseCharacter buffOwner;
     /// <summary>
+    /// 버프의 초기 지속시간
+    /// </summary>
+    [SerializeField] protected int baseBuffDurationTurns;
+    /// <summary>
+    /// 현재 버프가 몇턴 남았는지
     /// buffDurationTurns가 -1이면 영구지속 버프
     /// </summary>
-    [SerializeField] protected int buffDurationTurns;
+    [SerializeField] protected int  buffDurationTurns;
     [SerializeField] protected BuffType buffType;
 
     /// <summary>
@@ -84,12 +89,15 @@ public class BaseBuff : MonoBehaviour
     }
 
     /// <summary>
-    /// _bufftype이 나에게 적용될 수 있는지 확인
+    /// 중복해서 버프류를 쌓으려고 하는 경우
     /// </summary>
-    public virtual bool ValidateApplyBuff(BuffType _bufftype)
+    public virtual void StackBuff()
     {
-        return true;
+        buffDurationTurns += baseBuffDurationTurns;
     }
+
+
+
 
     #region Getter Setter
     public int BuffDurationTurns

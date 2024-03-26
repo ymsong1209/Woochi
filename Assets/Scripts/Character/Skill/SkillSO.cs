@@ -30,11 +30,17 @@ public class SkillSO : ScriptableObject
     [SerializeField] private int baseMinStat;       // 최소 계수
     [SerializeField] private int baseMaxStat;       // 최대 계수
     [SerializeField] private int baseMultiplier;    // 피해량 계수
+    [SerializeField] private int baseSkillAccuracy;     // 스킬 명중 수치
 
     #region Getter Setter
+    public SkillRadius SkillRadius => skillRadius;
+
+    public SkillType SkillType => skillType;
     public int BaseMinStat => baseMinStat;
     public int BaseMaxStat => baseMaxStat;
     public int BaseMultiplier => baseMultiplier;
+
+    public int BaseSkillAccuracy => baseSkillAccuracy;
     #endregion
 
 }
