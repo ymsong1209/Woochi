@@ -18,7 +18,7 @@ public class BaseCharacter : MonoBehaviour
     #endregion Header CHARACTER STATS
     #region Character Stats
     [SerializeField]            private Health  health;
-    [SerializeField]            private float   size = 1;
+    [SerializeField]            private int     size = 1;
     [SerializeField,ReadOnly]   private float   speed;
     [SerializeField,ReadOnly]   private float   defense;
     [SerializeField,ReadOnly]   private float   crit;
@@ -45,8 +45,8 @@ public class BaseCharacter : MonoBehaviour
     /// <summary>
     /// 나에게 적용된 버프
     /// </summary>
-    public   List<BaseBuff>   activeBuffs;
-    public   List<BaseSkill>  skills;
+    public   List<BaseBuff>   activeBuffs = new List<BaseBuff>();
+    public   List<BaseSkill>  skills = new List<BaseSkill>();
     protected bool            isAlly;
     private bool isTurnUsed; //한 라운드 내에서 자신의 턴을 사용했을 경우
 
@@ -64,12 +64,16 @@ public class BaseCharacter : MonoBehaviour
     {
         switch (timing)
         {
+            case BuffTiming.BattleStart:
+                return ApplyBuffs(buff => buff.ApplyBattleStartBuff());
             case BuffTiming.RoundStart:
                 return ApplyBuffs(buff => buff.ApplyRoundStartBuff());
             case BuffTiming.RoundEnd:
                 return ApplyBuffs(buff => buff.ApplyRoundEndBuff());
             case BuffTiming.TurnStart:
                 return ApplyBuffs(buff => buff.ApplyTurnStartBuff());
+            case BuffTiming.BattleEnd:
+                return ApplyBuffs(buff => buff.ApplyBattleEndBuff());
             default:
                 throw new ArgumentOutOfRangeException(nameof(timing), $"Unsupported buff timing: {timing}");
         }
@@ -178,7 +182,7 @@ public class BaseCharacter : MonoBehaviour
     #endregion 죽음 처리
 
     #region Getter Setter
-    public float Size => size;
+    public int Size => size;
 
     public float Speed
     {

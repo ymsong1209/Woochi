@@ -20,7 +20,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         {
             BaseCharacter character = go.GetComponent<BaseCharacter>();
             character.Initialize();
-            character.IsAlly = true;
+            character.IsAlly = true;  
         }
     }
 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1189272069352034483}
   - component: {fileID: 2871324252197391783}
   - component: {fileID: 5082884880752242450}
-  - component: {fileID: 9101013253408087079}
+  - component: {fileID: 2302329798568260010}
   m_Layer: 0
   m_Name: Ally0
   m_TagString: Untagged
@@ -101,7 +101,7 @@ MonoBehaviour:
   maxHealth: 0
   curHealth: 0
   shield: 0
---- !u!114 &9101013253408087079
+--- !u!114 &2302329798568260010
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,18 +110,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 6638066927388224697}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 002203f9977d76548b1af29399469e97, type: 3}
+  m_Script: {fileID: 11500000, guid: c669bcbf58fa3e544b8b1e2b9e5cf617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterStat: {fileID: 11400000, guid: 45ac72fcb11d9ee45921a1815790cecc, type: 2}
   health: {fileID: 5082884880752242450}
+  size: 1
   speed: 0
   defense: 0
   crit: 0
   accuracy: 0
   evasion: 0
   resist: 0
+  isSpawnSpecific: 0
+  spawnLocation: {x: 0, y: 0, z: 0}
+  spawnRotation: {x: 0, y: 0, z: 0, w: 0}
   isDead: 0
   activeBuffs: []
-  isBattleActive: 0
-  isSkillSelected: 0
