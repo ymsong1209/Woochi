@@ -114,12 +114,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStat: {fileID: 11400000, guid: 78e80ee1ab739e7438ef84dc8a08281f, type: 2}
-  health: {fileID: 0}
+  health: {fileID: 6060258549805049095}
+  size: 1
   speed: 0
   defense: 0
   crit: 0
   accuracy: 0
   evasion: 0
   resist: 0
+  isSpawnSpecific: 0
+  spawnLocation: {x: 0, y: 0, z: 0}
+  spawnRotation: {x: 0, y: 0, z: 0, w: 0}
   isDead: 0
   activeBuffs: []

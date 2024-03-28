@@ -110,18 +110,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 6638066927388224697}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 002203f9977d76548b1af29399469e97, type: 3}
+  m_Script: {fileID: 11500000, guid: c669bcbf58fa3e544b8b1e2b9e5cf617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterStat: {fileID: 11400000, guid: 45ac72fcb11d9ee45921a1815790cecc, type: 2}
+  characterStat: {fileID: 11400000, guid: 9b75340effa45cc44bfc4a04b9610439, type: 2}
   health: {fileID: 5082884880752242450}
+  size: 1
   speed: 0
   defense: 0
   crit: 0
   accuracy: 0
   evasion: 0
   resist: 0
+  isSpawnSpecific: 0
+  spawnLocation: {x: 0, y: 0, z: 0}
+  spawnRotation: {x: 0, y: 0, z: 0, w: 0}
   isDead: 0
   activeBuffs: []
-  isBattleActive: 0
-  isSkillSelected: 0
