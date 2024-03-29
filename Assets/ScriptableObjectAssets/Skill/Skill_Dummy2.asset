@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f970e1487b951641bb3562062edf1db, type: 3}
+  m_Name: Skill_Dummy2
+  m_EditorClassIdentifier: 
+  skillName: "\uCE58\uC720"
+  skillRadius: 0
+  skillType: 1
+  bufflist:
+  - {fileID: 0}
+  baseMinStat: 7
+  baseMaxStat: 8
+  baseMultiplier: 1.2
+  baseSkillAccuracy: 80
