@@ -4,10 +4,9 @@ using System.ComponentModel;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
-public class BaseSkill
+[DisallowMultipleComponent]
+public class BaseSkill : MonoBehaviour
 {
-
-    [SerializeField] protected  SkillSO skillSO;
     [Tooltip("SkillOwner를 세팅해줘야함")]
     [SerializeField] private    BaseCharacter skillOwner;
 
@@ -31,15 +30,23 @@ public class BaseSkill
     [SerializeField] private float multiplier;    // 피해량 계수
     [SerializeField] private float skillAccuracy; // 스킬 명중 수치
 
-    public void Initialize()
+    /// <summary>
+    /// BaseCharacter에 있는 SkillSO 정보를 이용해 BaseSkill을 초기화
+    /// </summary>
+    /// <param name="_skillSO"></param>
+    /// <param name="_character"></param>
+    public void Initialize(SkillSO _skillSO, BaseCharacter _character)
     {
-        skillName = skillSO.name;
-        skillRadius = skillSO.SkillRadius;
-        skillType = skillSO.SkillType;
-        minStat = skillSO.BaseMinStat;
-        maxStat = skillSO.BaseMaxStat;
-        multiplier = skillSO.BaseMultiplier;
-        skillAccuracy = skillSO.BaseSkillAccuracy;
+        skillOwner = _character;
+        skillName = _skillSO.SkillName;
+        skillRadius = _skillSO.SkillRadius;
+        skillType = _skillSO.SkillType;
+        minStat = _skillSO.BaseMinStat;
+        maxStat = _skillSO.BaseMaxStat;
+        multiplier = _skillSO.BaseMultiplier;
+        skillAccuracy = _skillSO.BaseSkillAccuracy;
+
+        bufflist = new List<GameObject>(_skillSO.bufflist);
     }
 
     public virtual void ApplySkill(BaseCharacter _Opponent)
@@ -66,7 +73,7 @@ public class BaseSkill
             ApplyStat(opponent, minStat, maxStat, multiplier, skillType, true);
 
             //버프 적용
-            foreach (GameObject ApplybuffGameobject in skillSO.bufflist)
+            foreach (GameObject ApplybuffGameobject in bufflist)
             {
                 BaseBuff BufftoApply = ApplybuffGameobject.GetComponent<BaseBuff>();
                 ApplyBuff(opponent, BufftoApply);
@@ -76,7 +83,7 @@ public class BaseSkill
         else if(CheckApplyBuff(opponent))
         {
             //적이 저항 실패하면 버프 적용
-            foreach (GameObject ApplybuffGameobject in skillSO.bufflist)
+            foreach (GameObject ApplybuffGameobject in bufflist)
             {
                 BaseBuff BufftoApply = ApplybuffGameobject.GetComponent<BaseBuff>();
                 ApplyBuff(opponent, BufftoApply);
@@ -188,7 +195,7 @@ public class BaseSkill
 
 
     #region Getter Setter
-    public string Name => skillSO.name;
+    public string Name => skillName;
 
     public float MinStat => minStat;
     public float MaxStat => maxStat;

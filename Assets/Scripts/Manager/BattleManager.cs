@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -11,6 +12,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
    
     private BattleState         CurState;
     private GameObject          currentCharacterGameObject;     //현재 누구 차례인지
+    private BaseSkill           currentSelectedSkill;           //현재 선택된 스킬
     private int                 currentRound;                   //현재 몇 라운드인지
 
     #region 아군과 적군의 위치값
@@ -47,6 +49,19 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     [SerializeField] private Queue<GameObject> combatQueue = new Queue<GameObject>();
     [SerializeField, ReadOnly] private GameObject[] allyFormation = new GameObject[4];
     [SerializeField, ReadOnly] private GameObject[] EnemyFormation = new GameObject[4];
+
+    #region 이벤트
+    /// <summary>
+    /// 캐릭터 턴이 시작될 때 호출되는 이벤트(UI 업데이트 등)
+    /// </summary>
+    public Action<BaseCharacter> OnCharacterTurnStart;
+    #endregion
+
+    #region 부울 변수
+    [Header("Boolean Variables")]
+    [HideInInspector] public bool isSkillSelected = false;
+    [HideInInspector] public bool isSkillExecuted = false;
+    #endregion
 
     private void Start()
     {
@@ -134,7 +149,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
             //전투 순서에 삽입
             combatQueue.Enqueue(allyGameObject);
-            EnemyFormation[i] = allyGameObject;
+            allyFormation[i] = allyGameObject;
 
             //턴 소비 체크
             allyCharacter.IsTurnUsed = false;
@@ -302,6 +317,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         while (combatQueue.Count > 0)
         {
+            #region 이전 턴에 쓰인 변수 초기화
+            isSkillSelected = false;
+            isSkillExecuted = false;
+            currentSelectedSkill = null;
+            #endregion
             currentCharacterGameObject = combatQueue.Dequeue();
             BaseCharacter currentCharacter = currentCharacterGameObject.GetComponent<BaseCharacter>();
 
@@ -314,8 +334,17 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             // 자신의 차례가 됐을 때 버프 적용
             if (currentCharacter.ApplyBuff(BuffTiming.TurnStart))
             {
-                //버프 처리 후 살아있으면 스킬 선택 후 사용
-                yield return StartCoroutine(WaitForSkillSelection(currentCharacter));
+                // 현재 턴의 캐릭터에 맞는 UI 업데이트
+                OnCharacterTurnStart?.Invoke(currentCharacter);
+
+                // 스킬이 선택되고 실행될 때까지 대기
+                while(!isSkillSelected && !isSkillExecuted)
+                {
+                    yield return null;
+                }
+
+                // 스킬 사용 완료 후 턴 사용 처리
+                currentCharacter.IsTurnUsed = true;
             };
 
             // 스킬 사용으로 인한 속도 변경 처리
@@ -335,6 +364,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 PostBattle(false);
                 yield break;
             }
+
+            yield return null;
         }
         //ProcessedCharacter에 있는 캐릭터들 다시 characterQueue에 삽입
         foreach(GameObject characters in processedCharacters)
@@ -347,63 +378,34 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     /// <summary>
-    /// 임시로 만든 함수. 대량 수정 필요
+    /// UI에서 스킬 선택 시 호출되는 메서드
     /// </summary>
-    IEnumerator WaitForSkillSelection(BaseCharacter character)
+    /// <param name="_selectedSkill">선택된 스킬 정보</param>
+    public void SkillSelected(BaseSkill _selectedSkill)
     {
-        bool skillSelected = false;
-       
-        BaseSkill selectedSkill = null;
-        int selectedSkillIndex = -1;
+        Debug.Log("Skill selected: " + _selectedSkill.Name);
+        // 사용할 스킬 저장
+        currentSelectedSkill = _selectedSkill;  
+        isSkillSelected = true;
 
-        // 스킬 선택을 위한 임시 UI 메시지
-        Debug.Log("Press 1 or 2 to select a skill for " + character.name);
+        // TODO : 범위 기반으로 스킬 대상 지정하는 코드 
+        // 스킬의 적용 대상을 결정해서 클릭할 수 있게 하기
 
-        while (!skillSelected)
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                // 여기서는 예시로 첫 번째 스킬을 선택했다고 가정.
-                Debug.Log("Skill 1 selected");
-                selectedSkill = character.skills[0];
-                selectedSkillIndex = 0;
-                skillSelected = true;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                // 두 번째 스킬이 선택되었다고 가정.
-                Debug.Log("Skill 2 selected");
-                selectedSkill = character.skills[1];
-                selectedSkillIndex = 1;
-                skillSelected = true;
-            }
+        // 적군의 0번째 캐릭터에게 스킬을 쓴다고 가정
+        BaseCharacter temporaryCaster = _selectedSkill.SkillOwner;
+        BaseCharacter temporaryEnemy = EnemyFormation[0].GetComponent<BaseCharacter>();
 
-            yield return null; // 다음 프레임까지 대기
-        }
-
-        // 선택된 스킬을 사용하는 로직
-        if (selectedSkill != null && selectedSkillIndex != -1)
-        {
-            // 적군의 0번째 캐릭터에게 스킬을 쓴다고 가정
-            BaseCharacter temporaryEnemy = EnemyFormation[0].GetComponent<BaseCharacter>();
-            BaseCharacter temporaryCaster = allyFormation[0].GetComponent<BaseCharacter>();
-
-            yield return StartCoroutine(ExecuteSkill(selectedSkillIndex, temporaryCaster, temporaryEnemy));
-        }
-
-        character.IsTurnUsed = true;
+        StartCoroutine(ExecuteSkill(temporaryCaster, temporaryEnemy));
     }
 
     // 스킬 실행 로직 구현
-    IEnumerator ExecuteSkill(int _skillindex, BaseCharacter _caster, BaseCharacter _receiver)
+    IEnumerator ExecuteSkill(BaseCharacter _caster, BaseCharacter _receiver)
     {
-        BaseSkill skill = _caster.skills[_skillindex];
+        Debug.Log(currentSelectedSkill.Name + " is executed by " + _caster.name + " on " + _receiver.name);
+        isSkillExecuted = true;
 
         yield return new WaitForSeconds(1f); // 예시로 1초 대기
     }
-
-
-
 
     /// <summary>
     /// 라운드가 끝날때 적용되는 버프 실행 후, 승리 조건 체크

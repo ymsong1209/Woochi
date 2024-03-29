@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Skill_", menuName = "Scriptable Objects/Character/Skill")]
 public class SkillSO : ScriptableObject
 {
 
@@ -33,6 +34,8 @@ public class SkillSO : ScriptableObject
     [SerializeField] private float baseSkillAccuracy;     // 스킬 명중 수치
 
     #region Getter Setter
+    public string SkillName => skillName;
+
     public SkillRadius SkillRadius => skillRadius;
 
     public SkillType SkillType => skillType;
