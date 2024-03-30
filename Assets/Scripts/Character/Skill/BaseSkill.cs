@@ -4,8 +4,7 @@ using System.ComponentModel;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
-[DisallowMultipleComponent]
-public class BaseSkill : MonoBehaviour
+public class BaseSkill
 {
     [Tooltip("SkillOwner를 세팅해줘야함")]
     [SerializeField] private    BaseCharacter skillOwner;
@@ -31,13 +30,10 @@ public class BaseSkill : MonoBehaviour
     [SerializeField] private float skillAccuracy; // 스킬 명중 수치
 
     /// <summary>
-    /// BaseCharacter에 있는 SkillSO 정보를 이용해 BaseSkill을 초기화
+    /// BaseCharacter의 CharacterStatSO에 있는 SkillSO 정보를 이용해 BaseSkill을 초기화
     /// </summary>
-    /// <param name="_skillSO"></param>
-    /// <param name="_character"></param>
-    public void Initialize(SkillSO _skillSO, BaseCharacter _character)
+    public void Initialize(SkillSO _skillSO)
     {
-        skillOwner = _character;
         skillName = _skillSO.SkillName;
         skillRadius = _skillSO.SkillRadius;
         skillType = _skillSO.SkillType;

@@ -335,7 +335,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             if (currentCharacter.ApplyBuff(BuffTiming.TurnStart))
             {
                 // 현재 턴의 캐릭터에 맞는 UI 업데이트
-                OnCharacterTurnStart?.Invoke(currentCharacter);
+                // 닼던처럼 한다면 현재 턴이 적이라면 UI를 업데이트 하지 않는 식으로 하는게 좋을 것 같음
+                if(currentCharacter.IsAlly)
+                    OnCharacterTurnStart?.Invoke(currentCharacter);
+                // TODO : 현재 턴이 적일 시 AI로 행동 결정(임시 코드)
+                else
+                    StartCoroutine(EnemyAction(currentCharacter));
 
                 // 스킬이 선택되고 실행될 때까지 대기
                 while(!isSkillSelected && !isSkillExecuted)
@@ -380,19 +385,17 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// <summary>
     /// UI에서 스킬 선택 시 호출되는 메서드
     /// </summary>
-    /// <param name="_selectedSkill">선택된 스킬 정보</param>
     public void SkillSelected(BaseSkill _selectedSkill)
     {
-        Debug.Log("Skill selected: " + _selectedSkill.Name);
         // 사용할 스킬 저장
-        currentSelectedSkill = _selectedSkill;  
+        currentSelectedSkill = _selectedSkill;
         isSkillSelected = true;
 
         // TODO : 범위 기반으로 스킬 대상 지정하는 코드 
         // 스킬의 적용 대상을 결정해서 클릭할 수 있게 하기
 
         // 적군의 0번째 캐릭터에게 스킬을 쓴다고 가정
-        BaseCharacter temporaryCaster = _selectedSkill.SkillOwner;
+        BaseCharacter temporaryCaster = currentSelectedSkill.SkillOwner;
         BaseCharacter temporaryEnemy = EnemyFormation[0].GetComponent<BaseCharacter>();
 
         StartCoroutine(ExecuteSkill(temporaryCaster, temporaryEnemy));
@@ -405,6 +408,16 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         isSkillExecuted = true;
 
         yield return new WaitForSeconds(1f); // 예시로 1초 대기
+    }
+
+    /// <summary>
+    /// Enemy 임시 행동
+    /// </summary>
+    IEnumerator EnemyAction(BaseCharacter _enemy)
+    {
+        Debug.Log(_enemy.name + "가 행동합니다");
+        yield return new WaitForSeconds(3f); // 예시로 3초 대기 후 스킬 실행 가정
+        isSkillExecuted = true;
     }
 
     /// <summary>

@@ -31,9 +31,14 @@ public class CharacterStatSO : ScriptableObject
     [SerializeField] private float    baseAccuracy;   //명중
     [SerializeField] private float    baseEvasion;    //회피
     [SerializeField] private float    baseResist;     //저항
-   
 
-   
+    #region Header CHARACTER SKILLS
+
+    [Space(10)]
+    [Header("Character Skills")]
+    #endregion Header CHARACTER SKILLS
+    [SerializeField] private List<SkillSO> skills;    // 캐릭터가 가지고 있는 스킬 리스트
+
 
 
     #region Getter Method
@@ -47,6 +52,7 @@ public class CharacterStatSO : ScriptableObject
     public float BaseEvasion => baseEvasion;
     public float BaseResist => baseResist;
    
+    public List<SkillSO> Skills => skills;
     #endregion
 
 
@@ -60,7 +66,7 @@ public class CharacterStatSO : ScriptableObject
         HelperUtilities.ValidateRange0To100(this, nameof(baseAccuracy), baseAccuracy);
         HelperUtilities.ValidateRange0To100(this, nameof(baseEvasion), baseEvasion);
         HelperUtilities.ValidateRange0To100(this, nameof(baseResist), baseResist);
-        
+
     }
     #endregion
 }

@@ -46,7 +46,7 @@ public class BaseCharacter : MonoBehaviour
     /// 나에게 적용된 버프
     /// </summary>
     public   List<BaseBuff>   activeBuffs = new List<BaseBuff>();
-    public   List<SkillSO>  skills = new List<SkillSO>();
+    public   List<BaseSkill>  skills = new List<BaseSkill>();
     protected bool            isAlly;
     private bool isTurnUsed; //한 라운드 내에서 자신의 턴을 사용했을 경우
 
@@ -146,6 +146,16 @@ public class BaseCharacter : MonoBehaviour
         health = GetComponent<Health>();
         health.MaxHealth = characterStat.BaseHealth;
         health.CurHealth = characterStat.BaseHealth;
+
+        #region 스킬 초기화
+        foreach (SkillSO skill in characterStat.Skills)
+        {
+            BaseSkill newSkill = new BaseSkill();
+            newSkill.Initialize(skill);
+            newSkill.SkillOwner = this;
+            skills.Add(newSkill);
+        }
+        #endregion
     }
     #endregion 기본 스탯 초기화
 
