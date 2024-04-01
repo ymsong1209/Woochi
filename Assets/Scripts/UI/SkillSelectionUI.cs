@@ -70,6 +70,10 @@ public class SkillSelectionUI : MonoBehaviour
     private void DisableSkills()
     {
         skillIcons.ForEach(icon => icon.GetComponent<Button>().interactable = false);
+        foreach (SkillIcon icon in skillIcons)
+        {
+            icon.SetSkill(null);
+        }
     }
 
 }

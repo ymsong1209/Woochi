@@ -18,15 +18,22 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void SetSkill(BaseSkill _skill)
     {
-        btn.interactable = true;
-        skill = _skill;
-
+        if (_skill!=null)
+        {
+            btn.interactable = true;
+            skill = _skill;
+        }
+        //_skill이 null일 경우 빈 skill로 초기화
+        else
+        {
+            skill = new BaseSkill();
+        }
         // TODO : 스킬 아이콘 스프라이트 지정
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Skill Name : " + skill.Name);
+        Debug.Log("Skill Name : " + skill.Name + "위에 마우스 올라감");
     }
 
     public void OnPointerExit(PointerEventData eventData)

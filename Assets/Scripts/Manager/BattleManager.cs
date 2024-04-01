@@ -245,7 +245,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     void DetermineOrder()
     {
         CurState = BattleState.DetermineOrder;
-        //캐릭터를 속도순으로 정렬하면서 모두 전투에 참여할 수 있또록 변경
+        //캐릭터를 속도순으로 정렬하면서 모두 전투에 참여할 수 있도록 변경
         ReordercombatQueue(true);
         CharacterTurn();
     }
@@ -347,10 +347,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 {
                     yield return null;
                 }
-
-                // 스킬 사용 완료 후 턴 사용 처리
-                currentCharacter.IsTurnUsed = true;
+                
             };
+
+            // 자신 차례가 지난 후 턴 사용 처리
+            currentCharacter.IsTurnUsed = true;
 
             // 스킬 사용으로 인한 속도 변경 처리
             ReordercombatQueue(processedCharacters);
