@@ -12,6 +12,7 @@ public class SkillSelectionUI : MonoBehaviour
     public SkillEvent onSkillSelected; // SkillEvent 타입의 public 이벤트
 
     [SerializeField] private List<SkillIcon> skillIcons;
+    [SerializeField] private Button turnOverButton;
 
     private void Start()
     {
@@ -31,6 +32,10 @@ public class SkillSelectionUI : MonoBehaviour
     {
         DisableSkills();
 
+        // 턴이 적 캐릭터라면 그냥 넘기기
+        if (!_character.IsAlly)
+            return;
+
         #region 스킬 아이콘 Enable, Disable 설정
         int lastSkillIcon = skillIcons.Count - 1;
         int lastCharacterSkill = _character.skills.Count - 1;
@@ -49,6 +54,8 @@ public class SkillSelectionUI : MonoBehaviour
 
         // 마지막 스킬을 위치 이동이라 가정하면, 마지막에 위치하게 했음
         skillIcons[lastSkillIcon].SetSkill(_character.skills[lastCharacterSkill]);
+
+        turnOverButton.interactable = true;
         #endregion
 
         // TODO : 스킬의 사용 가능 여부, 범위 등을 고려해 버튼 interaction 여부 결정해야 함
@@ -65,6 +72,11 @@ public class SkillSelectionUI : MonoBehaviour
     }
 
     /// <summary>
+    /// 턴 넘기기 버튼 클릭 시 호출될 메서드, BattleManager의 TurnOver 메서드 호출
+    /// </summary>
+    public void TurnOverClicked() => BattleManager.GetInstance.TurnOver();
+
+    /// <summary>
     /// 모든 스킬 아이콘 interaction을 false로 초기화
     /// </summary>
     private void DisableSkills()
@@ -74,6 +86,8 @@ public class SkillSelectionUI : MonoBehaviour
         {
             icon.SetSkill(null);
         }
+
+        turnOverButton.interactable = false;
     }
 
 }

@@ -335,11 +335,10 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             if (currentCharacter.ApplyBuff(BuffTiming.TurnStart))
             {
                 // 현재 턴의 캐릭터에 맞는 UI 업데이트
-                // 닼던처럼 한다면 현재 턴이 적이라면 UI를 업데이트 하지 않는 식으로 하는게 좋을 것 같음
-                if(currentCharacter.IsAlly)
-                    OnCharacterTurnStart?.Invoke(currentCharacter);
+                OnCharacterTurnStart?.Invoke(currentCharacter);
+
                 // TODO : 현재 턴이 적일 시 AI로 행동 결정(임시 코드)
-                else
+                if(!currentCharacter.IsAlly)
                     StartCoroutine(EnemyAction(currentCharacter));
 
                 // 스킬이 선택되고 실행될 때까지 대기
@@ -418,6 +417,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         Debug.Log(_enemy.name + "가 행동합니다");
         yield return new WaitForSeconds(3f); // 예시로 3초 대기 후 스킬 실행 가정
+        isSkillExecuted = true;
+    }
+    
+    public void TurnOver()
+    {
+        isSkillSelected = true;
         isSkillExecuted = true;
     }
 
