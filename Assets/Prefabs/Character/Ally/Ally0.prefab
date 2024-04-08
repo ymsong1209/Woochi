@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e41df813da39c4c844c3efbb4b594c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  curHealth: 0
+  maxHealth: 100
+  curHealth: 100
   shield: 0
 --- !u!114 &2302329798568260010
 MonoBehaviour:
