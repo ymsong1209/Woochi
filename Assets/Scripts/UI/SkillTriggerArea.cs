@@ -7,7 +7,7 @@ public class SkillTriggerArea : MonoBehaviour
 
     void Start()
     {
-        gameObject.SetActive(false);
+        
     }
 
     void Update()
@@ -39,8 +39,9 @@ public class SkillTriggerArea : MonoBehaviour
             {
                 if (isClick)
                 {
-                    Debug.Log("GameObject clicked.");
-                    // 여기에 클릭 시의 로직을 추가
+                    BaseSkill BindedSkill = BattleManager.GetInstance.CurrentSelectedSkill;
+                    BattleManager.GetInstance.ExecuteSelectedSkill();
+                  
                 }
                 else
                 {

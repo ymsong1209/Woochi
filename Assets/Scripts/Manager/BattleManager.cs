@@ -50,7 +50,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// </summary>
     [SerializeField] private Queue<GameObject> combatQueue = new Queue<GameObject>();
     [SerializeField, ReadOnly] private GameObject[] allyFormation = new GameObject[4];
-    [SerializeField, ReadOnly] private GameObject[] EnemyFormation = new GameObject[4];
+    [SerializeField, ReadOnly] private GameObject[] enemyFormation = new GameObject[4];
 
     #region 이벤트
     /// <summary>
@@ -88,9 +88,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         {
             allyFormation[i] = null;
         }
-        for(int i = 0;i<EnemyFormation.Length; ++i)
+        for(int i = 0;i<enemyFormation.Length; ++i)
         {
-            EnemyFormation[i] = null;
+            enemyFormation[i] = null;
         }
 
         #region 아군과 적군 배치
@@ -109,7 +109,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
             //전투 순서에 삽입
             combatQueue.Enqueue(enemyGameObject);
-            EnemyFormation[EnemyTotalSize] = enemyGameObject;
+            enemyFormation[EnemyTotalSize] = enemyGameObject;
 
             //위치값을 정해야하는 특수한 객체가 아니면 enemyPosition대로 정상 소환
             int enemySize = enemyCharacter.Size;
@@ -312,6 +312,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     void CharacterTurn()
     {
         CurState = BattleState.CharacterTurn;
+        Debug.Log("CurState : CharacterTurn");
         //캐릭터별로 행동
         StartCoroutine(HandleCharacterTurns());
        
@@ -354,7 +355,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                     StartCoroutine(EnemyAction(currentCharacter));
 
                 // 스킬이 선택되고 실행될 때까지 대기
-                while(!isSkillSelected && !isSkillExecuted)
+                while(!isSkillSelected || !isSkillExecuted)
                 {
                     yield return null;
                 }
@@ -402,15 +403,13 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         // 사용할 스킬 저장
         currentSelectedSkill = _selectedSkill;
         isSkillSelected = true;
+    }
 
-        // TODO : 범위 기반으로 스킬 대상 지정하는 코드 
-        // 스킬의 적용 대상을 결정해서 클릭할 수 있게 하기
-        //SkillTriggerSelector SelectorScript = skillTriggerSelector.GetComponent<SkillTriggerSelector>();
-        //SelectorScript.Activate(_selectedSkill);
-
+    public void ExecuteSelectedSkill(int _index = -1)
+    {
         // 적군의 0번째 캐릭터에게 스킬을 쓴다고 가정
         BaseCharacter temporaryCaster = currentSelectedSkill.SkillOwner;
-        BaseCharacter temporaryEnemy = EnemyFormation[0].GetComponent<BaseCharacter>();
+        BaseCharacter temporaryEnemy = enemyFormation[0].GetComponent<BaseCharacter>();
 
         StartCoroutine(ExecuteSkill(temporaryCaster, temporaryEnemy));
     }
@@ -431,6 +430,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         Debug.Log(_enemy.name + "가 행동합니다");
         yield return new WaitForSeconds(3f); // 예시로 3초 대기 후 스킬 실행 가정
+        isSkillSelected = true;
         isSkillExecuted = true;
     }
     
@@ -536,4 +536,20 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         combatQueue.Clear();
         GameManager.GetInstance.SelectRoom();
     }
+
+    #region Getter Setter
+
+    public GameObject[] AllyFormation
+    {
+        get { return allyFormation; }
+        private set { allyFormation = value; } 
+    }
+
+    public GameObject[] EnemyFormation
+    {
+        get { return enemyFormation; }
+        private set { enemyFormation = value; }
+    }
+    public BaseSkill CurrentSelectedSkill => currentSelectedSkill;
+    #endregion
 }

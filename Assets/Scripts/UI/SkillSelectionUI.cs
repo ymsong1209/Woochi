@@ -67,6 +67,7 @@ public class SkillSelectionUI : MonoBehaviour
         if (_skill == null || BattleManager.GetInstance.isSkillExecuted)
             return;
 
+        // BattleManager의 SkillSelected 호출
         // SkillTriggerSelector의 Activate 메서드 호출
         onSkillSelected.Invoke(_skill);
     }
