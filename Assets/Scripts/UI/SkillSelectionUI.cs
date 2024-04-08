@@ -33,7 +33,7 @@ public class SkillSelectionUI : MonoBehaviour
 
         #region 스킬 아이콘 Enable, Disable 설정
         int lastSkillIcon = skillIcons.Count - 1;
-        int lastCharacterSkill = _character.skills.Count - 1;
+        int lastCharacterSkill = _character.activeSkills.Count - 1;
 
         // 각 캐릭터의 스킬 개수만큼 버튼 오브젝트 활성화
         for (int i = 0; i < lastSkillIcon; i++)
@@ -43,12 +43,12 @@ public class SkillSelectionUI : MonoBehaviour
                 skillIcons[i].gameObject.SetActive(true);
 
                 // 스킬 아이콘에 스킬 정보 할당
-                skillIcons[i].SetSkill(_character.skills[i]); 
+                skillIcons[i].SetSkill(_character.activeSkills[i]); 
             }
         }
 
         // 마지막 스킬을 위치 이동이라 가정하면, 마지막에 위치하게 했음
-        skillIcons[lastSkillIcon].SetSkill(_character.skills[lastCharacterSkill]);
+        skillIcons[lastSkillIcon].SetSkill(_character.activeSkills[lastCharacterSkill]);
         #endregion
 
         // TODO : 스킬의 사용 가능 여부, 범위 등을 고려해 버튼 interaction 여부 결정해야 함
