@@ -10,7 +10,12 @@ public class BaseSkill
     [SerializeField] private    BaseCharacter skillOwner;
 
     [SerializeField] private string skillName;
-    [SerializeField] private SkillRadius skillRadius;
+    /// <summary>
+    /// 0~4 : 아군 1~4열
+    /// 5~8 : 적군 5~8열
+    /// </summary>
+    [SerializeField] private bool[] skillRadius = new bool[8];
+    [SerializeField] private SkillTargetType skillTargetType;
     [SerializeField] private SkillType skillType;
 
     /// <summary>
@@ -162,7 +167,7 @@ public class BaseSkill
         _Opponent.activeBuffs.Add(_buff);
     }
 
-    public virtual void ApplyStat(BaseCharacter _Opponent, float _minStat, float _maxStat, float _multiplier, SkillType _type, bool _isCrit)
+    private void ApplyStat(BaseCharacter _Opponent, float _minStat, float _maxStat, float _multiplier, SkillType _type, bool _isCrit)
     {
         Health opponentHealth = _Opponent.gameObject.GetComponent<Health>();
         //최소, 최대 대미지 사이의 수치를 고름
@@ -196,6 +201,8 @@ public class BaseSkill
     public float MinStat => minStat;
     public float MaxStat => maxStat;
     public float Multiplier => multiplier;
+
+    public bool[] SkillRadius => skillRadius;
 
     public BaseCharacter SkillOwner
     {

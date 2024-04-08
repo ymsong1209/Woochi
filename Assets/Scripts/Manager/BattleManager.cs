@@ -11,9 +11,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 {
    
     private BattleState         CurState;
-    private GameObject          currentCharacterGameObject;     //현재 누구 차례인지
+    public GameObject           currentCharacterGameObject;     //현재 누구 차례인지
     private BaseSkill           currentSelectedSkill;           //현재 선택된 스킬
     private int                 currentRound;                   //현재 몇 라운드인지
+
+    [SerializeField] private GameObject skillApplySelector;
 
     #region 아군과 적군의 위치값
     /// <summary>
@@ -66,6 +68,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     private void Start()
     {
         CurState = BattleState.IDLE;
+        skillApplySelector = GetComponentInChildren<SkillTriggerSelector>()?.gameObject;
     }
 
     /// <summary>
@@ -103,7 +106,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
             //전투 순서에 삽입
             combatQueue.Enqueue(enemyGameObject);
-            EnemyFormation[i] = enemyGameObject;
+            EnemyFormation[EnemyTotalSize] = enemyGameObject;
 
             //위치값을 정해야하는 특수한 객체가 아니면 enemyPosition대로 정상 소환
             int enemySize = enemyCharacter.Size;
@@ -394,6 +397,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         // TODO : 범위 기반으로 스킬 대상 지정하는 코드 
         // 스킬의 적용 대상을 결정해서 클릭할 수 있게 하기
+        //SkillTriggerSelector SelectorScript = skillApplySelector.GetComponent<SkillTriggerSelector>();
+        //SelectorScript.Activate(_selectedSkill);
 
         // 적군의 0번째 캐릭터에게 스킬을 쓴다고 가정
         BaseCharacter temporaryCaster = currentSelectedSkill.SkillOwner;

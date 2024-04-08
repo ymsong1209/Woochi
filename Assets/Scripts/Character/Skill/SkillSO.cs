@@ -14,7 +14,11 @@ public class SkillSO : ScriptableObject
     #endregion Header SKILL BASICS
 
     [SerializeField] private string             skillName;
-    [SerializeField] private SkillRadius        skillRadius;    
+    /// <summary>
+    /// 0~4 : 아군 1~4열
+    /// 5~8 : 적군 5~8열
+    /// </summary>
+    [SerializeField] private bool[]             skillRadius = new bool[8];    
     [SerializeField] private SkillType          skillType;
 
     /// <summary>
@@ -36,7 +40,7 @@ public class SkillSO : ScriptableObject
     #region Getter Setter
     public string SkillName => skillName;
 
-    public SkillRadius SkillRadius => skillRadius;
+    public bool[] SkillRadius => skillRadius;
 
     public SkillType SkillType => skillType;
     public float BaseMinStat => baseMinStat;
