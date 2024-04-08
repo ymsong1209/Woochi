@@ -62,6 +62,13 @@ public class BaseCharacter : MonoBehaviour
     #endregion BATTLE STATS
 
 
+    public void CheckSkillsOnTurnStart()
+    { 
+        foreach(BaseSkill activeskill in activeSkills)
+        {
+            activeskill.CheckTurnStart();
+        }
+    }
 
     #region 버프 처리
     /// <summary>

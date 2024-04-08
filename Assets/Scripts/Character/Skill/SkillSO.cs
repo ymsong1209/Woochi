@@ -16,7 +16,7 @@ public class SkillSO : ScriptableObject
     [SerializeField] private string             skillName;
     /// <summary>
     /// 0~4 : 아군 1~4열
-    /// 5~8 : 적군 5~8열
+    /// 5~8 : 적군 1~4열
     /// </summary>
     [SerializeField] private bool[]             skillRadius = new bool[8];    
     [SerializeField] private SkillType          skillType;

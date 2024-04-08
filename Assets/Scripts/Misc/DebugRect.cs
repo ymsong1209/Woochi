@@ -6,7 +6,7 @@ public class DebugRect : MonoBehaviour
     public Vector2 Center = Vector2.zero;
     public Vector2 Size = new Vector2(1, 1);
     public Color Color = Color.green;
-    public float Duration = 0; // Debug.DrawLine의 지속 시간
+    public float Duration = 0.1f; // Debug.DrawLine의 지속 시간
 
     // 게임 실행 중 사각형 그리기
     void Update()
@@ -55,10 +55,12 @@ public class DebugRect : MonoBehaviour
     Vector3[] GetRectPoints(Vector2 center, Vector2 size)
     {
         Vector3[] points = new Vector3[4];
-        points[0] = transform.position + new Vector3(center.x - size.x / 2, center.y + size.y / 2, 0);
-        points[1] = transform.position + new Vector3(center.x + size.x / 2, center.y + size.y / 2, 0);
-        points[2] = transform.position + new Vector3(center.x + size.x / 2, center.y - size.y / 2, 0);
-        points[3] = transform.position + new Vector3(center.x - size.x / 2, center.y - size.y / 2, 0);
+        // 2D에서는 Z축을 고려하지 않으므로, Z값을 현재 GameObject의 Z값으로 설정합니다.
+        float z = transform.position.z;
+        points[0] = new Vector3(center.x - size.x / 2, center.y + size.y / 2, z);
+        points[1] = new Vector3(center.x + size.x / 2, center.y + size.y / 2, z);
+        points[2] = new Vector3(center.x + size.x / 2, center.y - size.y / 2, z);
+        points[3] = new Vector3(center.x - size.x / 2, center.y - size.y / 2, z);
         return points;
     }
 

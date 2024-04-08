@@ -9,7 +9,9 @@ public class SkillTriggerSelector : MonoBehaviour
     private void Start()
     {
         DeactivateSkillTriggerAreas();
+       
     }
+
 
     public void Activate(BaseSkill _skill)
     {

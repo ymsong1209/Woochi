@@ -50,6 +50,14 @@ public class BaseSkill
         bufflist = new List<GameObject>(_skillSO.bufflist);
     }
 
+    /// <summary>
+    /// 자신의 차례가 시작될때 변경점이 있는지 확인
+    /// </summary>
+    public virtual void CheckTurnStart()
+    {
+
+    }
+
     public virtual void ApplySkill(BaseCharacter _Opponent)
     {
         //아군 보호 스킬등으로 보호 할 수 있음
