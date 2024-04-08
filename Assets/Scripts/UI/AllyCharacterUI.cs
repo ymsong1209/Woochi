@@ -5,13 +5,23 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// 캐릭터 정보와 관련된 UI들을 관리하는 클래스
+/// 아군 캐릭터 정보와 관련된 UI들을 관리하는 클래스
 /// 캐릭터 초상화, 이름, 스탯 등을 표시
 /// </summary>
-public class CharacterInfoUI : MonoBehaviour
+public class AllyCharacterUI : MonoBehaviour
 {
+    [Header("Info")]
     [SerializeField] private Image characterPortrait;
     [SerializeField] private TextMeshProUGUI characterName;
+
+    [Header("Stat")]
+    [SerializeField] private TextMeshProUGUI hpText;
+    [SerializeField] private AllyStat accuracy;
+    [SerializeField] private AllyStat evasion;
+    [SerializeField] private AllyStat critical;
+    [SerializeField] private AllyStat speed;
+    [SerializeField] private AllyStat depense;
+    [SerializeField] private AllyStat resist;
 
     void Start()
     {
@@ -23,6 +33,9 @@ public class CharacterInfoUI : MonoBehaviour
 
     public void ShowCharacterUI(BaseCharacter _character)
     {
+        if(!_character.IsAlly)
+            return;
+
         ShowCharacterInfo(_character);
         ShowCharacterStat(_character);
     }
@@ -42,8 +55,18 @@ public class CharacterInfoUI : MonoBehaviour
         characterName.text = _character.name;
     }
 
+    /// <summary>
+    /// 캐릭터 스탯을 UI에 표시
+    /// </summary>
+    /// <param name="_character"></param>
     private void ShowCharacterStat(BaseCharacter _character)
     {
-        // TODO : 캐릭터의 스탯을 표시하는 UI를 구현
+        hpText.text = _character.Health.CurHealth.ToString() + " / " + _character.Health.MaxHealth.ToString();
+        accuracy.SetText(_character.Accuracy);
+        critical.SetText(_character.Crit, true);
+        depense.SetText(_character.Defense, true);
+        evasion.SetText(_character.Evasion);
+        resist.SetText(_character.Resist);
+        speed.SetText(_character.Speed);
     }
 }

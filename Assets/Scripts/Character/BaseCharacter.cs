@@ -190,6 +190,8 @@ public class BaseCharacter : MonoBehaviour
     #region Getter Setter
     public int Size => size;
 
+    public Health Health => health;
+
     public float Speed
     {
         get { return speed; }
