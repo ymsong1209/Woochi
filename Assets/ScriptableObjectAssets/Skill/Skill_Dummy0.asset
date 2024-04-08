@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Skill_Dummy0
   m_EditorClassIdentifier: 
   skillName: "\uCC0C\uB974\uAE30"
-  skillRadius: 0
+  skillRadius: 0000000000010100
   skillType: 0
   bufflist:
   - {fileID: 0}

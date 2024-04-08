@@ -127,5 +127,4 @@ MonoBehaviour:
   spawnRotation: {x: 0, y: 0, z: 0, w: 0}
   isDead: 0
   activeBuffs: []
-  skills:
-  - {fileID: 11400000, guid: 5b6e53c7d25a62347b076a7e34b64c3b, type: 2}
+  activeSkillCheckBox: 0101

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.CompilerServices;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 [RequireComponent(typeof(Health))]
@@ -46,13 +47,28 @@ public class BaseCharacter : MonoBehaviour
     /// 나에게 적용된 버프
     /// </summary>
     public   List<BaseBuff>   activeBuffs = new List<BaseBuff>();
-    public   List<BaseSkill>  skills = new List<BaseSkill>();
+    public   List<BaseSkill>  activeSkills = new List<BaseSkill>();
+   
+    /// <summary>
+    /// chatacterStat에 있는 skillSO중 어떤걸 BaseSkill로 넣을 건지 정하는 bool
+    /// 크기는 characterStat 내부의 skills의 길이랑 동일해야함.
+    /// </summary>
+    [SerializeField] private  List<bool> activeSkillCheckBox = new List<bool>();
+    private List<BaseSkill>   totalSkills = new List<BaseSkill>();
+
     protected bool            isAlly;
     private bool isTurnUsed; //한 라운드 내에서 자신의 턴을 사용했을 경우
 
     #endregion BATTLE STATS
 
 
+    public void CheckSkillsOnTurnStart()
+    { 
+        foreach(BaseSkill activeskill in activeSkills)
+        {
+            activeskill.CheckTurnStart();
+        }
+    }
 
     #region 버프 처리
     /// <summary>
@@ -148,12 +164,19 @@ public class BaseCharacter : MonoBehaviour
         health.CurHealth = characterStat.BaseHealth;
 
         #region 스킬 초기화
-        foreach (SkillSO skill in characterStat.Skills)
+        for(int i = 0; i < characterStat.Skills.Count; ++i)
         {
-            BaseSkill newSkill = new BaseSkill();
-            newSkill.Initialize(skill);
-            newSkill.SkillOwner = this;
-            skills.Add(newSkill);
+            if (characterStat.Skills[i])
+            {
+                BaseSkill newSkill = new BaseSkill();
+                newSkill.Initialize(characterStat.Skills[i]);
+                newSkill.SkillOwner = this;
+                if (activeSkillCheckBox[i])
+                {
+                    activeSkills.Add(newSkill);
+                }
+                totalSkills.Add(newSkill);
+            }
         }
         #endregion
     }
@@ -240,4 +263,35 @@ public class BaseCharacter : MonoBehaviour
     }
     #endregion
 
+    #region Validation
+    private void OnValidate()
+    {
+        #region activeSkillCheckBox Size Check
+        //activeSkillCheckBox 크기랑 CharacterStat의 Skill개수랑 동일해야함
+        if (activeSkillCheckBox.Count != characterStat.Skills.Count)
+        {
+            Debug.Log(nameof(activeSkillCheckBox) +"랑" + nameof(characterStat.Skills) +"의 사이즈가 " 
+                            +this.name.ToString() +"에서 동일하지 않습니다." );
+        }
+        #endregion activeSkillCheckBox Size Check
+
+        #region activeSkillCheckBox Count Check
+        //activeSkillCheckBox true로 된게 4개가 넘어가면 안됨
+        int activeSkills = 0;
+        for(int i = 0; i < activeSkillCheckBox.Count; i++)
+        {
+            if (activeSkillCheckBox[i])
+            {
+                ++activeSkills;
+            }
+        }
+        if (activeSkills > 4)
+        {
+            Debug.Log(this.name.ToString() + "에서의 " + nameof(activeSkillCheckBox) +
+                    "에서 활성화된 스킬 개수가 4개가 넘습니다.");
+        }
+        # endregion activeSkillCheckBox Count Check
+    }
+
+    #endregion
 }

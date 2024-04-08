@@ -11,9 +11,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 {
    
     private BattleState         CurState;
-    private GameObject          currentCharacterGameObject;     //현재 누구 차례인지
+    public GameObject           currentCharacterGameObject;     //현재 누구 차례인지
     private BaseSkill           currentSelectedSkill;           //현재 선택된 스킬
     private int                 currentRound;                   //현재 몇 라운드인지
+
+    [SerializeField] private GameObject skillTriggerSelector;
 
     #region 아군과 적군의 위치값
     /// <summary>
@@ -66,6 +68,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     private void Start()
     {
         CurState = BattleState.IDLE;
+        skillTriggerSelector = GetComponentInChildren<SkillTriggerSelector>()?.gameObject;
+        skillTriggerSelector.SetActive(false);
     }
 
     /// <summary>
@@ -75,6 +79,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         CurState = BattleState.Initialization;
         if (dungeon == null) { Debug.LogError("Null Dungeon"); return; }
+
+        skillTriggerSelector.SetActive(true);
 
         currentRound = 0;
         combatQueue.Clear();
@@ -103,7 +109,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
             //전투 순서에 삽입
             combatQueue.Enqueue(enemyGameObject);
-            EnemyFormation[i] = enemyGameObject;
+            EnemyFormation[EnemyTotalSize] = enemyGameObject;
 
             //위치값을 정해야하는 특수한 객체가 아니면 enemyPosition대로 정상 소환
             int enemySize = enemyCharacter.Size;
@@ -337,6 +343,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 // 현재 턴의 캐릭터에 맞는 UI 업데이트
                 OnCharacterTurnStart?.Invoke(currentCharacter);
 
+                // 닼던처럼 한다면 현재 턴이 적이라면 UI를 업데이트 하지 않는 식으로 하는게 좋을 것 같음
+                if (currentCharacter.IsAlly)
+                {
+                    //캐릭터의 스킬에 변경점이 있는지 확인
+                    currentCharacter.CheckSkillsOnTurnStart();
+                }
                 // TODO : 현재 턴이 적일 시 AI로 행동 결정(임시 코드)
                 if(!currentCharacter.IsAlly)
                     StartCoroutine(EnemyAction(currentCharacter));
@@ -393,6 +405,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         // TODO : 범위 기반으로 스킬 대상 지정하는 코드 
         // 스킬의 적용 대상을 결정해서 클릭할 수 있게 하기
+        //SkillTriggerSelector SelectorScript = skillTriggerSelector.GetComponent<SkillTriggerSelector>();
+        //SelectorScript.Activate(_selectedSkill);
 
         // 적군의 0번째 캐릭터에게 스킬을 쓴다고 가정
         BaseCharacter temporaryCaster = currentSelectedSkill.SkillOwner;

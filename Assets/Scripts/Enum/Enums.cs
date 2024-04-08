@@ -24,12 +24,10 @@ public enum BattleState
 /// <summary>
 /// 스킬의 사용 범위
 /// </summary>
-public enum SkillRadius
+public enum SkillTargetType
 {
-    SingularEnemy,      // 적 단일 지정
-    SingularAlly,       // 아군 단일 지정
-    MulipleEnemy,       // 적 다수 지정
-    MultipleAlly,       // 아군 다수 지정
+    Singular,   //Singular일 경우 skillRadius에 체크된 범위중 하나만 선택 가능
+    Multiple,   //Multiple일 경우 skillRadius에 체크된 범위만큼 전체 스킬 적용
     END
 }
 
