@@ -5,10 +5,12 @@ using System.Drawing;
 using System.Runtime.CompilerServices;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
+[RequireComponent(typeof(BoxCollider))]
 [RequireComponent(typeof(Health))]
 [DisallowMultipleComponent]
-public class BaseCharacter : MonoBehaviour
+public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private CharacterStatSO characterStat;
     #region Header CHARACTER STATS
@@ -56,7 +58,7 @@ public class BaseCharacter : MonoBehaviour
     [SerializeField] private  List<bool> activeSkillCheckBox = new List<bool>();
     private List<BaseSkill>   totalSkills = new List<BaseSkill>();
 
-    protected bool            isAlly;
+    [SerializeField] private bool isAlly;
     private bool isTurnUsed; //한 라운드 내에서 자신의 턴을 사용했을 경우
 
     #endregion BATTLE STATS
@@ -210,6 +212,20 @@ public class BaseCharacter : MonoBehaviour
     }
     #endregion 죽음 처리
 
+    #region 마우스 이벤트
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (isAlly)
+            return;
+
+        UIManager.GetInstance.SetEnemyToolTip(this);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        UIManager.GetInstance.enemyTooltip.SetActive(false);
+    }
+    #endregion
     #region Getter Setter
     public int Size => size;
 

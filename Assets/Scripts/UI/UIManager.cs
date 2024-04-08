@@ -5,8 +5,15 @@ using TMPro;
 
 public class UIManager : SingletonMonobehaviour<UIManager>
 {
+    // 스킬 툴팁
     public GameObject skillTooltip;
-    [SerializeField] private TextMeshProUGUI skillTooltipTxt;
+    [SerializeField] private TextMeshProUGUI skillNameTxt;
+
+    // 적 캐릭터 정보 툴팁
+    public GameObject enemyTooltip;
+    [SerializeField] private TextMeshProUGUI enemyNameTxt;
+    [SerializeField] private TextMeshProUGUI enemyEvasionTxt;
+    [SerializeField] private TextMeshProUGUI enemySpeedTxt;
 
     void Start()
     {
@@ -17,6 +24,14 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     {
         skillTooltip.SetActive(true);
         skillTooltip.transform.position = position;
-        skillTooltipTxt.text = _skill.Name;
+        skillNameTxt.text = _skill.Name;
+    }
+
+    public void SetEnemyToolTip(BaseCharacter _character)
+    {
+        enemyTooltip.SetActive(true);
+        enemyNameTxt.text = _character.name;
+        enemyEvasionTxt.text = $"회피 : {_character.Evasion}";
+        enemySpeedTxt.text = $"속도 : {_character.Speed}";
     }
 }
