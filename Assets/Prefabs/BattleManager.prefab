@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f113ef534ce6134ebc070b0fa4c3abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillApplySelector: {fileID: 8096727894509934402}
+  currentCharacterGameObject: {fileID: 0}
+  skillTriggerSelector: {fileID: 0}
   allySinglePosition:
   - {x: -2.5, y: 0, z: 0}
   - {x: -5, y: 0, z: 0}
@@ -87,6 +88,7 @@ GameObject:
   - component: {fileID: 8323787291246274932}
   - component: {fileID: 1082472520355687904}
   - component: {fileID: 8464646090071150487}
+  - component: {fileID: 1382642105230996137}
   m_Layer: 0
   m_Name: Ally4
   m_TagString: Untagged
@@ -138,7 +140,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -170,6 +172,18 @@ MonoBehaviour:
   Size: {x: 2, y: 3}
   Color: {r: 0, g: 1, b: 0, a: 1}
   Duration: 0
+--- !u!114 &1382642105230996137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406525088294910798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd8ebb567dd203489f8f7e4939e93a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2147435662913040775
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,6 +195,7 @@ GameObject:
   - component: {fileID: 8552983731894346462}
   - component: {fileID: 122172012913733812}
   - component: {fileID: 255069536995735001}
+  - component: {fileID: 8929034319812228937}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Untagged
@@ -232,7 +247,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -264,6 +279,18 @@ MonoBehaviour:
   Size: {x: 2, y: 3}
   Color: {r: 0, g: 1, b: 0, a: 1}
   Duration: 0
+--- !u!114 &8929034319812228937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147435662913040775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd8ebb567dd203489f8f7e4939e93a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2631522261687464190
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,6 +302,7 @@ GameObject:
   - component: {fileID: 499684761734717767}
   - component: {fileID: 4506429712516637917}
   - component: {fileID: 8369063730847064389}
+  - component: {fileID: 1607320319487028673}
   m_Layer: 0
   m_Name: Ally2
   m_TagString: Untagged
@@ -326,7 +354,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -358,6 +386,18 @@ MonoBehaviour:
   Size: {x: 2, y: 3}
   Color: {r: 0, g: 1, b: 0, a: 1}
   Duration: 0
+--- !u!114 &1607320319487028673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2631522261687464190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd8ebb567dd203489f8f7e4939e93a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4030677129148502486
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,6 +409,7 @@ GameObject:
   - component: {fileID: 2144576076619807716}
   - component: {fileID: 118221323478310633}
   - component: {fileID: 6021298495391716570}
+  - component: {fileID: 4810501896962859736}
   m_Layer: 0
   m_Name: Ally3
   m_TagString: Untagged
@@ -420,7 +461,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -452,6 +493,18 @@ MonoBehaviour:
   Size: {x: 2, y: 3}
   Color: {r: 0, g: 1, b: 0, a: 1}
   Duration: 0
+--- !u!114 &4810501896962859736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4030677129148502486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd8ebb567dd203489f8f7e4939e93a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4899881938243499041
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,6 +516,7 @@ GameObject:
   - component: {fileID: 3834631533165266381}
   - component: {fileID: 3897186625388828233}
   - component: {fileID: 7080922189145121054}
+  - component: {fileID: 6882283615752071284}
   m_Layer: 0
   m_Name: Ally1
   m_TagString: Untagged
@@ -514,7 +568,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -546,6 +600,18 @@ MonoBehaviour:
   Size: {x: 2, y: 3}
   Color: {r: 0, g: 1, b: 0, a: 1}
   Duration: 0
+--- !u!114 &6882283615752071284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4899881938243499041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd8ebb567dd203489f8f7e4939e93a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6711968853051582766
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,6 +623,7 @@ GameObject:
   - component: {fileID: 6308713668804072683}
   - component: {fileID: 5927302213207047114}
   - component: {fileID: 5892990887151312291}
+  - component: {fileID: 5036763596118698115}
   m_Layer: 0
   m_Name: Enemy3
   m_TagString: Untagged
@@ -608,7 +675,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -640,6 +707,18 @@ MonoBehaviour:
   Size: {x: 2, y: 3}
   Color: {r: 0, g: 1, b: 0, a: 1}
   Duration: 0
+--- !u!114 &5036763596118698115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6711968853051582766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd8ebb567dd203489f8f7e4939e93a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8073279069431882815
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,6 +730,7 @@ GameObject:
   - component: {fileID: 6257227225025860462}
   - component: {fileID: 7701129983361699090}
   - component: {fileID: 345559252800443675}
+  - component: {fileID: 3273795979646951746}
   m_Layer: 0
   m_Name: Enemy4
   m_TagString: Untagged
@@ -702,7 +782,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -734,6 +814,18 @@ MonoBehaviour:
   Size: {x: 2, y: 3}
   Color: {r: 0, g: 1, b: 0, a: 1}
   Duration: 0
+--- !u!114 &3273795979646951746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8073279069431882815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd8ebb567dd203489f8f7e4939e93a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8096727894509934402
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,6 +836,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8214759016580640692}
   - component: {fileID: 5775515088247322078}
+  - component: {fileID: 2095132564814616375}
   m_Layer: 0
   m_Name: SkillApplySelector
   m_TagString: Untagged
@@ -790,6 +883,19 @@ MonoBehaviour:
   Size: {x: 24, y: 6}
   Color: {r: 0, g: 1, b: 0, a: 1}
   Duration: 0
+--- !u!114 &2095132564814616375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8096727894509934402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f3f272fe97b5b46918172792347b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillTriggerAreas: []
 --- !u!1 &8975831635556958159
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,6 +907,7 @@ GameObject:
   - component: {fileID: 1013290477061334674}
   - component: {fileID: 257853844776122510}
   - component: {fileID: 6076894125232994668}
+  - component: {fileID: 2123274987153724557}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Untagged
@@ -852,7 +959,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -884,3 +991,15 @@ MonoBehaviour:
   Size: {x: 2, y: 3}
   Color: {r: 0, g: 1, b: 0, a: 1}
   Duration: 0
+--- !u!114 &2123274987153724557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8975831635556958159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd8ebb567dd203489f8f7e4939e93a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

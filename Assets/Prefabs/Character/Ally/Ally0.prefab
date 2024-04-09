@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2871324252197391783}
   - component: {fileID: 5082884880752242450}
   - component: {fileID: 2302329798568260010}
+  - component: {fileID: -1880308212064982239}
   m_Layer: 0
   m_Name: Ally0
   m_TagString: Untagged
@@ -98,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e41df813da39c4c844c3efbb4b594c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  curHealth: 0
+  maxHealth: 100
+  curHealth: 100
   shield: 0
 --- !u!114 &2302329798568260010
 MonoBehaviour:
@@ -116,15 +117,36 @@ MonoBehaviour:
   characterStat: {fileID: 11400000, guid: 45ac72fcb11d9ee45921a1815790cecc, type: 2}
   health: {fileID: 5082884880752242450}
   size: 1
-  speed: 0
-  defense: 0
-  crit: 0
-  accuracy: 0
-  evasion: 0
-  resist: 0
+  speed: 49
+  defense: 10
+  crit: 10
+  accuracy: 10
+  evasion: 10
+  resist: 10
   isSpawnSpecific: 0
   spawnLocation: {x: 0, y: 0, z: 0}
   spawnRotation: {x: 0, y: 0, z: 0, w: 0}
   isDead: 0
   activeBuffs: []
   activeSkillCheckBox: 010101
+--- !u!65 &-1880308212064982239
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638066927388224697}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.16, y: 0.16, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}

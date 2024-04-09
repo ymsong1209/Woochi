@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,6 +14,7 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 {
     public  Image       icon;
     public  Button      btn;
+    public  Transform   tooltipPos;     // 툴팁 위치를 지정하기 위해
 
     private BaseSkill   skill = new BaseSkill();
 
@@ -33,11 +35,15 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Skill Name : " + skill.Name + "위에 마우스 올라감");
+        if (skill.Name == null)
+            return;
+
+        UIManager.GetInstance.SetSkillToolTip(skill, tooltipPos.position);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        UIManager.GetInstance.skillTooltip.SetActive(false);
     }
 
     #region Getter, Setter
