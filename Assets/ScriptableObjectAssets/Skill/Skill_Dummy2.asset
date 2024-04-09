@@ -15,8 +15,8 @@ MonoBehaviour:
   skillName: "\uCE58\uC720"
   skillRadius: 0101010100000000
   skillType: 1
-  bufflist:
-  - {fileID: 0}
+  skillTargetType: 0
+  bufflist: []
   baseMinStat: 7
   baseMaxStat: 8
   baseMultiplier: 1.2

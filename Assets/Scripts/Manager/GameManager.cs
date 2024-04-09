@@ -16,12 +16,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     void Start()
     {
         SelectRoom();
-        foreach (GameObject go in allies)
-        {
-            BaseCharacter character = go.GetComponent<BaseCharacter>();
-            character.Initialize();
-            character.IsAlly = true;  
-        }
+        
     }
 
    

@@ -21,6 +21,7 @@ public class Health : MonoBehaviour
         if (_penetrate == false)
         {
             curHealth -= _damage;
+            Debug.Log("Curhealth : " + curHealth);
         }
         //비관통형 대미지인경우 쉴드 먼저 까임
         else

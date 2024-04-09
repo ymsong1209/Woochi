@@ -16,8 +16,7 @@ MonoBehaviour:
   skillRadius: 0000000001010000
   skillType: 0
   skillTargetType: 1
-  bufflist:
-  - {fileID: 0}
+  bufflist: []
   baseMinStat: 7
   baseMaxStat: 9
   baseMultiplier: 1

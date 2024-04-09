@@ -100,7 +100,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         int EnemyTotalSize = 0;
         for(int i = 0;i<dungeon.EnemyList.Count; ++i)
         {
-            GameObject enemyGameObject = dungeon.EnemyList[i];
+            GameObject enemyPrefab = dungeon.EnemyList[i];
+            GameObject enemyGameObject = Instantiate(enemyPrefab);
             BaseCharacter enemyCharacter = enemyGameObject.GetComponent<BaseCharacter>();
             enemyCharacter.Initialize();
             //턴 소비 체크
@@ -153,8 +154,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         int AllyTotalSize = 0;
         for (int i = 0; i < GameManager.GetInstance.Allies.Count; ++i)
         {
-            GameObject allyGameObject = GameManager.GetInstance.Allies[i];
+            GameObject allyPrefab = GameManager.GetInstance.Allies[i];
+            GameObject allyGameObject = Instantiate(allyPrefab);
             BaseCharacter allyCharacter = allyGameObject.GetComponent<BaseCharacter>();
+
+            allyCharacter.Initialize();
+            allyCharacter.IsAlly = true;
 
             //전투 순서에 삽입
             combatQueue.Enqueue(allyGameObject);

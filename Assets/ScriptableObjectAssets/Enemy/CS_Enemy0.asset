@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CS_Enemy0
   m_EditorClassIdentifier: 
   characterName: Enemy0
-  baseHealth: 90
+  baseHealth: 10
   baseSpeed: 27
   baseDefense: 13
   baseCrit: 13

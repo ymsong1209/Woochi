@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: CS_Enemy1
   m_EditorClassIdentifier: 
   characterName: Enemy1
-  baseHealth: 90
+  baseHealth: 10
   baseSpeed: 28
   baseDefense: 13
   baseCrit: 13
   baseAccuracy: 13
   baseEvasion: 13
   baseResist: 13
+  skills: []
