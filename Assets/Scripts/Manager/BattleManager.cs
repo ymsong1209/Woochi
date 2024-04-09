@@ -363,7 +363,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 // TODO : 현재 턴이 적일 시 AI로 행동 결정(임시 코드)
                 if(!currentCharacter.IsAlly)
                     StartCoroutine(EnemyAction(currentCharacter));
-
+                
                 // 스킬이 선택되고 실행될 때까지 대기
                 while(!isSkillSelected || !isSkillExecuted)
                 {
@@ -476,10 +476,14 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             //i<4일 경우 적이 아군을 공격
             if (i < 4 && currentSelectedSkill.SkillRadius[i])
             {
+                GameObject allyGameObject = allyFormation[i];
+                if (allyGameObject == null) continue;
                 Enemies.Add(allyFormation[i].GetComponent<BaseCharacter>());
             }
             else if (4 <= i && i < 8 && currentSelectedSkill.SkillRadius[i])
             {
+                GameObject EnemyGameObject = enemyFormation[i - 4];
+                if (EnemyGameObject == null) continue;
                 BaseCharacter enemy = enemyFormation[i - 4].GetComponent<BaseCharacter>();
                 //적의 Size가 2인 경우
                 if(enemy.Size == 2)
@@ -515,6 +519,31 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         foreach(BaseCharacter receiver in _receivers)
         {
             currentSelectedSkill.ApplySkill(receiver);
+            if (receiver.CheckDead())
+            {
+                receiver.gameObject.SetActive(false);
+                if (receiver.IsAlly)
+                {
+                    for (int i = 0; i < allyFormation.Length; i++)
+                    {
+                        if (allyFormation[i] != null && allyFormation[i].GetComponent<BaseCharacter>() == receiver)
+                        {
+                            allyFormation[i] = null; // 자기 자신을 null로 설정
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < enemyFormation.Length; i++)
+                    {
+                        if (enemyFormation[i] != null && enemyFormation[i].GetComponent<BaseCharacter>() == receiver)
+                        {
+                            enemyFormation[i] = null;
+                        }
+                    }
+
+                }
+            };
             Debug.Log(currentSelectedSkill.Name + " is executed by " + _caster.name + " on " + receiver.name);
         }
         

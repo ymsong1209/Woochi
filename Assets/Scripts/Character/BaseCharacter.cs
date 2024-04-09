@@ -12,7 +12,7 @@ using UnityEngine.EventSystems;
 [DisallowMultipleComponent]
 public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private CharacterStatSO characterStat;
+                                public CharacterStatSO characterStat;
     #region Header CHARACTER STATS
 
     [Space(10)]

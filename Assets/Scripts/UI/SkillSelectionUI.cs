@@ -43,12 +43,12 @@ public class SkillSelectionUI : MonoBehaviour
         // 각 캐릭터의 스킬 개수만큼 버튼 오브젝트 활성화
         for (int i = 0; i < lastSkillIcon; i++)
         {
-            if(i < lastCharacterSkill)
-            {
+            if(i < lastCharacterSkill && IsSkillSetAvailable(_character.activeSkills[i]))
+            { 
                 skillIcons[i].gameObject.SetActive(true);
 
                 // 스킬 아이콘에 스킬 정보 할당
-                skillIcons[i].SetSkill(_character.activeSkills[i]); 
+                skillIcons[i].SetSkill(_character.activeSkills[i]);
             }
         }
 
@@ -59,6 +59,24 @@ public class SkillSelectionUI : MonoBehaviour
         #endregion
 
         // TODO : 스킬의 사용 가능 여부, 범위 등을 고려해 버튼 interaction 여부 결정해야 함
+    }
+
+    bool IsSkillSetAvailable(BaseSkill _skill)
+    {
+        GameObject[] AllyFormation = BattleManager.GetInstance.AllyFormation;
+        GameObject[] EnemyFormation = BattleManager.GetInstance.EnemyFormation;
+        for(int i = 0; i < _skill.SkillRadius.Length; ++i)
+        {
+
+            //스킬 적용 대상이 하나라도 있으면 true반환
+            if ((i < 4 && _skill.SkillRadius[i] && AllyFormation[i] != null && AllyFormation[i].activeSelf) ||
+            (4 <= i && i < 8 && _skill.SkillRadius[i] && EnemyFormation[i - 4] != null && EnemyFormation[i - 4].activeSelf))
+            {
+                return true;
+            }
+
+        }
+        return false;
     }
 
     // 스킬 선택 버튼이 클릭됐을 때 호출될 메서드
