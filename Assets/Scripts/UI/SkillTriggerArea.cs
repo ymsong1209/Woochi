@@ -39,6 +39,7 @@ public class SkillTriggerArea : MonoBehaviour
             {
                 if (isClick)
                 {
+                    Debug.Log(this.name.ToString());
                     BaseSkill BindedSkill = BattleManager.GetInstance.CurrentSelectedSkill;
                     BattleManager.GetInstance.ExecuteSelectedSkill();
                   
