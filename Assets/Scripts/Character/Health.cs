@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
     public void ApplyDamage(float _damage, bool _penetrate = false)
     {
         //관통형 대미지인경우
-        if (_penetrate)
+        if (_penetrate == false)
         {
             curHealth -= _damage;
         }

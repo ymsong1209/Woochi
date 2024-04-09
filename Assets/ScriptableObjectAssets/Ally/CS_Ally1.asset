@@ -17,7 +17,7 @@ MonoBehaviour:
   baseSpeed: 25
   baseDefense: 12
   baseCrit: 12
-  baseAccuracy: 12
+  baseAccuracy: 100
   baseEvasion: 12
   baseResist: 12
   skills:

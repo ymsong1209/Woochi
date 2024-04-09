@@ -215,7 +215,6 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     #region 마우스 이벤트
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Onpointerentercalled");
         if (isAlly)
             return;
 

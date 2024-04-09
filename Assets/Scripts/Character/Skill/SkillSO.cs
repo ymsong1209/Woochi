@@ -24,7 +24,7 @@ public class SkillSO : ScriptableObject
     /// <summary>
     /// 스킬 적중시 적용시킬 버프 리스트
     /// </summary>
-    public List<GameObject>           bufflist;       
+    public List<GameObject>           bufflist = new List<GameObject>();       
 
     #region Header SKILL STATS
     [Space(10)]

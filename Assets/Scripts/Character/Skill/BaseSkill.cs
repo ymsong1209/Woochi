@@ -21,7 +21,7 @@ public class BaseSkill
     /// <summary>
     /// 스킬 적중시 적용시킬 버프 리스트
     /// </summary>
-    public List<GameObject> bufflist;
+    public List<GameObject> bufflist = new List<GameObject>();
 
     #region Header SKILL STATS
     [Space(10)]
@@ -71,14 +71,22 @@ public class BaseSkill
         }
 
         //명중 체크
-        if (CheckAccuracy() == false) return;
+        if (CheckAccuracy() == false)
+        {
+            Debug.Log("Accuracy Failed on" + _Opponent.name.ToString());
+            return;
+        }
         //회피 체크
-        if (CheckEvasion(opponent) == false) return;
+        if (CheckEvasion(opponent) == false)
+        {
+            Debug.Log(_Opponent.name.ToString() + "Evaded skill" + skillName);
+            return;
+        }
         
         //치명타일 경우 바로 버프 적용
         if (CheckCrit())
         {
-
+            Debug.Log("Crit Skill on "+ skillName + "to "+ _Opponent.name.ToString());
             ApplyStat(opponent, minStat, maxStat, multiplier, skillType, true);
 
             //버프 적용
@@ -88,14 +96,19 @@ public class BaseSkill
                 ApplyBuff(opponent, BufftoApply);
             }
         }
-        //치명타가 아닌 경우 저항 판정
-        else if(CheckApplyBuff(opponent))
+        else
         {
-            //적이 저항 실패하면 버프 적용
-            foreach (GameObject ApplybuffGameobject in bufflist)
+            Debug.Log("Non Crit Skill on " + skillName + "to " + _Opponent.name.ToString());
+            ApplyStat(opponent, minStat, maxStat, multiplier, skillType, false);
+            if (CheckApplyBuff(opponent))
             {
-                BaseBuff BufftoApply = ApplybuffGameobject.GetComponent<BaseBuff>();
-                ApplyBuff(opponent, BufftoApply);
+                //적이 저항 실패하면 버프 적용
+                foreach (GameObject ApplybuffGameobject in bufflist)
+                {
+                    if (ApplybuffGameobject == null) continue;
+                    BaseBuff BufftoApply = ApplybuffGameobject.GetComponent<BaseBuff>();
+                    ApplyBuff(opponent, BufftoApply);
+                }
             }
         }
         
@@ -166,6 +179,7 @@ public class BaseSkill
         //같은 버프를 넣으려는 경우 중첩 횟수를 더함
         foreach(BaseBuff activebuff in _Opponent.activeBuffs)
         {
+            if (activebuff == null) continue;
             if(activebuff.BuffType == _buff.BuffType)
             {
                 activebuff.StackBuff();
@@ -188,7 +202,7 @@ public class BaseSkill
             case SkillType.Attack:
             {
                 //방어 스탯을 뺌
-                RandomStat = RandomStat * (100 - _Opponent.Defense);
+                RandomStat = RandomStat * (100 - _Opponent.Defense) / 100;
                 if (_isCrit) RandomStat = RandomStat * 2;
                 opponentHealth.ApplyDamage((int)RandomStat);
             }

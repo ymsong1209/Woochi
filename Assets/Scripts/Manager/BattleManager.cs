@@ -102,7 +102,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         {
             GameObject enemyGameObject = dungeon.EnemyList[i];
             BaseCharacter enemyCharacter = enemyGameObject.GetComponent<BaseCharacter>();
-
+            enemyCharacter.Initialize();
             //턴 소비 체크
             enemyCharacter.IsTurnUsed = false;
             //전투 시작시 적용되는 버프 적용
@@ -507,6 +507,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         foreach(BaseCharacter receiver in _receivers)
         {
+            currentSelectedSkill.ApplySkill(receiver);
             Debug.Log(currentSelectedSkill.Name + " is executed by " + _caster.name + " on " + receiver.name);
         }
         
