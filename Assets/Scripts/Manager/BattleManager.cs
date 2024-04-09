@@ -101,6 +101,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         for(int i = 0;i<dungeon.EnemyList.Count; ++i)
         {
             GameObject enemyPrefab = dungeon.EnemyList[i];
+
             GameObject enemyGameObject = Instantiate(enemyPrefab);
             BaseCharacter enemyCharacter = enemyGameObject.GetComponent<BaseCharacter>();
             enemyCharacter.Initialize();
@@ -120,12 +121,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 //크기가 1인 적군
                 if (enemySize == 1)
                 {
-                    Instantiate(enemyGameObject, enemySinglePosition[EnemyTotalSize], Quaternion.identity);
+                    enemyGameObject.transform.position = enemySinglePosition[EnemyTotalSize];
                     ++EnemyTotalSize;
                 }
                 //크기가 2인 적군
                 else if (enemySize == 2) {
-                    Instantiate(enemyGameObject, enemyMultiplePosition[EnemyTotalSize], Quaternion.identity);
+                    enemyGameObject.transform.position = enemyMultiplePosition[EnemyTotalSize];
                     enemyFormation[EnemyTotalSize + 1] = enemyGameObject;
                     EnemyTotalSize += 2;
                 }
@@ -136,13 +137,14 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 //크기가 1인 적군
                 if (enemySize == 1)
                 {
-                    Instantiate(enemyGameObject, enemyCharacter.SpawnLocation, enemyCharacter.SpawnRotation);
+                    enemyGameObject.transform.position = enemyCharacter.SpawnLocation;
+                    
                     ++EnemyTotalSize;
                 }
                 //크기가 2인 적군
                 else if (enemySize == 2)
                 {
-                    Instantiate(enemyGameObject, enemyCharacter.SpawnLocation, enemyCharacter.SpawnRotation);
+                    enemyGameObject.transform.position = enemyCharacter.SpawnLocation;
                     enemyFormation[EnemyTotalSize + 1] = enemyGameObject;
                     EnemyTotalSize += 2;
                 }
@@ -177,13 +179,13 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 //크기가 1인 아군
                 if (allySize == 1)
                 {
-                    Instantiate(allyGameObject, allySinglePosition[AllyTotalSize], Quaternion.identity);
+                    allyGameObject.transform.position = allySinglePosition[AllyTotalSize];
                     ++AllyTotalSize;
                 }
                 //크기가 2인 아군
                 else if (allySize == 2)
                 {
-                    Instantiate(allyGameObject, allyMultiplePosition[AllyTotalSize], Quaternion.identity);
+                    allyGameObject.transform.position = allyMultiplePosition[AllyTotalSize];
                     AllyTotalSize += 2;
                 }
             }
@@ -193,13 +195,13 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 //크기가 1인 아군
                 if (allySize == 1)
                 {
-                    Instantiate(allyGameObject, allyCharacter.SpawnLocation, allyCharacter.SpawnRotation);
+                    allyGameObject.transform.position = allyCharacter.SpawnLocation;
                     ++AllyTotalSize;
                 }
                 //크기가 2인 아군
                 else if (allySize == 2)
                 {
-                    Instantiate(allyGameObject, allyCharacter.SpawnLocation, allyCharacter.SpawnRotation);
+                    allyGameObject.transform.position = allyCharacter.SpawnLocation;
                     AllyTotalSize += 2;
                 }
             }
