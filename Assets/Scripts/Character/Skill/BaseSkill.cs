@@ -46,7 +46,7 @@ public class BaseSkill
         maxStat = _skillSO.BaseMaxStat;
         multiplier = _skillSO.BaseMultiplier;
         skillAccuracy = _skillSO.BaseSkillAccuracy;
-
+        skillTargetType = _skillSO.SkillTargetType;
         bufflist = new List<GameObject>(_skillSO.bufflist);
     }
 
@@ -211,7 +211,7 @@ public class BaseSkill
     public float Multiplier => multiplier;
 
     public bool[] SkillRadius => skillRadius;
-
+    public SkillTargetType SkillTargetType => skillTargetType;
     public BaseCharacter SkillOwner
     {
         get { return skillOwner; }

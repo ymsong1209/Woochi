@@ -15,15 +15,17 @@ public class SkillTriggerSelector : MonoBehaviour
 
     public void Activate(BaseSkill _skill)
     {
-        Debug.Log("Activate Called");
         DeactivateSkillTriggerAreas();
         bool[] skillRadius = _skill.SkillRadius;
         for (int i = 0; i < skillRadius.Length; i++)
         {
-            if (skillRadius[i])
+            //현재 살아있는 적/아군에게서만 skilltriggerarea활성화
+            if(i<4 && skillRadius[i] && BattleManager.GetInstance.AllyFormation[i])
             {
-                Debug.Log("SetActive Called");
-                // 해당 인덱스의 AbilityTriggerArea를 활성화
+                SkillTriggerAreas[i].SetActive(true);
+            }
+            else if(4<=i && i<8 && skillRadius[i] && BattleManager.GetInstance.EnemyFormation[i - 4])
+            {
                 SkillTriggerAreas[i].SetActive(true);
             }
         }

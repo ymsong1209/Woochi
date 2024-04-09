@@ -15,6 +15,7 @@ MonoBehaviour:
   skillName: "\uBCA0\uAE30"
   skillRadius: 0000000001010000
   skillType: 0
+  skillTargetType: 1
   bufflist:
   - {fileID: 0}
   baseMinStat: 7

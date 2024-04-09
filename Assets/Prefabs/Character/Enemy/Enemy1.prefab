@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3566263110198819728}
   - component: {fileID: 6060258549805049095}
   - component: {fileID: 5352316438960730056}
+  - component: {fileID: 2454756965089326744}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Untagged
@@ -98,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e41df813da39c4c844c3efbb4b594c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  curHealth: 0
+  maxHealth: 15
+  curHealth: 15
   shield: 0
 --- !u!114 &5352316438960730056
 MonoBehaviour:
@@ -115,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterStat: {fileID: 11400000, guid: aca766a5a1bd29048808d475718b8c51, type: 2}
   health: {fileID: 6060258549805049095}
-  size: 1
+  size: 2
   speed: 0
   defense: 0
   crit: 0
@@ -127,3 +128,26 @@ MonoBehaviour:
   spawnRotation: {x: 0, y: 0, z: 0, w: 0}
   isDead: 0
   activeBuffs: []
+  activeSkillCheckBox: 
+  isAlly: 0
+--- !u!65 &2454756965089326744
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2712134958714646014}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

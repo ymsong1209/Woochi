@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -124,6 +125,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 //크기가 2인 적군
                 else if (enemySize == 2) {
                     Instantiate(enemyGameObject, enemyMultiplePosition[EnemyTotalSize], Quaternion.identity);
+                    enemyFormation[EnemyTotalSize + 1] = enemyGameObject;
                     EnemyTotalSize += 2;
                 }
             }
@@ -140,6 +142,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 else if (enemySize == 2)
                 {
                     Instantiate(enemyGameObject, enemyCharacter.SpawnLocation, enemyCharacter.SpawnRotation);
+                    enemyFormation[EnemyTotalSize + 1] = enemyGameObject;
                     EnemyTotalSize += 2;
                 }
             }
@@ -408,16 +411,105 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     public void ExecuteSelectedSkill(int _index = -1)
     {
         // 적군의 0번째 캐릭터에게 스킬을 쓴다고 가정
-        BaseCharacter temporaryCaster = currentSelectedSkill.SkillOwner;
-        BaseCharacter temporaryEnemy = enemyFormation[0].GetComponent<BaseCharacter>();
+        if (currentSelectedSkill == null) return;
+        //단일공격 스킬일 경우 index에 들어온 적만 공격
+        if(currentSelectedSkill.SkillTargetType == SkillTargetType.Singular)
+        {
+            AttackSingular(_index);
+        }
+        else if(currentSelectedSkill.SkillTargetType == SkillTargetType.Multiple)
+        {
+            AttackMultiple(_index);
+        }
+    }
 
-        StartCoroutine(ExecuteSkill(temporaryCaster, temporaryEnemy));
+    /// <summary>
+    /// Index의 위치에 따라 적 한명에게 공격한다.
+    /// </summary>
+    private void AttackSingular(int _index)
+    {
+        BaseCharacter Caster = null;
+        List<BaseCharacter> Enemies = new List<BaseCharacter>();
+
+        if (CurrentSelectedSkill == null) return;
+        Caster = currentSelectedSkill.SkillOwner;
+
+
+        //index<4인경우는 적이 아군을 공격한 경우
+        if (_index < 4)
+        {
+           Enemies.Add(allyFormation[_index].GetComponent<BaseCharacter>());
+        }
+        //4<index<8인 경우는 아군이 적을 공격한 경우
+        else if (_index < 8)
+        {
+            Enemies.Add(enemyFormation[_index - 4].GetComponent<BaseCharacter>());
+        }
+       
+        if (Caster != null && Enemies.Count > 0)
+        {
+            StartCoroutine(ExecuteSkill(Caster, Enemies));
+        }
+        else
+        {
+            Debug.LogError("Caster or Enemy not assigned!");
+        }
+    }
+
+    private void AttackMultiple(int _index)
+    {
+        BaseCharacter Caster = null;
+        List<BaseCharacter> Enemies = new List<BaseCharacter>();
+        if (currentSelectedSkill == null) return;
+        Caster = currentSelectedSkill.SkillOwner;
+
+        //Index 여부와 상관없이 selectedSkill의 범위 내의 모든 공격 가능한 몹들 공격
+        for (int i = 0;i<currentSelectedSkill.SkillRadius.Length; i++)
+        {
+            //i<4일 경우 적이 아군을 공격
+            if (i < 4 && currentSelectedSkill.SkillRadius[i])
+            {
+                Enemies.Add(allyFormation[i].GetComponent<BaseCharacter>());
+            }
+            else if (4 <= i && i < 8 && currentSelectedSkill.SkillRadius[i])
+            {
+                BaseCharacter enemy = enemyFormation[i - 4].GetComponent<BaseCharacter>();
+                //적의 Size가 2인 경우
+                if(enemy.Size == 2)
+                {
+                    // 이미 Enemies 리스트에 동일한 GameObject를 참조하는 BaseCharacter가 없는 경우에만 추가
+                    if (!Enemies.Any(e => e.gameObject == enemy.gameObject))
+                    {
+                        Enemies.Add(enemy);
+                    }
+                }
+                else
+                {
+                    // Size가 1인 적은 그냥 추가
+                    Enemies.Add(enemy);
+                }
+
+            }
+        }
+
+        if (Caster != null && Enemies.Count > 0)
+        {
+            StartCoroutine(ExecuteSkill(Caster, Enemies));
+        }
+        else
+        {
+            Debug.LogError("Caster or Enemy not assigned!");
+        }
     }
 
     // 스킬 실행 로직 구현
-    IEnumerator ExecuteSkill(BaseCharacter _caster, BaseCharacter _receiver)
+    IEnumerator ExecuteSkill(BaseCharacter _caster, List<BaseCharacter> _receivers)
     {
-        Debug.Log(currentSelectedSkill.Name + " is executed by " + _caster.name + " on " + _receiver.name);
+        foreach(BaseCharacter receiver in _receivers)
+        {
+            Debug.Log(currentSelectedSkill.Name + " is executed by " + _caster.name + " on " + receiver.name);
+        }
+        
         isSkillExecuted = true;
 
         yield return new WaitForSeconds(1f); // 예시로 1초 대기

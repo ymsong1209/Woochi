@@ -5346,6 +5346,14 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1382642105230996137, guid: 56a27495f0a512c408751da061e9230f, type: 3}
+      propertyPath: index
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607320319487028673, guid: 56a27495f0a512c408751da061e9230f, type: 3}
+      propertyPath: index
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2095132564814616375, guid: 56a27495f0a512c408751da061e9230f, type: 3}
       propertyPath: SkillTriggerAreas.Array.size
       value: 8
@@ -5382,6 +5390,14 @@ PrefabInstance:
       propertyPath: SkillTriggerAreas.Array.data[7]
       value: 
       objectReference: {fileID: 1287379876}
+    - target: {fileID: 2123274987153724557, guid: 56a27495f0a512c408751da061e9230f, type: 3}
+      propertyPath: index
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3273795979646951746, guid: 56a27495f0a512c408751da061e9230f, type: 3}
+      propertyPath: index
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3897186625388828233, guid: 56a27495f0a512c408751da061e9230f, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -5389,6 +5405,14 @@ PrefabInstance:
     - target: {fileID: 4506429712516637917, guid: 56a27495f0a512c408751da061e9230f, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810501896962859736, guid: 56a27495f0a512c408751da061e9230f, type: 3}
+      propertyPath: index
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5036763596118698115, guid: 56a27495f0a512c408751da061e9230f, type: 3}
+      propertyPath: index
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5775515088247322078, guid: 56a27495f0a512c408751da061e9230f, type: 3}
       propertyPath: Center.y
@@ -5421,6 +5445,10 @@ PrefabInstance:
     - target: {fileID: 6076894125232994668, guid: 56a27495f0a512c408751da061e9230f, type: 3}
       propertyPath: Center.y
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6882283615752071284, guid: 56a27495f0a512c408751da061e9230f, type: 3}
+      propertyPath: index
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7080922189145121054, guid: 56a27495f0a512c408751da061e9230f, type: 3}
       propertyPath: Center.x
@@ -5493,6 +5521,10 @@ PrefabInstance:
     - target: {fileID: 8464646090071150487, guid: 56a27495f0a512c408751da061e9230f, type: 3}
       propertyPath: Center.y
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929034319812228937, guid: 56a27495f0a512c408751da061e9230f, type: 3}
+      propertyPath: index
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

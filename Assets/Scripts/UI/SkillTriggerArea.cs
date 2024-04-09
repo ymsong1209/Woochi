@@ -5,6 +5,8 @@ using UnityEngine;
 public class SkillTriggerArea : MonoBehaviour
 {
 
+    [SerializeField] private int index;
+
     void Start()
     {
         
@@ -39,9 +41,8 @@ public class SkillTriggerArea : MonoBehaviour
             {
                 if (isClick)
                 {
-                    Debug.Log(this.name.ToString());
                     BaseSkill BindedSkill = BattleManager.GetInstance.CurrentSelectedSkill;
-                    BattleManager.GetInstance.ExecuteSelectedSkill();
+                    BattleManager.GetInstance.ExecuteSelectedSkill(index);
                   
                 }
                 else
