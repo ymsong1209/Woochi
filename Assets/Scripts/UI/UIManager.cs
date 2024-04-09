@@ -5,20 +5,16 @@ using TMPro;
 
 public class UIManager : SingletonMonobehaviour<UIManager>
 {
-    // 스킬 툴팁
+    [HeaderTooltip("Skill Tooltip","스킬 아이콘에 마우스 올릴 시 뜨는 툴팁")]
     public GameObject skillTooltip;
     [SerializeField] private TextMeshProUGUI skillNameTxt;
 
-    // 적 캐릭터 정보 툴팁
+    [HeaderTooltip("Enemy Tooltip", "적 캐릭터에 마우스 올릴 시 적 정보 뜨는 툴팁")]
     public GameObject enemyTooltip;
     [SerializeField] private TextMeshProUGUI enemyNameTxt;
+    [SerializeField] private TextMeshProUGUI enemyHPTxt;
     [SerializeField] private TextMeshProUGUI enemyEvasionTxt;
     [SerializeField] private TextMeshProUGUI enemySpeedTxt;
-
-    void Start()
-    {
-        
-    }
 
     public void SetSkillToolTip(BaseSkill _skill, Vector3 position)
     {
@@ -31,6 +27,7 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     {
         enemyTooltip.SetActive(true);
         enemyNameTxt.text = _character.name;
+        enemyHPTxt.text = $"HP : {_character.Health.CurHealth} / {_character.Health.MaxHealth}";
         enemyEvasionTxt.text = $"회피 : {_character.Evasion}";
         enemySpeedTxt.text = $"속도 : {_character.Speed}";
     }
