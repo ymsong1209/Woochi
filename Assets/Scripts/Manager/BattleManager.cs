@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.PlayerLoop;
 using UnityEngine.TextCore.Text;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class BattleManager : SingletonMonobehaviour<BattleManager>
 {
@@ -466,7 +467,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     private void AttackMultiple(int _index)
     {
         BaseCharacter Caster = null;
-        List<BaseCharacter> Enemies = new List<BaseCharacter>();
+        List<BaseCharacter> Receivers = new List<BaseCharacter>();
         if (currentSelectedSkill == null) return;
         Caster = currentSelectedSkill.SkillOwner;
 
@@ -478,7 +479,22 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             {
                 GameObject allyGameObject = allyFormation[i];
                 if (allyGameObject == null) continue;
-                Enemies.Add(allyFormation[i].GetComponent<BaseCharacter>());
+                BaseCharacter ally = allyGameObject.GetComponent<BaseCharacter>();
+                //아군의 Size가 2인 경우
+                if (ally.Size == 2)
+                {
+                    // 이미 Receivers 리스트에 동일한 GameObject를 참조하는 BaseCharacter가 없는 경우에만 추가
+                    if (!Receivers.Any(e => e.gameObject == ally.gameObject))
+                    {
+                        Receivers.Add(ally);
+                    }
+                }
+                else
+                {
+                    // Size가 1인 Ally은 그냥 추가
+                    Receivers.Add(ally);
+                }
+                Receivers.Add(allyFormation[i].GetComponent<BaseCharacter>());
             }
             else if (4 <= i && i < 8 && currentSelectedSkill.SkillRadius[i])
             {
@@ -488,24 +504,24 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 //적의 Size가 2인 경우
                 if(enemy.Size == 2)
                 {
-                    // 이미 Enemies 리스트에 동일한 GameObject를 참조하는 BaseCharacter가 없는 경우에만 추가
-                    if (!Enemies.Any(e => e.gameObject == enemy.gameObject))
+                    // 이미 Receivers 리스트에 동일한 GameObject를 참조하는 BaseCharacter가 없는 경우에만 추가
+                    if (!Receivers.Any(e => e.gameObject == enemy.gameObject))
                     {
-                        Enemies.Add(enemy);
+                        Receivers.Add(enemy);
                     }
                 }
                 else
                 {
                     // Size가 1인 적은 그냥 추가
-                    Enemies.Add(enemy);
+                    Receivers.Add(enemy);
                 }
 
             }
         }
 
-        if (Caster != null && Enemies.Count > 0)
+        if (Caster != null && Receivers.Count > 0)
         {
-            StartCoroutine(ExecuteSkill(Caster, Enemies));
+            StartCoroutine(ExecuteSkill(Caster, Receivers));
         }
         else
         {
