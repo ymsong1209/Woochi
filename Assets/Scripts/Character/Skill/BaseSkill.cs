@@ -11,10 +11,19 @@ public class BaseSkill
 
     [SerializeField] private string skillName;
     /// <summary>
+    /// 스킬을 사용할 수 있는 열
     /// 0~4 : 아군 1~4열
-    /// 5~8 : 적군 5~8열
+    /// 5~8 : 적군 1~4열
+    /// </summary>
+    [SerializeField] private bool[] skillAvailableRadius = new bool[8];
+
+    /// <summary>
+    /// 스킬을 적용시킬 수 있는 열
+    /// 0~4 : 아군 1~4열
+    /// 5~8 : 적군 1~4열
     /// </summary>
     [SerializeField] private bool[] skillRadius = new bool[8];
+
     [SerializeField] private SkillTargetType skillTargetType;
     [SerializeField] private SkillType skillType;
 
@@ -29,8 +38,6 @@ public class BaseSkill
 
     #endregion Header SKILL STATS
 
-    [SerializeField] private float minStat;       // 최소 계수
-    [SerializeField] private float maxStat;       // 최대 계수
     [SerializeField] private float multiplier;    // 피해량 계수
     [SerializeField] private float skillAccuracy; // 스킬 명중 수치
 
@@ -40,10 +47,9 @@ public class BaseSkill
     public void Initialize(SkillSO _skillSO)
     {
         skillName = _skillSO.SkillName;
+        skillAvailableRadius = _skillSO.SkillAvailableRadius;
         skillRadius = _skillSO.SkillRadius;
         skillType = _skillSO.SkillType;
-        minStat = _skillSO.BaseMinStat;
-        maxStat = _skillSO.BaseMaxStat;
         multiplier = _skillSO.BaseMultiplier;
         skillAccuracy = _skillSO.BaseSkillAccuracy;
         skillTargetType = _skillSO.SkillTargetType;
@@ -87,7 +93,7 @@ public class BaseSkill
         if (CheckCrit())
         {
             Debug.Log("Crit Skill on "+ skillName + "to "+ _Opponent.name.ToString());
-            ApplyStat(opponent, minStat, maxStat, multiplier, skillType, true);
+            ApplyStat(opponent, true);
 
             //버프 적용
             foreach (GameObject ApplybuffGameobject in bufflist)
@@ -99,7 +105,7 @@ public class BaseSkill
         else
         {
             Debug.Log("Non Crit Skill on " + skillName + "to " + _Opponent.name.ToString());
-            ApplyStat(opponent, minStat, maxStat, multiplier, skillType, false);
+            ApplyStat(opponent, false);
             if (CheckApplyBuff(opponent))
             {
                 //적이 저항 실패하면 버프 적용
@@ -189,15 +195,16 @@ public class BaseSkill
         _Opponent.activeBuffs.Add(_buff);
     }
 
-    private void ApplyStat(BaseCharacter _Opponent, float _minStat, float _maxStat, float _multiplier, SkillType _type, bool _isCrit)
+    private void ApplyStat(BaseCharacter _Opponent, bool _isCrit)
     {
         Health opponentHealth = _Opponent.gameObject.GetComponent<Health>();
         //최소, 최대 대미지 사이의 수치를 고름
-        float RandomStat = Random.Range(_minStat, _maxStat);
+        
+        float RandomStat = Random.Range(skillOwner.MinStat, skillOwner.MaxStat);
         //피해량 계수를 곱함
-        RandomStat *= _multiplier;
+        RandomStat *= multiplier;
        
-        switch (_type)
+        switch (skillType)
         {
             case SkillType.Attack:
             {
@@ -219,11 +226,9 @@ public class BaseSkill
 
     #region Getter Setter
     public string Name => skillName;
-
-    public float MinStat => minStat;
-    public float MaxStat => maxStat;
     public float Multiplier => multiplier;
 
+    public bool[] SkillAvailableRadius => skillAvailableRadius;
     public bool[] SkillRadius => skillRadius;
     public SkillTargetType SkillTargetType => skillTargetType;
     public BaseCharacter SkillOwner

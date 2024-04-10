@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f970e1487b951641bb3562062edf1db, type: 3}
-  m_Name: Skill_Dummy1
+  m_Name: Tiger_Slam
   m_EditorClassIdentifier: 
-  skillName: "\uBCA0\uAE30"
-  skillAvailableRadius: 0101010100000000
+  skillName: "\uB0B4\uB824\uCC0D\uAE30"
+  skillAvailableRadius: 0101000000000000
   skillRadius: 0000000001010000
   skillType: 0
-  skillTargetType: 1
+  skillTargetType: 0
   bufflist: []
-  baseMultiplier: 1
-  baseSkillAccuracy: 60
+  baseMultiplier: 0
+  baseSkillAccuracy: 100

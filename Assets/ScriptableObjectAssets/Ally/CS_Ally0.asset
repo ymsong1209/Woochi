@@ -20,6 +20,8 @@ MonoBehaviour:
   baseAccuracy: 100
   baseEvasion: 10
   baseResist: 10
+  baseMinStat: 5
+  baseMaxStat: 7
   skills:
   - {fileID: 11400000, guid: 71a04136a7429d247ba88c1872b7cf86, type: 2}
   - {fileID: 11400000, guid: 8e324c7562332e04cbb2e570a6fc82ae, type: 2}

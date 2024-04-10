@@ -352,8 +352,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             // 자신의 차례가 됐을 때 버프 적용
             if (currentCharacter.ApplyBuff(BuffTiming.TurnStart))
             {
-                // 현재 턴의 캐릭터에 맞는 UI 업데이트
-                OnCharacterTurnStart?.Invoke(currentCharacter);
 
                 // 닼던처럼 한다면 현재 턴이 적이라면 UI를 업데이트 하지 않는 식으로 하는게 좋을 것 같음
                 if (currentCharacter.IsAlly)
@@ -361,8 +359,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                     //캐릭터의 스킬에 변경점이 있는지 확인
                     currentCharacter.CheckSkillsOnTurnStart();
                 }
+
+                // 현재 턴의 캐릭터에 맞는 UI 업데이트
+                OnCharacterTurnStart?.Invoke(currentCharacter);
+
                 // TODO : 현재 턴이 적일 시 AI로 행동 결정(임시 코드)
-                if(!currentCharacter.IsAlly)
+                if (!currentCharacter.IsAlly)
                     StartCoroutine(EnemyAction(currentCharacter));
                 
                 // 스킬이 선택되고 실행될 때까지 대기

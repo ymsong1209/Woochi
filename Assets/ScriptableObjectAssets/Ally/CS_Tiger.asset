@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c4bbbce2a03c2d4a95b7ced04f3ebb7, type: 3}
-  m_Name: CS_Ally1
+  m_Name: CS_Tiger
   m_EditorClassIdentifier: 
-  characterName: Ally1
+  characterName: Tiger
   baseHealth: 120
   baseSpeed: 25
   baseDefense: 12
@@ -20,8 +20,6 @@ MonoBehaviour:
   baseAccuracy: 100
   baseEvasion: 12
   baseResist: 12
-  baseMinStat: 6
-  baseMaxStat: 8
-  skills:
-  - {fileID: 11400000, guid: 5b6e53c7d25a62347b076a7e34b64c3b, type: 2}
-  - {fileID: 11400000, guid: b25a65ab1ed1c56439dd7473890f2117, type: 2}
+  baseMinStat: 0
+  baseMaxStat: 0
+  skills: []

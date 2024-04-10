@@ -61,11 +61,44 @@ public class SkillSelectionUI : MonoBehaviour
         // TODO : 스킬의 사용 가능 여부, 범위 등을 고려해 버튼 interaction 여부 결정해야 함
     }
 
+    /// <summary>
+    /// 스킬 슬롯에 스킬 버튼이 활성화가 되는지 확인
+    /// </summary>
     bool IsSkillSetAvailable(BaseSkill _skill)
+    {
+
+        if (IsSkillAbleForFormation(_skill) == false) return false;
+        if (IsSkillReceiverAble(_skill) == false) return false;
+        return true;
+    }
+    /// <summary>
+    /// 현재 스킬의 owner가 스킬을 시전할 수 있는 열에 있는지 확인
+    /// </summary>
+    bool IsSkillAbleForFormation(BaseSkill _skill)
+    {
+        bool isSkillSetAble = false;
+        for (int i = 0; i < 4; ++i)
+        {
+            //예시 : 아군이고, 현재 skillowner가 2열에 있고, 스킬의 사용 범위가 1,2열인 경우 true 반환
+            GameObject Ally = BattleManager.GetInstance.AllyFormation[i];
+            if (Ally == null) continue;
+            if (_skill.SkillOwner.IsAlly && BattleManager.GetInstance.AllyFormation[i].GetComponent<BaseCharacter>() == _skill.SkillOwner)
+            {
+                isSkillSetAble = true;
+            }
+        }
+
+        return isSkillSetAble;
+    }
+
+    /// <summary>
+    /// 스킬의 적용 대상이 존재하는지 확인
+    /// </summary>
+    bool IsSkillReceiverAble(BaseSkill _skill)
     {
         GameObject[] AllyFormation = BattleManager.GetInstance.AllyFormation;
         GameObject[] EnemyFormation = BattleManager.GetInstance.EnemyFormation;
-        for(int i = 0; i < _skill.SkillRadius.Length; ++i)
+        for (int i = 0; i < _skill.SkillRadius.Length; ++i)
         {
 
             //스킬 적용 대상이 하나라도 있으면 true반환

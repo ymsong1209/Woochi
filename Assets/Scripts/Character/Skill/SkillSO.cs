@@ -14,7 +14,16 @@ public class SkillSO : ScriptableObject
     #endregion Header SKILL BASICS
 
     [SerializeField] private string             skillName;
+
     /// <summary>
+    /// 스킬을 사용할 수 있는 열
+    /// 0~4 : 아군 1~4열
+    /// 5~8 : 적군 1~4열
+    /// </summary>
+    [SerializeField] private bool[]             skillAvailableRadius = new bool[8];
+
+    /// <summary>
+    /// 스킬을 적용시킬 수 있는 열
     /// 0~4 : 아군 1~4열
     /// 5~8 : 적군 1~4열
     /// </summary>
@@ -32,20 +41,17 @@ public class SkillSO : ScriptableObject
 
     #endregion Header SKILL STATS
 
-    [SerializeField] private float baseMinStat;       // 최소 계수
-    [SerializeField] private float baseMaxStat;       // 최대 계수
-    [SerializeField] private float baseMultiplier;    // 피해량 계수
+    [SerializeField] private float baseMultiplier;        // 피해량 계수
     [SerializeField] private float baseSkillAccuracy;     // 스킬 명중 수치
 
     #region Getter Setter
     public string SkillName => skillName;
 
+    public bool[] SkillAvailableRadius => skillAvailableRadius;
     public bool[] SkillRadius => skillRadius;
 
     public SkillType SkillType => skillType;
     public SkillTargetType SkillTargetType => skillTargetType;
-    public float BaseMinStat => baseMinStat;
-    public float BaseMaxStat => baseMaxStat;
     public float BaseMultiplier => baseMultiplier;
 
     public float BaseSkillAccuracy => baseSkillAccuracy;

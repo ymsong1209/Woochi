@@ -28,6 +28,8 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField,ReadOnly]   private float   accuracy;
     [SerializeField,ReadOnly]   private float   evasion;
     [SerializeField,ReadOnly]   private float   resist;
+    [SerializeField,ReadOnly]   private float   minStat;
+    [SerializeField,ReadOnly]   private float   maxStat;
     #endregion
 
     #region Header SpecializedStats
@@ -97,19 +99,35 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }
     }
 
+    /// <summary>
+    /// 버프 적용후,캐릭터의 턴이 스킵되거나 캐릭터가 사망할 경우 false 반환
+    /// </summary>
     private bool ApplyBuffs(Func<BaseBuff, bool> applyBuffMethod)
     {
+        bool mightDead = false;
+
         for (int i = activeBuffs.Count - 1; i >= 0; i--)
         {
+            //캐릭터의 턴이 스킵되거나, 캐릭터가 죽을 경우 mightDead를 true로 설정
             if (!applyBuffMethod(activeBuffs[i]))
             {
-                return HandleDeath();
+                mightDead = true;
             }
 
             if (ShouldRemoveBuff(activeBuffs[i]))
             {
                 RemoveBuffAtIndex(i);
             }
+        }
+        if (mightDead)
+        {
+            //죽었을 경우 버프 처리 하고 죽음
+            if (CheckDead())
+            {
+                return HandleDeath();
+            }
+            //턴을 스킵만 함
+            return false;
         }
         return true;
     }
@@ -160,6 +178,8 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         accuracy = characterStat.BaseAccuracy;
         evasion = characterStat.BaseEvasion;
         resist = characterStat.BaseResist;
+        minStat = characterStat.BaseMinStat;
+        maxStat = characterStat.BaseMaxStat;
         isDead = false;
         health = GetComponent<Health>();
         health.MaxHealth = characterStat.BaseHealth;
@@ -260,6 +280,18 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         get { return resist; }
         set { resist = value; }
+    }
+
+    public float MinStat
+    {
+        get { return minStat; }
+        set { minStat = value; }
+    }
+
+    public float MaxStat
+    {
+        get { return maxStat; }
+        set { maxStat = value; }
     }
 
     public bool IsDead => isDead;

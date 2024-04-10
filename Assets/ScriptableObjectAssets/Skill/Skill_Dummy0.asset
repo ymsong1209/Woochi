@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: Skill_Dummy0
   m_EditorClassIdentifier: 
   skillName: "\uCC0C\uB974\uAE30"
+  skillAvailableRadius: 0101010100000000
   skillRadius: 0000000000010100
   skillType: 0
   skillTargetType: 0
   bufflist: []
-  baseMinStat: 5
-  baseMaxStat: 7
   baseMultiplier: 1.2
   baseSkillAccuracy: 75

@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: Skill_ChangeLocation
   m_EditorClassIdentifier: 
   skillName: "\uC704\uCE58 \uC774\uB3D9"
+  skillAvailableRadius: 0101010100000000
   skillRadius: 0000000000000000
   skillType: 0
   skillTargetType: 0
   bufflist: []
-  baseMinStat: 0
-  baseMaxStat: 0
   baseMultiplier: 0
   baseSkillAccuracy: 0

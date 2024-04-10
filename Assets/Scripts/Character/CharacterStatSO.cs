@@ -31,6 +31,8 @@ public class CharacterStatSO : ScriptableObject
     [SerializeField] private float    baseAccuracy;   //명중
     [SerializeField] private float    baseEvasion;    //회피
     [SerializeField] private float    baseResist;     //저항
+    [SerializeField] private float    baseMinStat;
+    [SerializeField] private float    baseMaxStat;
 
     #region Header CHARACTER SKILLS
 
@@ -51,7 +53,10 @@ public class CharacterStatSO : ScriptableObject
     public float BaseAccuracy => baseAccuracy;
     public float BaseEvasion => baseEvasion;
     public float BaseResist => baseResist;
-   
+
+    public float BaseMinStat => baseMinStat;
+    public float BaseMaxStat => baseMaxStat;
+
     public List<SkillSO> Skills => skills;
     #endregion
 
