@@ -222,7 +222,7 @@ public class BaseSkill
         
         float RandomStat = Random.Range(skillOwner.MinStat, skillOwner.MaxStat);
         //피해량 계수를 곱함
-        RandomStat *= multiplier;
+        RandomStat *= (multiplier / 100);
        
         switch (skillType)
         {
