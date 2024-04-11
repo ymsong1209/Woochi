@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -28,14 +29,15 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         //_skill이 null일 경우 빈 skill로 초기화
         else
         {
-            skill = new BaseSkill();
+            skill = null;
         }
         // TODO : 스킬 아이콘 스프라이트 지정
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (skill.Name == null)
+
+        if (skill == null || skill.Name == null)
             return;
 
         UIManager.GetInstance.SetSkillToolTip(skill, tooltipPos.position);

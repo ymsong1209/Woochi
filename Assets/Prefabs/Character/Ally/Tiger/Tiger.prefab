@@ -130,12 +130,8 @@ MonoBehaviour:
   spawnRotation: {x: 0, y: 0, z: 0, w: 0}
   isDead: 0
   activeBuffs: []
-  activeSkills:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  activeSkillCheckBox: 01010101
+  activeSkills: []
+  activeSkillCheckBox: 0101010101
   isAlly: 1
 --- !u!65 &4402145558997533614
 BoxCollider:

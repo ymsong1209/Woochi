@@ -187,21 +187,19 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         #region 스킬 초기화
         //activeSkills의 size만큼 CharacterStat의 skill을 앞에서부터 가져와서 세팅한다.
-        for(int i = 0; i < activeSkills.Count; ++i)
+        for(int i = 0; i < activeSkillCheckBox.Count; ++i)
         {
-            if (characterStat.Skills[i] != null)
+            BaseSkill newSkill = Instantiate(characterStat.Skills[i], this.transform);
+            newSkill.Initialize();
+            newSkill.SkillOwner = this;
+            if (activeSkillCheckBox[i])
             {
-                BaseSkill newSkill = Instantiate(characterStat.Skills[i], this.transform);
-               
-                newSkill.Initialize();
-                newSkill.SkillOwner = this;
-                if (activeSkillCheckBox[i])
-                { 
-                    activeSkills.Add(newSkill);
-                }
-                totalSkills.Add(newSkill);
+                activeSkills.Add(newSkill);
             }
+            totalSkills.Add(newSkill);
         }
+
+
         #endregion
     }
     #endregion 기본 스탯 초기화
@@ -316,27 +314,18 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     #region Validation
     private void OnValidate()
     {
-        #region activeSkill Size Check
+        #region activeSkillCheckBox Size Check
 
-        
-        if(activeSkills.Count > 4)
+        //activeSkillCheckBox 크기랑 CharacterStat의 Skill개수랑 동일해야함
+        if (activeSkillCheckBox.Count != characterStat.Skills.Count)
         {
-            Debug.Log("ActiveSkill의 개수가" + this.name.ToString() + "에서 4개가 넘습니다.");
+            Debug.Log(nameof(activeSkillCheckBox) + "랑" + nameof(characterStat.Skills) + "의 사이즈가 "
+                            + this.name.ToString() + "에서 동일하지 않습니다.");
         }
-
-
-        //CharacterStat에 Skill여러개 두고 그 중 4개만 뽑아갈 수 있으므로 주석 처리
-
-        ////activeSkillCheckBox 크기랑 CharacterStat의 Skill개수랑 동일해야함
-        //if (activeSkillCheckBox.Count != characterStat.Skills.Count)
-        //{
-        //    Debug.Log(nameof(activeSkillCheckBox) +"랑" + nameof(characterStat.Skills) +"의 사이즈가 " 
-        //                    +this.name.ToString() +"에서 동일하지 않습니다." );
-        //}
-        #endregion activeSkill Size Check
+        #endregion activeSkillCheckBox Size Check
 
         #region activeSkillCheckBox Count Check
-        //activeSkillCheckBox true로 된게 4개가 넘어가면 안됨
+        //activeSkillCheckBox true로 된게 5개가 넘어가면 안됨
         int activeSkillsCount = 0;
         for(int i = 0; i < activeSkillCheckBox.Count; i++)
         {
@@ -345,10 +334,10 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 ++activeSkillsCount;
             }
         }
-        if (activeSkillsCount > 4)
+        if (activeSkillsCount > 5)
         {
             Debug.Log(this.name.ToString() + "에서의 " + nameof(activeSkillCheckBox) +
-                    "에서 활성화된 스킬 개수가 4개가 넘습니다.");
+                    "에서 활성화된 스킬 개수가 5개가 넘습니다.");
         }
         # endregion activeSkillCheckBox Count Check
     }
