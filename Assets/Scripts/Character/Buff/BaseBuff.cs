@@ -19,6 +19,16 @@ public class BaseBuff : MonoBehaviour
     [SerializeField] protected BuffType buffType;
     [SerializeField] protected int chanceToApplyBuff;
 
+    #region 변화된 스탯들의 수치
+    [SerializeField, ReadOnly] protected float changeDefense;
+    [SerializeField, ReadOnly] protected float changeCrit;
+    [SerializeField, ReadOnly] protected float changeAccuracy;
+    [SerializeField, ReadOnly] protected float changeEvasion;
+    [SerializeField, ReadOnly] protected float changeResist;
+    [SerializeField, ReadOnly] protected float changeMinStat;
+    [SerializeField, ReadOnly] protected float changeMaxStat;
+    #endregion 변화된 스탯들
+
     #region 감소시키지 못한 Stat들
     [SerializeField, ReadOnly] protected float leftoverDefense;
     [SerializeField, ReadOnly] protected float leftoverCrit;
