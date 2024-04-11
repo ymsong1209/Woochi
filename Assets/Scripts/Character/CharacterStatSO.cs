@@ -39,7 +39,7 @@ public class CharacterStatSO : ScriptableObject
     [Space(10)]
     [Header("Character Skills")]
     #endregion Header CHARACTER SKILLS
-    [SerializeField] private List<SkillSO> skills;    // 캐릭터가 가지고 있는 스킬 리스트
+    [SerializeField] private List<BaseSkill> skills;    // 캐릭터가 가지고 있는 스킬 리스트
 
 
 
@@ -57,7 +57,7 @@ public class CharacterStatSO : ScriptableObject
     public float BaseMinStat => baseMinStat;
     public float BaseMaxStat => baseMaxStat;
 
-    public List<SkillSO> Skills => skills;
+    public List<BaseSkill> Skills => skills;
     #endregion
 
 

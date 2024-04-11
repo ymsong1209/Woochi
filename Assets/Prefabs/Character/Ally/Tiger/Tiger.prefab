@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c669bcbf58fa3e544b8b1e2b9e5cf617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterStat: {fileID: 11400000, guid: 9b75340effa45cc44bfc4a04b9610439, type: 2}
+  characterStat: {fileID: 11400000, guid: 10f0ad67cf9f4734688a0bb3547ffd0c, type: 2}
   health: {fileID: 5082884880752242450}
   size: 1
   speed: 0
@@ -123,13 +123,20 @@ MonoBehaviour:
   accuracy: 0
   evasion: 0
   resist: 0
+  minStat: 0
+  maxStat: 0
   isSpawnSpecific: 0
   spawnLocation: {x: 0, y: 0, z: 0}
   spawnRotation: {x: 0, y: 0, z: 0, w: 0}
   isDead: 0
   activeBuffs: []
-  activeSkillCheckBox: 0101
-  isAlly: 0
+  activeSkills:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  activeSkillCheckBox: 01010101
+  isAlly: 1
 --- !u!65 &4402145558997533614
 BoxCollider:
   m_ObjectHideFlags: 0

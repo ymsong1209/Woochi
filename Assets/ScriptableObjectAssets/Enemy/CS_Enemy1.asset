@@ -20,4 +20,6 @@ MonoBehaviour:
   baseAccuracy: 13
   baseEvasion: 13
   baseResist: 13
+  baseMinStat: 0
+  baseMaxStat: 0
   skills: []

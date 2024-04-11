@@ -4,8 +4,11 @@ using System.ComponentModel;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
-public class BaseSkill
+
+public class BaseSkill : MonoBehaviour
 {
+    [SerializeField] private SkillSO skillSO;
+
     [Tooltip("SkillOwner를 세팅해줘야함")]
     [SerializeField] private    BaseCharacter skillOwner;
 
@@ -42,18 +45,18 @@ public class BaseSkill
     [SerializeField] private float skillAccuracy; // 스킬 명중 수치
 
     /// <summary>
-    /// BaseCharacter의 CharacterStatSO에 있는 SkillSO 정보를 이용해 BaseSkill을 초기화
+    /// 자신이 가지고 있는 SkillSO 정보를 이용해 BaseSkill을 초기화
     /// </summary>
-    public void Initialize(SkillSO _skillSO)
+    public void Initialize()
     {
-        skillName = _skillSO.SkillName;
-        skillAvailableRadius = _skillSO.SkillAvailableRadius;
-        skillRadius = _skillSO.SkillRadius;
-        skillType = _skillSO.SkillType;
-        multiplier = _skillSO.BaseMultiplier;
-        skillAccuracy = _skillSO.BaseSkillAccuracy;
-        skillTargetType = _skillSO.SkillTargetType;
-        bufflist = new List<GameObject>(_skillSO.bufflist);
+        skillName = skillSO.SkillName;
+        skillAvailableRadius = skillSO.SkillAvailableRadius;
+        skillRadius = skillSO.SkillRadius;
+        skillType = skillSO.SkillType;
+        multiplier = skillSO.BaseMultiplier;
+        skillAccuracy = skillSO.BaseSkillAccuracy;
+        skillTargetType = skillSO.SkillTargetType;
+        bufflist = new List<GameObject>(skillSO.bufflist);
     }
 
     /// <summary>
@@ -248,6 +251,7 @@ public class BaseSkill
     public string Name => skillName;
     public float Multiplier => multiplier;
 
+    public SkillSO SkillSO => skillSO;
     public bool[] SkillAvailableRadius => skillAvailableRadius;
     public bool[] SkillRadius => skillRadius;
     public SkillTargetType SkillTargetType => skillTargetType;
