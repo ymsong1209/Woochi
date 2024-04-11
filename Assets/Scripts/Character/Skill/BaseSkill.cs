@@ -98,7 +98,12 @@ public class BaseSkill
             //버프 적용
             foreach (GameObject ApplybuffGameobject in bufflist)
             {
+                if (ApplybuffGameobject == null) continue;
                 BaseBuff BufftoApply = ApplybuffGameobject.GetComponent<BaseBuff>();
+                if (BufftoApply == null) continue;
+                //먼저 buff/debuff가 몇%의 확률로 걸리는지 판단.
+                if (CheckApplyBuff(BufftoApply) == false) continue;
+                //치명타면 저항 무시한채 스킬 적용
                 ApplyBuff(opponent, BufftoApply);
             }
         }
@@ -106,15 +111,19 @@ public class BaseSkill
         {
             Debug.Log("Non Crit Skill on " + skillName + "to " + _Opponent.name.ToString());
             ApplyStat(opponent, false);
-            if (CheckApplyBuff(opponent))
+
+            foreach (GameObject ApplybuffGameobject in bufflist)
             {
-                //적이 저항 실패하면 버프 적용
-                foreach (GameObject ApplybuffGameobject in bufflist)
+                if (ApplybuffGameobject == null) continue;
+                BaseBuff BufftoApply = ApplybuffGameobject.GetComponent<BaseBuff>();
+                //먼저 buff/debuff가 몇%의 확률로 걸리는지 판단.
+                if (CheckApplyBuff(BufftoApply) == false) continue;
+                //적의 저항 수치 판단.
+                if (CheckResist(opponent) == false)
                 {
-                    if (ApplybuffGameobject == null) continue;
-                    BaseBuff BufftoApply = ApplybuffGameobject.GetComponent<BaseBuff>();
                     ApplyBuff(opponent, BufftoApply);
                 }
+             
             }
         }
         
@@ -160,13 +169,24 @@ public class BaseSkill
     }
 
     /// <summary>
+    /// 버프를 적용시킬 확률 계산
+    /// 버프를 적용시킬 수 있으면 true 반환
+    /// </summary>
+    private bool CheckApplyBuff(BaseBuff _buff)
+    {
+        int RandomValue = Random.Range(0, 100);
+        if (RandomValue <= _buff.ChanceToApplyBuff) return true;
+        return false;
+    }
+
+    /// <summary>
     /// 저항 판정
     /// 적이 저항에 성공했으면 false반환
     /// </summary>
-    private bool CheckApplyBuff(BaseCharacter _opponet)
+    private bool CheckResist(BaseCharacter _opponent)
     {
         int RandomValue = Random.Range(0, 100);
-        if (RandomValue > _opponet.Resist) return true;
+        if (RandomValue > _opponent.Resist) return true;
         return false;
     }
 

@@ -17,6 +17,7 @@ public class BaseBuff : MonoBehaviour
     /// </summary>
     [SerializeField] protected int  buffDurationTurns;
     [SerializeField] protected BuffType buffType;
+    [SerializeField] protected int chanceToApplyBuff;
 
     /// <summary>
     /// 버프를 추가
@@ -111,6 +112,8 @@ public class BaseBuff : MonoBehaviour
         get { return buffType; }
         set { buffType = value; }
     }
+
+    public int ChanceToApplyBuff => chanceToApplyBuff;
     #endregion Getter Setter
 
     #region Validation

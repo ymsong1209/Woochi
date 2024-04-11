@@ -43,7 +43,8 @@ public enum BuffType
     Bleed,
     Weaken,
     Protect,
-    Shield,            
+    Shield,      
+    Stun,
     END
 }
 
