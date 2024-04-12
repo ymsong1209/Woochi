@@ -7,12 +7,15 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(BoxCollider))]
 [RequireComponent(typeof(Health))]
 [DisallowMultipleComponent]
 public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-                                public CharacterStatSO characterStat;
+    public CharacterStatSO characterStat;
+    [SerializeField] private Animator animator;
+
     #region Header CHARACTER STATS
 
     [Space(10)]
@@ -57,16 +60,16 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     /// chatacterStat에 있는 skillSO중 어떤걸 BaseSkill로 넣을 건지 정하는 bool
     /// 크기는 characterStat 내부의 skills의 길이랑 동일해야함.
     /// </summary>
-    [SerializeField] private  List<bool> activeSkillCheckBox = new List<bool>();
-    private List<BaseSkill>   totalSkills = new List<BaseSkill>();
+    [SerializeField] protected  List<bool> activeSkillCheckBox = new List<bool>();
+    protected List<BaseSkill>   totalSkills = new List<BaseSkill>();
 
-    [SerializeField] private bool isAlly;
-    private bool isTurnUsed; //한 라운드 내에서 자신의 턴을 사용했을 경우
+    [SerializeField] protected bool isAlly;
+    protected bool isTurnUsed; //한 라운드 내에서 자신의 턴을 사용했을 경우
 
     #endregion BATTLE STATS
 
 
-    public void CheckSkillsOnTurnStart()
+    public virtual void CheckSkillsOnTurnStart()
     { 
         foreach(BaseSkill activeskill in activeSkills)
         {
@@ -213,6 +216,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if(health.CheckHealthZero())
         {
             SetDead(true);
+            PlayAnimation(AnimationType.Dead);
             return true;
         }
         return false;
@@ -245,6 +249,19 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         UIManager.GetInstance.enemyTooltip.SetActive(false);
     }
+    #endregion
+
+    #region 애니메이션
+    public void PlayAnimation(AnimationType _type)
+    {
+        if(animator == null)
+        {
+            return;
+        }
+
+        animator.SetTrigger(_type.ToString());
+    }
+
     #endregion
     #region Getter Setter
     public int Size => size;

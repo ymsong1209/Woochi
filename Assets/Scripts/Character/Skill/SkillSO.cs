@@ -14,7 +14,7 @@ public class SkillSO : ScriptableObject
     #endregion Header SKILL BASICS
 
     [SerializeField] private string             skillName;
-
+    [SerializeField] private AnimationType      animType;
     /// <summary>
     /// 스킬을 사용할 수 있는 열
     /// 0~4 : 아군 1~4열
@@ -46,6 +46,7 @@ public class SkillSO : ScriptableObject
 
     #region Getter Setter
     public string SkillName => skillName;
+    public AnimationType AnimType => animType;
 
     public bool[] SkillAvailableRadius => skillAvailableRadius;
     public bool[] SkillRadius => skillRadius;

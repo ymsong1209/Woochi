@@ -66,3 +66,19 @@ public enum EventType
 {
 
 }
+
+/// <summary>
+/// 어떤 애니메이션을 실행할지 결정, 스킬 더 있을 경우 추가
+/// </summary>
+public enum AnimationType
+{
+    Idle,
+    Damaged,
+    Dead,
+    Skill0,
+    Skill1,
+    Skill2,
+    Skill3,
+    Skill4,
+    END
+}
