@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4bbbce2a03c2d4a95b7ced04f3ebb7, type: 3}
+  m_Name: CS_Fox
+  m_EditorClassIdentifier: 
+  characterName: "\uC0BC\uBBF8\uD638"
+  baseHealth: 22
+  baseSpeed: 7
+  baseDefense: 0
+  baseCrit: 5
+  baseAccuracy: 0
+  baseEvasion: 5
+  baseResist: 20
+  baseMinStat: 5
+  baseMaxStat: 9
+  skills:
+  - {fileID: 5607669441309170492, guid: 48acee4a8f9298c43b59bfbece7902f6, type: 3}
+  - {fileID: 5607669441309170492, guid: deef6a64580762146bac3ba5b49cd971, type: 3}
+  - {fileID: 5607669441309170492, guid: 91328cbc870d1b44c9cb022cb976ec75, type: 3}
+  - {fileID: 5607669441309170492, guid: 1caa529344df84a4fb7a8bfea2dbb719, type: 3}
+  - {fileID: 5607669441309170492, guid: 313aa051e004d384d89a3207a4b983db, type: 3}
+  - {fileID: 5607669441309170492, guid: 20521276e7e72124398faf0dda81b449, type: 3}
+  - {fileID: 4262305523891416492, guid: 325b695bb291622449f515b8f8be791c, type: 3}

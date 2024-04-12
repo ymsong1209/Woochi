@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterStat: {fileID: 11400000, guid: 10f0ad67cf9f4734688a0bb3547ffd0c, type: 2}
   health: {fileID: 5082884880752242450}
-  size: 1
+  size: 2
   speed: 0
   defense: 0
   crit: 0

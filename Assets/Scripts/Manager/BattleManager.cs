@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.PlayerLoop;
@@ -158,6 +159,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         for (int i = 0; i < GameManager.GetInstance.Allies.Count; ++i)
         {
             GameObject allyPrefab = GameManager.GetInstance.Allies[i];
+            if (allyPrefab == null) continue;
             GameObject allyGameObject = Instantiate(allyPrefab);
             BaseCharacter allyCharacter = allyGameObject.GetComponent<BaseCharacter>();
 
@@ -422,6 +424,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         // 적군의 0번째 캐릭터에게 스킬을 쓴다고 가정
         if (currentSelectedSkill == null) return;
+
+        // 스킬 사용한 캐릭터 애니메이션 실행, 스킬 사용 후 상대 캐릭터 애니메이션도 실행해야 함(회피도 애니메이션 있나) 
+        BaseCharacter caster = currentSelectedSkill.SkillOwner;
+        caster.PlayAnimation(currentSelectedSkill.SkillSO.AnimType);
+
         //단일공격 스킬일 경우 index에 들어온 적만 공격
         if(currentSelectedSkill.SkillTargetType == SkillTargetType.Singular)
         {
@@ -684,6 +691,67 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         GameManager.GetInstance.SelectRoom();
     }
 
+    /// <summary>
+    /// 매개변수로 들어온 캐릭터가 현재 포메이션에서 어느 위치에 있는지
+    /// </summary>
+    /// <param name="_character"></param>
+    /// <returns></returns>
+    public int GetCharacterIndex(BaseCharacter _character)
+    {
+        int index = 0;
+        GameObject[] formation;
+
+        if (_character.IsAlly)
+        {
+            formation = allyFormation;
+        }
+        else
+        {
+            formation = enemyFormation;
+        }
+        
+        for(int i = 0; i < 4; i++)
+        {
+            if (formation[i] == null)
+            {
+                continue;
+            }
+
+            BaseCharacter character = formation[i].GetComponent<BaseCharacter>();
+
+            if (character == _character)
+            {
+                index = i;
+            }
+        }
+
+        return index;
+    }
+
+    /// <summary>
+    /// index 위치에 캐릭터가 있는지
+    /// </summary>
+    /// <param name="index"></param>
+    /// <returns></returns>
+    public bool IsCharacterThere(int index)
+    {
+        if(index < 4)
+        {
+            if (allyFormation[index] != null)
+            {
+                return true;
+            }
+        }
+        else if(index < 8)
+        {
+            if (enemyFormation[index - 4] != null)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
     #region Getter Setter
 
     public GameObject[] AllyFormation

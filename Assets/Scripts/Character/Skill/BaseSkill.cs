@@ -218,9 +218,9 @@ public class BaseSkill : MonoBehaviour
         _Opponent.activeBuffs.Add(_buff);
     }
 
-    private void ApplyStat(BaseCharacter _Opponent, bool _isCrit)
+    private void ApplyStat(BaseCharacter _opponent, bool _isCrit)
     {
-        Health opponentHealth = _Opponent.gameObject.GetComponent<Health>();
+        Health opponentHealth = _opponent.gameObject.GetComponent<Health>();
         //최소, 최대 대미지 사이의 수치를 고름
         
         float RandomStat = Random.Range(skillOwner.MinStat, skillOwner.MaxStat);
@@ -232,9 +232,13 @@ public class BaseSkill : MonoBehaviour
             case SkillType.Attack:
             {
                 //방어 스탯을 뺌
-                RandomStat = RandomStat * (100 - _Opponent.Defense) / 100;
+                RandomStat = RandomStat * (100 - _opponent.Defense) / 100;
                 if (_isCrit) RandomStat = RandomStat * 2;
+
                 opponentHealth.ApplyDamage((int)RandomStat);
+
+                // 피해를 입었을 때 애니메이션 재생
+                _opponent.PlayAnimation(AnimationType.Damaged);
             }
             break;
             case SkillType.Heal:
@@ -246,7 +250,10 @@ public class BaseSkill : MonoBehaviour
         }
     }
 
-
+    public bool IsSkillAvailable(int _index)
+    {
+        return skillAvailableRadius[_index];
+    }
     #region Getter Setter
     public string Name => skillName;
     public float Multiplier => multiplier;
