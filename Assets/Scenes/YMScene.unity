@@ -2955,6 +2955,7 @@ MonoBehaviour:
   accuracy: {fileID: 710283432}
   evasion: {fileID: 261784838}
   critical: {fileID: 931884198}
+  damage: {fileID: 0}
   speed: {fileID: 1282204619}
   depense: {fileID: 1668904963}
   resist: {fileID: 1665664118}
