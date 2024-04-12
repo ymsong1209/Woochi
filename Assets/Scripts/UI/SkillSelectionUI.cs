@@ -115,7 +115,7 @@ public class SkillSelectionUI : MonoBehaviour
     // 스킬 선택 버튼이 클릭됐을 때 호출될 메서드
     public void SkillButtonClicked(BaseSkill _skill)
     {
-        if (_skill == null || BattleManager.GetInstance.isSkillExecuted)
+        if (_skill == null)
             return;
 
         // BattleManager의 SkillSelected 호출

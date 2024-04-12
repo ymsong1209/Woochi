@@ -63,8 +63,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
     #region 부울 변수
     [Header("Boolean Variables")]
-    [HideInInspector] public bool isSkillSelected = false;
-    [HideInInspector] public bool isSkillExecuted = false;
+    private bool isSkillSelected = false;
+    private bool isSkillExecuted = false;
     #endregion
 
     private void Start()

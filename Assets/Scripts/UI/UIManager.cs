@@ -26,8 +26,8 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     public void SetEnemyToolTip(BaseCharacter _character)
     {
         enemyTooltip.SetActive(true);
-        enemyNameTxt.text = _character.name;
-        enemyHPTxt.text = $"HP : {_character.Health.CurHealth} / {_character.Health.MaxHealth}";
+        enemyNameTxt.text = _character.characterStat.CharacterName;
+        enemyHPTxt.text = $"체력 : {_character.Health.CurHealth} / {_character.Health.MaxHealth}";
         enemyEvasionTxt.text = $"회피 : {_character.Evasion}";
         enemySpeedTxt.text = $"속도 : {_character.Speed}";
     }

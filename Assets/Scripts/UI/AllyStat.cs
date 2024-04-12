@@ -32,4 +32,9 @@ public class AllyStat : MonoBehaviour
 
         valueTxt.text = value.ToString();
     }
+
+    public void SetText(float minStat, float maxStat)
+    {
+        valueTxt.text = $"{minStat}-{maxStat}";
+    }
 }

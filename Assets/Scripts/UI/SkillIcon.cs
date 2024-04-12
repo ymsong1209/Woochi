@@ -36,8 +36,7 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-
-        if (skill == null || skill.Name == null)
+        if (skill == null)
             return;
 
         UIManager.GetInstance.SetSkillToolTip(skill, tooltipPos.position);

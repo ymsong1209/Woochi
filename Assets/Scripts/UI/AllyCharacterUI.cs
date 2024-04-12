@@ -19,6 +19,7 @@ public class AllyCharacterUI : MonoBehaviour
     [SerializeField] private AllyStat accuracy;
     [SerializeField] private AllyStat evasion;
     [SerializeField] private AllyStat critical;
+    [SerializeField] private AllyStat damage;
     [SerializeField] private AllyStat speed;
     [SerializeField] private AllyStat depense;
     [SerializeField] private AllyStat resist;
@@ -52,7 +53,7 @@ public class AllyCharacterUI : MonoBehaviour
         // 2. 아니면 따로 도감 식으로 만들어서 거기에 저장하고 가져올 수 있게 하는 방법
         // characterPortrait.sprite = _character.CharacterPortrait;
 
-        characterName.text = _character.name;
+        characterName.text = _character.characterStat.CharacterName;
     }
 
     /// <summary>
@@ -61,9 +62,10 @@ public class AllyCharacterUI : MonoBehaviour
     /// <param name="_character"></param>
     private void ShowCharacterStat(BaseCharacter _character)
     {
-        hpText.text = _character.Health.CurHealth.ToString() + " / " + _character.Health.MaxHealth.ToString();
+        hpText.text = $"{_character.Health.CurHealth} / {_character.Health.MaxHealth}";
         accuracy.SetText(_character.Accuracy);
         critical.SetText(_character.Crit, true);
+        damage.SetText(_character.MinStat, _character.MaxStat);
         depense.SetText(_character.Defense, true);
         evasion.SetText(_character.Evasion);
         resist.SetText(_character.Resist);
