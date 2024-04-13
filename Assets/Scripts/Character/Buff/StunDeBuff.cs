@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class StunBuff : BaseBuff
+public class StunDeBuff : BaseBuff
 {
 
     //stun관련 버프. 플레이어의 턴을 건너뛰게 하고 싶음.

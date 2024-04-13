@@ -4,5 +4,69 @@ using UnityEngine;
 
 public class Tiger_Bite : BaseSkill
 {
+    public override void ApplySkill(BaseCharacter _Opponent)
+    {
+        //아군 보호 스킬등으로 보호 할 수 있음
+        //최종적으로 공격해야하는 적 판정
+        BaseCharacter opponent = base.CheckOpponentValid(_Opponent);
 
+        if (opponent == null)
+        {
+            Debug.LogError("opponent is null");
+            return;
+        }
+
+        //명중 체크
+        if (CheckAccuracy() == false)
+        {
+            Debug.Log("Accuracy Failed on" + _Opponent.name.ToString());
+            return;
+        }
+        //회피 체크
+        if (CheckEvasion(opponent) == false)
+        {
+            Debug.Log(_Opponent.name.ToString() + "Evaded skill" + base.Name);
+            return;
+        }
+
+        //치명타일 경우
+        if (CheckCrit())
+        {
+            Debug.Log("Crit Skill on " + base.Name + "to " + _Opponent.name.ToString());
+            ApplyTotalDamage(opponent, true);
+
+        }
+        else
+        {
+            Debug.Log("Non Crit Skill on " + base.Name + "to " + _Opponent.name.ToString());
+            ApplyTotalDamage(opponent, false);
+        }
+    }
+
+    private void ApplyTotalDamage(BaseCharacter _opponent, bool _isCrit)
+    {
+        Health opponentHealth = _opponent.gameObject.GetComponent<Health>();
+        //최소, 최대 대미지 사이의 수치를 고름
+
+        float RandomStat = Random.Range(SkillOwner.MinStat, SkillOwner.MaxStat);
+        //피해량 계수를 곱함
+        RandomStat *= (Multiplier / 100);
+
+        //방어 스탯을 뺀 base 스탯을 구함
+        RandomStat = RandomStat * (100 - _opponent.Defense) / 100;
+        if (_isCrit) RandomStat = RandomStat * 2;
+
+        // 물어뜯기로 피해를 입히면 적의 잃은 체력의 20% 만큼 추가 피해를 줌
+        RandomStat +=  (opponentHealth.MaxHealth - opponentHealth.CurHealth) * 0.2f;
+
+        //적에게 최종적인 대미지를 줌
+        opponentHealth.ApplyDamage((int)Mathf.Round(RandomStat));
+
+        //호랑이는 준 피해의 30%만큼 회복함.
+        int healamount = (int)Mathf.Round(RandomStat * 0.3f);
+        SkillOwner.Health.Heal(healamount);
+
+        // 피해를 입었을 때 애니메이션 재생
+        _opponent.PlayAnimation(AnimationType.Damaged);
+    }
 }

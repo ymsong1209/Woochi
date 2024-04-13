@@ -132,7 +132,7 @@ public class BaseSkill : MonoBehaviour
         
     }
 
-    BaseCharacter CheckOpponentValid(BaseCharacter _Opponent)
+    protected BaseCharacter CheckOpponentValid(BaseCharacter _Opponent)
     {
         BaseCharacter finaltarget = _Opponent;
         foreach(BaseBuff buff in finaltarget.activeBuffs)
@@ -153,7 +153,7 @@ public class BaseSkill : MonoBehaviour
     /// 스킬 명중 수치 + 캐릭터 명중 수치로 계산
     /// 명중했을 경우 true 반환
     /// </summary>
-    private bool CheckAccuracy()
+    protected bool CheckAccuracy()
     {
         int RandomValue = Random.Range(0, 100);
         if (RandomValue < skillAccuracy + skillOwner.Accuracy) return true;
@@ -164,7 +164,7 @@ public class BaseSkill : MonoBehaviour
     /// 회피 판정
     /// 적이 회피했으면 false반환
     /// </summary>
-    private bool CheckEvasion(BaseCharacter _opponent)
+    protected bool CheckEvasion(BaseCharacter _opponent)
     {
         int RandomValue = Random.Range(0, 100);
         if (RandomValue > _opponent.Evasion) return true;
@@ -175,7 +175,7 @@ public class BaseSkill : MonoBehaviour
     /// 버프를 적용시킬 확률 계산
     /// 버프를 적용시킬 수 있으면 true 반환
     /// </summary>
-    private bool CheckApplyBuff(BaseBuff _buff)
+    protected bool CheckApplyBuff(BaseBuff _buff)
     {
         int RandomValue = Random.Range(0, 100);
         if (RandomValue <= _buff.ChanceToApplyBuff) return true;
@@ -186,7 +186,7 @@ public class BaseSkill : MonoBehaviour
     /// 저항 판정
     /// 적이 저항에 성공했으면 false반환
     /// </summary>
-    private bool CheckResist(BaseCharacter _opponent)
+    protected bool CheckResist(BaseCharacter _opponent)
     {
         int RandomValue = Random.Range(0, 100);
         if (RandomValue > _opponent.Resist) return true;
@@ -196,7 +196,7 @@ public class BaseSkill : MonoBehaviour
     /// <summary>
     /// 치명타 판정이 성공하면 true 반환
     /// </summary>
-    private bool CheckCrit()
+    protected bool CheckCrit()
     {
         int RandomValue = Random.Range(0, 100);
         if (RandomValue < skillOwner.Crit) return true;
@@ -235,7 +235,7 @@ public class BaseSkill : MonoBehaviour
                 RandomStat = RandomStat * (100 - _opponent.Defense) / 100;
                 if (_isCrit) RandomStat = RandomStat * 2;
 
-                opponentHealth.ApplyDamage((int)RandomStat);
+                opponentHealth.ApplyDamage((int)Mathf.Round(RandomStat));
 
                 // 피해를 입었을 때 애니메이션 재생
                 _opponent.PlayAnimation(AnimationType.Damaged);
@@ -244,7 +244,7 @@ public class BaseSkill : MonoBehaviour
             case SkillType.Heal:
             {
                 if (_isCrit) RandomStat = RandomStat * 2;
-                opponentHealth.Heal((int)RandomStat);
+                opponentHealth.Heal((int)Mathf.Round(RandomStat));
             }
             break;
         }

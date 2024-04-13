@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tiger_Skill_Slam_StunBuff : StunBuff
+public class Tiger_Skill_Slam_StunBuff : StunDeBuff
 {
     public override void AddBuff(BaseCharacter _buffOwner)
     {
