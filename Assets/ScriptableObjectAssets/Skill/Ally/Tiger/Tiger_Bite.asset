@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f970e1487b951641bb3562062edf1db, type: 3}
   m_Name: Tiger_Bite
   m_EditorClassIdentifier: 
-  skillName: "\uB0B4\uB824\uCC0D\uAE30"
+  skillName: "\uBB3C\uC5B4\uB72F\uAE30"
+  animType: 5
   skillAvailableRadius: 0101000000000000
   skillRadius: 0000000001000000
   skillType: 0

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Tiger_Roar
   m_EditorClassIdentifier: 
   skillName: "\uC0B0\uAD70\uC758 \uD3EC\uD6A8"
+  animType: 4
   skillAvailableRadius: 0101000000000000
   skillRadius: 0000000001010100
   skillType: 0
