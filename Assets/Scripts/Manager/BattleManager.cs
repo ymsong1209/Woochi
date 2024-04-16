@@ -2,19 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.PlayerLoop;
-using UnityEngine.TextCore.Text;
-using static UnityEngine.EventSystems.EventTrigger;
 
 public class BattleManager : SingletonMonobehaviour<BattleManager>
 {
    
     private BattleState         CurState;
-    public GameObject           currentCharacterGameObject;     //현재 누구 차례인지
+    public  BaseCharacter       currentCharacter;               //현재 누구 차례인지
     private BaseSkill           currentSelectedSkill;           //현재 선택된 스킬
     private int                 currentRound;                   //현재 몇 라운드인지
 
@@ -51,9 +45,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// <summary>
     /// 아군이랑 적군의 싸움 순서
     /// </summary>
-    [SerializeField] private Queue<GameObject> combatQueue = new Queue<GameObject>();
-    [SerializeField, ReadOnly] private GameObject[] allyFormation = new GameObject[4];
-    [SerializeField, ReadOnly] private GameObject[] enemyFormation = new GameObject[4];
+    [SerializeField] private Queue<BaseCharacter> combatQueue = new Queue<BaseCharacter>();
+    [SerializeField, ReadOnly] private BaseCharacter[] allyFormation = new BaseCharacter[4];
+    [SerializeField, ReadOnly] private BaseCharacter[] enemyFormation = new BaseCharacter[4];
 
     #region 이벤트
     /// <summary>
@@ -87,11 +81,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         currentRound = 0;
         combatQueue.Clear();
-        for(int i = 0;i<allyFormation.Length; ++i)
+        for(int i = 0; i < allyFormation.Length; ++i)
         {
             allyFormation[i] = null;
         }
-        for(int i = 0;i<enemyFormation.Length; ++i)
+        for(int i = 0; i < enemyFormation.Length; ++i)
         {
             enemyFormation[i] = null;
         }
@@ -100,7 +94,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         #region 적군 배치
         // DungeonInfo내에 있는 적들을 알맞은 곳에 배치
         int EnemyTotalSize = 0;
-        for(int i = 0;i<dungeon.EnemyList.Count; ++i)
+        for(int i = 0; i < dungeon.EnemyList.Count; ++i)
         {
             GameObject enemyPrefab = dungeon.EnemyList[i];
 
@@ -113,8 +107,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             enemyCharacter.ApplyBuff(BuffTiming.BattleStart);
 
             //전투 순서에 삽입
-            combatQueue.Enqueue(enemyGameObject);
-            enemyFormation[EnemyTotalSize] = enemyGameObject;
+            combatQueue.Enqueue(enemyCharacter);
+            enemyFormation[EnemyTotalSize] = enemyCharacter;
 
             //위치값을 정해야하는 특수한 객체가 아니면 enemyPosition대로 정상 소환
             int enemySize = enemyCharacter.Size;
@@ -129,7 +123,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 //크기가 2인 적군
                 else if (enemySize == 2) {
                     enemyGameObject.transform.position = enemyMultiplePosition[EnemyTotalSize];
-                    enemyFormation[EnemyTotalSize + 1] = enemyGameObject;
+                    enemyFormation[EnemyTotalSize + 1] = enemyCharacter;
                     EnemyTotalSize += 2;
                 }
             }
@@ -147,7 +141,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 else if (enemySize == 2)
                 {
                     enemyGameObject.transform.position = enemyCharacter.SpawnLocation;
-                    enemyFormation[EnemyTotalSize + 1] = enemyGameObject;
+                    enemyFormation[EnemyTotalSize + 1] = enemyCharacter;
                     EnemyTotalSize += 2;
                 }
             }
@@ -159,7 +153,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         for (int i = 0; i < GameManager.GetInstance.Allies.Count; ++i)
         {
             GameObject allyPrefab = GameManager.GetInstance.Allies[i];
-            if (allyPrefab == null) continue;
+
             GameObject allyGameObject = Instantiate(allyPrefab);
             BaseCharacter allyCharacter = allyGameObject.GetComponent<BaseCharacter>();
 
@@ -167,8 +161,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             allyCharacter.IsAlly = true;
 
             //전투 순서에 삽입
-            combatQueue.Enqueue(allyGameObject);
-            allyFormation[i] = allyGameObject;
+            combatQueue.Enqueue(allyCharacter);
+            allyFormation[i] = allyCharacter;
 
             //턴 소비 체크
             allyCharacter.IsTurnUsed = false;
@@ -209,6 +203,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 }
             }
         }
+
         #endregion 아군 배치
         #endregion 아군과 적군 배치
 
@@ -247,13 +242,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         for (int i = 0; i < characterCount; i++)
         {
             // Queue에서 항목을 제거
-            GameObject characterGameObject = combatQueue.Dequeue();
-            BaseCharacter character = characterGameObject.GetComponent<BaseCharacter>();
+            BaseCharacter character = combatQueue.Dequeue();
 
             character.ApplyBuff(BuffTiming.RoundStart);
 
             // 수정된 character를 Queue의 뒤쪽에 다시 추가.
-            combatQueue.Enqueue(characterGameObject);
+            combatQueue.Enqueue(character);
         }
 
     }
@@ -274,7 +268,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// </summary>
     void ReordercombatQueue(bool _ResetTurnUsed = false)
     {
-        List<GameObject> allCharacters = new List<GameObject>();
+        List<BaseCharacter> allCharacters = new List<BaseCharacter>();
 
         // combatQueue에 남아 있는 캐릭터를 모두 allCharacters 리스트에 추가
         while (combatQueue.Count > 0)
@@ -283,23 +277,23 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
 
         // allCharacters 리스트를 속도에 따라 재정렬
-        allCharacters.Sort((character1, character2) => character2.GetComponent<BaseCharacter>().Speed.CompareTo(character1.GetComponent<BaseCharacter>().Speed));
+        allCharacters.Sort((character1, character2) => character2.Speed.CompareTo(character1.Speed));
 
         // 재정렬된 리스트를 바탕으로 combatQueue 재구성
         combatQueue.Clear();
-        foreach (GameObject character in allCharacters)
+        foreach (BaseCharacter character in allCharacters)
         {
             if (_ResetTurnUsed)
             {
-                character.GetComponent<BaseCharacter>().IsTurnUsed = false;
+                character.IsTurnUsed = false;
             }
             combatQueue.Enqueue(character);
         }
     }
 
-    void ReordercombatQueue(List<GameObject> processedCharacters)
+    void ReordercombatQueue(List<BaseCharacter> processedCharacters)
     {
-        List<GameObject> allCharacters = new List<GameObject>(processedCharacters);
+        List<BaseCharacter> allCharacters = new List<BaseCharacter>(processedCharacters);
 
         // combatQueue에 남아 있는 캐릭터를 모두 allCharacters 리스트에 추가
         while (combatQueue.Count > 0)
@@ -308,11 +302,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
 
         // allCharacters 리스트를 속도에 따라 재정렬
-        allCharacters.Sort((character1, character2) => character2.GetComponent<BaseCharacter>().Speed.CompareTo(character1.GetComponent<BaseCharacter>().Speed));
+        allCharacters.Sort((character1, character2) => character2.Speed.CompareTo(character1.Speed));
 
         // 재정렬된 리스트를 바탕으로 combatQueue 재구성
         combatQueue.Clear();
-        foreach (GameObject character in allCharacters)
+        foreach (BaseCharacter character in allCharacters)
         {
             combatQueue.Enqueue(character);
         }
@@ -333,7 +327,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
     IEnumerator HandleCharacterTurns()
     {
-        List<GameObject> processedCharacters = new List<GameObject>();
+        List<BaseCharacter> processedCharacters = new List<BaseCharacter>();
 
         while (combatQueue.Count > 0)
         {
@@ -342,25 +336,20 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             isSkillExecuted = false;
             currentSelectedSkill = null;
             #endregion
-            currentCharacterGameObject = combatQueue.Dequeue();
-            BaseCharacter currentCharacter = currentCharacterGameObject.GetComponent<BaseCharacter>();
+            currentCharacter = combatQueue.Dequeue();
 
             if (currentCharacter.IsDead || currentCharacter.IsTurnUsed)
             {
-                processedCharacters.Add(currentCharacterGameObject);
+                processedCharacters.Add(currentCharacter);
                 continue;
             }
 
             // 자신의 차례가 됐을 때 버프 적용
             if (currentCharacter.ApplyBuff(BuffTiming.TurnStart))
             {
-
-                // 닼던처럼 한다면 현재 턴이 적이라면 UI를 업데이트 하지 않는 식으로 하는게 좋을 것 같음
-                if (currentCharacter.IsAlly)
-                {
-                    //캐릭터의 스킬에 변경점이 있는지 확인
-                    currentCharacter.CheckSkillsOnTurnStart();
-                }
+                // 캐릭터의 스킬에 변경점이 있는지 확인
+                // 적도 위치가 바뀔 수 있으니 스킬 확인을 해줌
+                currentCharacter.CheckSkillsOnTurnStart();
 
                 // 현재 턴의 캐릭터에 맞는 UI 업데이트
                 OnCharacterTurnStart?.Invoke(currentCharacter);
@@ -383,7 +372,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             // 스킬 사용으로 인한 속도 변경 처리
             ReordercombatQueue(processedCharacters);
 
-            processedCharacters.Add(currentCharacterGameObject);
+            processedCharacters.Add(currentCharacter);
 
             // 승리 조건 체크
             if (CheckVictory(processedCharacters) && CheckVictory(combatQueue))
@@ -401,7 +390,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             yield return null;
         }
         //ProcessedCharacter에 있는 캐릭터들 다시 characterQueue에 삽입
-        foreach(GameObject characters in processedCharacters)
+        foreach(BaseCharacter characters in processedCharacters)
         {
             combatQueue.Enqueue(characters);
         }
@@ -455,12 +444,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         //index<4인경우는 적이 아군을 공격한 경우
         if (_index < 4)
         {
-           Enemies.Add(allyFormation[_index].GetComponent<BaseCharacter>());
+           Enemies.Add(allyFormation[_index]);
         }
         //4<index<8인 경우는 아군이 적을 공격한 경우
         else if (_index < 8)
         {
-            Enemies.Add(enemyFormation[_index - 4].GetComponent<BaseCharacter>());
+            Enemies.Add(enemyFormation[_index - 4]);
         }
        
         if (Caster != null && Enemies.Count > 0)
@@ -481,14 +470,14 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         Caster = currentSelectedSkill.SkillOwner;
 
         //Index 여부와 상관없이 selectedSkill의 범위 내의 모든 공격 가능한 몹들 공격
-        for (int i = 0;i<currentSelectedSkill.SkillRadius.Length; i++)
+        for (int i = 0; i < currentSelectedSkill.SkillRadius.Length; i++)
         {
             //i<4일 경우 적이 아군을 공격
             if (i < 4 && currentSelectedSkill.SkillRadius[i])
             {
-                GameObject allyGameObject = allyFormation[i];
-                if (allyGameObject == null) continue;
-                BaseCharacter ally = allyGameObject.GetComponent<BaseCharacter>();
+                BaseCharacter ally = allyFormation[i];
+                if(ally == null) continue;
+
                 //아군의 Size가 2인 경우
                 if (ally.Size == 2)
                 {
@@ -503,13 +492,13 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                     // Size가 1인 Ally은 그냥 추가
                     Receivers.Add(ally);
                 }
-                Receivers.Add(allyFormation[i].GetComponent<BaseCharacter>());
+                Receivers.Add(allyFormation[i]);
             }
             else if (4 <= i && i < 8 && currentSelectedSkill.SkillRadius[i])
             {
-                GameObject EnemyGameObject = enemyFormation[i - 4];
-                if (EnemyGameObject == null) continue;
-                BaseCharacter enemy = enemyFormation[i - 4].GetComponent<BaseCharacter>();
+                BaseCharacter enemy = enemyFormation[i - 4];
+                if(enemy == null) continue;
+
                 //적의 Size가 2인 경우
                 if(enemy.Size == 2)
                 {
@@ -551,7 +540,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 {
                     for (int i = 0; i < allyFormation.Length; i++)
                     {
-                        if (allyFormation[i] != null && allyFormation[i].GetComponent<BaseCharacter>() == receiver)
+                        if (allyFormation[i] != null && allyFormation[i] == receiver)
                         {
                             allyFormation[i] = null; // 자기 자신을 null로 설정
                         }
@@ -561,7 +550,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 {
                     for (int i = 0; i < enemyFormation.Length; i++)
                     {
-                        if (enemyFormation[i] != null && enemyFormation[i].GetComponent<BaseCharacter>() == receiver)
+                        if (enemyFormation[i] != null && enemyFormation[i] == receiver)
                         {
                             enemyFormation[i] = null;
                         }
@@ -621,24 +610,21 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         for (int i = 0; i < characterCount; i++)
         {
             // Queue에서 항목을 제거
-            GameObject characterGameObject = combatQueue.Dequeue();
-            BaseCharacter character = characterGameObject.GetComponent<BaseCharacter>();
+            BaseCharacter character = combatQueue.Dequeue();
             character.ApplyBuff(BuffTiming.RoundEnd);
 
             // 수정된 character를 Queue의 뒤쪽에 다시 추가합니다.
-            combatQueue.Enqueue(characterGameObject);
+            combatQueue.Enqueue(character);
         }
     }
 
     /// <summary>
     /// 적군이 모두 죽었는지 확인
     /// </summary>
-    bool CheckVictory(IEnumerable<GameObject> characters)
+    bool CheckVictory(IEnumerable<BaseCharacter> characters)
     {
-
-        foreach (GameObject characterGameObject in characters)
+        foreach (BaseCharacter character in characters)
         {
-            BaseCharacter character = characterGameObject.GetComponent<BaseCharacter>();
             if (!character.IsAlly && !character.IsDead)
             {
                 return false; // 살아있는 적군이 있으므로 승리하지 않음
@@ -650,11 +636,10 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// <summary>
     /// 아군이 모두 죽었는지 확인
     /// </summary>
-    bool CheckDefeat(IEnumerable<GameObject> characters)
+    bool CheckDefeat(IEnumerable<BaseCharacter> characters)
     {
-        foreach (GameObject characterGameObject in characters)
+        foreach (BaseCharacter character in characters)
         {
-            BaseCharacter character = characterGameObject.GetComponent<BaseCharacter>();
             if (character.IsAlly && !character.IsDead)
             {
                 return false; // 살아있는 아군이 있으므로 패배하지 않음
@@ -680,7 +665,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         //적군인 경우 삭제
         while (combatQueue.Count > 0)
         {
-            BaseCharacter curchar = combatQueue.Dequeue().GetComponent<BaseCharacter>();
+            BaseCharacter curchar = combatQueue.Dequeue();
             if(curchar.IsAlly == false)
             {
                 curchar.Destroy();
@@ -699,16 +684,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     public int GetCharacterIndex(BaseCharacter _character)
     {
         int index = 0;
-        GameObject[] formation;
+        BaseCharacter[] formation;
 
         if (_character.IsAlly)
-        {
             formation = allyFormation;
-        }
         else
-        {
             formation = enemyFormation;
-        }
         
         for(int i = 0; i < 4; i++)
         {
@@ -717,9 +698,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 continue;
             }
 
-            BaseCharacter character = formation[i].GetComponent<BaseCharacter>();
-
-            if (character == _character)
+            if (formation[i] == _character)
             {
                 index = i;
             }
@@ -754,13 +733,13 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
     #region Getter Setter
 
-    public GameObject[] AllyFormation
+    public BaseCharacter[] AllyFormation
     {
         get { return allyFormation; }
         private set { allyFormation = value; } 
     }
 
-    public GameObject[] EnemyFormation
+    public BaseCharacter[] EnemyFormation
     {
         get { return enemyFormation; }
         private set { enemyFormation = value; }

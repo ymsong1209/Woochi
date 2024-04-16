@@ -21,7 +21,7 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void SetSkill(BaseSkill _skill)
     {
-        if (_skill!=null)
+        if (_skill != null)
         {
             btn.interactable = true;
             skill = _skill;
@@ -29,6 +29,7 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         //_skill이 null일 경우 빈 skill로 초기화
         else
         {
+            btn.interactable = false;
             skill = null;
         }
         // TODO : 스킬 아이콘 스프라이트 지정

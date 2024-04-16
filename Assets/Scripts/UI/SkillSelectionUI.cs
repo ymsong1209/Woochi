@@ -22,7 +22,7 @@ public class SkillSelectionUI : MonoBehaviour
         for (int i = 0; i < skillIcons.Count; i++)
         {
             int index = i;
-            Button btn = skillIcons[i].GetComponent<Button>();
+            Button btn = skillIcons[i].btn;
             btn.onClick.AddListener(() => SkillButtonClicked(skillIcons[index].Skill));
         }
     }
@@ -117,7 +117,6 @@ public class SkillSelectionUI : MonoBehaviour
     /// </summary>
     private void DisableSkills()
     {
-        skillIcons.ForEach(icon => icon.GetComponent<Button>().interactable = false);
         foreach (SkillIcon icon in skillIcons)
         {
             icon.SetSkill(null);

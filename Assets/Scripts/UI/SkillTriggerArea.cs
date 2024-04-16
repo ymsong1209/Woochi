@@ -56,8 +56,7 @@ public class SkillTriggerArea : MonoBehaviour
 
     void ApplySkill(BaseSkill _skill, BaseCharacter _opponent)
     {
-        GameObject CasterGameObject = BattleManager.GetInstance.currentCharacterGameObject;
-        BaseCharacter caster = CasterGameObject.GetComponent<BaseCharacter>();
+        BaseCharacter caster = BattleManager.GetInstance.currentCharacter;
         _skill.ApplySkill(_opponent);
     }
 
