@@ -65,8 +65,5 @@ public class Tiger_Bite : BaseSkill
         //호랑이는 준 피해의 30%만큼 회복함.
         int healamount = (int)Mathf.Round(RandomStat * 0.3f);
         SkillOwner.Health.Heal(healamount);
-
-        // 피해를 입었을 때 애니메이션 재생
-        _opponent.PlayAnimation(AnimationType.Damaged);
     }
 }

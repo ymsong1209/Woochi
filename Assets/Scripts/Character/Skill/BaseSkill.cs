@@ -236,9 +236,6 @@ public class BaseSkill : MonoBehaviour
                 if (_isCrit) RandomStat = RandomStat * 2;
 
                 opponentHealth.ApplyDamage((int)Mathf.Round(RandomStat));
-
-                // 피해를 입었을 때 애니메이션 재생
-                _opponent.PlayAnimation(AnimationType.Damaged);
             }
             break;
             case SkillType.Heal:

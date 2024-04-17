@@ -53,7 +53,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// <summary>
     /// 캐릭터 턴이 시작될 때 호출되는 이벤트(UI 업데이트 등)
     /// </summary>
-    public Action<BaseCharacter> OnCharacterTurnStart;
+    public Action<BaseCharacter, bool> OnCharacterTurnStart;
     #endregion
 
     #region 부울 변수
@@ -100,7 +100,10 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
             GameObject enemyGameObject = Instantiate(enemyPrefab);
             BaseCharacter enemyCharacter = enemyGameObject.GetComponent<BaseCharacter>();
+
             enemyCharacter.Initialize();
+            enemyCharacter.IsAlly = false;
+
             //턴 소비 체크
             enemyCharacter.IsTurnUsed = false;
             //전투 시작시 적용되는 버프 적용
@@ -134,7 +137,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 if (enemySize == 1)
                 {
                     enemyGameObject.transform.position = enemyCharacter.SpawnLocation;
-                    
                     ++EnemyTotalSize;
                 }
                 //크기가 2인 적군
@@ -162,7 +164,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
             //전투 순서에 삽입
             combatQueue.Enqueue(allyCharacter);
-            allyFormation[i] = allyCharacter;
+            allyFormation[AllyTotalSize] = allyCharacter;
 
             //턴 소비 체크
             allyCharacter.IsTurnUsed = false;
@@ -183,6 +185,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 else if (allySize == 2)
                 {
                     allyGameObject.transform.position = allyMultiplePosition[AllyTotalSize];
+                    allyFormation[AllyTotalSize + 1] = allyCharacter;
                     AllyTotalSize += 2;
                 }
             }
@@ -199,6 +202,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 else if (allySize == 2)
                 {
                     allyGameObject.transform.position = allyCharacter.SpawnLocation;
+                    allyFormation[AllyTotalSize + 1] = allyCharacter;
                     AllyTotalSize += 2;
                 }
             }
@@ -207,6 +211,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         #endregion 아군 배치
         #endregion 아군과 적군 배치
 
+        OnCharacterTurnStart?.Invoke(allyFormation[0], false);
         #region PreRound 상태로 넘어감
         PreRound();
         #endregion
@@ -352,7 +357,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 currentCharacter.CheckSkillsOnTurnStart();
 
                 // 현재 턴의 캐릭터에 맞는 UI 업데이트
-                OnCharacterTurnStart?.Invoke(currentCharacter);
+                OnCharacterTurnStart?.Invoke(currentCharacter, true);
 
                 // TODO : 현재 턴이 적일 시 AI로 행동 결정(임시 코드)
                 if (!currentCharacter.IsAlly)
@@ -411,7 +416,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
     public void ExecuteSelectedSkill(int _index = -1)
     {
-        // 적군의 0번째 캐릭터에게 스킬을 쓴다고 가정
         if (currentSelectedSkill == null) return;
 
         // 스킬 사용한 캐릭터 애니메이션 실행, 스킬 사용 후 상대 캐릭터 애니메이션도 실행해야 함(회피도 애니메이션 있나) 
@@ -535,7 +539,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             currentSelectedSkill.ApplySkill(receiver);
             if (receiver.CheckDead())
             {
-                receiver.gameObject.SetActive(false);
                 if (receiver.IsAlly)
                 {
                     for (int i = 0; i < allyFormation.Length; i++)

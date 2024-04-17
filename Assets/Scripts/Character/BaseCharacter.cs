@@ -211,15 +211,16 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if(health.CheckHealthZero())
         {
-            SetDead(true);
             PlayAnimation(AnimationType.Dead);
             return true;
         }
         return false;
     }
-    public virtual void SetDead(bool _dead)
+
+    public virtual void SetDead()
     {
-        isDead = _dead;
+        isDead = true;
+        gameObject.SetActive(false);
     }
 
     //캐릭터 완전 삭제

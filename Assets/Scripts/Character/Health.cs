@@ -17,6 +17,9 @@ public class Health : MonoBehaviour
     /// <param name="_penetrate">_penetrate가 true일 경우에는 쉴드를 뚫는 관통형 대미지 </param>
     public void ApplyDamage(float _damage, bool _penetrate = false)
     {
+        BaseCharacter character = gameObject.GetComponent<BaseCharacter>();
+        if (character == null) return;
+
         //관통형 대미지인경우
         if (_penetrate == false)
         {
@@ -33,6 +36,8 @@ public class Health : MonoBehaviour
                 shield = 0;
             }
         }
+
+        character.PlayAnimation(AnimationType.Damaged);
     }
 
     /// <summary>
