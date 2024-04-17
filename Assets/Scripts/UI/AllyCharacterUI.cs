@@ -32,7 +32,7 @@ public class AllyCharacterUI : MonoBehaviour
         #endregion
     }
 
-    public void ShowCharacterUI(BaseCharacter _character)
+    public void ShowCharacterUI(BaseCharacter _character, bool isEnable = true)
     {
         if(!_character.IsAlly)
             return;

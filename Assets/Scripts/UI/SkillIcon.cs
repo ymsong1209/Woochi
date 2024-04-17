@@ -19,11 +19,11 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     private BaseSkill skill; // = new BaseSkill();
 
-    public void SetSkill(BaseSkill _skill)
+    public void SetSkill(BaseSkill _skill, bool isEnable = true)
     {
         if (_skill != null)
         {
-            btn.interactable = true;
+            btn.interactable = isEnable;
             skill = _skill;
         }
         //_skill이 null일 경우 빈 skill로 초기화

@@ -35,7 +35,7 @@ public class SkillTriggerSelector : MonoBehaviour
     /// AbilityTriggerAreas 전부 비활성화시킨다.
     /// BattleManager의 Event 등록을 위해 의미없는 인자를 넣음
     /// </summary>
-    void DeactivateSkillTriggerAreas(BaseCharacter _character = null)
+    void DeactivateSkillTriggerAreas(BaseCharacter _character = null, bool isEnable = false)
     {
         foreach (var area in SkillTriggerAreas)
         {

@@ -27,8 +27,12 @@ public class SkillSelectionUI : MonoBehaviour
         }
     }
 
-    // UI 컴포넌트를 초기화하고 스킬 선택 버튼을 활성화하는 메서드
-    public void ShowForCharacter(BaseCharacter _character)
+    /// <summary>
+    /// 캐릭터에 맞는 스킬 아이콘 활성화시키는 메서드
+    /// </summary>
+    /// <param name="_character"></param>
+    /// <param name="isEnable">스킬 활성화 시킬지 말지</param>
+    public void ShowForCharacter(BaseCharacter _character, bool isEnable = true)
     {
         DisableSkills();
 
@@ -48,14 +52,14 @@ public class SkillSelectionUI : MonoBehaviour
                 skillIcons[i].gameObject.SetActive(true);
 
                 // 스킬 아이콘에 스킬 정보 할당
-                skillIcons[i].SetSkill(_character.activeSkills[i]);
+                skillIcons[i].SetSkill(_character.activeSkills[i], isEnable);
             }
         }
 
         // 마지막 스킬을 위치 이동이라 가정하면, 마지막에 위치하게 했음
-        skillIcons[lastSkillIcon].SetSkill(_character.activeSkills[lastCharacterSkill]);
+        skillIcons[lastSkillIcon].SetSkill(_character.activeSkills[lastCharacterSkill], isEnable);
         
-        turnOverButton.interactable = true;
+        turnOverButton.interactable = isEnable;
         #endregion
 
         // TODO : 스킬의 사용 가능 여부, 범위 등을 고려해 버튼 interaction 여부 결정해야 함
