@@ -335,7 +335,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5588,12 +5588,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: allies.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
+      propertyPath: allies.Array.data[0]
+      value: 
+      objectReference: {fileID: 6638066927388224697, guid: 06ef998317840ab4b87b8034b87d51c7, type: 3}
     - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: allies.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6638066927388224697, guid: e0a5075a4a315164691a735d9bb77e40, type: 3}
     - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: allies.Array.data[2]
       value: 
