@@ -81,12 +81,10 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         currentRound = 0;
         combatQueue.Clear();
+
         for(int i = 0; i < allyFormation.Length; ++i)
         {
             allyFormation[i] = null;
-        }
-        for(int i = 0; i < enemyFormation.Length; ++i)
-        {
             enemyFormation[i] = null;
         }
 
@@ -94,8 +92,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         #region 적군 배치
         // DungeonInfo내에 있는 적들을 알맞은 곳에 배치
         int EnemyTotalSize = 0;
-        for(int i = 0; i < dungeon.EnemyList.Count; ++i)
+        for (int i = 0; i < dungeon.EnemyList.Count; ++i)
         {
+            if (EnemyTotalSize > 4) return;
             GameObject enemyPrefab = dungeon.EnemyList[i];
 
             GameObject enemyGameObject = Instantiate(enemyPrefab);
@@ -111,49 +110,19 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
             //전투 순서에 삽입
             combatQueue.Enqueue(enemyCharacter);
-            enemyFormation[EnemyTotalSize] = enemyCharacter;
-
-            //위치값을 정해야하는 특수한 객체가 아니면 enemyPosition대로 정상 소환
-            int enemySize = enemyCharacter.Size;
-            if (enemyCharacter.IsSpawnSpecific == false)
+            enemyCharacter.RowOrder = EnemyTotalSize;
+            enemyFormation[EnemyTotalSize++] = enemyCharacter;
+            if(enemyCharacter.Size == 2)
             {
-                //크기가 1인 적군
-                if (enemySize == 1)
-                {
-                    enemyGameObject.transform.position = enemySinglePosition[EnemyTotalSize];
-                    ++EnemyTotalSize;
-                }
-                //크기가 2인 적군
-                else if (enemySize == 2) {
-                    enemyGameObject.transform.position = enemyMultiplePosition[EnemyTotalSize];
-                    enemyFormation[EnemyTotalSize + 1] = enemyCharacter;
-                    EnemyTotalSize += 2;
-                }
-            }
-            //위치를 정해줘야하는 특수한 객체
-            else
-            {
-                //크기가 1인 적군
-                if (enemySize == 1)
-                {
-                    enemyGameObject.transform.position = enemyCharacter.SpawnLocation;
-                    ++EnemyTotalSize;
-                }
-                //크기가 2인 적군
-                else if (enemySize == 2)
-                {
-                    enemyGameObject.transform.position = enemyCharacter.SpawnLocation;
-                    enemyFormation[EnemyTotalSize + 1] = enemyCharacter;
-                    EnemyTotalSize += 2;
-                }
+                enemyFormation[EnemyTotalSize++] = enemyCharacter;
             }
         }
-        if (EnemyTotalSize > 4) Debug.LogError("EnemyTotalSize over 4");
         #endregion 적군 배치
         #region 아군 배치
         int AllyTotalSize = 0;
         for (int i = 0; i < GameManager.GetInstance.Allies.Count; ++i)
         {
+            if(AllyTotalSize > 4) return;
             GameObject allyPrefab = GameManager.GetInstance.Allies[i];
 
             GameObject allyGameObject = Instantiate(allyPrefab);
@@ -162,53 +131,22 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             allyCharacter.Initialize();
             allyCharacter.IsAlly = true;
 
-            //전투 순서에 삽입
-            combatQueue.Enqueue(allyCharacter);
-            allyFormation[AllyTotalSize] = allyCharacter;
-
             //턴 소비 체크
             allyCharacter.IsTurnUsed = false;
             //전투 시작 시 적용되는 버프 적용
             allyCharacter.ApplyBuff(BuffTiming.BattleStart);
 
-            //위치값을 정해야하는 특수한 객체가 아니면 allyPosition대로 정상 소환
-            int allySize = allyCharacter.Size;
-            if (allyCharacter.IsSpawnSpecific == false)
+            //전투 순서에 삽입
+            combatQueue.Enqueue(allyCharacter);
+            allyCharacter.RowOrder = AllyTotalSize;
+            allyFormation[AllyTotalSize++] = allyCharacter;
+            if(allyCharacter.Size == 2)
             {
-                //크기가 1인 아군
-                if (allySize == 1)
-                {
-                    allyGameObject.transform.position = allySinglePosition[AllyTotalSize];
-                    ++AllyTotalSize;
-                }
-                //크기가 2인 아군
-                else if (allySize == 2)
-                {
-                    allyGameObject.transform.position = allyMultiplePosition[AllyTotalSize];
-                    allyFormation[AllyTotalSize + 1] = allyCharacter;
-                    AllyTotalSize += 2;
-                }
-            }
-            //위치를 정해줘야하는 특수한 객체
-            else
-            {
-                //크기가 1인 아군
-                if (allySize == 1)
-                {
-                    allyGameObject.transform.position = allyCharacter.SpawnLocation;
-                    ++AllyTotalSize;
-                }
-                //크기가 2인 아군
-                else if (allySize == 2)
-                {
-                    allyGameObject.transform.position = allyCharacter.SpawnLocation;
-                    allyFormation[AllyTotalSize + 1] = allyCharacter;
-                    AllyTotalSize += 2;
-                }
+                allyFormation[AllyTotalSize++] = allyCharacter;
             }
         }
-
         #endregion 아군 배치
+        PlaceFormation();
         #endregion 아군과 적군 배치
 
         OnCharacterTurnStart?.Invoke(allyFormation[0], false);
@@ -225,7 +163,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         CurState = BattleState.PreRound;
         ++currentRound;
-        CheckPreBuffs();
+        CheckBuffs(BuffTiming.RoundStart);
         //버프로 인한 캐릭터 사망 확인
         if (CheckVictory(combatQueue))
         {
@@ -239,9 +177,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     /// <summary>
-    /// 라운드가 시작할때 적용되는 버프 정리
+    /// BuffTiming을 매개변수로 받아서 해당 시점에 버프를 적용
     /// </summary>
-    void CheckPreBuffs()
+    void CheckBuffs(BuffTiming buffTiming)
     {
         int characterCount = combatQueue.Count;
         for (int i = 0; i < characterCount; i++)
@@ -249,12 +187,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             // Queue에서 항목을 제거
             BaseCharacter character = combatQueue.Dequeue();
 
-            character.ApplyBuff(BuffTiming.RoundStart);
+            character.ApplyBuff(buffTiming);
 
             // 수정된 character를 Queue의 뒤쪽에 다시 추가.
             combatQueue.Enqueue(character);
         }
-
     }
 
     /// <summary>
@@ -264,16 +201,23 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         CurState = BattleState.DetermineOrder;
         //캐릭터를 속도순으로 정렬하면서 모두 전투에 참여할 수 있도록 변경
-        ReordercombatQueue(true);
+        ReorderCombatQueue(true, null);
         CharacterTurn();
     }
 
     /// <summary>
     /// combatQueue를 다시 속도순으로 정렬, ResetTurnUsed를 true로 하면 모든 캐릭터가 턴을 다시 쓸 수 있음
     /// </summary>
-    void ReordercombatQueue(bool _ResetTurnUsed = false)
+    /// <param name="_resetTurnUsed">true로 설정 시 모든 캐릭터 다시 턴 사용가능</param>
+    /// <param name="processedCharacters"></param>
+    void ReorderCombatQueue(bool _resetTurnUsed = false, List<BaseCharacter> processedCharacters = null)
     {
         List<BaseCharacter> allCharacters = new List<BaseCharacter>();
+
+        if (processedCharacters != null)
+        {
+            allCharacters.AddRange(processedCharacters);
+        }
 
         // combatQueue에 남아 있는 캐릭터를 모두 allCharacters 리스트에 추가
         while (combatQueue.Count > 0)
@@ -288,7 +232,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         combatQueue.Clear();
         foreach (BaseCharacter character in allCharacters)
         {
-            if (_ResetTurnUsed)
+            if (_resetTurnUsed)
             {
                 character.IsTurnUsed = false;
             }
@@ -296,28 +240,114 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
     }
 
-    void ReordercombatQueue(List<BaseCharacter> processedCharacters)
+    /// <summary>
+    /// 턴이 끝난 후, 바뀐 RowOrder 값을 기반으로 formation을 정렬 후 재배치한다
+    /// 캐릭터들을 앞으로 당긴다
+    /// </summary>
+    void ReorderFormation()
     {
-        List<BaseCharacter> allCharacters = new List<BaseCharacter>(processedCharacters);
+        Array.Sort(allyFormation, (character1, character2) => {
+            if (character1 == null && character2 == null)
+                return 0;
+            else if (character1 == null)
+                return 1; 
+            else if (character2 == null)
+                return -1; 
 
-        // combatQueue에 남아 있는 캐릭터를 모두 allCharacters 리스트에 추가
-        while (combatQueue.Count > 0)
-        {
-            allCharacters.Add(combatQueue.Dequeue());
-        }
+            return character1.RowOrder.CompareTo(character2.RowOrder);
+        });
+        Array.Sort(enemyFormation, (character1, character2) => {
+            if (character1 == null && character2 == null)
+                return 0;
+            else if (character1 == null)
+                return 1;
+            else if (character2 == null)
+                return -1;
 
-        // allCharacters 리스트를 속도에 따라 재정렬
-        allCharacters.Sort((character1, character2) => character2.Speed.CompareTo(character1.Speed));
+            return character1.RowOrder.CompareTo(character2.RowOrder);
+        });
 
-        // 재정렬된 리스트를 바탕으로 combatQueue 재구성
-        combatQueue.Clear();
-        foreach (BaseCharacter character in allCharacters)
-        {
-            combatQueue.Enqueue(character);
-        }
+        PlaceFormation();
     }
 
+    /// <summary>
+    /// allyFormation과 enemyFormation을 바탕으로 캐릭터들의 위치를 배치
+    /// </summary>
+    void PlaceFormation()
+    {
+        for (int AllyTotalSize = 0; AllyTotalSize < allyFormation.Length; ++AllyTotalSize)
+        {
+            if (allyFormation[AllyTotalSize] == null) continue;
 
+            BaseCharacter ally = allyFormation[AllyTotalSize];
+            int allySize = ally.Size;
+            if (ally.IsSpawnSpecific == false)
+            {
+                //크기가 1인 적군
+                if (allySize == 1)
+                {
+                    ally.gameObject.transform.position = allySinglePosition[AllyTotalSize];
+                }
+                //크기가 2인 적군
+                else if (allySize == 2)
+                {
+                    ally.gameObject.transform.position = allyMultiplePosition[AllyTotalSize];
+                    AllyTotalSize++;
+                }
+            }
+            //위치를 정해줘야하는 특수한 객체
+            else
+            {
+                //크기가 1인 적군
+                if (allySize == 1)
+                {
+                    ally.gameObject.transform.position = ally.SpawnLocation;
+                }
+                //크기가 2인 적군
+                else if (allySize == 2)
+                {
+                    ally.gameObject.transform.position = ally.SpawnLocation;
+                    AllyTotalSize++;
+                }
+            }
+        }
+        for (int EnemyTotalSize = 0; EnemyTotalSize < enemyFormation.Length; ++EnemyTotalSize)
+        {
+            if (enemyFormation[EnemyTotalSize] == null) continue;
+
+            BaseCharacter enemy = enemyFormation[EnemyTotalSize];
+            int enemySize = enemy.Size;
+            if (enemy.IsSpawnSpecific == false)
+            {
+                //크기가 1인 적군
+                if (enemySize == 1)
+                {
+                    enemy.gameObject.transform.position = enemySinglePosition[EnemyTotalSize];
+                }
+                //크기가 2인 적군
+                else if (enemySize == 2)
+                {
+                    enemy.gameObject.transform.position = enemyMultiplePosition[EnemyTotalSize];
+                    EnemyTotalSize++;
+                }
+            }
+            //위치를 정해줘야하는 특수한 객체
+            else
+            {
+                //크기가 1인 적군
+                if (enemySize == 1)
+                {
+                    enemy.gameObject.transform.position = enemy.SpawnLocation;
+                }
+                //크기가 2인 적군
+                else if (enemySize == 2)
+                {
+                    enemy.gameObject.transform.position = enemy.SpawnLocation;
+                    EnemyTotalSize++;
+                }
+            }
+        }
+    }    
     /// <summary>
     /// 캐릭터들의 행동 시작
     /// </summary>
@@ -327,7 +357,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         Debug.Log("CurState : CharacterTurn");
         //캐릭터별로 행동
         StartCoroutine(HandleCharacterTurns());
-       
     }
 
     IEnumerator HandleCharacterTurns()
@@ -368,14 +397,14 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 {
                     yield return null;
                 }
-                
             };
 
             // 자신 차례가 지난 후 턴 사용 처리
             currentCharacter.IsTurnUsed = true;
 
+            ReorderFormation();
             // 스킬 사용으로 인한 속도 변경 처리
-            ReordercombatQueue(processedCharacters);
+            ReorderCombatQueue(false, processedCharacters);
 
             processedCharacters.Add(currentCharacter);
 
@@ -414,6 +443,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         isSkillSelected = true;
     }
 
+    #region 스킬 사용
     public void ExecuteSelectedSkill(int _index = -1)
     {
         if (currentSelectedSkill == null) return;
@@ -579,7 +609,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         isSkillSelected = true;
         isSkillExecuted = true;
     }
-    
+
+    #endregion
+
     public void TurnOver()
     {
         isSkillSelected = true;
@@ -592,7 +624,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     void PostRound()
     {
         CurState = BattleState.PostRound;
-        CheckPostBuffs();
+        CheckBuffs(BuffTiming.RoundEnd);
         //적군이 모두 죽으면 PostBattle로 넘어감. 아닐시 다시 PreRound로 돌아감
         if(CheckVictory(combatQueue))
         {
@@ -604,20 +636,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
         {
             PreRound();
-        }
-    }
-
-    void CheckPostBuffs()
-    {
-        int characterCount = combatQueue.Count;
-        for (int i = 0; i < characterCount; i++)
-        {
-            // Queue에서 항목을 제거
-            BaseCharacter character = combatQueue.Dequeue();
-            character.ApplyBuff(BuffTiming.RoundEnd);
-
-            // 수정된 character를 Queue의 뒤쪽에 다시 추가합니다.
-            combatQueue.Enqueue(character);
         }
     }
 
@@ -696,14 +714,10 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         
         for(int i = 0; i < 4; i++)
         {
-            if (formation[i] == null)
-            {
-                continue;
-            }
-
             if (formation[i] == _character)
             {
                 index = i;
+                break;
             }
         }
 
@@ -734,6 +748,38 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         return false;
     }
+
+    /// <summary>
+    /// 캐릭터의 위치를 이동시키는 함수
+    /// </summary>
+    /// <param name="move">얼마나 이동할 것인지, 음수면 뒤로 이동, 양수면 앞으로 이동</param>
+    public void MoveCharacter(BaseCharacter character, int move)
+    {
+        int from = GetCharacterIndex(character);
+        int to = Mathf.Clamp(from - move, 0, 3);    // 이동하려는 위치
+
+        // 이동한 곳에 캐릭터가 있으면 두 캐릭터의 RowOrder 값을 교환
+        // 바뀐 RowOrder 값은 턴이 끝날 때 
+        if(character.IsAlly)
+        {
+            if(IsCharacterThere(to))
+            {
+                int temp = character.RowOrder;
+                character.RowOrder = allyFormation[to].RowOrder;
+                allyFormation[to].RowOrder = temp;
+            }
+        }
+        else
+        {
+            if(IsCharacterThere(to + 4))
+            {
+                int temp = character.RowOrder;
+                character.RowOrder = enemyFormation[to + 4].RowOrder;
+                enemyFormation[to + 4].RowOrder = temp;
+            }
+        }
+    }
+    
     #region Getter Setter
 
     public BaseCharacter[] AllyFormation

@@ -62,6 +62,8 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] protected bool isAlly;
     protected bool isTurnUsed; //한 라운드 내에서 자신의 턴을 사용했을 경우
 
+    protected int rowOrder; // 캐릭터가 앞 열에서부터 몇 번째 순서인지
+
     #endregion BATTLE STATS
 
 
@@ -322,6 +324,12 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         get { return isTurnUsed; }
         set { isTurnUsed = value; }
+    }
+
+    public int RowOrder
+    {
+        get { return rowOrder; }
+        set { rowOrder = value; }
     }
     #endregion
 
