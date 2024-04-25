@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -110,7 +111,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
             //전투 순서에 삽입
             combatQueue.Enqueue(enemyCharacter);
-            enemyCharacter.RowOrder = EnemyTotalSize;
+            enemyCharacter.rowOrder = EnemyTotalSize;
             enemyFormation[EnemyTotalSize++] = enemyCharacter;
             if(enemyCharacter.Size == 2)
             {
@@ -138,7 +139,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
             //전투 순서에 삽입
             combatQueue.Enqueue(allyCharacter);
-            allyCharacter.RowOrder = AllyTotalSize;
+            allyCharacter.rowOrder = AllyTotalSize;
             allyFormation[AllyTotalSize++] = allyCharacter;
             if(allyCharacter.Size == 2)
             {
@@ -254,7 +255,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             else if (character2 == null)
                 return -1; 
 
-            return character1.RowOrder.CompareTo(character2.RowOrder);
+            return character1.rowOrder.CompareTo(character2.rowOrder);
         });
         Array.Sort(enemyFormation, (character1, character2) => {
             if (character1 == null && character2 == null)
@@ -264,7 +265,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             else if (character2 == null)
                 return -1;
 
-            return character1.RowOrder.CompareTo(character2.RowOrder);
+            return character1.rowOrder.CompareTo(character2.rowOrder);
         });
 
         PlaceFormation();
@@ -286,12 +287,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 //크기가 1인 적군
                 if (allySize == 1)
                 {
-                    ally.gameObject.transform.position = allySinglePosition[AllyTotalSize];
+                    ally.gameObject.transform.DOMove(allySinglePosition[AllyTotalSize], 0.5f);
                 }
                 //크기가 2인 적군
                 else if (allySize == 2)
                 {
-                    ally.gameObject.transform.position = allyMultiplePosition[AllyTotalSize];
+                    ally.gameObject.transform.DOMove(allyMultiplePosition[AllyTotalSize], 0.5f);
                     AllyTotalSize++;
                 }
             }
@@ -301,12 +302,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 //크기가 1인 적군
                 if (allySize == 1)
                 {
-                    ally.gameObject.transform.position = ally.SpawnLocation;
+                    ally.gameObject.transform.DOMove(ally.SpawnLocation, 0.5f);
                 }
                 //크기가 2인 적군
                 else if (allySize == 2)
                 {
-                    ally.gameObject.transform.position = ally.SpawnLocation;
+                    ally.gameObject.transform.DOMove(ally.SpawnLocation, 0.5f);
                     AllyTotalSize++;
                 }
             }
@@ -322,12 +323,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 //크기가 1인 적군
                 if (enemySize == 1)
                 {
-                    enemy.gameObject.transform.position = enemySinglePosition[EnemyTotalSize];
+                    enemy.gameObject.transform.DOMove(enemySinglePosition[EnemyTotalSize], 0.5f);
                 }
                 //크기가 2인 적군
                 else if (enemySize == 2)
                 {
-                    enemy.gameObject.transform.position = enemyMultiplePosition[EnemyTotalSize];
+                    enemy.gameObject.transform.DOMove(enemyMultiplePosition[EnemyTotalSize], 0.5f);
                     EnemyTotalSize++;
                 }
             }
@@ -337,12 +338,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 //크기가 1인 적군
                 if (enemySize == 1)
                 {
-                    enemy.gameObject.transform.position = enemy.SpawnLocation;
+                    enemy.gameObject.transform.DOMove(enemy.SpawnLocation, 0.5f);
                 }
                 //크기가 2인 적군
                 else if (enemySize == 2)
                 {
-                    enemy.gameObject.transform.position = enemy.SpawnLocation;
+                    enemy.gameObject.transform.DOMove(enemy.SpawnLocation, 0.5f);
                     EnemyTotalSize++;
                 }
             }
@@ -764,22 +765,24 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         {
             if(IsCharacterThere(to))
             {
-                int temp = character.RowOrder;
-                character.RowOrder = allyFormation[to].RowOrder;
-                allyFormation[to].RowOrder = temp;
+                (allyFormation[to].rowOrder, character.rowOrder) = (character.rowOrder, allyFormation[to].rowOrder);
             }
         }
         else
         {
             if(IsCharacterThere(to + 4))
             {
-                int temp = character.RowOrder;
-                character.RowOrder = enemyFormation[to + 4].RowOrder;
-                enemyFormation[to + 4].RowOrder = temp;
+                (enemyFormation[to + 4].rowOrder, character.rowOrder) = (character.rowOrder, enemyFormation[to + 4].rowOrder);
             }
         }
     }
     
+    public void MoveCharacter(BaseCharacter character, BaseCharacter target)
+    {
+        if(character == null || target == null) return;
+
+        (target.rowOrder, character.rowOrder) = (character.rowOrder, target.rowOrder);
+    }
     #region Getter Setter
 
     public BaseCharacter[] AllyFormation
