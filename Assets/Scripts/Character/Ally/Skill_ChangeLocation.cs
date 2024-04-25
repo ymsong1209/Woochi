@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class Skill_ChangeLocation : BaseSkill
 {
-
+    public override void ApplySkill(BaseCharacter _Opponent)
+    {
+        BattleManager.GetInstance.MoveCharacter(SkillOwner, _Opponent);
+    }
 }

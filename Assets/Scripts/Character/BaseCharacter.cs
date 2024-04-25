@@ -11,6 +11,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
     public CharacterStatSO characterStat;
     [SerializeField] private Animator animator;
+    [SerializeField] private BaseCharacterUI characterUI;
 
     #region Header CHARACTER STATS
 
@@ -62,7 +63,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] protected bool isAlly;
     protected bool isTurnUsed; //한 라운드 내에서 자신의 턴을 사용했을 경우
 
-    protected int rowOrder; // 캐릭터가 앞 열에서부터 몇 번째 순서인지
+    public int rowOrder; // 캐릭터가 앞 열에서부터 몇 번째 순서인지
 
     #endregion BATTLE STATS
 
@@ -185,7 +186,6 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         health = GetComponent<Health>();
         health.MaxHealth = characterStat.BaseHealth;
         health.CurHealth = characterStat.BaseHealth;
-
         #region 스킬 초기화
         //activeSkills의 size만큼 CharacterStat의 skill을 앞에서부터 가져와서 세팅한다.
         for(int i = 0; i < activeSkillCheckBox.Count; ++i)
@@ -205,7 +205,13 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
     #endregion 기본 스탯 초기화
 
-    #region 죽음 처리
+    #region 피격, 죽음 처리
+    public void TakeDamage()
+    {
+        if (characterUI == null) return;
+
+        characterUI.UpdateHPBar(health.CurHealth, health.MaxHealth);
+    }
     /// <summary>
     /// Character가 죽었는지 확인
     /// </summary>
@@ -253,7 +259,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     #region 애니메이션
     public void PlayAnimation(AnimationType _type)
     {
-        if(animator == null)
+        if(animator == null || _type == AnimationType.Idle)
         {
             return;
         }
@@ -324,12 +330,6 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         get { return isTurnUsed; }
         set { isTurnUsed = value; }
-    }
-
-    public int RowOrder
-    {
-        get { return rowOrder; }
-        set { rowOrder = value; }
     }
     #endregion
 

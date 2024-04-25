@@ -23,7 +23,7 @@ public class Health : MonoBehaviour
         //관통형 대미지인경우
         if (_penetrate == false)
         {
-            curHealth -= _damage;
+            curHealth = Mathf.Clamp(curHealth - _damage, 0, maxHealth);
             Debug.Log("Curhealth : " + curHealth);
         }
         //비관통형 대미지인경우 쉴드 먼저 까임
@@ -38,6 +38,7 @@ public class Health : MonoBehaviour
         }
 
         character.PlayAnimation(AnimationType.Damaged);
+        character.TakeDamage();
     }
 
     /// <summary>

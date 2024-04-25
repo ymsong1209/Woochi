@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Skill_ChangeLocation
   m_EditorClassIdentifier: 
   skillName: "\uC704\uCE58 \uC774\uB3D9"
+  animType: 0
   skillAvailableRadius: 0101010100000000
-  skillRadius: 0000000000000000
+  skillRadius: 0101010100000000
   skillType: 0
   skillTargetType: 0
   bufflist: []
