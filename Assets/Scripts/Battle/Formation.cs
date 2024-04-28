@@ -1,0 +1,107 @@
+using DG.Tweening;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Formation : MonoBehaviour
+{
+    public BaseCharacter[] formation = new BaseCharacter[4];
+
+    [SerializeField] private bool isAllyFormation;
+
+    /// <summary>
+    /// 프리펩 리스트를 받아 formation을 초기화한다
+    /// </summary>
+    /// <param name="prefabs"></param>
+    public void Initialize(List<GameObject> prefabs)
+    {
+        int size = 0;
+
+        for(int i = 0; i < formation.Length; i++)
+        {
+            formation[i] = null;
+        }
+
+        foreach (GameObject prefab in prefabs)
+        {
+            GameObject characterPrefab = Instantiate(prefab, transform);
+            BaseCharacter character = characterPrefab.GetComponent<BaseCharacter>();
+
+            character.Initialize();
+            character.IsAlly = isAllyFormation;
+
+            character.rowOrder = size;
+
+            character.ApplyBuff(BuffTiming.BattleStart);
+
+            for (int i = 0; i < character.Size; i++)
+            {
+                formation[size++] = character;
+            }
+        }
+
+        Positioning();
+    }
+
+    /// <summary>
+    /// 턴이 끝난 후, 바뀐 RowOrder 값을 기반으로 formation을 정렬 후 재배치한다
+    /// 캐릭터들을 앞으로 당긴다
+    /// </summary>
+    public void ReOrder()
+    {
+        Array.Sort(formation, (character1, character2) => {
+            if (character1 == null && character2 == null)
+                return 0;
+            else if (character1 == null)
+                return 1;
+            else if (character2 == null)
+                return -1;
+
+            return character1.rowOrder.CompareTo(character2.rowOrder);
+        });
+
+        Positioning();
+    }
+
+    /// <summary>
+    /// formation에 있는 캐릭터들을 배치한다.
+    /// 캐릭터의 스프라이트 크기를 기반으로 배치한다.
+    /// 만약 특수한 배치가 필요하다면, 그때 가서 추가
+    /// </summary>
+    public void Positioning()
+    {
+        float direction = isAllyFormation ? -1f : 1f;
+        float moveX = 0f;
+
+        for (int index = 0; index < formation.Length;)
+        {
+            if (formation[index] == null) return;
+
+            BaseCharacter character = formation[index];
+
+            float radius = character.GetComponent<SpriteRenderer>().bounds.size.x / 2;
+            moveX += (radius * direction);
+
+            character.transform.DOLocalMoveX(moveX, 0.5f);
+            moveX += (radius * direction);
+
+            index += character.Size;
+        }
+    }
+
+    public int FindCharacter(BaseCharacter _character)
+    {
+        int index = -1;
+
+        for(int i = 0; i < formation.Length; i++)
+        {
+            if (formation[i] == _character)
+            {
+                index = i;
+                break;
+            }
+        }
+
+        return index;
+    }
+}

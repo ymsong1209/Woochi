@@ -20,11 +20,7 @@ public class SkillTriggerSelector : MonoBehaviour
         for (int i = 0; i < skillRadius.Length; i++)
         {
             //현재 살아있는 적/아군에게서만 skilltriggerarea활성화
-            if(i<4 && skillRadius[i] && BattleManager.GetInstance.AllyFormation[i])
-            {
-                SkillTriggerAreas[i].SetActive(true);
-            }
-            else if(4<=i && i<8 && skillRadius[i] && BattleManager.GetInstance.EnemyFormation[i - 4])
+            if(skillRadius[i] && BattleManager.GetInstance.IsCharacterThere(i))
             {
                 SkillTriggerAreas[i].SetActive(true);
             }
