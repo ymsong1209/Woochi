@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -62,9 +64,9 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     [SerializeField] protected bool isAlly;
     protected bool isTurnUsed; //한 라운드 내에서 자신의 턴을 사용했을 경우
+    protected bool isIdle = true;
 
     public int rowOrder; // 캐릭터가 앞 열에서부터 몇 번째 순서인지
-
     #endregion BATTLE STATS
 
 
@@ -265,8 +267,25 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }
 
         animator.SetTrigger(_type.ToString());
+        StartCoroutine(WaitAnim());
     }
 
+    /// <summary>
+    /// 현재 플레이 중인 애니메이션이 끝나기까지 기다림
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator WaitAnim()
+    {
+        isIdle = false;
+        yield return null;
+
+        while(animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
+        {
+            yield return null;
+        }
+
+        isIdle = true;
+    }
     #endregion
     #region Getter Setter
     public int Size => size;
@@ -331,6 +350,8 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         get { return isTurnUsed; }
         set { isTurnUsed = value; }
     }
+
+    public bool IsIdle => isIdle;
     #endregion
 
     #region Validation

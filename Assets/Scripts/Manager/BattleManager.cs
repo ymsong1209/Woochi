@@ -270,6 +270,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         BaseCharacter caster = currentSelectedSkill.SkillOwner;
         caster.PlayAnimation(currentSelectedSkill.SkillSO.AnimType);
 
+        Debug.Log("ao");
+
         //단일공격 스킬일 경우 index에 들어온 적만 공격
         if(currentSelectedSkill.SkillTargetType == SkillTargetType.Singular)
         {
@@ -412,12 +414,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             Debug.Log(currentSelectedSkill.Name + " is executed by " + _caster.name + " on " + receiver.name);
         }
 
-        while (!_caster.IsIdle)
-        {
-            Debug.Log("Playing Animation");
-            yield return null;
-        }
-        Debug.Log("Animation Finished");
+        // caster의 애니메이션이 끝나기까지 기다렸다가 턴이 종료되게 함
+        while (!_caster.IsIdle) yield return null;
 
         isSkillExecuted = true;
 
