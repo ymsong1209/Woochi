@@ -13,7 +13,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
     public CharacterStatSO characterStat;
     [SerializeField] private Animator animator;
-    [SerializeField] private BaseCharacterUI characterUI;
+    [SerializeField] private BaseCharacterHUD characterHUD;
 
     #region Header CHARACTER STATS
 
@@ -62,8 +62,8 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] protected  List<bool> activeSkillCheckBox = new List<bool>();
     protected List<BaseSkill>   totalSkills = new List<BaseSkill>();
 
-    [SerializeField] protected bool isAlly;
-    protected bool isTurnUsed; //한 라운드 내에서 자신의 턴을 사용했을 경우
+    protected bool isAlly;
+    protected bool isTurnUsed = false; //한 라운드 내에서 자신의 턴을 사용했을 경우
     protected bool isIdle = true;
 
     public int rowOrder; // 캐릭터가 앞 열에서부터 몇 번째 순서인지
@@ -207,13 +207,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
     #endregion 기본 스탯 초기화
 
-    #region 피격, 죽음 처리
-    public void TakeDamage()
-    {
-        if (characterUI == null) return;
-
-        characterUI.UpdateHPBar(health.CurHealth, health.MaxHealth);
-    }
+    #region 죽음 처리
     /// <summary>
     /// Character가 죽었는지 확인
     /// </summary>
@@ -241,7 +235,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             Destroy(buff);
         }
     }
-    #endregion 죽음 처리
+    #endregion
 
     #region 마우스 이벤트
     public void OnPointerEnter(PointerEventData eventData)

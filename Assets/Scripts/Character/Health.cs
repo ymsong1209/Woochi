@@ -1,7 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using System;
 using UnityEngine;
+using UnityEngine.Events;
+
+[Serializable]
+public class HPEvent : UnityEvent<float, float> { }
 
 [DisallowMultipleComponent]
 public class Health : MonoBehaviour
@@ -9,6 +11,8 @@ public class Health : MonoBehaviour
     [SerializeField] private float maxHealth;
     [SerializeField] private float curHealth;
     [SerializeField] private float shield;
+
+    public HPEvent OnHealthChanged;
 
     /// <summary>
     /// 대미지를 받는 공식, _penetrate가 true일 경우에는 쉴드를 뚫는 관통형 대미지
@@ -38,7 +42,7 @@ public class Health : MonoBehaviour
         }
 
         character.PlayAnimation(AnimationType.Damaged);
-        character.TakeDamage();
+        OnHealthChanged.Invoke(curHealth, maxHealth);
     }
 
     /// <summary>
@@ -53,6 +57,7 @@ public class Health : MonoBehaviour
     {
         curHealth += _healamount;
         curHealth = Mathf.Clamp(curHealth, 0, maxHealth);
+        OnHealthChanged.Invoke(curHealth, maxHealth);
     }
 
     public bool CheckHealthZero()
