@@ -51,8 +51,5 @@ public class ThreeTailsFox : BaseCharacter
             activeSkills.Add(totalSkills[4]);
         }
         #endregion
-
-        // 마지막은 위치 이동
-        activeSkills.Add(totalSkills[6]);
     }
 }

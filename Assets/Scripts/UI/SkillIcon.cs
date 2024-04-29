@@ -17,7 +17,7 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public  Button      btn;
     public  Transform   tooltipPos;     // 툴팁 위치를 지정하기 위해
 
-    private BaseSkill skill; // = new BaseSkill();
+    private BaseSkill skill;
 
     public void SetSkill(BaseSkill _skill, bool isEnable = true)
     {

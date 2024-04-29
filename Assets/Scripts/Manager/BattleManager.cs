@@ -270,8 +270,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         BaseCharacter caster = currentSelectedSkill.SkillOwner;
         caster.PlayAnimation(currentSelectedSkill.SkillSO.AnimType);
 
-        Debug.Log("ao");
-
         //단일공격 스킬일 경우 index에 들어온 적만 공격
         if(currentSelectedSkill.SkillTargetType == SkillTargetType.Singular)
         {
