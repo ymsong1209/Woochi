@@ -18,6 +18,7 @@ MonoBehaviour:
   skillRadius: 0000000001010100
   skillType: 0
   skillTargetType: 1
-  bufflist: []
+  bufflist:
+  - {fileID: 2569674945298275565, guid: 8724291ede07b424b92d6176bc636478, type: 3}
   baseMultiplier: 30
   baseSkillAccuracy: 100

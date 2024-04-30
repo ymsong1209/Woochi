@@ -206,10 +206,10 @@ public class BaseBuff : MonoBehaviour
     #region Validation
     private void OnValidate()
     {
-        if(buffDurationTurns == 0)
-        {
-            Debug.Log(nameof(buffDurationTurns) + " is not over 1 in object " + this.name.ToString());
-        }
+        // if(buffDurationTurns == 0)
+        // {
+        //     Debug.Log(nameof(buffDurationTurns) + " is not over 1 in object " + this.name.ToString());
+        // }
         
     }
     #endregion

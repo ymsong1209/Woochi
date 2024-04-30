@@ -45,6 +45,7 @@ public enum BuffType
     Protect,
     Shield,      
     Stun,
+    StatChange,
     END
 }
 

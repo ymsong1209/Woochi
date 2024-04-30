@@ -38,12 +38,13 @@ public class BaseSkill : MonoBehaviour
 
     #region Header SKILL STATS
     [Space(10)]
+    [Tooltip("Skill Stat은 SkillSO에서 처리함.")]
     [Header("Skill Basics")]
-
+   
     #endregion Header SKILL STATS
 
-    [SerializeField] private float multiplier;    // 피해량 계수
-    [SerializeField] private float skillAccuracy; // 스킬 명중 수치
+    [SerializeField,ReadOnly] private float multiplier;    // 피해량 계수
+    [SerializeField,ReadOnly] private float skillAccuracy; // 스킬 명중 수치
 
     /// <summary>
     /// 자신이 가지고 있는 SkillSO 정보를 이용해 BaseSkill을 초기화
@@ -292,17 +293,18 @@ public class BaseSkill : MonoBehaviour
 
     public virtual void ApplyBuff(BaseCharacter _Opponent, BaseBuff _buff)
     {
-        BaseBuff instantiatedBuff = Instantiate(_buff);
+        
         //같은 버프를 넣으려는 경우 중첩 횟수를 더함
         foreach(BaseBuff activebuff in _Opponent.activeBuffs)
         {
             if (activebuff == null) continue;
-            if(activebuff.BuffType == instantiatedBuff.BuffType)
+            if(activebuff.BuffType == _buff.BuffType)
             {
                 activebuff.StackBuff();
                 return;
             }
         }
+        BaseBuff instantiatedBuff = Instantiate(_buff);
         instantiatedBuff.AddBuff(_Opponent);
     }
 

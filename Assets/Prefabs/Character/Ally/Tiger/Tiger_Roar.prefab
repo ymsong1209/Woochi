@@ -49,8 +49,10 @@ MonoBehaviour:
   skillName: 
   skillAvailableRadius: 0000000000000000
   skillRadius: 0000000000000000
-  skillTargetType: 0
+  skillTargetType: 1
   skillType: 0
-  bufflist: []
+  bufflist:
+  - {fileID: 2569674945298275565, guid: 8724291ede07b424b92d6176bc636478, type: 3}
   multiplier: 0
   skillAccuracy: 0
+  RoarBuff: {fileID: 8518107361174940357, guid: 5a70670a4bd2be44996fc2800a35d937, type: 3}
