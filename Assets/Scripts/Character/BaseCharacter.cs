@@ -122,7 +122,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             {
                 BaseBuff buff = activeBuffs[i];
                 RemoveBuffAtIndex(i);
-                Destroy(buff);
+                Destroy(buff.gameObject);
             }
         }
         if (mightDead)
@@ -164,8 +164,10 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         //모든 버프 순회
         for (int i = activeBuffs.Count - 1; i >= 0; i--)
         {
+            BaseBuff buff = activeBuffs[i];
             activeBuffs[i].RemoveBuff();
             activeBuffs.RemoveAt(i);
+            Destroy(buff.gameObject);
         }
     }
 
@@ -234,7 +236,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         foreach(BaseBuff buff in activeBuffs)
         {
-            Destroy(buff);
+            Destroy(buff.gameObject);
         }
     }
     #endregion
