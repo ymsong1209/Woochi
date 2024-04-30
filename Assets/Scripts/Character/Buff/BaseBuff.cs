@@ -45,6 +45,7 @@ public class BaseBuff : MonoBehaviour
     public virtual void AddBuff(BaseCharacter _buffOwner)
     {
         buffOwner = _buffOwner;
+        buffOwner.activeBuffs.Add(this);
         buffDurationTurns = baseBuffDurationTurns;
     }
 

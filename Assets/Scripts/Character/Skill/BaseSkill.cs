@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
@@ -67,7 +68,7 @@ public class BaseSkill : MonoBehaviour
 
     }
 
-    public virtual void ApplySkill(BaseCharacter _Opponent)
+    public virtual void ActivateSkill(BaseCharacter _Opponent)
     {
         //아군 보호 스킬등으로 보호 할 수 있음
         //최종적으로 공격해야하는 적 판정
@@ -79,57 +80,143 @@ public class BaseSkill : MonoBehaviour
             return;
         }
 
+        //단일공격인 경우 _opponent한테만 공격 로직 적용
+        if (skillTargetType == SkillTargetType.Singular)
+        {
+           ApplySkill(opponent);
+        }
+        //전체 공격인 경우 skillradius내부의 모든 인물에게 skill 적용
+        //만일 skillradius 내부의 특정 인물에게만 로직 적용시키고 싶으면 ApplyMultiple재정의하기
+        else if (skillTargetType == SkillTargetType.Multiple)
+        { 
+            ApplyMultiple();
+        }
+    }
+
+    protected virtual void ApplySkill(BaseCharacter _opponent)
+    {
+        bool isCrit = false;
+        AttackLogic(_opponent, ref isCrit);
+        //치명타일 경우 버프 바로 적용
+        if (isCrit)
+        {
+            foreach (GameObject ApplybuffGameobject in bufflist)
+            {
+                if (!ApplybuffGameobject) continue;
+                BaseBuff BufftoApply = ApplybuffGameobject.GetComponent<BaseBuff>();
+                if (!BufftoApply) continue;
+                //먼저 buff/debuff가 몇%의 확률로 걸리는지 판단.
+                if (CheckApplyBuff(BufftoApply) == false) continue;
+                //치명타면 저항 무시한채 스킬 적용
+                ApplyBuff(_opponent, BufftoApply);
+            }
+        }
+        else
+        {
+            foreach (GameObject applybuffGameobject in bufflist)
+            {
+                if (!applybuffGameobject) continue;
+                BaseBuff bufftoApply = applybuffGameobject.GetComponent<BaseBuff>();
+                //먼저 buff/debuff가 몇%의 확률로 걸리는지 판단.
+                if (CheckApplyBuff(bufftoApply) == false) continue;
+                //적의 저항 수치 판단.
+                if (CheckResist(_opponent))
+                {
+                    ApplyBuff(_opponent, bufftoApply);
+                }
+            }
+        }
+    }
+
+    //SkillRadius에 있는 적들 전체에게 스킬 적용
+    protected virtual void ApplyMultiple()
+    {
+        Formation allies = BattleManager.GetInstance.Allies;
+        Formation enemies = BattleManager.GetInstance.Enemies;
+        
+        List<BaseCharacter> receivers = new List<BaseCharacter>();
+        for (int i = 0; i < skillRadius.Length; ++i)
+        {
+            if (i<4 && skillRadius[i])
+            {
+                BaseCharacter ally = allies.formation[i];
+                
+                //아군의 Size가 2인 경우
+                if (ally.Size == 2)
+                {
+                    // 이미 Receivers 리스트에 동일한 GameObject를 참조하는 BaseCharacter가 없는 경우에만 추가
+                    if (!receivers.Any(e => e.gameObject == ally.gameObject))
+                    {
+                        receivers.Add(ally);
+                    }
+                }
+                else
+                {
+                    // Size가 1인 Ally은 그냥 추가
+                    receivers.Add(ally);
+                }
+            }
+            else if (i is >= 4 and < 8 && skillRadius[i])
+            {
+                BaseCharacter enemy = enemies.formation[i - 4];
+                if(!enemy) continue;
+
+                //적의 Size가 2인 경우
+                if(enemy.Size == 2)
+                {
+                    // 이미 Receivers 리스트에 동일한 GameObject를 참조하는 BaseCharacter가 없는 경우에만 추가
+                    if (!receivers.Any(e => e.gameObject == enemy.gameObject))
+                    {
+                        receivers.Add(enemy);
+                    }
+                }
+                else
+                {
+                    // Size가 1인 적은 그냥 추가
+                    receivers.Add(enemy);
+                }
+
+            }
+        }
+        
+        ////
+        //TODO : receivers가 한번에 공격받는 듯한 카메라 무빙로직 추가
+        ////        
+
+        foreach (BaseCharacter opponent in receivers)
+        {
+            ApplySkill(opponent);
+        };
+    }
+    bool AttackLogic(BaseCharacter _Opponent, ref bool _iscrit)
+    {
         //명중 체크
         if (CheckAccuracy() == false)
         {
             Debug.Log("Accuracy Failed on" + _Opponent.name.ToString());
-            return;
+            return false;
         }
         //회피 체크
-        if (CheckEvasion(opponent) == false)
+        if (CheckEvasion(_Opponent) == false)
         {
             Debug.Log(_Opponent.name.ToString() + "Evaded skill" + skillName);
-            return;
+            return false;
         }
         
         //치명타일 경우 바로 버프 적용
         if (CheckCrit())
         {
             Debug.Log("Crit Skill on "+ skillName + "to "+ _Opponent.name.ToString());
-            ApplyStat(opponent, true);
-
-            //버프 적용
-            foreach (GameObject ApplybuffGameobject in bufflist)
-            {
-                if (ApplybuffGameobject == null) continue;
-                BaseBuff BufftoApply = ApplybuffGameobject.GetComponent<BaseBuff>();
-                if (BufftoApply == null) continue;
-                //먼저 buff/debuff가 몇%의 확률로 걸리는지 판단.
-                if (CheckApplyBuff(BufftoApply) == false) continue;
-                //치명타면 저항 무시한채 스킬 적용
-                ApplyBuff(opponent, BufftoApply);
-            }
+            _iscrit = true;
+            ApplyStat(_Opponent, true);
         }
         else
         {
             Debug.Log("Non Crit Skill on " + skillName + "to " + _Opponent.name.ToString());
-            ApplyStat(opponent, false);
-
-            foreach (GameObject ApplybuffGameobject in bufflist)
-            {
-                if (ApplybuffGameobject == null) continue;
-                BaseBuff BufftoApply = ApplybuffGameobject.GetComponent<BaseBuff>();
-                //먼저 buff/debuff가 몇%의 확률로 걸리는지 판단.
-                if (CheckApplyBuff(BufftoApply) == false) continue;
-                //적의 저항 수치 판단.
-                if (CheckResist(opponent) == false)
-                {
-                    ApplyBuff(opponent, BufftoApply);
-                }
-             
-            }
+            ApplyStat(_Opponent, false);
         }
-        
+
+        return true;
     }
 
     protected BaseCharacter CheckOpponentValid(BaseCharacter _Opponent)
@@ -215,7 +302,7 @@ public class BaseSkill : MonoBehaviour
                 return;
             }
         }
-        _Opponent.activeBuffs.Add(_buff);
+        _buff.AddBuff(_Opponent);
     }
 
     private void ApplyStat(BaseCharacter _opponent, bool _isCrit)
@@ -236,6 +323,10 @@ public class BaseSkill : MonoBehaviour
                 if (_isCrit) RandomStat = RandomStat * 2;
 
                 opponentHealth.ApplyDamage((int)Mathf.Round(RandomStat));
+                if (_opponent.CheckDead())
+                {
+                    _opponent.SetDead();
+                };
             }
             break;
             case SkillType.Heal:

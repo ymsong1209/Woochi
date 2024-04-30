@@ -4,30 +4,30 @@ using UnityEngine;
 
 public class BleedDeBuff : BaseBuff
 {
-    //³» ÅÏÀÌ ½ÃÀÛÇÒ¶§ ¸î ÆÛ¼¾Æ®¸¸Å­ ÇÇ¸¦ ±ğÀ»°ÇÁö
+    //ë‚´ í„´ì´ ì‹œì‘í• ë•Œ ëª‡ í¼ì„¼íŠ¸ë§Œí¼ í”¼ë¥¼ ê¹ì„ê±´ì§€
     [SerializeField,ReadOnly] private int bleedPercent = 0;
-    //ÃâÇ÷ µğ¹öÇÁ¸¦ °É¶§ ¸î%¸¸Å­ ÃâÇ÷½ºÅÃÀ» ½×À» °ÍÀÎÁö
+    //ì¶œí˜ˆ ë””ë²„í”„ë¥¼ ê±¸ë•Œ ëª‡%ë§Œí¼ ì¶œí˜ˆìŠ¤íƒì„ ìŒ“ì„ ê²ƒì¸ì§€
     [SerializeField] protected int bleedApply;
-    //bleed°ü·Ã µğ¹öÇÁ
+    //bleedê´€ë ¨ ë””ë²„í”„
     public override bool ApplyTurnStartBuff()
     {
-        //ÀüÃ¼Ã¼·Â¿¡¼­ bleedApply%¸¸Å­ ÇÇ¸¦ ±ğ´Â´Ù.
+        //ì „ì²´ì²´ë ¥ì—ì„œ bleedApply%ë§Œí¼ í”¼ë¥¼ ê¹ëŠ”ë‹¤.
         float bleedDamage = buffOwner.Health.MaxHealth * bleedApply / 100f;
         buffOwner.Health.ApplyDamage(bleedDamage);
 
         --buffDurationTurns;
-        //TODO : BleedApply°ø½ÄÀÌ ¹Ù²ğ¼öµµ ÀÖÀ½.
+        //TODO : BleedApplyê³µì‹ì´ ë°”ë€”ìˆ˜ë„ ìˆìŒ.
 
         Debug.Log(buffOwner.name + "is Bleeding. Bleed leftover turn : " + buffDurationTurns.ToString());
 
-        //checkdead´Â Ä³¸¯ÅÍ°¡ Á×¾úÀ»°æ¿ì true ¹İÈ¯
-        //ApplyTurnStartBuff´Â ¹öÇÁ ½ÇÇà ÈÄ Ä³¸¯ÅÍ°¡ »ì¾ÒÀ¸¸é true ¹İÈ¯
+        //checkdeadëŠ” ìºë¦­í„°ê°€ ì£½ì—ˆì„ê²½ìš° true ë°˜í™˜
+        //ApplyTurnStartBuffëŠ” ë²„í”„ ì‹¤í–‰ í›„ ìºë¦­í„°ê°€ ì‚´ì•˜ìœ¼ë©´ true ë°˜í™˜
         return (!buffOwner.CheckDead());
     }
 
     public override void StackBuff()
     {
-        //TODO : ÃâÇ÷ ½ºÅÃ ½×ÀÏ °æ¿ì ¾î¶»°Ô ÇÏÁö?
+        //TODO : ì¶œí˜ˆ ìŠ¤íƒ ìŒ“ì¼ ê²½ìš° ì–´ë–»ê²Œ í•˜ì§€?
         Debug.Log("BleedBuff Stacked.");
         //base.StackBuff();
     }

@@ -81,6 +81,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     /// <summary>
     /// 캐릭터들의 버프 정리
     /// </summary>
@@ -264,154 +265,40 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     #region 스킬 사용
     public void ExecuteSelectedSkill(int _index = -1)
     {
-        if (currentSelectedSkill == null) return;
+        if (!currentSelectedSkill) return;
 
         // 스킬 사용한 캐릭터 애니메이션 실행, 스킬 사용 후 상대 캐릭터 애니메이션도 실행해야 함(회피도 애니메이션 있나) 
         BaseCharacter caster = currentSelectedSkill.SkillOwner;
         caster.PlayAnimation(currentSelectedSkill.SkillSO.AnimType);
-
-        //단일공격 스킬일 경우 index에 들어온 적만 공격
-        if(currentSelectedSkill.SkillTargetType == SkillTargetType.Singular)
-        {
-            AttackSingular(_index);
-        }
-        else if(currentSelectedSkill.SkillTargetType == SkillTargetType.Multiple)
-        {
-            AttackMultiple(_index);
-        }
-    }
-
-    /// <summary>
-    /// Index의 위치에 따라 적 한명에게 공격한다.
-    /// </summary>
-    private void AttackSingular(int _index)
-    {
-        BaseCharacter Caster = null;
-        List<BaseCharacter> Enemies = new List<BaseCharacter>();
-
-        if (CurrentSelectedSkill == null) return;
-        Caster = currentSelectedSkill.SkillOwner;
-
-
-        //index<4인경우는 적이 아군을 공격한 경우
+        
+        BaseCharacter receiver = null;
+        
+        //index<4인경우는 아군에게 스킬 적용
         if (_index < 4)
         {
-           Enemies.Add(allies.formation[_index]);
+            receiver = allies.formation[_index];
         }
-        //4<index<8인 경우는 아군이 적을 공격한 경우
+        //4<index<8인 경우는 적에게 스킬 적용
         else if (_index < 8)
         {
-            Enemies.Add(enemies.formation[_index - 4]);
-        }
-       
-        if (Caster != null && Enemies.Count > 0)
-        {
-            StartCoroutine(ExecuteSkill(Caster, Enemies));
-        }
-        else
-        {
-            Debug.LogError("Caster or Enemy not assigned!");
-        }
-    }
-
-    private void AttackMultiple(int _index)
-    {
-        BaseCharacter Caster = null;
-        List<BaseCharacter> Receivers = new List<BaseCharacter>();
-        if (currentSelectedSkill == null) return;
-        Caster = currentSelectedSkill.SkillOwner;
-
-        //Index 여부와 상관없이 selectedSkill의 범위 내의 모든 공격 가능한 몹들 공격
-        for (int i = 0; i < currentSelectedSkill.SkillRadius.Length; i++)
-        {
-            //i<4일 경우 적이 아군을 공격
-            if (i < 4 && currentSelectedSkill.SkillRadius[i])
-            {
-                BaseCharacter ally = allies.formation[i];
-                if(ally == null) continue;
-
-                //아군의 Size가 2인 경우
-                if (ally.Size == 2)
-                {
-                    // 이미 Receivers 리스트에 동일한 GameObject를 참조하는 BaseCharacter가 없는 경우에만 추가
-                    if (!Receivers.Any(e => e.gameObject == ally.gameObject))
-                    {
-                        Receivers.Add(ally);
-                    }
-                }
-                else
-                {
-                    // Size가 1인 Ally은 그냥 추가
-                    Receivers.Add(ally);
-                }
-                Receivers.Add(allies.formation[i]);
-            }
-            else if (4 <= i && i < 8 && currentSelectedSkill.SkillRadius[i])
-            {
-                BaseCharacter enemy = enemies.formation[i - 4];
-                if(enemy == null) continue;
-
-                //적의 Size가 2인 경우
-                if(enemy.Size == 2)
-                {
-                    // 이미 Receivers 리스트에 동일한 GameObject를 참조하는 BaseCharacter가 없는 경우에만 추가
-                    if (!Receivers.Any(e => e.gameObject == enemy.gameObject))
-                    {
-                        Receivers.Add(enemy);
-                    }
-                }
-                else
-                {
-                    // Size가 1인 적은 그냥 추가
-                    Receivers.Add(enemy);
-                }
-
-            }
+            receiver = enemies.formation[_index - 4];
         }
 
-        if (Caster != null && Receivers.Count > 0)
+        if (currentSelectedSkill.SkillOwner && receiver)
         {
-            StartCoroutine(ExecuteSkill(Caster, Receivers));
-        }
-        else
-        {
-            Debug.LogError("Caster or Enemy not assigned!");
+            StartCoroutine(ExecuteSkill(currentSelectedSkill.SkillOwner,receiver));
         }
     }
 
     // 스킬 실행 로직 구현
-    IEnumerator ExecuteSkill(BaseCharacter _caster, List<BaseCharacter> _receivers)
+    IEnumerator ExecuteSkill(BaseCharacter _caster, BaseCharacter receiver)
     {
-        foreach(BaseCharacter receiver in _receivers)
-        {
-            currentSelectedSkill.ApplySkill(receiver);
-            if (receiver.CheckDead())
-            {
-                if (receiver.IsAlly)
-                {
-                    for (int i = 0; i < allies.formation.Length; i++)
-                    {
-                        if (allies.formation[i] != null && allies.formation[i] == receiver)
-                        {
-                            allies.formation[i] = null; // 자기 자신을 null로 설정
-                        }
-                    }
-                }
-                else
-                {
-                    for (int i = 0; i < enemies.formation.Length; i++)
-                    {
-                        if (enemies.formation[i] != null && enemies.formation[i] == receiver)
-                        {
-                            enemies.formation[i] = null;
-                        }
-                    }
-
-                }
-            };
-            Debug.Log(currentSelectedSkill.Name + " is executed by " + _caster.name + " on " + receiver.name);
-        }
-
+        currentSelectedSkill.ActivateSkill(receiver);
+        allies.CheckDeathInFormation();
+        enemies.CheckDeathInFormation();
+        
+        Debug.Log(currentSelectedSkill.Name + " is executed by " + _caster.name + " on " + receiver.name);
+        
         // caster의 애니메이션이 끝나기까지 기다렸다가 턴이 종료되게 함
         while (!_caster.IsIdle) yield return null;
 
@@ -419,7 +306,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         yield return new WaitForSeconds(1f); // 예시로 1초 대기
     }
-
+    
     /// <summary>
     /// Enemy 임시 행동
     /// </summary>

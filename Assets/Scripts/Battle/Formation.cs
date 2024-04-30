@@ -10,7 +10,7 @@ public class Formation : MonoBehaviour
     [SerializeField] private bool isAllyFormation;
 
     /// <summary>
-    /// ÇÁ¸®Æé ¸®½ºÆ®¸¦ ¹Ş¾Æ formationÀ» ÃÊ±âÈ­ÇÑ´Ù
+    /// í”„ë¦¬í© ë¦¬ìŠ¤íŠ¸ë¥¼ ë°›ì•„ formationì„ ì´ˆê¸°í™”í•œë‹¤
     /// </summary>
     /// <param name="prefabs"></param>
     public void Initialize(List<GameObject> prefabs)
@@ -43,9 +43,27 @@ public class Formation : MonoBehaviour
         Positioning();
     }
 
+    public void CheckDeathInFormation()
+    {
+        //ëª¨ë“  characterì— ëŒ€í•´ checkdeadê²€ì‚¬ í›„, ì£½ì—ˆìœ¼ë©´ formationì„ nullë¡œ ì±„ì›€. 
+        foreach (BaseCharacter character in formation)
+        {
+            if (character && character.CheckDead())
+            {
+                for (int i = 0; i < formation.Length; i++)
+                {
+                    if (formation[i] == character)
+                    {
+                        formation[i] = null; // ìê¸° ìì‹ ì„ nullë¡œ ì„¤ì •
+                    }
+                }
+            }
+        }
+    }
+    
     /// <summary>
-    /// ÅÏÀÌ ³¡³­ ÈÄ, ¹Ù²ï RowOrder °ªÀ» ±â¹İÀ¸·Î formationÀ» Á¤·Ä ÈÄ Àç¹èÄ¡ÇÑ´Ù
-    /// Ä³¸¯ÅÍµéÀ» ¾ÕÀ¸·Î ´ç±ä´Ù
+    /// í„´ì´ ëë‚œ í›„, ë°”ë€ RowOrder ê°’ì„ ê¸°ë°˜ìœ¼ë¡œ formationì„ ì •ë ¬ í›„ ì¬ë°°ì¹˜í•œë‹¤
+    /// ìºë¦­í„°ë“¤ì„ ì•ìœ¼ë¡œ ë‹¹ê¸´ë‹¤
     /// </summary>
     public void ReOrder()
     {
@@ -64,9 +82,9 @@ public class Formation : MonoBehaviour
     }
 
     /// <summary>
-    /// formation¿¡ ÀÖ´Â Ä³¸¯ÅÍµéÀ» ¹èÄ¡ÇÑ´Ù.
-    /// Ä³¸¯ÅÍÀÇ ½ºÇÁ¶óÀÌÆ® Å©±â¸¦ ±â¹İÀ¸·Î ¹èÄ¡ÇÑ´Ù.
-    /// ¸¸¾à Æ¯¼öÇÑ ¹èÄ¡°¡ ÇÊ¿äÇÏ´Ù¸é, ±×¶§ °¡¼­ Ãß°¡
+    /// formationì— ìˆëŠ” ìºë¦­í„°ë“¤ì„ ë°°ì¹˜í•œë‹¤.
+    /// ìºë¦­í„°ì˜ ìŠ¤í”„ë¼ì´íŠ¸ í¬ê¸°ë¥¼ ê¸°ë°˜ìœ¼ë¡œ ë°°ì¹˜í•œë‹¤.
+    /// ë§Œì•½ íŠ¹ìˆ˜í•œ ë°°ì¹˜ê°€ í•„ìš”í•˜ë‹¤ë©´, ê·¸ë•Œ ê°€ì„œ ì¶”ê°€
     /// </summary>
     public void Positioning()
     {

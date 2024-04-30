@@ -34,7 +34,7 @@ public class SkillTriggerArea : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
 
         // 레이캐스트가 어떤 Collider2D와 충돌했는지 확인
-        if (hit.collider != null)
+        if (hit.collider)
         {
             // 충돌한 객체가 이 스크립트가 부착된 GameObject인지 확인
             if (hit.collider.gameObject == gameObject)
@@ -57,7 +57,7 @@ public class SkillTriggerArea : MonoBehaviour
     void ApplySkill(BaseSkill _skill, BaseCharacter _opponent)
     {
         BaseCharacter caster = BattleManager.GetInstance.currentCharacter;
-        _skill.ApplySkill(_opponent);
+        _skill.ActivateSkill(_opponent);
     }
 
 }

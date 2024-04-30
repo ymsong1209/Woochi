@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2160226648515088968
+--- !u!1 &8376371438601580464
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,50 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2333950630019404608}
-  - component: {fileID: 4178373846625572037}
+  - component: {fileID: 7265553078642598264}
+  - component: {fileID: 5713762804124881929}
   m_Layer: 0
-  m_Name: Tiger_Slam
+  m_Name: EnemyFormation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2333950630019404608
+--- !u!4 &7265553078642598264
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2160226648515088968}
+  m_GameObject: {fileID: 8376371438601580464}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9947583, y: 0.4868077, z: 28.53495}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4178373846625572037
+--- !u!114 &5713762804124881929
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2160226648515088968}
+  m_GameObject: {fileID: 8376371438601580464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11c99b4fc898b7343b7a0b0806cb8d5c, type: 3}
+  m_Script: {fileID: 11500000, guid: d9f542595d87b204a99f5a3a47050fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillSO: {fileID: 11400000, guid: 3b44424bba33bb549aa28ca3de7a3708, type: 2}
-  skillOwner: {fileID: 0}
-  skillName: 
-  skillAvailableRadius: 0000000000000000
-  skillRadius: 0000000000000000
-  skillTargetType: 0
-  skillType: 0
-  bufflist:
-  - {fileID: 2569674945298275565, guid: 26304a1398da0da4081b85fb5bb96c47, type: 3}
-  multiplier: 0
-  skillAccuracy: 0
+  formation:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  isAllyFormation: 0

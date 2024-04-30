@@ -15,22 +15,22 @@ public class Health : MonoBehaviour
     public HPEvent OnHealthChanged;
 
     /// <summary>
-    /// ´ë¹ÌÁö¸¦ ¹Ş´Â °ø½Ä, _penetrate°¡ trueÀÏ °æ¿ì¿¡´Â ½¯µå¸¦ ¶Õ´Â °üÅëÇü ´ë¹ÌÁö
+    /// ëŒ€ë¯¸ì§€ë¥¼ ë°›ëŠ” ê³µì‹, _penetrateê°€ trueì¼ ê²½ìš°ì—ëŠ” ì‰´ë“œë¥¼ ëš«ëŠ” ê´€í†µí˜• ëŒ€ë¯¸ì§€
     /// </summary>
     /// <param name="_damage"></param>
-    /// <param name="_penetrate">_penetrate°¡ trueÀÏ °æ¿ì¿¡´Â ½¯µå¸¦ ¶Õ´Â °üÅëÇü ´ë¹ÌÁö </param>
+    /// <param name="_penetrate">_penetrateê°€ trueì¼ ê²½ìš°ì—ëŠ” ì‰´ë“œë¥¼ ëš«ëŠ” ê´€í†µí˜• ëŒ€ë¯¸ì§€ </param>
     public void ApplyDamage(float _damage, bool _penetrate = false)
     {
         BaseCharacter character = gameObject.GetComponent<BaseCharacter>();
         if (character == null) return;
 
-        //°üÅëÇü ´ë¹ÌÁöÀÎ°æ¿ì
+        //ê´€í†µí˜• ëŒ€ë¯¸ì§€ì¸ê²½ìš°
         if (_penetrate == false)
         {
             curHealth = Mathf.Clamp(curHealth - _damage, 0, maxHealth);
             Debug.Log("Curhealth : " + curHealth);
         }
-        //ºñ°üÅëÇü ´ë¹ÌÁöÀÎ°æ¿ì ½¯µå ¸ÕÀú ±îÀÓ
+        //ë¹„ê´€í†µí˜• ëŒ€ë¯¸ì§€ì¸ê²½ìš° ì‰´ë“œ ë¨¼ì € ê¹Œì„
         else
         {
             shield -= _damage;
@@ -46,7 +46,7 @@ public class Health : MonoBehaviour
     }
 
     /// <summary>
-    /// ¹æ¾îµµ¸¦ 0À¸·Î ÃÊ±âÈ­
+    /// ë°©ì–´ë„ë¥¼ 0ìœ¼ë¡œ ì´ˆê¸°í™”
     /// </summary>
     public void ResetShield()
     {
@@ -64,7 +64,7 @@ public class Health : MonoBehaviour
     {
         if (curHealth <= 0)
         {
-            //°üÅëÇü ´ë¹ÌÁö·Î Ã¼·ÂÀÌ 0ÀÌ µÉ¼ö ÀÖÀ½
+            //ê´€í†µí˜• ëŒ€ë¯¸ì§€ë¡œ ì²´ë ¥ì´ 0ì´ ë ìˆ˜ ìˆìŒ
             shield = 0;
             return true;
         }

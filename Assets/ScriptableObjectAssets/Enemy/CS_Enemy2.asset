@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c4bbbce2a03c2d4a95b7ced04f3ebb7, type: 3}
-  m_Name: CS_Enemy0
+  m_Name: CS_Enemy2
   m_EditorClassIdentifier: 
-  characterName: Enemy0
+  characterName: Enemy2
   baseHealth: 10
   baseSpeed: 27
   baseDefense: 13
   baseCrit: 13
   baseAccuracy: 13
   baseEvasion: 13
-  baseResist: 13
-  skills:
-  - {fileID: 11400000, guid: 71a04136a7429d247ba88c1872b7cf86, type: 2}
+  baseResist: 0
+  baseMinStat: 0
+  baseMaxStat: 0
+  skills: []

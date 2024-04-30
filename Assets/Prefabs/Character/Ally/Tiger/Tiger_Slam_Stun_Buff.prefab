@@ -101,4 +101,18 @@ MonoBehaviour:
   baseBuffDurationTurns: 1
   buffDurationTurns: 1
   buffType: 4
-  chanceToApplyBuff: 30
+  chanceToApplyBuff: 100
+  changeDefense: 0
+  changeCrit: 0
+  changeAccuracy: 0
+  changeEvasion: 0
+  changeResist: 0
+  changeMinStat: 0
+  changeMaxStat: 0
+  leftoverDefense: 0
+  leftoverCrit: 0
+  leftoverAccuracy: 0
+  leftoverEvasion: 0
+  leftoverResist: 0
+  leftoverMinStat: 0
+  leftoverMaxStat: 0

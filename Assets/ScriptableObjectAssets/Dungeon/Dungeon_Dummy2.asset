@@ -9,17 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c4bbbce2a03c2d4a95b7ced04f3ebb7, type: 3}
-  m_Name: CS_Enemy1
+  m_Script: {fileID: 11500000, guid: 6e287271d0041ee4e8e43ace29639629, type: 3}
+  m_Name: Dungeon_Dummy2
   m_EditorClassIdentifier: 
-  characterName: Enemy1
-  baseHealth: 10
-  baseSpeed: 28
-  baseDefense: 13
-  baseCrit: 13
-  baseAccuracy: 13
-  baseEvasion: 13
-  baseResist: 0
-  baseMinStat: 0
-  baseMaxStat: 0
-  skills: []
+  EnemyList:
+  - {fileID: 421316074168023964, guid: d9ea2dc730d5055419004abdc2c7c21a, type: 3}
+  - {fileID: 421316074168023964, guid: 6db160ad79d9fcd42bc13c98993a0616, type: 3}

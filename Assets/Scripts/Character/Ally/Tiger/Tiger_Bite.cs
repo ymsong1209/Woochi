@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tiger_Bite : BaseSkill
 {
-    public override void ApplySkill(BaseCharacter _Opponent)
+    public override void ActivateSkill(BaseCharacter _Opponent)
     {
         //아군 보호 스킬등으로 보호 할 수 있음
         //최종적으로 공격해야하는 적 판정
