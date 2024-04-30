@@ -120,7 +120,9 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
             if (ShouldRemoveBuff(activeBuffs[i]))
             {
+                BaseBuff buff = activeBuffs[i];
                 RemoveBuffAtIndex(i);
+                Destroy(buff);
             }
         }
         if (mightDead)
