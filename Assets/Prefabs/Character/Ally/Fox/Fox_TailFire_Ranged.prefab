@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3780136729541033186}
-  - component: {fileID: -671161831978016646}
+  - component: {fileID: 5607669441309170492}
   m_Layer: 0
-  m_Name: Fox_TailFire_1
+  m_Name: Fox_TailFire_Ranged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-671161831978016646
+--- !u!114 &5607669441309170492
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,16 +41,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2672831112880370927}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9411229b9ce933b4589fab53a6374c43, type: 3}
+  m_Script: {fileID: 11500000, guid: c97e2728651a4f04bb2dd655489a975a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillSO: {fileID: 11400000, guid: 0ecd924caf47bc042b76654e51d82275, type: 2}
+  skillSO: {fileID: 11400000, guid: 8124cec11c44e974dbc2f22932e09e4b, type: 2}
   skillOwner: {fileID: 0}
   skillName: 
   skillAvailableRadius: 0000000000000000
   skillRadius: 0000000000000000
   skillTargetType: 0
   skillType: 0
-  bufflist: []
+  bufflist:
+  - {fileID: 2569674945298275565, guid: 6486b667994bb704c9c21b4d01c3cdcc, type: 3}
   multiplier: 0
   skillAccuracy: 0

@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class TailFire_Remote : BaseSkill
 {
-    public override void ActivateSkill(BaseCharacter _Opponent)
-    {
-        base.ActivateSkill(_Opponent);
-
-        BattleManager.GetInstance.MoveCharacter(SkillOwner, -1);
-    }
+   public override void CheckTurnStart()
+   {
+      
+   }
 }

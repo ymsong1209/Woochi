@@ -9,7 +9,7 @@ public class Tiger_Roar_Buff : BaseBuff
         Debug.Log("TigerRoarBuff Added");
         base.buffDurationTurns = 3;
 
-        //¹æ¾î¸¦ 5 Áõ°¡½ÃÅ²´Ù.
+        //ë°©ì–´ë¥¼ 5 ì¦ê°€ì‹œí‚¨ë‹¤.
         changeDefense = 5;
         _buffOwner.Defense += 5;
 

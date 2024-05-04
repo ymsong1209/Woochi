@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f970e1487b951641bb3562062edf1db, type: 3}
-  m_Name: Fox_TailFire_0
+  m_Name: Fox_TailFire_Ranged
   m_EditorClassIdentifier: 
   skillName: "\uAF2C\uB9AC\uBD88"
   animType: 3

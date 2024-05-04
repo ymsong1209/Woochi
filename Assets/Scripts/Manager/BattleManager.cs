@@ -9,27 +9,27 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 {
    
     private BattleState         CurState;
-    public  BaseCharacter       currentCharacter;               //ÇöÀç ´©±¸ Â÷·ÊÀÎÁö
-    private BaseSkill           currentSelectedSkill;           //ÇöÀç ¼±ÅÃµÈ ½ºÅ³
-    private int                 currentRound;                   //ÇöÀç ¸î ¶ó¿îµåÀÎÁö
+    public  BaseCharacter       currentCharacter;               //í˜„ì¬ ëˆ„êµ¬ ì°¨ë¡€ì¸ì§€
+    private BaseSkill           currentSelectedSkill;           //í˜„ì¬ ì„ íƒëœ ìŠ¤í‚¬
+    private int                 currentRound;                   //í˜„ì¬ ëª‡ ë¼ìš´ë“œì¸ì§€
 
     [SerializeField] private GameObject skillTriggerSelector;
 
     /// <summary>
-    /// ¾Æ±ºÀÌ¶û Àû±ºÀÇ ½Î¿ò ¼ø¼­
+    /// ì•„êµ°ì´ë‘ ì êµ°ì˜ ì‹¸ì›€ ìˆœì„œ
     /// </summary>
     [SerializeField] private Queue<BaseCharacter> combatQueue = new Queue<BaseCharacter>();
     [SerializeField] private Formation allies;
     [SerializeField] private Formation enemies;
 
-    #region ÀÌº¥Æ®
+    #region ì´ë²¤íŠ¸
     /// <summary>
-    /// Ä³¸¯ÅÍ ÅÏÀÌ ½ÃÀÛµÉ ¶§ È£ÃâµÇ´Â ÀÌº¥Æ®(UI ¾÷µ¥ÀÌÆ® µî)
+    /// ìºë¦­í„° í„´ì´ ì‹œì‘ë  ë•Œ í˜¸ì¶œë˜ëŠ” ì´ë²¤íŠ¸(UI ì—…ë°ì´íŠ¸ ë“±)
     /// </summary>
     public Action<BaseCharacter, bool> OnCharacterTurnStart;
     #endregion
 
-    #region ºÎ¿ï º¯¼ö
+    #region ë¶€ìš¸ ë³€ìˆ˜
     [Header("Boolean Variables")]
     private bool isSkillSelected = false;
     private bool isSkillExecuted = false;
@@ -43,7 +43,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     /// <summary>
-    /// DungeonInfoSO Á¤º¸¸¦ ¹Ş¾Æ¿Í¼­ ¾Æ±º°ú Àû±º À§Ä¡°ª ¼³Á¤
+    /// DungeonInfoSO ì •ë³´ë¥¼ ë°›ì•„ì™€ì„œ ì•„êµ°ê³¼ ì êµ° ìœ„ì¹˜ê°’ ì„¤ì •
     /// </summary>
     public void InitializeBattle(DungeonInfoSO dungeon)
     {
@@ -55,7 +55,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         currentRound = 0;
         combatQueue.Clear();
 
-        // ¾Æ±º, Àû±º Æ÷¸ŞÀÌ¼Ç ÃÊ±âÈ­
+        // ì•„êµ°, ì êµ° í¬ë©”ì´ì…˜ ì´ˆê¸°í™”
         allies.Initialize(GameManager.GetInstance.Allies);
         enemies.Initialize(dungeon.EnemyList);
         
@@ -75,7 +75,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         // OnCharacterTurnStart?.Invoke(allyFormation[0], false);
 
-        #region PreRound »óÅÂ·Î ³Ñ¾î°¨
+        #region PreRound ìƒíƒœë¡œ ë„˜ì–´ê°
         PreRound();
         #endregion
 
@@ -83,14 +83,14 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
     // ReSharper disable Unity.PerformanceAnalysis
     /// <summary>
-    /// Ä³¸¯ÅÍµéÀÇ ¹öÇÁ Á¤¸®
+    /// ìºë¦­í„°ë“¤ì˜ ë²„í”„ ì •ë¦¬
     /// </summary>
     void PreRound()
     {
         CurState = BattleState.PreRound;
         ++currentRound;
         CheckBuffs(BuffTiming.RoundStart);
-        //¹öÇÁ·Î ÀÎÇÑ Ä³¸¯ÅÍ »ç¸Á È®ÀÎ
+        //ë²„í”„ë¡œ ì¸í•œ ìºë¦­í„° ì‚¬ë§ í™•ì¸
         if (CheckVictory(combatQueue))
         {
             PostBattle(true);
@@ -103,38 +103,38 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     /// <summary>
-    /// BuffTimingÀ» ¸Å°³º¯¼ö·Î ¹Ş¾Æ¼­ ÇØ´ç ½ÃÁ¡¿¡ ¹öÇÁ¸¦ Àû¿ë
+    /// BuffTimingì„ ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ì•„ì„œ í•´ë‹¹ ì‹œì ì— ë²„í”„ë¥¼ ì ìš©
     /// </summary>
     void CheckBuffs(BuffTiming buffTiming)
     {
         int characterCount = combatQueue.Count;
         for (int i = 0; i < characterCount; i++)
         {
-            // Queue¿¡¼­ Ç×¸ñÀ» Á¦°Å
+            // Queueì—ì„œ í•­ëª©ì„ ì œê±°
             BaseCharacter character = combatQueue.Dequeue();
 
             character.ApplyBuff(buffTiming);
 
-            // ¼öÁ¤µÈ character¸¦ QueueÀÇ µÚÂÊ¿¡ ´Ù½Ã Ãß°¡.
+            // ìˆ˜ì •ëœ characterë¥¼ Queueì˜ ë’¤ìª½ì— ë‹¤ì‹œ ì¶”ê°€.
             combatQueue.Enqueue(character);
         }
     }
 
     /// <summary>
-    /// Ä³¸¯ÅÍµéÀ» ¼Óµµ¼øÀ¸·Î Á¤·Ä
+    /// ìºë¦­í„°ë“¤ì„ ì†ë„ìˆœìœ¼ë¡œ ì •ë ¬
     /// </summary>
     void DetermineOrder()
     {
         CurState = BattleState.DetermineOrder;
-        //Ä³¸¯ÅÍ¸¦ ¼Óµµ¼øÀ¸·Î Á¤·ÄÇÏ¸é¼­ ¸ğµÎ ÀüÅõ¿¡ Âü¿©ÇÒ ¼ö ÀÖµµ·Ï º¯°æ
+        //ìºë¦­í„°ë¥¼ ì†ë„ìˆœìœ¼ë¡œ ì •ë ¬í•˜ë©´ì„œ ëª¨ë‘ ì „íˆ¬ì— ì°¸ì—¬í•  ìˆ˜ ìˆë„ë¡ ë³€ê²½
         ReorderCombatQueue(true, null);
         CharacterTurn();
     }
 
     /// <summary>
-    /// combatQueue¸¦ ´Ù½Ã ¼Óµµ¼øÀ¸·Î Á¤·Ä, ResetTurnUsed¸¦ true·Î ÇÏ¸é ¸ğµç Ä³¸¯ÅÍ°¡ ÅÏÀ» ´Ù½Ã ¾µ ¼ö ÀÖÀ½
+    /// combatQueueë¥¼ ë‹¤ì‹œ ì†ë„ìˆœìœ¼ë¡œ ì •ë ¬, ResetTurnUsedë¥¼ trueë¡œ í•˜ë©´ ëª¨ë“  ìºë¦­í„°ê°€ í„´ì„ ë‹¤ì‹œ ì“¸ ìˆ˜ ìˆìŒ
     /// </summary>
-    /// <param name="_resetTurnUsed">true·Î ¼³Á¤ ½Ã ¸ğµç Ä³¸¯ÅÍ ´Ù½Ã ÅÏ »ç¿ë°¡´É</param>
+    /// <param name="_resetTurnUsed">trueë¡œ ì„¤ì • ì‹œ ëª¨ë“  ìºë¦­í„° ë‹¤ì‹œ í„´ ì‚¬ìš©ê°€ëŠ¥</param>
     /// <param name="processedCharacters"></param>
     void ReorderCombatQueue(bool _resetTurnUsed = false, List<BaseCharacter> processedCharacters = null)
     {
@@ -145,16 +145,16 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             allCharacters.AddRange(processedCharacters);
         }
 
-        // combatQueue¿¡ ³²¾Æ ÀÖ´Â Ä³¸¯ÅÍ¸¦ ¸ğµÎ allCharacters ¸®½ºÆ®¿¡ Ãß°¡
+        // combatQueueì— ë‚¨ì•„ ìˆëŠ” ìºë¦­í„°ë¥¼ ëª¨ë‘ allCharacters ë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€
         while (combatQueue.Count > 0)
         {
             allCharacters.Add(combatQueue.Dequeue());
         }
 
-        // allCharacters ¸®½ºÆ®¸¦ ¼Óµµ¿¡ µû¶ó ÀçÁ¤·Ä
+        // allCharacters ë¦¬ìŠ¤íŠ¸ë¥¼ ì†ë„ì— ë”°ë¼ ì¬ì •ë ¬
         allCharacters.Sort((character1, character2) => character2.Speed.CompareTo(character1.Speed));
 
-        // ÀçÁ¤·ÄµÈ ¸®½ºÆ®¸¦ ¹ÙÅÁÀ¸·Î combatQueue Àç±¸¼º
+        // ì¬ì •ë ¬ëœ ë¦¬ìŠ¤íŠ¸ë¥¼ ë°”íƒ•ìœ¼ë¡œ combatQueue ì¬êµ¬ì„±
         combatQueue.Clear();
         foreach (BaseCharacter character in allCharacters)
         {
@@ -167,13 +167,13 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     /// <summary>
-    /// Ä³¸¯ÅÍµéÀÇ Çàµ¿ ½ÃÀÛ
+    /// ìºë¦­í„°ë“¤ì˜ í–‰ë™ ì‹œì‘
     /// </summary>
     void CharacterTurn()
     {
         CurState = BattleState.CharacterTurn;
         Debug.Log("CurState : CharacterTurn");
-        //Ä³¸¯ÅÍº°·Î Çàµ¿
+        //ìºë¦­í„°ë³„ë¡œ í–‰ë™
         StartCoroutine(HandleCharacterTurns());
     }
 
@@ -183,7 +183,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         while (combatQueue.Count > 0)
         {
-            #region ÀÌÀü ÅÏ¿¡ ¾²ÀÎ º¯¼ö ÃÊ±âÈ­
+            #region ì´ì „ í„´ì— ì“°ì¸ ë³€ìˆ˜ ì´ˆê¸°í™”
             isSkillSelected = false;
             isSkillExecuted = false;
             currentSelectedSkill = null;
@@ -196,44 +196,44 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 continue;
             }
 
-            // ÀÚ½ÅÀÇ Â÷·Ê°¡ µÆÀ» ¶§ ¹öÇÁ Àû¿ë
+            // ìì‹ ì˜ ì°¨ë¡€ê°€ ëì„ ë•Œ ë²„í”„ ì ìš©
             if (currentCharacter.ApplyBuff(BuffTiming.TurnStart))
             {
-                // Ä³¸¯ÅÍÀÇ ½ºÅ³¿¡ º¯°æÁ¡ÀÌ ÀÖ´ÂÁö È®ÀÎ
-                // Àûµµ À§Ä¡°¡ ¹Ù²ğ ¼ö ÀÖÀ¸´Ï ½ºÅ³ È®ÀÎÀ» ÇØÁÜ
+                // ìºë¦­í„°ì˜ ìŠ¤í‚¬ì— ë³€ê²½ì ì´ ìˆëŠ”ì§€ í™•ì¸
+                // ì ë„ ìœ„ì¹˜ê°€ ë°”ë€” ìˆ˜ ìˆìœ¼ë‹ˆ ìŠ¤í‚¬ í™•ì¸ì„ í•´ì¤Œ
                 currentCharacter.CheckSkillsOnTurnStart();
 
-                // ÇöÀç ÅÏÀÇ Ä³¸¯ÅÍ¿¡ ¸Â´Â UI ¾÷µ¥ÀÌÆ®
+                // í˜„ì¬ í„´ì˜ ìºë¦­í„°ì— ë§ëŠ” UI ì—…ë°ì´íŠ¸
                 OnCharacterTurnStart?.Invoke(currentCharacter, true);
 
-                // TODO : ÇöÀç ÅÏÀÌ ÀûÀÏ ½Ã AI·Î Çàµ¿ °áÁ¤(ÀÓ½Ã ÄÚµå)
+                // TODO : í˜„ì¬ í„´ì´ ì ì¼ ì‹œ AIë¡œ í–‰ë™ ê²°ì •(ì„ì‹œ ì½”ë“œ)
                 if (!currentCharacter.IsAlly)
                     StartCoroutine(EnemyAction(currentCharacter));
                 
-                // ½ºÅ³ÀÌ ¼±ÅÃµÇ°í ½ÇÇàµÉ ¶§±îÁö ´ë±â
+                // ìŠ¤í‚¬ì´ ì„ íƒë˜ê³  ì‹¤í–‰ë  ë•Œê¹Œì§€ ëŒ€ê¸°
                 while(!isSkillSelected || !isSkillExecuted)
                 {
                     yield return null;
                 }
             };
 
-            // ÀÚ½Å Â÷·Ê°¡ Áö³­ ÈÄ ÅÏ »ç¿ë Ã³¸®
+            // ìì‹  ì°¨ë¡€ê°€ ì§€ë‚œ í›„ í„´ ì‚¬ìš© ì²˜ë¦¬
             currentCharacter.IsTurnUsed = true;
 
             allies.ReOrder(); enemies.ReOrder();
 
-            // ½ºÅ³ »ç¿ëÀ¸·Î ÀÎÇÑ ¼Óµµ º¯°æ Ã³¸®
+            // ìŠ¤í‚¬ ì‚¬ìš©ìœ¼ë¡œ ì¸í•œ ì†ë„ ë³€ê²½ ì²˜ë¦¬
             ReorderCombatQueue(false, processedCharacters);
 
             processedCharacters.Add(currentCharacter);
 
-            // ½Â¸® Á¶°Ç Ã¼Å©
+            // ìŠ¹ë¦¬ ì¡°ê±´ ì²´í¬
             if (CheckVictory(processedCharacters) && CheckVictory(combatQueue))
             {
                 PostBattle(true);
                 yield break;
             }
-            //ÆĞ¹è Á¶°Ç Ã¼Å©
+            //íŒ¨ë°° ì¡°ê±´ ì²´í¬
             else if (CheckDefeat(processedCharacters) && CheckDefeat(combatQueue))
             {
                 PostBattle(false);
@@ -242,43 +242,43 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
             yield return null;
         }
-        //ProcessedCharacter¿¡ ÀÖ´Â Ä³¸¯ÅÍµé ´Ù½Ã characterQueue¿¡ »ğÀÔ
+        //ProcessedCharacterì— ìˆëŠ” ìºë¦­í„°ë“¤ ë‹¤ì‹œ characterQueueì— ì‚½ì…
         foreach(BaseCharacter characters in processedCharacters)
         {
             combatQueue.Enqueue(characters);
         }
 
-        //¸ğµç Ä³¸¯ÅÍÀÇ ÅÏÀÌ ³¡³µÀ» ¶§ ½ÇÇà
+        //ëª¨ë“  ìºë¦­í„°ì˜ í„´ì´ ëë‚¬ì„ ë•Œ ì‹¤í–‰
         PostRound();
     }
 
     /// <summary>
-    /// UI¿¡¼­ ½ºÅ³ ¼±ÅÃ ½Ã È£ÃâµÇ´Â ¸Ş¼­µå
+    /// UIì—ì„œ ìŠ¤í‚¬ ì„ íƒ ì‹œ í˜¸ì¶œë˜ëŠ” ë©”ì„œë“œ
     /// </summary>
     public void SkillSelected(BaseSkill _selectedSkill)
     {
-        // »ç¿ëÇÒ ½ºÅ³ ÀúÀå
+        // ì‚¬ìš©í•  ìŠ¤í‚¬ ì €ì¥
         currentSelectedSkill = _selectedSkill;
         isSkillSelected = true;
     }
 
-    #region ½ºÅ³ »ç¿ë
+    #region ìŠ¤í‚¬ ì‚¬ìš©
     public void ExecuteSelectedSkill(int _index = -1)
     {
         if (!currentSelectedSkill) return;
 
-        // ½ºÅ³ »ç¿ëÇÑ Ä³¸¯ÅÍ ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà, ½ºÅ³ »ç¿ë ÈÄ »ó´ë Ä³¸¯ÅÍ ¾Ö´Ï¸ŞÀÌ¼Çµµ ½ÇÇàÇØ¾ß ÇÔ(È¸ÇÇµµ ¾Ö´Ï¸ŞÀÌ¼Ç ÀÖ³ª) 
+        // ìŠ¤í‚¬ ì‚¬ìš©í•œ ìºë¦­í„° ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰, ìŠ¤í‚¬ ì‚¬ìš© í›„ ìƒëŒ€ ìºë¦­í„° ì• ë‹ˆë©”ì´ì…˜ë„ ì‹¤í–‰í•´ì•¼ í•¨(íšŒí”¼ë„ ì• ë‹ˆë©”ì´ì…˜ ìˆë‚˜) 
         BaseCharacter caster = currentSelectedSkill.SkillOwner;
         caster.PlayAnimation(currentSelectedSkill.SkillSO.AnimType);
         
         BaseCharacter receiver = null;
         
-        //index<4ÀÎ°æ¿ì´Â ¾Æ±º¿¡°Ô ½ºÅ³ Àû¿ë
+        //index<4ì¸ê²½ìš°ëŠ” ì•„êµ°ì—ê²Œ ìŠ¤í‚¬ ì ìš©
         if (_index < 4)
         {
             receiver = allies.formation[_index];
         }
-        //4<index<8ÀÎ °æ¿ì´Â Àû¿¡°Ô ½ºÅ³ Àû¿ë
+        //4<index<8ì¸ ê²½ìš°ëŠ” ì ì—ê²Œ ìŠ¤í‚¬ ì ìš©
         else if (_index < 8)
         {
             receiver = enemies.formation[_index - 4];
@@ -290,7 +290,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
     }
 
-    // ½ºÅ³ ½ÇÇà ·ÎÁ÷ ±¸Çö
+    // ìŠ¤í‚¬ ì‹¤í–‰ ë¡œì§ êµ¬í˜„
     IEnumerator ExecuteSkill(BaseCharacter _caster, BaseCharacter receiver)
     {
         currentSelectedSkill.ActivateSkill(receiver);
@@ -299,21 +299,21 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         
         Debug.Log(currentSelectedSkill.Name + " is executed by " + _caster.name + " on " + receiver.name);
         
-        // casterÀÇ ¾Ö´Ï¸ŞÀÌ¼ÇÀÌ ³¡³ª±â±îÁö ±â´Ù·È´Ù°¡ ÅÏÀÌ Á¾·áµÇ°Ô ÇÔ
+        // casterì˜ ì• ë‹ˆë©”ì´ì…˜ì´ ëë‚˜ê¸°ê¹Œì§€ ê¸°ë‹¤ë ¸ë‹¤ê°€ í„´ì´ ì¢…ë£Œë˜ê²Œ í•¨
         while (!_caster.IsIdle) yield return null;
 
         isSkillExecuted = true;
 
-        yield return new WaitForSeconds(1f); // ¿¹½Ã·Î 1ÃÊ ´ë±â
+        yield return new WaitForSeconds(1f); // ì˜ˆì‹œë¡œ 1ì´ˆ ëŒ€ê¸°
     }
     
     /// <summary>
-    /// Enemy ÀÓ½Ã Çàµ¿
+    /// Enemy ì„ì‹œ í–‰ë™
     /// </summary>
     IEnumerator EnemyAction(BaseCharacter _enemy)
     {
-        Debug.Log(_enemy.name + "°¡ Çàµ¿ÇÕ´Ï´Ù");
-        yield return new WaitForSeconds(3f); // ¿¹½Ã·Î 3ÃÊ ´ë±â ÈÄ ½ºÅ³ ½ÇÇà °¡Á¤
+        Debug.Log(_enemy.name + "ê°€ í–‰ë™í•©ë‹ˆë‹¤");
+        yield return new WaitForSeconds(3f); // ì˜ˆì‹œë¡œ 3ì´ˆ ëŒ€ê¸° í›„ ìŠ¤í‚¬ ì‹¤í–‰ ê°€ì •
         isSkillSelected = true;
         isSkillExecuted = true;
     }
@@ -327,13 +327,13 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     /// <summary>
-    /// ¶ó¿îµå°¡ ³¡³¯¶§ Àû¿ëµÇ´Â ¹öÇÁ ½ÇÇà ÈÄ, ½Â¸® Á¶°Ç Ã¼Å©
+    /// ë¼ìš´ë“œê°€ ëë‚ ë•Œ ì ìš©ë˜ëŠ” ë²„í”„ ì‹¤í–‰ í›„, ìŠ¹ë¦¬ ì¡°ê±´ ì²´í¬
     /// </summary>
     void PostRound()
     {
         CurState = BattleState.PostRound;
         CheckBuffs(BuffTiming.RoundEnd);
-        //Àû±ºÀÌ ¸ğµÎ Á×À¸¸é PostBattle·Î ³Ñ¾î°¨. ¾Æ´Ò½Ã ´Ù½Ã PreRound·Î µ¹¾Æ°¨
+        //ì êµ°ì´ ëª¨ë‘ ì£½ìœ¼ë©´ PostBattleë¡œ ë„˜ì–´ê°. ì•„ë‹ì‹œ ë‹¤ì‹œ PreRoundë¡œ ëŒì•„ê°
         if(CheckVictory(combatQueue))
         {
             PostBattle(true);
@@ -348,7 +348,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     /// <summary>
-    /// Àû±ºÀÌ ¸ğµÎ Á×¾ú´ÂÁö È®ÀÎ
+    /// ì êµ°ì´ ëª¨ë‘ ì£½ì—ˆëŠ”ì§€ í™•ì¸
     /// </summary>
     bool CheckVictory(IEnumerable<BaseCharacter> characters)
     {
@@ -356,14 +356,14 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         {
             if (!character.IsAlly && !character.IsDead)
             {
-                return false; // »ì¾ÆÀÖ´Â Àû±ºÀÌ ÀÖÀ¸¹Ç·Î ½Â¸®ÇÏÁö ¾ÊÀ½
+                return false; // ì‚´ì•„ìˆëŠ” ì êµ°ì´ ìˆìœ¼ë¯€ë¡œ ìŠ¹ë¦¬í•˜ì§€ ì•ŠìŒ
             }
         }
         return true;
     }
 
     /// <summary>
-    /// ¾Æ±ºÀÌ ¸ğµÎ Á×¾ú´ÂÁö È®ÀÎ
+    /// ì•„êµ°ì´ ëª¨ë‘ ì£½ì—ˆëŠ”ì§€ í™•ì¸
     /// </summary>
     bool CheckDefeat(IEnumerable<BaseCharacter> characters)
     {
@@ -371,27 +371,27 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         {
             if (character.IsAlly && !character.IsDead)
             {
-                return false; // »ì¾ÆÀÖ´Â ¾Æ±ºÀÌ ÀÖÀ¸¹Ç·Î ÆĞ¹èÇÏÁö ¾ÊÀ½
+                return false; // ì‚´ì•„ìˆëŠ” ì•„êµ°ì´ ìˆìœ¼ë¯€ë¡œ íŒ¨ë°°í•˜ì§€ ì•ŠìŒ
             }
         }
         return true;
     }
 
     /// <summary>
-    /// º¸»ó Á¤»ê ÈÄ, ÀüÅõ Á¾·á
+    /// ë³´ìƒ ì •ì‚° í›„, ì „íˆ¬ ì¢…ë£Œ
     /// </summary>
     void PostBattle(bool _victory)
     {
-        //½Â¸®½Ã
+        //ìŠ¹ë¦¬ì‹œ
         if (_victory)
         {
-            //½Â¸® È­¸é ¶á ÈÄ º¸»ó Á¤»ê
+            //ìŠ¹ë¦¬ í™”ë©´ ëœ¬ í›„ ë³´ìƒ ì •ì‚°
         }
         else
         {
-            //ÆĞ¹è È­¸é ¶ß±â
+            //íŒ¨ë°° í™”ë©´ ëœ¨ê¸°
         }
-        //Àû±ºÀÎ °æ¿ì »èÁ¦
+        //ì êµ°ì¸ ê²½ìš° ì‚­ì œ
         while (combatQueue.Count > 0)
         {
             BaseCharacter curchar = combatQueue.Dequeue();
@@ -406,7 +406,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     /// <summary>
-    /// ¸Å°³º¯¼ö·Î µé¾î¿Â Ä³¸¯ÅÍ°¡ ÇöÀç Æ÷¸ŞÀÌ¼Ç¿¡¼­ ¾î´À À§Ä¡¿¡ ÀÖ´ÂÁö
+    /// ë§¤ê°œë³€ìˆ˜ë¡œ ë“¤ì–´ì˜¨ ìºë¦­í„°ê°€ í˜„ì¬ í¬ë©”ì´ì…˜ì—ì„œ ì–´ëŠ ìœ„ì¹˜ì— ìˆëŠ”ì§€
     /// </summary>
     /// <param name="_character"></param>
     /// <returns></returns>
@@ -427,7 +427,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     /// <summary>
-    /// index À§Ä¡¿¡ Ä³¸¯ÅÍ°¡ ÀÖ´ÂÁö
+    /// index ìœ„ì¹˜ì— ìºë¦­í„°ê°€ ìˆëŠ”ì§€
     /// </summary>
     /// <param name="index"></param>
     /// <returns></returns>
@@ -446,16 +446,16 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     /// <summary>
-    /// Ä³¸¯ÅÍÀÇ À§Ä¡¸¦ ÀÌµ¿½ÃÅ°´Â ÇÔ¼ö
+    /// ìºë¦­í„°ì˜ ìœ„ì¹˜ë¥¼ ì´ë™ì‹œí‚¤ëŠ” í•¨ìˆ˜
     /// </summary>
-    /// <param name="move">¾ó¸¶³ª ÀÌµ¿ÇÒ °ÍÀÎÁö, À½¼ö¸é µÚ·Î ÀÌµ¿, ¾ç¼ö¸é ¾ÕÀ¸·Î ÀÌµ¿</param>
+    /// <param name="move">ì–¼ë§ˆë‚˜ ì´ë™í•  ê²ƒì¸ì§€, ìŒìˆ˜ë©´ ë’¤ë¡œ ì´ë™, ì–‘ìˆ˜ë©´ ì•ìœ¼ë¡œ ì´ë™</param>
     public void MoveCharacter(BaseCharacter character, int move)
     {
         int from = GetCharacterIndex(character);
-        int to = Mathf.Clamp(from - move, 0, 3);    // ÀÌµ¿ÇÏ·Á´Â À§Ä¡
+        int to = Mathf.Clamp(from - move, 0, 3);    // ì´ë™í•˜ë ¤ëŠ” ìœ„ì¹˜
 
-        // ÀÌµ¿ÇÑ °÷¿¡ Ä³¸¯ÅÍ°¡ ÀÖÀ¸¸é µÎ Ä³¸¯ÅÍÀÇ RowOrder °ªÀ» ±³È¯
-        // ¹Ù²ï RowOrder °ªÀº ÅÏÀÌ ³¡³¯ ¶§ 
+        // ì´ë™í•œ ê³³ì— ìºë¦­í„°ê°€ ìˆìœ¼ë©´ ë‘ ìºë¦­í„°ì˜ RowOrder ê°’ì„ êµí™˜
+        // ë°”ë€ RowOrder ê°’ì€ í„´ì´ ëë‚  ë•Œ 
         if(character.IsAlly)
         {
             if(IsCharacterThere(to))

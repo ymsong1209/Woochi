@@ -10,21 +10,21 @@ public class BaseSkill : MonoBehaviour
 {
     [SerializeField] private SkillSO skillSO;
 
-    [Tooltip("SkillOwner¸¦ ¼¼ÆÃÇØÁà¾ßÇÔ")]
+    [Tooltip("SkillOwnerë¥¼ ì„¸íŒ…í•´ì¤˜ì•¼í•¨")]
     [SerializeField] private    BaseCharacter skillOwner;
 
     [SerializeField] private string skillName;
     /// <summary>
-    /// ½ºÅ³À» »ç¿ëÇÒ ¼ö ÀÖ´Â ¿­
-    /// 0~4 : ¾Æ±º 1~4¿­
-    /// 5~8 : Àû±º 1~4¿­
+    /// ìŠ¤í‚¬ì„ ì‚¬ìš©í•  ìˆ˜ ìˆëŠ” ì—´
+    /// 0~4 : ì•„êµ° 1~4ì—´
+    /// 5~8 : ì êµ° 1~4ì—´
     /// </summary>
     [SerializeField] private bool[] skillAvailableRadius = new bool[8];
 
     /// <summary>
-    /// ½ºÅ³À» Àû¿ë½ÃÅ³ ¼ö ÀÖ´Â ¿­
-    /// 0~4 : ¾Æ±º 1~4¿­
-    /// 5~8 : Àû±º 1~4¿­
+    /// ìŠ¤í‚¬ì„ ì ìš©ì‹œí‚¬ ìˆ˜ ìˆëŠ” ì—´
+    /// 0~4 : ì•„êµ° 1~4ì—´
+    /// 5~8 : ì êµ° 1~4ì—´
     /// </summary>
     [SerializeField] private bool[] skillRadius = new bool[8];
 
@@ -32,22 +32,22 @@ public class BaseSkill : MonoBehaviour
     [SerializeField] private SkillType skillType;
 
     /// <summary>
-    /// ½ºÅ³ ÀûÁß½Ã Àû¿ë½ÃÅ³ ¹öÇÁ ¸®½ºÆ®
+    /// ìŠ¤í‚¬ ì ì¤‘ì‹œ ì ìš©ì‹œí‚¬ ë²„í”„ ë¦¬ìŠ¤íŠ¸
     /// </summary>
     public List<GameObject> bufflist = new List<GameObject>();
 
     #region Header SKILL STATS
     [Space(10)]
-    [Tooltip("Skill StatÀº SkillSO¿¡¼­ Ã³¸®ÇÔ.")]
+    [Tooltip("Skill Statì€ SkillSOì—ì„œ ì²˜ë¦¬í•¨.")]
     [Header("Skill Basics")]
    
     #endregion Header SKILL STATS
 
-    [SerializeField,ReadOnly] private float multiplier;    // ÇÇÇØ·® °è¼ö
-    [SerializeField,ReadOnly] private float skillAccuracy; // ½ºÅ³ ¸íÁß ¼öÄ¡
+    [SerializeField,ReadOnly] private float multiplier;    // í”¼í•´ëŸ‰ ê³„ìˆ˜
+    [SerializeField,ReadOnly] private float skillAccuracy; // ìŠ¤í‚¬ ëª…ì¤‘ ìˆ˜ì¹˜
 
     /// <summary>
-    /// ÀÚ½ÅÀÌ °¡Áö°í ÀÖ´Â SkillSO Á¤º¸¸¦ ÀÌ¿ëÇØ BaseSkillÀ» ÃÊ±âÈ­
+    /// ìì‹ ì´ ê°€ì§€ê³  ìˆëŠ” SkillSO ì •ë³´ë¥¼ ì´ìš©í•´ BaseSkillì„ ì´ˆê¸°í™”
     /// </summary>
     public void Initialize()
     {
@@ -62,7 +62,7 @@ public class BaseSkill : MonoBehaviour
     }
 
     /// <summary>
-    /// ÀÚ½ÅÀÇ Â÷·Ê°¡ ½ÃÀÛµÉ¶§ º¯°æÁ¡ÀÌ ÀÖ´ÂÁö È®ÀÎ
+    /// ìì‹ ì˜ ì°¨ë¡€ê°€ ì‹œì‘ë ë•Œ ë³€ê²½ì ì´ ìˆëŠ”ì§€ í™•ì¸
     /// </summary>
     public virtual void CheckTurnStart()
     {
@@ -71,8 +71,8 @@ public class BaseSkill : MonoBehaviour
 
     public virtual void ActivateSkill(BaseCharacter _Opponent)
     {
-        //¾Æ±º º¸È£ ½ºÅ³µîÀ¸·Î º¸È£ ÇÒ ¼ö ÀÖÀ½
-        //ÃÖÁ¾ÀûÀ¸·Î °ø°İÇØ¾ßÇÏ´Â Àû ÆÇÁ¤
+        //ì•„êµ° ë³´í˜¸ ìŠ¤í‚¬ë“±ìœ¼ë¡œ ë³´í˜¸ í•  ìˆ˜ ìˆìŒ
+        //ìµœì¢…ì ìœ¼ë¡œ ê³µê²©í•´ì•¼í•˜ëŠ” ì  íŒì •
         BaseCharacter opponent = CheckOpponentValid(_Opponent);
 
         if(opponent == null)
@@ -81,13 +81,13 @@ public class BaseSkill : MonoBehaviour
             return;
         }
 
-        //´ÜÀÏ°ø°İÀÎ °æ¿ì _opponentÇÑÅ×¸¸ °ø°İ ·ÎÁ÷ Àû¿ë
+        //ë‹¨ì¼ê³µê²©ì¸ ê²½ìš° _opponentí•œí…Œë§Œ ê³µê²© ë¡œì§ ì ìš©
         if (skillTargetType == SkillTargetType.Singular)
         {
            ApplySkill(opponent);
         }
-        //ÀüÃ¼ °ø°İÀÎ °æ¿ì skillradius³»ºÎÀÇ ¸ğµç ÀÎ¹°¿¡°Ô skill Àû¿ë
-        //¸¸ÀÏ skillradius ³»ºÎÀÇ Æ¯Á¤ ÀÎ¹°¿¡°Ô¸¸ ·ÎÁ÷ Àû¿ë½ÃÅ°°í ½ÍÀ¸¸é ApplyMultipleÀçÁ¤ÀÇÇÏ±â
+        //ì „ì²´ ê³µê²©ì¸ ê²½ìš° skillradiusë‚´ë¶€ì˜ ëª¨ë“  ì¸ë¬¼ì—ê²Œ skill ì ìš©
+        //ë§Œì¼ skillradius ë‚´ë¶€ì˜ íŠ¹ì • ì¸ë¬¼ì—ê²Œë§Œ ë¡œì§ ì ìš©ì‹œí‚¤ê³  ì‹¶ìœ¼ë©´ ApplyMultipleì¬ì •ì˜í•˜ê¸°
         else if (skillTargetType == SkillTargetType.Multiple)
         { 
             ApplyMultiple();
@@ -98,7 +98,7 @@ public class BaseSkill : MonoBehaviour
     {
         bool isCrit = false;
         AttackLogic(_opponent, ref isCrit);
-        //Ä¡¸íÅ¸ÀÏ °æ¿ì ¹öÇÁ ¹Ù·Î Àû¿ë
+        //ì¹˜ëª…íƒ€ì¼ ê²½ìš° ë²„í”„ ë°”ë¡œ ì ìš©
         if (isCrit)
         {
             foreach (GameObject ApplybuffGameobject in bufflist)
@@ -106,9 +106,9 @@ public class BaseSkill : MonoBehaviour
                 if (!ApplybuffGameobject) continue;
                 BaseBuff BufftoApply = ApplybuffGameobject.GetComponent<BaseBuff>();
                 if (!BufftoApply) continue;
-                //¸ÕÀú buff/debuff°¡ ¸î%ÀÇ È®·ü·Î °É¸®´ÂÁö ÆÇ´Ü.
+                //ë¨¼ì € buff/debuffê°€ ëª‡%ì˜ í™•ë¥ ë¡œ ê±¸ë¦¬ëŠ”ì§€ íŒë‹¨.
                 if (CheckApplyBuff(BufftoApply) == false) continue;
-                //Ä¡¸íÅ¸¸é ÀúÇ× ¹«½ÃÇÑÃ¤ ½ºÅ³ Àû¿ë
+                //ì¹˜ëª…íƒ€ë©´ ì €í•­ ë¬´ì‹œí•œì±„ ìŠ¤í‚¬ ì ìš©
                 ApplyBuff(_opponent, BufftoApply);
             }
         }
@@ -118,9 +118,9 @@ public class BaseSkill : MonoBehaviour
             {
                 if (!applybuffGameobject) continue;
                 BaseBuff bufftoApply = applybuffGameobject.GetComponent<BaseBuff>();
-                //¸ÕÀú buff/debuff°¡ ¸î%ÀÇ È®·ü·Î °É¸®´ÂÁö ÆÇ´Ü.
+                //ë¨¼ì € buff/debuffê°€ ëª‡%ì˜ í™•ë¥ ë¡œ ê±¸ë¦¬ëŠ”ì§€ íŒë‹¨.
                 if (CheckApplyBuff(bufftoApply) == false) continue;
-                //ÀûÀÇ ÀúÇ× ¼öÄ¡ ÆÇ´Ü.
+                //ì ì˜ ì €í•­ ìˆ˜ì¹˜ íŒë‹¨.
                 if (CheckResist(_opponent))
                 {
                     ApplyBuff(_opponent, bufftoApply);
@@ -129,7 +129,7 @@ public class BaseSkill : MonoBehaviour
         }
     }
 
-    //SkillRadius¿¡ ÀÖ´Â Àûµé ÀüÃ¼¿¡°Ô ½ºÅ³ Àû¿ë
+    //SkillRadiusì— ìˆëŠ” ì ë“¤ ì „ì²´ì—ê²Œ ìŠ¤í‚¬ ì ìš©
     protected virtual void ApplyMultiple()
     {
         Formation allies = BattleManager.GetInstance.Allies;
@@ -142,10 +142,10 @@ public class BaseSkill : MonoBehaviour
             {
                 BaseCharacter ally = allies.formation[i];
                 
-                //¾Æ±ºÀÇ Size°¡ 2ÀÎ °æ¿ì
+                //ì•„êµ°ì˜ Sizeê°€ 2ì¸ ê²½ìš°
                 if (ally.Size == 2)
                 {
-                    // ÀÌ¹Ì Receivers ¸®½ºÆ®¿¡ µ¿ÀÏÇÑ GameObject¸¦ ÂüÁ¶ÇÏ´Â BaseCharacter°¡ ¾ø´Â °æ¿ì¿¡¸¸ Ãß°¡
+                    // ì´ë¯¸ Receivers ë¦¬ìŠ¤íŠ¸ì— ë™ì¼í•œ GameObjectë¥¼ ì°¸ì¡°í•˜ëŠ” BaseCharacterê°€ ì—†ëŠ” ê²½ìš°ì—ë§Œ ì¶”ê°€
                     if (!receivers.Any(e => e.gameObject == ally.gameObject))
                     {
                         receivers.Add(ally);
@@ -153,7 +153,7 @@ public class BaseSkill : MonoBehaviour
                 }
                 else
                 {
-                    // Size°¡ 1ÀÎ AllyÀº ±×³É Ãß°¡
+                    // Sizeê°€ 1ì¸ Allyì€ ê·¸ëƒ¥ ì¶”ê°€
                     receivers.Add(ally);
                 }
             }
@@ -162,10 +162,10 @@ public class BaseSkill : MonoBehaviour
                 BaseCharacter enemy = enemies.formation[i - 4];
                 if(!enemy) continue;
 
-                //ÀûÀÇ Size°¡ 2ÀÎ °æ¿ì
+                //ì ì˜ Sizeê°€ 2ì¸ ê²½ìš°
                 if(enemy.Size == 2)
                 {
-                    // ÀÌ¹Ì Receivers ¸®½ºÆ®¿¡ µ¿ÀÏÇÑ GameObject¸¦ ÂüÁ¶ÇÏ´Â BaseCharacter°¡ ¾ø´Â °æ¿ì¿¡¸¸ Ãß°¡
+                    // ì´ë¯¸ Receivers ë¦¬ìŠ¤íŠ¸ì— ë™ì¼í•œ GameObjectë¥¼ ì°¸ì¡°í•˜ëŠ” BaseCharacterê°€ ì—†ëŠ” ê²½ìš°ì—ë§Œ ì¶”ê°€
                     if (!receivers.Any(e => e.gameObject == enemy.gameObject))
                     {
                         receivers.Add(enemy);
@@ -173,7 +173,7 @@ public class BaseSkill : MonoBehaviour
                 }
                 else
                 {
-                    // Size°¡ 1ÀÎ ÀûÀº ±×³É Ãß°¡
+                    // Sizeê°€ 1ì¸ ì ì€ ê·¸ëƒ¥ ì¶”ê°€
                     receivers.Add(enemy);
                 }
 
@@ -181,7 +181,7 @@ public class BaseSkill : MonoBehaviour
         }
         
         ////
-        //TODO : receivers°¡ ÇÑ¹ø¿¡ °ø°İ¹Ş´Â µíÇÑ Ä«¸Ş¶ó ¹«ºù·ÎÁ÷ Ãß°¡
+        //TODO : receiversê°€ í•œë²ˆì— ê³µê²©ë°›ëŠ” ë“¯í•œ ì¹´ë©”ë¼ ë¬´ë¹™ë¡œì§ ì¶”ê°€
         ////        
 
         foreach (BaseCharacter opponent in receivers)
@@ -191,20 +191,20 @@ public class BaseSkill : MonoBehaviour
     }
     bool AttackLogic(BaseCharacter _Opponent, ref bool _iscrit)
     {
-        //¸íÁß Ã¼Å©
+        //ëª…ì¤‘ ì²´í¬
         if (CheckAccuracy() == false)
         {
             Debug.Log("Accuracy Failed on" + _Opponent.name.ToString());
             return false;
         }
-        //È¸ÇÇ Ã¼Å©
+        //íšŒí”¼ ì²´í¬
         if (CheckEvasion(_Opponent) == false)
         {
             Debug.Log(_Opponent.name.ToString() + "Evaded skill" + skillName);
             return false;
         }
         
-        //Ä¡¸íÅ¸ÀÏ °æ¿ì ¹Ù·Î ¹öÇÁ Àû¿ë
+        //ì¹˜ëª…íƒ€ì¼ ê²½ìš° ë°”ë¡œ ë²„í”„ ì ìš©
         if (CheckCrit())
         {
             Debug.Log("Crit Skill on "+ skillName + "to "+ _Opponent.name.ToString());
@@ -237,9 +237,9 @@ public class BaseSkill : MonoBehaviour
 
 
     /// <summary>
-    /// ¸íÁß ÆÇÁ¤
-    /// ½ºÅ³ ¸íÁß ¼öÄ¡ + Ä³¸¯ÅÍ ¸íÁß ¼öÄ¡·Î °è»ê
-    /// ¸íÁßÇßÀ» °æ¿ì true ¹İÈ¯
+    /// ëª…ì¤‘ íŒì •
+    /// ìŠ¤í‚¬ ëª…ì¤‘ ìˆ˜ì¹˜ + ìºë¦­í„° ëª…ì¤‘ ìˆ˜ì¹˜ë¡œ ê³„ì‚°
+    /// ëª…ì¤‘í–ˆì„ ê²½ìš° true ë°˜í™˜
     /// </summary>
     protected bool CheckAccuracy()
     {
@@ -249,8 +249,8 @@ public class BaseSkill : MonoBehaviour
     }
 
     /// <summary>
-    /// È¸ÇÇ ÆÇÁ¤
-    /// ÀûÀÌ È¸ÇÇÇßÀ¸¸é false¹İÈ¯
+    /// íšŒí”¼ íŒì •
+    /// ì ì´ íšŒí”¼í–ˆìœ¼ë©´ falseë°˜í™˜
     /// </summary>
     protected bool CheckEvasion(BaseCharacter _opponent)
     {
@@ -260,8 +260,8 @@ public class BaseSkill : MonoBehaviour
     }
 
     /// <summary>
-    /// ¹öÇÁ¸¦ Àû¿ë½ÃÅ³ È®·ü °è»ê
-    /// ¹öÇÁ¸¦ Àû¿ë½ÃÅ³ ¼ö ÀÖÀ¸¸é true ¹İÈ¯
+    /// ë²„í”„ë¥¼ ì ìš©ì‹œí‚¬ í™•ë¥  ê³„ì‚°
+    /// ë²„í”„ë¥¼ ì ìš©ì‹œí‚¬ ìˆ˜ ìˆìœ¼ë©´ true ë°˜í™˜
     /// </summary>
     protected bool CheckApplyBuff(BaseBuff _buff)
     {
@@ -271,8 +271,8 @@ public class BaseSkill : MonoBehaviour
     }
 
     /// <summary>
-    /// ÀúÇ× ÆÇÁ¤
-    /// ÀûÀÌ ÀúÇ×¿¡ ¼º°øÇßÀ¸¸é false¹İÈ¯
+    /// ì €í•­ íŒì •
+    /// ì ì´ ì €í•­ì— ì„±ê³µí–ˆìœ¼ë©´ falseë°˜í™˜
     /// </summary>
     protected bool CheckResist(BaseCharacter _opponent)
     {
@@ -282,7 +282,7 @@ public class BaseSkill : MonoBehaviour
     }
 
     /// <summary>
-    /// Ä¡¸íÅ¸ ÆÇÁ¤ÀÌ ¼º°øÇÏ¸é true ¹İÈ¯
+    /// ì¹˜ëª…íƒ€ íŒì •ì´ ì„±ê³µí•˜ë©´ true ë°˜í™˜
     /// </summary>
     protected bool CheckCrit()
     {
@@ -294,7 +294,7 @@ public class BaseSkill : MonoBehaviour
     public virtual void ApplyBuff(BaseCharacter _Opponent, BaseBuff _buff)
     {
         
-        //°°Àº ¹öÇÁ¸¦ ³ÖÀ¸·Á´Â °æ¿ì ÁßÃ¸ È½¼ö¸¦ ´õÇÔ
+        //ê°™ì€ ë²„í”„ë¥¼ ë„£ìœ¼ë ¤ëŠ” ê²½ìš° ì¤‘ì²© íšŸìˆ˜ë¥¼ ë”í•¨
         foreach(BaseBuff activebuff in _Opponent.activeBuffs)
         {
             if (activebuff == null) continue;
@@ -311,17 +311,17 @@ public class BaseSkill : MonoBehaviour
     private void ApplyStat(BaseCharacter _opponent, bool _isCrit)
     {
         Health opponentHealth = _opponent.gameObject.GetComponent<Health>();
-        //ÃÖ¼Ò, ÃÖ´ë ´ë¹ÌÁö »çÀÌÀÇ ¼öÄ¡¸¦ °í¸§
+        //ìµœì†Œ, ìµœëŒ€ ëŒ€ë¯¸ì§€ ì‚¬ì´ì˜ ìˆ˜ì¹˜ë¥¼ ê³ ë¦„
         
         float RandomStat = Random.Range(skillOwner.MinStat, skillOwner.MaxStat);
-        //ÇÇÇØ·® °è¼ö¸¦ °öÇÔ
+        //í”¼í•´ëŸ‰ ê³„ìˆ˜ë¥¼ ê³±í•¨
         RandomStat *= (multiplier / 100);
        
         switch (skillType)
         {
             case SkillType.Attack:
             {
-                //¹æ¾î ½ºÅÈÀ» »­
+                //ë°©ì–´ ìŠ¤íƒ¯ì„ ëºŒ
                 RandomStat = RandomStat * (100 - _opponent.Defense) / 100;
                 if (_isCrit) RandomStat = RandomStat * 2;
 

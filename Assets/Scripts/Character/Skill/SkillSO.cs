@@ -16,22 +16,22 @@ public class SkillSO : ScriptableObject
     [SerializeField] private string             skillName;
     [SerializeField] private AnimationType      animType;
     /// <summary>
-    /// ½ºÅ³À» »ç¿ëÇÒ ¼ö ÀÖ´Â ¿­
-    /// 0~4 : ¾Æ±º 1~4¿­
-    /// 5~8 : Àû±º 1~4¿­
+    /// ìŠ¤í‚¬ì„ ì‚¬ìš©í•  ìˆ˜ ìˆëŠ” ì—´
+    /// 0~4 : ì•„êµ° 1~4ì—´
+    /// 5~8 : ì êµ° 1~4ì—´
     /// </summary>
     [SerializeField] private bool[]             skillAvailableRadius = new bool[8];
 
     /// <summary>
-    /// ½ºÅ³À» Àû¿ë½ÃÅ³ ¼ö ÀÖ´Â ¿­
-    /// 0~4 : ¾Æ±º 1~4¿­
-    /// 5~8 : Àû±º 1~4¿­
+    /// ìŠ¤í‚¬ì„ ì ìš©ì‹œí‚¬ ìˆ˜ ìˆëŠ” ì—´
+    /// 0~4 : ì•„êµ° 1~4ì—´
+    /// 5~8 : ì êµ° 1~4ì—´
     /// </summary>
     [SerializeField] private bool[]             skillRadius = new bool[8];    
     [SerializeField] private SkillType          skillType;
     [SerializeField] private SkillTargetType    skillTargetType;
     /// <summary>
-    /// ½ºÅ³ ÀûÁß½Ã Àû¿ë½ÃÅ³ ¹öÇÁ ¸®½ºÆ®
+    /// ìŠ¤í‚¬ ì ì¤‘ì‹œ ì ìš©ì‹œí‚¬ ë²„í”„ ë¦¬ìŠ¤íŠ¸
     /// </summary>
     public List<GameObject>           bufflist = new List<GameObject>();       
 
@@ -41,8 +41,8 @@ public class SkillSO : ScriptableObject
 
     #endregion Header SKILL STATS
 
-    [SerializeField] private float baseMultiplier;        // ÇÇÇØ·® °è¼ö
-    [SerializeField] private float baseSkillAccuracy;     // ½ºÅ³ ¸íÁß ¼öÄ¡
+    [SerializeField] private float baseMultiplier;        // í”¼í•´ëŸ‰ ê³„ìˆ˜
+    [SerializeField] private float baseSkillAccuracy;     // ìŠ¤í‚¬ ëª…ì¤‘ ìˆ˜ì¹˜
 
     #region Getter Setter
     public string SkillName => skillName;
