@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3780136729541033186}
   - component: {fileID: 5607669441309170492}
   m_Layer: 0
-  m_Name: Fox_FoxFire_1
+  m_Name: Fox_Fascinate_Row3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,13 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97e2728651a4f04bb2dd655489a975a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillSO: {fileID: 11400000, guid: a44ffa9d5854b13418e8d23f5bdbc5e0, type: 2}
+  skillSO: {fileID: 11400000, guid: 42659b2390b784f499a400025b5ae005, type: 2}
   skillOwner: {fileID: 0}
   skillName: 
   skillAvailableRadius: 0000000000000000
   skillRadius: 0000000000000000
-  skillTargetType: 0
+  skillTargetType: 1
   skillType: 0
-  bufflist: []
+  bufflist:
+  - {fileID: 2569674945298275565, guid: dee9d02e444ad62429e362ed7d747b0f, type: 3}
   multiplier: 0
   skillAccuracy: 0

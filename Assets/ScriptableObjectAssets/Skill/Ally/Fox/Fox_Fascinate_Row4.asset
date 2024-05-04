@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f970e1487b951641bb3562062edf1db, type: 3}
-  m_Name: Fox_Fascinate_1
+  m_Name: Fox_Fascinate_Row4
   m_EditorClassIdentifier: 
   skillName: "\uD640\uB9AC\uAE30"
   animType: 5
-  skillAvailableRadius: 0000010000000000
-  skillRadius: 0000000001010100
+  skillAvailableRadius: 0000000100000000
+  skillRadius: 0000000001010000
   skillType: 0
-  skillTargetType: 1
-  bufflist: []
-  baseMultiplier: 20
-  baseSkillAccuracy: 80
+  skillTargetType: 0
+  bufflist:
+  - {fileID: 2569674945298275565, guid: b23e79b224fabf44e9ddbea82cf457b3, type: 3}
+  baseMultiplier: 30
+  baseSkillAccuracy: 90

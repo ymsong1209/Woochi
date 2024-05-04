@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1002293385308022027}
   - component: {fileID: 7012009090408976173}
-  - component: {fileID: -9071525069180819575}
+  - component: {fileID: 8404224923316799934}
   m_Layer: 0
-  m_Name: Fox_TailFire_Ranged_FireDebuff
+  m_Name: Fox_FoxFire_Row3_FireDebuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-9071525069180819575
+--- !u!114 &8404224923316799934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
   baseBuffDurationTurns: 3
   buffDurationTurns: 0
   buffType: 6
-  chanceToApplyBuff: 20
+  chanceToApplyBuff: 100
   changeDefense: 0
   changeCrit: 0
   changeAccuracy: 0

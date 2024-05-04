@@ -27,6 +27,7 @@ public class BaseBuff : MonoBehaviour
     [SerializeField, ReadOnly] protected float changeResist;
     [SerializeField, ReadOnly] protected float changeMinStat;
     [SerializeField, ReadOnly] protected float changeMaxStat;
+    [SerializeField, ReadOnly] protected float changeSpeed;
     #endregion 변화된 스탯들
 
     #region 감소시키지 못한 Stat들
@@ -37,6 +38,7 @@ public class BaseBuff : MonoBehaviour
     [SerializeField, ReadOnly] protected float leftoverResist;
     [SerializeField, ReadOnly] protected float leftoverMinStat;
     [SerializeField, ReadOnly] protected float leftoverMaxStat;
+    [SerializeField, ReadOnly] protected float leftoverSpeed;
     #endregion
 
     /// <summary>
@@ -137,6 +139,7 @@ public class BaseBuff : MonoBehaviour
     /// </summary>
     public virtual void DecreaseStatFromLeftOverStat()
     {
+        buffOwner.Speed -= leftoverSpeed;
         buffOwner.Defense -= leftoverDefense;
         buffOwner.Crit -= leftoverCrit;
         buffOwner.Accuracy -= leftoverAccuracy;
@@ -149,6 +152,7 @@ public class BaseBuff : MonoBehaviour
     //다른 버프가 해제 될 경우에 발동, 현재 버프가 감소시키지 못한 stat이 있으면 마저 감소시킴
     public virtual void DecreaseStatWithClampFromLeftOverStat()
     {
+        buffOwner.Speed = ExecuteLeftOverStatReduction(buffOwner.Speed, ref leftoverSpeed);
         buffOwner.Defense = ExecuteLeftOverStatReduction(buffOwner.Defense, ref leftoverDefense);
         buffOwner.Crit = ExecuteLeftOverStatReduction(buffOwner.Crit, ref leftoverCrit);
         buffOwner.Accuracy = ExecuteLeftOverStatReduction(buffOwner.Accuracy, ref leftoverAccuracy); 

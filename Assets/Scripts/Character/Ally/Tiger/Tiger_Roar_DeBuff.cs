@@ -8,7 +8,7 @@ public class Tiger_Roar_DeBuff : BaseBuff
     {
         base.buffDurationTurns = 2;
 
-        //¸íÁßÀ» 5 °¨¼Ò½ÃÅ²´Ù.
+        //ëª…ì¤‘ì„ 5 ê°ì†Œì‹œí‚¨ë‹¤.
         changeAccuracy = -5;
         leftoverAccuracy = 5;
         _buffOwner.Accuracy = ExecuteLeftOverStatReduction(_buffOwner.Accuracy, ref leftoverAccuracy);

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1002293385308022027}
   - component: {fileID: 7012009090408976173}
-  - component: {fileID: -9071525069180819575}
+  - component: {fileID: -3170334211704269683}
   m_Layer: 0
-  m_Name: Fox_TailFire_Ranged_FireDebuff
+  m_Name: Fox_Fascinate_Row3_Debuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-9071525069180819575
+--- !u!114 &-3170334211704269683
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,14 +94,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2569674945298275565}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edaa5ab822708f4449574ebda055af86, type: 3}
+  m_Script: {fileID: 11500000, guid: 47ca5118aebffff41880c50e15e13b97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buffOwner: {fileID: 0}
-  baseBuffDurationTurns: 3
+  baseBuffDurationTurns: 2
   buffDurationTurns: 0
-  buffType: 6
-  chanceToApplyBuff: 20
+  buffType: 5
+  chanceToApplyBuff: 100
   changeDefense: 0
   changeCrit: 0
   changeAccuracy: 0
@@ -109,6 +109,7 @@ MonoBehaviour:
   changeResist: 0
   changeMinStat: 0
   changeMaxStat: 0
+  changeSpeed: 0
   leftoverDefense: 0
   leftoverCrit: 0
   leftoverAccuracy: 0
@@ -116,3 +117,4 @@ MonoBehaviour:
   leftoverResist: 0
   leftoverMinStat: 0
   leftoverMaxStat: 0
+  leftoverSpeed: 0
