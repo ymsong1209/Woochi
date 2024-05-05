@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tiger_Roar_DeBuff : BaseBuff
+public class Tiger_Roar_DeBuff : StatBuff
 {
+    public Tiger_Roar_DeBuff()
+    {
+        StatBuffName = "tiger_roar_debuff";
+    }
+    
     public override void AddBuff(BaseCharacter _buffOwner)
     {
         base.buffDurationTurns = 2;

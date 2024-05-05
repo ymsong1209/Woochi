@@ -8,9 +8,7 @@ public class ThreeTailsFox : BaseCharacter
     {
         activeSkills.Clear();
         int characterIndex = BattleManager.GetInstance.GetCharacterIndex(this);
-        // 이게 하드 코딩을 안할려고 했는데, 좀 생각해보기
-        // 현재 위치에서 쓸 수 있는 스킬만 넣는다고 치면 스킬이 1개만 들어갈 수도 있고 그래서임
-        // 쓸 수 있는 스킬 1개만 넣어도 된다고 하면 수정
+        
         #region 꼬리불 처리
         if (characterIndex == 0 || characterIndex == 1)
         {
@@ -33,7 +31,7 @@ public class ThreeTailsFox : BaseCharacter
         }
         else
         {
-            activeSkills.Add(totalSkills[2]);
+            //3열과 4열중 어디에도 없을 경우 여우불 없음
         }
         #endregion
 
@@ -48,7 +46,8 @@ public class ThreeTailsFox : BaseCharacter
         }
         else
         {
-            activeSkills.Add(totalSkills[4]);
+            //3열과 4열중 어디에도 없을 경우 홀리기 없음
+            //activeSkills.Add(totalSkills[4]);
         }
         #endregion
     }

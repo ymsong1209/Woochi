@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tiger_Roar_Buff : BaseBuff
+public class Tiger_Roar_Buff : StatBuff
 {
+    public Tiger_Roar_Buff()
+    {
+        StatBuffName = "tiger_roar_buff";
+    }
+    
     public override void AddBuff(BaseCharacter _buffOwner)
     {
         Debug.Log("TigerRoarBuff Added");

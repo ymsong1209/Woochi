@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fascinate_Row3_Debuff : BaseBuff
+public class Fascinate_Row3_Debuff : StatBuff
 {
+    public Fascinate_Row3_Debuff()
+    {
+        StatBuffName = "fox_fascinate_row3";
+    }
+    
     public override void AddBuff(BaseCharacter _buffOwner)
     {
         base.buffDurationTurns = 2;

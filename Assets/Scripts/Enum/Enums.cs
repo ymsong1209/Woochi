@@ -47,6 +47,7 @@ public enum BuffType
     Stun,
     StatChange,
     Burn,
+    SpiritAbsorption,
     END
 }
 

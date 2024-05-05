@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3780136729541033186}
-  - component: {fileID: 5607669441309170492}
+  - component: {fileID: -3036146973187550543}
   m_Layer: 0
   m_Name: Fox_Fascinate_Row4
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5607669441309170492
+--- !u!114 &-3036146973187550543
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2672831112880370927}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c97e2728651a4f04bb2dd655489a975a, type: 3}
+  m_Script: {fileID: 11500000, guid: 354bac8e10e239c4788799dc5952659c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skillSO: {fileID: 11400000, guid: b595ad5bdd134464cb8b8d7b19e9c1ae, type: 2}

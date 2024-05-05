@@ -63,6 +63,8 @@ public class BaseSkill : MonoBehaviour
 
     /// <summary>
     /// 자신의 차례가 시작될때 변경점이 있는지 확인
+    /// 원래는 basecharacter의 checkskillsonturnstart에서 호출하지만
+    /// 일단 보류
     /// </summary>
     public virtual void CheckTurnStart()
     {
@@ -97,7 +99,9 @@ public class BaseSkill : MonoBehaviour
     protected virtual void ApplySkill(BaseCharacter _opponent)
     {
         bool isCrit = false;
-        AttackLogic(_opponent, ref isCrit);
+        //공격 실패시 버프 적용 안함
+        if (AttackLogic(_opponent, ref isCrit) == false) return;
+        
         //치명타일 경우 버프 바로 적용
         if (isCrit)
         {
@@ -204,7 +208,7 @@ public class BaseSkill : MonoBehaviour
             return false;
         }
         
-        //치명타일 경우 바로 버프 적용
+        //치명타일 경우
         if (CheckCrit())
         {
             Debug.Log("Crit Skill on "+ skillName + "to "+ _Opponent.name.ToString());
@@ -291,21 +295,51 @@ public class BaseSkill : MonoBehaviour
         return false;
     }
 
-    public virtual void ApplyBuff(BaseCharacter _Opponent, BaseBuff _buff)
+    public virtual BaseBuff ApplyBuff(BaseCharacter _Opponent, BaseBuff _buff)
     {
         
-        //같은 버프를 넣으려는 경우 중첩 횟수를 더함
-        foreach(BaseBuff activebuff in _Opponent.activeBuffs)
+        BaseBuff activeBuff = FindMatchingBuff(_Opponent, _buff);
+
+        if (activeBuff)
         {
-            if (activebuff == null) continue;
-            if(activebuff.BuffType == _buff.BuffType)
-            {
-                activebuff.StackBuff();
-                return;
-            }
+            // 기존 버프와 중첩
+            activeBuff.StackBuff();
+            return activeBuff;
         }
+
+        // 새 버프 추가
         BaseBuff instantiatedBuff = Instantiate(_buff);
         instantiatedBuff.AddBuff(_Opponent);
+        return instantiatedBuff;
+    }
+    
+    private BaseBuff FindMatchingBuff(BaseCharacter _Opponent, BaseBuff _buff)
+    {
+        foreach (BaseBuff activeBuff in _Opponent.activeBuffs)
+        {
+            if (activeBuff == null) continue;
+
+            if (activeBuff.BuffType == _buff.BuffType)
+            {
+                // 스탯 변경 버프는 스탯 변경 버프끼리
+                if (_buff.BuffType == BuffType.StatChange)
+                {
+                    StatBuff activeStatBuff = activeBuff as StatBuff;
+                    StatBuff statBuff = _buff as StatBuff;
+
+                    if (activeStatBuff != null && statBuff != null && activeStatBuff.StatBuffName == statBuff.StatBuffName)
+                    {
+                        return activeBuff;
+                    }
+                }
+                else
+                {
+                    return activeBuff;
+                }
+            }
+        }
+
+        return null;
     }
 
     private void ApplyStat(BaseCharacter _opponent, bool _isCrit)

@@ -5740,12 +5740,16 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: f3ddd85be6c495549ab2bbf60ad4f943, type: 2}
     - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: allies.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: allies.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6638066927388224697, guid: 06ef998317840ab4b87b8034b87d51c7, type: 3}
+    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
+      propertyPath: allies.Array.data[2]
+      value: 
+      objectReference: {fileID: 6638066927388224697, guid: 06ef998317840ab4b87b8034b87d51c7, type: 3}
     - target: {fileID: 5775089594791431015, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.027509725
