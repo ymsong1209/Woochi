@@ -8,9 +8,9 @@ public class HPEvent : UnityEvent<float, float> { }
 [DisallowMultipleComponent]
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float maxHealth;
-    [SerializeField] private float curHealth;
-    [SerializeField] private float shield;
+    [SerializeField] private int maxHealth;
+    [SerializeField] private int curHealth;
+    [SerializeField] private int shield;
 
     public HPEvent OnHealthChanged;
 
@@ -19,7 +19,7 @@ public class Health : MonoBehaviour
     /// </summary>
     /// <param name="_damage"></param>
     /// <param name="_penetrate">_penetrate가 true일 경우에는 쉴드를 뚫는 관통형 대미지 </param>
-    public void ApplyDamage(float _damage, bool _penetrate = false)
+    public void ApplyDamage(int _damage, bool _penetrate = false)
     {
         BaseCharacter character = gameObject.GetComponent<BaseCharacter>();
         if (character == null) return;
@@ -75,7 +75,7 @@ public class Health : MonoBehaviour
 
     #region Getter Setter
 
-    public float MaxHealth
+    public int MaxHealth
     {
         get { return maxHealth; }
         set { 
@@ -83,7 +83,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    public float CurHealth
+    public int CurHealth
     {
         get { return curHealth; }
         set { curHealth = value; }

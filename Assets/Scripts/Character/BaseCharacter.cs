@@ -78,6 +78,14 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         // }
     }
 
+    /// <summary>
+    /// 몬스터 AI
+    /// </summary>
+    public virtual void TriggerAI()
+    {
+        
+    }
+
     #region 버프 처리
     /// <summary>
     /// 버프 적용 시점에 따라 적절한 버프 처리 함수 호출

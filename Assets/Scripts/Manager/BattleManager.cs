@@ -208,7 +208,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
                 // TODO : 현재 턴이 적일 시 AI로 행동 결정(임시 코드)
                 if (!currentCharacter.IsAlly)
-                    StartCoroutine(EnemyAction(currentCharacter));
+                {
+                    //StartCoroutine(EnemyAction(currentCharacter));
+                    EnemyAction(currentCharacter);
+                }
+                   
                 
                 // 스킬이 선택되고 실행될 때까지 대기
                 while(!isSkillSelected || !isSkillExecuted)
@@ -289,6 +293,20 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             StartCoroutine(ExecuteSkill(currentSelectedSkill.SkillOwner,receiver));
         }
     }
+    
+    public void ExecuteSelectedSkill(BaseCharacter receiver)
+    {
+        if (!currentSelectedSkill) return;
+
+        // 스킬 사용한 캐릭터 애니메이션 실행, 스킬 사용 후 상대 캐릭터 애니메이션도 실행해야 함(회피도 애니메이션 있나) 
+        BaseCharacter caster = currentSelectedSkill.SkillOwner;
+        caster.PlayAnimation(currentSelectedSkill.SkillSO.AnimType);
+        
+        if (currentSelectedSkill.SkillOwner && receiver)
+        {
+            StartCoroutine(ExecuteSkill(currentSelectedSkill.SkillOwner,receiver));
+        }
+    }
 
     // 스킬 실행 로직 구현
     IEnumerator ExecuteSkill(BaseCharacter _caster, BaseCharacter receiver)
@@ -310,12 +328,18 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// <summary>
     /// Enemy 임시 행동
     /// </summary>
-    IEnumerator EnemyAction(BaseCharacter _enemy)
+    // IEnumerator EnemyAction(BaseCharacter _enemy)
+    // {
+    //     Debug.Log(_enemy.name + "가 행동합니다");
+    //     yield return new WaitForSeconds(3f); // 예시로 3초 대기 후 스킬 실행 가정
+    //     isSkillSelected = true;
+    //     isSkillExecuted = true;
+    // }
+
+    void EnemyAction(BaseCharacter enemy)
     {
-        Debug.Log(_enemy.name + "가 행동합니다");
-        yield return new WaitForSeconds(3f); // 예시로 3초 대기 후 스킬 실행 가정
-        isSkillSelected = true;
-        isSkillExecuted = true;
+        enemy.TriggerAI();
+        Debug.Log(enemy.name + "가 행동합니다");
     }
 
     #endregion

@@ -24,8 +24,8 @@ public class CharacterStatSO : ScriptableObject
     [Header("Character Stats")]
 
     #endregion Header CHARACTER STATS
-    [SerializeField] private float    baseHealth;
-    [SerializeField] private float    baseSpeed;
+    [SerializeField] private int      baseHealth;
+    [SerializeField] private int      baseSpeed;
     [SerializeField] private float    baseDefense;
     [SerializeField] private float    baseCrit;
     [SerializeField] private float    baseAccuracy;   //명중
@@ -45,7 +45,7 @@ public class CharacterStatSO : ScriptableObject
 
     #region Getter Method
     public string CharacterName => characterName;
-    public float BaseHealth => baseHealth;
+    public int BaseHealth => baseHealth;
 
     public float BaseSpeed => baseSpeed;
     public float BaseDefense => baseDefense;

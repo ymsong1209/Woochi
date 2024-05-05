@@ -9,7 +9,7 @@ public class BurnDebuff : BaseBuff
     {
         //전체체력에서 2%만큼 대미지를 줌
         float burnDamage = buffOwner.Health.MaxHealth * 5f / 100f;
-        buffOwner.Health.ApplyDamage((int)burnDamage);
+        buffOwner.Health.ApplyDamage((int)Mathf.Round(burnDamage));
 
         --buffDurationTurns;
 
