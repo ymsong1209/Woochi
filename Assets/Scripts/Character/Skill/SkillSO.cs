@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Skill_", menuName = "Scriptable Objects/Character/Skill")]
 public class SkillSO : ScriptableObject
 {
+    public Sprite skillIcon;
 
     #region Header SKILL BASICS
 

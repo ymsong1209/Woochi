@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4bbbce2a03c2d4a95b7ced04f3ebb7, type: 3}
   m_Name: CS_Tiger
   m_EditorClassIdentifier: 
-  characterName: Tiger
+  characterName: "\uD638\uB791\uC774"
   baseHealth: 34
   baseSpeed: 3
   baseDefense: 0
@@ -26,4 +26,3 @@ MonoBehaviour:
   - {fileID: 4178373846625572037, guid: 30581c30e239deb408c9ae9660f50cf7, type: 3}
   - {fileID: 1072596917953435454, guid: 753d55a461acbe947ad5f825c9769718, type: 3}
   - {fileID: 1026174406853336074, guid: accbdc9e59f96754eb7fe45e4edb09fa, type: 3}
-  - {fileID: 1851047506531757637, guid: 8c4a98e4e46c5c948ac9c004703812b1, type: 3}

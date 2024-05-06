@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f970e1487b951641bb3562062edf1db, type: 3}
   m_Name: Tiger_Slam
   m_EditorClassIdentifier: 
+  skillIcon: {fileID: 21300000, guid: 67fd954bab24c2547b37e03a6843a46c, type: 3}
   skillName: "\uB0B4\uB824\uCC0D\uAE30"
   animType: 3
   skillAvailableRadius: 0101000000000000

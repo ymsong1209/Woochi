@@ -13,7 +13,7 @@ using UnityEngine.UI;
 [DisallowMultipleComponent]
 public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public  Image       icon;
+    public  Image       image;
     public  Button      btn;
     public  Transform   tooltipPos;     // 툴팁 위치를 지정하기 위해
 
@@ -23,12 +23,15 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (_skill != null)
         {
+            image.gameObject.SetActive(true);
+            image.sprite = _skill.SkillSO.skillIcon;
             btn.interactable = isEnable;
             skill = _skill;
         }
         //_skill이 null일 경우 빈 skill로 초기화
         else
         {
+            image.gameObject.SetActive(false);
             btn.interactable = false;
             skill = null;
         }
