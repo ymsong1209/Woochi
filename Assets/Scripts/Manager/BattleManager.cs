@@ -22,6 +22,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     [SerializeField] private Formation allies;
     [SerializeField] private Formation enemies;
 
+    [SerializeField] private AllyCardList allyCards;
+
     #region 이벤트
     /// <summary>
     /// 캐릭터 턴이 시작될 때 호출되는 이벤트(UI 업데이트 등)
@@ -38,8 +40,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     private void Start()
     {
         CurState = BattleState.IDLE;
-        skillTriggerSelector = GetComponentInChildren<SkillTriggerSelector>()?.gameObject;
-        skillTriggerSelector.SetActive(false);
+
+        allies.Initialize(GameManager.GetInstance.Allies);
+        allyCards.Initialize(allies);
     }
 
     /// <summary>
@@ -56,9 +59,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         combatQueue.Clear();
 
         // 아군, 적군 포메이션 초기화
-        allies.Initialize(GameManager.GetInstance.Allies);
         enemies.Initialize(dungeon.EnemyList);
-        
+        allyCards.UpdateList();
+
         for (int index = 0; index < allies.formation.Length;)
         {
             if (allies.formation[index] == null) break;

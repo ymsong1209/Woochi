@@ -122,4 +122,21 @@ public class Formation : MonoBehaviour
 
         return index;
     }
+
+    /// <summary>
+    /// 이 포메이션에 있는 캐릭터의 정보들(size가 2인 캐릭터 구별 위함)
+    /// </summary>
+    public List<BaseCharacter> GetCharacters()
+    {
+        List<BaseCharacter> list = new List<BaseCharacter>();
+
+        for(int size = 0; size < formation.Length;) 
+        {
+            if (formation[size] == null) break;
+            list.Add(formation[size]);
+            size += formation[size].Size;
+        }
+
+        return list;
+    }
 }

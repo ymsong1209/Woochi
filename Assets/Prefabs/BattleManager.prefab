@@ -45,38 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f113ef534ce6134ebc070b0fa4c3abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCharacterGameObject: {fileID: 0}
-  skillTriggerSelector: {fileID: 0}
-  allySinglePosition:
-  - {x: -2.5, y: 0, z: 0}
-  - {x: -5, y: 0, z: 0}
-  - {x: -7.5, y: 0, z: 0}
-  - {x: -10, y: 0, z: 0}
-  allyMultiplePosition:
-  - {x: -3.75, y: 0, z: 0}
-  - {x: -6.25, y: 0, z: 0}
-  - {x: -8.75, y: 0, z: 0}
-  enemySinglePosition:
-  - {x: 2.5, y: 0, z: 0}
-  - {x: 5, y: 0, z: 0}
-  - {x: 7.5, y: 0, z: 0}
-  - {x: 10, y: 0, z: 0}
-  enemyMultiplePosition:
-  - {x: 3.75, y: 0, z: 0}
-  - {x: 6.25, y: 0, z: 0}
-  - {x: 8.75, y: 0, z: 0}
-  allyFormation:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  enemyFormation:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  isSkillSelected: 0
-  isSkillExecuted: 0
+  currentCharacter: {fileID: 0}
+  skillTriggerSelector: {fileID: 8096727894509934402}
+  allies: {fileID: 0}
+  enemies: {fileID: 0}
+  allyCards: {fileID: 0}
 --- !u!1 &406525088294910798
 GameObject:
   m_ObjectHideFlags: 0

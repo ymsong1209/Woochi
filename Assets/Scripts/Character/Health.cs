@@ -2,17 +2,21 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-[Serializable]
-public class HPEvent : UnityEvent<float, float> { }
 
 [DisallowMultipleComponent]
 public class Health : MonoBehaviour
 {
+    private BaseCharacter owner;
     [SerializeField] private float maxHealth;
     [SerializeField] private float curHealth;
     [SerializeField] private float shield;
 
-    public HPEvent OnHealthChanged;
+    public Action<BaseCharacter> OnHealthChanged;
+
+    private void Start()
+    {
+        owner = GetComponent<BaseCharacter>();
+    }
 
     /// <summary>
     /// 대미지를 받는 공식, _penetrate가 true일 경우에는 쉴드를 뚫는 관통형 대미지
@@ -21,13 +25,10 @@ public class Health : MonoBehaviour
     /// <param name="_penetrate">_penetrate가 true일 경우에는 쉴드를 뚫는 관통형 대미지 </param>
     public void ApplyDamage(float _damage, bool _penetrate = false)
     {
-        BaseCharacter character = gameObject.GetComponent<BaseCharacter>();
-        if (character == null) return;
-
         //관통형 대미지인경우
         if (_penetrate == false)
         {
-            curHealth = Mathf.Clamp(curHealth - _damage, 0, maxHealth);
+            CurHealth = Mathf.Clamp(CurHealth - _damage, 0, maxHealth);
             Debug.Log("Curhealth : " + curHealth);
         }
         //비관통형 대미지인경우 쉴드 먼저 까임
@@ -36,13 +37,13 @@ public class Health : MonoBehaviour
             shield -= _damage;
             if(shield < 0)
             {
-                curHealth += shield;
+                CurHealth += shield;
                 shield = 0;
             }
         }
 
-        character.PlayAnimation(AnimationType.Damaged);
-        OnHealthChanged.Invoke(curHealth, maxHealth);
+        owner.PlayAnimation(AnimationType.Damaged);
+        OnHealthChanged.Invoke(owner);
     }
 
     /// <summary>
@@ -55,14 +56,13 @@ public class Health : MonoBehaviour
 
     public void Heal(int _healamount)
     {
-        curHealth += _healamount;
-        curHealth = Mathf.Clamp(curHealth, 0, maxHealth);
-        OnHealthChanged.Invoke(curHealth, maxHealth);
+        CurHealth = Mathf.Clamp(CurHealth + _healamount, 0, maxHealth);
+        OnHealthChanged.Invoke(owner);
     }
 
     public bool CheckHealthZero()
     {
-        if (curHealth <= 0)
+        if (CurHealth <= 0)
         {
             //관통형 대미지로 체력이 0이 될수 있음
             shield = 0;
@@ -86,7 +86,11 @@ public class Health : MonoBehaviour
     public float CurHealth
     {
         get { return curHealth; }
-        set { curHealth = value; }
+        set 
+        { 
+            curHealth = value; 
+            OnHealthChanged?.Invoke(owner);
+        }
     }
 
     #endregion
