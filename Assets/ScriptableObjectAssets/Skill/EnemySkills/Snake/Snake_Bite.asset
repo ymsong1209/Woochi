@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f970e1487b951641bb3562062edf1db, type: 3}
   m_Name: Snake_Bite
   m_EditorClassIdentifier: 
-  skillName: 
+  skillIcon: {fileID: 0}
+  skillName: "\uBB3C\uC5B4\uB72F\uAE30"
   animType: 3
   skillAvailableRadius: 0000000001010101
   skillRadius: 0101000000000000

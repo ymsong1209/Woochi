@@ -59,7 +59,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         combatQueue.Clear();
 
         // ?„êµ°, ?êµ° ?¬ë©”?´ì…˜ ì´ˆê¸°??
-        allies.Initialize(GameManager.GetInstance.Allies);
         enemies.Initialize(dungeon.EnemyList);
         allyCards.UpdateList();
 

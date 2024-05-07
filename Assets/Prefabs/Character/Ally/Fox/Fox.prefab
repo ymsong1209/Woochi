@@ -296,33 +296,6 @@ MonoBehaviour:
   maxHealth: 0
   curHealth: 0
   shield: 0
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3775338655441814768}
-        m_TargetAssemblyTypeName: BaseCharacterHUD, Assembly-CSharp
-        m_MethodName: UpdateHPBar
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!65 &4402145558997533614
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -375,7 +348,8 @@ MonoBehaviour:
   isDead: 0
   activeBuffs: []
   activeSkills: []
-  activeSkillCheckBox: 000000000000
+  activeSkillCheckBox: 010001000100
+  isAlly: 0
   rowOrder: 0
 --- !u!114 &3775338655441814768
 MonoBehaviour:
