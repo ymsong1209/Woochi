@@ -9,14 +9,14 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 {
    
     private BattleState         CurState;
-    public  BaseCharacter       currentCharacter;               //?�재 ?�구 차�??��?
-    private BaseSkill           currentSelectedSkill;           //?�재 ?�택???�킬
-    private int                 currentRound;                   //?�재 �??�운?�인지
+    public  BaseCharacter       currentCharacter;               //현재 누구 차례인지
+    private BaseSkill           currentSelectedSkill;           //현재 선택된 스킬
+    private int                 currentRound;                   //현재 몇 라운드인지
 
     [SerializeField] private GameObject skillTriggerSelector;
 
     /// <summary>
-    /// ?�군?�랑 ?�군???��? ?�서
+    /// 아군이랑 적군의 싸움 순서
     /// </summary>
     [SerializeField] private Queue<BaseCharacter> combatQueue = new Queue<BaseCharacter>();
     [SerializeField] private Formation allies;
@@ -24,14 +24,14 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
     [SerializeField] private AllyCardList allyCards;
 
-    #region ?�벤??
+    #region 이벤트
     /// <summary>
-    /// 캐릭???�이 ?�작?????�출?�는 ?�벤??UI ?�데?�트 ??
+    /// 캐릭터 턴이 시작될 때 호출되는 이벤트(UI 업데이트 등)
     /// </summary>
     public Action<BaseCharacter, bool> OnCharacterTurnStart;
     #endregion
 
-    #region 부??변??
+    #region 부울 변수
     [Header("Boolean Variables")]
     private bool isSkillSelected = false;
     private bool isSkillExecuted = false;
@@ -46,7 +46,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     /// <summary>
-    /// DungeonInfoSO ?�보�?받아?�???�군�??�군 ?�치�??�정
+    /// DungeonInfoSO 정보를 받아와서 아군과 적군 위치값 설정
     /// </summary>
     public void InitializeBattle(DungeonInfoSO dungeon)
     {
@@ -58,7 +58,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         currentRound = 0;
         combatQueue.Clear();
 
-        // ?�군, ?�군 ?�메?�션 초기??
+        // 아군, 적군 포메이션 초기화
         enemies.Initialize(dungeon.EnemyList);
         allyCards.UpdateList();
 
@@ -78,7 +78,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         // OnCharacterTurnStart?.Invoke(allyFormation[0], false);
 
-        #region PreRound ?�태�??�어�?
+        #region PreRound 상태로 넘어감
         PreRound();
         #endregion
 
@@ -86,14 +86,14 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
     // ReSharper disable Unity.PerformanceAnalysis
     /// <summary>
-    /// 캐릭?�들??버프 ?�리
+    /// 캐릭터들의 버프 정리
     /// </summary>
     void PreRound()
     {
         CurState = BattleState.PreRound;
         ++currentRound;
         CheckBuffs(BuffTiming.RoundStart);
-        //버프�??�한 캐릭???�망 ?�인
+        //버프로 인한 캐릭터 사망 확인
         if (CheckVictory(combatQueue))
         {
             PostBattle(true);
@@ -106,38 +106,38 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     /// <summary>
-    /// BuffTiming??매개변?�로 받아???�당 ?�점??버프�??�용
+    /// BuffTiming을 매개변수로 받아서 해당 시점에 버프를 적용
     /// </summary>
     void CheckBuffs(BuffTiming buffTiming)
     {
         int characterCount = combatQueue.Count;
         for (int i = 0; i < characterCount; i++)
         {
-            // Queue?�서 ??��???�거
+            // Queue에서 항목을 제거
             BaseCharacter character = combatQueue.Dequeue();
 
             character.ApplyBuff(buffTiming);
 
-            // ?�정??character�?Queue???�쪽???�시 추�?.
+            // 수정된 character를 Queue의 뒤쪽에 다시 추가.
             combatQueue.Enqueue(character);
         }
     }
 
     /// <summary>
-    /// 캐릭?�들???�도?�으�??�렬
+    /// 캐릭터들을 속도순으로 정렬
     /// </summary>
     void DetermineOrder()
     {
         CurState = BattleState.DetermineOrder;
-        //캐릭?��? ?�도?�으�??�렬?�면??모두 ?�투??참여?????�도�?변�?
+        //캐릭터를 속도순으로 정렬하면서 모두 전투에 참여할 수 있도록 변경
         ReorderCombatQueue(true, null);
         CharacterTurn();
     }
 
     /// <summary>
-    /// combatQueue�??�시 ?�도?�으�??�렬, ResetTurnUsed�?true�??�면 모든 캐릭?��? ?�을 ?�시 ?????�음
+    /// combatQueue를 다시 속도순으로 정렬, ResetTurnUsed를 true로 하면 모든 캐릭터가 턴을 다시 쓸 수 있음
     /// </summary>
-    /// <param name="_resetTurnUsed">true�??�정 ??모든 캐릭???�시 ???�용가??/param>
+    /// <param name="_resetTurnUsed">true로 설정 시 모든 캐릭터 다시 턴 사용가능</param>
     /// <param name="processedCharacters"></param>
     void ReorderCombatQueue(bool _resetTurnUsed = false, List<BaseCharacter> processedCharacters = null)
     {
@@ -148,16 +148,16 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             allCharacters.AddRange(processedCharacters);
         }
 
-        // combatQueue???�아 ?�는 캐릭?��? 모두 allCharacters 리스?�에 추�?
+        // combatQueue에 남아 있는 캐릭터를 모두 allCharacters 리스트에 추가
         while (combatQueue.Count > 0)
         {
             allCharacters.Add(combatQueue.Dequeue());
         }
 
-        // allCharacters 리스?��? ?�도???�라 ?�정??
+        // allCharacters 리스트를 속도에 따라 재정렬
         allCharacters.Sort((character1, character2) => character2.Speed.CompareTo(character1.Speed));
 
-        // ?�정?�된 리스?��? 바탕?�로 combatQueue ?�구??
+        // 재정렬된 리스트를 바탕으로 combatQueue 재구성
         combatQueue.Clear();
         foreach (BaseCharacter character in allCharacters)
         {
@@ -170,13 +170,13 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     /// <summary>
-    /// 캐릭?�들???�동 ?�작
+    /// 캐릭터들의 행동 시작
     /// </summary>
     void CharacterTurn()
     {
         CurState = BattleState.CharacterTurn;
         Debug.Log("CurState : CharacterTurn");
-        //캐릭?�별�??�동
+        //캐릭터별로 행동
         StartCoroutine(HandleCharacterTurns());
     }
 
@@ -186,7 +186,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         while (combatQueue.Count > 0)
         {
-            #region ?�전 ?�에 ?�인 변??초기??
+            #region 이전 턴에 쓰인 변수 초기화
             isSkillSelected = false;
             isSkillExecuted = false;
             currentSelectedSkill = null;
@@ -199,48 +199,47 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 continue;
             }
 
-            // ?�신??차�?가 ?�을 ??버프 ?�용
+            // 자신의 차례가 됐을 때 버프 적용
             if (currentCharacter.ApplyBuff(BuffTiming.TurnStart))
             {
-                // 캐릭?�의 ?�킬??변경점???�는지 ?�인
-                // ?�도 ?�치가 바�????�으???�킬 ?�인???�줌
+                // 캐릭터의 스킬에 변경점이 있는지 확인
+                // 적도 위치가 바뀔 수 있으니 스킬 확인을 해줌
                 currentCharacter.CheckSkillsOnTurnStart();
 
-                // ?�재 ?�의 캐릭?�에 맞는 UI ?�데?�트
+                // 현재 턴의 캐릭터에 맞는 UI 업데이트
                 OnCharacterTurnStart?.Invoke(currentCharacter, true);
 
-                // TODO : ?�재 ?�이 ?�일 ??AI�??�동 결정(?�시 코드)
+                // TODO : 현재 턴이 적일 시 AI로 행동 결정(임시 코드)
                 if (!currentCharacter.IsAlly)
                 {
                     //StartCoroutine(EnemyAction(currentCharacter));
                     EnemyAction(currentCharacter);
                 }
-                   
                 
-                // ?�킬???�택?�고 ?�행???�까지 ?��?
+                // 스킬이 선택되고 실행될 때까지 대기
                 while(!isSkillSelected || !isSkillExecuted)
                 {
                     yield return null;
                 }
             };
 
-            // ?�신 차�?가 지???????�용 처리
+            // 자신 차례가 지난 후 턴 사용 처리
             currentCharacter.IsTurnUsed = true;
 
             allies.ReOrder(); enemies.ReOrder();
 
-            // ?�킬 ?�용?�로 ?�한 ?�도 변�?처리
+            // 스킬 사용으로 인한 속도 변경 처리
             ReorderCombatQueue(false, processedCharacters);
 
             processedCharacters.Add(currentCharacter);
 
-            // ?�리 조건 체크
+            // 승리 조건 체크
             if (CheckVictory(processedCharacters) && CheckVictory(combatQueue))
             {
                 PostBattle(true);
                 yield break;
             }
-            //?�배 조건 체크
+            //패배 조건 체크
             else if (CheckDefeat(processedCharacters) && CheckDefeat(combatQueue))
             {
                 PostBattle(false);
@@ -249,43 +248,57 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
             yield return null;
         }
-        //ProcessedCharacter???�는 캐릭?�들 ?�시 characterQueue???�입
+        //ProcessedCharacter에 있는 캐릭터들 다시 characterQueue에 삽입
         foreach(BaseCharacter characters in processedCharacters)
         {
             combatQueue.Enqueue(characters);
         }
 
-        //모든 캐릭?�의 ?�이 ?�났?????�행
+        //모든 캐릭터의 턴이 끝났을 때 실행
         PostRound();
     }
 
     /// <summary>
-    /// UI?�서 ?�킬 ?�택 ???�출?�는 메서??
+    /// UI에서 스킬 선택 시 호출되는 메서드
     /// </summary>
     public void SkillSelected(BaseSkill _selectedSkill)
     {
-        // ?�용???�킬 ?�??
+        // 사용할 스킬 저장
         currentSelectedSkill = _selectedSkill;
         isSkillSelected = true;
     }
+    
+    public void ExecuteSelectedSkill(BaseCharacter receiver)
+    {
+        if (!currentSelectedSkill) return;
 
-    #region ?�킬 ?�용
+        // 스킬 사용한 캐릭터 애니메이션 실행, 스킬 사용 후 상대 캐릭터 애니메이션도 실행해야 함(회피도 애니메이션 있나) 
+        BaseCharacter caster = currentSelectedSkill.SkillOwner;
+        caster.PlayAnimation(currentSelectedSkill.SkillSO.AnimType);
+        
+        if (currentSelectedSkill.SkillOwner && receiver)
+        {
+            StartCoroutine(ExecuteSkill(currentSelectedSkill.SkillOwner,receiver));
+        }
+    }
+
+    #region 스킬 사용
     public void ExecuteSelectedSkill(int _index = -1)
     {
         if (!currentSelectedSkill) return;
 
-        // ?�킬 ?�용??캐릭???�니메이???�행, ?�킬 ?�용 ???��? 캐릭???�니메이?�도 ?�행?�야 ???�피???�니메이???�나) 
+        // 스킬 사용한 캐릭터 애니메이션 실행, 스킬 사용 후 상대 캐릭터 애니메이션도 실행해야 함(회피도 애니메이션 있나) 
         BaseCharacter caster = currentSelectedSkill.SkillOwner;
         caster.PlayAnimation(currentSelectedSkill.SkillSO.AnimType);
         
         BaseCharacter receiver = null;
         
-        //index<4?�경?�는 ?�군?�게 ?�킬 ?�용
+        //index<4인경우는 아군에게 스킬 적용
         if (_index < 4)
         {
             receiver = allies.formation[_index];
         }
-        //4<index<8??경우???�에�??�킬 ?�용
+        //4<index<8인 경우는 적에게 스킬 적용
         else if (_index < 8)
         {
             receiver = enemies.formation[_index - 4];
@@ -296,22 +309,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             StartCoroutine(ExecuteSkill(currentSelectedSkill.SkillOwner,receiver));
         }
     }
-    
-    public void ExecuteSelectedSkill(BaseCharacter receiver)
-    {
-        if (!currentSelectedSkill) return;
 
-        // ?�킬 ?�용??캐릭???�니메이???�행, ?�킬 ?�용 ???��? 캐릭???�니메이?�도 ?�행?�야 ???�피???�니메이???�나) 
-        BaseCharacter caster = currentSelectedSkill.SkillOwner;
-        caster.PlayAnimation(currentSelectedSkill.SkillSO.AnimType);
-        
-        if (currentSelectedSkill.SkillOwner && receiver)
-        {
-            StartCoroutine(ExecuteSkill(currentSelectedSkill.SkillOwner,receiver));
-        }
-    }
-
-    // ?�킬 ?�행 로직 구현
+    // 스킬 실행 로직 구현
     IEnumerator ExecuteSkill(BaseCharacter _caster, BaseCharacter receiver)
     {
         currentSelectedSkill.ActivateSkill(receiver);
@@ -320,30 +319,31 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         
         Debug.Log(currentSelectedSkill.Name + " is executed by " + _caster.name + " on " + receiver.name);
         
-        // caster???�니메이?�이 ?�나기까지 기다?�다가 ?�이 종료?�게 ??
+        // caster의 애니메이션이 끝나기까지 기다렸다가 턴이 종료되게 함
         while (!_caster.IsIdle) yield return null;
 
         isSkillExecuted = true;
 
-        yield return new WaitForSeconds(1f); // ?�시�?1�??��?
+        yield return new WaitForSeconds(1f); // 예시로 1초 대기
     }
     
     /// <summary>
-    /// Enemy ?�시 ?�동
+    /// Enemy 임시 행동
     /// </summary>
     // IEnumerator EnemyAction(BaseCharacter _enemy)
     // {
-    //     Debug.Log(_enemy.name + "가 ?�동?�니??);
-    //     yield return new WaitForSeconds(3f); // ?�시�?3�??��????�킬 ?�행 가??
+    //     Debug.Log(_enemy.name + "가 행동합니다");
+    //     yield return new WaitForSeconds(3f); // 예시로 3초 대기 후 스킬 실행 가정
     //     isSkillSelected = true;
     //     isSkillExecuted = true;
     // }
-
+    
     void EnemyAction(BaseCharacter enemy)
     {
         enemy.TriggerAI();
-        Debug.Log(enemy.name + "가 ?�동?�니??");
+        Debug.Log(enemy.name + "가 행동합니다");
     }
+    
 
     #endregion
 
@@ -354,13 +354,13 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     /// <summary>
-    /// ?�운?��? ?�날???�용?�는 버프 ?�행 ?? ?�리 조건 체크
+    /// 라운드가 끝날때 적용되는 버프 실행 후, 승리 조건 체크
     /// </summary>
     void PostRound()
     {
         CurState = BattleState.PostRound;
         CheckBuffs(BuffTiming.RoundEnd);
-        //?�군??모두 죽으�?PostBattle�??�어�? ?�닐???�시 PreRound�??�아�?
+        //적군이 모두 죽으면 PostBattle로 넘어감. 아닐시 다시 PreRound로 돌아감
         if(CheckVictory(combatQueue))
         {
             PostBattle(true);
@@ -375,7 +375,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     /// <summary>
-    /// ?�군??모두 죽었?��? ?�인
+    /// 적군이 모두 죽었는지 확인
     /// </summary>
     bool CheckVictory(IEnumerable<BaseCharacter> characters)
     {
@@ -383,14 +383,14 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         {
             if (!character.IsAlly && !character.IsDead)
             {
-                return false; // ?�아?�는 ?�군???�으므�??�리?��? ?�음
+                return false; // 살아있는 적군이 있으므로 승리하지 않음
             }
         }
         return true;
     }
 
     /// <summary>
-    /// ?�군??모두 죽었?��? ?�인
+    /// 아군이 모두 죽었는지 확인
     /// </summary>
     bool CheckDefeat(IEnumerable<BaseCharacter> characters)
     {
@@ -398,27 +398,27 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         {
             if (character.IsAlly && !character.IsDead)
             {
-                return false; // ?�아?�는 ?�군???�으므�??�배?��? ?�음
+                return false; // 살아있는 아군이 있으므로 패배하지 않음
             }
         }
         return true;
     }
 
     /// <summary>
-    /// 보상 ?�산 ?? ?�투 종료
+    /// 보상 정산 후, 전투 종료
     /// </summary>
     void PostBattle(bool _victory)
     {
-        //?�리??
+        //승리시
         if (_victory)
         {
-            //?�리 ?�면 ????보상 ?�산
+            //승리 화면 뜬 후 보상 정산
         }
         else
         {
-            //?�배 ?�면 ?�기
+            //패배 화면 뜨기
         }
-        //?�군??경우 ??��
+        //적군인 경우 삭제
         while (combatQueue.Count > 0)
         {
             BaseCharacter curchar = combatQueue.Dequeue();
@@ -433,7 +433,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     /// <summary>
-    /// 매개변?�로 ?�어??캐릭?��? ?�재 ?�메?�션?�서 ?�느 ?�치???�는지
+    /// 매개변수로 들어온 캐릭터가 현재 포메이션에서 어느 위치에 있는지
     /// </summary>
     /// <param name="_character"></param>
     /// <returns></returns>
@@ -454,7 +454,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     /// <summary>
-    /// index ?�치??캐릭?��? ?�는지
+    /// index 위치에 캐릭터가 있는지
     /// </summary>
     /// <param name="index"></param>
     /// <returns></returns>
@@ -473,16 +473,16 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     /// <summary>
-    /// 캐릭?�의 ?�치�??�동?�키???�수
+    /// 캐릭터의 위치를 이동시키는 함수
     /// </summary>
-    /// <param name="move">?�마???�동??것인지, ?�수�??�로 ?�동, ?�수�??�으�??�동</param>
+    /// <param name="move">얼마나 이동할 것인지, 음수면 뒤로 이동, 양수면 앞으로 이동</param>
     public void MoveCharacter(BaseCharacter character, int move)
     {
         int from = GetCharacterIndex(character);
-        int to = Mathf.Clamp(from - move, 0, 3);    // ?�동?�려???�치
+        int to = Mathf.Clamp(from - move, 0, 3);    // 이동하려는 위치
 
-        // ?�동??곳에 캐릭?��? ?�으�???캐릭?�의 RowOrder 값을 교환
-        // 바�?RowOrder 값�? ?�이 ?�날 ??
+        // 이동한 곳에 캐릭터가 있으면 두 캐릭터의 RowOrder 값을 교환
+        // 바뀐 RowOrder 값은 턴이 끝날 때 
         if(character.IsAlly)
         {
             if(IsCharacterThere(to))
