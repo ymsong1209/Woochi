@@ -260,12 +260,11 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     #region 애니메이션
     public void PlayAnimation(AnimationType _type)
     {
-        if(_type == AnimationType.Idle)
+        if(_type == AnimationType.Idle || isDead)
         {
             return;
         }
 
-        Debug.Log(_type.ToString());
         animator.SetTrigger(_type.ToString());
         StartCoroutine(WaitAnim());
     }

@@ -48,7 +48,7 @@ public class Formation : MonoBehaviour
         //모든 character에 대해 checkdead검사 후, 죽었으면 formation을 null로 채움. 
         foreach (BaseCharacter character in formation)
         {
-            if (character && character.IsDead)
+            if (character && character.CheckDead())
             {
                 for (int i = 0; i < formation.Length; i++)
                 {
