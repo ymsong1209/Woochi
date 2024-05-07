@@ -181,9 +181,9 @@ GameObject:
   - component: {fileID: 2871324252197391783}
   - component: {fileID: 5082884880752242450}
   - component: {fileID: 4402145558997533614}
-  - component: {fileID: 4999252891137073140}
   - component: {fileID: 6726427870692607832}
   - component: {fileID: 2051036773644563240}
+  - component: {fileID: 1571861465368539575}
   m_Layer: 0
   m_Name: Tiger
   m_TagString: Untagged
@@ -297,19 +297,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 9.391421, y: 4.6577983, z: 1}
   m_Center: {x: 0.16495943, y: -0.322747, z: 0}
---- !u!114 &4999252891137073140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6638066927388224697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 409a7ae54b2b23b4fb85f2413b3b34aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hpBar: {fileID: 1338041989813534665}
 --- !u!95 &6726427870692607832
 Animator:
   serializedVersion: 5
@@ -345,7 +332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterStat: {fileID: 11400000, guid: 10f0ad67cf9f4734688a0bb3547ffd0c, type: 2}
   animator: {fileID: 6726427870692607832}
-  characterHUD: {fileID: 4999252891137073140}
+  characterHUD: {fileID: 0}
   health: {fileID: 0}
   size: 2
   speed: 0
@@ -363,7 +350,21 @@ MonoBehaviour:
   activeBuffs: []
   activeSkills: []
   activeSkillCheckBox: 010101
+  isAlly: 0
   rowOrder: 0
+--- !u!114 &1571861465368539575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638066927388224697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07f817015d343764493f3f880a9a8aad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpBar: {fileID: 1338041989813534665}
 --- !u!1 &8037440389920969499
 GameObject:
   m_ObjectHideFlags: 0

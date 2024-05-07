@@ -98,8 +98,8 @@ GameObject:
   - component: {fileID: 5082884880752242450}
   - component: {fileID: 4402145558997533614}
   - component: {fileID: 7613450948194264853}
-  - component: {fileID: 4999252891137073140}
   - component: {fileID: 6726427870692607832}
+  - component: {fileID: 8167170625047600797}
   m_Layer: 0
   m_Name: Snake
   m_TagString: Untagged
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterStat: {fileID: 11400000, guid: 05851f9536f29bd4fbb1995bd6f37a52, type: 2}
   animator: {fileID: 6726427870692607832}
-  characterHUD: {fileID: 4999252891137073140}
+  characterHUD: {fileID: 0}
   health: {fileID: 5082884880752242450}
   size: 1
   speed: 0
@@ -245,19 +245,6 @@ MonoBehaviour:
   activeSkillCheckBox: 01
   isAlly: 0
   rowOrder: 0
---- !u!114 &4999252891137073140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6638066927388224697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 409a7ae54b2b23b4fb85f2413b3b34aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hpBar: {fileID: 1338041989813534665}
 --- !u!95 &6726427870692607832
 Animator:
   serializedVersion: 5
@@ -279,6 +266,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8167170625047600797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638066927388224697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07f817015d343764493f3f880a9a8aad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpBar: {fileID: 1338041989813534665}
 --- !u!1 &9142406898563343775
 GameObject:
   m_ObjectHideFlags: 0

@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 5082884880752242450}
   - component: {fileID: 4402145558997533614}
   - component: {fileID: 1550496690799416930}
-  - component: {fileID: 3775338655441814768}
+  - component: {fileID: 4623611782305069228}
   m_Layer: 0
   m_Name: Fox
   m_TagString: Untagged
@@ -351,7 +351,7 @@ MonoBehaviour:
   activeSkillCheckBox: 010001000100
   isAlly: 0
   rowOrder: 0
---- !u!114 &3775338655441814768
+--- !u!114 &4623611782305069228
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6638066927388224697}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 409a7ae54b2b23b4fb85f2413b3b34aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 07f817015d343764493f3f880a9a8aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hpBar: {fileID: 4543534527862730}
