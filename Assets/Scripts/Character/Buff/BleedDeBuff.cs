@@ -13,7 +13,7 @@ public class BleedDeBuff : BaseBuff
     {
         //전체체력에서 bleedApply%만큼 피를 깎는다.
         float bleedDamage = buffOwner.Health.MaxHealth * bleedApply / 100f;
-        buffOwner.Health.ApplyDamage(bleedDamage);
+        buffOwner.Health.ApplyDamage((int)Mathf.Round(bleedDamage));
 
         --buffDurationTurns;
         //TODO : BleedApply공식이 바뀔수도 있음.

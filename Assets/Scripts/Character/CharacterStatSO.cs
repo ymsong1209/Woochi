@@ -24,13 +24,13 @@ public class CharacterStatSO : ScriptableObject
     [Header("Character Stats")]
 
     #endregion Header CHARACTER STATS
-    [SerializeField] private float    baseHealth;
-    [SerializeField] private float    baseSpeed;
+    [SerializeField] private int      baseHealth;
+    [SerializeField] private int      baseSpeed;
     [SerializeField] private float    baseDefense;
     [SerializeField] private float    baseCrit;
-    [SerializeField] private float    baseAccuracy;   //¸íÁß
-    [SerializeField] private float    baseEvasion;    //È¸ÇÇ
-    [SerializeField] private float    baseResist;     //ÀúÇ×
+    [SerializeField] private float    baseAccuracy;   //ëª…ì¤‘
+    [SerializeField] private float    baseEvasion;    //íšŒí”¼
+    [SerializeField] private float    baseResist;     //ì €í•­
     [SerializeField] private float    baseMinStat;
     [SerializeField] private float    baseMaxStat;
 
@@ -39,13 +39,13 @@ public class CharacterStatSO : ScriptableObject
     [Space(10)]
     [Header("Character Skills")]
     #endregion Header CHARACTER SKILLS
-    [SerializeField] private List<BaseSkill> skills;    // Ä³¸¯ÅÍ°¡ °¡Áö°í ÀÖ´Â ½ºÅ³ ¸®½ºÆ®
+    [SerializeField] private List<BaseSkill> skills;    // ìºë¦­í„°ê°€ ê°€ì§€ê³  ìžˆëŠ” ìŠ¤í‚¬ ë¦¬ìŠ¤íŠ¸
 
 
 
     #region Getter Method
     public string CharacterName => characterName;
-    public float BaseHealth => baseHealth;
+    public int BaseHealth => baseHealth;
 
     public float BaseSpeed => baseSpeed;
     public float BaseDefense => baseDefense;

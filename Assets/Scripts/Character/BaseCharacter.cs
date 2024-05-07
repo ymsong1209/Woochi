@@ -36,7 +36,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     #endregion
 
     #region Header SpecializedStats
-    [Tooltip("Æ¯Á¤ À§Ä¡¿¡¼­ SpawnµÇ°Ô ÇÏ°í ½ÍÀ¸¸é °ª ÀÔ·Â.")]
+    [Tooltip("íŠ¹ì • ìœ„ì¹˜ì—ì„œ Spawnë˜ê²Œ í•˜ê³  ì‹¶ìœ¼ë©´ ê°’ ì…ë ¥.")]
     [SerializeField] private bool       isSpawnSpecific = false;
     [SerializeField] private Vector3    spawnLocation;
     [SerializeField] private Quaternion spawnRotation;
@@ -51,39 +51,47 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     #region BATTLE STATS
     [SerializeField, ReadOnly] private bool      isDead;
     /// <summary>
-    /// ³ª¿¡°Ô Àû¿ëµÈ ¹öÇÁ
+    /// ë‚˜ì—ê²Œ ì ìš©ëœ ë²„í”„
     /// </summary>
     public   List<BaseBuff>   activeBuffs = new List<BaseBuff>();
     public   List<BaseSkill>  activeSkills = new List<BaseSkill>();
    
     /// <summary>
-    /// chatacterStat¿¡ ÀÖ´Â skillSOÁß ¾î¶²°É BaseSkill·Î ³ÖÀ» °ÇÁö Á¤ÇÏ´Â bool
-    /// Å©±â´Â characterStat ³»ºÎÀÇ skillsÀÇ ±æÀÌ¶û µ¿ÀÏÇØ¾ßÇÔ.
+    /// chatacterStatì— ìˆëŠ” skillSOì¤‘ ì–´ë–¤ê±¸ BaseSkillë¡œ ë„£ì„ ê±´ì§€ ì •í•˜ëŠ” bool
+    /// í¬ê¸°ëŠ” characterStat ë‚´ë¶€ì˜ skillsì˜ ê¸¸ì´ë‘ ë™ì¼í•´ì•¼í•¨.
     /// </summary>
     [SerializeField] protected  List<bool> activeSkillCheckBox = new List<bool>();
     protected List<BaseSkill>   totalSkills = new List<BaseSkill>();
 
-    protected bool isAlly;
-    protected bool isTurnUsed = false; //ÇÑ ¶ó¿îµå ³»¿¡¼­ ÀÚ½ÅÀÇ ÅÏÀ» »ç¿ëÇßÀ» °æ¿ì
+    [SerializeField,ReadOnly] protected bool isAlly;
+    protected bool isTurnUsed = false; //í•œ ë¼ìš´ë“œ ë‚´ì—ì„œ ìì‹ ì˜ í„´ì„ ì‚¬ìš©í–ˆì„ ê²½ìš°
     protected bool isIdle = true;
 
-    public int rowOrder; // Ä³¸¯ÅÍ°¡ ¾Õ ¿­¿¡¼­ºÎÅÍ ¸î ¹øÂ° ¼ø¼­ÀÎÁö
+    public int rowOrder; // ìºë¦­í„°ê°€ ì• ì—´ì—ì„œë¶€í„° ëª‡ ë²ˆì§¸ ìˆœì„œì¸ì§€
     #endregion BATTLE STATS
 
 
     public virtual void CheckSkillsOnTurnStart()
     { 
-        foreach(BaseSkill activeskill in activeSkills)
-        {
-            activeskill.CheckTurnStart();
-        }
+        // foreach(BaseSkill activeskill in activeSkills)
+        // {
+        //     activeskill.CheckTurnStart();
+        // }
     }
 
-    #region ¹öÇÁ Ã³¸®
     /// <summary>
-    /// ¹öÇÁ Àû¿ë ½ÃÁ¡¿¡ µû¶ó ÀûÀıÇÑ ¹öÇÁ Ã³¸® ÇÔ¼ö È£Ãâ
-    /// ¹öÇÁ È¿°ú »ç¿ë ÈÄ Ä³¸¯ÅÍ°¡ »ì¾ÆÀÖÀ¸¸é true¹İÈ¯
-    /// Á×¾úÀ» °æ¿ì¿£ Ä³¸¯ÅÍ°¡ °¡Áö°í ÀÖ´Â ¸ğµç ¹öÇÁ Á¦°Å ÈÄ »ç¸Á Ã³¸®
+    /// ëª¬ìŠ¤í„° AI
+    /// </summary>
+    public virtual void TriggerAI()
+    {
+        
+    }
+
+    #region ë²„í”„ ì²˜ë¦¬
+    /// <summary>
+    /// ë²„í”„ ì ìš© ì‹œì ì— ë”°ë¼ ì ì ˆí•œ ë²„í”„ ì²˜ë¦¬ í•¨ìˆ˜ í˜¸ì¶œ
+    /// ë²„í”„ íš¨ê³¼ ì‚¬ìš© í›„ ìºë¦­í„°ê°€ ì‚´ì•„ìˆìœ¼ë©´ trueë°˜í™˜
+    /// ì£½ì—ˆì„ ê²½ìš°ì—” ìºë¦­í„°ê°€ ê°€ì§€ê³  ìˆëŠ” ëª¨ë“  ë²„í”„ ì œê±° í›„ ì‚¬ë§ ì²˜ë¦¬
     /// </summary>
     public bool ApplyBuff(BuffTiming timing)
     {
@@ -105,7 +113,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
 
     /// <summary>
-    /// ¹öÇÁ Àû¿ëÈÄ,Ä³¸¯ÅÍÀÇ ÅÏÀÌ ½ºÅµµÇ°Å³ª Ä³¸¯ÅÍ°¡ »ç¸ÁÇÒ °æ¿ì false ¹İÈ¯
+    /// ë²„í”„ ì ìš©í›„,ìºë¦­í„°ì˜ í„´ì´ ìŠ¤í‚µë˜ê±°ë‚˜ ìºë¦­í„°ê°€ ì‚¬ë§í•  ê²½ìš° false ë°˜í™˜
     /// </summary>
     private bool ApplyBuffs(Func<BaseBuff, bool> applyBuffMethod)
     {
@@ -113,7 +121,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         for (int i = activeBuffs.Count - 1; i >= 0; i--)
         {
-            //Ä³¸¯ÅÍÀÇ ÅÏÀÌ ½ºÅµµÇ°Å³ª, Ä³¸¯ÅÍ°¡ Á×À» °æ¿ì mightDead¸¦ true·Î ¼³Á¤
+            //ìºë¦­í„°ì˜ í„´ì´ ìŠ¤í‚µë˜ê±°ë‚˜, ìºë¦­í„°ê°€ ì£½ì„ ê²½ìš° mightDeadë¥¼ trueë¡œ ì„¤ì •
             if (!applyBuffMethod(activeBuffs[i]))
             {
                 mightDead = true;
@@ -128,12 +136,12 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }
         if (mightDead)
         {
-            //Á×¾úÀ» °æ¿ì ¹öÇÁ Ã³¸® ÇÏ°í Á×À½
+            //ì£½ì—ˆì„ ê²½ìš° ë²„í”„ ì²˜ë¦¬ í•˜ê³  ì£½ìŒ
             if (CheckDead())
             {
                 return HandleDeath();
             }
-            //ÅÏÀ» ½ºÅµ¸¸ ÇÔ
+            //í„´ì„ ìŠ¤í‚µë§Œ í•¨
             return false;
         }
         return true;
@@ -148,8 +156,8 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if (!activeBuffs[index].RemoveBuff())
         {
-            // Buff°¡ Á¦°ÅµÇ¸é¼­ Ä³¸¯ÅÍ°¡ »ç¸ÁÇÏ´Â °æ¿ì´Â ¿©±â¼­ ´Ù·çÁö ¾ÊÀ½
-            // ÀÌ ÇÔ¼ö´Â ´Ü¼øÈ÷ ¹öÇÁ¸¦ Á¦°ÅÇÏ´Â ¿ªÇÒ¸¸ ¼öÇàÇÔ
+            // Buffê°€ ì œê±°ë˜ë©´ì„œ ìºë¦­í„°ê°€ ì‚¬ë§í•˜ëŠ” ê²½ìš°ëŠ” ì—¬ê¸°ì„œ ë‹¤ë£¨ì§€ ì•ŠìŒ
+            // ì´ í•¨ìˆ˜ëŠ” ë‹¨ìˆœíˆ ë²„í”„ë¥¼ ì œê±°í•˜ëŠ” ì—­í• ë§Œ ìˆ˜í–‰í•¨
         }
         activeBuffs.RemoveAt(index);
     }
@@ -162,7 +170,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void RemoveAllBuff()
     {
-        //¸ğµç ¹öÇÁ ¼øÈ¸
+        //ëª¨ë“  ë²„í”„ ìˆœíšŒ
         for (int i = activeBuffs.Count - 1; i >= 0; i--)
         {
             BaseBuff buff = activeBuffs[i];
@@ -175,9 +183,9 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     #endregion
 
 
-    #region ±âº» ½ºÅÈ ÃÊ±âÈ­
+    #region ê¸°ë³¸ ìŠ¤íƒ¯ ì´ˆê¸°í™”
     /// <summary>
-    /// ±âº» ½ºÅÈ ÃÊ±âÈ­
+    /// ê¸°ë³¸ ìŠ¤íƒ¯ ì´ˆê¸°í™”
     /// </summary>
     public virtual void Initialize()
     {
@@ -193,11 +201,16 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         health = GetComponent<Health>();
         health.MaxHealth = characterStat.BaseHealth;
         health.CurHealth = characterStat.BaseHealth;
-        #region ½ºÅ³ ÃÊ±âÈ­
-        //activeSkillsÀÇ size¸¸Å­ CharacterStatÀÇ skillÀ» ¾Õ¿¡¼­ºÎÅÍ °¡Á®¿Í¼­ ¼¼ÆÃÇÑ´Ù.
+        #region ìŠ¤í‚¬ ì´ˆê¸°í™”
+        //activeSkillsì˜ sizeë§Œí¼ CharacterStatì˜ skillì„ ì•ì—ì„œë¶€í„° ê°€ì ¸ì™€ì„œ ì„¸íŒ…í•œë‹¤.
         for(int i = 0; i < activeSkillCheckBox.Count; ++i)
         {
             BaseSkill newSkill = Instantiate(characterStat.Skills[i], this.transform);
+            // // Instantiateëœ ìŠ¤í‚¬ì„ ë³¸ë˜ íƒ€ì…ìœ¼ë¡œ ìºìŠ¤íŒ…
+            // System.Type originalType = characterStat.Skills[i].GetType();
+            // newSkill = (BaseSkill)gameObject.AddComponent(originalType);
+            // CopyFields(characterStat.Skills[i], newSkill);
+            
             newSkill.Initialize();
             newSkill.SkillOwner = this;
             if (activeSkillCheckBox[i])
@@ -210,11 +223,31 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         #endregion
     }
-    #endregion ±âº» ½ºÅÈ ÃÊ±âÈ­
+    
+    // ìŠ¤í‚¬ì˜ ëª¨ë“  í•„ë“œë¥¼ ë³µì‚¬í•˜ëŠ” ë©”ì„œë“œ
+    void CopyFields(object source, object target)
+    {
+        var sourceType = source.GetType();
+        var targetType = target.GetType();
 
-    #region Á×À½ Ã³¸®
+        foreach (var field in sourceType.GetFields(System.Reflection.BindingFlags.Public |
+                                                   System.Reflection.BindingFlags.NonPublic |
+                                                   System.Reflection.BindingFlags.Instance))
+        {
+            var targetField = targetType.GetField(field.Name, System.Reflection.BindingFlags.Public |
+                                                              System.Reflection.BindingFlags.NonPublic |
+                                                              System.Reflection.BindingFlags.Instance);
+            if (targetField != null)
+            {
+                targetField.SetValue(target, field.GetValue(source));
+            }
+        }
+    }
+    #endregion ê¸°ë³¸ ìŠ¤íƒ¯ ì´ˆê¸°í™”
+
+    #region ì£½ìŒ ì²˜ë¦¬
     /// <summary>
-    /// Character°¡ Á×¾ú´ÂÁö È®ÀÎ
+    /// Characterê°€ ì£½ì—ˆëŠ”ì§€ í™•ì¸
     /// </summary>
     public bool CheckDead()
     {
@@ -232,7 +265,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         gameObject.SetActive(false);
     }
 
-    //Ä³¸¯ÅÍ ¿ÏÀü »èÁ¦
+    //ìºë¦­í„° ì™„ì „ ì‚­ì œ
     public virtual void Destroy()
     {
         foreach(BaseBuff buff in activeBuffs)
@@ -242,7 +275,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
     #endregion
 
-    #region ¸¶¿ì½º ÀÌº¥Æ®
+    #region ë§ˆìš°ìŠ¤ ì´ë²¤íŠ¸
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (isAlly)
@@ -257,7 +290,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
     #endregion
 
-    #region ¾Ö´Ï¸ŞÀÌ¼Ç
+    #region ì• ë‹ˆë©”ì´ì…˜
     public void PlayAnimation(AnimationType _type)
     {
         if(_type == AnimationType.Idle || isDead)
@@ -270,7 +303,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
 
     /// <summary>
-    /// ÇöÀç ÇÃ·¹ÀÌ ÁßÀÎ ¾Ö´Ï¸ŞÀÌ¼ÇÀÌ ³¡³ª±â±îÁö ±â´Ù¸²
+    /// í˜„ì¬ í”Œë ˆì´ ì¤‘ì¸ ì• ë‹ˆë©”ì´ì…˜ì´ ëë‚˜ê¸°ê¹Œì§€ ê¸°ë‹¤ë¦¼
     /// </summary>
     /// <returns></returns>
     IEnumerator WaitAnim()
@@ -354,35 +387,35 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     #endregion
 
     #region Validation
-    private void OnValidate()
-    {
-        #region activeSkillCheckBox Size Check
-
-        //activeSkillCheckBox Å©±â¶û CharacterStatÀÇ Skill°³¼ö¶û µ¿ÀÏÇØ¾ßÇÔ
-        if (activeSkillCheckBox.Count != characterStat.Skills.Count)
-        {
-            Debug.Log(nameof(activeSkillCheckBox) + "¶û" + nameof(characterStat.Skills) + "ÀÇ »çÀÌÁî°¡ "
-                            + this.name.ToString() + "¿¡¼­ µ¿ÀÏÇÏÁö ¾Ê½À´Ï´Ù.");
-        }
-        #endregion activeSkillCheckBox Size Check
-
-        #region activeSkillCheckBox Count Check
-        //activeSkillCheckBox true·Î µÈ°Ô 5°³°¡ ³Ñ¾î°¡¸é ¾ÈµÊ
-        int activeSkillsCount = 0;
-        for(int i = 0; i < activeSkillCheckBox.Count; i++)
-        {
-            if (activeSkillCheckBox[i])
-            {
-                ++activeSkillsCount;
-            }
-        }
-        if (activeSkillsCount > 5)
-        {
-            Debug.Log(this.name.ToString() + "¿¡¼­ÀÇ " + nameof(activeSkillCheckBox) +
-                    "¿¡¼­ È°¼ºÈ­µÈ ½ºÅ³ °³¼ö°¡ 5°³°¡ ³Ñ½À´Ï´Ù.");
-        }
-        # endregion activeSkillCheckBox Count Check
-    }
+    // private void OnValidate()
+    // {
+    //     #region activeSkillCheckBox Size Check
+    //
+    //     //activeSkillCheckBox í¬ê¸°ë‘ CharacterStatì˜ Skillê°œìˆ˜ë‘ ë™ì¼í•´ì•¼í•¨
+    //     if (activeSkillCheckBox.Count != characterStat.Skills.Count)
+    //     {
+    //         Debug.Log(nameof(activeSkillCheckBox) + "ë‘" + nameof(characterStat.Skills) + "ì˜ ì‚¬ì´ì¦ˆê°€ "
+    //                         + this.name.ToString() + "ì—ì„œ ë™ì¼í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
+    //     }
+    //     #endregion activeSkillCheckBox Size Check
+    //
+    //     #region activeSkillCheckBox Count Check
+    //     //activeSkillCheckBox trueë¡œ ëœê²Œ 5ê°œê°€ ë„˜ì–´ê°€ë©´ ì•ˆë¨
+    //     int activeSkillsCount = 0;
+    //     for(int i = 0; i < activeSkillCheckBox.Count; i++)
+    //     {
+    //         if (activeSkillCheckBox[i])
+    //         {
+    //             ++activeSkillsCount;
+    //         }
+    //     }
+    //     if (activeSkillsCount > 5)
+    //     {
+    //         Debug.Log(this.name.ToString() + "ì—ì„œì˜ " + nameof(activeSkillCheckBox) +
+    //                 "ì—ì„œ í™œì„±í™”ëœ ìŠ¤í‚¬ ê°œìˆ˜ê°€ 5ê°œê°€ ë„˜ìŠµë‹ˆë‹¤.");
+    //     }
+    //     # endregion activeSkillCheckBox Count Check
+    // }
 
     #endregion
 }

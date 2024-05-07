@@ -46,6 +46,8 @@ public enum BuffType
     Shield,      
     Stun,
     StatChange,
+    Burn,
+    SpiritAbsorption,
     END
 }
 

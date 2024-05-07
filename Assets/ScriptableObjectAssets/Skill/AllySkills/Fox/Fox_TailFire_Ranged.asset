@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f970e1487b951641bb3562062edf1db, type: 3}
+  m_Name: Fox_TailFire_Ranged
+  m_EditorClassIdentifier: 
+  skillIcon: {fileID: 21300000, guid: e37c2241995ff5741b58b4abee1fd91b, type: 3}
+  skillName: "\uAF2C\uB9AC\uBD88"
+  animType: 3
+  skillAvailableRadius: 0000010100000000
+  skillRadius: 0000000000010101
+  skillType: 0
+  skillTargetType: 0
+  bufflist:
+  - {fileID: 2569674945298275565, guid: 6486b667994bb704c9c21b4d01c3cdcc, type: 3}
+  baseMultiplier: 100
+  baseSkillAccuracy: 80

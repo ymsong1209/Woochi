@@ -8,18 +8,18 @@ public class BaseBuff : MonoBehaviour
 
     [SerializeField] protected BaseCharacter buffOwner;
     /// <summary>
-    /// ¹öÇÁÀÇ ÃÊ±â Áö¼Ó½Ã°£
+    /// ë²„í”„ì˜ ì´ˆê¸° ì§€ì†ì‹œê°„
     /// </summary>
     [SerializeField] protected int baseBuffDurationTurns;
     /// <summary>
-    /// ÇöÀç ¹öÇÁ°¡ ¸îÅÏ ³²¾Ò´ÂÁö
-    /// buffDurationTurns°¡ -1ÀÌ¸é ¿µ±¸Áö¼Ó ¹öÇÁ
+    /// í˜„ì¬ ë²„í”„ê°€ ëª‡í„´ ë‚¨ì•˜ëŠ”ì§€
+    /// buffDurationTurnsê°€ -1ì´ë©´ ì˜êµ¬ì§€ì† ë²„í”„
     /// </summary>
     [SerializeField] protected int  buffDurationTurns;
     [SerializeField] protected BuffType buffType;
     [SerializeField] protected int chanceToApplyBuff;
 
-    #region º¯È­µÈ ½ºÅÈµéÀÇ ¼öÄ¡
+    #region ë³€í™”ëœ ìŠ¤íƒ¯ë“¤ì˜ ìˆ˜ì¹˜
     [SerializeField, ReadOnly] protected float changeDefense;
     [SerializeField, ReadOnly] protected float changeCrit;
     [SerializeField, ReadOnly] protected float changeAccuracy;
@@ -27,9 +27,10 @@ public class BaseBuff : MonoBehaviour
     [SerializeField, ReadOnly] protected float changeResist;
     [SerializeField, ReadOnly] protected float changeMinStat;
     [SerializeField, ReadOnly] protected float changeMaxStat;
-    #endregion º¯È­µÈ ½ºÅÈµé
+    [SerializeField, ReadOnly] protected float changeSpeed;
+    #endregion ë³€í™”ëœ ìŠ¤íƒ¯ë“¤
 
-    #region °¨¼Ò½ÃÅ°Áö ¸øÇÑ Statµé
+    #region ê°ì†Œì‹œí‚¤ì§€ ëª»í•œ Statë“¤
     [SerializeField, ReadOnly] protected float leftoverDefense;
     [SerializeField, ReadOnly] protected float leftoverCrit;
     [SerializeField, ReadOnly] protected float leftoverAccuracy;
@@ -37,10 +38,11 @@ public class BaseBuff : MonoBehaviour
     [SerializeField, ReadOnly] protected float leftoverResist;
     [SerializeField, ReadOnly] protected float leftoverMinStat;
     [SerializeField, ReadOnly] protected float leftoverMaxStat;
+    [SerializeField, ReadOnly] protected float leftoverSpeed;
     #endregion
 
     /// <summary>
-    /// ¹öÇÁ¸¦ Ãß°¡
+    /// ë²„í”„ë¥¼ ì¶”ê°€
     /// </summary>
     public virtual void AddBuff(BaseCharacter _buffOwner)
     {
@@ -50,8 +52,8 @@ public class BaseBuff : MonoBehaviour
     }
 
     /// <summary>
-    /// ÀüÅõ°¡ ½ÃÀÛµÉ¶§ Àû¿ëµÇ´Â ¹öÇÁ È¿°ú
-    /// »ç¿ë ÈÄ Ä³¸¯ÅÍ°¡ »ì¾ÆÀÖÀ¸¸é true ¹İÈ¯
+    /// ì „íˆ¬ê°€ ì‹œì‘ë ë•Œ ì ìš©ë˜ëŠ” ë²„í”„ íš¨ê³¼
+    /// ì‚¬ìš© í›„ ìºë¦­í„°ê°€ ì‚´ì•„ìˆìœ¼ë©´ true ë°˜í™˜
     /// <returns></returns>
     public virtual bool ApplyBattleStartBuff()
     {
@@ -60,8 +62,8 @@ public class BaseBuff : MonoBehaviour
     }
 
     /// <summary>
-    /// ¶ó¿îµå°¡ ½ÃÀÛµÉ¶§ Àû¿ëµÇ´Â ¹öÇÁ
-    /// ¹öÇÁ È¿°ú »ç¿ë ÈÄ Ä³¸¯ÅÍ°¡ »ì¾ÆÀÖÀ¸¸é true¹İÈ¯
+    /// ë¼ìš´ë“œê°€ ì‹œì‘ë ë•Œ ì ìš©ë˜ëŠ” ë²„í”„
+    /// ë²„í”„ íš¨ê³¼ ì‚¬ìš© í›„ ìºë¦­í„°ê°€ ì‚´ì•„ìˆìœ¼ë©´ trueë°˜í™˜
     /// </summary>
     public virtual bool ApplyRoundStartBuff()
     {
@@ -70,8 +72,8 @@ public class BaseBuff : MonoBehaviour
     }
 
     /// <summary>
-    /// ÀÚ½ÅÀÇ Â÷·Ê°¡ µÆÀ»¶§ Àû¿ë
-    /// ¹öÇÁ È¿°ú »ç¿ë ÈÄ Ä³¸¯ÅÍ°¡ »ì¾ÆÀÖÀ¸¸é true¹İÈ¯
+    /// ìì‹ ì˜ ì°¨ë¡€ê°€ ëì„ë•Œ ì ìš©
+    /// ë²„í”„ íš¨ê³¼ ì‚¬ìš© í›„ ìºë¦­í„°ê°€ ì‚´ì•„ìˆìœ¼ë©´ trueë°˜í™˜
     /// </summary>
     public virtual bool ApplyTurnStartBuff()
     {
@@ -81,8 +83,8 @@ public class BaseBuff : MonoBehaviour
     }
 
     /// <summary>
-    /// ¶ó¿îµå°¡ ³¡³¯¶§ Àû¿ëµÇ´Â ¹öÇÁ
-    /// ¹öÇÁ È¿°ú »ç¿ë ÈÄ Ä³¸¯ÅÍ°¡ »ì¾ÆÀÖÀ¸¸é true¹İÈ¯
+    /// ë¼ìš´ë“œê°€ ëë‚ ë•Œ ì ìš©ë˜ëŠ” ë²„í”„
+    /// ë²„í”„ íš¨ê³¼ ì‚¬ìš© í›„ ìºë¦­í„°ê°€ ì‚´ì•„ìˆìœ¼ë©´ trueë°˜í™˜
     /// </summary>
     public virtual bool ApplyRoundEndBuff()
     {
@@ -91,8 +93,8 @@ public class BaseBuff : MonoBehaviour
     }
 
     /// <summary>
-    /// ÀüÅõ°¡ ³¡³­ ÈÄ Àû¿ëµÇ´Â ¹öÇÁ È¿°ú, default·Î ¹öÇÁ°¡ Á¦°ÅµÇ°Ô ÇÔ
-    /// »ç¿ë ÈÄ Ä³¸¯ÅÍ »ì¾ÆÀÖÀ¸¸é true ¹İÈ¯
+    /// ì „íˆ¬ê°€ ëë‚œ í›„ ì ìš©ë˜ëŠ” ë²„í”„ íš¨ê³¼, defaultë¡œ ë²„í”„ê°€ ì œê±°ë˜ê²Œ í•¨
+    /// ì‚¬ìš© í›„ ìºë¦­í„° ì‚´ì•„ìˆìœ¼ë©´ true ë°˜í™˜
     /// </summary>
     public virtual bool ApplyBattleEndBuff()
     {
@@ -102,16 +104,16 @@ public class BaseBuff : MonoBehaviour
     }
 
     /// <summary>
-    /// ¹öÇÁ Á¦°Å
-    /// ¹öÇÁ Á¦°Å ÈÄ Ä³¸¯ÅÍ°¡ »ì¾ÆÀÖÀ¸¸é true¹İÈ¯
+    /// ë²„í”„ ì œê±°
+    /// ë²„í”„ ì œê±° í›„ ìºë¦­í„°ê°€ ì‚´ì•„ìˆìœ¼ë©´ trueë°˜í™˜
     /// </summary>
     public virtual bool RemoveBuff()
     {
-        //¹öÇÁ¸¦ Á¦°ÅÇÏ¸é¼­ leftoverstat¸¸Å­ basecharacterÀÇ stat¸¦ °¨¼Ò½ÃÅ´
-        //Áõ°¡¼öÄ¡´Â RemoveBuff¸¦ OverrideÇÑ ÇÔ¼ö¿¡¼­ °áÁ¤ÇÔ.
+        //ë²„í”„ë¥¼ ì œê±°í•˜ë©´ì„œ leftoverstatë§Œí¼ basecharacterì˜ statë¥¼ ê°ì†Œì‹œí‚´
+        //ì¦ê°€ìˆ˜ì¹˜ëŠ” RemoveBuffë¥¼ Overrideí•œ í•¨ìˆ˜ì—ì„œ ê²°ì •í•¨.
         DecreaseStatFromLeftOverStat();
         
-        //¸ÕÀú ¹öÇÁ¸¦ Á¦°ÅÇÏ¸é¼­ ´Ù¸¥ ¹öÇÁ¿¡ ¼öÄ¡ Á¶ÀıÀ» ÇÏ¶ó°í ÇÔ
+        //ë¨¼ì € ë²„í”„ë¥¼ ì œê±°í•˜ë©´ì„œ ë‹¤ë¥¸ ë²„í”„ì— ìˆ˜ì¹˜ ì¡°ì ˆì„ í•˜ë¼ê³  í•¨
         foreach(BaseBuff buff in buffOwner.activeBuffs)
         {
             if(buff != this)
@@ -125,7 +127,7 @@ public class BaseBuff : MonoBehaviour
     }
 
     /// <summary>
-    /// Áßº¹ÇØ¼­ ¹öÇÁ·ù¸¦ ½×À¸·Á°í ÇÏ´Â °æ¿ì
+    /// ì¤‘ë³µí•´ì„œ ë²„í”„ë¥˜ë¥¼ ìŒ“ìœ¼ë ¤ê³  í•˜ëŠ” ê²½ìš°
     /// </summary>
     public virtual void StackBuff()
     {
@@ -133,10 +135,11 @@ public class BaseBuff : MonoBehaviour
     }
 
     /// <summary>
-    /// ¹öÇÁ°¡ ÇØÁ¦µÉ¶§ LeftoverStat¸¸Å­ÀÇ ½ºÅÈÀ» ¸ÕÀú °¨¼Ò½ÃÅ´
+    /// ë²„í”„ê°€ í•´ì œë ë•Œ LeftoverStatë§Œí¼ì˜ ìŠ¤íƒ¯ì„ ë¨¼ì € ê°ì†Œì‹œí‚´
     /// </summary>
     public virtual void DecreaseStatFromLeftOverStat()
     {
+        buffOwner.Speed -= leftoverSpeed;
         buffOwner.Defense -= leftoverDefense;
         buffOwner.Crit -= leftoverCrit;
         buffOwner.Accuracy -= leftoverAccuracy;
@@ -146,9 +149,10 @@ public class BaseBuff : MonoBehaviour
         buffOwner.MaxStat -= leftoverMaxStat;
     }
 
-    //´Ù¸¥ ¹öÇÁ°¡ ÇØÁ¦ µÉ °æ¿ì¿¡ ¹ßµ¿, ÇöÀç ¹öÇÁ°¡ °¨¼Ò½ÃÅ°Áö ¸øÇÑ statÀÌ ÀÖÀ¸¸é ¸¶Àú °¨¼Ò½ÃÅ´
+    //ë‹¤ë¥¸ ë²„í”„ê°€ í•´ì œ ë  ê²½ìš°ì— ë°œë™, í˜„ì¬ ë²„í”„ê°€ ê°ì†Œì‹œí‚¤ì§€ ëª»í•œ statì´ ìˆìœ¼ë©´ ë§ˆì € ê°ì†Œì‹œí‚´
     public virtual void DecreaseStatWithClampFromLeftOverStat()
     {
+        buffOwner.Speed = ExecuteLeftOverStatReduction(buffOwner.Speed, ref leftoverSpeed);
         buffOwner.Defense = ExecuteLeftOverStatReduction(buffOwner.Defense, ref leftoverDefense);
         buffOwner.Crit = ExecuteLeftOverStatReduction(buffOwner.Crit, ref leftoverCrit);
         buffOwner.Accuracy = ExecuteLeftOverStatReduction(buffOwner.Accuracy, ref leftoverAccuracy); 
@@ -160,31 +164,31 @@ public class BaseBuff : MonoBehaviour
 
     protected float ExecuteLeftOverStatReduction(float currentStatValue, ref float _reductionAmount)
     {
-        // ReduceStatWithClamp¸¦ È£ÃâÇÏ¿© ³²Àº °¨¼Ò·®À» °è»êÇÑ´Ù.
+        // ReduceStatWithClampë¥¼ í˜¸ì¶œí•˜ì—¬ ë‚¨ì€ ê°ì†ŒëŸ‰ì„ ê³„ì‚°í•œë‹¤.
         float newStatValue = ReduceStatWithClamp(currentStatValue, ref _reductionAmount);
 
-        // °è»êµÈ »õ·Î¿î ½ºÅÈ °ªÀ» ¹İÈ¯.
+        // ê³„ì‚°ëœ ìƒˆë¡œìš´ ìŠ¤íƒ¯ ê°’ì„ ë°˜í™˜.
         return newStatValue;
     }
 
     private float ReduceStatWithClamp(float currentValue, ref float _reductionAmount)
     {
-        float originalValue = currentValue; // ¿ø·¡ ½ºÅÈ °ª ÀúÀå
+        float originalValue = currentValue; // ì›ë˜ ìŠ¤íƒ¯ ê°’ ì €ì¥
         currentValue -= _reductionAmount;
-        currentValue = Mathf.Clamp(currentValue, 0, float.MaxValue); // 0 ÀÌÇÏ·Î ¶³¾îÁöÁö ¾Ê°Ô Á¶Á¤
+        currentValue = Mathf.Clamp(currentValue, 0, float.MaxValue); // 0 ì´í•˜ë¡œ ë–¨ì–´ì§€ì§€ ì•Šê²Œ ì¡°ì •
 
         if (currentValue <= 0)
         {
-            // ½ÇÁ¦ °¨¼Ò½ÃÅ³ ¼ö ¾ø¾ú´ø ¾çÀ» °è»êÇÏ¿© reductionAmount¿¡ ÀúÀå
+            // ì‹¤ì œ ê°ì†Œì‹œí‚¬ ìˆ˜ ì—†ì—ˆë˜ ì–‘ì„ ê³„ì‚°í•˜ì—¬ reductionAmountì— ì €ì¥
             _reductionAmount = _reductionAmount - originalValue;
         }
         else
         {
-            // ½ºÅÈÀÌ ¼º°øÀûÀ¸·Î °¨¼ÒµÇ¾ú´Ù¸é, ³²Àº °¨¼Ò·®ÀÌ ¾øÀ¸¹Ç·Î reductionAmount¸¦ 0À¸·Î ¼³Á¤
+            // ìŠ¤íƒ¯ì´ ì„±ê³µì ìœ¼ë¡œ ê°ì†Œë˜ì—ˆë‹¤ë©´, ë‚¨ì€ ê°ì†ŒëŸ‰ì´ ì—†ìœ¼ë¯€ë¡œ reductionAmountë¥¼ 0ìœ¼ë¡œ ì„¤ì •
             _reductionAmount = 0;
         }
 
-        return currentValue; // Á¶Á¤µÈ ½ºÅÈ °ª ¹İÈ¯
+        return currentValue; // ì¡°ì •ëœ ìŠ¤íƒ¯ ê°’ ë°˜í™˜
     }
 
 

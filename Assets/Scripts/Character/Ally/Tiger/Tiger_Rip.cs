@@ -6,8 +6,8 @@ public class Tiger_Rip : BaseSkill
 {
     public override void ActivateSkill(BaseCharacter _Opponent)
     {
-        //¾Æ±º º¸È£ ½ºÅ³µîÀ¸·Î º¸È£ ÇÒ ¼ö ÀÖÀ½
-        //ÃÖÁ¾ÀûÀ¸·Î °ø°İÇØ¾ßÇÏ´Â Àû ÆÇÁ¤
+        //ì•„êµ° ë³´í˜¸ ìŠ¤í‚¬ë“±ìœ¼ë¡œ ë³´í˜¸ í•  ìˆ˜ ìˆìŒ
+        //ìµœì¢…ì ìœ¼ë¡œ ê³µê²©í•´ì•¼í•˜ëŠ” ì  íŒì •
         BaseCharacter opponent = CheckOpponentValid(_Opponent);
 
         if (opponent == null)
@@ -16,34 +16,34 @@ public class Tiger_Rip : BaseSkill
             return;
         }
 
-        //¸íÁß Ã¼Å©
+        //ëª…ì¤‘ ì²´í¬
         if (CheckAccuracy() == false)
         {
             Debug.Log("Accuracy Failed on" + _Opponent.name.ToString());
             return;
         }
-        //È¸ÇÇ Ã¼Å©
+        //íšŒí”¼ ì²´í¬
         if (CheckEvasion(opponent) == false)
         {
             Debug.Log(_Opponent.name.ToString() + "Evaded skill" + Name);
             return;
         }
 
-        //Ä¡¸íÅ¸ÀÏ °æ¿ì ¹Ù·Î ¹öÇÁ Àû¿ë
+        //ì¹˜ëª…íƒ€ì¼ ê²½ìš° ë°”ë¡œ ë²„í”„ ì ìš©
         if (CheckCrit())
         {
             Debug.Log("Crit Skill on " + Name + "to " + _Opponent.name.ToString());
             ApplyDamage(opponent, true);
 
-            //¹öÇÁ Àû¿ë
+            //ë²„í”„ ì ìš©
             foreach (GameObject ApplybuffGameobject in bufflist)
             {
                 if (ApplybuffGameobject == null) continue;
                 BaseBuff BufftoApply = ApplybuffGameobject.GetComponent<BaseBuff>();
                 if (BufftoApply == null) continue;
-                //¸ÕÀú buff/debuff°¡ ¸î%ÀÇ È®·ü·Î °É¸®´ÂÁö ÆÇ´Ü.
+                //ë¨¼ì € buff/debuffê°€ ëª‡%ì˜ í™•ë¥ ë¡œ ê±¸ë¦¬ëŠ”ì§€ íŒë‹¨.
                 if (CheckApplyBuff(BufftoApply) == false) continue;
-                //Ä¡¸íÅ¸¸é ÀúÇ× ¹«½ÃÇÑÃ¤ ½ºÅ³ Àû¿ë
+                //ì¹˜ëª…íƒ€ë©´ ì €í•­ ë¬´ì‹œí•œì±„ ìŠ¤í‚¬ ì ìš©
                 ApplyBuff(opponent, BufftoApply);
             }
         }
@@ -56,9 +56,9 @@ public class Tiger_Rip : BaseSkill
             {
                 if (ApplybuffGameobject == null) continue;
                 BaseBuff BufftoApply = ApplybuffGameobject.GetComponent<BaseBuff>();
-                //¸ÕÀú buff/debuff°¡ ¸î%ÀÇ È®·ü·Î °É¸®´ÂÁö ÆÇ´Ü.
+                //ë¨¼ì € buff/debuffê°€ ëª‡%ì˜ í™•ë¥ ë¡œ ê±¸ë¦¬ëŠ”ì§€ íŒë‹¨.
                 if (CheckApplyBuff(BufftoApply) == false) continue;
-                //ÀûÀÇ ÀúÇ× ¼öÄ¡ ÆÇ´Ü.
+                //ì ì˜ ì €í•­ ìˆ˜ì¹˜ íŒë‹¨.
                 if (CheckResist(opponent) == false)
                 {
                     ApplyBuff(opponent, BufftoApply);
@@ -72,16 +72,16 @@ public class Tiger_Rip : BaseSkill
     private void ApplyDamage(BaseCharacter _opponent, bool _isCrit)
     {
         Health opponentHealth = _opponent.gameObject.GetComponent<Health>();
-        //ÃÖ¼Ò, ÃÖ´ë ´ë¹ÌÁö »çÀÌÀÇ ¼öÄ¡¸¦ °í¸§
+        //ìµœì†Œ, ìµœëŒ€ ëŒ€ë¯¸ì§€ ì‚¬ì´ì˜ ìˆ˜ì¹˜ë¥¼ ê³ ë¦„
 
         float RandomStat = Random.Range(SkillOwner.MinStat, SkillOwner.MaxStat);
-        //ÇÇÇØ·® °è¼ö¸¦ °öÇÔ
+        //í”¼í•´ëŸ‰ ê³„ìˆ˜ë¥¼ ê³±í•¨
         RandomStat *= (Multiplier / 100);
 
-        //¹æ¾î ½ºÅÈÀ» »­
+        //ë°©ì–´ ìŠ¤íƒ¯ì„ ëºŒ
         RandomStat = RandomStat * (100 - _opponent.Defense) / 100;
 
-        //Àû¿¡°Ô ÃâÇ÷ ¹öÇÁ°¡ ºÙ¾îÀÖÀ¸¸é 1.5¹èÀÇ ´ë¹ÌÁö
+        //ì ì—ê²Œ ì¶œí˜ˆ ë²„í”„ê°€ ë¶™ì–´ìˆìœ¼ë©´ 1.5ë°°ì˜ ëŒ€ë¯¸ì§€
         bool hasBleed = false;
         foreach(BaseBuff buff in _opponent.activeBuffs)
         {
@@ -92,7 +92,7 @@ public class Tiger_Rip : BaseSkill
         }
         if (hasBleed) RandomStat = RandomStat * 1.5f;
 
-        //Ä¡¸íÅ¸ÀÏ °æ¿ì ÃÖÁ¾´ë¹ÌÁö°¡ 2¹è
+        //ì¹˜ëª…íƒ€ì¼ ê²½ìš° ìµœì¢…ëŒ€ë¯¸ì§€ê°€ 2ë°°
         if (_isCrit) RandomStat = RandomStat * 2;
 
         opponentHealth.ApplyDamage((int)Mathf.Round(RandomStat));

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f970e1487b951641bb3562062edf1db, type: 3}
+  m_Name: Fox_Fascinate_Row3
+  m_EditorClassIdentifier: 
+  skillIcon: {fileID: 21300000, guid: c157547d28775924697c63e310a46909, type: 3}
+  skillName: "\uD640\uB9AC\uAE30"
+  animType: 5
+  skillAvailableRadius: 0000010000000000
+  skillRadius: 0000000001010100
+  skillType: 0
+  skillTargetType: 1
+  bufflist:
+  - {fileID: 2569674945298275565, guid: dee9d02e444ad62429e362ed7d747b0f, type: 3}
+  baseMultiplier: 20
+  baseSkillAccuracy: 80

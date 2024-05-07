@@ -8,10 +8,8 @@ public class ThreeTailsFox : BaseCharacter
     {
         activeSkills.Clear();
         int characterIndex = BattleManager.GetInstance.GetCharacterIndex(this);
-        // ÀÌ°Ô ÇÏµå ÄÚµùÀ» ¾ÈÇÒ·Á°í Çß´Âµ¥, Á» »ı°¢ÇØº¸±â
-        // ÇöÀç À§Ä¡¿¡¼­ ¾µ ¼ö ÀÖ´Â ½ºÅ³¸¸ ³Ö´Â´Ù°í Ä¡¸é ½ºÅ³ÀÌ 1°³¸¸ µé¾î°¥ ¼öµµ ÀÖ°í ±×·¡¼­ÀÓ
-        // ¾µ ¼ö ÀÖ´Â ½ºÅ³ 1°³¸¸ ³Ö¾îµµ µÈ´Ù°í ÇÏ¸é ¼öÁ¤
-        #region ²¿¸®ºÒ Ã³¸®
+        
+        #region ê¼¬ë¦¬ë¶ˆ ì²˜ë¦¬
         if (characterIndex == 0 || characterIndex == 1)
         {
             activeSkills.Add(totalSkills[1]);
@@ -22,7 +20,7 @@ public class ThreeTailsFox : BaseCharacter
         }
         #endregion
 
-        #region ¿©¿ìºÒ
+        #region ì—¬ìš°ë¶ˆ
         if (characterIndex == 2)
         {
             activeSkills.Add(totalSkills[2]);
@@ -33,11 +31,11 @@ public class ThreeTailsFox : BaseCharacter
         }
         else
         {
-            activeSkills.Add(totalSkills[2]);
+            //3ì—´ê³¼ 4ì—´ì¤‘ ì–´ë””ì—ë„ ì—†ì„ ê²½ìš° ì—¬ìš°ë¶ˆ ì—†ìŒ
         }
         #endregion
 
-        #region È¦¸®±â
+        #region í™€ë¦¬ê¸°
         if (characterIndex == 2)
         {
             activeSkills.Add(totalSkills[5]);
@@ -48,7 +46,8 @@ public class ThreeTailsFox : BaseCharacter
         }
         else
         {
-            activeSkills.Add(totalSkills[4]);
+            //3ì—´ê³¼ 4ì—´ì¤‘ ì–´ë””ì—ë„ ì—†ì„ ê²½ìš° í™€ë¦¬ê¸° ì—†ìŒ
+            //activeSkills.Add(totalSkills[4]);
         }
         #endregion
     }

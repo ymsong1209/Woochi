@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tiger_Roar_Buff : BaseBuff
+public class Tiger_Roar_Buff : StatBuff
 {
+    public Tiger_Roar_Buff()
+    {
+        StatBuffName = "tiger_roar_buff";
+    }
+    
     public override void AddBuff(BaseCharacter _buffOwner)
     {
         Debug.Log("TigerRoarBuff Added");
         base.buffDurationTurns = 3;
 
-        //¹æ¾î¸¦ 5 Áõ°¡½ÃÅ²´Ù.
+        //ë°©ì–´ë¥¼ 5 ì¦ê°€ì‹œí‚¨ë‹¤.
         changeDefense = 5;
         _buffOwner.Defense += 5;
 

@@ -19,7 +19,7 @@ public class SkillTriggerSelector : MonoBehaviour
         bool[] skillRadius = _skill.SkillRadius;
         for (int i = 0; i < skillRadius.Length; i++)
         {
-            //ÇöÀç »ì¾ÆÀÖ´Â Àû/¾Æ±º¿¡°Ô¼­¸¸ skilltriggerareaÈ°¼ºÈ­
+            //í˜„ì¬ ì‚´ì•„ìˆëŠ” ì /ì•„êµ°ì—ê²Œì„œë§Œ skilltriggerareaí™œì„±í™”
             if(skillRadius[i] && BattleManager.GetInstance.IsCharacterThere(i))
             {
                 SkillTriggerAreas[i].SetActive(true);
@@ -28,8 +28,8 @@ public class SkillTriggerSelector : MonoBehaviour
     }
 
     /// <summary>
-    /// AbilityTriggerAreas ÀüºÎ ºñÈ°¼ºÈ­½ÃÅ²´Ù.
-    /// BattleManagerÀÇ Event µî·ÏÀ» À§ÇØ ÀÇ¹Ì¾ø´Â ÀÎÀÚ¸¦ ³ÖÀ½
+    /// AbilityTriggerAreas ì „ë¶€ ë¹„í™œì„±í™”ì‹œí‚¨ë‹¤.
+    /// BattleManagerì˜ Event ë“±ë¡ì„ ìœ„í•´ ì˜ë¯¸ì—†ëŠ” ì¸ìë¥¼ ë„£ìŒ
     /// </summary>
     void DeactivateSkillTriggerAreas(BaseCharacter character = null, bool isEnable = false)
     {
