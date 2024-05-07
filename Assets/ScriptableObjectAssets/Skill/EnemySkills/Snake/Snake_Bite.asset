@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Snake_Bite
   m_EditorClassIdentifier: 
   skillName: 
-  animType: 0
+  animType: 3
   skillAvailableRadius: 0000000001010101
   skillRadius: 0101000000000000
   skillType: 0

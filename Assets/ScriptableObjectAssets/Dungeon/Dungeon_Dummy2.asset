@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Dungeon_Dummy2
   m_EditorClassIdentifier: 
   EnemyList:
-  - {fileID: 421316074168023964, guid: d9ea2dc730d5055419004abdc2c7c21a, type: 3}
-  - {fileID: 421316074168023964, guid: 6db160ad79d9fcd42bc13c98993a0616, type: 3}
+  - {fileID: 6638066927388224697, guid: 1000d16b2a696704abb91131e873fd5c, type: 3}
+  - {fileID: 6638066927388224697, guid: 1000d16b2a696704abb91131e873fd5c, type: 3}

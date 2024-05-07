@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1324398890676196612}
-  - component: {fileID: 1026174406853336074}
+  - component: {fileID: 1680532968612495820}
   m_Layer: 0
   m_Name: Snake_Bite
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1026174406853336074
+--- !u!114 &1680532968612495820
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,14 +41,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8825904973982757721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ebca4213b307244bb35f486979d8a30, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ce17d1fc29e44341b2d806b8cd065ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skillSO: {fileID: 11400000, guid: 39f872f7fadc30a4791fc02c27a9f19b, type: 2}
   skillOwner: {fileID: 0}
   skillName: 
-  skillAvailableRadius: 0000000000000000
-  skillRadius: 0000000000000000
+  skillAvailableRadius: 0000000001010101
+  skillRadius: 0101000000000000
   skillTargetType: 0
   skillType: 0
   bufflist: []
