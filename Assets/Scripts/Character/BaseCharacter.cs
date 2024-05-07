@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(BoxCollider))]
 [RequireComponent(typeof(Health))]
+[RequireComponent(typeof(BaseCharacterHUD))]
 [DisallowMultipleComponent]
 public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -259,11 +260,12 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     #region 애니메이션
     public void PlayAnimation(AnimationType _type)
     {
-        if(animator == null || _type == AnimationType.Idle)
+        if(_type == AnimationType.Idle)
         {
             return;
         }
 
+        Debug.Log(_type.ToString());
         animator.SetTrigger(_type.ToString());
         StartCoroutine(WaitAnim());
     }
