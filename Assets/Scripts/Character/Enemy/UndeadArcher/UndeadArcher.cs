@@ -7,6 +7,8 @@ public class UndeadArcher : BaseCharacter
     public override void TriggerAI()
     {
         int formationIdx = BattleManager.GetInstance.Enemies.FindCharacter(this);
+        Debug.Log("tset");
+        Debug.Log(formationIdx);
         if (formationIdx == 0)
         {
             ActivateRetreatShot();
@@ -15,27 +17,22 @@ public class UndeadArcher : BaseCharacter
         {
             ActivateUnholyArrow();
         }
-        
-        
-       
-
-      
     }
 
     private void ActivateUnholyArrow()
     {
         System.Random random = new System.Random();
-        int randomValue = random.Next(0, 100); // 0¿¡¼­ 99±îÁöÀÇ °ªÀ» ·£´ıÀ¸·Î »ı¼º
+        int randomValue = random.Next(0, 100); // 0ì—ì„œ 99ê¹Œì§€ì˜ ê°’ì„ ëœë¤ìœ¼ë¡œ ìƒì„±
         
         BaseCharacter ally = null;
         
-        if (randomValue < 35) // 60% È®·ü·Î 2,3,4¿­ Áß °¡Àå ³·Àº Ã¼·ÂÀÇ ¾Æ±º ¼±ÅÃ
+        if (randomValue < 35) // 60% í™•ë¥ ë¡œ 2,3,4ì—´ ì¤‘ ê°€ì¥ ë‚®ì€ ì²´ë ¥ì˜ ì•„êµ° ì„ íƒ
         {
-            ally = FindAllyWithLeastHP();
+            ally = BattleUtils.FindAllyWithLeastHP(1, 2, 3);
         }
-        else // 40% È®·ü·Î ·£´ıÇÏ°Ô ¼±ÅÃ
+        else // 40% í™•ë¥ ë¡œ ëœë¤í•˜ê²Œ ì„ íƒ
         {
-            ally = FindRandomAlly();
+            ally = BattleUtils.FindRandomAlly(1, 2, 3);
         }
       
         if (ally != null)
@@ -44,59 +41,15 @@ public class UndeadArcher : BaseCharacter
             BattleManager.GetInstance.ExecuteSelectedSkill(ally);
         }
     }
-    
-    public BaseCharacter FindAllyWithLeastHP()
-    {
-        Formation allies = BattleManager.GetInstance.Allies;
-        BaseCharacter characterWithLeastHP = null;
-        int lowestHP = int.MaxValue;
-
-        //¾Æ±º 2,3,4¿­ Áß ÇÏ³ª¸¦ °í¸§.
-        //¾Æ±º 1,2¿­Àº formation[0],formation[1]ÀÓ.
-        for (int i = 1; i < 4; ++i)
-        {
-            BaseCharacter ally = allies.formation[i];
-            if (ally != null)
-            {
-                int currentHP = ally.Health.CurHealth;
-                if (currentHP < lowestHP)
-                {
-                    lowestHP = currentHP;
-                    characterWithLeastHP = ally;
-                }
-            }
-        }
-
-        return characterWithLeastHP;
-    }
-    
-    public BaseCharacter FindRandomAlly()
-    {
-        Formation allies = BattleManager.GetInstance.Allies;
-        List<BaseCharacter> frontRowAllies = new List<BaseCharacter>();
-
-        // ¾Æ±º 2,3,4¿­À» ¸®½ºÆ®¿¡ Ãß°¡
-        for (int i = 1; i < 4; ++i)
-        {
-            BaseCharacter ally = allies.formation[i];
-            if (ally != null)
-            {
-                frontRowAllies.Add(ally);
-            }
-        }
-
-        if (frontRowAllies.Count > 0)
-        {
-            System.Random random = new System.Random();
-            int randomIndex = random.Next(0, frontRowAllies.Count);
-            return frontRowAllies[randomIndex];
-        }
-
-        return null; // 2,3,4¿­¿¡ ¾Æ±ºÀÌ ¾øÀ» °æ¿ì
-    }
 
     private void ActivateRetreatShot()
     {
-        throw new System.NotImplementedException();
+        BaseCharacter ally = null;
+        ally = BattleUtils.FindRandomAlly(0,1);
+        if (ally != null)
+        {
+            BattleManager.GetInstance.SkillSelected(activeSkills[1]);
+            BattleManager.GetInstance.ExecuteSelectedSkill(ally);
+        }
     }
 }

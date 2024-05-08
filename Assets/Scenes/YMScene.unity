@@ -6101,6 +6101,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: BattleManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5775515088247322078, guid: 56a27495f0a512c408751da061e9230f, type: 3}
+      propertyPath: Size.x
+      value: 42.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5775515088247322078, guid: 56a27495f0a512c408751da061e9230f, type: 3}
+      propertyPath: Size.y
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5775515088247322078, guid: 56a27495f0a512c408751da061e9230f, type: 3}
+      propertyPath: Center.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6047043372224912184, guid: 56a27495f0a512c408751da061e9230f, type: 3}
       propertyPath: allies
       value: 
@@ -6151,6 +6163,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7905160983172997250, guid: 56a27495f0a512c408751da061e9230f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214759016580640692, guid: 56a27495f0a512c408751da061e9230f, type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

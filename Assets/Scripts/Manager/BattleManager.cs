@@ -207,6 +207,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 currentCharacter.CheckSkillsOnTurnStart();
 
                 // 현재 턴의 캐릭터에 맞는 UI 업데이트
+                if(currentCharacter.IsAlly) skillTriggerSelector.SetActive(true);
                 OnCharacterTurnStart?.Invoke(currentCharacter, true);
 
                 // TODO : 현재 턴이 적일 시 AI로 행동 결정(임시 코드)
@@ -271,7 +272,10 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     public void ExecuteSelectedSkill(BaseCharacter receiver)
     {
         if (!currentSelectedSkill) return;
-
+        
+        //스킬 중복 시전 방지
+        skillTriggerSelector.SetActive(false);
+        
         // 스킬 사용한 캐릭터 애니메이션 실행, 스킬 사용 후 상대 캐릭터 애니메이션도 실행해야 함(회피도 애니메이션 있나) 
         BaseCharacter caster = currentSelectedSkill.SkillOwner;
         caster.PlayAnimation(currentSelectedSkill.SkillSO.AnimType);
@@ -286,6 +290,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     public void ExecuteSelectedSkill(int _index = -1)
     {
         if (!currentSelectedSkill) return;
+        
+        //스킬 중복 시전 방지
+        skillTriggerSelector.SetActive(false);
 
         // 스킬 사용한 캐릭터 애니메이션 실행, 스킬 사용 후 상대 캐릭터 애니메이션도 실행해야 함(회피도 애니메이션 있나) 
         BaseCharacter caster = currentSelectedSkill.SkillOwner;
@@ -429,6 +436,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             }
         }
         combatQueue.Clear();
+        skillTriggerSelector.SetActive(false);
         GameManager.GetInstance.SelectRoom();
     }
 
@@ -471,6 +479,44 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         return false;
     }
+    
+    /// <summary>
+    /// index위치에 있는 캐릭터를 가져옴
+    /// 캐릭터 없으면 null반환
+    /// </summary>
+    /// <param name="index"></param>
+    /// <returns>0~4 : ally 5~8 : enemy</returns>
+    public BaseCharacter GetCharacterFromIndex(int index)
+    {
+        if (index < 0 || index >= 8)
+        {
+            return null; // 인덱스가 유효 범위를 벗어남
+        }
+
+        // 유효한 인덱스 범위에 따라 적절한 포메이션과 실제 인덱스를 가져옴.
+        (Formation formationClass, int localIndex) = GetFormationAndLocalIndex(index);
+
+        bool isValidFormation = formationClass != null;
+        bool isValidIndex = isValidFormation && localIndex >= 0 && localIndex < formationClass.formation.Length;
+
+        // 유효한 경우에만 캐릭터를 반환, 아니면 null 반환
+        return isValidIndex ? formationClass.formation[localIndex] : null;
+    }
+    
+    private (Formation, int) GetFormationAndLocalIndex(int index)
+    {
+        if (index < 4)
+        {
+            return (allies, index);
+        }
+        else if (index < 8)
+        {
+            return (enemies, index - 4);
+        }
+
+        return (null, -1); // 유효하지 않은 인덱스
+    }
+    
 
     /// <summary>
     /// 캐릭터의 위치를 이동시키는 함수

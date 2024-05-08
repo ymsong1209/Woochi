@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameManager : SingletonMonobehaviour<GameManager>
 {
    
-    [HeaderTooltip("GAME STATE", "Game State´Â Inspector¿¡¼­ ¼öÁ¤ ºÒ°¡")]
+    [HeaderTooltip("GAME STATE", "Game StateëŠ” Inspectorì—ì„œ ìˆ˜ì • ë¶ˆê°€")]
     [SerializeField,ReadOnly] private GameState gameState;
 
     [SerializeField] private List<GameObject> allies = new List<GameObject>();

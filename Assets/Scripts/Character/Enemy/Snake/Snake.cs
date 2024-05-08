@@ -4,78 +4,28 @@ using UnityEngine;
 
 public class Snake : BaseCharacter
 {
-   public override void TriggerAI()
-   {
-      System.Random random = new System.Random();
-      int randomValue = random.Next(0, 100); // 0¿¡¼­ 99±îÁöÀÇ °ªÀ» ·£´ıÀ¸·Î »ı¼º
+    public override void TriggerAI()
+    {
+        System.Random random = new System.Random();
+        int randomValue = random.Next(0, 100); // 0ì—ì„œ 99ê¹Œì§€ì˜ ê°’ì„ ëœë¤ìœ¼ë¡œ ìƒì„±
         
-      BaseCharacter ally = null;
+        BaseCharacter ally = null;
         
-      if (randomValue < 35) // 35% È®·ü·Î °¡Àå ³·Àº Ã¼·ÂÀÇ ¾Æ±º ¼±ÅÃ
-      {
-         ally = FindAllyWithLeastHP();
-      }
-      else // 65% È®·ü·Î ·£´ıÇÏ°Ô ¼±ÅÃ
-      {
-         ally = FindRandomAllyInFrontRows();
-      }
+        if (randomValue < 35) // 35% í™•ë¥ ë¡œ ê°€ì¥ ë‚®ì€ ì²´ë ¥ì˜ ì•„êµ° ì„ íƒ
+        {
+            ally = BattleUtils.FindAllyWithLeastHP(0, 1);
+        }
+        else // 65% í™•ë¥ ë¡œ ëœë¤í•˜ê²Œ ì„ íƒ
+        {
+            ally = BattleUtils.FindRandomAlly(0, 1);
+        }
       
-      if (ally != null)
-      {
-         BattleManager.GetInstance.SkillSelected(activeSkills[0]);
-         BattleManager.GetInstance.ExecuteSelectedSkill(ally);
-      }
+        if (ally != null)
+        {
+            BattleManager.GetInstance.SkillSelected(activeSkills[0]);
+            BattleManager.GetInstance.ExecuteSelectedSkill(ally);
+        }
 
       
-   }
-
-   public BaseCharacter FindAllyWithLeastHP()
-   {
-      Formation allies = BattleManager.GetInstance.Allies;
-      BaseCharacter characterWithLeastHP = null;
-      int lowestHP = int.MaxValue;
-
-      //¾Æ±º 1,2¿­ Áß ÇÏ³ª¸¦ °í¸§.
-      //¾Æ±º 1,2¿­Àº formation[0],formation[1]ÀÓ.
-      for (int i = 0; i < 2; ++i)
-      {
-         BaseCharacter ally = allies.formation[i];
-         if (ally != null)
-         {
-            int currentHP = ally.Health.CurHealth;
-            if (currentHP < lowestHP)
-            {
-               lowestHP = currentHP;
-               characterWithLeastHP = ally;
-            }
-         }
-      }
-
-      return characterWithLeastHP;
-   }
-
-   public BaseCharacter FindRandomAllyInFrontRows()
-   {
-      Formation allies = BattleManager.GetInstance.Allies;
-      List<BaseCharacter> frontRowAllies = new List<BaseCharacter>();
-
-      // ¾Æ±º 1, 2¿­À» ¸®½ºÆ®¿¡ Ãß°¡
-      for (int i = 0; i < 2; ++i)
-      {
-         BaseCharacter ally = allies.formation[i];
-         if (ally != null)
-         {
-            frontRowAllies.Add(ally);
-         }
-      }
-
-      if (frontRowAllies.Count > 0)
-      {
-         System.Random random = new System.Random();
-         int randomIndex = random.Next(0, frontRowAllies.Count);
-         return frontRowAllies[randomIndex];
-      }
-
-      return null; // 1, 2¿­¿¡ ¾Æ±ºÀÌ ¾øÀ» °æ¿ì
-   }
+    }
 }

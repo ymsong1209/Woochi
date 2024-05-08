@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(BaseCharacterHUD))]
 [DisallowMultipleComponent]

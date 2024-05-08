@@ -5,6 +5,7 @@ using UnityEngine;
 public class SkillTriggerSelector : MonoBehaviour
 {
     [SerializeField] private List<GameObject> SkillTriggerAreas = new List<GameObject>();
+   
 
     private void Start()
     {
@@ -23,6 +24,20 @@ public class SkillTriggerSelector : MonoBehaviour
             if(skillRadius[i] && BattleManager.GetInstance.IsCharacterThere(i))
             {
                 SkillTriggerAreas[i].SetActive(true);
+                
+                
+                //collider2d의 위치와 size를 BattleManager.GetInstance.GetCharacterFromIndex(i)꺼랑 같이 맞춤.
+                var characterCollider = BattleManager.GetInstance.GetCharacterFromIndex(i).GetComponent<BoxCollider2D>();
+                var skillTriggerCollider = SkillTriggerAreas[i].GetComponent<BoxCollider2D>();
+                
+                SkillTriggerAreas[i].transform.position =
+                    BattleManager.GetInstance.GetCharacterFromIndex(i).transform.position;
+                skillTriggerCollider.offset = characterCollider.offset;
+                skillTriggerCollider.size = characterCollider.size;
+                //debugrect도 같이 position과 size를 맞춰줌
+                var skillTriggerDebugRect = SkillTriggerAreas[i].GetComponent<DebugRect>();
+                skillTriggerDebugRect.Center = SkillTriggerAreas[i].transform.position;
+                skillTriggerDebugRect.Size = skillTriggerCollider.size;
             }
         }
     }

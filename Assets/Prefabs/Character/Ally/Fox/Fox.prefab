@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 2871324252197391783}
   - component: {fileID: -1478984962940812641}
   - component: {fileID: 5082884880752242450}
-  - component: {fileID: 4402145558997533614}
+  - component: {fileID: 2701771261676026121}
   - component: {fileID: 1550496690799416930}
   - component: {fileID: 4623611782305069228}
   m_Layer: 0
@@ -296,13 +296,15 @@ MonoBehaviour:
   maxHealth: 0
   curHealth: 0
   shield: 0
---- !u!65 &4402145558997533614
-BoxCollider:
+--- !u!61 &2701771261676026121
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6638066927388224697}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -311,12 +313,34 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 4.8269014, y: 3.626305, z: 1}
-  m_Center: {x: -0.100049496, y: -0.32516164, z: 0}
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5, y: 5}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5, y: 5}
+  m_EdgeRadius: 0
 --- !u!114 &1550496690799416930
 MonoBehaviour:
   m_ObjectHideFlags: 0
