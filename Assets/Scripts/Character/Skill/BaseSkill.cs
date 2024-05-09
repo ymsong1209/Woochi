@@ -193,32 +193,34 @@ public class BaseSkill : MonoBehaviour
             ApplySkill(opponent);
         };
     }
-    bool AttackLogic(BaseCharacter _Opponent, ref bool _iscrit)
+    bool AttackLogic(BaseCharacter _opponent, ref bool _iscrit)
     {
         //명중 체크
         if (CheckAccuracy() == false)
         {
-            Debug.Log("Accuracy Failed on" + _Opponent.name.ToString());
+            Debug.Log("Accuracy Failed on" + _opponent.name.ToString());
+            skillOwner.ShowDamageUI(AttackResult.Miss);
             return false;
         }
         //회피 체크
-        if (CheckEvasion(_Opponent) == false)
+        if (CheckEvasion(_opponent) == false)
         {
-            Debug.Log(_Opponent.name.ToString() + "Evaded skill" + skillName);
+            Debug.Log(_opponent.name.ToString() + "Evaded skill" + skillName);
+            _opponent.ShowDamageUI(AttackResult.Evasion);
             return false;
         }
         
         //치명타일 경우
         if (CheckCrit())
         {
-            Debug.Log("Crit Skill on "+ skillName + "to "+ _Opponent.name.ToString());
+            Debug.Log("Crit Skill on "+ skillName + "to "+ _opponent.name.ToString());
             _iscrit = true;
-            ApplyStat(_Opponent, true);
+            ApplyStat(_opponent, true);
         }
         else
         {
-            Debug.Log("Non Crit Skill on " + skillName + "to " + _Opponent.name.ToString());
-            ApplyStat(_Opponent, false);
+            Debug.Log("Non Crit Skill on " + skillName + "to " + _opponent.name.ToString());
+            ApplyStat(_opponent, false);
         }
 
         return true;
@@ -359,7 +361,7 @@ public class BaseSkill : MonoBehaviour
                 RandomStat = RandomStat * (100 - _opponent.Defense) / 100;
                 if (_isCrit) RandomStat = RandomStat * 2;
 
-                opponentHealth.ApplyDamage((int)Mathf.Round(RandomStat));
+                opponentHealth.ApplyDamage((int)Mathf.Round(RandomStat), _isCrit);
                 _opponent.CheckDead();
             }
             break;

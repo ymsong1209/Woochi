@@ -87,6 +87,11 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         
     }
 
+    public virtual void ShowDamageUI(AttackResult _result, int _damage = 0, bool _isCrit = false)
+    {
+        characterHUD.UpdateDamage(_result, _damage, _isCrit);
+    }
+
     #region 버프 처리
     /// <summary>
     /// 버프 적용 시점에 따라 적절한 버프 처리 함수 호출

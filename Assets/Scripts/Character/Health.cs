@@ -23,7 +23,7 @@ public class Health : MonoBehaviour
     /// </summary>
     /// <param name="_damage"></param>
     /// <param name="_penetrate">_penetrate가 true일 경우에는 쉴드를 뚫는 관통형 대미지 </param>
-    public void ApplyDamage(int _damage, bool _penetrate = false)
+    public void ApplyDamage(int _damage, bool _isCrit = false, bool _penetrate = false)
     {
         //관통형 대미지인경우
         if (_penetrate == false)
@@ -42,6 +42,7 @@ public class Health : MonoBehaviour
             }
         }
 
+        owner.ShowDamageUI(AttackResult.Normal, _damage, _isCrit);
         owner.PlayAnimation(AnimationType.Damaged);
         OnHealthChanged.Invoke(owner);
     }

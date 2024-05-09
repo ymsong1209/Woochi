@@ -85,3 +85,14 @@ public enum AnimationType
     Skill4,
     END
 }
+
+/// <summary>
+/// 캐릭터의 공격 결과
+/// </summary>
+public enum AttackResult
+{
+    Miss,
+    Evasion,
+    Normal,
+    END
+}

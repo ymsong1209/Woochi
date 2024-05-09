@@ -38,6 +38,7 @@ public class UndeadArcher : BaseCharacter
         if (ally != null)
         {
             BattleManager.GetInstance.SkillSelected(activeSkills[0]);
+            BattleManager.GetInstance.OnCharacterTurnStart(ally, false);
             BattleManager.GetInstance.ExecuteSelectedSkill(ally);
         }
     }
@@ -49,6 +50,7 @@ public class UndeadArcher : BaseCharacter
         if (ally != null)
         {
             BattleManager.GetInstance.SkillSelected(activeSkills[1]);
+            BattleManager.GetInstance.OnCharacterTurnStart(ally, false);
             BattleManager.GetInstance.ExecuteSelectedSkill(ally);
         }
     }
