@@ -3833,8 +3833,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 257.08, y: 71.7}
-  m_SizeDelta: {x: 420.38, y: 140.39}
+  m_AnchoredPosition: {x: 274.47, y: 71.7}
+  m_SizeDelta: {x: 385.59, y: 121.7}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &1251918473
 CanvasRenderer:
@@ -5695,18 +5695,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 322897477}
     m_Modifications:
-    - target: {fileID: 1117084979412815166, guid: 84dd57b0f4f5df544937d8c505cf002c, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3058444136996308547, guid: 84dd57b0f4f5df544937d8c505cf002c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3203996621045771664, guid: 84dd57b0f4f5df544937d8c505cf002c, type: 3}
-      propertyPath: m_Interactable
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7754435962377294401, guid: 84dd57b0f4f5df544937d8c505cf002c, type: 3}
       propertyPath: m_Name
       value: Icon_0

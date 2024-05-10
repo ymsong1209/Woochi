@@ -7,7 +7,6 @@ public class UndeadArcher : BaseCharacter
     public override void TriggerAI()
     {
         int formationIdx = BattleManager.GetInstance.Enemies.FindCharacter(this);
-        Debug.Log("tset");
         Debug.Log(formationIdx);
         if (formationIdx == 0)
         {
@@ -38,7 +37,6 @@ public class UndeadArcher : BaseCharacter
         if (ally != null)
         {
             BattleManager.GetInstance.SkillSelected(activeSkills[0]);
-            BattleManager.GetInstance.OnCharacterTurnStart(ally, false);
             BattleManager.GetInstance.ExecuteSelectedSkill(ally);
         }
     }
@@ -50,7 +48,6 @@ public class UndeadArcher : BaseCharacter
         if (ally != null)
         {
             BattleManager.GetInstance.SkillSelected(activeSkills[1]);
-            BattleManager.GetInstance.OnCharacterTurnStart(ally, false);
             BattleManager.GetInstance.ExecuteSelectedSkill(ally);
         }
     }

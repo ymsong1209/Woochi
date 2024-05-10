@@ -36,6 +36,7 @@ public class BaseCharacterHUD : MonoBehaviour
                 break;
             case AttackResult.Evasion:
                 damageTxt.text = "È¸ÇÇ";
+                Invoke("DisableHUD", 2f);
                 break;
             case AttackResult.Normal:
                 damageTxt.text = $"{damage}";

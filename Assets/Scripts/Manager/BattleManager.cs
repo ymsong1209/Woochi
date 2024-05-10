@@ -29,6 +29,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// 캐릭터 턴이 시작될 때 호출되는 이벤트(UI 업데이트 등)
     /// </summary>
     public Action<BaseCharacter, bool> OnCharacterTurnStart;
+    public Action<BaseCharacter, bool> OnCharacterAttacked;
     #endregion
 
     #region 부울 변수
@@ -75,8 +76,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             combatQueue.Enqueue(enemies.formation[index]);
             index += enemies.formation[index].Size;
         }
-
-        // OnCharacterTurnStart?.Invoke(allyFormation[0], false);
 
         #region PreRound 상태로 넘어감
         PreRound();
@@ -202,10 +201,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             // 자신의 차례가 됐을 때 버프 적용
             if (currentCharacter.ApplyBuff(BuffTiming.TurnStart))
             {
-                // 캐릭터의 스킬에 변경점이 있는지 확인
-                // 적도 위치가 바뀔 수 있으니 스킬 확인을 해줌
-                currentCharacter.CheckSkillsOnTurnStart();
-
                 // 현재 턴의 캐릭터에 맞는 UI 업데이트
                 if(currentCharacter.IsAlly) skillTriggerSelector.SetActive(true);
                 OnCharacterTurnStart?.Invoke(currentCharacter, true);
@@ -213,7 +208,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 // TODO : 현재 턴이 적일 시 AI로 행동 결정(임시 코드)
                 if (!currentCharacter.IsAlly)
                 {
-                    //StartCoroutine(EnemyAction(currentCharacter));
                     EnemyAction(currentCharacter);
                 }
                 
@@ -275,7 +269,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         
         //스킬 중복 시전 방지
         skillTriggerSelector.SetActive(false);
-        
+
         // 스킬 사용한 캐릭터 애니메이션 실행, 스킬 사용 후 상대 캐릭터 애니메이션도 실행해야 함(회피도 애니메이션 있나) 
         BaseCharacter caster = currentSelectedSkill.SkillOwner;
         caster.PlayAnimation(currentSelectedSkill.SkillSO.AnimType);
@@ -323,7 +317,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         currentSelectedSkill.ActivateSkill(receiver);
         allies.CheckDeathInFormation();
         enemies.CheckDeathInFormation();
-        
+
+        OnCharacterAttacked(receiver, false);
         Debug.Log(currentSelectedSkill.Name + " is executed by " + _caster.name + " on " + receiver.name);
         
         // caster의 애니메이션이 끝나기까지 기다렸다가 턴이 종료되게 함
@@ -334,23 +329,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         yield return new WaitForSeconds(1f); // 예시로 1초 대기
     }
     
-    /// <summary>
-    /// Enemy 임시 행동
-    /// </summary>
-    // IEnumerator EnemyAction(BaseCharacter _enemy)
-    // {
-    //     Debug.Log(_enemy.name + "가 행동합니다");
-    //     yield return new WaitForSeconds(3f); // 예시로 3초 대기 후 스킬 실행 가정
-    //     isSkillSelected = true;
-    //     isSkillExecuted = true;
-    // }
-    
     void EnemyAction(BaseCharacter enemy)
     {
         enemy.TriggerAI();
         Debug.Log(enemy.name + "가 행동합니다");
     }
-    
 
     #endregion
 

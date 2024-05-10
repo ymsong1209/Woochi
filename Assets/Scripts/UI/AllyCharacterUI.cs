@@ -28,7 +28,7 @@ public class AllyCharacterUI : MonoBehaviour
     {
         #region 이벤트 등록
         BattleManager.GetInstance.OnCharacterTurnStart += ShowCharacterUI;
-
+        BattleManager.GetInstance.OnCharacterAttacked += ShowCharacterUI;
         #endregion
     }
 
@@ -62,6 +62,7 @@ public class AllyCharacterUI : MonoBehaviour
     /// <param name="_character"></param>
     private void ShowCharacterStat(BaseCharacter _character)
     {
+        hpText.text = $"{_character.Health.CurHealth} / {_character.Health.MaxHealth}";
         accuracy.SetText(_character.Accuracy);
         critical.SetText(_character.Crit, true);
         damage.SetText(_character.MinStat, _character.MaxStat);
@@ -71,8 +72,4 @@ public class AllyCharacterUI : MonoBehaviour
         speed.SetText(_character.Speed);
     }
 
-    private void ShowHP(BaseCharacter _character)
-    {
-        hpText.text = $"{_character.Health.CurHealth} / {_character.Health.MaxHealth}";
-    }
 }

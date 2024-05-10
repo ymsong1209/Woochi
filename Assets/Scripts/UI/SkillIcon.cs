@@ -35,7 +35,6 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             btn.interactable = false;
             skill = null;
         }
-        // TODO : 스킬 아이콘 스프라이트 지정
     }
 
     public void OnPointerEnter(PointerEventData eventData)

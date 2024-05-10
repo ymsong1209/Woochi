@@ -17,6 +17,7 @@ public class SkillSelectionUI : MonoBehaviour
     {
         #region 이벤트 등록
         BattleManager.GetInstance.OnCharacterTurnStart += ShowForCharacter;
+        BattleManager.GetInstance.OnCharacterAttacked += ShowForCharacter;
         #endregion
         for (int i = 0; i < skillIcons.Count; i++)
         {
@@ -33,6 +34,8 @@ public class SkillSelectionUI : MonoBehaviour
     /// <param name="isEnable">스킬 활성화 시킬지 말지</param>
     public void ShowForCharacter(BaseCharacter _character, bool isEnable = true)
     {
+        _character.CheckSkillsOnTurnStart();
+
         // 턴이 적 캐릭터라면 skillIcon Interactable을 false로 초기화
         if (!_character.IsAlly)
         {
@@ -43,12 +46,12 @@ public class SkillSelectionUI : MonoBehaviour
         DisableSkills();
 
         #region 스킬 아이콘 Enable, Disable 설정
-        int activeSkills = _character.activeSkills.Count;
+        int activeSkillsCount = _character.activeSkills.Count;
 
         // 각 캐릭터의 스킬 개수만큼 버튼 오브젝트 활성화
         for (int i = 0; i < skillIcons.Count; i++)
         {
-            if(i < activeSkills)
+            if(i < activeSkillsCount)
             { 
                 BaseSkill skill = _character.activeSkills[i];
                 // 스킬 아이콘에 스킬 정보 할당
