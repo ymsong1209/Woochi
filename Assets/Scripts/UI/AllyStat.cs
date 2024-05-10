@@ -22,8 +22,26 @@ public class AllyStat : MonoBehaviour
     /// </summary>
     /// <param name="value"></param>
     /// <param name="isPercent">퍼센트 표시 스탯이면 true로 설정</param>
-    public void SetText(float value, bool isPercent = false)
+    public void SetText(float value, float changeValue, bool isPercent = false)
     {
+        #region 증감 수치에 따른 텍스트 색상 변경
+        if (changeValue > 0)
+        {
+            labelTxt.color = Color.yellow;
+            valueTxt.color = Color.yellow;
+        }
+        else if(changeValue < 0)
+        {
+            labelTxt.color = Color.red;
+            valueTxt.color = Color.red;
+        }
+        else
+        {
+            labelTxt.color = Color.black;
+            valueTxt.color = Color.black;
+        }
+        #endregion
+
         if (isPercent)
         {
             valueTxt.text = value.ToString("F1") + "%";
@@ -33,7 +51,7 @@ public class AllyStat : MonoBehaviour
         valueTxt.text = value.ToString();
     }
 
-    public void SetText(float minStat, float maxStat)
+    public void SetDamageText(float minStat, float maxStat)
     {
         valueTxt.text = $"{minStat}-{maxStat}";
     }

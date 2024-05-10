@@ -15,6 +15,9 @@ public class AllyCard : MonoBehaviour
         float currentHP = _ally.Health.CurHealth;
         float maxHP = _ally.Health.MaxHealth;
 
+        if (currentHP <= 0) healthTxt.color = Color.gray;
+        else healthTxt.color = Color.white;
+
         healthTxt.text = $"{currentHP}/{maxHP}";
     }
 

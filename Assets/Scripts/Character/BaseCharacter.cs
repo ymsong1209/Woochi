@@ -334,6 +334,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         get { return speed; }
         set { speed = value; }
     }
+
     public float Defense
     {
         get { return defense; }
@@ -389,6 +390,18 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
 
     public bool IsIdle => isIdle;
+
+    #region 바뀐 스탯 
+    public float ChangedSpeed => speed - characterStat.BaseSpeed;
+    public float ChangedDefense => defense - characterStat.BaseDefense;
+    public float ChangedCrit => crit - characterStat.BaseCrit;
+    public float ChangedAccuracy => accuracy - characterStat.BaseAccuracy;
+    public float ChangedEvasion => evasion - characterStat.BaseEvasion;
+    public float ChangedResist => resist - characterStat.BaseResist;
+    public float ChangedMinStat => minStat - characterStat.BaseMinStat;
+    public float ChangedMaxStat => maxStat - characterStat.BaseMaxStat;
+    #endregion
+
     #endregion
 
     #region Validation
