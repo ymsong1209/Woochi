@@ -291,9 +291,10 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         isIdle = false;
         yield return null;
-
+        
         while(animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
         {
+            //Debug.Log("waiting animation for " + gameObject.name.ToString());
             yield return null;
         }
 

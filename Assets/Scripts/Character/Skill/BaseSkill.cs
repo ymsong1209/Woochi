@@ -195,6 +195,14 @@ public class BaseSkill : MonoBehaviour
     }
     bool AttackLogic(BaseCharacter _opponent, ref bool _iscrit)
     {
+        //치명타일 경우 명중, 회피, 저항 무시하고 바로 스킬 적용
+        if (CheckCrit())
+        {
+            Debug.Log(skillOwner.ToString() + "uses Skill on "+ skillName + "to "+ _opponent.name.ToString());
+            _iscrit = true;
+            ApplyStat(_opponent, true);
+        }
+        
         //명중 체크
         if (CheckAccuracy() == false)
         {
@@ -210,18 +218,8 @@ public class BaseSkill : MonoBehaviour
             return false;
         }
         
-        //치명타일 경우
-        if (CheckCrit())
-        {
-            Debug.Log("Crit Skill on "+ skillName + "to "+ _opponent.name.ToString());
-            _iscrit = true;
-            ApplyStat(_opponent, true);
-        }
-        else
-        {
-            Debug.Log("Non Crit Skill on " + skillName + "to " + _opponent.name.ToString());
-            ApplyStat(_opponent, false);
-        }
+        Debug.Log( skillOwner.ToString() + "uses Non Crit Skill on " + skillName + "to " + _opponent.name.ToString());
+        ApplyStat(_opponent, false);
 
         return true;
     }

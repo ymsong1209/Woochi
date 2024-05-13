@@ -139,8 +139,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     void ReorderCombatQueue(bool _resetTurnUsed = false, List<BaseCharacter> processedCharacters = null)
     {
         List<BaseCharacter> allCharacters = new List<BaseCharacter>();
-
-        if (processedCharacters != null)
+        
+        if (_resetTurnUsed && processedCharacters != null)
         {
             allCharacters.AddRange(processedCharacters);
         }
@@ -192,6 +192,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
             if (currentCharacter.IsDead || currentCharacter.IsTurnUsed)
             {
+                Debug.Log(currentCharacter.name + " is dead or turn is used.");
                 processedCharacters.Add(currentCharacter);
                 continue;
             }
@@ -213,7 +214,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 {
                     yield return null;
                 }
-            };
+            }
 
             // 자신 차례가 지난 후 턴 사용 처리
             currentCharacter.IsTurnUsed = true;
@@ -397,19 +398,20 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     // 스킬 실행 로직 구현
     IEnumerator ExecuteSkill(BaseCharacter _caster, BaseCharacter receiver)
     {
+        Debug.Log(currentSelectedSkill.Name + " is executed by " + _caster.name + " on " + receiver.name);
         currentSelectedSkill.ActivateSkill(receiver);
         allies.CheckDeathInFormation();
         enemies.CheckDeathInFormation();
 
         OnCharacterAttacked(receiver, false);
-        Debug.Log(currentSelectedSkill.Name + " is executed by " + _caster.name + " on " + receiver.name);
+        
         
         // caster의 애니메이션이 끝나기까지 기다렸다가 턴이 종료되게 함
         while (!_caster.IsIdle) yield return null;
 
         isSkillExecuted = true;
 
-        yield return new WaitForSeconds(1f); // 예시로 1초 대기
+        //yield return new WaitForSeconds(1f); // 예시로 1초 대기
     }
     
     void EnemyAction(BaseCharacter enemy)
