@@ -212,11 +212,6 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         for(int i = 0; i < activeSkillCheckBox.Count; ++i)
         {
             BaseSkill newSkill = Instantiate(characterStat.Skills[i], this.transform);
-            // // Instantiate된 스킬을 본래 타입으로 캐스팅
-            // System.Type originalType = characterStat.Skills[i].GetType();
-            // newSkill = (BaseSkill)gameObject.AddComponent(originalType);
-            // CopyFields(characterStat.Skills[i], newSkill);
-            
             newSkill.Initialize();
             newSkill.SkillOwner = this;
             if (activeSkillCheckBox[i])
@@ -228,26 +223,6 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
 
         #endregion
-    }
-    
-    // 스킬의 모든 필드를 복사하는 메서드
-    void CopyFields(object source, object target)
-    {
-        var sourceType = source.GetType();
-        var targetType = target.GetType();
-
-        foreach (var field in sourceType.GetFields(System.Reflection.BindingFlags.Public |
-                                                   System.Reflection.BindingFlags.NonPublic |
-                                                   System.Reflection.BindingFlags.Instance))
-        {
-            var targetField = targetType.GetField(field.Name, System.Reflection.BindingFlags.Public |
-                                                              System.Reflection.BindingFlags.NonPublic |
-                                                              System.Reflection.BindingFlags.Instance);
-            if (targetField != null)
-            {
-                targetField.SetValue(target, field.GetValue(source));
-            }
-        }
     }
     #endregion 기본 스탯 초기화
 

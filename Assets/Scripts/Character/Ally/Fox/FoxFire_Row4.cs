@@ -8,8 +8,8 @@ public class FoxFire_Row4 : BaseSkill
    [SerializeField] private BaseBuff BurnBuff;
    public override void ActivateSkill(BaseCharacter _opponent)
    {
-      //¾Æ±º º¸È£ ½ºÅ³µîÀ¸·Î º¸È£ ÇÒ ¼ö ÀÖÀ½
-      //ÃÖÁ¾ÀûÀ¸·Î °ø°İÇØ¾ßÇÏ´Â Àû ÆÇÁ¤
+      //ì•„êµ° ë³´í˜¸ ìŠ¤í‚¬ë“±ìœ¼ë¡œ ë³´í˜¸ í•  ìˆ˜ ìˆìŒ
+      //ìµœì¢…ì ìœ¼ë¡œ ê³µê²©í•´ì•¼í•˜ëŠ” ì  íŒì •
       BaseCharacter opponent = _opponent;
       if (!_opponent.IsAlly)
       {
@@ -23,10 +23,10 @@ public class FoxFire_Row4 : BaseSkill
          return;
       }
 
-      //¾Æ±º Å¸°ÙÀ¸·Î´Â Ã¼·ÂÈ¸º¹
+      //ì•„êµ° íƒ€ê²Ÿìœ¼ë¡œëŠ” ì²´ë ¥íšŒë³µ
       if (opponent.IsAlly)
       {
-         //¾Æ±º¿¡ ÁØ ¹öÇÁ´Â ¹İµå½Ã ¸íÁß. °Ë»ç ·ÎÁ÷ °Ç³Ê¶Ü
+         //ì•„êµ°ì— ì¤€ ë²„í”„ëŠ” ë°˜ë“œì‹œ ëª…ì¤‘. ê²€ì‚¬ ë¡œì§ ê±´ë„ˆëœ€
          BaseBuff buff = ApplyBuff(_opponent, CureBuff);
          if (buff is FoxFire_Row4_CureBuff foxbuff)
          {

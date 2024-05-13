@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Collections;
 using UnityEngine;
 
 public class BattleManager : SingletonMonobehaviour<BattleManager>
@@ -276,6 +277,23 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
     }
 
+    public void EnableArrowForSelectedSkill()
+    {
+        if(currentSelectedSkill == null) return;
+        DisableAllArrows();
+        bool[] skillRadius = currentSelectedSkill.SkillRadius;
+        for (int i = 0; i < skillRadius.Length; i++)
+        {
+            //현재 살아있는 적/아군에게서만 skilltriggerarea활성화
+            if(skillRadius[i] && BattleManager.GetInstance.IsCharacterThere(i))
+            {
+                BaseCharacter character = BattleManager.GetInstance.GetCharacterFromIndex(i);
+                GameObject arrow = character.transform.Find("SkillSelectionArrow").gameObject;
+                arrow.SetActive(true);
+            }
+        }
+    }
+
     public void DisableAllColliderInteractions()
     {
         foreach (BaseCharacter character in allies.formation)
@@ -301,12 +319,39 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             }
         }
     }
+
+    public void DisableAllArrows()
+    {
+        foreach (BaseCharacter character in allies.formation)
+        {
+            if (character)
+            { 
+                GameObject arrow = character.transform.Find("SkillSelectionArrow").gameObject;
+                if (arrow)
+                {
+                    arrow.SetActive(false);
+                }
+            }
+        }
+        foreach (BaseCharacter character in enemies.formation)
+        {
+            if (character)
+            {
+                GameObject arrow = character.transform.Find("SkillSelectionArrow").gameObject;
+                if (arrow)
+                {
+                    arrow.SetActive(false);
+                }
+            }
+        }
+    }
     
     public void ExecuteSelectedSkill(BaseCharacter receiver)
     {
         if (!currentSelectedSkill) return;
         
         DisableAllColliderInteractions();
+        DisableAllArrows();
 
         // 스킬 사용한 캐릭터 애니메이션 실행, 스킬 사용 후 상대 캐릭터 애니메이션도 실행해야 함(회피도 애니메이션 있나) 
         BaseCharacter caster = currentSelectedSkill.SkillOwner;
@@ -324,6 +369,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         if (!currentSelectedSkill) return;
         
         DisableAllColliderInteractions();
+        DisableAllArrows();
         
         // 스킬 사용한 캐릭터 애니메이션 실행, 스킬 사용 후 상대 캐릭터 애니메이션도 실행해야 함(회피도 애니메이션 있나) 
         BaseCharacter caster = currentSelectedSkill.SkillOwner;
