@@ -6,15 +6,15 @@ public class DebugRect : MonoBehaviour
     public Vector2 Center = Vector2.zero;
     public Vector2 Size = new Vector2(1, 1);
     public Color Color = Color.green;
-    public float Duration = 0.1f; // Debug.DrawLineÀÇ Áö¼Ó ½Ã°£
+    public float Duration = 0.1f; // Debug.DrawLineì˜ ì§€ì† ì‹œê°„
 
-    // °ÔÀÓ ½ÇÇà Áß »ç°¢Çü ±×¸®±â
+    // ê²Œì„ ì‹¤í–‰ ì¤‘ ì‚¬ê°í˜• ê·¸ë¦¬ê¸°
     void Update()
     {
         DrawDebugRect(Center, Size, Color, Duration);
     }
 
-    // Gizmos¸¦ »ç¿ëÇÏ¿© ¿¡µğÅÍ¿¡¼­ »ç°¢Çü ±×¸®±â
+    // Gizmosë¥¼ ì‚¬ìš©í•˜ì—¬ ì—ë””í„°ì—ì„œ ì‚¬ê°í˜• ê·¸ë¦¬ê¸°
     void OnDrawGizmos()
     {
         DrawGizmoRect(Center, Size, Color);
@@ -22,40 +22,40 @@ public class DebugRect : MonoBehaviour
        
     }
 
-    // Debug.DrawLineÀ» »ç¿ëÇÏ¿© »ç°¢Çü ±×¸®±â
+    // Debug.DrawLineì„ ì‚¬ìš©í•˜ì—¬ ì‚¬ê°í˜• ê·¸ë¦¬ê¸°
     void DrawDebugRect(Vector2 center, Vector2 size, Color color, float duration)
     {
-        // »ç°¢ÇüÀÇ ¸ğ¼­¸® °è»ê
+        // ì‚¬ê°í˜•ì˜ ëª¨ì„œë¦¬ ê³„ì‚°
         Vector3[] points = GetRectPoints(center, size);
 
-        // ¸ğ¼­¸®¸¦ ¿¬°áÇÏ¿© »ç°¢Çü ±×¸®±â
+        // ëª¨ì„œë¦¬ë¥¼ ì—°ê²°í•˜ì—¬ ì‚¬ê°í˜• ê·¸ë¦¬ê¸°
         Debug.DrawLine(points[0], points[1], color, duration);
         Debug.DrawLine(points[1], points[2], color, duration);
         Debug.DrawLine(points[2], points[3], color, duration);
         Debug.DrawLine(points[3], points[0], color, duration);
     }
 
-    // Gizmos.DrawLineÀ» »ç¿ëÇÏ¿© »ç°¢Çü ±×¸®±â
+    // Gizmos.DrawLineì„ ì‚¬ìš©í•˜ì—¬ ì‚¬ê°í˜• ê·¸ë¦¬ê¸°
     void DrawGizmoRect(Vector2 center, Vector2 size, Color color)
     {
-        // GizmosÀÇ »ö»ó ¼³Á¤
+        // Gizmosì˜ ìƒ‰ìƒ ì„¤ì •
         Gizmos.color = color;
 
-        // »ç°¢ÇüÀÇ ¸ğ¼­¸® °è»ê
+        // ì‚¬ê°í˜•ì˜ ëª¨ì„œë¦¬ ê³„ì‚°
         Vector3[] points = GetRectPoints(center, size);
 
-        // ¸ğ¼­¸®¸¦ ¿¬°áÇÏ¿© »ç°¢Çü ±×¸®±â
+        // ëª¨ì„œë¦¬ë¥¼ ì—°ê²°í•˜ì—¬ ì‚¬ê°í˜• ê·¸ë¦¬ê¸°
         Gizmos.DrawLine(points[0], points[1]);
         Gizmos.DrawLine(points[1], points[2]);
         Gizmos.DrawLine(points[2], points[3]);
         Gizmos.DrawLine(points[3], points[0]);
     }
 
-    // »ç°¢ÇüÀÇ ¸ğ¼­¸® Æ÷ÀÎÆ® °è»ê
+    // ì‚¬ê°í˜•ì˜ ëª¨ì„œë¦¬ í¬ì¸íŠ¸ ê³„ì‚°
     Vector3[] GetRectPoints(Vector2 center, Vector2 size)
     {
         Vector3[] points = new Vector3[4];
-        // 2D¿¡¼­´Â ZÃàÀ» °í·ÁÇÏÁö ¾ÊÀ¸¹Ç·Î, Z°ªÀ» ÇöÀç GameObjectÀÇ Z°ªÀ¸·Î ¼³Á¤ÇÕ´Ï´Ù.
+        // 2Dì—ì„œëŠ” Zì¶•ì„ ê³ ë ¤í•˜ì§€ ì•Šìœ¼ë¯€ë¡œ, Zê°’ì„ í˜„ì¬ GameObjectì˜ Zê°’ìœ¼ë¡œ ì„¤ì •í•©ë‹ˆë‹¤.
         float z = transform.position.z;
         points[0] = new Vector3(center.x - size.x / 2, center.y + size.y / 2, z);
         points[1] = new Vector3(center.x + size.x / 2, center.y + size.y / 2, z);

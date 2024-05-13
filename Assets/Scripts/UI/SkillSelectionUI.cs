@@ -4,18 +4,18 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-[System.Serializable] // UnityEvent¸¦ Inspector¿¡¼­ º¼ ¼ö ÀÖ°Ô ÇÏ·Á¸é SerializableÀÌ ÇÊ¿äÇÕ´Ï´Ù
+[System.Serializable] // UnityEventë¥¼ Inspectorì—ì„œ ë³¼ ìˆ˜ ìˆê²Œ í•˜ë ¤ë©´ Serializableì´ í•„ìš”í•©ë‹ˆë‹¤
 public class SkillEvent : UnityEvent<BaseSkill> { }
 
 public class SkillSelectionUI : MonoBehaviour
 {
-    public SkillEvent onSkillSelected; // SkillEvent Å¸ÀÔÀÇ public ÀÌº¥Æ®
+    public SkillEvent onSkillSelected; // SkillEvent íƒ€ì…ì˜ public ì´ë²¤íŠ¸
 
     [SerializeField] private List<SkillIcon> skillIcons;
 
     private void Start()
     {
-        #region ÀÌº¥Æ® µî·Ï
+        #region ì´ë²¤íŠ¸ ë“±ë¡
         BattleManager.GetInstance.OnCharacterTurnStart += ShowForCharacter;
         BattleManager.GetInstance.OnCharacterAttacked += ShowForCharacter;
         #endregion
@@ -28,15 +28,15 @@ public class SkillSelectionUI : MonoBehaviour
     }
 
     /// <summary>
-    /// Ä³¸¯ÅÍ¿¡ ¸Â´Â ½ºÅ³ ¾ÆÀÌÄÜ È°¼ºÈ­½ÃÅ°´Â ¸Ş¼­µå
+    /// ìºë¦­í„°ì— ë§ëŠ” ìŠ¤í‚¬ ì•„ì´ì½˜ í™œì„±í™”ì‹œí‚¤ëŠ” ë©”ì„œë“œ
     /// </summary>
     /// <param name="_character"></param>
-    /// <param name="isEnable">½ºÅ³ È°¼ºÈ­ ½ÃÅ³Áö ¸»Áö</param>
+    /// <param name="isEnable">ìŠ¤í‚¬ í™œì„±í™” ì‹œí‚¬ì§€ ë§ì§€</param>
     public void ShowForCharacter(BaseCharacter _character, bool isEnable = true)
     {
         _character.CheckSkillsOnTurnStart();
 
-        // ÅÏÀÌ Àû Ä³¸¯ÅÍ¶ó¸é skillIcon InteractableÀ» false·Î ÃÊ±âÈ­
+        // í„´ì´ ì  ìºë¦­í„°ë¼ë©´ skillIcon Interactableì„ falseë¡œ ì´ˆê¸°í™”
         if (!_character.IsAlly)
         {
             skillIcons.ForEach(icon => icon.btn.interactable = false);
@@ -45,16 +45,16 @@ public class SkillSelectionUI : MonoBehaviour
 
         DisableSkills();
 
-        #region ½ºÅ³ ¾ÆÀÌÄÜ Enable, Disable ¼³Á¤
+        #region ìŠ¤í‚¬ ì•„ì´ì½˜ Enable, Disable ì„¤ì •
         int activeSkillsCount = _character.activeSkills.Count;
 
-        // °¢ Ä³¸¯ÅÍÀÇ ½ºÅ³ °³¼ö¸¸Å­ ¹öÆ° ¿ÀºêÁ§Æ® È°¼ºÈ­
+        // ê° ìºë¦­í„°ì˜ ìŠ¤í‚¬ ê°œìˆ˜ë§Œí¼ ë²„íŠ¼ ì˜¤ë¸Œì íŠ¸ í™œì„±í™”
         for (int i = 0; i < skillIcons.Count; i++)
         {
             if(i < activeSkillsCount)
             { 
                 BaseSkill skill = _character.activeSkills[i];
-                // ½ºÅ³ ¾ÆÀÌÄÜ¿¡ ½ºÅ³ Á¤º¸ ÇÒ´ç
+                // ìŠ¤í‚¬ ì•„ì´ì½˜ì— ìŠ¤í‚¬ ì •ë³´ í• ë‹¹
                 skillIcons[i].SetSkill(skill, (isEnable && IsSkillSetAvailable(skill)));
             }
         }
@@ -63,7 +63,7 @@ public class SkillSelectionUI : MonoBehaviour
     }
 
     /// <summary>
-    /// ½ºÅ³ ½½·Ô¿¡ ½ºÅ³ ¹öÆ°ÀÌ È°¼ºÈ­°¡ µÇ´ÂÁö È®ÀÎ
+    /// ìŠ¤í‚¬ ìŠ¬ë¡¯ì— ìŠ¤í‚¬ ë²„íŠ¼ì´ í™œì„±í™”ê°€ ë˜ëŠ”ì§€ í™•ì¸
     /// </summary>
     bool IsSkillSetAvailable(BaseSkill _skill)
     {
@@ -72,7 +72,7 @@ public class SkillSelectionUI : MonoBehaviour
         return true;
     }
     /// <summary>
-    /// ÇöÀç ½ºÅ³ÀÇ owner°¡ ½ºÅ³À» ½ÃÀüÇÒ ¼ö ÀÖ´Â ¿­¿¡ ÀÖ´ÂÁö È®ÀÎ
+    /// í˜„ì¬ ìŠ¤í‚¬ì˜ ownerê°€ ìŠ¤í‚¬ì„ ì‹œì „í•  ìˆ˜ ìˆëŠ” ì—´ì— ìˆëŠ”ì§€ í™•ì¸
     /// </summary>
     bool IsSkillAbleForFormation(BaseSkill _skill)
     {
@@ -84,7 +84,7 @@ public class SkillSelectionUI : MonoBehaviour
     }
 
     /// <summary>
-    /// ½ºÅ³ÀÇ Àû¿ë ´ë»óÀÌ Á¸ÀçÇÏ´ÂÁö È®ÀÎ
+    /// ìŠ¤í‚¬ì˜ ì ìš© ëŒ€ìƒì´ ì¡´ì¬í•˜ëŠ”ì§€ í™•ì¸
     /// </summary>
     bool IsSkillReceiverAble(BaseSkill _skill)
     {
@@ -97,19 +97,19 @@ public class SkillSelectionUI : MonoBehaviour
         return false;
     }
 
-    // ½ºÅ³ ¼±ÅÃ ¹öÆ°ÀÌ Å¬¸¯µÆÀ» ¶§ È£ÃâµÉ ¸Ş¼­µå
+    // ìŠ¤í‚¬ ì„ íƒ ë²„íŠ¼ì´ í´ë¦­ëì„ ë•Œ í˜¸ì¶œë  ë©”ì„œë“œ
     public void SkillButtonClicked(BaseSkill _skill)
     {
         if (_skill == null)
             return;
 
-        // BattleManagerÀÇ SkillSelected È£Ãâ
-        // SkillTriggerSelectorÀÇ Activate ¸Ş¼­µå È£Ãâ
+        // BattleManagerì˜ SkillSelected í˜¸ì¶œ
+        // SkillTriggerSelectorì˜ Activate ë©”ì„œë“œ í˜¸ì¶œ
         onSkillSelected.Invoke(_skill);
     }
 
     /// <summary>
-    /// ¸ğµç ½ºÅ³ ¾ÆÀÌÄÜ interactionÀ» false·Î ÃÊ±âÈ­
+    /// ëª¨ë“  ìŠ¤í‚¬ ì•„ì´ì½˜ interactionì„ falseë¡œ ì´ˆê¸°í™”
     /// </summary>
     private void DisableSkills()
     {

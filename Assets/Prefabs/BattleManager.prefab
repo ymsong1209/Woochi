@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCharacter: {fileID: 0}
-  skillTriggerSelector: {fileID: 8096727894509934402}
   allies: {fileID: 0}
   enemies: {fileID: 0}
   allyCards: {fileID: 0}

@@ -12,8 +12,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     public  BaseCharacter       currentCharacter;               //현재 누구 차례인지
     private BaseSkill           currentSelectedSkill;           //현재 선택된 스킬
     private int                 currentRound;                   //현재 몇 라운드인지
-
-    [SerializeField] private GameObject skillTriggerSelector;
+    
 
     /// <summary>
     /// 아군이랑 적군의 싸움 순서
@@ -53,8 +52,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         CurState = BattleState.Initialization;
         if (dungeon == null) { Debug.LogError("Null Dungeon"); return; }
-
-        skillTriggerSelector.SetActive(true);
 
         currentRound = 0;
         combatQueue.Clear();
@@ -202,7 +199,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             if (currentCharacter.ApplyBuff(BuffTiming.TurnStart))
             {
                 // 현재 턴의 캐릭터에 맞는 UI 업데이트
-                if(currentCharacter.IsAlly) skillTriggerSelector.SetActive(true);
                 OnCharacterTurnStart?.Invoke(currentCharacter, true);
 
                 // TODO : 현재 턴이 적일 시 AI로 행동 결정(임시 코드)
@@ -263,12 +259,54 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         isSkillSelected = true;
     }
     
+    public void ActivateColliderForSelectedSkill()
+    {
+        if(currentSelectedSkill == null) return;
+        DisableAllColliderInteractions();
+        bool[] skillRadius = currentSelectedSkill.SkillRadius;
+        for (int i = 0; i < skillRadius.Length; i++)
+        {
+            //현재 살아있는 적/아군에게서만 skilltriggerarea활성화
+            if(skillRadius[i] && BattleManager.GetInstance.IsCharacterThere(i))
+            {
+                BaseCharacter character = BattleManager.GetInstance.GetCharacterFromIndex(i);
+                BaseCharacterCollider characterCollider = character.GetComponent<BaseCharacterCollider>();
+                characterCollider.CanInteract = true;
+            }
+        }
+    }
+
+    public void DisableAllColliderInteractions()
+    {
+        foreach (BaseCharacter character in allies.formation)
+        {
+            if (character)
+            {
+                BaseCharacterCollider characterCollider = character.GetComponent<BaseCharacterCollider>();
+                if (characterCollider)
+                {
+                    characterCollider.CanInteract = false;
+                }
+            }
+        }
+        foreach (BaseCharacter character in enemies.formation)
+        {
+            if (character)
+            {
+                BaseCharacterCollider characterCollider = character.GetComponent<BaseCharacterCollider>();
+                if (characterCollider)
+                {
+                    characterCollider.CanInteract = false;
+                }
+            }
+        }
+    }
+    
     public void ExecuteSelectedSkill(BaseCharacter receiver)
     {
         if (!currentSelectedSkill) return;
         
-        //스킬 중복 시전 방지
-        skillTriggerSelector.SetActive(false);
+        DisableAllColliderInteractions();
 
         // 스킬 사용한 캐릭터 애니메이션 실행, 스킬 사용 후 상대 캐릭터 애니메이션도 실행해야 함(회피도 애니메이션 있나) 
         BaseCharacter caster = currentSelectedSkill.SkillOwner;
@@ -285,9 +323,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         if (!currentSelectedSkill) return;
         
-        //스킬 중복 시전 방지
-        skillTriggerSelector.SetActive(false);
-
+        DisableAllColliderInteractions();
+        
         // 스킬 사용한 캐릭터 애니메이션 실행, 스킬 사용 후 상대 캐릭터 애니메이션도 실행해야 함(회피도 애니메이션 있나) 
         BaseCharacter caster = currentSelectedSkill.SkillOwner;
         caster.PlayAnimation(currentSelectedSkill.SkillSO.AnimType);
@@ -419,7 +456,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             }
         }
         combatQueue.Clear();
-        skillTriggerSelector.SetActive(false);
         GameManager.GetInstance.SelectRoom();
     }
 

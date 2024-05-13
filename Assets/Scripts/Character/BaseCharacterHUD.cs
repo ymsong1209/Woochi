@@ -32,10 +32,10 @@ public class BaseCharacterHUD : MonoBehaviour
         switch (_result)
         {
             case AttackResult.Miss:
-                damageTxt.text = "ºø³ª°¨";
+                damageTxt.text = "ë¹—ë‚˜ê°";
                 break;
             case AttackResult.Evasion:
-                damageTxt.text = "È¸ÇÇ";
+                damageTxt.text = "íšŒí”¼";
                 Invoke("DisableHUD", 2f);
                 break;
             case AttackResult.Normal:

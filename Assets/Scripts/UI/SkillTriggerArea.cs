@@ -14,12 +14,12 @@ public class SkillTriggerArea : MonoBehaviour
 
     void Update()
     {
-        // ¸¶¿ì½º ¿ŞÂÊ ¹öÆ°ÀÌ Å¬¸¯µÇ¾ú´ÂÁö È®ÀÎ
+        // ë§ˆìš°ìŠ¤ ì™¼ìª½ ë²„íŠ¼ì´ í´ë¦­ë˜ì—ˆëŠ”ì§€ í™•ì¸
         if (Input.GetMouseButtonDown(0))
         {
             CheckMouseRaycast(true);
         }
-        // ¸¶¿ì½º°¡ ÇöÀç °´Ã¼ À§¿¡ ÀÖ´ÂÁö È®ÀÎ (¸Å ÇÁ·¹ÀÓ¸¶´Ù)
+        // ë§ˆìš°ìŠ¤ê°€ í˜„ì¬ ê°ì²´ ìœ„ì— ìˆëŠ”ì§€ í™•ì¸ (ë§¤ í”„ë ˆì„ë§ˆë‹¤)
         else
         {
             CheckMouseRaycast(false);
@@ -28,15 +28,15 @@ public class SkillTriggerArea : MonoBehaviour
 
     private void CheckMouseRaycast(bool isClick)
     {
-        // ¸¶¿ì½º À§Ä¡¸¦ ¿ùµå ÁÂÇ¥·Î º¯È¯
+        // ë§ˆìš°ìŠ¤ ìœ„ì¹˜ë¥¼ ì›”ë“œ ì¢Œí‘œë¡œ ë³€í™˜
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        // 2D ·¹ÀÌÄ³½ºÆ®¸¦ ¹ß»çÇÏ¿© °á°ú¸¦ RaycastHit2D °´Ã¼¿¡ ÀúÀå
+        // 2D ë ˆì´ìºìŠ¤íŠ¸ë¥¼ ë°œì‚¬í•˜ì—¬ ê²°ê³¼ë¥¼ RaycastHit2D ê°ì²´ì— ì €ì¥
         RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
 
-        // ·¹ÀÌÄ³½ºÆ®°¡ ¾î¶² Collider2D¿Í Ãæµ¹Çß´ÂÁö È®ÀÎ
+        // ë ˆì´ìºìŠ¤íŠ¸ê°€ ì–´ë–¤ Collider2Dì™€ ì¶©ëŒí–ˆëŠ”ì§€ í™•ì¸
         if (hit.collider)
         {
-            // Ãæµ¹ÇÑ °´Ã¼°¡ ÀÌ ½ºÅ©¸³Æ®°¡ ºÎÂøµÈ GameObjectÀÎÁö È®ÀÎ
+            // ì¶©ëŒí•œ ê°ì²´ê°€ ì´ ìŠ¤í¬ë¦½íŠ¸ê°€ ë¶€ì°©ëœ GameObjectì¸ì§€ í™•ì¸
             if (hit.collider.gameObject == gameObject)
             {
                 if (isClick)
@@ -48,7 +48,7 @@ public class SkillTriggerArea : MonoBehaviour
                 else
                 {
                     //Debug.Log("Mouse is over the GameObject.");
-                    // ¿©±â¿¡ ¸¶¿ì½º ¿À¹ö ½ÃÀÇ ·ÎÁ÷À» Ãß°¡
+                    // ì—¬ê¸°ì— ë§ˆìš°ìŠ¤ ì˜¤ë²„ ì‹œì˜ ë¡œì§ì„ ì¶”ê°€
                 }
             }
         }

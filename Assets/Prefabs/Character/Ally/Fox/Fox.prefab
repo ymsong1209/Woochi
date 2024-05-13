@@ -439,6 +439,7 @@ GameObject:
   - component: {fileID: 2701771261676026121}
   - component: {fileID: 1550496690799416930}
   - component: {fileID: 4623611782305069228}
+  - component: {fileID: 1490216806304214759}
   m_Layer: 0
   m_Name: Fox
   m_TagString: Untagged
@@ -585,7 +586,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.30722708}
+  m_Offset: {x: 0, y: 0.21630049}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -596,7 +597,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5, y: 4.3855457}
+  m_Size: {x: 5, y: 4.567399}
   m_EdgeRadius: 0
 --- !u!114 &1550496690799416930
 MonoBehaviour:
@@ -646,6 +647,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpBar: {fileID: 4543534527862730}
   damageTxt: {fileID: 7237516112413730353}
+--- !u!114 &1490216806304214759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638066927388224697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1695352f995aba94f8147f3da5cfb59a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliderOwner: {fileID: 0}
+  collider: {fileID: 0}
 --- !u!1 &6877234314252966679
 GameObject:
   m_ObjectHideFlags: 0

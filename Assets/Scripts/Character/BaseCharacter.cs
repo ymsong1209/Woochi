@@ -9,6 +9,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(BaseCharacterHUD))]
+[RequireComponent(typeof(BaseCharacterCollider))]
 [DisallowMultipleComponent]
 public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
