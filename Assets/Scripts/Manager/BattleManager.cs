@@ -200,6 +200,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             // 자신의 차례가 됐을 때 버프 적용
             if (currentCharacter.ApplyBuff(BuffTiming.TurnStart))
             {
+                while (!currentCharacter.IsIdle) yield return null;
+
                 // 현재 턴의 캐릭터에 맞는 UI 업데이트
                 OnCharacterTurnStart?.Invoke(currentCharacter, true);
 
