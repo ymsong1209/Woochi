@@ -139,4 +139,19 @@ public class Formation : MonoBehaviour
 
         return list;
     }
+
+    public void CleanUp()
+    {
+        foreach(BaseCharacter character in formation)
+        {
+            if (character == null) continue;
+            character.Destroy();
+            Destroy(character.gameObject);
+        }
+        //자식 gameobject를 모두 삭제
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
 }

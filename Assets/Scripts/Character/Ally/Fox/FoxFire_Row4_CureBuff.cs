@@ -11,15 +11,15 @@ public class FoxFire_Row4_CureBuff : BaseBuff
         base.AddBuff(_buffOwner);
     }
     
-    public override bool ApplyTurnStartBuff()
+    public override int ApplyTurnStartBuff()
     {
         //삼미호의 피해의 20%만큼 힐을 해야함
         float RandomStat = Random.Range(fox.MinStat, fox.MaxStat) * 20f / 100f;
         buffOwner.Health.Heal((int)RandomStat);
 
         --buffDurationTurns;
-        
-        return (!buffOwner.CheckDead());
+
+        return 0;
     }
     public override void StackBuff()
     {

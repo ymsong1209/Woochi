@@ -495,16 +495,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         {
             //패배 화면 뜨기
         }
-        //적군인 경우 삭제
-        while (combatQueue.Count > 0)
-        {
-            BaseCharacter curchar = combatQueue.Dequeue();
-            if(curchar.IsAlly == false)
-            {
-                curchar.Destroy();
-                Destroy(curchar.gameObject);
-            }
-        }
+        
+        //적군 삭제
+        enemies.CleanUp();
         combatQueue.Clear();
         GameManager.GetInstance.SelectRoom();
     }

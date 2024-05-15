@@ -121,17 +121,25 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     /// <summary>
     /// 버프 적용후,캐릭터의 턴이 스킵되거나 캐릭터가 사망할 경우 false 반환
     /// </summary>
-    private bool ApplyBuffs(Func<BaseBuff, bool> applyBuffMethod)
+    private bool ApplyBuffs(Func<BaseBuff, int> applyBuffMethod)
     {
         bool mightDead = false;
+        bool isDamaged = false;
 
         for (int i = activeBuffs.Count - 1; i >= 0; i--)
         {
             //캐릭터의 턴이 스킵되거나, 캐릭터가 죽을 경우 mightDead를 true로 설정
-            if (!applyBuffMethod(activeBuffs[i]))
+            int result = applyBuffMethod(activeBuffs[i]);
+            if (result != 0)
             {
-                mightDead = true;
+                if (result == -1)
+                {
+                    mightDead = true;
+                }
+
+                isDamaged = true;
             }
+           
 
             if (ShouldRemoveBuff(activeBuffs[i]))
             {
@@ -150,6 +158,12 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             //턴을 스킵만 함
             return false;
         }
+
+        if (isDamaged)
+        {
+            PlayAnimation(AnimationType.Damaged);
+        }
+        
         return true;
     }
 

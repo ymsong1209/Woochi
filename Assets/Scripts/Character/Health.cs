@@ -23,7 +23,7 @@ public class Health : MonoBehaviour
     /// </summary>
     /// <param name="_damage"></param>
     /// <param name="_penetrate">_penetrate가 true일 경우에는 쉴드를 뚫는 관통형 대미지 </param>
-    public void ApplyDamage(int _damage, bool _isCrit = false, bool _penetrate = false)
+    public void ApplyDamageWithAnimation(int _damage, bool _isCrit = false, bool _penetrate = false)
     {
         //관통형 대미지인경우
         if (_penetrate == false)
@@ -44,6 +44,31 @@ public class Health : MonoBehaviour
 
         owner.ShowDamageUI(AttackResult.Normal, _damage, _isCrit);
         owner.PlayAnimation(AnimationType.Damaged);
+        OnHealthChanged.Invoke(owner);
+    }
+    
+    //버프에서 사용할 대미지 적용 공식
+    //대미지를 주고 한번에 애니메이션 재생할 의도
+    public void ApplyDamage(int _damage, bool _isCrit = false, bool _penetrate = false)
+    {
+        //관통형 대미지인경우
+        if (_penetrate == false)
+        {
+            CurHealth = Mathf.Clamp(CurHealth - _damage, 0, maxHealth);
+            Debug.Log("Curhealth : " + curHealth);
+        }
+        //비관통형 대미지인경우 쉴드 먼저 까임
+        else
+        {
+            shield -= _damage;
+            if(shield < 0)
+            {
+                CurHealth += shield;
+                shield = 0;
+            }
+        }
+
+        owner.ShowDamageUI(AttackResult.Normal, _damage, _isCrit);
         OnHealthChanged.Invoke(owner);
     }
 

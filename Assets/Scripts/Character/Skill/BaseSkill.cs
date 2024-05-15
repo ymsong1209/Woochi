@@ -308,7 +308,7 @@ public class BaseSkill : MonoBehaviour
         }
 
         // 새 버프 추가
-        BaseBuff instantiatedBuff = Instantiate(_buff);
+        BaseBuff instantiatedBuff = Instantiate(_buff, _Opponent.transform);
         instantiatedBuff.AddBuff(_Opponent);
         return instantiatedBuff;
     }
@@ -359,7 +359,7 @@ public class BaseSkill : MonoBehaviour
                 RandomStat = RandomStat * (100 - _opponent.Defense) / 100;
                 if (_isCrit) RandomStat = RandomStat * 2;
 
-                opponentHealth.ApplyDamage((int)Mathf.Round(RandomStat), _isCrit);
+                opponentHealth.ApplyDamageWithAnimation((int)Mathf.Round(RandomStat), _isCrit);
                 _opponent.CheckDead();
             }
             break;

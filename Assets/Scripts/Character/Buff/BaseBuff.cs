@@ -53,54 +53,59 @@ public class BaseBuff : MonoBehaviour
 
     /// <summary>
     /// 전투가 시작될때 적용되는 버프 효과
-    /// 사용 후 캐릭터가 살아있으면 true 반환
+    /// 버프를 적용하고 받은 대미지를 반환
+    /// 사용 후 캐릭터가 죽었거나 턴이 스킵되었으면 -1반환
     /// <returns></returns>
-    public virtual bool ApplyBattleStartBuff()
+    public virtual int ApplyBattleStartBuff()
     {
-        if (buffOwner.CheckDead() == false) return true;
-        return false;
+        if (buffOwner.CheckDead()) return -1;
+        return 0;
     }
 
     /// <summary>
     /// 라운드가 시작될때 적용되는 버프
-    /// 버프 효과 사용 후 캐릭터가 살아있으면 true반환
+    /// 버프를 적용하고 받은 대미지를 반환
+    /// 사용 후 캐릭터가 죽었거나 턴이 스킵되었으면 -1반환
     /// </summary>
-    public virtual bool ApplyRoundStartBuff()
+    public virtual int ApplyRoundStartBuff()
     {
-        if (buffOwner.CheckDead() == false) return true;
-        return false;
+        if (buffOwner.CheckDead()) return -1;
+        return 0;
     }
 
     /// <summary>
     /// 자신의 차례가 됐을때 적용
-    /// 버프 효과 사용 후 캐릭터가 살아있으면 true반환
+    /// 버프를 적용하고 받은 대미지를 반환
+    /// 사용 후 캐릭터가 죽었거나 턴이 스킵되었으면 -1반환
     /// </summary>
-    public virtual bool ApplyTurnStartBuff()
+    public virtual int ApplyTurnStartBuff()
     {
         --buffDurationTurns;
-        if (buffOwner.CheckDead() == false) return true;
-        return false;
+        if (buffOwner.CheckDead()) return -1;
+        return 0;
     }
 
     /// <summary>
     /// 라운드가 끝날때 적용되는 버프
-    /// 버프 효과 사용 후 캐릭터가 살아있으면 true반환
+    /// 버프를 적용하고 받은 대미지를 반환
+    /// 사용 후 캐릭터가 죽었거나 턴이 스킵되었으면 -1반환
     /// </summary>
-    public virtual bool ApplyRoundEndBuff()
+    public virtual int ApplyRoundEndBuff()
     {
-        if (buffOwner.CheckDead() == false) return true;
-        return false;
+        if (buffOwner.CheckDead()) return -1;
+        return 0;
     }
 
     /// <summary>
     /// 전투가 끝난 후 적용되는 버프 효과, default로 버프가 제거되게 함
-    /// 사용 후 캐릭터 살아있으면 true 반환
+    /// 버프를 적용하고 받은 대미지를 반환
+    /// 사용 후 캐릭터가 죽었거나 턴이 스킵되었으면 -1반환
     /// </summary>
-    public virtual bool ApplyBattleEndBuff()
+    public virtual int ApplyBattleEndBuff()
     {
         RemoveBuff();
-        if (buffOwner.CheckDead() == false) return true;
-        return false;
+        if (buffOwner.CheckDead()) return -1;
+        return 0;
     }
 
     /// <summary>

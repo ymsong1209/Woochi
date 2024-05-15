@@ -5,7 +5,7 @@ using UnityEngine;
 public class BurnDebuff : BaseBuff
 {
     //burnDamage 디버프
-    public override bool ApplyTurnStartBuff()
+    public override int ApplyTurnStartBuff()
     {
         //전체체력에서 2%만큼 대미지를 줌
         float burnDamage = buffOwner.Health.MaxHealth * 5f / 100f;
@@ -17,7 +17,7 @@ public class BurnDebuff : BaseBuff
 
         //checkdead는 캐릭터가 죽었을경우 true 반환
         //ApplyTurnStartBuff는 버프 실행 후 캐릭터가 살았으면 true 반환
-        return (!buffOwner.CheckDead());
+        return (int)Mathf.Round(burnDamage);
     }
 
     public override void StackBuff()

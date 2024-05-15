@@ -8,12 +8,13 @@ using UnityEngine;
 public class StunDeBuff : BaseBuff
 {
 
-    //stun°ü·Ã ¹öÇÁ. ÇÃ·¹ÀÌ¾îÀÇ ÅÏÀ» °Ç³Ê¶Ù°Ô ÇÏ°í ½ÍÀ½.
-    public override bool ApplyTurnStartBuff()
+    //stunê´€ë ¨ ë²„í”„. í”Œë ˆì´ì–´ì˜ í„´ì„ ê±´ë„ˆë›°ê²Œ í•˜ê³  ì‹¶ìŒ.
+    public override int ApplyTurnStartBuff()
     {
         --buffDurationTurns;
         Debug.Log(buffOwner.name + "is Stunned. Stun leftover turn : " + buffDurationTurns.ToString());
-        return false;
+        //í„´ì´ ìŠ¤í‚µë˜ì—ˆìœ¼ë¯€ë¡œ -1 ë°˜í™˜
+        return -1;
     }
 
     public override void StackBuff()

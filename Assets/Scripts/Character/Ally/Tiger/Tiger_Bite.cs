@@ -6,8 +6,8 @@ public class Tiger_Bite : BaseSkill
 {
     public override void ActivateSkill(BaseCharacter _Opponent)
     {
-        //¾Æ±º º¸È£ ½ºÅ³µîÀ¸·Î º¸È£ ÇÒ ¼ö ÀÖÀ½
-        //ÃÖÁ¾ÀûÀ¸·Î °ø°İÇØ¾ßÇÏ´Â Àû ÆÇÁ¤
+        //ì•„êµ° ë³´í˜¸ ìŠ¤í‚¬ë“±ìœ¼ë¡œ ë³´í˜¸ í•  ìˆ˜ ìˆìŒ
+        //ìµœì¢…ì ìœ¼ë¡œ ê³µê²©í•´ì•¼í•˜ëŠ” ì  íŒì •
         BaseCharacter opponent = base.CheckOpponentValid(_Opponent);
 
         if (opponent == null)
@@ -16,20 +16,20 @@ public class Tiger_Bite : BaseSkill
             return;
         }
 
-        //¸íÁß Ã¼Å©
+        //ëª…ì¤‘ ì²´í¬
         if (CheckAccuracy() == false)
         {
             Debug.Log("Accuracy Failed on" + _Opponent.name.ToString());
             return;
         }
-        //È¸ÇÇ Ã¼Å©
+        //íšŒí”¼ ì²´í¬
         if (CheckEvasion(opponent) == false)
         {
             Debug.Log(_Opponent.name.ToString() + "Evaded skill" + base.Name);
             return;
         }
 
-        //Ä¡¸íÅ¸ÀÏ °æ¿ì
+        //ì¹˜ëª…íƒ€ì¼ ê²½ìš°
         if (CheckCrit())
         {
             Debug.Log("Crit Skill on " + base.Name + "to " + _Opponent.name.ToString());
@@ -46,23 +46,23 @@ public class Tiger_Bite : BaseSkill
     private void ApplyTotalDamage(BaseCharacter _opponent, bool _isCrit)
     {
         Health opponentHealth = _opponent.gameObject.GetComponent<Health>();
-        //ÃÖ¼Ò, ÃÖ´ë ´ë¹ÌÁö »çÀÌÀÇ ¼öÄ¡¸¦ °í¸§
+        //ìµœì†Œ, ìµœëŒ€ ëŒ€ë¯¸ì§€ ì‚¬ì´ì˜ ìˆ˜ì¹˜ë¥¼ ê³ ë¦„
 
         float RandomStat = Random.Range(SkillOwner.MinStat, SkillOwner.MaxStat);
-        //ÇÇÇØ·® °è¼ö¸¦ °öÇÔ
+        //í”¼í•´ëŸ‰ ê³„ìˆ˜ë¥¼ ê³±í•¨
         RandomStat *= (Multiplier / 100);
 
-        //¹æ¾î ½ºÅÈÀ» »« base ½ºÅÈÀ» ±¸ÇÔ
+        //ë°©ì–´ ìŠ¤íƒ¯ì„ ëº€ base ìŠ¤íƒ¯ì„ êµ¬í•¨
         RandomStat = RandomStat * (100 - _opponent.Defense) / 100;
         if (_isCrit) RandomStat = RandomStat * 2;
 
-        // ¹°¾î¶â±â·Î ÇÇÇØ¸¦ ÀÔÈ÷¸é ÀûÀÇ ÀÒÀº Ã¼·ÂÀÇ 20% ¸¸Å­ Ãß°¡ ÇÇÇØ¸¦ ÁÜ
+        // ë¬¼ì–´ëœ¯ê¸°ë¡œ í”¼í•´ë¥¼ ì…íˆë©´ ì ì˜ ìƒì€ ì²´ë ¥ì˜ 20% ë§Œí¼ ì¶”ê°€ í”¼í•´ë¥¼ ì¤Œ
         RandomStat +=  (opponentHealth.MaxHealth - opponentHealth.CurHealth) * 0.2f;
 
-        //Àû¿¡°Ô ÃÖÁ¾ÀûÀÎ ´ë¹ÌÁö¸¦ ÁÜ
-        opponentHealth.ApplyDamage((int)Mathf.Round(RandomStat));
+        //ì ì—ê²Œ ìµœì¢…ì ì¸ ëŒ€ë¯¸ì§€ë¥¼ ì¤Œ
+        opponentHealth.ApplyDamageWithAnimation((int)Mathf.Round(RandomStat));
 
-        //È£¶ûÀÌ´Â ÁØ ÇÇÇØÀÇ 30%¸¸Å­ È¸º¹ÇÔ.
+        //í˜¸ë‘ì´ëŠ” ì¤€ í”¼í•´ì˜ 30%ë§Œí¼ íšŒë³µí•¨.
         int healamount = (int)Mathf.Round(RandomStat * 0.3f);
         SkillOwner.Health.Heal(healamount);
     }

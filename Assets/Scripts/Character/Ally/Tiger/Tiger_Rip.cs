@@ -95,6 +95,6 @@ public class Tiger_Rip : BaseSkill
         //치명타일 경우 최종대미지가 2배
         if (_isCrit) RandomStat = RandomStat * 2;
 
-        opponentHealth.ApplyDamage((int)Mathf.Round(RandomStat));
+        opponentHealth.ApplyDamageWithAnimation((int)Mathf.Round(RandomStat));
     }
 }
