@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.Collections;
 using UnityEngine;
+using Cinemachine;
 
 public class BattleManager : SingletonMonobehaviour<BattleManager>
 {
@@ -14,7 +15,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     private BaseSkill           currentSelectedSkill;           //현재 선택된 스킬
     private int                 currentRound;                   //현재 몇 라운드인지
     
-
     /// <summary>
     /// 아군이랑 적군의 싸움 순서
     /// </summary>
@@ -23,6 +23,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     [SerializeField] private Formation enemies;
 
     [SerializeField] private AllyCardList allyCards;
+    public BattleCameraController battleCameraController;
 
     #region 이벤트
     /// <summary>
@@ -348,7 +349,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             }
         }
     }
-    
+
+    #region 스킬 사용
     public void ExecuteSelectedSkill(BaseCharacter receiver)
     {
         if (!currentSelectedSkill) return;
@@ -356,27 +358,18 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         DisableAllColliderInteractions();
         DisableAllArrows();
 
-        // 스킬 사용한 캐릭터 애니메이션 실행, 스킬 사용 후 상대 캐릭터 애니메이션도 실행해야 함(회피도 애니메이션 있나) 
-        BaseCharacter caster = currentSelectedSkill.SkillOwner;
-        caster.PlayAnimation(currentSelectedSkill.SkillSO.AnimType);
-        
         if (currentSelectedSkill.SkillOwner && receiver)
         {
             StartCoroutine(ExecuteSkill(currentSelectedSkill.SkillOwner,receiver));
         }
     }
 
-    #region 스킬 사용
     public void ExecuteSelectedSkill(int _index = -1)
     {
         if (!currentSelectedSkill) return;
         
         DisableAllColliderInteractions();
         DisableAllArrows();
-        
-        // 스킬 사용한 캐릭터 애니메이션 실행, 스킬 사용 후 상대 캐릭터 애니메이션도 실행해야 함(회피도 애니메이션 있나) 
-        BaseCharacter caster = currentSelectedSkill.SkillOwner;
-        caster.PlayAnimation(currentSelectedSkill.SkillSO.AnimType);
         
         BaseCharacter receiver = null;
         
@@ -401,18 +394,20 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     IEnumerator ExecuteSkill(BaseCharacter _caster, BaseCharacter receiver)
     {
         Debug.Log(currentSelectedSkill.Name + " is executed by " + _caster.name + " on " + receiver.name);
+        _caster.PlayAnimation(currentSelectedSkill.SkillSO.AnimType);
+        
         currentSelectedSkill.ActivateSkill(receiver);
         allies.CheckDeathInFormation();
         enemies.CheckDeathInFormation();
 
         OnCharacterAttacked(receiver, false);
         
-        
         // caster의 애니메이션이 끝나기까지 기다렸다가 턴이 종료되게 함
         while (!_caster.IsIdle) yield return null;
 
         isSkillExecuted = true;
 
+        battleCameraController.SetBattleCamera(false);
         //yield return new WaitForSeconds(1f); // 예시로 1초 대기
     }
     

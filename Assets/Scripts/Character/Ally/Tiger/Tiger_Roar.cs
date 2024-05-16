@@ -5,10 +5,11 @@ using UnityEngine;
 public class Tiger_Roar : BaseSkill
 {
     [SerializeField] private BaseBuff RoarBuff;
-    protected override void ApplyMultiple()
+
+    public override void ActivateSkill(BaseCharacter _Opponent)
     {
-        base.ApplyMultiple();
-        ApplyBuff(SkillOwner,RoarBuff);
+        base.ActivateSkill(_Opponent);
+        ApplyBuff(_Opponent,RoarBuff);
+        Debug.Log("Tiger Roar");
     }
-    
 }
