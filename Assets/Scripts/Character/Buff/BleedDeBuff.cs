@@ -2,26 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 3턴 동안 대상자는 매 턴 마다 최대 체력의 bleedpercent%의 데미지를 입는다.
+/// 출혈 디버프가 있는 동안 다시 출혈에 걸리면 중첩이 올라가고
+/// 최대 체력 * bleedpercent / 100 %의 데미지를 준다.
+/// </summary>
 public class BleedDeBuff : BaseBuff
 {
-    //내 턴이 시작할때 몇 퍼센트만큼 피를 깎을건지
+    //출혈 중첩 수
     [SerializeField,ReadOnly] private int bleedPercent = 0;
-    //출혈 디버프를 걸때 몇%만큼 출혈스택을 쌓을 것인지
-    [SerializeField] protected int bleedApply;
-    //bleed관련 디버프
     public override int ApplyTurnStartBuff()
     {
         //전체체력에서 bleedApply%만큼 피를 깎는다.
-        float bleedDamage = buffOwner.Health.MaxHealth * bleedApply / 100f;
+        float bleedDamage = buffOwner.Health.MaxHealth * bleedPercent / 100f;
         buffOwner.Health.ApplyDamage((int)Mathf.Round(bleedDamage));
 
         --buffDurationTurns;
 
         return (int)Mathf.Round(bleedDamage);
     }
-
-    public override void StackBuff()
+    
+    //출혈 스택이 쌓일 경우 buffdurationturn과 bleedpercent이 중첩됨
+    public override void StackBuff(BaseBuff _buff)
     {
-       
+        base.buffDurationTurns += _buff.BuffDurationTurns;
+        BleedDeBuff bleedDeBuff = _buff as BleedDeBuff;
+        bleedPercent += bleedDeBuff.BleedPercent;
     }
+    
+    public int BleedPercent => bleedPercent;
+    
 }

@@ -174,12 +174,12 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     private void RemoveBuffAtIndex(int index)
     {
-        if (!activeBuffs[index].RemoveBuff())
+        BaseBuff removebuff = activeBuffs[index];
+        if (removebuff)
         {
-            // Buff가 제거되면서 캐릭터가 사망하는 경우는 여기서 다루지 않음
-            // 이 함수는 단순히 버프를 제거하는 역할만 수행함
+            activeBuffs.RemoveAt(index);
+            removebuff.RemoveBuff();
         }
-        activeBuffs.RemoveAt(index);
     }
 
     private bool HandleDeath()
@@ -194,10 +194,48 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         for (int i = activeBuffs.Count - 1; i >= 0; i--)
         {
             BaseBuff buff = activeBuffs[i];
-            activeBuffs[i].RemoveBuff();
             activeBuffs.RemoveAt(i);
+            buff.RemoveBuff();
             Destroy(buff.gameObject);
         }
+    }
+
+    //stat buff가 적용되거나 사라지면 자신이 가진 모든 버프 순회해서 stat buff에 있는 스탯 적용
+    public void CheckForStatChange()
+    {
+        //기존 스탯 다시 초기화
+        defense = characterStat.BaseDefense;
+        crit = characterStat.BaseCrit;
+        accuracy = characterStat.BaseAccuracy;
+        evasion = characterStat.BaseEvasion;
+        resist = characterStat.BaseResist;
+        minStat = characterStat.BaseMinStat;
+        maxStat = characterStat.BaseMaxStat;
+        speed = characterStat.BaseSpeed;
+        
+        foreach (BaseBuff buff in activeBuffs)
+        {
+            if (buff.BuffType == BuffType.StatChange)
+            {
+                defense += buff.ChangeDefense;
+                crit += buff.ChangeCrit;
+                accuracy += buff.ChangeAccuracy;
+                evasion += buff.ChangeEvasion;
+                resist += buff.ChangeResist;
+                minStat += buff.ChangeMinStat;
+                maxStat += buff.ChangeMaxStat;
+                speed += buff.ChangeSpeed;
+            }
+        }
+        //스탯이 0 이하로 내려간 경우 0으로 조정
+        defense = Mathf.Max(defense, 0);
+        crit = Mathf.Max(crit, 0);
+        accuracy = Mathf.Max(accuracy, 0);
+        evasion = Mathf.Max(evasion, 0);
+        resist = Mathf.Max(resist, 0);
+        minStat = Mathf.Max(minStat, 0);
+        maxStat = Mathf.Max(maxStat, 0);
+        speed = Mathf.Max(speed, 0);
     }
 
     #endregion

@@ -55,4 +55,4 @@ MonoBehaviour:
   - {fileID: 2569674945298275565, guid: 8724291ede07b424b92d6176bc636478, type: 3}
   multiplier: 0
   skillAccuracy: 0
-  RoarBuff: {fileID: 8518107361174940357, guid: 5a70670a4bd2be44996fc2800a35d937, type: 3}
+  roarBuffGameObject: {fileID: 2569674945298275565, guid: 7494b86e9b118144ea08c4f925621526, type: 3}

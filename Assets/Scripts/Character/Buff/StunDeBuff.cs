@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
 public class StunDeBuff : BaseBuff
 {
 
@@ -16,10 +15,5 @@ public class StunDeBuff : BaseBuff
         //턴이 스킵되었으므로 -1 반환
         return -1;
     }
-
-    public override void StackBuff()
-    {
-        Debug.Log("StunBuff Stacked.");
-        base.StackBuff();
-    }
+    
 }

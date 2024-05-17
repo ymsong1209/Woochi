@@ -20,11 +20,9 @@ public class BurnDebuff : BaseBuff
         return (int)Mathf.Round(burnDamage);
     }
 
-    public override void StackBuff()
+    //화상 스택이 쌓일 경우 지속 시간이 3턴만큼 늘어난다.
+    public override void StackBuff(BaseBuff _buff)
     {
-        //화상 스택이 쌓일 경우 지속 시간이 3턴만큼 늘어난다.
         base.buffDurationTurns += 3;
-        Debug.Log("BurnBuff Stacked.");
-        //base.StackBuff();
     }
 }

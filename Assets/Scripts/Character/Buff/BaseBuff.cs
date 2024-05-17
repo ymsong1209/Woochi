@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(RectTransform))]
+[RequireComponent(typeof(CanvasRenderer))]
+[RequireComponent(typeof(Image))]
 public class BaseBuff : MonoBehaviour
 {
 
     [SerializeField] protected BaseCharacter buffOwner;
-    /// <summary>
-    /// 버프의 초기 지속시간
-    /// </summary>
-    [SerializeField] protected int baseBuffDurationTurns;
     /// <summary>
     /// 현재 버프가 몇턴 남았는지
     /// buffDurationTurns가 -1이면 영구지속 버프
@@ -30,17 +29,6 @@ public class BaseBuff : MonoBehaviour
     [SerializeField, ReadOnly] protected float changeSpeed;
     #endregion 변화된 스탯들
 
-    #region 감소시키지 못한 Stat들
-    [SerializeField, ReadOnly] protected float leftoverDefense;
-    [SerializeField, ReadOnly] protected float leftoverCrit;
-    [SerializeField, ReadOnly] protected float leftoverAccuracy;
-    [SerializeField, ReadOnly] protected float leftoverEvasion;
-    [SerializeField, ReadOnly] protected float leftoverResist;
-    [SerializeField, ReadOnly] protected float leftoverMinStat;
-    [SerializeField, ReadOnly] protected float leftoverMaxStat;
-    [SerializeField, ReadOnly] protected float leftoverSpeed;
-    #endregion
-
     /// <summary>
     /// 버프를 추가
     /// </summary>
@@ -48,7 +36,6 @@ public class BaseBuff : MonoBehaviour
     {
         buffOwner = _buffOwner;
         buffOwner.activeBuffs.Add(this);
-        buffDurationTurns = baseBuffDurationTurns;
     }
 
     /// <summary>
@@ -114,19 +101,6 @@ public class BaseBuff : MonoBehaviour
     /// </summary>
     public virtual bool RemoveBuff()
     {
-        //버프를 제거하면서 leftoverstat만큼 basecharacter의 stat를 감소시킴
-        //증가수치는 RemoveBuff를 Override한 함수에서 결정함.
-        DecreaseStatFromLeftOverStat();
-        
-        //먼저 버프를 제거하면서 다른 버프에 수치 조절을 하라고 함
-        foreach(BaseBuff buff in buffOwner.activeBuffs)
-        {
-            if(buff != this)
-            {
-                DecreaseStatWithClampFromLeftOverStat();
-            }
-        }
-
         if (buffOwner.CheckDead() == false) return true;
         return false;
     }
@@ -134,68 +108,11 @@ public class BaseBuff : MonoBehaviour
     /// <summary>
     /// 중복해서 버프류를 쌓으려고 하는 경우
     /// </summary>
-    public virtual void StackBuff()
+    public virtual void StackBuff(BaseBuff _buff)
     {
-        buffDurationTurns += baseBuffDurationTurns;
+        buffDurationTurns += _buff.buffDurationTurns;
     }
-
-    /// <summary>
-    /// 버프가 해제될때 LeftoverStat만큼의 스탯을 먼저 감소시킴
-    /// </summary>
-    public virtual void DecreaseStatFromLeftOverStat()
-    {
-        buffOwner.Speed -= leftoverSpeed;
-        buffOwner.Defense -= leftoverDefense;
-        buffOwner.Crit -= leftoverCrit;
-        buffOwner.Accuracy -= leftoverAccuracy;
-        buffOwner.Evasion -= leftoverEvasion;
-        buffOwner.Resist -= leftoverResist;
-        buffOwner.MinStat -= leftoverMinStat;
-        buffOwner.MaxStat -= leftoverMaxStat;
-    }
-
-    //다른 버프가 해제 될 경우에 발동, 현재 버프가 감소시키지 못한 stat이 있으면 마저 감소시킴
-    public virtual void DecreaseStatWithClampFromLeftOverStat()
-    {
-        buffOwner.Speed = ExecuteLeftOverStatReduction(buffOwner.Speed, ref leftoverSpeed);
-        buffOwner.Defense = ExecuteLeftOverStatReduction(buffOwner.Defense, ref leftoverDefense);
-        buffOwner.Crit = ExecuteLeftOverStatReduction(buffOwner.Crit, ref leftoverCrit);
-        buffOwner.Accuracy = ExecuteLeftOverStatReduction(buffOwner.Accuracy, ref leftoverAccuracy); 
-        buffOwner.Evasion = ExecuteLeftOverStatReduction(buffOwner.Evasion, ref leftoverEvasion);
-        buffOwner.Resist = ExecuteLeftOverStatReduction(buffOwner.Resist, ref leftoverResist);
-        buffOwner.MinStat = ExecuteLeftOverStatReduction(buffOwner.MinStat, ref leftoverMinStat);
-        buffOwner.MaxStat = ExecuteLeftOverStatReduction(buffOwner.MaxStat, ref leftoverMaxStat);
-    }
-
-    protected float ExecuteLeftOverStatReduction(float currentStatValue, ref float _reductionAmount)
-    {
-        // ReduceStatWithClamp를 호출하여 남은 감소량을 계산한다.
-        float newStatValue = ReduceStatWithClamp(currentStatValue, ref _reductionAmount);
-
-        // 계산된 새로운 스탯 값을 반환.
-        return newStatValue;
-    }
-
-    private float ReduceStatWithClamp(float currentValue, ref float _reductionAmount)
-    {
-        float originalValue = currentValue; // 원래 스탯 값 저장
-        currentValue -= _reductionAmount;
-        currentValue = Mathf.Clamp(currentValue, 0, float.MaxValue); // 0 이하로 떨어지지 않게 조정
-
-        if (currentValue <= 0)
-        {
-            // 실제 감소시킬 수 없었던 양을 계산하여 reductionAmount에 저장
-            _reductionAmount = _reductionAmount - originalValue;
-        }
-        else
-        {
-            // 스탯이 성공적으로 감소되었다면, 남은 감소량이 없으므로 reductionAmount를 0으로 설정
-            _reductionAmount = 0;
-        }
-
-        return currentValue; // 조정된 스탯 값 반환
-    }
-
+    
 
     #region Getter Setter
     public int BuffDurationTurns
@@ -205,11 +122,60 @@ public class BaseBuff : MonoBehaviour
     }
     public BuffType BuffType
     {
-        get { return buffType; }
-        set { buffType = value; }
+        get => buffType;
+        set => buffType = value;
     }
+    
+    public int ChanceToApplyBuff
+    {
+        get { return chanceToApplyBuff; }
+        set { chanceToApplyBuff = value; }
+    }
+    
+    #region 변화된 스탯들의 수치 Getter Setter
+    public float ChangeDefense 
+    {
+        get { return changeDefense; }
+        set { changeDefense = value; }
+    }
+    public float ChangeCrit 
+    {
+        get { return changeCrit; }
+        set { changeCrit = value; }
+    }
+    public float ChangeAccuracy 
+    {
+        get { return changeAccuracy; }
+        set { changeAccuracy = value; }
+    }
+    public float ChangeEvasion 
+    {
+        get { return changeEvasion; }
+        set { changeEvasion = value; }
+    }
+    public float ChangeResist 
+    {
+        get { return changeResist; }
+        set { changeResist = value; }
+    }
+    public float ChangeMinStat 
+    {
+        get { return changeMinStat; }
+        set { changeMinStat = value; }
+    }
+    public float ChangeMaxStat 
+    {
+        get { return changeMaxStat; }
+        set { changeMaxStat = value; }
+    }
+    public float ChangeSpeed 
+    {
+        get { return changeSpeed; }
+        set { changeSpeed = value; }
+    }
+    #endregion 변화된 스탯들의 수치 Getter Setter
 
-    public int ChanceToApplyBuff => chanceToApplyBuff;
+    
     #endregion Getter Setter
 
     #region Validation

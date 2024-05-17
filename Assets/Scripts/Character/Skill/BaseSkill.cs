@@ -32,9 +32,13 @@ public class BaseSkill : MonoBehaviour
     [SerializeField] private SkillType skillType;
 
     /// <summary>
-    /// 스킬 적중시 적용시킬 버프 리스트
+    /// 스킬 적중시 적용시킬 버프 리스트, inspector에서 세팅해줘야함
     /// </summary>
     public List<GameObject> bufflist = new List<GameObject>();
+    /// <summary>
+    /// 스킬 적중시 적용시킬 버프 리스트
+    /// </summary>
+    protected List<GameObject> instantiatedBuffList = new List<GameObject>();
 
     #region Header SKILL STATS
     [Space(10)]
@@ -94,6 +98,17 @@ public class BaseSkill : MonoBehaviour
         { 
             ApplyMultiple();
         }
+        instantiatedBuffList.Clear();
+    }
+    
+    void  ClearInstantiatedBuffList()
+    {
+        foreach (GameObject buff in instantiatedBuffList)
+        {
+            if (buff == null) continue;
+            Destroy(buff);
+        }
+        instantiatedBuffList.Clear();
     }
 
     protected virtual void ApplySkill(BaseCharacter _opponent)
@@ -105,10 +120,10 @@ public class BaseSkill : MonoBehaviour
         //치명타일 경우 버프 바로 적용
         if (isCrit)
         {
-            foreach (GameObject ApplybuffGameobject in bufflist)
+            foreach (GameObject applybuffGameobject in instantiatedBuffList)
             {
-                if (!ApplybuffGameobject) continue;
-                BaseBuff BufftoApply = ApplybuffGameobject.GetComponent<BaseBuff>();
+                if (!applybuffGameobject) continue;
+                BaseBuff BufftoApply = applybuffGameobject.GetComponent<BaseBuff>();
                 if (!BufftoApply) continue;
                 //먼저 buff/debuff가 몇%의 확률로 걸리는지 판단.
                 if (CheckApplyBuff(BufftoApply) == false) continue;
@@ -118,7 +133,7 @@ public class BaseSkill : MonoBehaviour
         }
         else
         {
-            foreach (GameObject applybuffGameobject in bufflist)
+            foreach (GameObject applybuffGameobject in instantiatedBuffList)
             {
                 if (!applybuffGameobject) continue;
                 BaseBuff bufftoApply = applybuffGameobject.GetComponent<BaseBuff>();
@@ -191,16 +206,17 @@ public class BaseSkill : MonoBehaviour
         foreach (BaseCharacter opponent in receivers)
         {
             ApplySkill(opponent);
-        };
+        }
     }
     bool AttackLogic(BaseCharacter _opponent, ref bool _iscrit)
     {
         //치명타일 경우 명중, 회피, 저항 무시하고 바로 스킬 적용
         if (CheckCrit())
         {
-            Debug.Log(skillOwner.ToString() + "uses Skill on "+ skillName + "to "+ _opponent.name.ToString());
+            Debug.Log(skillOwner.ToString() + "uses Crit Skill on "+ skillName + "to "+ _opponent.name.ToString());
             _iscrit = true;
             ApplyStat(_opponent, true);
+            return true;
         }
         
         //명중 체크
@@ -295,6 +311,10 @@ public class BaseSkill : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// buff gameobject는 instantiated되어서 opponent에 붙어있음.
+    /// </summary>
+    /// <returns></returns>
     public virtual BaseBuff ApplyBuff(BaseCharacter _Opponent, BaseBuff _buff)
     {
         
@@ -303,14 +323,14 @@ public class BaseSkill : MonoBehaviour
         if (activeBuff)
         {
             // 기존 버프와 중첩
-            activeBuff.StackBuff();
+            activeBuff.StackBuff(_buff);
             return activeBuff;
         }
 
         // 새 버프 추가
-        BaseBuff instantiatedBuff = Instantiate(_buff, _Opponent.transform);
-        instantiatedBuff.AddBuff(_Opponent);
-        return instantiatedBuff;
+        BaseBuff new_buff = Instantiate(_buff, _Opponent.transform);
+        new_buff.AddBuff(_Opponent);
+        return new_buff;
     }
     
     private BaseBuff FindMatchingBuff(BaseCharacter _Opponent, BaseBuff _buff)
@@ -327,11 +347,16 @@ public class BaseSkill : MonoBehaviour
                     StatBuff activeStatBuff = activeBuff as StatBuff;
                     StatBuff statBuff = _buff as StatBuff;
 
-                    if (activeStatBuff != null && statBuff != null && activeStatBuff.StatBuffName == statBuff.StatBuffName)
+                    StatDeBuff activeStatDebuff = activeBuff as StatDeBuff;
+                    StatDeBuff statDebuff = _buff as StatDeBuff;
+
+                    if ((activeStatBuff != null && statBuff != null && activeStatBuff.StatBuffName == statBuff.StatBuffName) ||
+                        (activeStatDebuff != null && statDebuff != null && activeStatDebuff.StatBuffName == statDebuff.StatBuffName))
                     {
                         return activeBuff;
                     }
                 }
+              
                 else
                 {
                     return activeBuff;
@@ -371,6 +396,7 @@ public class BaseSkill : MonoBehaviour
             break;
         }
     }
+    
 
     public bool IsSkillAvailable(int _index)
     {

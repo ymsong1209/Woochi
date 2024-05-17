@@ -7,7 +7,7 @@ public class FoxFire_Row4_CureBuff : BaseBuff
     private BaseCharacter fox;
     public override void AddBuff(BaseCharacter _buffOwner)
     {
-        base.baseBuffDurationTurns = 3;
+        base.buffDurationTurns = 3;
         base.AddBuff(_buffOwner);
     }
     
@@ -21,7 +21,7 @@ public class FoxFire_Row4_CureBuff : BaseBuff
 
         return 0;
     }
-    public override void StackBuff()
+    public override void StackBuff(BaseBuff _buff)
     {
         //버프 지속시간 3으로 맞춤.
         base.buffDurationTurns = 3;
