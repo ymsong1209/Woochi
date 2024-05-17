@@ -83,66 +83,17 @@ public class BaseSkill : MonoBehaviour
             return;
         }
 
-        var receivers = SetSkillTarget(opponent);
-
-        foreach( var receiver in receivers )
+        //단일공격인 경우 _opponent한테만 공격 로직 적용
+        if (skillTargetType == SkillTargetType.Singular)
         {
-            ApplySkill(receiver);
+           ApplySkill(opponent);
         }
-
-        receivers.Add(skillOwner);
-        BattleManager.GetInstance.battleCameraController.SetTargetGroup(receivers);
-        // //단일공격인 경우 _opponent한테만 공격 로직 적용
-        // if (skillTargetType == SkillTargetType.Singular)
-        // {
-        //    ApplySkill(opponent);
-        // }
-        // //전체 공격인 경우 skillradius내부의 모든 인물에게 skill 적용
-        // //만일 skillradius 내부의 특정 인물에게만 로직 적용시키고 싶으면 ApplyMultiple재정의하기
-        // else if (skillTargetType == SkillTargetType.Multiple)
-        // { 
-        //     ApplyMultiple();
-        // }
-    }
-
-    protected virtual List<BaseCharacter> SetSkillTarget(BaseCharacter _opponent)
-    {
-        List<BaseCharacter> receivers = new List<BaseCharacter>();
-
-        if(skillTargetType == SkillTargetType.Singular)
-        {
-            receivers.Add(_opponent);
+        //전체 공격인 경우 skillradius내부의 모든 인물에게 skill 적용
+        //만일 skillradius 내부의 특정 인물에게만 로직 적용시키고 싶으면 ApplyMultiple재정의하기
+        else if (skillTargetType == SkillTargetType.Multiple)
+        { 
+            ApplyMultiple();
         }
-        else if(skillTargetType == SkillTargetType.Multiple)
-        {
-            Formation allies = BattleManager.GetInstance.Allies;
-            Formation enemies = BattleManager.GetInstance.Enemies;
-
-            for (int i = 0; i < skillRadius.Length; i++)
-            {
-                if (skillRadius[i] == true)
-                {
-                    if(i < 4)
-                    {
-                        BaseCharacter ally = allies.formation[i];
-                        if(ally == null) continue;
-
-                        receivers.Add(ally);
-                        if (ally.Size == 2) i++;
-                    }
-                    else if(i >= 4 && i < 8)
-                    {
-                        BaseCharacter enemy = enemies.formation[i - 4];
-                        if(enemy == null) continue;
-
-                        receivers.Add(enemy);
-                        if (enemy.Size == 2) i++;
-                    }
-                }
-            }
-        }
-
-        return receivers;
     }
 
     protected virtual void ApplySkill(BaseCharacter _opponent)
@@ -250,7 +201,6 @@ public class BaseSkill : MonoBehaviour
             Debug.Log(skillOwner.ToString() + "uses Skill on "+ skillName + "to "+ _opponent.name.ToString());
             _iscrit = true;
             ApplyStat(_opponent, true);
-            return true;
         }
         
         //명중 체크
