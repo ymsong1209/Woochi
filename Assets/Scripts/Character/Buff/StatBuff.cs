@@ -27,10 +27,9 @@ public class StatBuff : BaseBuff
         buffOwner.CheckForStatChange();
     }
 
-    public override bool RemoveBuff()
+    public override void RemoveBuff()
     {
         buffOwner.CheckForStatChange();
-        if (buffOwner.CheckDead() == false) return true;
-        return false;
+        base.RemoveBuff();
     }
 }

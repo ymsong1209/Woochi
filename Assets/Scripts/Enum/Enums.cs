@@ -11,43 +11,43 @@ public enum GameState
 
 public enum BattleState
 {
-    IDLE,               // ºñÀüÅõ
-    Initialization,     // ÀüÅõ ¹æÀÇ Á¤º¸¸¦ °¡Á®¿È, Ä³¸¯ÅÍµéÀÇ À§Ä¡°ª ¼³Á¤
-    PreRound,           // ÀüÅõ ½ÃÀÛ Àü Ä³¸¯ÅÍ ¹öÇÁ Ã³¸®
-    DetermineOrder,     // Ä³¸¯ÅÍµéÀÇ ¼Óµµ°ª¿¡ ¸ÂÃç¼­ ¼ø¼­ °áÁ¤
-    CharacterTurn,      // ¼Óµµ°ª¿¡ µû¶ó¼­ Ä³¸¯ÅÍµé Çàµ¿
-    PostRound,          // ÇÑ ¶ó¿îµå°¡ ³¡³­ µÚÀÇ ¹öÇÁ È¿°ú Ã³¸®
-    PostBattle,         // ÀüÅõ°¡ ³¡³­ µÚ ÀüÅõ º¸»ó Á¤»ê
+    IDLE,               // ë¹„ì „íˆ¬
+    Initialization,     // ì „íˆ¬ ë°©ì˜ ì •ë³´ë¥¼ ê°€ì ¸ì˜´, ìºë¦­í„°ë“¤ì˜ ìœ„ì¹˜ê°’ ì„¤ì •
+    PreRound,           // ì „íˆ¬ ì‹œì‘ ì „ ìºë¦­í„° ë²„í”„ ì²˜ë¦¬
+    DetermineOrder,     // ìºë¦­í„°ë“¤ì˜ ì†ë„ê°’ì— ë§ì¶°ì„œ ìˆœì„œ ê²°ì •
+    CharacterTurn,      // ì†ë„ê°’ì— ë”°ë¼ì„œ ìºë¦­í„°ë“¤ í–‰ë™
+    PostRound,          // í•œ ë¼ìš´ë“œê°€ ëë‚œ ë’¤ì˜ ë²„í”„ íš¨ê³¼ ì²˜ë¦¬
+    PostBattle,         // ì „íˆ¬ê°€ ëë‚œ ë’¤ ì „íˆ¬ ë³´ìƒ ì •ì‚°
     END
 }
 
 /// <summary>
-/// ½ºÅ³ÀÇ »ç¿ë ¹üÀ§
+/// ìŠ¤í‚¬ì˜ ì‚¬ìš© ë²”ìœ„
 /// </summary>
 public enum SkillTargetType
 {
-    Singular,   //SingularÀÏ °æ¿ì skillRadius¿¡ Ã¼Å©µÈ ¹üÀ§Áß ÇÏ³ª¸¸ ¼±ÅÃ °¡´É
-    Multiple,   //MultipleÀÏ °æ¿ì skillRadius¿¡ Ã¼Å©µÈ ¹üÀ§¸¸Å­ ÀüÃ¼ ½ºÅ³ Àû¿ë
+    Singular,   //Singularì¼ ê²½ìš° skillRadiusì— ì²´í¬ëœ ë²”ìœ„ì¤‘ í•˜ë‚˜ë§Œ ì„ íƒ ê°€ëŠ¥
+    Multiple,   //Multipleì¼ ê²½ìš° skillRadiusì— ì²´í¬ëœ ë²”ìœ„ë§Œí¼ ì „ì²´ ìŠ¤í‚¬ ì ìš©
     END
 }
 
 public enum SkillType
 {
-    Attack,             // °ø°İ °ü·Ã
-    Heal,               // Èú °ü·Ã
+    Attack,             // ê³µê²© ê´€ë ¨
+    Heal,               // í ê´€ë ¨
     END
 }
 
 public enum BuffType
 {
     Bleed,
-    Weaken,
-    Protect,
-    Shield,      
-    Stun,
-    StatChange,
     Burn,
-    SpiritAbsorption,
+    Stun,
+    StatWeaken,
+    StatStrengthen,
+    HealOverTime,
+    Protect, //ë³´í˜¸ë¥¼ í•´ì¤„ë•Œ
+    Shield, //ë³´í˜¸ë°›ì„ë•Œ
     END
 }
 
@@ -63,7 +63,7 @@ public enum BuffTiming
 
 
 /// <summary>
-/// Observer pattern¿¡ »ç¿ëÇÒ EventType
+/// Observer patternì— ì‚¬ìš©í•  EventType
 /// </summary>
 public enum EventType
 {
@@ -71,7 +71,7 @@ public enum EventType
 }
 
 /// <summary>
-/// ¾î¶² ¾Ö´Ï¸ŞÀÌ¼ÇÀ» ½ÇÇàÇÒÁö °áÁ¤, ½ºÅ³ ´õ ÀÖÀ» °æ¿ì Ãß°¡
+/// ì–´ë–¤ ì• ë‹ˆë©”ì´ì…˜ì„ ì‹¤í–‰í• ì§€ ê²°ì •, ìŠ¤í‚¬ ë” ìˆì„ ê²½ìš° ì¶”ê°€
 /// </summary>
 public enum AnimationType
 {
@@ -87,7 +87,7 @@ public enum AnimationType
 }
 
 /// <summary>
-/// Ä³¸¯ÅÍÀÇ °ø°İ °á°ú
+/// ìºë¦­í„°ì˜ ê³µê²© ê²°ê³¼
 /// </summary>
 public enum AttackResult
 {

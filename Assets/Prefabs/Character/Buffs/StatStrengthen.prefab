@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8403137143158999209}
-  - component: {fileID: 3587090499544045506}
+  - component: {fileID: 6659213406999125084}
   m_Layer: 0
-  m_Name: StunDebuff
+  m_Name: StatStrengthen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3587090499544045506
+--- !u!114 &6659213406999125084
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,12 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2569674945298275565}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 576b6569c7bb5e14ba34f9826ac966e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 9bf46a0ff2d4435981c668aeb48d0075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buffOwner: {fileID: 0}
-  buffDurationTurns: 1
-  buffType: 2
+  buffDurationTurns: 0
+  buffType: 4
   chanceToApplyBuff: 0
   changeDefense: 0
   changeCrit: 0
@@ -56,3 +56,4 @@ MonoBehaviour:
   changeMinStat: 0
   changeMaxStat: 0
   changeSpeed: 0
+  StatBuffName: 

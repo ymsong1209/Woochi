@@ -12,7 +12,7 @@ public class Tiger_Roar : BaseSkill
         GameObject statDebuffGameObject = Instantiate(statDebuffPrefab, transform);
         StatDeBuff statDebuff = statDebuffGameObject.GetComponent<StatDeBuff>();
         statDebuff.StatBuffName = "산군의 포효";
-        statDebuff.BuffDurationTurns = 2;
+        statDebuff.BuffDurationTurns = 1;
         statDebuff.ChanceToApplyBuff = 100;
         statDebuff.ChangeAccuracy = -5;
         statDebuff.ChangeMinStat = -5;

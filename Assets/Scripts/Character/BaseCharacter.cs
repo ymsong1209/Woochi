@@ -145,7 +145,6 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             {
                 BaseBuff buff = activeBuffs[i];
                 RemoveBuffAtIndex(i);
-                Destroy(buff.gameObject);
             }
         }
         if (mightDead)
@@ -196,7 +195,6 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             BaseBuff buff = activeBuffs[i];
             activeBuffs.RemoveAt(i);
             buff.RemoveBuff();
-            Destroy(buff.gameObject);
         }
     }
 
@@ -215,7 +213,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         
         foreach (BaseBuff buff in activeBuffs)
         {
-            if (buff.BuffType == BuffType.StatChange)
+            if (buff.BuffType == BuffType.StatStrengthen || buff.BuffType == BuffType.StatWeaken)
             {
                 defense += buff.ChangeDefense;
                 crit += buff.ChangeCrit;
@@ -303,7 +301,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         foreach(BaseBuff buff in activeBuffs)
         {
-            Destroy(buff.gameObject);
+            buff.RemoveBuff();
         }
     }
     #endregion

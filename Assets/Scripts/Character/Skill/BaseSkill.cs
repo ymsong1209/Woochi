@@ -328,11 +328,65 @@ public class BaseSkill : MonoBehaviour
         }
 
         // 새 버프 추가
-        BaseBuff new_buff = Instantiate(_buff, _Opponent.transform);
+        BaseBuff new_buff = InstantiateBuffAtIcon(_Opponent, _buff);
         new_buff.AddBuff(_Opponent);
         return new_buff;
     }
+
+    BaseBuff InstantiateBuffAtIcon(BaseCharacter opponent, BaseBuff buff)
+    {
+        // Find the bufflistcanvas GameObject under the opponent
+        Transform buffList = opponent.transform.Find("BuffList");
+        if (buffList == null)
+        {
+            Debug.LogError("buffList not found under opponent" + opponent.gameObject.name.ToString());
+            return null;
+        }
+        
+        // 모든 자손을 순회하여 알맞은 uffIcon을 찾음
+        Transform targetChild = FindBuffIconTransform(buffList, buff.BuffType);
+        if (targetChild == null)
+        {
+            Debug.LogError("No matching BuffIcon found under BuffListCanvas");
+            return null;
+        }
     
+        BuffIcon buffIcon = targetChild.GetComponent<BuffIcon>();
+        if (buffIcon != null && !buffIcon.gameObject.activeSelf)
+        {
+            buffIcon.gameObject.SetActive(true);
+            buffIcon.Activate();
+        }
+        
+        BaseBuff instantiatedBuff = Instantiate(buff, targetChild);
+        return instantiatedBuff;
+    }
+    
+    // 재귀적으로 BuffIcon을 찾는 메서드
+    Transform FindBuffIconTransform(Transform parent, BuffType buffType)
+    {
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            Transform child = parent.GetChild(i);
+            BuffIcon buffIcon = child.GetComponent<BuffIcon>();
+
+            if (buffIcon != null && buffIcon.BuffType == buffType)
+            {
+                return child;
+            }
+
+            Transform foundChild = FindBuffIconTransform(child, buffType);
+            if (foundChild != null)
+            {
+                return foundChild;
+            }
+        }
+        return null;
+    }
+    
+    /// <summary>
+    /// opponent의 activebuffs에서 _buff와 같은 버프를 찾아 반환
+    /// </summary>
     private BaseBuff FindMatchingBuff(BaseCharacter _Opponent, BaseBuff _buff)
     {
         foreach (BaseBuff activeBuff in _Opponent.activeBuffs)
@@ -342,7 +396,7 @@ public class BaseSkill : MonoBehaviour
             if (activeBuff.BuffType == _buff.BuffType)
             {
                 // 스탯 변경 버프는 스탯 변경 버프끼리
-                if (_buff.BuffType == BuffType.StatChange)
+                if (_buff.BuffType == BuffType.StatStrengthen || _buff.BuffType == BuffType.StatWeaken)
                 {
                     StatBuff activeStatBuff = activeBuff as StatBuff;
                     StatBuff statBuff = _buff as StatBuff;
@@ -356,7 +410,6 @@ public class BaseSkill : MonoBehaviour
                         return activeBuff;
                     }
                 }
-              
                 else
                 {
                     return activeBuff;

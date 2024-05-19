@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
-[RequireComponent(typeof(RectTransform))]
-[RequireComponent(typeof(CanvasRenderer))]
-[RequireComponent(typeof(Image))]
+
 public class BaseBuff : MonoBehaviour
 {
 
@@ -97,12 +95,16 @@ public class BaseBuff : MonoBehaviour
 
     /// <summary>
     /// 버프 제거
-    /// 버프 제거 후 캐릭터가 살아있으면 true반환
     /// </summary>
-    public virtual bool RemoveBuff()
+    public virtual void RemoveBuff()
     {
-        if (buffOwner.CheckDead() == false) return true;
-        return false;
+        //현재 parent에 가서 bufficon을 가져옴
+        BuffIcon icon = transform.parent.GetComponent<BuffIcon>();
+        if (icon)
+        {
+            icon.CheckChildBuffs(this);
+        }
+        Destroy(gameObject);
     }
 
     /// <summary>
