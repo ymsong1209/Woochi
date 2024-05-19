@@ -15,32 +15,19 @@ public class Tiger_Bite : BaseSkill
             Debug.LogError("opponent is null");
             return;
         }
-
-        //명중 체크
-        if (CheckAccuracy() == false)
-        {
-            Debug.Log("Accuracy Failed on" + _Opponent.name.ToString());
-            return;
-        }
-        //회피 체크
-        if (CheckEvasion(opponent) == false)
-        {
-            Debug.Log(_Opponent.name.ToString() + "Evaded skill" + base.Name);
-            return;
-        }
-
+        
         //치명타일 경우
         if (CheckCrit())
         {
-            Debug.Log("Crit Skill on " + base.Name + "to " + _Opponent.name.ToString());
             ApplyTotalDamage(opponent, true);
+            return;
+        }
 
-        }
-        else
-        {
-            Debug.Log("Non Crit Skill on " + base.Name + "to " + _Opponent.name.ToString());
-            ApplyTotalDamage(opponent, false);
-        }
+        //명중 체크
+        if (CheckAccuracy() == false) return;
+        if (CheckEvasion(opponent) == false) return;
+      
+        ApplyTotalDamage(opponent, false);
     }
 
     private void ApplyTotalDamage(BaseCharacter _opponent, bool _isCrit)

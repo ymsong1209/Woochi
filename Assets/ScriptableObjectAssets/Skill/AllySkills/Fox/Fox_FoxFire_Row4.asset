@@ -20,6 +20,6 @@ MonoBehaviour:
   skillType: 0
   skillTargetType: 0
   bufflist:
-  - {fileID: 2569674945298275565, guid: 85f99ba7d05388a4c8a17cb6f303c8c2, type: 3}
+  - {fileID: 2569674945298275565, guid: 6c7ad47b10204044b84e8f76de3989c9, type: 3}
   baseMultiplier: 50
   baseSkillAccuracy: 100

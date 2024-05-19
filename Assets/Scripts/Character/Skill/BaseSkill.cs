@@ -32,9 +32,13 @@ public class BaseSkill : MonoBehaviour
     [SerializeField] private SkillType skillType;
 
     /// <summary>
-    /// 스킬 적중시 적용시킬 버프 리스트
+    /// 스킬 적중시 적용시킬 버프 리스트, inspector에서 세팅해줘야함
     /// </summary>
     public List<GameObject> bufflist = new List<GameObject>();
+    /// <summary>
+    /// 스킬 적중시 적용시킬 버프 리스트
+    /// </summary>
+    protected List<GameObject> instantiatedBuffList = new List<GameObject>();
 
     #region Header SKILL STATS
     [Space(10)]
@@ -94,6 +98,17 @@ public class BaseSkill : MonoBehaviour
         { 
             ApplyMultiple();
         }
+        instantiatedBuffList.Clear();
+    }
+    
+    void  ClearInstantiatedBuffList()
+    {
+        foreach (GameObject buff in instantiatedBuffList)
+        {
+            if (buff == null) continue;
+            Destroy(buff);
+        }
+        instantiatedBuffList.Clear();
     }
 
     protected virtual void ApplySkill(BaseCharacter _opponent)
@@ -105,10 +120,10 @@ public class BaseSkill : MonoBehaviour
         //치명타일 경우 버프 바로 적용
         if (isCrit)
         {
-            foreach (GameObject ApplybuffGameobject in bufflist)
+            foreach (GameObject applybuffGameobject in instantiatedBuffList)
             {
-                if (!ApplybuffGameobject) continue;
-                BaseBuff BufftoApply = ApplybuffGameobject.GetComponent<BaseBuff>();
+                if (!applybuffGameobject) continue;
+                BaseBuff BufftoApply = applybuffGameobject.GetComponent<BaseBuff>();
                 if (!BufftoApply) continue;
                 //먼저 buff/debuff가 몇%의 확률로 걸리는지 판단.
                 if (CheckApplyBuff(BufftoApply) == false) continue;
@@ -118,7 +133,7 @@ public class BaseSkill : MonoBehaviour
         }
         else
         {
-            foreach (GameObject applybuffGameobject in bufflist)
+            foreach (GameObject applybuffGameobject in instantiatedBuffList)
             {
                 if (!applybuffGameobject) continue;
                 BaseBuff bufftoApply = applybuffGameobject.GetComponent<BaseBuff>();
@@ -191,16 +206,17 @@ public class BaseSkill : MonoBehaviour
         foreach (BaseCharacter opponent in receivers)
         {
             ApplySkill(opponent);
-        };
+        }
     }
     bool AttackLogic(BaseCharacter _opponent, ref bool _iscrit)
     {
         //치명타일 경우 명중, 회피, 저항 무시하고 바로 스킬 적용
         if (CheckCrit())
         {
-            Debug.Log(skillOwner.ToString() + "uses Skill on "+ skillName + "to "+ _opponent.name.ToString());
+            Debug.Log(skillOwner.ToString() + "uses Crit Skill on "+ skillName + "to "+ _opponent.name.ToString());
             _iscrit = true;
             ApplyStat(_opponent, true);
+            return true;
         }
         
         //명중 체크
@@ -295,6 +311,10 @@ public class BaseSkill : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// buff gameobject는 instantiated되어서 opponent에 붙어있음.
+    /// </summary>
+    /// <returns></returns>
     public virtual BaseBuff ApplyBuff(BaseCharacter _Opponent, BaseBuff _buff)
     {
         
@@ -303,16 +323,70 @@ public class BaseSkill : MonoBehaviour
         if (activeBuff)
         {
             // 기존 버프와 중첩
-            activeBuff.StackBuff();
+            activeBuff.StackBuff(_buff);
             return activeBuff;
         }
 
         // 새 버프 추가
-        BaseBuff instantiatedBuff = Instantiate(_buff, _Opponent.transform);
-        instantiatedBuff.AddBuff(_Opponent);
+        BaseBuff new_buff = InstantiateBuffAtIcon(_Opponent, _buff);
+        new_buff.AddBuff(_Opponent);
+        return new_buff;
+    }
+
+    BaseBuff InstantiateBuffAtIcon(BaseCharacter opponent, BaseBuff buff)
+    {
+        // Find the bufflistcanvas GameObject under the opponent
+        Transform buffList = opponent.transform.Find("BuffList");
+        if (buffList == null)
+        {
+            Debug.LogError("buffList not found under opponent" + opponent.gameObject.name.ToString());
+            return null;
+        }
+        
+        // 모든 자손을 순회하여 알맞은 uffIcon을 찾음
+        Transform targetChild = FindBuffIconTransform(buffList, buff.BuffType);
+        if (targetChild == null)
+        {
+            Debug.LogError("No matching BuffIcon found under BuffListCanvas");
+            return null;
+        }
+    
+        BuffIcon buffIcon = targetChild.GetComponent<BuffIcon>();
+        if (buffIcon != null && !buffIcon.gameObject.activeSelf)
+        {
+            buffIcon.gameObject.SetActive(true);
+            buffIcon.Activate();
+        }
+        
+        BaseBuff instantiatedBuff = Instantiate(buff, targetChild);
         return instantiatedBuff;
     }
     
+    // 재귀적으로 BuffIcon을 찾는 메서드
+    Transform FindBuffIconTransform(Transform parent, BuffType buffType)
+    {
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            Transform child = parent.GetChild(i);
+            BuffIcon buffIcon = child.GetComponent<BuffIcon>();
+
+            if (buffIcon != null && buffIcon.BuffType == buffType)
+            {
+                return child;
+            }
+
+            Transform foundChild = FindBuffIconTransform(child, buffType);
+            if (foundChild != null)
+            {
+                return foundChild;
+            }
+        }
+        return null;
+    }
+    
+    /// <summary>
+    /// opponent의 activebuffs에서 _buff와 같은 버프를 찾아 반환
+    /// </summary>
     private BaseBuff FindMatchingBuff(BaseCharacter _Opponent, BaseBuff _buff)
     {
         foreach (BaseBuff activeBuff in _Opponent.activeBuffs)
@@ -322,12 +396,16 @@ public class BaseSkill : MonoBehaviour
             if (activeBuff.BuffType == _buff.BuffType)
             {
                 // 스탯 변경 버프는 스탯 변경 버프끼리
-                if (_buff.BuffType == BuffType.StatChange)
+                if (_buff.BuffType == BuffType.StatStrengthen || _buff.BuffType == BuffType.StatWeaken)
                 {
                     StatBuff activeStatBuff = activeBuff as StatBuff;
                     StatBuff statBuff = _buff as StatBuff;
 
-                    if (activeStatBuff != null && statBuff != null && activeStatBuff.StatBuffName == statBuff.StatBuffName)
+                    StatDeBuff activeStatDebuff = activeBuff as StatDeBuff;
+                    StatDeBuff statDebuff = _buff as StatDeBuff;
+
+                    if ((activeStatBuff != null && statBuff != null && activeStatBuff.StatBuffName == statBuff.StatBuffName) ||
+                        (activeStatDebuff != null && statDebuff != null && activeStatDebuff.StatBuffName == statDebuff.StatBuffName))
                     {
                         return activeBuff;
                     }
@@ -371,6 +449,7 @@ public class BaseSkill : MonoBehaviour
             break;
         }
     }
+    
 
     public bool IsSkillAvailable(int _index)
     {

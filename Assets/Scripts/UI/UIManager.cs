@@ -6,11 +6,11 @@ using System;
 
 public class UIManager : SingletonMonobehaviour<UIManager>
 {
-    [HeaderTooltip("Skill Tooltip","½ºÅ³ ¾ÆÀÌÄÜ¿¡ ¸¶¿ì½º ¿Ã¸± ½Ã ¶ß´Â ÅøÆÁ")]
+    [HeaderTooltip("Skill Tooltip","ìŠ¤í‚¬ ì•„ì´ì½˜ì— ë§ˆìš°ìŠ¤ ì˜¬ë¦´ ì‹œ ëœ¨ëŠ” íˆ´íŒ")]
     public GameObject skillTooltip;
     [SerializeField] private TextMeshProUGUI skillNameTxt;
 
-    [HeaderTooltip("Enemy Tooltip", "Àû Ä³¸¯ÅÍ¿¡ ¸¶¿ì½º ¿Ã¸± ½Ã Àû Á¤º¸ ¶ß´Â ÅøÆÁ")]
+    [HeaderTooltip("Enemy Tooltip", "ì  ìºë¦­í„°ì— ë§ˆìš°ìŠ¤ ì˜¬ë¦´ ì‹œ ì  ì •ë³´ ëœ¨ëŠ” íˆ´íŒ")]
     public GameObject enemyTooltip;
     [SerializeField] private TextMeshProUGUI enemyNameTxt;
     [SerializeField] private TextMeshProUGUI enemyHPTxt;
@@ -29,9 +29,9 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     {
         enemyTooltip.SetActive(true);
         enemyNameTxt.text = _character.characterStat.CharacterName;
-        enemyHPTxt.text = $"Ã¼·Â : {_character.Health.CurHealth} / {_character.Health.MaxHealth}";
-        enemyEvasionTxt.text = $"È¸ÇÇ : {_character.Evasion}";
-        enemySpeedTxt.text = $"¼Óµµ : {_character.Speed}";
+        enemyHPTxt.text = $"ì²´ë ¥ : {_character.Health.CurHealth} / {_character.Health.MaxHealth}";
+        enemyEvasionTxt.text = $"íšŒí”¼ : {_character.Evasion}";
+        enemySpeedTxt.text = $"ì†ë„ : {_character.Speed}";
     }
 
     public void OnCharacterDamaged(BaseCharacter _character)
