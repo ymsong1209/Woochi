@@ -30,6 +30,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// </summary>
     public Action<BaseCharacter, bool> OnCharacterTurnStart;
     public Action<BaseCharacter, bool> OnCharacterAttacked;
+    public Action OnFocusStart;
+    public Action OnFocusEnd;
+    public Action<BaseCharacter> OnFocusEnter;
     #endregion
 
     #region 부울 변수
@@ -208,6 +211,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 // TODO : 현재 턴이 적일 시 AI로 행동 결정(임시 코드)
                 if (!currentCharacter.IsAlly)
                 {
+                    yield return new WaitForSeconds(1.5f);
                     EnemyAction(currentCharacter);
                 }
                 
@@ -355,10 +359,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         
         DisableAllColliderInteractions();
         DisableAllArrows();
-
-        // 스킬 사용한 캐릭터 애니메이션 실행, 스킬 사용 후 상대 캐릭터 애니메이션도 실행해야 함(회피도 애니메이션 있나) 
-        BaseCharacter caster = currentSelectedSkill.SkillOwner;
-        caster.PlayAnimation(currentSelectedSkill.SkillSO.AnimType);
         
         if (currentSelectedSkill.SkillOwner && receiver)
         {
@@ -373,10 +373,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         
         DisableAllColliderInteractions();
         DisableAllArrows();
-        
-        // 스킬 사용한 캐릭터 애니메이션 실행, 스킬 사용 후 상대 캐릭터 애니메이션도 실행해야 함(회피도 애니메이션 있나) 
-        BaseCharacter caster = currentSelectedSkill.SkillOwner;
-        caster.PlayAnimation(currentSelectedSkill.SkillSO.AnimType);
         
         BaseCharacter receiver = null;
         
@@ -401,19 +397,17 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     IEnumerator ExecuteSkill(BaseCharacter _caster, BaseCharacter receiver)
     {
         Debug.Log(currentSelectedSkill.Name + " is executed by " + _caster.name + " on " + receiver.name);
+
         currentSelectedSkill.ActivateSkill(receiver);
         allies.CheckDeathInFormation();
         enemies.CheckDeathInFormation();
 
+        OnFocusStart?.Invoke();
         OnCharacterAttacked(receiver, false);
         
-        
-        // caster의 애니메이션이 끝나기까지 기다렸다가 턴이 종료되게 함
-        while (!_caster.IsIdle) yield return null;
-
+        yield return new WaitUntil(() => _caster.IsIdle);
+        OnFocusEnd?.Invoke();
         isSkillExecuted = true;
-
-        //yield return new WaitForSeconds(1f); // 예시로 1초 대기
     }
     
     void EnemyAction(BaseCharacter enemy)

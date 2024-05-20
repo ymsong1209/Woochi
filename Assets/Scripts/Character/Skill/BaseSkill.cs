@@ -114,6 +114,8 @@ public class BaseSkill : MonoBehaviour
     protected virtual void ApplySkill(BaseCharacter _opponent)
     {
         bool isCrit = false;
+
+        skillOwner.onPlayAnimation?.Invoke(skillSO.AnimType);
         //공격 실패시 버프 적용 안함
         if (AttackLogic(_opponent, ref isCrit) == false) return;
         
@@ -224,6 +226,7 @@ public class BaseSkill : MonoBehaviour
         {
             Debug.Log("Accuracy Failed on" + _opponent.name.ToString());
             skillOwner.ShowDamageUI(AttackResult.Miss);
+            _opponent.onPlayAnimation?.Invoke(AnimationType.Damaged);
             return false;
         }
         //회피 체크
@@ -231,6 +234,7 @@ public class BaseSkill : MonoBehaviour
         {
             Debug.Log(_opponent.name.ToString() + "Evaded skill" + skillName);
             _opponent.ShowDamageUI(AttackResult.Evasion);
+            _opponent.onPlayAnimation?.Invoke(AnimationType.Damaged);
             return false;
         }
         
