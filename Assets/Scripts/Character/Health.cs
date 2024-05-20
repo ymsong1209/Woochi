@@ -43,7 +43,7 @@ public class Health : MonoBehaviour
         }
 
         owner.ShowDamageUI(AttackResult.Normal, _damage, _isCrit);
-        owner.PlayAnimation(AnimationType.Damaged);
+        owner.onPlayAnimation?.Invoke(AnimationType.Damaged);
         OnHealthChanged.Invoke(owner);
     }
     

@@ -1,17 +1,18 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class BaseCharacterHUD : MonoBehaviour
+[RequireComponent(typeof(BoxCollider2D))]
+public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    private BaseCharacter owner;
     [SerializeField] private SpriteRenderer hpBar;
     [SerializeField] private TextMeshPro damageTxt;
 
     private void Start()
     {
-        BaseCharacter owner = GetComponent<BaseCharacter>();
+        owner = GetComponent<BaseCharacter>();
         owner.Health.OnHealthChanged += UpdateHPBar;
     }
 
@@ -53,4 +54,19 @@ public class BaseCharacterHUD : MonoBehaviour
     {
         damageTxt.gameObject.SetActive(false);
     }
+
+    #region 마우스 이벤트
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (owner.IsAlly)
+            return;
+
+        UIManager.GetInstance.SetEnemyToolTip(owner);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        UIManager.GetInstance.enemyTooltip.SetActive(false);
+    }
+    #endregion
 }

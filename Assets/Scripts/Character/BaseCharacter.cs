@@ -5,16 +5,14 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(BaseCharacterHUD))]
+[RequireComponent(typeof(BaseCharacterAnimation))]
 [RequireComponent(typeof(BaseCharacterCollider))]
 [DisallowMultipleComponent]
-public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class BaseCharacter : MonoBehaviour
 {
     public CharacterStatSO characterStat;
-    [SerializeField] private Animator animator;
     [SerializeField] private BaseCharacterHUD characterHUD;
 
     #region Header CHARACTER STATS
@@ -71,6 +69,9 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public int rowOrder; // 캐릭터가 앞 열에서부터 몇 번째 순서인지
     #endregion BATTLE STATS
 
+    #region Event
+    public Action<AnimationType> onPlayAnimation;
+    #endregion
 
     public virtual void CheckSkillsOnTurnStart()
     { 
@@ -160,7 +161,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         if (isDamaged)
         {
-            PlayAnimation(AnimationType.Damaged);
+            onPlayAnimation(AnimationType.Damaged);
         }
         
         return true;
@@ -284,7 +285,7 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if(health.CheckHealthZero())
         {
-            PlayAnimation(AnimationType.Dead);
+            onPlayAnimation(AnimationType.Dead);
             return true;
         }
         return false;
@@ -306,51 +307,6 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
     #endregion
 
-    #region 마우스 이벤트
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if (isAlly)
-            return;
-
-        UIManager.GetInstance.SetEnemyToolTip(this);
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        UIManager.GetInstance.enemyTooltip.SetActive(false);
-    }
-    #endregion
-
-    #region 애니메이션
-    public void PlayAnimation(AnimationType _type)
-    {
-        if(_type == AnimationType.Idle || isDead)
-        {
-            return;
-        }
-
-        animator.SetTrigger(_type.ToString());
-        StartCoroutine(WaitAnim());
-    }
-
-    /// <summary>
-    /// 현재 플레이 중인 애니메이션이 끝나기까지 기다림
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator WaitAnim()
-    {
-        isIdle = false;
-        yield return null;
-        
-        while(animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
-        {
-            //Debug.Log("waiting animation for " + gameObject.name.ToString());
-            yield return null;
-        }
-
-        isIdle = true;
-    }
-    #endregion
     #region Getter Setter
     public int Size => size;
 
@@ -416,7 +372,11 @@ public class BaseCharacter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         set { isTurnUsed = value; }
     }
 
-    public bool IsIdle => isIdle;
+    public bool IsIdle
+    {
+        get { return isIdle; }
+        set { isIdle = value; }
+    }
 
     #region 바뀐 스탯 
     public float ChangedSpeed => speed - characterStat.BaseSpeed;
