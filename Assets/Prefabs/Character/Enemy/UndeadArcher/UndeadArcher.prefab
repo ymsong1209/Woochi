@@ -454,7 +454,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 7914530469695313736}
-  focusScale: 2
 --- !u!1 &7914530469695313736
 GameObject:
   m_ObjectHideFlags: 0

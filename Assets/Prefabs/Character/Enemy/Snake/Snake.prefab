@@ -538,7 +538,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 2309847738829774318}
-  focusScale: 2
 --- !u!1 &9142406898563343775
 GameObject:
   m_ObjectHideFlags: 0
