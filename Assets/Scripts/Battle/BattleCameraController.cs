@@ -8,10 +8,6 @@ public class BattleCameraController : MonoBehaviour
     [Header("Camera")]
     [SerializeField] private Camera mainCamera;
 
-    [Header("Target Group")]
-    [SerializeField] private CinemachineTargetGroup targetGroup;
-    [SerializeField] private List<CinemachineTargetGroup.Target> targets = new List<CinemachineTargetGroup.Target>();
-
     [Header("Post Process")]
     [SerializeField] private PostProcessVolume postProcessVolume;
 
@@ -27,7 +23,7 @@ public class BattleCameraController : MonoBehaviour
         mainCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("HUD"));
         postProcessVolume.enabled = true;
 
-        targetGroup.m_Targets = targets.ToArray();
+        // targetGroup.m_Targets = targets.ToArray();
     }
 
     public void FocusOut()
@@ -35,7 +31,7 @@ public class BattleCameraController : MonoBehaviour
         mainCamera.cullingMask |= 1 << LayerMask.NameToLayer("HUD");
         postProcessVolume.enabled = false;
 
-        targets.Clear();
+        // targets.Clear();
     }
 
     private void FocusEnter(BaseCharacter _character)
@@ -46,7 +42,5 @@ public class BattleCameraController : MonoBehaviour
             radius = 3,
             weight = 1
         };
-
-        targets.Add(target);
     }
 }

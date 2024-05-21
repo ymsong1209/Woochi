@@ -46,7 +46,7 @@ public class BaseCharacterAnimation : MonoBehaviour
     void FocusIn()
     {
         body.layer = LayerMask.NameToLayer("Focus");
-        BattleManager.GetInstance.OnFocusEnter?.Invoke(owner);
+        // BattleManager.GetInstance.OnFocusEnter?.Invoke(owner);
     }
 
     void FocusOut()

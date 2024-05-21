@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7905160983172997250}
   - component: {fileID: 6047043372224912184}
+  - component: {fileID: 8540004010816379627}
   m_Layer: 0
   m_Name: BattleManager
   m_TagString: Untagged
@@ -48,3 +49,17 @@ MonoBehaviour:
   allies: {fileID: 0}
   enemies: {fileID: 0}
   allyCards: {fileID: 0}
+--- !u!114 &8540004010816379627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353020909744807467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d77ecc35b00d2574bb1e00c7a8c5f723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  postProcessVolume: {fileID: 0}
