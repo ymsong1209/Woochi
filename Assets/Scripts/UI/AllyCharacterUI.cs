@@ -11,7 +11,6 @@ using UnityEngine.UI;
 public class AllyCharacterUI : MonoBehaviour
 {
     [Header("Info")]
-    [SerializeField] private Image characterPortrait;
     [SerializeField] private TextMeshProUGUI characterName;
 
     [Header("Stat")]

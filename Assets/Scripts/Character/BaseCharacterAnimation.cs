@@ -8,8 +8,6 @@ public class BaseCharacterAnimation : MonoBehaviour
     private Animator animator;
     [SerializeField] private GameObject body;
 
-    private float focusScale = 1.5f;
-
     private void Start()
     {
         owner = GetComponent<BaseCharacter>();
@@ -48,14 +46,12 @@ public class BaseCharacterAnimation : MonoBehaviour
     void FocusIn()
     {
         body.layer = LayerMask.NameToLayer("Focus");
-        // transform.localScale = new Vector3(focusScale, focusScale, 1f);
         BattleManager.GetInstance.OnFocusEnter?.Invoke(owner);
     }
 
     void FocusOut()
     {
         body.layer = LayerMask.NameToLayer("Default");
-        // transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
 }

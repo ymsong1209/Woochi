@@ -94,6 +94,8 @@ public class BaseCharacter : MonoBehaviour
         characterHUD.UpdateDamage(_result, _damage, _isCrit);
     }
 
+    public void DisableHUD() => characterHUD.DisableHUD();
+
     #region 버프 처리
     /// <summary>
     /// 버프 적용 시점에 따라 적절한 버프 처리 함수 호출
@@ -163,7 +165,7 @@ public class BaseCharacter : MonoBehaviour
         {
             onPlayAnimation(AnimationType.Damaged);
         }
-        
+
         return true;
     }
 
