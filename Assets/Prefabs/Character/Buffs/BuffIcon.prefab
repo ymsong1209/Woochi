@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0.75, y: 0.611}
+  m_AnchoredPosition: {x: 0.75, y: 0.61102295}
   m_SizeDelta: {x: 0.5, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4173474913788928142
@@ -165,5 +165,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffType: 8
   animator: {fileID: 0}
-  tooltipPrefab: {fileID: 0}
-  canvas: {fileID: 0}
+  popupPanel: {fileID: 0}
+  popupText: {fileID: 0}

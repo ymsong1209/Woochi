@@ -18,6 +18,7 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     [SerializeField] private TextMeshProUGUI enemySpeedTxt;
 
     [SerializeField] private AllyCharacterUI allyCharacterUI;
+    [SerializeField] private BuffPopupUI buffPopupUI;
     public void SetSkillToolTip(BaseSkill _skill, Vector3 position)
     {
         skillTooltip.SetActive(true);
@@ -45,4 +46,17 @@ public class UIManager : SingletonMonobehaviour<UIManager>
             SetEnemyToolTip(_character);
         }
     }
+    
+    #region BuffPopupUI
+    public BuffPopupUI BuffPopupUI => buffPopupUI;
+    public void ActivateBuffPopUp(Vector3 Mouseposition)
+    {
+        buffPopupUI.Activate(Mouseposition);
+    }
+    
+    public void DeactivateBuffPopUp()
+    {
+        buffPopupUI.Deactivate();
+    }
+    #endregion
 }

@@ -63,7 +63,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -165686347
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &8192404291354149113
@@ -169,7 +169,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1.5, y: -0.25}
+  m_AnchoredPosition: {x: 2, y: -0.25}
   m_SizeDelta: {x: 0.5, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3633180304952726116
@@ -297,8 +297,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffType: 0
   animator: {fileID: 0}
-  tooltipPrefab: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!1 &6490454285901392249
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1.75, y: -0.25}
+  m_AnchoredPosition: {x: 2.25, y: -0.25}
   m_SizeDelta: {x: 0.5, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4633187927541937310
@@ -464,8 +462,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffType: 1
   animator: {fileID: 0}
-  tooltipPrefab: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!1 &7753021310662755342
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,8 +660,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffType: 4
   animator: {fileID: 0}
-  tooltipPrefab: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!1 &7813607278084760025
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,8 +825,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffType: 3
   animator: {fileID: 0}
-  tooltipPrefab: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!1 &8159440712131805997
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,5 +990,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffType: 2
   animator: {fileID: 0}
-  tooltipPrefab: {fileID: 0}
-  canvas: {fileID: 0}

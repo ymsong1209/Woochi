@@ -7,7 +7,7 @@ public class BurnDebuff : BaseBuff
     //burnDamage 디버프
     public override int ApplyTurnStartBuff()
     {
-        //전체체력에서 2%만큼 대미지를 줌
+        //전체체력에서 5%만큼 대미지를 줌
         float burnDamage = buffOwner.Health.MaxHealth * 5f / 100f;
         buffOwner.Health.ApplyDamage((int)Mathf.Round(burnDamage));
 
