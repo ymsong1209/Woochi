@@ -46,5 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: 0
   allies:
-  - {fileID: 6638066927388224697, guid: e0a5075a4a315164691a735d9bb77e40, type: 3}
-  temporaryDungeon: {fileID: 11400000, guid: 93aa6d1f4732f0a42baa4820e994e9c9, type: 2}
+  - {fileID: 1946550667272111963, guid: fb3bcba31bb16b54384116e3477e79ea, type: 3}
+  - {fileID: 3306509121491266149, guid: 397f639ea948d3d4a891c0923b4bcbf0, type: 3}
+  temporaryDungeon: {fileID: 11400000, guid: f3ddd85be6c495549ab2bbf60ad4f943, type: 2}
