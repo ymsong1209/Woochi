@@ -225,7 +225,7 @@ public class BaseSkill : MonoBehaviour
         if (CheckAccuracy() == false)
         {
             Debug.Log("Accuracy Failed on" + _opponent.name.ToString());
-            skillOwner.ShowDamageUI(AttackResult.Miss);
+            _opponent.onAttacked(AttackResult.Miss, 0, false);
             _opponent.onPlayAnimation?.Invoke(AnimationType.Damaged);
             return false;
         }
@@ -233,7 +233,7 @@ public class BaseSkill : MonoBehaviour
         if (CheckEvasion(_opponent) == false)
         {
             Debug.Log(_opponent.name.ToString() + "Evaded skill" + skillName);
-            _opponent.ShowDamageUI(AttackResult.Evasion);
+            _opponent.onAttacked(AttackResult.Evasion, 0, false);
             _opponent.onPlayAnimation?.Invoke(AnimationType.Damaged);
             return false;
         }

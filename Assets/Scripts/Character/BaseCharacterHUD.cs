@@ -8,12 +8,16 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
 {
     private BaseCharacter owner;
     [SerializeField] private SpriteRenderer hpBar;
+
+    [Header("Damage HUD")]
+    [SerializeField] private GameObject damageHUD;
     [SerializeField] private TextMeshPro damageTxt;
 
     private void Start()
     {
         owner = GetComponent<BaseCharacter>();
         owner.Health.OnHealthChanged += UpdateHPBar;
+        owner.onAttacked += SetDamageText;
     }
 
     public void UpdateHPBar(BaseCharacter _character)
@@ -24,11 +28,20 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
         hpBar.transform.DOScaleX(nextScale, 1f).SetEase(Ease.OutCubic);
     }
 
-    public void UpdateDamage(AttackResult _result, int damage = 0, bool isCrit = false)
+    public void SetDamageText(AttackResult _result, int damage = 0, bool isCrit = false)
     {
-        damageTxt.gameObject.SetActive(true);
-        damageTxt.color = Color.white;
-        damageTxt.fontSize = 10;
+        damageHUD.SetActive(true);
+
+        if (isCrit)
+        {
+            damageTxt.color = Color.red;
+            damageTxt.fontSize = 15;
+        }
+        else
+        {
+            damageTxt.color = Color.white;
+            damageTxt.fontSize = 10;
+        }
 
         switch (_result)
         {
@@ -37,23 +50,16 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
                 break;
             case AttackResult.Evasion:
                 damageTxt.text = "회피";
-                Invoke("DisableHUD", 2f);
                 break;
             case AttackResult.Normal:
                 damageTxt.text = $"{damage}";
-                if(isCrit)
-                {
-                    damageTxt.color = Color.red;
-                    damageTxt.fontSize = 15;
-                }
                 break;
         }
+
+        Invoke("DeactiveDamage", 1f);
     }
 
-    public void DisableHUD()
-    {
-        damageTxt.gameObject.SetActive(false);
-    }
+    void DeactiveDamage() => damageHUD.SetActive(false);
 
     #region 마우스 이벤트
     public void OnPointerEnter(PointerEventData eventData)

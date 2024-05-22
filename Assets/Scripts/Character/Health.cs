@@ -42,7 +42,7 @@ public class Health : MonoBehaviour
             }
         }
 
-        owner.ShowDamageUI(AttackResult.Normal, _damage, _isCrit);
+        owner.onAttacked?.Invoke(AttackResult.Normal, _damage, _isCrit);
         owner.onPlayAnimation?.Invoke(AnimationType.Damaged);
         OnHealthChanged.Invoke(owner);
     }
@@ -68,7 +68,8 @@ public class Health : MonoBehaviour
             }
         }
 
-        owner.ShowDamageUI(AttackResult.Normal, _damage, _isCrit);
+        owner.onAttacked?.Invoke(AttackResult.Normal, _damage, _isCrit);
+        // owner.ShowDamageUI(AttackResult.Normal, _damage, _isCrit);
         OnHealthChanged.Invoke(owner);
     }
 

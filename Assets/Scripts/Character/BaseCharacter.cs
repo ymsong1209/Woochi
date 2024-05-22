@@ -13,7 +13,6 @@ using UnityEngine.EventSystems;
 public class BaseCharacter : MonoBehaviour
 {
     public CharacterStatSO characterStat;
-    [SerializeField] private BaseCharacterHUD characterHUD;
 
     #region Header CHARACTER STATS
 
@@ -71,6 +70,7 @@ public class BaseCharacter : MonoBehaviour
 
     #region Event
     public Action<AnimationType> onPlayAnimation;
+    public Action<AttackResult, int, bool> onAttacked;
     #endregion
 
     public virtual void CheckSkillsOnTurnStart()
@@ -88,13 +88,6 @@ public class BaseCharacter : MonoBehaviour
     {
         
     }
-
-    public virtual void ShowDamageUI(AttackResult _result, int _damage = 0, bool _isCrit = false)
-    {
-        characterHUD.UpdateDamage(_result, _damage, _isCrit);
-    }
-
-    public void DisableHUD() => characterHUD.DisableHUD();
 
     #region 버프 처리
     /// <summary>
@@ -127,7 +120,6 @@ public class BaseCharacter : MonoBehaviour
     private bool ApplyBuffs(Func<BaseBuff, int> applyBuffMethod)
     {
         bool mightDead = false;
-        bool isDamaged = false;
 
         for (int i = activeBuffs.Count - 1; i >= 0; i--)
         {
@@ -139,8 +131,6 @@ public class BaseCharacter : MonoBehaviour
                 {
                     mightDead = true;
                 }
-
-                isDamaged = true;
             }
            
 
@@ -159,11 +149,6 @@ public class BaseCharacter : MonoBehaviour
             }
             //턴을 스킵만 함
             return false;
-        }
-
-        if (isDamaged)
-        {
-            onPlayAnimation(AnimationType.Damaged);
         }
 
         return true;
