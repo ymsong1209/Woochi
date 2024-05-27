@@ -635,14 +635,20 @@ RectTransform:
   m_AnchoredPosition: {x: 66.6, y: 0.000030517578}
   m_SizeDelta: {x: 45, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &150812233
-CanvasRenderer:
+--- !u!114 &150812233
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150812231}
-  m_CullTransparentMesh: 1
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7401aad1f08114f4485bb5c94b59dc9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 1156029661}
+  activeImage: {fileID: 855080805}
 --- !u!1 &207437619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,7 +1016,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 284217291}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1156029661}
+        m_TargetAssemblyTypeName: WoochiButtonList, Assembly-CSharp
+        m_MethodName: HighlightButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 512769208}
+          m_ObjectArgumentAssemblyTypeName: WoochiActionButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1508540968}
+        m_TargetAssemblyTypeName: WoochiActionList, Assembly-CSharp
+        m_MethodName: ShowSkillList
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &284217291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1233,6 +1263,22 @@ RectTransform:
   m_AnchoredPosition: {x: 169.3, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
+--- !u!224 &325257666 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+  m_PrefabInstance: {fileID: 1695084463}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &325257667 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3900368476719072775, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+  m_PrefabInstance: {fileID: 1695084463}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ce2b480d0f06b642871eb64a1b70825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &425151454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1382,81 +1428,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84dd57b0f4f5df544937d8c505cf002c, type: 3}
---- !u!1 &447420709
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 447420710}
-  - component: {fileID: 447420712}
-  - component: {fileID: 447420711}
-  m_Layer: 5
-  m_Name: WoochiSkillButton (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &447420710
+--- !u!224 &447420710 stripped
 RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+  m_PrefabInstance: {fileID: 3731194643488730795}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 447420709}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2033097876}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -108, y: 0}
-  m_SizeDelta: {x: 60, y: 80}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &447420711
+--- !u!114 &447420713 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 3900368476719072775, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+  m_PrefabInstance: {fileID: 3731194643488730795}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 447420709}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ce2b480d0f06b642871eb64a1b70825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.76932764, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3da51d60163fca145aef6c1dc094bd8e, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &447420712
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 447420709}
-  m_CullTransparentMesh: 1
 --- !u!1 &485195614
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,6 +1779,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 512769207}
+  - component: {fileID: 512769208}
   m_Layer: 5
   m_Name: WoochiActionButton1_Sorcery
   m_TagString: Untagged
@@ -1820,6 +1808,21 @@ RectTransform:
   m_AnchoredPosition: {x: -119.9, y: 0.000030517578}
   m_SizeDelta: {x: 45, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &512769208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512769206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0674e41a91be16a4c891f5d2c39143da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 1156029661}
+  activeImage: {fileID: 213829863}
+  skilllist: {fileID: 2033097875}
 --- !u!1 &521841450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1963,7 +1966,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 532353233}
-  - component: {fileID: 532353235}
   - component: {fileID: 532353234}
   m_Layer: 5
   m_Name: WoochiActionButton (1)
@@ -2002,35 +2004,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 532353232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 7401aad1f08114f4485bb5c94b59dc9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.513386, g: 1, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3da51d60163fca145aef6c1dc094bd8e, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &532353235
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 532353232}
-  m_CullTransparentMesh: 1
+  owner: {fileID: 1156029661}
+  activeImage: {fileID: 859054367}
 --- !u!1 &601316250
 GameObject:
   m_ObjectHideFlags: 0
@@ -2934,81 +2912,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &717035010
-GameObject:
+--- !u!1001 &728623740
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 717035011}
-  - component: {fileID: 717035013}
-  - component: {fileID: 717035012}
-  m_Layer: 5
-  m_Name: WoochiSkillButton (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &717035011
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 717035010}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2033097876}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -36, y: 0}
-  m_SizeDelta: {x: 60, y: 80}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &717035012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 717035010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.76932764, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3da51d60163fca145aef6c1dc094bd8e, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &717035013
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 717035010}
-  m_CullTransparentMesh: 1
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2033097876}
+    m_Modifications:
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8369952837767494641, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Name
+      value: WoochiSkillButton (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
 --- !u!114 &749554646 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5713762804124881929, guid: b94dd6ac5d234b041a466ac3047bda0a, type: 3}
@@ -3235,7 +3235,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 846164679}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1156029661}
+        m_TargetAssemblyTypeName: WoochiButtonList, Assembly-CSharp
+        m_MethodName: HighlightButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 150812233}
+          m_ObjectArgumentAssemblyTypeName: WoochiActionButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &846164679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3312,14 +3324,20 @@ RectTransform:
   m_AnchoredPosition: {x: 4.9, y: 0.000030517578}
   m_SizeDelta: {x: 45, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &851947625
-CanvasRenderer:
+--- !u!114 &851947625
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 851947623}
-  m_CullTransparentMesh: 1
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7401aad1f08114f4485bb5c94b59dc9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 1156029661}
+  activeImage: {fileID: 1002630189}
 --- !u!1 &855080805
 GameObject:
   m_ObjectHideFlags: 0
@@ -3395,6 +3413,103 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855080805}
   m_CullTransparentMesh: 1
+--- !u!1001 &857337796
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2033097876}
+    m_Modifications:
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 108
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8369952837767494641, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Name
+      value: WoochiSkillButton (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
 --- !u!1 &859054367
 GameObject:
   m_ObjectHideFlags: 0
@@ -4530,14 +4645,20 @@ RectTransform:
   m_AnchoredPosition: {x: 128.8, y: 0.000030517578}
   m_SizeDelta: {x: 45, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1059630008
-CanvasRenderer:
+--- !u!114 &1059630008
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059630006}
-  m_CullTransparentMesh: 1
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7401aad1f08114f4485bb5c94b59dc9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 1156029661}
+  activeImage: {fileID: 2106128147}
 --- !u!1 &1061678079
 GameObject:
   m_ObjectHideFlags: 0
@@ -4619,7 +4740,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1061678082}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1156029661}
+        m_TargetAssemblyTypeName: WoochiButtonList, Assembly-CSharp
+        m_MethodName: HighlightButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1059630008}
+          m_ObjectArgumentAssemblyTypeName: WoochiActionButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1061678082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5039,13 +5172,14 @@ GameObject:
   - component: {fileID: 1156029658}
   - component: {fileID: 1156029660}
   - component: {fileID: 1156029659}
+  - component: {fileID: 1156029661}
   m_Layer: 5
-  m_Name: ButtonList
+  m_Name: ActionButtonList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1156029658
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5108,6 +5242,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1156029657}
   m_CullTransparentMesh: 1
+--- !u!114 &1156029661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156029657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 000c7a5f49e3f034eb0109cbd851d6f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonList: []
 --- !u!1 &1188335416
 GameObject:
   m_ObjectHideFlags: 0
@@ -6010,7 +6157,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1407842169}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1156029661}
+        m_TargetAssemblyTypeName: WoochiButtonList, Assembly-CSharp
+        m_MethodName: HighlightButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 532353234}
+          m_ObjectArgumentAssemblyTypeName: WoochiActionButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1407842169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6456,6 +6615,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440274985}
   m_CullTransparentMesh: 1
+--- !u!224 &1441621749 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+  m_PrefabInstance: {fileID: 728623740}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1441621750 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3900368476719072775, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+  m_PrefabInstance: {fileID: 728623740}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ce2b480d0f06b642871eb64a1b70825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &1454247083 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+  m_PrefabInstance: {fileID: 857337796}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1454247084 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3900368476719072775, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+  m_PrefabInstance: {fileID: 857337796}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ce2b480d0f06b642871eb64a1b70825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1464085162
 GameObject:
   m_ObjectHideFlags: 0
@@ -6711,7 +6902,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98f6d99dc50da2c4aa7c87c347db055c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonList: {fileID: 1156029657}
+  buttonList: {fileID: 1156029661}
+  skillList: {fileID: 2033097879}
 --- !u!1001 &1513344475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7401,6 +7593,103 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 363d509ce9f937c45a1178dd17c8236b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1695084463
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2033097876}
+    m_Modifications:
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -108
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8369952837767494641, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Name
+      value: WoochiSkillButton
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
 --- !u!114 &1814117680 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7813606811748994218, guid: 84dd57b0f4f5df544937d8c505cf002c, type: 3}
@@ -7806,7 +8095,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1920092664}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1156029661}
+        m_TargetAssemblyTypeName: WoochiButtonList, Assembly-CSharp
+        m_MethodName: HighlightButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 851947625}
+          m_ObjectArgumentAssemblyTypeName: WoochiActionButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1920092664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7844,81 +8145,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920092661}
-  m_CullTransparentMesh: 1
---- !u!1 &1956833427
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1956833428}
-  - component: {fileID: 1956833430}
-  - component: {fileID: 1956833429}
-  m_Layer: 5
-  m_Name: WoochiSkillButton (4)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1956833428
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956833427}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2033097876}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 108, y: 0}
-  m_SizeDelta: {x: 60, y: 80}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1956833429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956833427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.76932764, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3da51d60163fca145aef6c1dc094bd8e, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1956833430
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956833427}
   m_CullTransparentMesh: 1
 --- !u!1001 &1964181012
 PrefabInstance:
@@ -8117,6 +8343,7 @@ GameObject:
   - component: {fileID: 2033097876}
   - component: {fileID: 2033097878}
   - component: {fileID: 2033097877}
+  - component: {fileID: 2033097879}
   m_Layer: 5
   m_Name: WoochiSkillList
   m_TagString: Untagged
@@ -8136,10 +8363,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 325257666}
   - {fileID: 447420710}
-  - {fileID: 717035011}
-  - {fileID: 2140616463}
-  - {fileID: 1956833428}
+  - {fileID: 1441621749}
+  - {fileID: 1454247083}
   m_Father: {fileID: 1508540965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -8185,6 +8412,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033097875}
   m_CullTransparentMesh: 1
+--- !u!114 &2033097879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033097875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed9198793c3c4946a45f1c0cf7442cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSkillSelected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1081429682}
+        m_TargetAssemblyTypeName: BattleManager, Assembly-CSharp
+        m_MethodName: SkillSelected
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1081429682}
+        m_TargetAssemblyTypeName: BattleManager, Assembly-CSharp
+        m_MethodName: ActivateColliderForSelectedSkill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1081429682}
+        m_TargetAssemblyTypeName: BattleManager, Assembly-CSharp
+        m_MethodName: EnableArrowForSelectedSkill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  skillIcons:
+  - {fileID: 325257667}
+  - {fileID: 447420713}
+  - {fileID: 1441621750}
+  - {fileID: 1454247084}
 --- !u!114 &2054431573 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7813606811748994218, guid: 84dd57b0f4f5df544937d8c505cf002c, type: 3}
@@ -8239,6 +8522,7 @@ MonoBehaviour:
   enemySpeedTxt: {fileID: 1868863707}
   allyCharacterUI: {fileID: 0}
   buffPopupUI: {fileID: 2118891706}
+  woochiActionList: {fileID: 1508540968}
 --- !u!4 &2071079211
 Transform:
   m_ObjectHideFlags: 0
@@ -8573,81 +8857,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118891703}
   m_CullTransparentMesh: 1
---- !u!1 &2140616462
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2140616463}
-  - component: {fileID: 2140616465}
-  - component: {fileID: 2140616464}
-  m_Layer: 5
-  m_Name: WoochiSkillButton (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2140616463
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2140616462}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2033097876}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 36, y: 0}
-  m_SizeDelta: {x: 60, y: 80}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2140616464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2140616462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.76932764, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3da51d60163fca145aef6c1dc094bd8e, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &2140616465
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2140616462}
-  m_CullTransparentMesh: 1
 --- !u!1001 &876048766870292842
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8845,14 +9054,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
-      propertyPath: allies.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
-      propertyPath: allies.Array.data[2]
-      value: 
-      objectReference: {fileID: 27191659041353302, guid: f1f1d3eb84fe4284791bfa40d1568d56, type: 3}
     - target: {fileID: 5775089594791431015, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.027509725
@@ -8967,6 +9168,115 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4fcc8aaf4c360349b3ec2a99ea1244b, type: 3}
+--- !u!1001 &3731194643488730795
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2033097876}
+    m_Modifications:
+    - target: {fileID: 1365973025523092893, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365973025523092893, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -36
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8369952837767494641, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Name
+      value: WoochiSkillButton (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903902389130318790, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3da51d60163fca145aef6c1dc094bd8e, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
 --- !u!1001 &7273607372316146215
 PrefabInstance:
   m_ObjectHideFlags: 0

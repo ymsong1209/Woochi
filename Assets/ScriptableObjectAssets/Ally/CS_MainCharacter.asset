@@ -23,6 +23,4 @@ MonoBehaviour:
   baseMinStat: 3
   baseMaxStat: 7
   skills:
-  - {fileID: 4178373846625572037, guid: 30581c30e239deb408c9ae9660f50cf7, type: 3}
-  - {fileID: 1072596917953435454, guid: 753d55a461acbe947ad5f825c9769718, type: 3}
-  - {fileID: 1026174406853336074, guid: accbdc9e59f96754eb7fe45e4edb09fa, type: 3}
+  - {fileID: -4761694706262891841, guid: d9b0f46b49e2f654b9cf06b29cc77d63, type: 3}

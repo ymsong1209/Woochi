@@ -115,6 +115,6 @@ MonoBehaviour:
   isDead: 0
   activeBuffs: []
   activeSkills: []
-  activeSkillCheckBox: 
+  activeSkillCheckBox: 01
   isAlly: 0
   rowOrder: 0

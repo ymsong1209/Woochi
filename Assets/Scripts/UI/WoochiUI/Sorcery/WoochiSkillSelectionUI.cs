@@ -1,25 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-
-[System.Serializable] // UnityEvent를 Inspector에서 볼 수 있게 하려면 Serializable이 필요합니다
-public class SkillEvent : UnityEvent<BaseSkill> { }
-
-public class SkillSelectionUI : MonoBehaviour
+public class WoochiSkillSelectionUI : MonoBehaviour
 {
-    //Inspector에서 등록
-    public SkillEvent onSkillSelected; // SkillEvent 타입의 public 이벤트
-
+    public SkillEvent onSkillSelected;
     [SerializeField] private List<SkillIcon> skillIcons;
 
-    private void Start()
+    public void Start()
     {
-        #region 이벤트 등록
-        BattleManager.GetInstance.OnCharacterTurnStart += ShowForCharacter;
-        BattleManager.GetInstance.OnCharacterAttacked += ShowForCharacter;
-        #endregion
         for (int i = 0; i < skillIcons.Count; i++)
         {
             int index = i;
@@ -28,43 +19,47 @@ public class SkillSelectionUI : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 캐릭터에 맞는 스킬 아이콘 활성화시키는 메서드
-    /// </summary>
-    /// <param name="_character"></param>
-    /// <param name="isEnable">스킬 활성화 시킬지 말지</param>
-    public void ShowForCharacter(BaseCharacter _character, bool isEnable = true)
+    public void Activate()
     {
-        // 현재 캐릭터의 턴이 전우치라면 UI 비활성화
-        if (_character.IsMainCharacter) gameObject.SetActive(false);
-        else gameObject.SetActive(true);
+        gameObject.SetActive(true);
         
-        _character.CheckSkillsOnTurnStart();
-
-        // 턴이 적 캐릭터라면 skillIcon Interactable을 false로 초기화
-        if (!_character.IsAlly)
+        BaseCharacter MainCharacter = BattleManager.GetInstance.currentCharacter;
+        if (!MainCharacter.IsMainCharacter)
         {
-            skillIcons.ForEach(icon => icon.btn.interactable = false);
+            Debug.LogError("우치 차례가 아님");
             return;
         }
-
+        
+        //우치 위치에 따른 스킬 체크
+        MainCharacter.CheckSkillsOnTurnStart();
+        //모든 스킬 비활성화
         DisableSkills();
 
         #region 스킬 아이콘 Enable, Disable 설정
-        int activeSkillsCount = _character.activeSkills.Count;
-
+        int activeSkillsCount = MainCharacter.activeSkills.Count;
+        if (activeSkillsCount > 4)
+        {
+            Debug.LogError("우치 스킬이 4개 이상이 활성화되어있음.");
+            return;
+        }
+        
         // 각 캐릭터의 스킬 개수만큼 버튼 오브젝트 활성화
         for (int i = 0; i < skillIcons.Count; i++)
         {
             if(i < activeSkillsCount)
             { 
-                BaseSkill skill = _character.activeSkills[i];
+                BaseSkill skill = MainCharacter.activeSkills[i];
                 // 스킬 아이콘에 스킬 정보 할당
-                skillIcons[i].SetSkill(skill, (isEnable && IsSkillSetAvailable(skill)));
+                skillIcons[i].SetSkill(skill, (IsSkillSetAvailable(skill)));
             }
         }
         
         #endregion
+    }
+    
+    public void Deactivate()
+    {
+        gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -76,6 +71,7 @@ public class SkillSelectionUI : MonoBehaviour
         if (IsSkillReceiverAble(_skill) == false)   return false;
         return true;
     }
+    
     /// <summary>
     /// 현재 스킬의 owner가 스킬을 시전할 수 있는 열에 있는지 확인
     /// </summary>
@@ -101,8 +97,15 @@ public class SkillSelectionUI : MonoBehaviour
 
         return false;
     }
-
-    // 스킬 선택 버튼이 클릭됐을 때 호출될 메서드
+    
+    private void DisableSkills()
+    {
+        foreach (SkillIcon icon in skillIcons)
+        {
+            icon.SetSkill(null);
+        }
+    }
+    
     public void SkillButtonClicked(BaseSkill _skill)
     {
         if (_skill == null)
@@ -112,16 +115,6 @@ public class SkillSelectionUI : MonoBehaviour
         // SkillTriggerSelector의 Activate 메서드 호출
         onSkillSelected.Invoke(_skill);
     }
-
-    /// <summary>
-    /// 모든 스킬 아이콘 interaction을 false로 초기화
-    /// </summary>
-    private void DisableSkills()
-    {
-        foreach (SkillIcon icon in skillIcons)
-        {
-            icon.SetSkill(null);
-        }
-    }
     
+    public SkillEvent OnSkillSelected => onSkillSelected;
 }

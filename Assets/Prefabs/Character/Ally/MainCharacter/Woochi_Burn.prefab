@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4765174429504772050
+--- !u!1 &2672831112880370927
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5775089594791431015}
-  - component: {fileID: 5410856791570014626}
+  - component: {fileID: 3780136729541033186}
+  - component: {fileID: -4761694706262891841}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Woochi_Burn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5775089594791431015
+--- !u!4 &3780136729541033186
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4765174429504772050}
+  m_GameObject: {fileID: 2672831112880370927}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.027509725, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5410856791570014626
+--- !u!114 &-4761694706262891841
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4765174429504772050}
+  m_GameObject: {fileID: 2672831112880370927}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f6f118037785504586955ddfa273119, type: 3}
+  m_Script: {fileID: 11500000, guid: a57a29875576e884c946edb31b31a37f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: 0
-  allies:
-  - {fileID: 1946550667272111963, guid: fb3bcba31bb16b54384116e3477e79ea, type: 3}
-  - {fileID: 3306509121491266149, guid: 397f639ea948d3d4a891c0923b4bcbf0, type: 3}
-  - {fileID: 27191659041353302, guid: f1f1d3eb84fe4284791bfa40d1568d56, type: 3}
-  temporaryDungeon: {fileID: 11400000, guid: f3ddd85be6c495549ab2bbf60ad4f943, type: 2}
+  skillSO: {fileID: 11400000, guid: dacfe84ac0a351f4da6f1057dd9e9cb1, type: 2}
+  skillOwner: {fileID: 0}
+  skillName: 
+  skillAvailableRadius: 0000000000000000
+  skillRadius: 0000000000000000
+  skillTargetType: 0
+  skillType: 0
+  bufflist: []
+  multiplier: 0
+  skillAccuracy: 0

@@ -19,6 +19,7 @@ public class UIManager : SingletonMonobehaviour<UIManager>
 
     [SerializeField] private AllyCharacterUI allyCharacterUI;
     [SerializeField] private BuffPopupUI buffPopupUI;
+    [SerializeField] private WoochiActionList woochiActionList;
     public void SetSkillToolTip(BaseSkill _skill, Vector3 position)
     {
         skillTooltip.SetActive(true);
@@ -59,4 +60,9 @@ public class UIManager : SingletonMonobehaviour<UIManager>
         buffPopupUI.Deactivate();
     }
     #endregion
+
+    public void ResetWoochiActionList()
+    {
+        woochiActionList.Reset();
+    }
 }
