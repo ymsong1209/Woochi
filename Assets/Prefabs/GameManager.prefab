@@ -48,4 +48,5 @@ MonoBehaviour:
   allies:
   - {fileID: 1946550667272111963, guid: fb3bcba31bb16b54384116e3477e79ea, type: 3}
   - {fileID: 3306509121491266149, guid: 397f639ea948d3d4a891c0923b4bcbf0, type: 3}
+  - {fileID: 27191659041353302, guid: f1f1d3eb84fe4284791bfa40d1568d56, type: 3}
   temporaryDungeon: {fileID: 11400000, guid: f3ddd85be6c495549ab2bbf60ad4f943, type: 2}
