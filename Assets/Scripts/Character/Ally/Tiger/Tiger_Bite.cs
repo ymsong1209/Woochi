@@ -4,33 +4,8 @@ using UnityEngine;
 
 public class Tiger_Bite : BaseSkill
 {
-    public override void ActivateSkill(BaseCharacter _Opponent)
-    {
-        //아군 보호 스킬등으로 보호 할 수 있음
-        //최종적으로 공격해야하는 적 판정
-        BaseCharacter opponent = base.CheckOpponentValid(_Opponent);
 
-        if (opponent == null)
-        {
-            Debug.LogError("opponent is null");
-            return;
-        }
-        
-        //치명타일 경우
-        if (CheckCrit())
-        {
-            ApplyTotalDamage(opponent, true);
-            return;
-        }
-
-        //명중 체크
-        if (CheckAccuracy() == false) return;
-        if (CheckEvasion(opponent) == false) return;
-      
-        ApplyTotalDamage(opponent, false);
-    }
-
-    private void ApplyTotalDamage(BaseCharacter _opponent, bool _isCrit)
+    protected override void ApplyStat(BaseCharacter _opponent, bool _isCrit)
     {
         Health opponentHealth = _opponent.gameObject.GetComponent<Health>();
         //최소, 최대 대미지 사이의 수치를 고름

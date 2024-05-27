@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,18 +6,23 @@ using UnityEngine;
 
 /*
  * ToDo
- * ¼ÒÈ¯¼ö Ãß°¡
- * ¼ÒÈ¯¼ö Á¦°Å
- * ¼ÒÈ¯¼ö ¼ÒÈ¯
+ * ì†Œí™˜ìˆ˜ ì¶”ê°€
+ * ì†Œí™˜ìˆ˜ ì œê±°
+ * ì†Œí™˜ìˆ˜ ì†Œí™˜
 */ 
 public class AllyCardList : MonoBehaviour
 {
     [SerializeField] List<AllyCard> cards;
 
+    private void Start()
+    {
+        BattleManager.GetInstance.OnCharacterTurnStart += ShowUI;
+    }
+
     /// <summary>
-    /// ¼ÒÈ¯¼ö ¸ñ·ÏÀ» ¹Ş¾Æ ¼ÒÈ¯¼ö Ä«µå¸¦ ÃÊ±âÈ­
+    /// ì†Œí™˜ìˆ˜ ëª©ë¡ì„ ë°›ì•„ ì†Œí™˜ìˆ˜ ì¹´ë“œë¥¼ ì´ˆê¸°í™”
     /// </summary>
-    /// <param name="_allies">¿ìÄ¡ÀÇ ¼ÒÈ¯¼ö ¸ñ·Ï(¾ÆÁ÷ fixµÈ°Ô ¾ø±â¿¡ ÀÓ½ÃÀÓ)</param>
+    /// <param name="_allies">ìš°ì¹˜ì˜ ì†Œí™˜ìˆ˜ ëª©ë¡(ì•„ì§ fixëœê²Œ ì—†ê¸°ì— ì„ì‹œì„)</param>
     public void Initialize(Formation _allies)
     {
         List<BaseCharacter> characters = _allies.GetCharacters();
@@ -40,5 +46,11 @@ public class AllyCardList : MonoBehaviour
         {
             card.UpdateCard();
         }
+    }
+    
+    public void ShowUI(BaseCharacter _character, bool isEnable = true)
+    {
+        if (_character.IsMainCharacter) gameObject.SetActive(false);
+        else gameObject.SetActive(true);
     }
 }

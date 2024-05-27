@@ -33,12 +33,12 @@ public class BaseCharacter : MonoBehaviour
     [SerializeField,ReadOnly]   private float   maxStat;
     #endregion
 
-    #region Header SpecializedStats
+   
     [Tooltip("특정 위치에서 Spawn되게 하고 싶으면 값 입력.")]
     [SerializeField] private bool       isSpawnSpecific = false;
     [SerializeField] private Vector3    spawnLocation;
     [SerializeField] private Quaternion spawnRotation;
-    #endregion
+    protected bool isMainCharacter = false;
 
     #region Header BATTLE STATS
 
@@ -352,6 +352,7 @@ public class BaseCharacter : MonoBehaviour
     public bool IsSpawnSpecific => isSpawnSpecific;
     public Vector3 SpawnLocation => spawnLocation;
     public Quaternion SpawnRotation => spawnRotation;
+    public bool IsMainCharacter => isMainCharacter;
 
     public bool IsTurnUsed
     {

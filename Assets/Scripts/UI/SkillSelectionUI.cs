@@ -9,6 +9,7 @@ public class SkillEvent : UnityEvent<BaseSkill> { }
 
 public class SkillSelectionUI : MonoBehaviour
 {
+    //Inspector에서 등록
     public SkillEvent onSkillSelected; // SkillEvent 타입의 public 이벤트
 
     [SerializeField] private List<SkillIcon> skillIcons;
@@ -34,6 +35,10 @@ public class SkillSelectionUI : MonoBehaviour
     /// <param name="isEnable">스킬 활성화 시킬지 말지</param>
     public void ShowForCharacter(BaseCharacter _character, bool isEnable = true)
     {
+        // 현재 캐릭터의 턴이 전우치라면 UI 비활성화
+        if (_character.IsMainCharacter) gameObject.SetActive(false);
+        else gameObject.SetActive(true);
+        
         _character.CheckSkillsOnTurnStart();
 
         // 턴이 적 캐릭터라면 skillIcon Interactable을 false로 초기화

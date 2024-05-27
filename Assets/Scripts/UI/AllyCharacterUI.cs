@@ -5,8 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// ¾Æ±º Ä³¸¯ÅÍ Á¤º¸¿Í °ü·ÃµÈ UIµéÀ» °ü¸®ÇÏ´Â Å¬·¡½º
-/// Ä³¸¯ÅÍ ÃÊ»óÈ­, ÀÌ¸§, ½ºÅÈ µîÀ» Ç¥½Ã
+/// ì•„êµ° ìºë¦­í„° ì •ë³´ì™€ ê´€ë ¨ëœ UIë“¤ì„ ê´€ë¦¬í•˜ëŠ” í´ë˜ìŠ¤
+/// ìºë¦­í„° ì´ˆìƒí™”, ì´ë¦„, ìŠ¤íƒ¯ ë“±ì„ í‘œì‹œ
 /// </summary>
 public class AllyCharacterUI : MonoBehaviour
 {
@@ -25,7 +25,7 @@ public class AllyCharacterUI : MonoBehaviour
 
     void Start()
     {
-        #region ÀÌº¥Æ® µî·Ï
+        #region ì´ë²¤íŠ¸ ë“±ë¡
         BattleManager.GetInstance.OnCharacterTurnStart += ShowCharacterUI;
         BattleManager.GetInstance.OnCharacterAttacked += ShowCharacterUI;
         #endregion
@@ -33,6 +33,7 @@ public class AllyCharacterUI : MonoBehaviour
 
     public void ShowCharacterUI(BaseCharacter _character, bool isEnable = true)
     {
+        
         if(!_character.IsAlly)
             return;
 
@@ -41,22 +42,22 @@ public class AllyCharacterUI : MonoBehaviour
     }
 
     /// <summary>
-    /// Ä³¸¯ÅÍ Á¤º¸¸¦ Á¶ÀÛ UI¿¡ Ç¥½Ã
+    /// ìºë¦­í„° ì •ë³´ë¥¼ ì¡°ì‘ UIì— í‘œì‹œ
     /// </summary>
     /// <param name="_character"></param>
     private void ShowCharacterInfo(BaseCharacter _character)
     {
-        // Ä³¸¯ÅÍ ÃÊ»óÈ­ ½ºÇÁ¶óÀÌÆ®´Â ¾ÆÁ÷ ¾îµğ¿¡ ÀúÀåÇØ¾ß ÇÒ Áö ¹ÌÁ¤ÀÌ¶ó ÁÖ¼® Ã³¸®
-        // ¹æ¹ı »ı°¢
-        // 1. CharacterStatSO¸¦ Ä³¸¯ÅÍ °ü·ÃµÈ °ÍµéÀ» ÀúÀåÇÏ´Â °ÍÀ¸·Î º»´Ù¸é ¿©±â¿¡ ÀúÀåÇÏ°í BaseCharacter¿¡¼­ °¡Á®¿Ã ¼ö ÀÖ°Ô ÇÏ´Â°Ô ¾î¶³±î
-        // 2. ¾Æ´Ï¸é µû·Î µµ°¨ ½ÄÀ¸·Î ¸¸µé¾î¼­ °Å±â¿¡ ÀúÀåÇÏ°í °¡Á®¿Ã ¼ö ÀÖ°Ô ÇÏ´Â ¹æ¹ı
+        // ìºë¦­í„° ì´ˆìƒí™” ìŠ¤í”„ë¼ì´íŠ¸ëŠ” ì•„ì§ ì–´ë””ì— ì €ì¥í•´ì•¼ í•  ì§€ ë¯¸ì •ì´ë¼ ì£¼ì„ ì²˜ë¦¬
+        // ë°©ë²• ìƒê°
+        // 1. CharacterStatSOë¥¼ ìºë¦­í„° ê´€ë ¨ëœ ê²ƒë“¤ì„ ì €ì¥í•˜ëŠ” ê²ƒìœ¼ë¡œ ë³¸ë‹¤ë©´ ì—¬ê¸°ì— ì €ì¥í•˜ê³  BaseCharacterì—ì„œ ê°€ì ¸ì˜¬ ìˆ˜ ìˆê²Œ í•˜ëŠ”ê²Œ ì–´ë–¨ê¹Œ
+        // 2. ì•„ë‹ˆë©´ ë”°ë¡œ ë„ê° ì‹ìœ¼ë¡œ ë§Œë“¤ì–´ì„œ ê±°ê¸°ì— ì €ì¥í•˜ê³  ê°€ì ¸ì˜¬ ìˆ˜ ìˆê²Œ í•˜ëŠ” ë°©ë²•
         // characterPortrait.sprite = _character.CharacterPortrait;
 
         characterName.text = _character.characterStat.CharacterName;
     }
 
     /// <summary>
-    /// Ä³¸¯ÅÍ ½ºÅÈÀ» UI¿¡ Ç¥½Ã
+    /// ìºë¦­í„° ìŠ¤íƒ¯ì„ UIì— í‘œì‹œ
     /// </summary>
     /// <param name="_character"></param>
     private void ShowCharacterStat(BaseCharacter _character)

@@ -403,7 +403,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         enemies.CheckDeathInFormation();
 
         OnFocusStart?.Invoke();
-        OnCharacterAttacked(receiver, false);
+        OnCharacterAttacked?.Invoke(receiver, false);
         
         yield return new WaitUntil(() => _caster.IsIdle);
         OnFocusEnd?.Invoke();
