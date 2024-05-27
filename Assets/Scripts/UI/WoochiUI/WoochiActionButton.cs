@@ -18,6 +18,11 @@ public class WoochiActionButton : MonoBehaviour
         activeImage.SetActive(false);
     }
 
+    public virtual void Deactivate()
+    {
+        activeImage.SetActive(false);
+    }
+
     public void Highlight()
     {
         activeImage.SetActive(true);

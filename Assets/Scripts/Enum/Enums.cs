@@ -38,6 +38,18 @@ public enum SkillType
     END
 }
 
+
+public enum SkillElement
+{
+    None,
+    Fire,
+    Water,
+    Wood,
+    Metal,
+    Earth,
+    END
+}
+
 public enum BuffType
 {
     Bleed,
@@ -83,6 +95,7 @@ public enum AnimationType
     Skill2,
     Skill3,
     Skill4,
+    RandomSkillAnim,
     END
 }
 

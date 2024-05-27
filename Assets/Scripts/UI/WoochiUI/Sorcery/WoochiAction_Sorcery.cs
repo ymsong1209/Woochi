@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WoochiAction_Sorcery : WoochiActionButton
 {
-   [SerializeField] WoochiSkillList skilllist;
+   [SerializeField] WoochiSkillSelectionUI skilllist;
    public override void Activate()
    {
       base.Activate();

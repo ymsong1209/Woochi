@@ -12,6 +12,12 @@ public class WoochiButtonList : MonoBehaviour
         ActivateButton();
     }
 
+    public void Deactivate()
+    {
+        gameObject.SetActive(false);
+        DeactivateButton();
+    }
+
 
 
     public void ActivateButton()
@@ -19,6 +25,14 @@ public class WoochiButtonList : MonoBehaviour
         foreach (var button in buttonList)
         {
             button.Activate();
+        }
+    }
+    
+    public void DeactivateButton()
+    {
+        foreach (var button in buttonList)
+        {
+            button.Deactivate();
         }
     }
     

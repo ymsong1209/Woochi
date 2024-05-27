@@ -123,5 +123,5 @@ public class SkillSelectionUI : MonoBehaviour
             icon.SetSkill(null);
         }
     }
-
+    
 }

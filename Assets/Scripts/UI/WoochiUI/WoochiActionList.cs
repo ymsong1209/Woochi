@@ -6,7 +6,7 @@ public class WoochiActionList : MonoBehaviour
 {
     [SerializeField] private WoochiButtonList buttonList;
 
-    [SerializeField] private WoochiSkillList skillList;
+    [SerializeField] private WoochiSkillSelectionUI skillList;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,5 +33,11 @@ public class WoochiActionList : MonoBehaviour
         //TODO : 다른 UI 비활성화
         //ChangeLocationUI.DeActivate();
         //PartyChangeUI.Deactivate(); 등등..
+    }
+
+    public void Reset()
+    {
+        buttonList.Deactivate();
+        skillList.Deactivate();
     }
 }

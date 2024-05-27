@@ -31,6 +31,7 @@ public class SkillSO : ScriptableObject
     [SerializeField] private bool[]             skillRadius = new bool[8];    
     [SerializeField] private SkillType          skillType;
     [SerializeField] private SkillTargetType    skillTargetType;
+    [SerializeField] private SkillElement       skillElement;
     /// <summary>
     /// 스킬 적중시 적용시킬 버프 리스트
     /// </summary>
@@ -54,6 +55,7 @@ public class SkillSO : ScriptableObject
 
     public SkillType SkillType => skillType;
     public SkillTargetType SkillTargetType => skillTargetType;
+    public SkillElement SkillElement => skillElement;
     public float BaseMultiplier => baseMultiplier;
 
     public float BaseSkillAccuracy => baseSkillAccuracy;

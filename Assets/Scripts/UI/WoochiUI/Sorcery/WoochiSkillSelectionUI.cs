@@ -1,10 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class WoochiSkillList : MonoBehaviour
+using UnityEngine.Events;
+using UnityEngine.UI;
+public class WoochiSkillSelectionUI : MonoBehaviour
 {
+    public SkillEvent onSkillSelected;
     [SerializeField] private List<SkillIcon> skillIcons;
+
+    public void Start()
+    {
+        for (int i = 0; i < skillIcons.Count; i++)
+        {
+            int index = i;
+            Button btn = skillIcons[i].btn;
+            btn.onClick.AddListener(() => SkillButtonClicked(skillIcons[index].Skill));
+        }
+    }
+
     public void Activate()
     {
         gameObject.SetActive(true);
@@ -91,4 +105,16 @@ public class WoochiSkillList : MonoBehaviour
             icon.SetSkill(null);
         }
     }
+    
+    public void SkillButtonClicked(BaseSkill _skill)
+    {
+        if (_skill == null)
+            return;
+
+        // BattleManager의 SkillSelected 호출
+        // SkillTriggerSelector의 Activate 메서드 호출
+        onSkillSelected.Invoke(_skill);
+    }
+    
+    public SkillEvent OnSkillSelected => onSkillSelected;
 }

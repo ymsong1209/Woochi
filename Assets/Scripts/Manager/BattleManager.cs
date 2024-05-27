@@ -359,6 +359,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         
         DisableAllColliderInteractions();
         DisableAllArrows();
+        if(currentCharacter.IsMainCharacter) UIManager.GetInstance.ResetWoochiActionList();
         
         if (currentSelectedSkill.SkillOwner && receiver)
         {
@@ -373,6 +374,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         
         DisableAllColliderInteractions();
         DisableAllArrows();
+        if(currentCharacter.IsMainCharacter) UIManager.GetInstance.ResetWoochiActionList();
         
         BaseCharacter receiver = null;
         
