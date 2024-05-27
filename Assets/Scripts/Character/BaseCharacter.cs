@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(BaseCharacterHUD))]
@@ -65,12 +62,14 @@ public class BaseCharacter : MonoBehaviour
     protected bool isTurnUsed = false; //한 라운드 내에서 자신의 턴을 사용했을 경우
     protected bool isIdle = true;
 
-    public int rowOrder; // 캐릭터가 앞 열에서부터 몇 번째 순서인지
+    [HideInInspector] public int rowOrder;  // 캐릭터가 앞 열에서부터 몇 번째 순서인지
     #endregion BATTLE STATS
 
     #region Event
+    public Action onHealthChanged;
     public Action<AnimationType> onPlayAnimation;
     public Action<AttackResult, int, bool> onAttacked;
+    public Action onAnyTurnEnd;     // 아무 캐릭터의 턴이 끝날때
     #endregion
 
     public virtual void CheckSkillsOnTurnStart()

@@ -11,9 +11,8 @@ public class Health : MonoBehaviour
     [SerializeField] private int curHealth;
     [SerializeField] private int shield;
 
-    public Action<BaseCharacter> OnHealthChanged;
 
-    private void Start()
+    private void Awake()
     {
         owner = GetComponent<BaseCharacter>();
     }
@@ -23,32 +22,6 @@ public class Health : MonoBehaviour
     /// </summary>
     /// <param name="_damage"></param>
     /// <param name="_penetrate">_penetrate가 true일 경우에는 쉴드를 뚫는 관통형 대미지 </param>
-    public void ApplyDamageWithAnimation(int _damage, bool _isCrit = false, bool _penetrate = false)
-    {
-        //관통형 대미지인경우
-        if (_penetrate == false)
-        {
-            CurHealth = Mathf.Clamp(CurHealth - _damage, 0, maxHealth);
-            Debug.Log("Curhealth : " + curHealth);
-        }
-        //비관통형 대미지인경우 쉴드 먼저 까임
-        else
-        {
-            shield -= _damage;
-            if(shield < 0)
-            {
-                CurHealth += shield;
-                shield = 0;
-            }
-        }
-
-        owner.onAttacked?.Invoke(AttackResult.Normal, _damage, _isCrit);
-        owner.onPlayAnimation?.Invoke(AnimationType.Damaged);
-        OnHealthChanged.Invoke(owner);
-    }
-    
-    //버프에서 사용할 대미지 적용 공식
-    //대미지를 주고 한번에 애니메이션 재생할 의도
     public void ApplyDamage(int _damage, bool _isCrit = false, bool _penetrate = false)
     {
         //관통형 대미지인경우
@@ -69,8 +42,6 @@ public class Health : MonoBehaviour
         }
 
         owner.onAttacked?.Invoke(AttackResult.Normal, _damage, _isCrit);
-        // owner.ShowDamageUI(AttackResult.Normal, _damage, _isCrit);
-        OnHealthChanged.Invoke(owner);
     }
 
     /// <summary>
@@ -84,7 +55,6 @@ public class Health : MonoBehaviour
     public void Heal(int _healamount)
     {
         CurHealth = Mathf.Clamp(CurHealth + _healamount, 0, maxHealth);
-        OnHealthChanged.Invoke(owner);
     }
 
     public bool CheckHealthZero()
@@ -116,7 +86,7 @@ public class Health : MonoBehaviour
         set 
         { 
             curHealth = value; 
-            OnHealthChanged?.Invoke(owner);
+            owner.onHealthChanged?.Invoke();
         }
     }
 

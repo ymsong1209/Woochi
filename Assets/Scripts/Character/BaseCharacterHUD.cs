@@ -13,17 +13,17 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
     [SerializeField] private GameObject damageHUD;
     [SerializeField] private TextMeshPro damageTxt;
 
-    private void Start()
+    private void Awake()
     {
         owner = GetComponent<BaseCharacter>();
-        owner.Health.OnHealthChanged += UpdateHPBar;
+        owner.onHealthChanged += UpdateHPBar;
         owner.onAttacked += SetDamageText;
     }
 
-    public void UpdateHPBar(BaseCharacter _character)
+    public void UpdateHPBar()
     {
-        float curHealth = _character.Health.CurHealth;
-        float maxHealth = _character.Health.MaxHealth;
+        float curHealth = owner.Health.CurHealth;
+        float maxHealth = owner.Health.MaxHealth;
         float nextScale = curHealth / maxHealth;
         hpBar.transform.DOScaleX(nextScale, 1f).SetEase(Ease.OutCubic);
     }

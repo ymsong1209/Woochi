@@ -6,14 +6,15 @@ public class BaseCharacterAnimation : MonoBehaviour
 {
     private BaseCharacter owner;
     private Animator animator;
-    [SerializeField] private GameObject body;
+    [SerializeField] private SpriteRenderer body;
 
-    private void Start()
+    private void Awake()
     {
         owner = GetComponent<BaseCharacter>();
         animator = GetComponent<Animator>();
 
         owner.onPlayAnimation += Play;
+        owner.onAnyTurnEnd += SetSortLayer;
     }
 
     public void Play(AnimationType _type)
@@ -43,15 +44,23 @@ public class BaseCharacterAnimation : MonoBehaviour
         FocusOut();
     }
 
+    /// <summary>
+    /// rowOrder 값으로 후열에 있는 캐릭터가 앞에 보이도록
+    /// </summary>
+    void SetSortLayer()
+    {
+        body.sortingOrder = owner.rowOrder;
+    }    
+
     void FocusIn()
     {
-        body.layer = LayerMask.NameToLayer("Focus");
+        body.gameObject.layer = LayerMask.NameToLayer("Focus");
         // BattleManager.GetInstance.OnFocusEnter?.Invoke(owner);
     }
 
     void FocusOut()
     {
-        body.layer = LayerMask.NameToLayer("Default");
+        body.gameObject.layer = LayerMask.NameToLayer("Default");
     }
 
 }

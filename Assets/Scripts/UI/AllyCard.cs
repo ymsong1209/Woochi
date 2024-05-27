@@ -10,10 +10,10 @@ public class AllyCard : MonoBehaviour
     [SerializeField] Image portrait;
     [SerializeField] TextMeshProUGUI healthTxt;
     
-    public void UpdateHP(BaseCharacter _ally)
+    public void UpdateHP()
     {
-        float currentHP = _ally.Health.CurHealth;
-        float maxHP = _ally.Health.MaxHealth;
+        float currentHP = ally.Health.CurHealth;
+        float maxHP = ally.Health.MaxHealth;
 
         if (currentHP <= 0) healthTxt.color = Color.gray;
         else healthTxt.color = Color.white;
@@ -24,7 +24,7 @@ public class AllyCard : MonoBehaviour
     public void Activate(BaseCharacter _ally)
     {
         ally = _ally;
-        ally.Health.OnHealthChanged += UpdateHP;
+        ally.onHealthChanged += UpdateHP;
         gameObject.SetActive(true);
     }
 
@@ -38,7 +38,7 @@ public class AllyCard : MonoBehaviour
     {
         if (ally == null) return;
 
-        ally.Health.OnHealthChanged(ally);
+        ally.onHealthChanged?.Invoke();
     }
     #region Getter
     public BaseCharacter Ally => ally;

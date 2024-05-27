@@ -212,6 +212,8 @@ public class BaseSkill : MonoBehaviour
     }
     bool AttackLogic(BaseCharacter _opponent, ref bool _iscrit)
     {
+        _opponent.onPlayAnimation?.Invoke(AnimationType.Damaged);
+
         //치명타일 경우 명중, 회피, 저항 무시하고 바로 스킬 적용
         if (CheckCrit())
         {
@@ -226,7 +228,6 @@ public class BaseSkill : MonoBehaviour
         {
             Debug.Log("Accuracy Failed on" + _opponent.name.ToString());
             _opponent.onAttacked(AttackResult.Miss, 0, false);
-            _opponent.onPlayAnimation?.Invoke(AnimationType.Damaged);
             return false;
         }
         //회피 체크
@@ -234,7 +235,6 @@ public class BaseSkill : MonoBehaviour
         {
             Debug.Log(_opponent.name.ToString() + "Evaded skill" + skillName);
             _opponent.onAttacked(AttackResult.Evasion, 0, false);
-            _opponent.onPlayAnimation?.Invoke(AnimationType.Damaged);
             return false;
         }
         
@@ -441,7 +441,7 @@ public class BaseSkill : MonoBehaviour
                 RandomStat = RandomStat * (100 - _opponent.Defense) / 100;
                 if (_isCrit) RandomStat = RandomStat * 2;
 
-                opponentHealth.ApplyDamageWithAnimation((int)Mathf.Round(RandomStat), _isCrit);
+                opponentHealth.ApplyDamage((int)Mathf.Round(RandomStat), _isCrit);
                 _opponent.CheckDead();
             }
             break;

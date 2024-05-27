@@ -89,7 +89,7 @@ public class Formation : MonoBehaviour
     public void Positioning()
     {
         float direction = isAllyFormation ? -1f : 1f;
-        float moveX = 0f;
+        float moveX = transform.position.x;
 
         for (int index = 0; index < formation.Length;)
         {
@@ -97,12 +97,10 @@ public class Formation : MonoBehaviour
 
             BaseCharacter character = formation[index];
 
-            // 애니메이션 후 스프라이트 크기 바뀌는 버그 나서 막아놓음
-            // float radius = character.GetComponent<SpriteRenderer>().bounds.size.x / 2;
-            float radius = 3f;
-            moveX += (radius * direction);
-
             character.transform.DOLocalMoveX(moveX, 0.5f);
+            character.onAnyTurnEnd?.Invoke();
+
+            float radius = 4.5f;
             moveX += (radius * direction);
 
             index += character.Size;
