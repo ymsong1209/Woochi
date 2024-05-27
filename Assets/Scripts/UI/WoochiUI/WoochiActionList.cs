@@ -4,17 +4,34 @@ using UnityEngine;
 
 public class WoochiActionList : MonoBehaviour
 {
-    [SerializeField] private GameObject buttonList;
+    [SerializeField] private WoochiButtonList buttonList;
+
+    [SerializeField] private WoochiSkillList skillList;
     // Start is called before the first frame update
     void Start()
     {
-        buttonList.SetActive(false);
+        buttonList.gameObject.SetActive(false);
+        skillList.gameObject.SetActive(false);
         BattleManager.GetInstance.OnCharacterTurnStart += ShowUI;
     }
 
     private void ShowUI(BaseCharacter _character, bool isEnable = false)
     {
-        if (_character.IsMainCharacter) buttonList.SetActive(true);
-        else buttonList.SetActive(false);
+        if (_character.IsMainCharacter)
+        {
+            buttonList.Activate();
+        }
+        else
+        {
+            buttonList.gameObject.SetActive(false);
+        }
+    }
+    
+    public void ShowSkillList()
+    {
+        skillList.Activate();
+        //TODO : 다른 UI 비활성화
+        //ChangeLocationUI.DeActivate();
+        //PartyChangeUI.Deactivate(); 등등..
     }
 }
