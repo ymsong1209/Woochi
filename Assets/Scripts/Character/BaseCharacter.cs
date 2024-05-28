@@ -4,7 +4,6 @@ using UnityEngine;
 
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(BaseCharacterHUD))]
-[RequireComponent(typeof(BaseCharacterAnimation))]
 [RequireComponent(typeof(BaseCharacterCollider))]
 [DisallowMultipleComponent]
 public class BaseCharacter : MonoBehaviour
