@@ -4,9 +4,9 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class BaseCharacterAnimation : MonoBehaviour
 {
-    private BaseCharacter owner;
-    private Animator animator;
-    [SerializeField] private SpriteRenderer body;
+    protected BaseCharacter owner;
+    protected Animator animator;
+    [SerializeField] protected  SpriteRenderer body;
 
     private void Awake()
     {
@@ -17,7 +17,7 @@ public class BaseCharacterAnimation : MonoBehaviour
         owner.onAnyTurnEnd += SetSortLayer;
     }
 
-    public void Play(AnimationType _type)
+    public virtual void Play(AnimationType _type)
     {
         if(owner.IsDead)
         {
@@ -28,20 +28,17 @@ public class BaseCharacterAnimation : MonoBehaviour
         StartCoroutine(WaitAnim());
     }
 
-    IEnumerator WaitAnim()
+    protected IEnumerator WaitAnim()
     {
         owner.IsIdle = false;
         FocusIn();
-        yield return null;
 
-        // 1f로 하니까 애니메이션이 끝나지 않는 경우가 있어서 0.99f로 수정
-        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.99f)
-        {
-            yield return null;
-        }
+        yield return new WaitForSeconds(1.5f);
 
         owner.IsIdle = true;
         FocusOut();
+
+        animator.SetTrigger("Idle");
     }
 
     /// <summary>

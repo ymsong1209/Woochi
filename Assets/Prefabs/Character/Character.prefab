@@ -429,7 +429,6 @@ MonoBehaviour:
   activeSkillCheckBox: 
   isAlly: 0
   rowOrder: 0
-  xScale: 0
 --- !u!114 &2996513413138376824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,6 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 4947313877317803005}
+  effect: {fileID: 4635307683478757605}
 --- !u!95 &317045070324450805
 Animator:
   serializedVersion: 5
