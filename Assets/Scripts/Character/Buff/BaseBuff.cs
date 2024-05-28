@@ -70,6 +70,16 @@ public class BaseBuff : MonoBehaviour
         if (buffOwner.CheckDead()) return -1;
         return 0;
     }
+    /// <summary>
+    /// 자신의 턴이 끝났을때 적용
+    /// 버프를 적용하고 받은 대미지를 반환
+    /// 사용 후 캐릭터가 죽었거나 턴이 스킵되었으면 -1반환
+    /// </summary>
+    public virtual int ApplyTurnEndBuff()
+    {
+        if (buffOwner.CheckDead()) return -1;
+        return 0;
+    }
 
     /// <summary>
     /// 라운드가 끝날때 적용되는 버프

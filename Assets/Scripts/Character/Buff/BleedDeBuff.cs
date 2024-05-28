@@ -37,6 +37,15 @@ public class BleedDeBuff : BaseBuff
         text.text = description;
         text.color = Color.red;
     }
-    public int BleedPercent => bleedPercent;
-    
+    public int BleedPercent
+    {
+        get
+        {
+        return bleedPercent;
+        }
+        set
+        {
+            bleedPercent = value;
+        }
+    }
 }

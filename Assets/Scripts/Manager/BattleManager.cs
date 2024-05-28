@@ -116,7 +116,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             // Queue에서 항목을 제거
             BaseCharacter character = combatQueue.Dequeue();
 
-            character.ApplyBuff(buffTiming);
+            character.TriggerBuff(buffTiming);
 
             // 수정된 character를 Queue의 뒤쪽에 다시 추가.
             combatQueue.Enqueue(character);
@@ -201,7 +201,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             }
 
             // 자신의 차례가 됐을 때 버프 적용
-            if (currentCharacter.ApplyBuff(BuffTiming.TurnStart))
+            if (currentCharacter.TriggerBuff(BuffTiming.TurnStart))
             {
                 // 현재 턴의 캐릭터에 맞는 UI 업데이트
                 OnCharacterTurnStart?.Invoke(currentCharacter, true);
@@ -222,7 +222,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
             // 자신 차례가 지난 후 턴 사용 처리
             currentCharacter.IsTurnUsed = true;
-
+            // 턴이 종료된 후 버프 적용
+            currentCharacter.TriggerBuff(BuffTiming.TurnEnd);
+            
             allies.ReOrder(); enemies.ReOrder();
 
             // 스킬 사용으로 인한 속도 변경 처리

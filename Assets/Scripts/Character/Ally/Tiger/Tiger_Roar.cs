@@ -31,7 +31,7 @@ public class Tiger_Roar : BaseSkill
         roarBuff.BuffDurationTurns = 3;
         roarBuff.ChanceToApplyBuff = 100;
         roarBuff.ChangeDefense = 5;
-        ApplyBuff(SkillOwner,roarBuff);
+        SkillOwner.ApplyBuff(SkillOwner,roarBuff);
     }
     
 }
