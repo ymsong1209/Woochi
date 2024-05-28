@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class StatBuff : BaseBuff
@@ -31,5 +32,45 @@ public class StatBuff : BaseBuff
     {
         buffOwner.CheckForStatChange();
         base.RemoveBuff();
+    }
+    
+    public override void SetBuffDescription(TextMeshProUGUI text)
+    {
+        string description =  StatBuffName + BuffDurationTurns+": ";
+        if (changeDefense > 0)
+        {
+            description += "방어력 : +" + changeDefense + " ";
+        }
+        if (changeCrit > 0)
+        {
+            description += "치명타 : +" + changeCrit + " ";
+        }
+        if (changeAccuracy > 0)
+        {
+            description += "명중 : +" + changeAccuracy + " ";
+        }
+        if (changeEvasion > 0)
+        {
+            description += "회피 : +" + changeEvasion + " ";
+        }
+        if (changeResist > 0)
+        {
+            description += "저항 : +" + changeResist + " ";
+        }
+        if (changeMinStat > 0)
+        {
+            description += "최소 스탯 : +" + changeMinStat + " ";
+        }
+        if (changeMaxStat > 0)
+        {
+            description += "최대 스탯 : +" + changeMaxStat + " ";
+        }
+        if (changeSpeed > 0)
+        {
+            description += "속도 : +" + changeSpeed + " ";
+        }
+        description += "\n";
+        text.text += description;
+        text.color = Color.blue;
     }
 }

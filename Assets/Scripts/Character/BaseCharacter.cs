@@ -155,7 +155,11 @@ public class BaseCharacter : MonoBehaviour
 
     private bool ShouldRemoveBuff(BaseBuff buff)
     {
-        return buff.BuffDurationTurns <= 0;
+        if (buff.BuffDurationTurns < -1)
+        {
+            Debug.LogError(buff.name + "의 지속시간이 -1보다 작음");
+        }
+        return buff.BuffDurationTurns == 0;
     }
 
     private void RemoveBuffAtIndex(int index)

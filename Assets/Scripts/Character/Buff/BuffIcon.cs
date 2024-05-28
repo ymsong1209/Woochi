@@ -83,39 +83,39 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         UIManager.GetInstance.DeactivateBuffPopUp();
     }
 
-    private void SetBuffDescription(TextMeshProUGUI text)
-    {
-        switch (buffType)
-        {
-            case BuffType.Bleed:
-                SetBleedDescription(text);
-                break;
-            case BuffType.Burn:
-                SetBurnDescription(text);
-                break;
-            case BuffType.Stun:
-                //return "This buff stuns the character.";
-            case BuffType.StatWeaken:
-                SetStatWeakenDescription(text);
-                break;
-            case BuffType.StatStrengthen:
-                SetStatStrengthDescription(text);
-                break;
-            case BuffType.HealOverTime:
-                //return "This buff heals the character over time.";
-            case BuffType.Protect:
-                //return "This buff protects the character.";
-            case BuffType.Shield:
-                //return "This buff shields the character.";
-            default:
-                //return "Unknown buff type.";
-                break;
-        }
-    }
     
     #region BuffDescription
+    private void SetBuffDescription(TextMeshProUGUI text)
+    {
+        text.text = "No Child Buffs";
+        BaseBuff childBuff = ReturnChildBuffExceptStatBuff();
+        
+        if (childBuff)
+        {
+            childBuff.SetBuffDescription(text);
+        }
+        //스탯 관련 버프는 버프 설명 이어적어야함.
+        else
+        {
+            if (transform.childCount > 0) text.text = "";
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                childBuff = transform.GetChild(i).GetComponent<BaseBuff>();
+                childBuff.SetBuffDescription(text);
+            }
+            
+            // 루프가 끝난 후 마지막에 추가된 "/n"을 제거
+            if (text.text.EndsWith("\n"))
+            {
+                text.text = text.text.Substring(0, text.text.Length - 1);
+            }
+        }
+        
+    }
+    
+    
 
-    BaseBuff ReturnChildBuff()
+    BaseBuff ReturnChildBuffExceptStatBuff()
     {
         if(buffType == BuffType.StatStrengthen || buffType == BuffType.StatWeaken)
         {
@@ -127,137 +127,6 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             if (childbuff.BuffType == buffType) return childbuff;
             return null;
         }
-    }
-    private void SetBleedDescription(TextMeshProUGUI text)
-    {
-        BaseBuff childBuff = ReturnChildBuff();
-        if (childBuff)
-        {
-            BleedDeBuff bleedDeBuff = childBuff as BleedDeBuff;
-            string description = "출혈" +bleedDeBuff.BuffDurationTurns+ " : 매턴마다 최대 체력의 " + bleedDeBuff.BleedPercent + "% 만큼 피해를 입습니다.";
-            text.text = description;
-            text.color = Color.red;
-        }
-    }
-    
-    private void SetBurnDescription(TextMeshProUGUI text)
-    {
-        BaseBuff childBuff = ReturnChildBuff();
-        if (childBuff)
-        {
-            BurnDebuff burnDebuff = childBuff as BurnDebuff;
-            string description = "화상" +burnDebuff.BuffDurationTurns+ " : 매턴마다 최대 체력의 5% 만큼 피해를 입습니다.";
-            text.text = description;
-            text.color = Color.red;
-        }
-    }
-    
-    private void SetStatStrengthDescription(TextMeshProUGUI text)
-    {
-        string description = "";
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            BaseBuff childBuff = transform.GetChild(i).GetComponent<BaseBuff>();
-
-            // child가 statstrengthen인지 확인
-            if (childBuff && childBuff.BuffType == BuffType.StatStrengthen)
-            {
-                // Cast the BaseBuff to StatStrengthenBuff to access its specific properties
-                StatBuff statStrengthenBuff = childBuff as StatBuff;
-
-                // Set the description text
-                description += statStrengthenBuff.StatBuffName + statStrengthenBuff.BuffDurationTurns;
-                if (statStrengthenBuff.ChangeDefense > 0)
-                {
-                    description += "방어력 : +" + statStrengthenBuff.ChangeDefense + " ";
-                }
-                if (statStrengthenBuff.ChangeCrit > 0)
-                {
-                    description += "치명타 : +" + statStrengthenBuff.ChangeCrit + " ";
-                }
-                if (statStrengthenBuff.ChangeAccuracy > 0)
-                {
-                    description += "명중 : +" + statStrengthenBuff.ChangeAccuracy + " ";
-                }
-                if (statStrengthenBuff.ChangeEvasion > 0)
-                {
-                    description += "회피 : +" + statStrengthenBuff.ChangeEvasion + " ";
-                }
-                if (statStrengthenBuff.ChangeResist > 0)
-                {
-                    description += "저항 : +" + statStrengthenBuff.ChangeResist + " ";
-                }
-                if (statStrengthenBuff.ChangeMinStat > 0)
-                {
-                    description += "최소 스탯 : +" + statStrengthenBuff.ChangeMinStat + " ";
-                }
-                if (statStrengthenBuff.ChangeMaxStat > 0)
-                {
-                    description += "최대 스탯 : +" + statStrengthenBuff.ChangeMaxStat + " ";
-                }
-                if (statStrengthenBuff.ChangeSpeed > 0)
-                {
-                    description += "속도 : +" + statStrengthenBuff.ChangeSpeed + " ";
-                }
-                description += "\n";
-            }
-        }
-        text.text = description;
-        text.color = Color.blue;
-    }
-    
-    private void SetStatWeakenDescription(TextMeshProUGUI text)
-    {
-        string description = "";
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            BaseBuff childBuff = transform.GetChild(i).GetComponent<BaseBuff>();
-
-            // child가 statweaken인지 확인
-            if (childBuff && childBuff.BuffType == BuffType.StatWeaken)
-            {
-                // Cast the BaseBuff to StatStrengthenBuff to access its specific properties
-                StatDeBuff statStrengthenBuff = childBuff as StatDeBuff;
-
-                // Set the description text
-                description += statStrengthenBuff.StatBuffName + statStrengthenBuff.BuffDurationTurns+": ";
-                if (statStrengthenBuff.ChangeDefense < 0)
-                {
-                    description += "방어력 : " + statStrengthenBuff.ChangeDefense + " ";
-                }
-                if (statStrengthenBuff.ChangeCrit < 0)
-                {
-                    description += "치명타 : " + statStrengthenBuff.ChangeCrit + " ";
-                }
-                if (statStrengthenBuff.ChangeAccuracy < 0)
-                {
-                    description += "명중 : " + statStrengthenBuff.ChangeAccuracy + " ";
-                }
-                if (statStrengthenBuff.ChangeEvasion < 0)
-                {
-                    description += "회피 : " + statStrengthenBuff.ChangeEvasion + " ";
-                }
-                if (statStrengthenBuff.ChangeResist < 0)
-                {
-                    description += "저항 : " + statStrengthenBuff.ChangeResist + " ";
-                }
-                if (statStrengthenBuff.ChangeMinStat < 0)
-                {
-                    description += "최소 스탯 : " + statStrengthenBuff.ChangeMinStat + " ";
-                }
-                if (statStrengthenBuff.ChangeMaxStat < 0)
-                {
-                    description += "최대 스탯 : " + statStrengthenBuff.ChangeMaxStat + " ";
-                }
-                if (statStrengthenBuff.ChangeSpeed < 0)
-                {
-                    description += "속도 : " + statStrengthenBuff.ChangeSpeed + " ";
-                }
-                description += "\n";
-            }
-        }
-        text.text = description;
-        text.color = Color.red;
     }
     #endregion
 
