@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1817454482497125149, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2180620064527360784, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_Sprite
@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4651224405074788822, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.83
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4671041854525304100, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_AnchorMax.y
@@ -274,4 +274,3 @@ MonoBehaviour:
   activeSkillCheckBox: 010001000100
   isAlly: 0
   rowOrder: 0
-  xScale: 3

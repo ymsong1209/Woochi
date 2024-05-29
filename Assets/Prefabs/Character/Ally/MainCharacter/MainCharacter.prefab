@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1817454482497125149, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2829200758362975625, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_IsActive
@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4651224405074788822, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.6
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4947313877317803005, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_Size.x
@@ -88,9 +88,17 @@ PrefabInstance:
       propertyPath: characterStat
       value: 
       objectReference: {fileID: 11400000, guid: 8480ae2c967fddf44aa1f382e4b9e3cf, type: 2}
+    - target: {fileID: 6620385480260230078, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7088439537742152075, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002876329012777120, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8559900783289802040, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalPosition.y
@@ -180,6 +188,7 @@ MonoBehaviour:
   isSpawnSpecific: 0
   spawnLocation: {x: 0, y: 0, z: 0}
   spawnRotation: {x: 0, y: 0, z: 0, w: 0}
+  isMainCharacter: 1
   isDead: 0
   activeBuffs: []
   activeSkills: []
