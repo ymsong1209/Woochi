@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: CS_Tiger
   m_EditorClassIdentifier: 
   characterName: "\uD638\uB791\uC774"
+  portrait: {fileID: 21300000, guid: b549cdcd96833fc4292c3ddad663c744, type: 3}
   baseHealth: 34
   baseSpeed: 3
   baseDefense: 0

@@ -16,7 +16,7 @@ public class CharacterStatSO : ScriptableObject
     #endregion Header CHARACTER BASICS
 
     [SerializeField] private string characterName;
-
+    [SerializeField] private Sprite portrait;
 
     #region Header CHARACTER STATS
 
@@ -45,6 +45,7 @@ public class CharacterStatSO : ScriptableObject
 
     #region Getter Method
     public string CharacterName => characterName;
+    public Sprite Portrait => portrait;
     public int BaseHealth => baseHealth;
 
     public float BaseSpeed => baseSpeed;

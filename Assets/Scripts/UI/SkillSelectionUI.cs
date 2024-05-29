@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -13,6 +12,7 @@ public class SkillSelectionUI : MonoBehaviour
     public SkillEvent onSkillSelected; // SkillEvent 타입의 public 이벤트
 
     [SerializeField] private List<SkillIcon> skillIcons;
+    [SerializeField] private SkillIcon selectedIcon = null;
 
     private void Start()
     {
@@ -24,7 +24,7 @@ public class SkillSelectionUI : MonoBehaviour
         {
             int index = i;
             Button btn = skillIcons[i].btn;
-            btn.onClick.AddListener(() => SkillButtonClicked(skillIcons[index].Skill));
+            btn.onClick.AddListener(() => SkillButtonClicked(skillIcons[index]));
         }
     }
 
@@ -44,6 +44,9 @@ public class SkillSelectionUI : MonoBehaviour
         // 턴이 적 캐릭터라면 skillIcon Interactable을 false로 초기화
         if (!_character.IsAlly)
         {
+            if(selectedIcon != null)
+                selectedIcon.SetMark(false);
+
             skillIcons.ForEach(icon => icon.btn.interactable = false);
             return;
         }
@@ -103,14 +106,19 @@ public class SkillSelectionUI : MonoBehaviour
     }
 
     // 스킬 선택 버튼이 클릭됐을 때 호출될 메서드
-    public void SkillButtonClicked(BaseSkill _skill)
+    public void SkillButtonClicked(SkillIcon _skillIcon)
     {
-        if (_skill == null)
-            return;
+        // 이전에 선택한 스킬 아이콘이 있다면 그 아이콘 선택 해제
+        if (selectedIcon != null)
+        {
+            selectedIcon.SetMark(false);
+        }
+        selectedIcon = _skillIcon;
+        selectedIcon.SetMark(true);
 
         // BattleManager의 SkillSelected 호출
         // SkillTriggerSelector의 Activate 메서드 호출
-        onSkillSelected.Invoke(_skill);
+        onSkillSelected.Invoke(selectedIcon.Skill);
     }
 
     /// <summary>
@@ -118,6 +126,11 @@ public class SkillSelectionUI : MonoBehaviour
     /// </summary>
     private void DisableSkills()
     {
+        if(selectedIcon != null)
+            selectedIcon.SetMark(false);
+
+        selectedIcon = null;
+
         foreach (SkillIcon icon in skillIcons)
         {
             icon.SetSkill(null);

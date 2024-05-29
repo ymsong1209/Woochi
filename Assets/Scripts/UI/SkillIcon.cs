@@ -1,8 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -13,7 +8,8 @@ using UnityEngine.UI;
 [DisallowMultipleComponent]
 public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public  Image       image;
+    public  Image       selected;
+    public  Image       icon;
     public  Button      btn;
     public  Transform   tooltipPos;     // 툴팁 위치를 지정하기 위해
 
@@ -23,18 +19,23 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (_skill != null)
         {
-            image.gameObject.SetActive(true);
-            image.sprite = _skill.SkillSO.skillIcon;
+            icon.gameObject.SetActive(true);
+            icon.sprite = _skill.SkillSO.skillIcon;
             btn.interactable = isEnable;
             skill = _skill;
         }
         //_skill이 null일 경우 빈 skill로 초기화
         else
         {
-            image.gameObject.SetActive(false);
+            icon.gameObject.SetActive(false);
             btn.interactable = false;
             skill = null;
         }
+    }
+
+    public void SetMark(bool _isActive)
+    {
+        selected.gameObject.SetActive(_isActive);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
