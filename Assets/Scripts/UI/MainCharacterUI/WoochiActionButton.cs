@@ -13,9 +13,14 @@ public class WoochiActionButton : MonoBehaviour
         activeImage.SetActive(false);
     }
 
-    public virtual void Activate()
+    public virtual void Initialize()
     {
         activeImage.SetActive(false);
+    }
+    
+    public virtual void Activate()
+    {
+       
     }
 
     public virtual void Deactivate()

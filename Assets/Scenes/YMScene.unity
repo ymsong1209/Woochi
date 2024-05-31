@@ -1728,7 +1728,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 65, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &519566744
 GameObject:
@@ -1766,7 +1766,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 45, y: 45}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &519566746
 MonoBehaviour:
@@ -1814,7 +1814,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1678643689}
         m_TargetAssemblyTypeName: WoochiButtonList, Assembly-CSharp
-        m_MethodName: HighlightButton
+        m_MethodName: SelectButton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1306268783}
@@ -2067,7 +2067,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.9000244, y: 0.000030517578}
+  m_AnchoredPosition: {x: -47.37, y: 2.25}
   m_SizeDelta: {x: 45, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &602307215
@@ -2516,7 +2516,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 45, y: 45}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &624668659
 MonoBehaviour:
@@ -2564,7 +2564,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1678643689}
         m_TargetAssemblyTypeName: WoochiButtonList, Assembly-CSharp
-        m_MethodName: HighlightButton
+        m_MethodName: SelectButton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2111171362}
@@ -3362,7 +3362,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 65, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &868360528
 GameObject:
@@ -3741,8 +3741,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -119.899994, y: 0.000030517578}
-  m_SizeDelta: {x: 45, y: 45}
+  m_AnchoredPosition: {x: -211.98, y: 2.25}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &923417857
 MonoBehaviour:
@@ -4777,7 +4777,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 45, y: 45}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1190907756
 MonoBehaviour:
@@ -4825,7 +4825,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1678643689}
         m_TargetAssemblyTypeName: WoochiButtonList, Assembly-CSharp
-        m_MethodName: HighlightButton
+        m_MethodName: SelectButton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2081376924}
@@ -4992,7 +4992,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 65, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1251918470
 GameObject:
@@ -5288,7 +5288,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 128.79999, y: 0.000030517578}
+  m_AnchoredPosition: {x: 118.8, y: 2.25}
   m_SizeDelta: {x: 45, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1306268783
@@ -5760,7 +5760,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 45, y: 45}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1373459980
 MonoBehaviour:
@@ -5808,7 +5808,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1678643689}
         m_TargetAssemblyTypeName: WoochiButtonList, Assembly-CSharp
-        m_MethodName: HighlightButton
+        m_MethodName: SelectButton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 602307215}
@@ -7434,7 +7434,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1678643688
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7471,7 +7471,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000c7a5f49e3f034eb0109cbd851d6f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonList: []
+  buttonList:
+  - {fileID: 923417857}
+  - {fileID: 2111171362}
+  - {fileID: 602307215}
+  - {fileID: 2081376924}
+  - {fileID: 1306268783}
 --- !u!114 &1678643690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7583,7 +7588,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 65, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1736554776
 GameObject:
@@ -7658,7 +7663,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 65, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1814117680 stripped
 MonoBehaviour:
@@ -7712,7 +7717,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 45, y: 45}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1836569607
 MonoBehaviour:
@@ -7760,7 +7765,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1678643689}
         m_TargetAssemblyTypeName: WoochiButtonList, Assembly-CSharp
-        m_MethodName: HighlightButton
+        m_MethodName: SelectButton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 923417857}
@@ -8652,7 +8657,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 66.600006, y: 0.000030517578}
+  m_AnchoredPosition: {x: 34.93, y: 2.25}
   m_SizeDelta: {x: 45, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2081376924
@@ -8704,7 +8709,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -55, y: 0.000030517578}
+  m_AnchoredPosition: {x: -128.39, y: 2.25}
   m_SizeDelta: {x: 45, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2111171362

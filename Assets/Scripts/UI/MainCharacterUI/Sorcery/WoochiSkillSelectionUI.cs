@@ -19,6 +19,11 @@ public class WoochiSkillSelectionUI : MonoBehaviour
         }
     }
 
+    public void Initialize()
+    {
+        gameObject.SetActive(false);
+    }
+    
     public void Activate()
     {
         gameObject.SetActive(true);

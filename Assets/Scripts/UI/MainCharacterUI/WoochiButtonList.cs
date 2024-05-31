@@ -9,32 +9,52 @@ public class WoochiButtonList : MonoBehaviour
     public void Activate()
     {
         gameObject.SetActive(true);
-        ActivateButton();
+        InitializeAllButtons();
     }
 
     public void Deactivate()
     {
         gameObject.SetActive(false);
-        DeactivateButton();
+        DeactivateAllButtons();
     }
-
-
-
-    public void ActivateButton()
+    
+    public void InitializeAllButtons()
     {
         foreach (var button in buttonList)
         {
-            button.Activate();
+            button.Initialize();
         }
     }
     
-    public void DeactivateButton()
+    public void DeactivateAllButtons()
     {
         foreach (var button in buttonList)
         {
             button.Deactivate();
         }
     }
+
+    public void SelectButton(WoochiActionButton button)
+    {
+        ActivateButton(button);
+        HighlightButton(button);
+    }
+    
+    public void ActivateButton(WoochiActionButton button)
+    {
+        for (int i = 0; i < buttonList.Count; i++)
+        {
+            if (buttonList[i] == button)
+            {
+                buttonList[i].Activate();
+            }
+            else
+            {
+                buttonList[i].Deactivate();
+            }
+        }
+    }
+    
     
     public void HighlightButton(WoochiActionButton button)
     {
