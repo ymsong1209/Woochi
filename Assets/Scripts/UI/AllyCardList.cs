@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 /*
@@ -31,6 +28,12 @@ public class AllyCardList : MonoBehaviour
         {
             if(i < characters.Count)
             {
+                if (characters[i].IsMainCharacter)
+                {
+                    cards[i].Deactivate();
+                    continue;
+                }
+
                 cards[i].Activate(characters[i]);
             }
             else

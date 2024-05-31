@@ -5,8 +5,5 @@ using UnityEngine;
 
 public class MainCharacter : BaseCharacter
 {
-   private void Start()
-   {
-      isMainCharacter = true;
-   }
+
 }

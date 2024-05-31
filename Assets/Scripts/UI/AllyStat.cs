@@ -44,7 +44,7 @@ public class AllyStat : MonoBehaviour
 
         if (isPercent)
         {
-            valueTxt.text = value.ToString("F1") + "%";
+            valueTxt.text = value.ToString() + "%";
             return;
         }
 
