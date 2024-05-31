@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8403137143158999209}
-  - component: {fileID: 1607032779159361314}
+  - component: {fileID: 8652851435835824962}
   m_Layer: 0
   m_Name: BleedDebuff
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1607032779159361314
+--- !u!114 &8652851435835824962
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2569674945298275565}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bf46a0ff2d4435981c668aeb48d0075, type: 3}
+  m_Script: {fileID: 11500000, guid: a34bcd959fd333247b982a8d6965e5cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buffOwner: {fileID: 0}
@@ -56,4 +56,4 @@ MonoBehaviour:
   changeMinStat: 0
   changeMaxStat: 0
   changeSpeed: 0
-  StatBuffName: 
+  bleedPercent: 0

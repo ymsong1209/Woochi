@@ -38,7 +38,15 @@ public class StatBuff : BaseBuff
     
     public override void SetBuffDescription(TextMeshProUGUI text)
     {
-        string description =  StatBuffName + BuffDurationTurns+": ";
+        string description = "";
+        if(BuffDurationTurns == -1)
+        {
+            description = StatBuffName + ": ";
+        }
+        else
+        {
+            description =  StatBuffName + BuffDurationTurns+": ";
+        }
         if (changeDefense > 0)
         {
             description += "방어력 : +" + changeDefense + " ";

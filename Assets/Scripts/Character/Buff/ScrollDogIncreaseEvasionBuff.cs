@@ -21,6 +21,7 @@ public class ScrollDogIncreaseEvasionBuff : BaseBuff
             evasionBuff.ChanceToApplyBuff = 100;
             evasionBuff.ChangeEvasion = 2;
             buffOwner.ApplyBuff(buffOwner,evasionBuff);
+            evasionStack++;
         }
         if (buffOwner.CheckDead()) return -1;
         return 0;
@@ -28,7 +29,7 @@ public class ScrollDogIncreaseEvasionBuff : BaseBuff
 
     public override void SetBuffDescription(TextMeshProUGUI text)
     {
-        string description = "족자" + ": 자신의 턴이 종료될 때마다 회피가 2씩 상승한다.\n";
+        string description = "족자 : 자신의 턴이 종료될 때마다 회피가 2씩 상승한다.\n";
         description += "(최대 10번까지 중첩 가능)\n";
         description += "현재 중첩 수 : " + evasionStack + "\n";
         text.text = description;
