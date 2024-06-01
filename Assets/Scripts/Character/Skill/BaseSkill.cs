@@ -1,10 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
+/// <summary>
+/// 스킬 결과를 저장할 클래스
+/// 크리티컬 결과와 일반 결과를 저장
+/// </summary>
+public class SkillResult
+{
+    public bool isHit = false;
+    public bool isCrit = false;
+}
 
 public class BaseSkill : MonoBehaviour
 {
@@ -50,6 +56,8 @@ public class BaseSkill : MonoBehaviour
     [SerializeField,ReadOnly] private float multiplier;    // 피해량 계수
     [SerializeField,ReadOnly] private float skillAccuracy; // 스킬 명중 수치
 
+    SkillResult skillResult;
+
     /// <summary>
     /// 자신이 가지고 있는 SkillSO 정보를 이용해 BaseSkill을 초기화
     /// </summary>
@@ -87,6 +95,10 @@ public class BaseSkill : MonoBehaviour
             return;
         }
 
+        skillResult = new SkillResult();
+
+        skillOwner.onPlayAnimation?.Invoke(skillSO.AnimType);
+
         //단일공격인 경우 _opponent한테만 공격 로직 적용
         if (skillTargetType == SkillTargetType.Singular)
         {
@@ -99,6 +111,8 @@ public class BaseSkill : MonoBehaviour
             ApplyMultiple();
         }
         instantiatedBuffList.Clear();
+
+        BattleManager.GetInstance.OnShakeCamera?.Invoke(skillResult.isHit, skillResult.isCrit);
     }
     
     void  ClearInstantiatedBuffList()
@@ -115,37 +129,23 @@ public class BaseSkill : MonoBehaviour
     {
         bool isCrit = false;
 
-        skillOwner.onPlayAnimation?.Invoke(skillSO.AnimType);
         //공격 실패시 버프 적용 안함
         if (AttackLogic(_opponent, ref isCrit) == false) return;
-        
-        //치명타일 경우 버프 바로 적용
-        if (isCrit)
+
+        foreach (GameObject applyBuffGameObject in instantiatedBuffList)
         {
-            foreach (GameObject applybuffGameobject in instantiatedBuffList)
+            if (!applyBuffGameObject) continue;
+
+            BaseBuff buffToApply = applyBuffGameObject.GetComponent<BaseBuff>();
+            if (!buffToApply) continue;
+
+            // 버프 적용 가능 여부 판단
+            if (!CheckApplyBuff(buffToApply)) continue;
+
+            // 치명타 여부에 따라 저항 무시 또는 저항 수치 판단
+            if (isCrit || CheckResist(_opponent))
             {
-                if (!applybuffGameobject) continue;
-                BaseBuff BufftoApply = applybuffGameobject.GetComponent<BaseBuff>();
-                if (!BufftoApply) continue;
-                //먼저 buff/debuff가 몇%의 확률로 걸리는지 판단.
-                if (CheckApplyBuff(BufftoApply) == false) continue;
-                //치명타면 저항 무시한채 스킬 적용
-                ApplyBuff(_opponent, BufftoApply);
-            }
-        }
-        else
-        {
-            foreach (GameObject applybuffGameobject in instantiatedBuffList)
-            {
-                if (!applybuffGameobject) continue;
-                BaseBuff bufftoApply = applybuffGameobject.GetComponent<BaseBuff>();
-                //먼저 buff/debuff가 몇%의 확률로 걸리는지 판단.
-                if (CheckApplyBuff(bufftoApply) == false) continue;
-                //적의 저항 수치 판단.
-                if (CheckResist(_opponent))
-                {
-                    ApplyBuff(_opponent, bufftoApply);
-                }
+                ApplyBuff(_opponent, buffToApply);
             }
         }
     }
@@ -219,6 +219,8 @@ public class BaseSkill : MonoBehaviour
         {
             Debug.Log(skillOwner.ToString() + "uses Crit Skill on "+ skillName + "to "+ _opponent.name.ToString());
             _iscrit = true;
+            skillResult.isHit = true;
+            skillResult.isCrit = true;
             ApplyStat(_opponent, true);
             return true;
         }
@@ -238,6 +240,7 @@ public class BaseSkill : MonoBehaviour
             return false;
         }
         
+        skillResult.isHit = true;
         Debug.Log( skillOwner.ToString() + "uses Non Crit Skill on " + skillName + "to " + _opponent.name.ToString());
         ApplyStat(_opponent, false);
 

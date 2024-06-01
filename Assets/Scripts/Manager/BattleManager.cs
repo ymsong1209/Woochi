@@ -1,9 +1,6 @@
-using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.Collections;
 using UnityEngine;
 
 public class BattleManager : SingletonMonobehaviour<BattleManager>
@@ -33,6 +30,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     public Action OnFocusStart;
     public Action OnFocusEnd;
     public Action<BaseCharacter> OnFocusEnter;
+    public Action<bool, bool> OnShakeCamera;
     #endregion
 
     #region 부울 변수

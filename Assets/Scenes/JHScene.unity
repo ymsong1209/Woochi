@@ -349,8 +349,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1533934395}
+  m_Children: []
   m_Father: {fileID: 1401384351}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &79350502
@@ -1329,6 +1328,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84dd57b0f4f5df544937d8c505cf002c, type: 3}
+--- !u!114 &475291007 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5772209459664597655, guid: 84dd57b0f4f5df544937d8c505cf002c, type: 3}
+  m_PrefabInstance: {fileID: 1964181012}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &485195614
 GameObject:
   m_ObjectHideFlags: 0
@@ -5886,6 +5896,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 79350500}
+  - {fileID: 1533934395}
   - {fileID: 1846467346}
   - {fileID: 1069770083}
   m_Father: {fileID: 0}
@@ -6929,7 +6940,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 311891216}
-  m_Father: {fileID: 79350500}
+  m_Father: {fileID: 1401384351}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1534983415
 GameObject:
@@ -8194,6 +8205,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skill_0
       objectReference: {fileID: 0}
+    - target: {fileID: 7813606811748994218, guid: 84dd57b0f4f5df544937d8c505cf002c, type: 3}
+      propertyPath: btn
+      value: 
+      objectReference: {fileID: 475291007}
     - target: {fileID: 8977273633421105788, guid: 84dd57b0f4f5df544937d8c505cf002c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9010,6 +9025,10 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 79350499}
+    - target: {fileID: 8540004010816379627, guid: 56a27495f0a512c408751da061e9230f, type: 3}
+      propertyPath: focusCamera
+      value: 
+      objectReference: {fileID: 1069770082}
     - target: {fileID: 8540004010816379627, guid: 56a27495f0a512c408751da061e9230f, type: 3}
       propertyPath: postProcessVolume
       value: 

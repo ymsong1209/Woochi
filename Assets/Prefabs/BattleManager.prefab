@@ -62,4 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
+  focusCamera: {fileID: 0}
   postProcessVolume: {fileID: 0}
+  shakeDuration: 0.5
+  shakeAmount: 0.1
