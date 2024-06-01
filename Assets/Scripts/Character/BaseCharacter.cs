@@ -93,20 +93,22 @@ public class BaseCharacter : MonoBehaviour
     /// 버프 효과 사용 후 캐릭터가 살아있으면 true반환
     /// 죽었을 경우엔 캐릭터가 가지고 있는 모든 버프 제거 후 사망 처리
     /// </summary>
-    public bool ApplyBuff(BuffTiming timing)
+    public bool TriggerBuff(BuffTiming timing)
     {
         switch (timing)
         {
             case BuffTiming.BattleStart:
-                return ApplyBuffs(buff => buff.ApplyBattleStartBuff());
+                return TriggerBuffs(buff => buff.ApplyBattleStartBuff());
             case BuffTiming.RoundStart:
-                return ApplyBuffs(buff => buff.ApplyRoundStartBuff());
+                return TriggerBuffs(buff => buff.ApplyRoundStartBuff());
             case BuffTiming.RoundEnd:
-                return ApplyBuffs(buff => buff.ApplyRoundEndBuff());
+                return TriggerBuffs(buff => buff.ApplyRoundEndBuff());
             case BuffTiming.TurnStart:
-                return ApplyBuffs(buff => buff.ApplyTurnStartBuff());
+                return TriggerBuffs(buff => buff.ApplyTurnStartBuff());
+            case BuffTiming.TurnEnd:
+                return TriggerBuffs(buff => buff.ApplyTurnEndBuff());
             case BuffTiming.BattleEnd:
-                return ApplyBuffs(buff => buff.ApplyBattleEndBuff());
+                return TriggerBuffs(buff => buff.ApplyBattleEndBuff());
             default:
                 throw new ArgumentOutOfRangeException(nameof(timing), $"Unsupported buff timing: {timing}");
         }
@@ -115,7 +117,7 @@ public class BaseCharacter : MonoBehaviour
     /// <summary>
     /// 버프 적용후,캐릭터의 턴이 스킵되거나 캐릭터가 사망할 경우 false 반환
     /// </summary>
-    private bool ApplyBuffs(Func<BaseBuff, int> applyBuffMethod)
+    private bool TriggerBuffs(Func<BaseBuff, int> applyBuffMethod)
     {
         bool mightDead = false;
 
@@ -151,10 +153,86 @@ public class BaseCharacter : MonoBehaviour
 
         return true;
     }
+    
+    /// <summary>
+    /// buff gameobject는 instantiated되어서 opponent에 붙어있음.
+    /// </summary>
+    /// <returns></returns>
+    public virtual BaseBuff ApplyBuff(BaseCharacter _Opponent, BaseBuff _buff)
+    {
+
+        BaseBuff activeBuff = _Opponent.FindMatchingBuff(_buff);
+
+        if (activeBuff)
+        {
+            // 기존 버프와 중첩
+            activeBuff.StackBuff(_buff);
+            return activeBuff;
+        }
+
+        // 새 버프 추가
+        BaseBuff new_buff = InstantiateBuffAtIcon(_Opponent, _buff);
+        new_buff.AddBuff(_Opponent);
+        return new_buff;
+    }
+    BaseBuff InstantiateBuffAtIcon(BaseCharacter opponent, BaseBuff buff)
+    {
+        // Find the bufflistcanvas GameObject under the opponent
+        Transform buffList = opponent.transform.Find("BuffList");
+        if (buffList == null)
+        {
+            Debug.LogError("buffList not found under opponent" + opponent.gameObject.name.ToString());
+            return null;
+        }
+        
+        // 모든 자손을 순회하여 알맞은 BuffIcon을 찾음
+        Transform targetChild = FindBuffIconTransform(buffList, buff.BuffType);
+        if (targetChild == null)
+        {
+            Debug.LogError("No matching BuffIcon found under BuffListCanvas");
+            return null;
+        }
+    
+        BuffIcon buffIcon = targetChild.GetComponent<BuffIcon>();
+        if (buffIcon != null && !buffIcon.gameObject.activeSelf)
+        {
+            buffIcon.gameObject.SetActive(true);
+            buffIcon.Activate();
+        }
+        
+        BaseBuff instantiatedBuff = Instantiate(buff, targetChild);
+        return instantiatedBuff;
+    }
+    
+    // 재귀적으로 BuffIcon을 찾는 메서드
+    Transform FindBuffIconTransform(Transform parent, BuffType buffType)
+    {
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            Transform child = parent.GetChild(i);
+            BuffIcon buffIcon = child.GetComponent<BuffIcon>();
+
+            if (buffIcon != null && buffIcon.BuffType == buffType)
+            {
+                return child;
+            }
+
+            Transform foundChild = FindBuffIconTransform(child, buffType);
+            if (foundChild != null)
+            {
+                return foundChild;
+            }
+        }
+        return null;
+    }
 
     private bool ShouldRemoveBuff(BaseBuff buff)
     {
-        return buff.BuffDurationTurns <= 0;
+        if (buff.BuffDurationTurns < -1)
+        {
+            Debug.LogError(buff.name + "의 지속시간이 -1보다 작음");
+        }
+        return buff.BuffDurationTurns == 0;
     }
 
     private void RemoveBuffAtIndex(int index)
@@ -220,6 +298,42 @@ public class BaseCharacter : MonoBehaviour
         minStat = Mathf.Max(minStat, 0);
         maxStat = Mathf.Max(maxStat, 0);
         speed = Mathf.Max(speed, 0);
+    }
+    
+    /// <summary>
+    /// activebuffs에서 _buff와 같은 버프를 찾아 반환
+    /// </summary>
+    public BaseBuff FindMatchingBuff(BaseBuff _buff)
+    {
+        foreach (BaseBuff activeBuff in activeBuffs)
+        {
+            if (activeBuff == null) continue;
+
+            if (activeBuff.BuffType == _buff.BuffType)
+            {
+                // 스탯 변경 버프는 스탯 변경 버프끼리
+                if (_buff.BuffType == BuffType.StatStrengthen || _buff.BuffType == BuffType.StatWeaken)
+                {
+                    StatBuff activeStatBuff = activeBuff as StatBuff;
+                    StatBuff statBuff = _buff as StatBuff;
+
+                    StatDeBuff activeStatDebuff = activeBuff as StatDeBuff;
+                    StatDeBuff statDebuff = _buff as StatDeBuff;
+
+                    if ((activeStatBuff != null && statBuff != null && activeStatBuff.StatBuffName == statBuff.StatBuffName) ||
+                        (activeStatDebuff != null && statDebuff != null && activeStatDebuff.StatBuffName == statDebuff.StatBuffName))
+                    {
+                        return activeBuff;
+                    }
+                }
+                else
+                {
+                    return activeBuff;
+                }
+            }
+        }
+
+        return null;
     }
 
     #endregion

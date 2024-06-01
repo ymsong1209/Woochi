@@ -34,7 +34,7 @@ public class FoxFire_Row4 : BaseSkill
          //아군에 준 버프는 반드시 명중. 검사 로직 건너뜀
          GameObject curebuffInstantiated = Instantiate(cureBuffPrefab, transform);
          FoxFire_Row4_CureBuff cureBuff = curebuffInstantiated.GetComponent<FoxFire_Row4_CureBuff>();
-         BaseBuff buff = ApplyBuff(_opponent, cureBuff);
+         BaseBuff buff = SkillOwner.ApplyBuff(_opponent, cureBuff);
          cureBuff.SetFox(SkillOwner);
       }
       else

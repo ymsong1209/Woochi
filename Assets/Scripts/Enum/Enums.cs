@@ -60,6 +60,7 @@ public enum BuffType
     HealOverTime,
     Protect, //보호를 해줄때
     Shield, //보호받을때
+    ScrollDogIncreaseEvasionBuff,//족자구 회피 증가 버프
     END
 }
 
@@ -69,6 +70,7 @@ public enum BuffTiming
     RoundStart,
     RoundEnd,
     TurnStart,
+    TurnEnd,
     BattleEnd,
     END
 }

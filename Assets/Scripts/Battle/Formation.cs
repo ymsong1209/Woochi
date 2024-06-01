@@ -32,7 +32,7 @@ public class Formation : MonoBehaviour
 
             character.rowOrder = size;
 
-            character.ApplyBuff(BuffTiming.BattleStart);
+            character.TriggerBuff(BuffTiming.BattleStart);
 
             for (int i = 0; i < character.Size; i++)
             {
