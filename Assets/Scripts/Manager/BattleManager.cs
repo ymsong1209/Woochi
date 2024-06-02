@@ -202,7 +202,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             if (currentCharacter.TriggerBuff(BuffTiming.TurnStart))
             {
                 // 현재 턴의 캐릭터에 맞는 UI 업데이트
-                OnCharacterTurnStart?.Invoke(currentCharacter, true);
+                if(currentCharacter.IsAlly)
+                    OnCharacterTurnStart?.Invoke(currentCharacter, true);
 
                 // TODO : 현재 턴이 적일 시 AI로 행동 결정(임시 코드)
                 if (!currentCharacter.IsAlly)
@@ -357,7 +358,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         
         DisableAllColliderInteractions();
         DisableAllArrows();
-        if(currentCharacter.IsMainCharacter) UIManager.GetInstance.ResetWoochiActionList();
         
         if (currentSelectedSkill.SkillOwner && receiver)
         {
@@ -372,7 +372,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         
         DisableAllColliderInteractions();
         DisableAllArrows();
-        if(currentCharacter.IsMainCharacter) UIManager.GetInstance.ResetWoochiActionList();
         
         BaseCharacter receiver = null;
         

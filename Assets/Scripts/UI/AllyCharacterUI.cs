@@ -33,7 +33,6 @@ public class AllyCharacterUI : MonoBehaviour
 
     public void ShowCharacterUI(BaseCharacter _character, bool isEnable = true)
     {
-        
         if(!_character.IsAlly)
             return;
 
@@ -47,12 +46,6 @@ public class AllyCharacterUI : MonoBehaviour
     /// <param name="_character"></param>
     private void ShowCharacterInfo(BaseCharacter _character)
     {
-        // 캐릭터 초상화 스프라이트는 아직 어디에 저장해야 할 지 미정이라 주석 처리
-        // 방법 생각
-        // 1. CharacterStatSO를 캐릭터 관련된 것들을 저장하는 것으로 본다면 여기에 저장하고 BaseCharacter에서 가져올 수 있게 하는게 어떨까
-        // 2. 아니면 따로 도감 식으로 만들어서 거기에 저장하고 가져올 수 있게 하는 방법
-        // characterPortrait.sprite = _character.CharacterPortrait;
-
         characterName.text = _character.characterStat.CharacterName;
     }
 

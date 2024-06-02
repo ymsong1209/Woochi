@@ -36,7 +36,11 @@ public class SkillSelectionUI : MonoBehaviour
     public void ShowForCharacter(BaseCharacter _character, bool isEnable = true)
     {
         // 현재 캐릭터의 턴이 전우치라면 UI 비활성화
-        if (_character.IsMainCharacter) gameObject.SetActive(false);
+        if (_character.IsMainCharacter)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         else gameObject.SetActive(true);
         
         _character.CheckSkillsOnTurnStart();

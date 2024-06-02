@@ -7,23 +7,32 @@ public class WoochiActionList : MonoBehaviour
     [SerializeField] private WoochiButtonList buttonList;
 
     [SerializeField] private WoochiSkillSelectionUI skillList;
-    // Start is called before the first frame update
+
     void Start()
     {
         buttonList.gameObject.SetActive(false);
         skillList.gameObject.SetActive(false);
         BattleManager.GetInstance.OnCharacterTurnStart += ShowUI;
+        BattleManager.GetInstance.OnCharacterAttacked += ShowUI;
     }
 
     private void ShowUI(BaseCharacter _character, bool isEnable = false)
     {
+        // 우치인 경우 우치 UI 활성화
         if (_character.IsMainCharacter)
         {
-            buttonList.Activate();
+            buttonList.Activate(isEnable);
         }
-        else
+        // 우치가 아니고 적이 아닌 경우 우치 UI 비활성화
+        else if(!_character.IsMainCharacter && _character.IsAlly)
         {
-            buttonList.gameObject.SetActive(false);
+            Reset();
+        }
+        else if(!_character.IsAlly)
+        {
+            // 우치 UI 선택된 스킬 해제
+            buttonList.DeactivateAllButtons();
+            skillList.Initialize();
         }
     }
     

@@ -6,10 +6,10 @@ public class WoochiButtonList : MonoBehaviour
 {
     [SerializeField] private List<WoochiActionButton> buttonList;
 
-    public void Activate()
+    public void Activate(bool isEnable)
     {
         gameObject.SetActive(true);
-        InitializeAllButtons();
+        InitializeAllButtons(isEnable);
     }
 
     public void Deactivate()
@@ -18,11 +18,11 @@ public class WoochiButtonList : MonoBehaviour
         DeactivateAllButtons();
     }
     
-    public void InitializeAllButtons()
+    public void InitializeAllButtons(bool isEnable)
     {
         foreach (var button in buttonList)
         {
-            button.Initialize();
+            button.Initialize(isEnable);
         }
     }
     

@@ -6,9 +6,9 @@ public class WoochiAction_Sorcery : WoochiActionButton
 {
    [SerializeField] WoochiSkillSelectionUI skilllist;
 
-   public override void Initialize()
+   public override void Initialize(bool isEnable)
    {
-      base.Initialize();
+      base.Initialize(isEnable);
       skilllist.Initialize();
    }
    public override void Activate()

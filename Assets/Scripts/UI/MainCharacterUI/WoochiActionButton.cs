@@ -1,21 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class WoochiActionButton : MonoBehaviour
 {
     [SerializeField] private WoochiButtonList owner;
-    [SerializeField] private GameObject activeImage;
-    // Start is called before the first frame update
-    void Start()
-    {
-        activeImage.SetActive(false);
-    }
+    [SerializeField] private Image icon;
 
-    public virtual void Initialize()
+    public virtual void Initialize(bool isEnable)
     {
-        activeImage.SetActive(false);
+        Interactable(isEnable);
     }
     
     public virtual void Activate()
@@ -25,15 +19,21 @@ public class WoochiActionButton : MonoBehaviour
 
     public virtual void Deactivate()
     {
-        activeImage.SetActive(false);
+        icon.DOColor(Color.white, 0f);
+        Interactable(false);
     }
 
     public void Highlight()
     {
-        activeImage.SetActive(true);
+        icon.DOColor(Color.black, 0.5f);
     }
     public void DeHighlight()
     {
-        activeImage.SetActive(false);
+        icon.DOColor(Color.white, 0.5f);
+    }
+
+    protected void Interactable(bool isEnable)
+    {
+        icon.GetComponent<Button>().interactable = isEnable;
     }
 }

@@ -35,7 +35,7 @@ public class BaseCharacter : MonoBehaviour
     [SerializeField] private Vector3    spawnLocation;
     [SerializeField] private Quaternion spawnRotation;
     [SerializeField] bool isMainCharacter = false;
-
+    
     #region Header BATTLE STATS
 
     [Space(10)]
@@ -60,6 +60,9 @@ public class BaseCharacter : MonoBehaviour
     [SerializeField,ReadOnly] protected bool isAlly;
     protected bool isTurnUsed = false; //한 라운드 내에서 자신의 턴을 사용했을 경우
     protected bool isIdle = true;
+
+    public bool isStarting = false;     // 캐릭터가 전투 시작시 소환되었는지
+    public bool isSummoned = false;     // 캐릭터가 소환되었는지
 
     [HideInInspector] public int rowOrder;  // 캐릭터가 앞 열에서부터 몇 번째 순서인지
     #endregion BATTLE STATS
