@@ -1288,7 +1288,7 @@ GameObject:
   - component: {fileID: 365673089}
   - component: {fileID: 365673088}
   - component: {fileID: 365673090}
-  - component: {fileID: 365673086}
+  - component: {fileID: 365673091}
   m_Layer: 5
   m_Name: WoochiSkillList
   m_TagString: Untagged
@@ -1296,62 +1296,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &365673086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 365673085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ed9198793c3c4946a45f1c0cf7442cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onSkillSelected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1081429682}
-        m_TargetAssemblyTypeName: BattleManager, Assembly-CSharp
-        m_MethodName: SkillSelected
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1081429682}
-        m_TargetAssemblyTypeName: BattleManager, Assembly-CSharp
-        m_MethodName: EnableArrowForSelectedSkill
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1081429682}
-        m_TargetAssemblyTypeName: BattleManager, Assembly-CSharp
-        m_MethodName: ActivateColliderForSelectedSkill
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  skillIcons:
-  - {fileID: 1490710214}
-  - {fileID: 1901188839}
-  - {fileID: 2030740112}
-  - {fileID: 1404218174}
 --- !u!222 &365673088
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1414,6 +1358,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &365673091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365673085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c7633f6781b784aae98b4048d7e8c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSkillSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  skillIcons:
+  - {fileID: 1490710214}
+  - {fileID: 1901188839}
+  - {fileID: 2030740112}
+  - {fileID: 1404218174}
 --- !u!1 &373353580
 GameObject:
   m_ObjectHideFlags: 0
@@ -2246,12 +2210,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1678643689}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WoochiButtonList, Assembly-CSharp
         m_MethodName: SelectButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1306268783}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: WoochiActionButton, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2683,11 +2647,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 602307213}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7401aad1f08114f4485bb5c94b59dc9f, type: 3}
+  m_Script: {fileID: 11500000, guid: d73ea6162722f41479339cdea93dede3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 1678643689}
-  activeImage: {fileID: 1229276100}
+  owner: {fileID: 1678643692}
+  icon: {fileID: 1373459981}
 --- !u!1 &603492361
 GameObject:
   m_ObjectHideFlags: 0
@@ -3166,12 +3130,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1678643689}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WoochiButtonList, Assembly-CSharp
         m_MethodName: SelectButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2111171362}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: WoochiActionButton, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -3750,8 +3714,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98f6d99dc50da2c4aa7c87c347db055c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonList: {fileID: 1678643689}
-  skillList: {fileID: 365673086}
+  buttonList: {fileID: 1678643692}
+  skillList: {fileID: 365673091}
   recoveryUI: {fileID: 1432476798}
 --- !u!222 &752764748
 CanvasRenderer:
@@ -4396,7 +4360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 923417856}
-  - component: {fileID: 923417857}
+  - component: {fileID: 923417858}
   m_Layer: 5
   m_Name: WoochiActionButton_Sorcery
   m_TagString: Untagged
@@ -4425,7 +4389,7 @@ RectTransform:
   m_AnchoredPosition: {x: -211.98, y: 2.25}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &923417857
+--- !u!114 &923417858
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4434,12 +4398,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 923417855}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0674e41a91be16a4c891f5d2c39143da, type: 3}
+  m_Script: {fileID: 11500000, guid: d8d04e442716c12418283ea3d00a99b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 1678643689}
-  activeImage: {fileID: 1708414862}
-  skilllist: {fileID: 365673086}
+  owner: {fileID: 1678643692}
+  icon: {fileID: 1836569608}
+  skilllist: {fileID: 365673091}
 --- !u!1 &931884195
 GameObject:
   m_ObjectHideFlags: 0
@@ -5563,12 +5527,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1678643689}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WoochiButtonList, Assembly-CSharp
         m_MethodName: SelectButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2081376924}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: WoochiActionButton, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -6040,11 +6004,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1306268781}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7401aad1f08114f4485bb5c94b59dc9f, type: 3}
+  m_Script: {fileID: 11500000, guid: d73ea6162722f41479339cdea93dede3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 1678643689}
-  activeImage: {fileID: 843397640}
+  owner: {fileID: 1678643692}
+  icon: {fileID: 519566747}
 --- !u!1 &1317301051
 GameObject:
   m_ObjectHideFlags: 0
@@ -6546,12 +6510,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1678643689}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WoochiButtonList, Assembly-CSharp
         m_MethodName: SelectButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 602307215}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: WoochiActionButton, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -6904,7 +6868,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1432476797
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8359,7 +8323,7 @@ GameObject:
   - component: {fileID: 1678643688}
   - component: {fileID: 1678643691}
   - component: {fileID: 1678643690}
-  - component: {fileID: 1678643689}
+  - component: {fileID: 1678643692}
   m_Layer: 5
   m_Name: ActionButtonList
   m_TagString: Untagged
@@ -8391,24 +8355,6 @@ RectTransform:
   m_AnchoredPosition: {x: 365, y: -23.690002}
   m_SizeDelta: {x: 562, y: 126}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &1678643689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1678643687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 000c7a5f49e3f034eb0109cbd851d6f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonList:
-  - {fileID: 923417857}
-  - {fileID: 2111171362}
-  - {fileID: 602307215}
-  - {fileID: 2081376924}
-  - {fileID: 1306268783}
 --- !u!114 &1678643690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8429,7 +8375,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 21ed577cb250536468a2539c65d0a7fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 171aa35fc86a0c847aa0cb4c0b622108, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8447,6 +8393,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678643687}
   m_CullTransparentMesh: 1
+--- !u!114 &1678643692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678643687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fcbae947d5183428fc00ca061ab43a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonList:
+  - {fileID: 923417858}
+  - {fileID: 2111171362}
+  - {fileID: 602307215}
+  - {fileID: 2081376924}
+  - {fileID: 1306268783}
 --- !u!1 &1708414862
 GameObject:
   m_ObjectHideFlags: 0
@@ -8695,12 +8659,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1678643689}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WoochiButtonList, Assembly-CSharp
         m_MethodName: SelectButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 923417857}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: WoochiActionButton, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -9790,8 +9754,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95dc4b0f8e675b8478159fa1ea8d0897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 1678643689}
-  activeImage: {fileID: 1736554776}
+  owner: {fileID: 0}
+  icon: {fileID: 1190907757}
   recoveryUI: {fileID: 1432476798}
 --- !u!1 &2111171360
 GameObject:
@@ -9840,11 +9804,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2111171360}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7401aad1f08114f4485bb5c94b59dc9f, type: 3}
+  m_Script: {fileID: 11500000, guid: d73ea6162722f41479339cdea93dede3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 1678643689}
-  activeImage: {fileID: 518897754}
+  owner: {fileID: 1678643692}
+  icon: {fileID: 624668660}
 --- !u!1001 &2115045442
 PrefabInstance:
   m_ObjectHideFlags: 0
