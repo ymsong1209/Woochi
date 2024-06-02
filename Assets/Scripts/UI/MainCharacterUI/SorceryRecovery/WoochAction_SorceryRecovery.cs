@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class WoochAction_SorceryRecovery : WoochiActionButton
+{
+    [SerializeField] WoochiRecoveryUI recoveryUI;
+    
+    public override void Initialize()
+    {
+        base.Initialize();
+        recoveryUI.Initialize();
+    }
+    public override void Activate()
+    {
+        base.Activate();
+        recoveryUI.Activate();
+    }
+
+    public override void Deactivate()
+    {
+        base.Deactivate();
+        recoveryUI.Deactivate();
+    }
+}
