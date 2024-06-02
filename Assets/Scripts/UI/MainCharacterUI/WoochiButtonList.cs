@@ -60,6 +60,8 @@ public class WoochiButtonList : MonoBehaviour
     {
         for (int i = 0; i < buttonList.Count; i++)
         {
+            buttonList[i].Interactable(true);
+
             if (buttonList[i] == button)
             {
                 buttonList[i].Highlight();
