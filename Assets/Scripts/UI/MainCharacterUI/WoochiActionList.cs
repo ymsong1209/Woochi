@@ -20,23 +20,34 @@ public class WoochiActionList : MonoBehaviour
         BattleManager.GetInstance.OnCharacterAttacked += ShowUI;
     }
 
+    // private void ShowUI(BaseCharacter _character, bool isEnable = false)
+    // {
+    //     // 우치인 경우 우치 UI 활성화
+    //     if (_character.IsMainCharacter)
+    //     {
+    //         buttonList.Activate(isEnable);
+    //     }
+    //     // 우치가 아니고 적이 아닌 경우 우치 UI 비활성화
+    //     else if(!_character.IsMainCharacter && _character.IsAlly)
+    //     {
+    //         Reset();
+    //     }
+    //     else if(!_character.IsAlly)
+    //     {
+    //         // 우치 UI 선택된 스킬 해제
+    //         buttonList.DeactivateAllButtons();
+    //         skillList.Initialize();
+    //     }
+    // }
     private void ShowUI(BaseCharacter _character, bool isEnable = false)
     {
-        // 우치인 경우 우치 UI 활성화
         if (_character.IsMainCharacter)
         {
             buttonList.Activate(isEnable);
         }
-        // 우치가 아니고 적이 아닌 경우 우치 UI 비활성화
-        else if(!_character.IsMainCharacter && _character.IsAlly)
+        else
         {
-            Reset();
-        }
-        else if(!_character.IsAlly)
-        {
-            // 우치 UI 선택된 스킬 해제
-            buttonList.DeactivateAllButtons();
-            skillList.Initialize();
+            buttonList.gameObject.SetActive(false);
         }
     }
     

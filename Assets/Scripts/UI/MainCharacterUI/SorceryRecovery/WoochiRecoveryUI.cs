@@ -41,7 +41,7 @@ public class WoochiRecoveryUI : MonoBehaviour
         MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
         if (!mainCharacter)
         {
-            //Debug.LogError("우치가 아님");
+            Debug.LogError("우치가 아님");
             return;
         }
         recoverySorceryPoint.fillAmount = (float)mainCharacter.SorceryPoints / (float)mainCharacter.MaxSorceryPoints;

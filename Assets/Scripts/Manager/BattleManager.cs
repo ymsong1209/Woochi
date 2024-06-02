@@ -358,7 +358,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         
         DisableAllColliderInteractions();
         DisableAllArrows();
-        
+        if(currentCharacter.IsMainCharacter) UIManager.GetInstance.ResetWoochiActionList();
         if (currentSelectedSkill.SkillOwner && receiver)
         {
             StartCoroutine(ExecuteSkill(currentSelectedSkill.SkillOwner,receiver));
@@ -372,7 +372,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         
         DisableAllColliderInteractions();
         DisableAllArrows();
-        
+        if(currentCharacter.IsMainCharacter) UIManager.GetInstance.ResetWoochiActionList();
         BaseCharacter receiver = null;
         
         //index<4인경우는 아군에게 스킬 적용

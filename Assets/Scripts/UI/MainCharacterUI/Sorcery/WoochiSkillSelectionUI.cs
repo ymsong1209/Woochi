@@ -25,7 +25,7 @@ public class WoochiSkillSelectionUI : MonoBehaviour
         MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
         if (!mainCharacter)
         {
-            //Debug.LogError("우치가 아님");
+            Debug.LogError("우치가 아님");
             return;
         }
         UIManager.GetInstance.SetSorceryPointUI(mainCharacter.SorceryPoints);
