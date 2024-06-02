@@ -2210,12 +2210,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1678643692}
         m_TargetAssemblyTypeName: WoochiButtonList, Assembly-CSharp
         m_MethodName: SelectButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 1306268783}
           m_ObjectArgumentAssemblyTypeName: WoochiActionButton, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -3130,12 +3130,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1678643692}
         m_TargetAssemblyTypeName: WoochiButtonList, Assembly-CSharp
         m_MethodName: SelectButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 2111171362}
           m_ObjectArgumentAssemblyTypeName: WoochiActionButton, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -5527,12 +5527,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1678643692}
         m_TargetAssemblyTypeName: WoochiButtonList, Assembly-CSharp
         m_MethodName: SelectButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 2081376924}
           m_ObjectArgumentAssemblyTypeName: WoochiActionButton, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -6510,12 +6510,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1678643692}
         m_TargetAssemblyTypeName: WoochiButtonList, Assembly-CSharp
         m_MethodName: SelectButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 602307215}
           m_ObjectArgumentAssemblyTypeName: WoochiActionButton, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -8659,12 +8659,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1678643692}
         m_TargetAssemblyTypeName: WoochiButtonList, Assembly-CSharp
         m_MethodName: SelectButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 923417858}
           m_ObjectArgumentAssemblyTypeName: WoochiActionButton, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
