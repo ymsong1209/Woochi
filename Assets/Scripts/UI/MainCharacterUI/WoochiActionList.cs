@@ -8,10 +8,14 @@ public class WoochiActionList : MonoBehaviour
 
     [SerializeField] private WoochiSkillSelectionUI skillList;
 
+    [SerializeField] private WoochiRecoveryUI recoveryUI;
+    // Start is called before the first frame update
+
     void Start()
     {
         buttonList.gameObject.SetActive(false);
         skillList.gameObject.SetActive(false);
+        recoveryUI.gameObject.SetActive(false);
         BattleManager.GetInstance.OnCharacterTurnStart += ShowUI;
         BattleManager.GetInstance.OnCharacterAttacked += ShowUI;
     }
@@ -36,17 +40,10 @@ public class WoochiActionList : MonoBehaviour
         }
     }
     
-    public void ShowSkillList()
-    {
-        skillList.Activate();
-        //TODO : 다른 UI 비활성화
-        //ChangeLocationUI.DeActivate();
-        //PartyChangeUI.Deactivate(); 등등..
-    }
-
     public void Reset()
     {
         buttonList.Deactivate();
         skillList.Deactivate();
+        recoveryUI.Deactivate();
     }
 }
