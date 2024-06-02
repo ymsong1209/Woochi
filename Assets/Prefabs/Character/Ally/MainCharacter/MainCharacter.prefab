@@ -195,6 +195,8 @@ MonoBehaviour:
   activeSkillCheckBox: 01
   isAlly: 0
   rowOrder: 0
+  maxSorceryPoints: 200
+  sorceryPoints: 200
 --- !u!114 &3645138713879227719
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -22,6 +22,14 @@ public class WoochiSkillSelectionUI : MonoBehaviour
     public void Initialize()
     {
         gameObject.SetActive(false);
+        MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
+        if (!mainCharacter)
+        {
+            Debug.LogError("우치가 아님");
+            return;
+        }
+        UIManager.GetInstance.SetSorceryPointUI(mainCharacter.SorceryPoints);
+        UIManager.GetInstance.SetSorceryPointBackgroundUI(mainCharacter.SorceryPoints);
     }
     
     public void Activate()
@@ -70,10 +78,14 @@ public class WoochiSkillSelectionUI : MonoBehaviour
     /// <summary>
     /// 스킬 슬롯에 스킬 버튼이 활성화가 되는지 확인
     /// </summary>
-    bool IsSkillSetAvailable(BaseSkill _skill)
+    bool IsSkillSetAvailable(BaseSkill skill)
     {
-        if (IsSkillAbleForFormation(_skill) == false)   return false;
-        if (IsSkillReceiverAble(_skill) == false)   return false;
+        MainCharacter mainCharacter = skill.SkillOwner as MainCharacter;
+        MainCharacterSkill mainCharacterSkill = skill as MainCharacterSkill;
+        if(mainCharacter == null || mainCharacterSkill == null) return false;
+        if (!IsSkillAbleForFormation(mainCharacterSkill))   return false;
+        if (!IsSkillReceiverAble(mainCharacterSkill))   return false;
+        if(mainCharacter.SorceryPoints < mainCharacterSkill.RequiredSorceryPoints) return false;
         return true;
     }
     

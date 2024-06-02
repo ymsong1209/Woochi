@@ -423,6 +423,7 @@ MonoBehaviour:
   isSpawnSpecific: 0
   spawnLocation: {x: 0, y: 0, z: 0}
   spawnRotation: {x: 0, y: 0, z: 0, w: 0}
+  isMainCharacter: 0
   isDead: 0
   activeBuffs: []
   activeSkills: []

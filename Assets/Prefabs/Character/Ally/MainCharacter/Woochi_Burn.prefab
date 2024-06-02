@@ -54,3 +54,4 @@ MonoBehaviour:
   bufflist: []
   multiplier: 0
   skillAccuracy: 0
+  requiredSorceryPoints: 150
