@@ -240,7 +240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2072656118149620167}
   - component: {fileID: 4295112318004068756}
-  - component: {fileID: 3900368476719072775}
+  - component: {fileID: 7555472643903904406}
   m_Layer: 5
   m_Name: WoochiSkillButton
   m_TagString: Untagged
@@ -278,7 +278,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8369952837767494641}
   m_CullTransparentMesh: 1
---- !u!114 &3900368476719072775
+--- !u!114 &7555472643903904406
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -287,7 +287,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8369952837767494641}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ce2b480d0f06b642871eb64a1b70825, type: 3}
+  m_Script: {fileID: 11500000, guid: be434f0ce7ce129479a77c86d01c28a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   selected: {fileID: 8670678133063313686}

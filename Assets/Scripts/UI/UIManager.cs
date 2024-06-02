@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using DG.Tweening;
+using UnityEngine.TextCore.Text;
+using UnityEngine.UI;
+//using UnityEngine.UIElements;
 
 public class UIManager : SingletonMonobehaviour<UIManager>
 {
@@ -19,7 +23,10 @@ public class UIManager : SingletonMonobehaviour<UIManager>
 
     [SerializeField] private AllyCharacterUI allyCharacterUI;
     [SerializeField] private BuffPopupUI buffPopupUI;
+    
     [SerializeField] private WoochiActionList woochiActionList;
+    [SerializeField] private Image sorceryPoint;
+    [SerializeField] private Image sorceryPointBackground;
     public void SetSkillToolTip(BaseSkill _skill, Vector3 position)
     {
         skillTooltip.SetActive(true);
@@ -61,8 +68,35 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     }
     #endregion
 
+    #region MainCharacterUI
     public void ResetWoochiActionList()
     {
         woochiActionList.Reset();
     }
+
+    public void SetSorceryPointUI(int point)
+    {
+        MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
+        if (!mainCharacter)
+        {
+            Debug.LogError("MainCharacter is null");
+            return;
+        }
+        float scale = (float)point / mainCharacter.MaxSorceryPoints;
+        sorceryPoint.DOFillAmount(scale, 1f).SetEase(Ease.OutCubic);
+    }
+    
+    public void SetSorceryPointBackgroundUI(int point)
+    {
+        MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
+        if (!mainCharacter)
+        {
+            Debug.LogError("MainCharacter is null");
+            return;
+        }
+        float scale = (float)point / mainCharacter.MaxSorceryPoints;
+        sorceryPointBackground.DOFillAmount(scale, 1f).SetEase(Ease.OutCubic);
+    }
+    
+    #endregion MainCharacterUI
 }

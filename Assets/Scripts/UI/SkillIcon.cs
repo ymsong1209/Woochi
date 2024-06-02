@@ -13,7 +13,7 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public  Button      btn;
     public  Transform   tooltipPos;     // 툴팁 위치를 지정하기 위해
 
-    private BaseSkill skill;
+    protected BaseSkill skill;
 
     public void SetSkill(BaseSkill _skill, bool isEnable = true)
     {
@@ -38,7 +38,7 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         selected.gameObject.SetActive(_isActive);
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public virtual void OnPointerEnter(PointerEventData eventData)
     {
         if (skill == null)
             return;
@@ -46,7 +46,7 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         UIManager.GetInstance.SetSkillToolTip(skill, tooltipPos.position);
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public virtual void OnPointerExit(PointerEventData eventData)
     {
         UIManager.GetInstance.skillTooltip.SetActive(false);
     }
