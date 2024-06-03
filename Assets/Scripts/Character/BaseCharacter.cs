@@ -8,6 +8,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class BaseCharacter : MonoBehaviour
 {
+    public BaseCharacterHUD HUD;
     public CharacterStatSO characterStat;
 
     #region Header CHARACTER STATS
@@ -73,6 +74,11 @@ public class BaseCharacter : MonoBehaviour
     public Action<AttackResult, int, bool> onAttacked;
     public Action onAnyTurnEnd;     // 아무 캐릭터의 턴이 끝날때
     #endregion
+
+    private void Start()
+    {
+        HUD = GetComponent<BaseCharacterHUD>();
+    }
 
     public virtual void CheckSkillsOnTurnStart()
     { 

@@ -8,10 +8,15 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
 {
     private BaseCharacter owner;
     [SerializeField] private SpriteRenderer hpBar;
+    [SerializeField] private SpriteRenderer ground;
 
     [Header("Damage HUD")]
     [SerializeField] private GameObject damageHUD;
     [SerializeField] private TextMeshPro damageTxt;
+
+    [Header("Arrow")]
+    [SerializeField] private GameObject arrow;
+    [SerializeField] private GameObject selectedArrow;
 
     private void Awake()
     {
@@ -61,9 +66,18 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     void DeactiveDamage() => damageHUD.SetActive(false);
 
+    public void ActivateArrow()
+    {
+        arrow.SetActive(true);
+        selectedArrow.SetActive(false);
+    }
+
     #region 마우스 이벤트
     public void OnPointerEnter(PointerEventData eventData)
     {
+        // 캐릭터 마우스 올리면 표시
+        ground.DOColor(Color.black, 0f);
+
         if (owner.IsAlly)
             return;
 
@@ -72,6 +86,7 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        ground.DOColor(Color.white, 0f);
         UIManager.GetInstance.enemyTooltip.SetActive(false);
     }
     #endregion

@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3401791839515459526, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: arrow
+      value: 
+      objectReference: {fileID: 8620507179705111926}
     - target: {fileID: 3671869874223877086, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -114,16 +118,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4947313877317803005, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_Size.x
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4947313877317803005, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_Size.y
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4947313877317803005, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6b74815a9b0d44941affbf5b7d279d02, type: 3}
+      objectReference: {fileID: 21300000, guid: 144b18934ace52f4f8740bec50d52252, type: 3}
     - target: {fileID: 4947313877317803005, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -195,6 +199,10 @@ PrefabInstance:
     - target: {fileID: 8552305398550373764, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8559900783289802040, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 9196048527430195161, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalPosition.x
@@ -285,3 +293,8 @@ MonoBehaviour:
   isStarting: 0
   isSummoned: 0
   rowOrder: 0
+--- !u!1 &8620507179705111926 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6890884974774991358, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+  m_PrefabInstance: {fileID: 2883261415803399304}
+  m_PrefabAsset: {fileID: 0}

@@ -409,6 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c669bcbf58fa3e544b8b1e2b9e5cf617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HUD: {fileID: 3401791839515459526}
   characterStat: {fileID: 0}
   health: {fileID: 0}
   size: 1
@@ -429,6 +430,8 @@ MonoBehaviour:
   activeSkills: []
   activeSkillCheckBox: 
   isAlly: 0
+  isStarting: 0
+  isSummoned: 0
   rowOrder: 0
 --- !u!114 &2996513413138376824
 MonoBehaviour:
@@ -492,8 +495,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBar: {fileID: 8002876329012777120}
+  ground: {fileID: 3292113513406932792}
   damageHUD: {fileID: 2829200758362975625}
   damageTxt: {fileID: 1691719806355044839}
+  arrow: {fileID: 6890884974774991358}
+  selectedArrow: {fileID: 3069572474905774224}
 --- !u!61 &5359661140184956515
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1381,6 +1387,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da75493db233bf64a9f1a8f22cdbd0f4, type: 3}
+--- !u!1 &3069572474905774224 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8605242705094830321, guid: da75493db233bf64a9f1a8f22cdbd0f4, type: 3}
+  m_PrefabInstance: {fileID: 6769676886233686113}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6890884974774991358 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 167739444255496607, guid: da75493db233bf64a9f1a8f22cdbd0f4, type: 3}
+  m_PrefabInstance: {fileID: 6769676886233686113}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8559900783289802040 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3114337180268510553, guid: da75493db233bf64a9f1a8f22cdbd0f4, type: 3}

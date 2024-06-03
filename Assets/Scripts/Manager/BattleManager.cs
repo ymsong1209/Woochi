@@ -294,8 +294,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             if(skillRadius[i] && BattleManager.GetInstance.IsCharacterThere(i))
             {
                 BaseCharacter character = BattleManager.GetInstance.GetCharacterFromIndex(i);
-                GameObject arrow = character.transform.Find("SkillSelectionArrow").gameObject;
-                arrow.SetActive(true);
+                character.HUD.ActivateArrow();
             }
         }
     }
