@@ -9,7 +9,7 @@ public class WoochiAction_Sorcery : WoochiActionButton
    public override void Initialize(bool isEnable)
    {
       base.Initialize(isEnable);
-      skilllist.Initialize();
+      skilllist.Initialize(isEnable);
    }
    public override void Activate()
    {
