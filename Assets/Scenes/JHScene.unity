@@ -2260,11 +2260,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 602307214}
-  - component: {fileID: 602307215}
   - component: {fileID: 602307217}
+  - component: {fileID: 602307218}
   - component: {fileID: 602307216}
   m_Layer: 5
-  m_Name: WoochiActionButton (2)
+  m_Name: WoochiActionButton_Summon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2290,20 +2290,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &602307215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 602307213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d73ea6162722f41479339cdea93dede3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  owner: {fileID: 1678643692}
-  icon: {fileID: 1373459981}
 --- !u!114 &602307216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2342,6 +2328,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 602307213}
   m_CullTransparentMesh: 1
+--- !u!114 &602307218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602307213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 821dd534d00c4b34eabcfa45f5c691e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 1678643692}
+  icon: {fileID: 1373459981}
+  allyUI: {fileID: 494983099}
 --- !u!1 &603492361
 GameObject:
   m_ObjectHideFlags: 0
@@ -6281,7 +6282,7 @@ MonoBehaviour:
         m_MethodName: SelectButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 602307215}
+          m_ObjectArgument: {fileID: 602307218}
           m_ObjectArgumentAssemblyTypeName: WoochiActionButton, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -8239,7 +8240,7 @@ MonoBehaviour:
   buttonList:
   - {fileID: 923417857}
   - {fileID: 2111171362}
-  - {fileID: 602307215}
+  - {fileID: 602307218}
   - {fileID: 2081376927}
   - {fileID: 1306268783}
 --- !u!114 &1678643693
