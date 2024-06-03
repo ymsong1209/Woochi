@@ -46,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2360390286662990925, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.59
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2474127869528763544, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_IsActive
@@ -127,6 +127,14 @@ PrefabInstance:
     - target: {fileID: 4947313877317803005, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5237467849233833363, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5237467849233833363, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5359661140184956515, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_Size.y
@@ -268,9 +276,12 @@ MonoBehaviour:
   isSpawnSpecific: 0
   spawnLocation: {x: 0, y: 0, z: 0}
   spawnRotation: {x: 0, y: 0, z: 0, w: 0}
+  isMainCharacter: 0
   isDead: 0
   activeBuffs: []
   activeSkills: []
   activeSkillCheckBox: 010001000100
   isAlly: 0
+  isStarting: 0
+  isSummoned: 0
   rowOrder: 0
