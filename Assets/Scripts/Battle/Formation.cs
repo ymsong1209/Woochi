@@ -107,7 +107,11 @@ public class Formation : MonoBehaviour
         }
     }
 
-    public int FindCharacter(BaseCharacter _character)
+    /// <summary>
+    /// 캐릭터가 formation에서 몇번째 열에 있는지 0~3 사이로 반환
+    /// formation내에 없으면 -1 반환
+    /// </summary>
+    public int FindCharacterIndex(BaseCharacter _character)
     {
         int index = -1;
 

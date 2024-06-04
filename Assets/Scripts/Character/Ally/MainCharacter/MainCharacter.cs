@@ -10,28 +10,27 @@ public class MainCharacter : BaseCharacter
     [SerializeField] private float sorceryRecoveryPoints = 35f;
 
     [SerializeField] private MC_SorceryRecovery recoverySkill;
+    [SerializeField] private MC_Charm charmSkill;
 
     public int SorceryPoints
     {
-        get { return sorceryPoints; }
-        set { sorceryPoints = value; }
+        get => sorceryPoints;
+        set => sorceryPoints = value;
     }
 
     public int MaxSorceryPoints
     {
-        get { return maxSorceryPoints; }
-        set { maxSorceryPoints = value; }
+        get => maxSorceryPoints;
+        set => maxSorceryPoints = value;
     }
 
     public float SorceryRecoveryPoints
     {
-        get { return sorceryRecoveryPoints; }
-        set { sorceryRecoveryPoints = value; }
+        get => sorceryRecoveryPoints;
+        set => sorceryRecoveryPoints = value;
     }
 
-    public MC_SorceryRecovery SorceryRecoverySkill
-    {
-        get { return recoverySkill; }
-    }
+    public MC_SorceryRecovery SorceryRecoverySkill => recoverySkill;
+    public MC_Charm CharmSkill => charmSkill;
 }
     

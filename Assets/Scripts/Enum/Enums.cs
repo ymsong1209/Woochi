@@ -38,6 +38,21 @@ public enum SkillType
     END
 }
 
+public enum CharmType
+{
+    Buff,
+    DeBuff,
+    END
+}
+
+public enum CharmTargetType
+{
+    Singular,
+    Multiple,
+    SingularWithSelf,
+    MultipleWithSelf,
+    End
+}
 
 public enum SkillElement
 {

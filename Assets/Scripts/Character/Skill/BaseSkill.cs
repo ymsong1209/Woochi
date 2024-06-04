@@ -55,7 +55,8 @@ public class BaseSkill : MonoBehaviour
 
     [SerializeField,ReadOnly] private float multiplier;    // 피해량 계수
     [SerializeField,ReadOnly] private float skillAccuracy; // 스킬 명중 수치
-
+    [SerializeField] private bool isAlwaysHit = false;     // 회피, 명중 무시하고 무조건 명중
+    [SerializeField] private bool isAlwaysApplyBuff = false;// 버프를 걸 확률, 저항 판정 무시하고 무조건 적용
     SkillResult skillResult;
 
     /// <summary>
@@ -255,11 +256,11 @@ public class BaseSkill : MonoBehaviour
             if(buff.BuffType == BuffType.Shield)
             {
                 ProtectBuff protectbuff = buff as ProtectBuff;
-                finaltarget = protectbuff.ProtectionOwner;
+                if(protectbuff) finaltarget = protectbuff.ProtectionOwner;
             }
         }
 
-        return _Opponent;
+        return finaltarget;
     }
 
 
@@ -270,6 +271,7 @@ public class BaseSkill : MonoBehaviour
     /// </summary>
     protected bool CheckAccuracy()
     {
+        if (isAlwaysHit) return true;
         int RandomValue = Random.Range(0, 100);
         if (RandomValue < skillAccuracy + skillOwner.Accuracy) return true;
         else return false;
@@ -281,6 +283,7 @@ public class BaseSkill : MonoBehaviour
     /// </summary>
     protected bool CheckEvasion(BaseCharacter _opponent)
     {
+        if (isAlwaysHit) return true;
         int RandomValue = Random.Range(0, 100);
         if (RandomValue > _opponent.Evasion) return true;
         return false;
@@ -292,6 +295,7 @@ public class BaseSkill : MonoBehaviour
     /// </summary>
     protected bool CheckApplyBuff(BaseBuff _buff)
     {
+        if (isAlwaysApplyBuff) return true;
         int RandomValue = Random.Range(0, 100);
         if (RandomValue <= _buff.ChanceToApplyBuff) return true;
         return false;
@@ -303,6 +307,7 @@ public class BaseSkill : MonoBehaviour
     /// </summary>
     protected bool CheckResist(BaseCharacter _opponent)
     {
+        if (isAlwaysApplyBuff) return true;
         int RandomValue = Random.Range(0, 100);
         if (RandomValue > _opponent.Resist) return true;
         return false;
@@ -468,12 +473,17 @@ public class BaseSkill : MonoBehaviour
 
     public SkillSO SkillSO => skillSO;
     public bool[] SkillAvailableRadius => skillAvailableRadius;
-    public bool[] SkillRadius => skillRadius;
+    public bool[] SkillRadius
+    {
+        get => skillRadius;
+        set => skillRadius = value;
+    }
+
     public SkillTargetType SkillTargetType => skillTargetType;
     public BaseCharacter SkillOwner
     {
-        get { return skillOwner; }
-        set { skillOwner = value; }
+        get => skillOwner;
+        set => skillOwner = value;
     }
 
     #endregion Getter Setter

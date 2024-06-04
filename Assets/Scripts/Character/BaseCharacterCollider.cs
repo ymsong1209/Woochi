@@ -23,7 +23,6 @@ public class BaseCharacterCollider : MonoBehaviour
             // 마우스 클릭시 스킬 발동
             if (IsMouseOverCollider())
             {
-                BaseSkill BindedSkill = BattleManager.GetInstance.CurrentSelectedSkill;
                 BattleManager.GetInstance.ExecuteSelectedSkill(colliderOwner);
             }
         }

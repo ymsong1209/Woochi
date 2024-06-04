@@ -6,7 +6,7 @@ public class UndeadArcher : BaseCharacter
 {
     public override void TriggerAI()
     {
-        int formationIdx = BattleManager.GetInstance.Enemies.FindCharacter(this);
+        int formationIdx = BattleManager.GetInstance.Enemies.FindCharacterIndex(this);
         Debug.Log(formationIdx);
         if (formationIdx == 0)
         {

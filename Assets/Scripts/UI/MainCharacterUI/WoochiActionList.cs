@@ -45,6 +45,6 @@ public class WoochiActionList : MonoBehaviour
     //이후, oncharacterattacked에서 isenable이 false로 들어옴.
     public void Reset()
     {
-        buttonList.Deactivate();
+        //buttonList.Deactivate();
     }
 }

@@ -273,7 +273,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         bool[] skillRadius = currentSelectedSkill.SkillRadius;
         for (int i = 0; i < skillRadius.Length; i++)
         {
-            //현재 살아있는 적/아군에게서만 skilltriggerarea활성화
+            //현재 살아있는 적/아군에게서만 collider활성화
             if(skillRadius[i] && BattleManager.GetInstance.IsCharacterThere(i))
             {
                 BaseCharacter character = BattleManager.GetInstance.GetCharacterFromIndex(i);
@@ -290,7 +290,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         bool[] skillRadius = currentSelectedSkill.SkillRadius;
         for (int i = 0; i < skillRadius.Length; i++)
         {
-            //현재 살아있는 적/아군에게서만 skilltriggerarea활성화
+            //현재 살아있는 적/아군에게서만 collider활성화
             if(skillRadius[i] && BattleManager.GetInstance.IsCharacterThere(i))
             {
                 BaseCharacter character = BattleManager.GetInstance.GetCharacterFromIndex(i);
@@ -506,11 +506,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         if(_character.IsAlly)
         {
-            index = allies.FindCharacter(_character);
+            index = allies.FindCharacterIndex(_character);
         }
         else
         {
-            index = enemies.FindCharacter(_character);
+            index = enemies.FindCharacterIndex(_character);
         }
 
         return index;

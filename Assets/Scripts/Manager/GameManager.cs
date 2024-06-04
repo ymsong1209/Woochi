@@ -8,10 +8,11 @@ public class GameManager : SingletonMonobehaviour<GameManager>
    
     [HeaderTooltip("GAME STATE", "Game State는 Inspector에서 수정 불가")]
     [SerializeField,ReadOnly] private GameState gameState;
-
+    public DungeonInfoSO temporaryDungeon;
     [SerializeField] private List<GameObject> allies = new List<GameObject>();
 
-    public DungeonInfoSO temporaryDungeon;
+
+    [SerializeField] private BaseCharm[] charmList = new BaseCharm[5];
 
     void Start()
     {
@@ -38,23 +39,22 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         gameState = GameState.SELECTROOM;
         Debug.Log("GameState : SelectRoom");
     }
+    
+    public void RemoveCharm(BaseCharm charm)
+    {
+        for(int i = 0;i<charmList.Length;++i)
+        {
+            if(charmList[i] == charm)
+            {
+                charmList[i] = null;
+                break;
+            }
+        }
+    }
+
 
     #region Getter Setter
     public List<GameObject> Allies => allies;
+    public BaseCharm[] CharmList => charmList;
     #endregion
-    public void AddAlly(GameObject ally)
-    {
-        if (!allies.Contains(ally))
-        {
-            allies.Add(ally);
-        }
-    }
-
-    public void RemoveAlly(GameObject ally)
-    {
-        if (allies.Contains(ally))
-        {
-            allies.Remove(ally);
-        }
-    }
 }

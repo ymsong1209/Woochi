@@ -27,6 +27,8 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     [SerializeField] private WoochiActionList woochiActionList;
     [SerializeField] private Image sorceryPoint;
     [SerializeField] private Image sorceryPointBackground;
+    [SerializeField] private GameObject charmToolTip;
+    
     public void SetSkillToolTip(BaseSkill _skill, Vector3 position)
     {
         skillTooltip.SetActive(true);
@@ -96,6 +98,13 @@ public class UIManager : SingletonMonobehaviour<UIManager>
         }
         float scale = (float)point / mainCharacter.MaxSorceryPoints;
         sorceryPointBackground.DOFillAmount(scale, 1f).SetEase(Ease.OutCubic);
+    }
+    
+    public void SetCharmToolTip(BaseCharm _charm, Vector3 position)
+    {
+        skillTooltip.SetActive(true);
+        skillTooltip.transform.position = position;
+        skillNameTxt.text = _charm.CharmName;
     }
     
     #endregion MainCharacterUI
