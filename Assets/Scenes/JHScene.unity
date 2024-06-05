@@ -1329,6 +1329,11 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &418328834 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2770829566168115796, guid: b4fcc8aaf4c360349b3ec2a99ea1244b, type: 3}
+  m_PrefabInstance: {fileID: 1862218168098547949}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &425151454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3725,6 +3730,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7960448476840219747, guid: c0c04b32b2fa64445869ed953ff3401f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 494983099}
+    - target: {fileID: 7960448476840219747, guid: c0c04b32b2fa64445869ed953ff3401f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectCard
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6044,17 +6057,26 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1321433239 stripped
+--- !u!114 &1321433241
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2563073708206786777, guid: b4fcc8aaf4c360349b3ec2a99ea1244b, type: 3}
-  m_PrefabInstance: {fileID: 1862218168098547949}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 418328834}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9f542595d87b204a99f5a3a47050fcd, type: 3}
+  m_Script: {fileID: 11500000, guid: 63e04d4c8c6f8c14abae11ac66fd51cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  formation:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  isAllyFormation: 1
+  totalSize: 0
+  waitingCharacter: []
 --- !u!1001 &1356976910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6162,6 +6184,14 @@ PrefabInstance:
     - target: {fileID: 6347718317516234810, guid: c0c04b32b2fa64445869ed953ff3401f, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960448476840219747, guid: c0c04b32b2fa64445869ed953ff3401f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 494983099}
+    - target: {fileID: 7960448476840219747, guid: c0c04b32b2fa64445869ed953ff3401f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectCard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7362,6 +7392,14 @@ PrefabInstance:
     - target: {fileID: 6347718317516234810, guid: c0c04b32b2fa64445869ed953ff3401f, type: 3}
       propertyPath: m_Name
       value: Card (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960448476840219747, guid: c0c04b32b2fa64445869ed953ff3401f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 494983099}
+    - target: {fileID: 7960448476840219747, guid: c0c04b32b2fa64445869ed953ff3401f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectCard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9917,6 +9955,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7960448476840219747, guid: c0c04b32b2fa64445869ed953ff3401f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 494983099}
+    - target: {fileID: 7960448476840219747, guid: c0c04b32b2fa64445869ed953ff3401f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectCard
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10061,7 +10107,7 @@ PrefabInstance:
     - target: {fileID: 6047043372224912184, guid: 56a27495f0a512c408751da061e9230f, type: 3}
       propertyPath: allies
       value: 
-      objectReference: {fileID: 1321433239}
+      objectReference: {fileID: 1321433241}
     - target: {fileID: 6047043372224912184, guid: 56a27495f0a512c408751da061e9230f, type: 3}
       propertyPath: enemies
       value: 
@@ -10219,6 +10265,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card
       objectReference: {fileID: 0}
+    - target: {fileID: 7960448476840219747, guid: c0c04b32b2fa64445869ed953ff3401f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 494983099}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10356,10 +10406,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2563073708206786777, guid: b4fcc8aaf4c360349b3ec2a99ea1244b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2770829566168115796, guid: b4fcc8aaf4c360349b3ec2a99ea1244b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1321433241}
   m_SourcePrefab: {fileID: 100100000, guid: b4fcc8aaf4c360349b3ec2a99ea1244b, type: 3}
 --- !u!1001 &7273607372316146215
 PrefabInstance:

@@ -66,9 +66,9 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     void DeactiveDamage() => damageHUD.SetActive(false);
 
-    public void ActivateArrow()
+    public void ActivateArrow(bool isActive)
     {
-        arrow.SetActive(true);
+        arrow.SetActive(isActive);
         selectedArrow.SetActive(false);
     }
 

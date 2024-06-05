@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba08ad877a0bf7b48a1aa35983bbbde3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HUD: {fileID: 0}
   characterStat: {fileID: 11400000, guid: c8762dd9f5c96da4287c1a1a55b72000, type: 2}
   health: {fileID: 0}
   size: 1
@@ -290,7 +291,7 @@ MonoBehaviour:
   activeSkills: []
   activeSkillCheckBox: 010001000100
   isAlly: 0
-  isStarting: 0
+  isStarting: 1
   isSummoned: 0
   rowOrder: 0
 --- !u!1 &8620507179705111926 stripped

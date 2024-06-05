@@ -165,6 +165,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6060628860442793064, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: isStarting
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6060628860442793064, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: characterHUD
       value: 
       objectReference: {fileID: 1571861465368539575, guid: e0a5075a4a315164691a735d9bb77e40, type: 3}

@@ -9,7 +9,6 @@ public class WoochiAction_Summon : WoochiActionButton
     public override void Initialize(bool isEnable)
     {
         base.Initialize(isEnable);
-        allyUI.gameObject.SetActive(isEnable);
     }
 
     public override void Activate()
@@ -21,7 +20,6 @@ public class WoochiAction_Summon : WoochiActionButton
     public override void Deactivate()
     {
         base.Deactivate();
-        allyUI.gameObject.SetActive(false);
     }
 
 }

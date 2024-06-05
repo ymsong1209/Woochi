@@ -10,6 +10,12 @@ public class SkillResult
 {
     public bool isHit = false;
     public bool isCrit = false;
+
+    public void Init()
+    {
+        isHit = false;
+        isCrit = false;
+    }
 }
 
 public class BaseSkill : MonoBehaviour
@@ -56,7 +62,7 @@ public class BaseSkill : MonoBehaviour
     [SerializeField,ReadOnly] private float multiplier;    // 피해량 계수
     [SerializeField,ReadOnly] private float skillAccuracy; // 스킬 명중 수치
 
-    SkillResult skillResult;
+    SkillResult skillResult = new SkillResult();
 
     /// <summary>
     /// 자신이 가지고 있는 SkillSO 정보를 이용해 BaseSkill을 초기화
@@ -95,8 +101,6 @@ public class BaseSkill : MonoBehaviour
             return;
         }
 
-        skillResult = new SkillResult();
-
         skillOwner.onPlayAnimation?.Invoke(skillSO.AnimType);
 
         //단일공격인 경우 _opponent한테만 공격 로직 적용
@@ -113,6 +117,7 @@ public class BaseSkill : MonoBehaviour
         instantiatedBuffList.Clear();
 
         BattleManager.GetInstance.OnShakeCamera?.Invoke(skillResult.isHit, skillResult.isCrit);
+        skillResult.Init();
     }
     
     void  ClearInstantiatedBuffList()
