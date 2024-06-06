@@ -1,19 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MainCharacterAnimation : BaseCharacterAnimation
 {
-    [SerializeField] Sprite[] magicSprites;
-    [SerializeField] Sprite[] magicEffects;
-
     public override void Play(AnimationType _type)
     {
-        base.Play(_type);
+        if(owner.IsDead)
+        {
+            return;
+        }
 
         if(_type == AnimationType.Skill0)
         {
-            
+            animator.SetInteger("SorceryIndex", Random.Range(0, 3));
+            animator.SetTrigger("Sorcery");
         }
+        else
+        {
+            animator.Play(_type.ToString());
+        }
+
+        StartCoroutine(WaitAnim());
     }
 }

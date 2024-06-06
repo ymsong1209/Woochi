@@ -131,27 +131,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4947313877317803005, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_Size.x
-      value: 10.6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4947313877317803005, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_Size.y
-      value: 10.8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4947313877317803005, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 0aab081cbd25f9f4aac9c781432a4b1b, type: 3}
+      objectReference: {fileID: 21300000, guid: ae0c8b090eddb7448a089990d62346f5, type: 3}
     - target: {fileID: 4947313877317803005, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5237467849233833363, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5237467849233833363, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 5359661140184956515, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_Size.x
@@ -195,7 +195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8559900783289802040, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9196048527430195161, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalPosition.x
@@ -315,11 +315,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 8631172972090023544}
-  magicSprites:
-  - {fileID: 588987295, guid: 3cf6d6f1f07af974b9596f0ff281fa8f, type: 3}
-  - {fileID: 1887378161, guid: 3684b07e7b2a4d04d8dcf09932ec98b1, type: 3}
-  - {fileID: -900037731, guid: b616ae7e667e3bd459ac6f8b2ec2d798, type: 3}
-  magicEffects: []
 --- !u!4 &5548039729745269340 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9196048527430195161, guid: d65a7aefa191b904c8dded1547849368, type: 3}
