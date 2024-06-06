@@ -108,7 +108,7 @@ public class Formation : MonoBehaviour
             character.transform.DOLocalMoveX(moveX, 0.5f);
             character.onAnyTurnEnd?.Invoke();
 
-            float radius = 4.5f;
+            float radius = 4f;
             moveX += (radius * direction);
 
             index += character.Size;

@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: fbb33b2ad9c18f7478d022c0f86e0310, type: 2}
     - target: {fileID: 1817454482497125149, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2829200758362975625, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_IsActive
@@ -26,11 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4651224405074788822, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4651224405074788822, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4947313877317803005, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_Size.x
@@ -50,19 +50,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5237467849233833363, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 5237467849233833363, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 5237467849233833363, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 5237467849233833363, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.07
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 5237467849233833363, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8559900783289802040, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.47
+      value: 4.19
       objectReference: {fileID: 0}
     - target: {fileID: 9196048527430195161, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalPosition.x
@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a57f5f0359bb4499497c30568c6b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HUD: {fileID: 0}
   characterStat: {fileID: 11400000, guid: 05851f9536f29bd4fbb1995bd6f37a52, type: 2}
   health: {fileID: 0}
   size: 1
@@ -178,4 +179,6 @@ MonoBehaviour:
   activeSkills: []
   activeSkillCheckBox: 01
   isAlly: 0
+  isStarting: 0
+  isSummoned: 0
   rowOrder: 0
