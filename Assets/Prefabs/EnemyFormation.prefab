@@ -49,5 +49,14 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  singlePos:
+  - 2.5
+  - 5
+  - 7.5
+  - 10
+  multiPos:
+  - 4
+  - 6.25
+  - 9
   isAllyFormation: 0
   totalSize: 0

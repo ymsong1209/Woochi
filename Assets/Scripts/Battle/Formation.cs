@@ -7,6 +7,9 @@ public class Formation : MonoBehaviour
 {
     public BaseCharacter[] formation = new BaseCharacter[4];
 
+    [SerializeField] protected float[] singlePos = new float[4];
+    [SerializeField] protected float[] multiPos = new float[3];
+
     [SerializeField] protected bool isAllyFormation;
     [SerializeField] protected int totalSize = 0;
 
@@ -96,8 +99,7 @@ public class Formation : MonoBehaviour
     /// </summary>
     public void Positioning()
     {
-        float direction = isAllyFormation ? -1f : 1f;
-        float moveX = transform.position.x;
+        float moveX;
 
         for (int index = 0; index < formation.Length;)
         {
@@ -105,11 +107,17 @@ public class Formation : MonoBehaviour
 
             BaseCharacter character = formation[index];
 
+            if(character.Size == 1)
+            {
+                moveX = singlePos[index];
+            }
+            else
+            {
+                moveX = multiPos[index];
+            }
+
             character.transform.DOLocalMoveX(moveX, 0.5f);
             character.onAnyTurnEnd?.Invoke();
-
-            float radius = 4f;
-            moveX += (radius * direction);
 
             index += character.Size;
         }
