@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 /*
  * ToDo
  * 소환수 추가
@@ -20,20 +21,15 @@ public class AllyCardList : MonoBehaviour
     /// 소환수 목록을 받아 소환수 카드를 초기화
     /// </summary>
     /// <param name="_allies">우치의 소환수 목록(아직 fix된게 없기에 임시임)</param>
-    public void Initialize(Formation _allies)
+    public void Initialize(AllyFormation _allies)
     {
         List<BaseCharacter> characters = _allies.GetCharacters();
+        characters.AddRange(_allies.waitingCharacter);
 
         for(int i = 0; i < cards.Count; i++)
         {
             if(i < characters.Count)
             {
-                if (characters[i].IsMainCharacter)
-                {
-                    cards[i].Deactivate();
-                    continue;
-                }
-
                 cards[i].Activate(characters[i]);
             }
             else
@@ -55,5 +51,26 @@ public class AllyCardList : MonoBehaviour
     {
         if (_character.IsMainCharacter) gameObject.SetActive(false);
         else gameObject.SetActive(true);
+    }
+
+    public void SelectCard(AllyCard _card)
+    {
+        if (!BattleManager.GetInstance.currentCharacter.IsMainCharacter || _card.Ally.IsDead) return;
+
+        MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
+        MC_Summon summon = mainCharacter.SummonSkill;
+        BattleManager.GetInstance.SkillSelected(summon);
+
+        if (_card.Ally.isSummoned)
+        {
+            summon.isSummon = false;
+            BattleManager.GetInstance.UnSummon(_card.Ally);
+        }
+        else
+        {
+            summon.isSummon = true;
+            summon.willSummon = _card.Ally;
+            BattleManager.GetInstance.SelectPosition(summon);
+        }
     }
 }

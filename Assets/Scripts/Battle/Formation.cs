@@ -7,36 +7,46 @@ public class Formation : MonoBehaviour
 {
     public BaseCharacter[] formation = new BaseCharacter[4];
 
-    [SerializeField] private bool isAllyFormation;
+    [SerializeField] protected float[] singlePos = new float[4];
+    [SerializeField] protected float[] multiPos = new float[3];
+
+    [SerializeField] protected bool isAllyFormation;
+    [SerializeField] protected int totalSize = 0;
 
     /// <summary>
     /// 프리펩 리스트를 받아 formation을 초기화한다
     /// </summary>
     /// <param name="prefabs"></param>
-    public void Initialize(List<GameObject> prefabs)
+    public virtual void Initialize(List<GameObject> prefabs)
     {
-        int size = 0;
-
         for(int i = 0; i < formation.Length; i++)
         {
             formation[i] = null;
         }
 
+        int order = 0;
+
         foreach (GameObject prefab in prefabs)
         {
+            if(totalSize > 4)
+            {
+                Debug.Log("총 크기가 4가 넘습니다");
+                return;
+            }
+
             GameObject characterPrefab = Instantiate(prefab, transform);
             BaseCharacter character = characterPrefab.GetComponent<BaseCharacter>();
 
             character.Initialize();
             character.IsAlly = isAllyFormation;
 
-            character.rowOrder = size;
+            character.rowOrder = order++;
 
             character.TriggerBuff(BuffTiming.BattleStart);
 
             for (int i = 0; i < character.Size; i++)
             {
-                formation[size++] = character;
+                formation[totalSize++] = character;
             }
         }
 
@@ -78,6 +88,7 @@ public class Formation : MonoBehaviour
             return character1.rowOrder.CompareTo(character2.rowOrder);
         });
 
+        SetRowOrder();
         Positioning();
     }
 
@@ -88,8 +99,7 @@ public class Formation : MonoBehaviour
     /// </summary>
     public void Positioning()
     {
-        float direction = isAllyFormation ? -1f : 1f;
-        float moveX = transform.position.x;
+        float moveX;
 
         for (int index = 0; index < formation.Length;)
         {
@@ -97,11 +107,17 @@ public class Formation : MonoBehaviour
 
             BaseCharacter character = formation[index];
 
+            if(character.Size == 1)
+            {
+                moveX = singlePos[index];
+            }
+            else
+            {
+                moveX = multiPos[index];
+            }
+
             character.transform.DOLocalMoveX(moveX, 0.5f);
             character.onAnyTurnEnd?.Invoke();
-
-            float radius = 4.5f;
-            moveX += (radius * direction);
 
             index += character.Size;
         }
@@ -137,7 +153,11 @@ public class Formation : MonoBehaviour
         for(int size = 0; size < formation.Length;) 
         {
             if (formation[size] == null) break;
-            list.Add(formation[size]);
+            
+            // 우치가 아닌 경우 리스트에 추가
+            if (!formation[size].IsMainCharacter)
+                list.Add(formation[size]);
+
             size += formation[size].Size;
         }
 
@@ -156,6 +176,17 @@ public class Formation : MonoBehaviour
         foreach (Transform child in transform)
         {
             Destroy(child.gameObject);
+        }
+    }
+
+    private void SetRowOrder()
+    {
+        for(int i = 0; i < formation.Length;)
+        {
+            if (formation[i] == null) break;
+
+            formation[i].rowOrder = i;
+            i += formation[i].Size;
         }
     }
 }

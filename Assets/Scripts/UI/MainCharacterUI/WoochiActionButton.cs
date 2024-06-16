@@ -9,12 +9,13 @@ public class WoochiActionButton : MonoBehaviour
 
     public virtual void Initialize(bool isEnable)
     {
+        icon.DOColor(Color.white, 0f);
         Interactable(isEnable);
     }
     
     public virtual void Activate()
     {
-       
+
     }
 
     public virtual void Deactivate()

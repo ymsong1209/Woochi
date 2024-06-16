@@ -24,7 +24,7 @@ public class BaseCharacterAnimation : MonoBehaviour
             return;
         }
 
-        animator.SetTrigger(_type.ToString());
+        animator.Play(_type.ToString());
         StartCoroutine(WaitAnim());
     }
 
@@ -38,7 +38,7 @@ public class BaseCharacterAnimation : MonoBehaviour
         owner.IsIdle = true;
         FocusOut();
 
-        animator.SetTrigger("Idle");
+        animator.Play("Idle");
     }
 
     /// <summary>

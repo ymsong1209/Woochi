@@ -10,6 +10,7 @@ public class MainCharacter : BaseCharacter
     [SerializeField] private float sorceryRecoveryPoints = 35f;
 
     [SerializeField] private MC_SorceryRecovery recoverySkill;
+    [SerializeField] private MC_Summon summonSkill;
     [SerializeField] private MC_Charm charmSkill;
 
     public int SorceryPoints
@@ -32,5 +33,10 @@ public class MainCharacter : BaseCharacter
 
     public MC_SorceryRecovery SorceryRecoverySkill => recoverySkill;
     public MC_Charm CharmSkill => charmSkill;
+
+    public MC_Summon SummonSkill
+    {
+        get { return summonSkill; }
+    }
 }
     

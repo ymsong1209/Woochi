@@ -411,7 +411,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 11
+  orthographic size: 8
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -2260,11 +2260,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 602307214}
-  - component: {fileID: 602307215}
   - component: {fileID: 602307217}
+  - component: {fileID: 602307218}
   - component: {fileID: 602307216}
   m_Layer: 5
-  m_Name: WoochiActionButton (2)
+  m_Name: WoochiActionButton_Summon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2290,20 +2290,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &602307215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 602307213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d73ea6162722f41479339cdea93dede3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  owner: {fileID: 1678643692}
-  icon: {fileID: 1373459981}
 --- !u!114 &602307216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2342,6 +2328,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 602307213}
   m_CullTransparentMesh: 1
+--- !u!114 &602307218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602307213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 821dd534d00c4b34eabcfa45f5c691e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 1678643692}
+  icon: {fileID: 1373459981}
+  allyUI: {fileID: 494983099}
 --- !u!1 &603492361
 GameObject:
   m_ObjectHideFlags: 0
@@ -3724,6 +3725,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7960448476840219747, guid: c0c04b32b2fa64445869ed953ff3401f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 494983099}
+    - target: {fileID: 7960448476840219747, guid: c0c04b32b2fa64445869ed953ff3401f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectCard
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4723,7 +4732,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 11
+  orthographic size: 8
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -6043,15 +6052,15 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1321433239 stripped
+--- !u!114 &1321433242 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2563073708206786777, guid: b4fcc8aaf4c360349b3ec2a99ea1244b, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7704997683018544697, guid: b4fcc8aaf4c360349b3ec2a99ea1244b, type: 3}
   m_PrefabInstance: {fileID: 1862218168098547949}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9f542595d87b204a99f5a3a47050fcd, type: 3}
+  m_Script: {fileID: 11500000, guid: 63e04d4c8c6f8c14abae11ac66fd51cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1356976910
@@ -6161,6 +6170,14 @@ PrefabInstance:
     - target: {fileID: 6347718317516234810, guid: c0c04b32b2fa64445869ed953ff3401f, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960448476840219747, guid: c0c04b32b2fa64445869ed953ff3401f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 494983099}
+    - target: {fileID: 7960448476840219747, guid: c0c04b32b2fa64445869ed953ff3401f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectCard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6281,7 +6298,7 @@ MonoBehaviour:
         m_MethodName: SelectButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 602307215}
+          m_ObjectArgument: {fileID: 602307218}
           m_ObjectArgumentAssemblyTypeName: WoochiActionButton, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -7362,6 +7379,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7960448476840219747, guid: c0c04b32b2fa64445869ed953ff3401f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 494983099}
+    - target: {fileID: 7960448476840219747, guid: c0c04b32b2fa64445869ed953ff3401f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectCard
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7433,7 +7458,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 11
+    OrthographicSize: 8
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -8239,7 +8264,7 @@ MonoBehaviour:
   buttonList:
   - {fileID: 923417857}
   - {fileID: 2111171362}
-  - {fileID: 602307215}
+  - {fileID: 602307218}
   - {fileID: 2081376927}
   - {fileID: 1306268783}
 --- !u!114 &1678643693
@@ -8608,7 +8633,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 11
+  orthographic size: 8
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -9916,6 +9941,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7960448476840219747, guid: c0c04b32b2fa64445869ed953ff3401f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 494983099}
+    - target: {fileID: 7960448476840219747, guid: c0c04b32b2fa64445869ed953ff3401f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectCard
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10060,7 +10093,7 @@ PrefabInstance:
     - target: {fileID: 6047043372224912184, guid: 56a27495f0a512c408751da061e9230f, type: 3}
       propertyPath: allies
       value: 
-      objectReference: {fileID: 1321433239}
+      objectReference: {fileID: 1321433242}
     - target: {fileID: 6047043372224912184, guid: 56a27495f0a512c408751da061e9230f, type: 3}
       propertyPath: enemies
       value: 
@@ -10218,6 +10251,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card
       objectReference: {fileID: 0}
+    - target: {fileID: 7960448476840219747, guid: c0c04b32b2fa64445869ed953ff3401f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 494983099}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10246,6 +10283,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
+      propertyPath: allies.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
+      propertyPath: allies.Array.data[0]
+      value: 
+      objectReference: {fileID: 1946550667272111963, guid: fb3bcba31bb16b54384116e3477e79ea, type: 3}
+    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
+      propertyPath: allies.Array.data[1]
+      value: 
+      objectReference: {fileID: 3306509121491266149, guid: 397f639ea948d3d4a891c0923b4bcbf0, type: 3}
+    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
+      propertyPath: allies.Array.data[2]
+      value: 
+      objectReference: {fileID: 27191659041353302, guid: f1f1d3eb84fe4284791bfa40d1568d56, type: 3}
     - target: {fileID: 5775089594791431015, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.027509725
@@ -10299,25 +10352,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2563073708206786777, guid: b4fcc8aaf4c360349b3ec2a99ea1244b, type: 3}
-      propertyPath: formation.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2770829566168115796, guid: b4fcc8aaf4c360349b3ec2a99ea1244b, type: 3}
       propertyPath: m_Name
       value: AllyFormation
       objectReference: {fileID: 0}
-    - target: {fileID: 2770829566168115796, guid: b4fcc8aaf4c360349b3ec2a99ea1244b, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2770829566168115796, guid: b4fcc8aaf4c360349b3ec2a99ea1244b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9080531546123634169, guid: b4fcc8aaf4c360349b3ec2a99ea1244b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9080531546123634169, guid: b4fcc8aaf4c360349b3ec2a99ea1244b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10370,7 +10411,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7265553078642598264, guid: b94dd6ac5d234b041a466ac3047bda0a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7265553078642598264, guid: b94dd6ac5d234b041a466ac3047bda0a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10411,14 +10452,6 @@ PrefabInstance:
     - target: {fileID: 8376371438601580464, guid: b94dd6ac5d234b041a466ac3047bda0a, type: 3}
       propertyPath: m_Name
       value: EnemyFormation
-      objectReference: {fileID: 0}
-    - target: {fileID: 8376371438601580464, guid: b94dd6ac5d234b041a466ac3047bda0a, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8376371438601580464, guid: b94dd6ac5d234b041a466ac3047bda0a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

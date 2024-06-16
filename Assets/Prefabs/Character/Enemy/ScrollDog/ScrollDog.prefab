@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: fbb33b2ad9c18f7478d022c0f86e0310, type: 2}
     - target: {fileID: 1817454482497125149, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2736481537326464950, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_IsActive
@@ -50,11 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4651224405074788822, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4651224405074788822, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.52
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4947313877317803005, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_Size.x
@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9f750848e16fa40afdb3df71646dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HUD: {fileID: 0}
   characterStat: {fileID: 11400000, guid: 7c18a9b4a73a4e14693cc5f16fc325db, type: 2}
   health: {fileID: 0}
   size: 1
@@ -232,10 +233,13 @@ MonoBehaviour:
   isSpawnSpecific: 0
   spawnLocation: {x: 0, y: 0, z: 0}
   spawnRotation: {x: 0, y: 0, z: 0, w: 0}
+  isMainCharacter: 0
   isDead: 0
   activeBuffs: []
   activeSkills: []
   activeSkillCheckBox: 0101
   isAlly: 0
+  isStarting: 0
+  isSummoned: 0
   rowOrder: 0
   evasionBuff: {fileID: 2594652249492454651, guid: 95ed429fd9f518443acf870831bd1544, type: 3}

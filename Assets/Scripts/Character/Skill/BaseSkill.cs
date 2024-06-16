@@ -10,6 +10,12 @@ public class SkillResult
 {
     public bool isHit = false;
     public bool isCrit = false;
+
+    public void Init()
+    {
+        isHit = false;
+        isCrit = false;
+    }
 }
 
 public class BaseSkill : MonoBehaviour
@@ -96,8 +102,6 @@ public class BaseSkill : MonoBehaviour
             return;
         }
 
-        skillResult = new SkillResult();
-
         skillOwner.onPlayAnimation?.Invoke(skillSO.AnimType);
 
         //단일공격인 경우 _opponent한테만 공격 로직 적용
@@ -114,6 +118,7 @@ public class BaseSkill : MonoBehaviour
         instantiatedBuffList.Clear();
 
         BattleManager.GetInstance.OnShakeCamera?.Invoke(skillResult.isHit, skillResult.isCrit);
+        skillResult.Init();
     }
     
     void  ClearInstantiatedBuffList()

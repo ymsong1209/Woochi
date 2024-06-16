@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9080531546123634169}
-  - component: {fileID: 2563073708206786777}
+  - component: {fileID: 7704997683018544697}
   m_Layer: 0
   m_Name: AllyFormation
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2563073708206786777
+--- !u!114 &7704997683018544697
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2770829566168115796}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9f542595d87b204a99f5a3a47050fcd, type: 3}
+  m_Script: {fileID: 11500000, guid: 63e04d4c8c6f8c14abae11ac66fd51cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   formation:
@@ -49,4 +49,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  singlePos:
+  - -2.5
+  - -5
+  - -7.5
+  - -10
+  multiPos:
+  - -4
+  - -6.25
+  - -9
   isAllyFormation: 1
+  totalSize: 0
+  waitingCharacter: []
