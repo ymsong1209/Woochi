@@ -63,7 +63,7 @@ public class BaseSkill : MonoBehaviour
     [SerializeField,ReadOnly] private float skillAccuracy; // 스킬 명중 수치
     [SerializeField] private bool isAlwaysHit = false;     // 회피, 명중 무시하고 무조건 명중
     [SerializeField] private bool isAlwaysApplyBuff = false;// 버프를 걸 확률, 저항 판정 무시하고 무조건 적용
-    SkillResult skillResult;
+    SkillResult skillResult = new SkillResult();
 
     /// <summary>
     /// 자신이 가지고 있는 SkillSO 정보를 이용해 BaseSkill을 초기화
