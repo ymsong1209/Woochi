@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// 족자구 전용 버프. 매 턴마다 회피 2씩 증가시킨다.
+/// </summary>
 public class ScrollDogIncreaseEvasionBuff : BaseBuff
 {
     [SerializeField] private GameObject evasionBuffGameObject;

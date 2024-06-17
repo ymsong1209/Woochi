@@ -10972,7 +10972,7 @@ PrefabInstance:
     - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: charmList.Array.data[0]
       value: 
-      objectReference: {fileID: 8207826904893543196, guid: 6edfe98f41ee00e409bf3200e1c2cd21, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: charmList.Array.data[2]
       value: 
@@ -10980,7 +10980,7 @@ PrefabInstance:
     - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: charmList.Array.data[4]
       value: 
-      objectReference: {fileID: 8207826904893543196, guid: 6edfe98f41ee00e409bf3200e1c2cd21, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5775089594791431015, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.027509725

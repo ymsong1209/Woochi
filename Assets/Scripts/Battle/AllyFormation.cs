@@ -18,7 +18,7 @@ public class AllyFormation : Formation
         {
             if (totalSize > 4)
             {
-                Debug.Log("ÃÑ Å©±â°¡ 4°¡ ³Ñ½À´Ï´Ù");
+                Debug.Log("ì´ í¬ê¸°ê°€ 4ê°€ ë„˜ìŠµë‹ˆë‹¤");
                 return;
             }
 
@@ -28,7 +28,7 @@ public class AllyFormation : Formation
             character.Initialize();
             character.IsAlly = isAllyFormation;
 
-            // Ä³¸¯ÅÍ°¡ Ã³À½ºÎÅÍ ¼ÒÈ¯µÇ´Â °æ¿ì¿Í ¾Æ´Ñ °æ¿ì¸¦ ±¸ºĞÇÑ´Ù
+            // ìºë¦­í„°ê°€ ì²˜ìŒë¶€í„° ì†Œí™˜ë˜ëŠ” ê²½ìš°ì™€ ì•„ë‹Œ ê²½ìš°ë¥¼ êµ¬ë¶„í•œë‹¤
             if (character.isStarting)
             {
                 SetProperty(character, true, order++);
@@ -50,16 +50,16 @@ public class AllyFormation : Formation
     }
 
     /// <summary>
-    /// ¼ÒÈ¯ ¼º°ø, ½ÇÆĞ ¹İÈ¯
+    /// ì†Œí™˜ ì„±ê³µ, ì‹¤íŒ¨ ë°˜í™˜
     /// </summary>
-    /// <param name="_character">¼ÒÈ¯ÇÒ Ä³¸¯ÅÍ</param>
-    /// <param name="_index">¼ÒÈ¯µÉ À§Ä¡ÀÇ ÀÎµ¦½º</param>
+    /// <param name="_character">ì†Œí™˜í•  ìºë¦­í„°</param>
+    /// <param name="_index">ì†Œí™˜ë  ìœ„ì¹˜ì˜ ì¸ë±ìŠ¤</param>
     /// <returns></returns>
     public bool Summon(BaseCharacter _character, int _index)
     {
         if(totalSize + _character.Size > 4)
         {
-            Debug.Log("ÃÑ Å©±â°¡ 4°¡ ³Ñ½À´Ï´Ù");
+            Debug.Log("ì´ í¬ê¸°ê°€ 4ê°€ ë„˜ìŠµë‹ˆë‹¤");
             return false;
         }
 

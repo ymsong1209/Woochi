@@ -14,38 +14,6 @@ public class MC_Charm : BaseSkill
        GameManager.GetInstance.RemoveCharm(charm);
    }
 
-   private void PlayAnimation(BaseCharacter opponent)
-   {
-       MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
-       if (!mainCharacter) return;
-       //우치는 항상 애니메이션 재생
-       mainCharacter.onPlayAnimation?.Invoke(AnimationType.Skill0);
-
-       if (charm.CharmType == CharmType.Buff)
-       {
-           if (charm.CharmTargetType == CharmTargetType.Singular ||
-               charm.CharmTargetType == CharmTargetType.SingularWithSelf)
-           {
-               if (opponent != mainCharacter)
-               {
-                   opponent?.onPlayAnimation?.Invoke(AnimationType.Skill0);
-               }
-           }
-           else if (charm.CharmTargetType == CharmTargetType.Multiple ||
-                    charm.CharmTargetType == CharmTargetType.MultipleWithSelf)
-           {
-               for (int i = 0; i < charm.CharmRadius.Length; ++i)
-               {
-                   if (charm.CharmRadius[i])
-                   {
-                       BaseCharacter receiver = BattleManager.GetInstance.GetCharacterFromIndex(i);
-                       if (receiver != mainCharacter) receiver.onPlayAnimation?.Invoke(AnimationType.Skill0);
-                   }
-               }
-           }
-       }
-   }
-
    private void ActivateCharm(BaseCharacter opponent)
    {
        BaseCharacter mainCharacter = BattleManager.GetInstance.currentCharacter;
@@ -81,6 +49,56 @@ public class MC_Charm : BaseSkill
                {
                    BaseCharacter receiver = BattleManager.GetInstance.GetCharacterFromIndex(i);
                    if(receiver!= mainCharacter) charm.Activate(receiver);
+               }
+           }
+       }
+   }
+   
+   private void PlayAnimation(BaseCharacter opponent)
+   {
+       MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
+       if (!mainCharacter) return;
+       //우치는 항상 애니메이션 재생
+       mainCharacter.onPlayAnimation?.Invoke(AnimationType.Skill1);
+
+       PlayOpponentAnimation(opponent);
+   }
+
+   private void PlayOpponentAnimation(BaseCharacter opponent)
+   {
+       MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
+       if (!mainCharacter) return;
+       
+       if (charm.CharmTargetType == CharmTargetType.Singular ||
+           charm.CharmTargetType == CharmTargetType.SingularWithSelf)
+       {
+           if (opponent != mainCharacter && charm.CharmType == CharmType.Buff)
+           {
+               //TODO : 상대방 버프 애니메이션 재생
+               opponent?.onPlayAnimation?.Invoke(AnimationType.Skill0);
+           }
+           else if (opponent != mainCharacter && charm.CharmType == CharmType.DeBuff)
+           {
+               opponent?.onPlayAnimation?.Invoke(AnimationType.Damaged);
+           }
+       }
+       else if (charm.CharmTargetType == CharmTargetType.Multiple ||
+                charm.CharmTargetType == CharmTargetType.MultipleWithSelf)
+       {
+           for (int i = 0; i < charm.CharmRadius.Length; ++i)
+           {
+               if (charm.CharmRadius[i])
+               {
+                   BaseCharacter receiver = BattleManager.GetInstance.GetCharacterFromIndex(i);
+                   if (receiver != mainCharacter && charm.CharmType == CharmType.Buff)
+                   {
+                       //TODO : 상대방 버프 애니메이션 재생
+                       receiver.onPlayAnimation?.Invoke(AnimationType.Skill0);
+                   }
+                   else if (receiver != mainCharacter && charm.CharmType == CharmType.DeBuff)
+                   {
+                       receiver.onPlayAnimation?.Invoke(AnimationType.Damaged);
+                   }
                }
            }
        }

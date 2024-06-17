@@ -42,7 +42,7 @@ public class BaseCharacterAnimation : MonoBehaviour
     }
 
     /// <summary>
-    /// rowOrder °ªÀ¸·Î ÈÄ¿­¿¡ ÀÖ´Â Ä³¸¯ÅÍ°¡ ¾Õ¿¡ º¸ÀÌµµ·Ï
+    /// rowOrder ê°’ìœ¼ë¡œ í›„ì—´ì— ìˆëŠ” ìºë¦­í„°ê°€ ì•ì— ë³´ì´ë„ë¡
     /// </summary>
     void SetSortLayer()
     {

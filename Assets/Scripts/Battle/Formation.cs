@@ -25,7 +25,7 @@ public class Formation : MonoBehaviour
         }
 
         int order = 0;
-
+        totalSize = 0;
         foreach (GameObject prefab in prefabs)
         {
             if(totalSize > 4)
