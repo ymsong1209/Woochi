@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(StatBuff))]
-public class BaseCharmStatBuff : BaseCharm
+
+[RequireComponent(typeof(StatDeBuff))]
+public class DebuffCharm : BaseCharm
 {
-   #region 변화된 스탯들의 수치
+    #region 변화된 스탯들의 수치
     [SerializeField] protected float changeDefense;
     [SerializeField] protected float changeCrit;
     [SerializeField] protected float changeAccuracy;
@@ -18,7 +19,7 @@ public class BaseCharmStatBuff : BaseCharm
 
     public override void Activate(BaseCharacter opponent)
     {
-        StatBuff buff = GetComponent<StatBuff>();
+        StatDeBuff buff = GetComponent<StatDeBuff>();
         buff.StatBuffName = CharmName;
         buff.BuffDurationTurns = Turns;
         buff.ChangeDefense = changeDefense;

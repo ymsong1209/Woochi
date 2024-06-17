@@ -46,7 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffOwner: {fileID: 0}
   buffDurationTurns: -1
-  buffType: 8
+  buffEffect: 8
+  buffType: 1
   chanceToApplyBuff: 0
   changeDefense: 0
   changeCrit: 0

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Serialization;
 
 
 public class BaseBuff : MonoBehaviour
@@ -14,6 +15,7 @@ public class BaseBuff : MonoBehaviour
     /// buffDurationTurns가 -1이면 영구지속 버프
     /// </summary>
     [SerializeField] protected int  buffDurationTurns;
+    [SerializeField] protected BuffEffect buffEffect;
     [SerializeField] protected BuffType buffType;
     [SerializeField] protected int chanceToApplyBuff;
 
@@ -139,6 +141,12 @@ public class BaseBuff : MonoBehaviour
         get { return buffDurationTurns; }
         set { buffDurationTurns = value; }
     }
+    public BuffEffect BuffEffect
+    {
+        get => buffEffect;
+        set => buffEffect = value;
+    }
+    
     public BuffType BuffType
     {
         get => buffType;
@@ -200,10 +208,10 @@ public class BaseBuff : MonoBehaviour
     #region Validation
     private void OnValidate()
     {
-        // if(buffDurationTurns == 0)
-        // {
-        //     Debug.Log(nameof(buffDurationTurns) + " is not over 1 in object " + this.name.ToString());
-        // }
+        if (buffType == BuffType.Default)
+        {
+            Debug.Log(  this.name +  "의 buffEffect이 Default로 설정되어 있습니다. 설정을 바꿔주세요");
+        }
         
     }
     #endregion

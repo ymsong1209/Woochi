@@ -37,11 +37,22 @@ public enum SkillType
     Heal,               // 힐 관련
     END
 }
+public enum SkillElement
+{
+    None,
+    Fire,
+    Water,
+    Wood,
+    Metal,
+    Earth,
+    END
+}
 
 public enum CharmType
 {
     Buff,
     DeBuff,
+    CleanseSingleDebuff,
     END
 }
 
@@ -54,18 +65,9 @@ public enum CharmTargetType
     End
 }
 
-public enum SkillElement
-{
-    None,
-    Fire,
-    Water,
-    Wood,
-    Metal,
-    Earth,
-    END
-}
 
-public enum BuffType
+
+public enum BuffEffect
 {
     Bleed,
     Burn,
@@ -75,7 +77,15 @@ public enum BuffType
     HealOverTime,
     Protect, //보호를 해줄때
     Shield, //보호받을때
-    ScrollDogIncreaseEvasionBuff,//족자구 회피 증가 버프
+    IncreaseEvasionOvertime,//족자구 회피 증가 버프
+    END
+}
+
+public enum BuffType
+{
+    Default,
+    Positive, //긍정적인 버프
+    Negative, //부정적인 버프(디버프)
     END
 }
 

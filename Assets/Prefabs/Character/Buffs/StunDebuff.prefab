@@ -47,6 +47,7 @@ MonoBehaviour:
   buffOwner: {fileID: 0}
   buffDurationTurns: 1
   buffType: 2
+  buffEffect: 2
   chanceToApplyBuff: 0
   changeDefense: 0
   changeCrit: 0

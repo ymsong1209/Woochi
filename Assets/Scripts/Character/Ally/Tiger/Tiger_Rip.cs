@@ -20,7 +20,7 @@ public class Tiger_Rip : BaseSkill
         bool hasBleed = false;
         foreach(BaseBuff buff in _opponent.activeBuffs)
         {
-            if(buff.BuffType == BuffType.Bleed)
+            if(buff.BuffEffect == BuffEffect.Bleed)
             {
                 hasBleed = true;
             }

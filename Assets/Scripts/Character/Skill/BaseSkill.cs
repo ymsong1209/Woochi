@@ -258,7 +258,7 @@ public class BaseSkill : MonoBehaviour
         BaseCharacter finaltarget = _Opponent;
         foreach(BaseBuff buff in finaltarget.activeBuffs)
         {
-            if(buff.BuffType == BuffType.Shield)
+            if(buff.BuffEffect == BuffEffect.Shield)
             {
                 ProtectBuff protectbuff = buff as ProtectBuff;
                 if(protectbuff) finaltarget = protectbuff.ProtectionOwner;
@@ -361,7 +361,7 @@ public class BaseSkill : MonoBehaviour
         }
         
         // 모든 자손을 순회하여 알맞은 uffIcon을 찾음
-        Transform targetChild = FindBuffIconTransform(buffList, buff.BuffType);
+        Transform targetChild = FindBuffIconTransform(buffList, buff.BuffEffect);
         if (targetChild == null)
         {
             Debug.LogError("No matching BuffIcon found under BuffListCanvas");
@@ -380,19 +380,19 @@ public class BaseSkill : MonoBehaviour
     }
     
     // 재귀적으로 BuffIcon을 찾는 메서드
-    Transform FindBuffIconTransform(Transform parent, BuffType buffType)
+    Transform FindBuffIconTransform(Transform parent, BuffEffect buffEffect)
     {
         for (int i = 0; i < parent.childCount; i++)
         {
             Transform child = parent.GetChild(i);
             BuffIcon buffIcon = child.GetComponent<BuffIcon>();
 
-            if (buffIcon != null && buffIcon.BuffType == buffType)
+            if (buffIcon != null && buffIcon.BuffEffect == buffEffect)
             {
                 return child;
             }
 
-            Transform foundChild = FindBuffIconTransform(child, buffType);
+            Transform foundChild = FindBuffIconTransform(child, buffEffect);
             if (foundChild != null)
             {
                 return foundChild;
@@ -410,10 +410,10 @@ public class BaseSkill : MonoBehaviour
         {
             if (activeBuff == null) continue;
 
-            if (activeBuff.BuffType == _buff.BuffType)
+            if (activeBuff.BuffEffect == _buff.BuffEffect)
             {
                 // 스탯 변경 버프는 스탯 변경 버프끼리
-                if (_buff.BuffType == BuffType.StatStrengthen || _buff.BuffType == BuffType.StatWeaken)
+                if (_buff.BuffEffect == BuffEffect.StatStrengthen || _buff.BuffEffect == BuffEffect.StatWeaken)
                 {
                     StatBuff activeStatBuff = activeBuff as StatBuff;
                     StatBuff statBuff = _buff as StatBuff;

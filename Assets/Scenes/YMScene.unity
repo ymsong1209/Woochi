@@ -10974,13 +10974,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
+      propertyPath: charmList.Array.data[1]
+      value: 
+      objectReference: {fileID: 3145212337972435697, guid: 6cd8f98e015e25e41b5028fd99a2039e, type: 3}
+    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: charmList.Array.data[2]
       value: 
       objectReference: {fileID: 8207826904893543196, guid: a7f2ff85543b2d2459a56cd14d25ff4d, type: 3}
     - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
+      propertyPath: charmList.Array.data[3]
+      value: 
+      objectReference: {fileID: 3145212337972435697, guid: 2bd4f9e6a867e5741b63ce43cbeafcef, type: 3}
+    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: charmList.Array.data[4]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: -4831398473671491347, guid: d62c684cf4e85df41ac74545da90f05c, type: 3}
     - target: {fileID: 5775089594791431015, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.027509725

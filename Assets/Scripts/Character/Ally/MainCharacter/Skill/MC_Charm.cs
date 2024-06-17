@@ -61,23 +61,24 @@ public class MC_Charm : BaseSkill
        //우치는 항상 애니메이션 재생
        mainCharacter.onPlayAnimation?.Invoke(AnimationType.Skill1);
 
-       PlayOpponentAnimation(opponent);
+       if (mainCharacter != opponent)
+       {
+           PlayOpponentAnimation(opponent);
+       }
+      
    }
 
-   private void PlayOpponentAnimation(BaseCharacter opponent)
+   protected virtual void PlayOpponentAnimation(BaseCharacter opponent)
    {
-       MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
-       if (!mainCharacter) return;
-       
        if (charm.CharmTargetType == CharmTargetType.Singular ||
            charm.CharmTargetType == CharmTargetType.SingularWithSelf)
        {
-           if (opponent != mainCharacter && charm.CharmType == CharmType.Buff)
+           if ( charm.CharmType == CharmType.Buff || charm.CharmType == CharmType.CleanseSingleDebuff)
            {
                //TODO : 상대방 버프 애니메이션 재생
                opponent?.onPlayAnimation?.Invoke(AnimationType.Skill0);
            }
-           else if (opponent != mainCharacter && charm.CharmType == CharmType.DeBuff)
+           else if (charm.CharmType == CharmType.DeBuff)
            {
                opponent?.onPlayAnimation?.Invoke(AnimationType.Damaged);
            }
@@ -90,13 +91,13 @@ public class MC_Charm : BaseSkill
                if (charm.CharmRadius[i])
                {
                    BaseCharacter receiver = BattleManager.GetInstance.GetCharacterFromIndex(i);
-                   if (receiver != mainCharacter && charm.CharmType == CharmType.Buff)
+                   if (charm.CharmType == CharmType.Buff)
                    {
                        //TODO : 상대방 버프 애니메이션 재생
                        receiver.onPlayAnimation?.Invoke(AnimationType.Skill0);
                    }
-                   else if (receiver != mainCharacter && charm.CharmType == CharmType.DeBuff)
-                   {
+                   else if (charm.CharmType == CharmType.DeBuff|| charm.CharmType == CharmType.CleanseSingleDebuff)
+                   { 
                        receiver.onPlayAnimation?.Invoke(AnimationType.Damaged);
                    }
                }

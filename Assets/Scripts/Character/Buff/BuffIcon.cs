@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private BuffType buffType;
+    [FormerlySerializedAs("buffType")] [SerializeField] private BuffEffect buffEffect;
     [SerializeField] private Animator animator;
    
 
@@ -25,7 +26,7 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void CheckChildBuffs(BaseBuff _buff)
     {
         // Check if buffType is not statstrengthen or statweaken
-        if (buffType != BuffType.StatStrengthen && buffType != BuffType.StatWeaken)
+        if (buffEffect != BuffEffect.StatStrengthen && buffEffect != BuffEffect.StatWeaken)
         {
             //부모 자식 연결 해제
             _buff.transform.parent = null;
@@ -33,7 +34,7 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
         else
         {
-            if (_buff.BuffType == BuffType.StatStrengthen)
+            if (_buff.BuffEffect == BuffEffect.StatStrengthen)
             {
                 for (int i = 0; i < transform.childCount; i++)
                 {
@@ -48,7 +49,7 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                     }
                 }
             }
-            else if (_buff.BuffType == BuffType.StatWeaken)
+            else if (_buff.BuffEffect == BuffEffect.StatWeaken)
             {
                 for (int i = 0; i < transform.childCount; i++)
                 {
@@ -117,14 +118,14 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     BaseBuff ReturnChildBuffExceptStatBuff()
     {
-        if(buffType == BuffType.StatStrengthen || buffType == BuffType.StatWeaken)
+        if(buffEffect == BuffEffect.StatStrengthen || buffEffect == BuffEffect.StatWeaken)
         {
             return null;
         }
         else
         {
             BaseBuff childbuff = transform.GetChild(0).GetComponent<BaseBuff>();
-            if (childbuff.BuffType == buffType) return childbuff;
+            if (childbuff.BuffEffect == buffEffect) return childbuff;
             return null;
         }
     }
@@ -133,7 +134,7 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
    
     
     #region Getter Setter
-    public BuffType BuffType => buffType;
+    public BuffEffect BuffEffect => buffEffect;
     // public BuffType SkillOwner
     // {
     //     get { return skillOwner; }
