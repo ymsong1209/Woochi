@@ -40,6 +40,10 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     private bool isSkillExecuted = false;
     #endregion
 
+    #region 위치 이동
+    [HideInInspector] public bool canChangeLocation = false;
+    public Queue<BaseCharacter> changeTargets = new Queue<BaseCharacter>();
+    #endregion
     private void Start()
     {
         CurState = BattleState.IDLE;
@@ -326,7 +330,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
     }
 
-    public void DisableAllArrows()
+    public void DisableAllArrows(bool onlyAlly = false)
     {
         foreach (BaseCharacter character in allies.formation)
         {
@@ -335,6 +339,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 character.HUD.ActivateArrow(false);
             }
         }
+
+        if (onlyAlly) return;
+
         foreach (BaseCharacter character in enemies.formation)
         {
             if (character)
@@ -387,6 +394,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         DisableAllArrows();
 
         currentSelectedSkill.ActivateSkill(receiver);
+
         allies.CheckDeathInFormation();
         enemies.CheckDeathInFormation();
 
@@ -589,18 +597,21 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
     }
     
-    public void MoveCharacter(BaseCharacter character, BaseCharacter target)
+    public void MoveCharacter(BaseCharacter _character, BaseCharacter _target)
     {
-        if(character == null || target == null) return;
+        if(_character == null || _target == null) return;
 
-        (target.rowOrder, character.rowOrder) = (character.rowOrder, target.rowOrder);
+        (_target.rowOrder, _character.rowOrder) = (_character.rowOrder, _target.rowOrder);
+
+        InitSelection();
+        StartCoroutine(ExecuteSkill(_character, _target));
     }
 
-    #region 소환수 소환 관련
+    #region 소환수 소환, 위치 이동 관련
     /// <summary>
     /// 소환 위치 결정
     /// </summary>
-    public void SelectPosition(MC_Summon _summon)
+    public void SelectPosition(bool canInteract = true)
     {
         for(int i = 0; i < allies.formation.Length; i++)
         {
@@ -609,9 +620,42 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             {
                 character.HUD.ActivateArrow(true);
                 BaseCharacterCollider characterCollider = character.GetComponent<BaseCharacterCollider>();
-                characterCollider.CanInteract = true;
+                characterCollider.CanInteract = canInteract;
             }
         }
+    }
+
+    public void CharacterSelected(BaseCharacter _character)
+    {
+        Debug.Log(changeTargets.Count);
+
+        if(changeTargets.Count == 0)
+        {
+            changeTargets.Enqueue(_character);
+        }
+        else
+        {
+            var target = changeTargets.Dequeue();
+            if (target == _character)
+                return;
+
+            MoveCharacter(target, _character);
+        }
+    }
+
+    public void InitSelection()
+    {
+        for(int i = 0; i < allies.formation.Length; i++)
+        {
+            if (allies.formation[i] != null)
+            {
+                allies.formation[i].HUD.InitSelection();    
+            }
+        }
+
+        DisableAllArrows(true);
+        canChangeLocation = false;
+        changeTargets.Clear();
     }
 
     /// <summary>

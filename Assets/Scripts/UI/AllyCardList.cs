@@ -70,7 +70,7 @@ public class AllyCardList : MonoBehaviour
         {
             summon.isSummon = true;
             summon.willSummon = _card.Ally;
-            BattleManager.GetInstance.SelectPosition(summon);
+            BattleManager.GetInstance.SelectPosition();
         }
     }
 }

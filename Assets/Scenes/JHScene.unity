@@ -2036,7 +2036,7 @@ MonoBehaviour:
         m_MethodName: SelectButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1306268783}
+          m_ObjectArgument: {fileID: 1306268786}
           m_ObjectArgumentAssemblyTypeName: WoochiActionButton, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -6136,11 +6136,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1306268782}
-  - component: {fileID: 1306268783}
   - component: {fileID: 1306268785}
+  - component: {fileID: 1306268786}
   - component: {fileID: 1306268784}
   m_Layer: 5
-  m_Name: WoochiActionButton (4)
+  m_Name: WoochiActionButton_ChangeLocation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6166,20 +6166,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1306268783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306268781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d73ea6162722f41479339cdea93dede3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  owner: {fileID: 1678643692}
-  icon: {fileID: 519566747}
 --- !u!114 &1306268784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6218,6 +6204,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1306268781}
   m_CullTransparentMesh: 1
+--- !u!114 &1306268786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306268781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfc586f97001a2a41b883f293985d75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 1678643692}
+  icon: {fileID: 519566747}
 --- !u!114 &1310351820 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4966515461882336927, guid: b80c8cf3af687084c8fef23fc6ea3e73, type: 3}
@@ -8829,7 +8829,7 @@ MonoBehaviour:
   - {fileID: 2111171365}
   - {fileID: 602307218}
   - {fileID: 2081376927}
-  - {fileID: 1306268783}
+  - {fileID: 1306268786}
 --- !u!114 &1678643693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10965,22 +10965,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
-      propertyPath: allies.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
-      propertyPath: allies.Array.data[0]
-      value: 
-      objectReference: {fileID: 1946550667272111963, guid: fb3bcba31bb16b54384116e3477e79ea, type: 3}
-    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
-      propertyPath: allies.Array.data[1]
-      value: 
-      objectReference: {fileID: 3306509121491266149, guid: 397f639ea948d3d4a891c0923b4bcbf0, type: 3}
-    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
-      propertyPath: allies.Array.data[2]
-      value: 
-      objectReference: {fileID: 27191659041353302, guid: f1f1d3eb84fe4284791bfa40d1568d56, type: 3}
     - target: {fileID: 5775089594791431015, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.027509725

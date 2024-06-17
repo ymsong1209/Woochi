@@ -65,7 +65,7 @@ public class BaseCharacter : MonoBehaviour
     public bool isStarting = false;     // 캐릭터가 전투 시작시 소환되었는지
     public bool isSummoned = false;     // 캐릭터가 소환되었는지
 
-    [HideInInspector] public int rowOrder;  // 캐릭터가 앞 열에서부터 몇 번째 순서인지
+    public int rowOrder;  // 캐릭터가 앞 열에서부터 몇 번째 순서인지
     #endregion BATTLE STATS
 
     #region Event
