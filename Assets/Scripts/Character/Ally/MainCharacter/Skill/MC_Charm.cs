@@ -75,8 +75,8 @@ public class MC_Charm : BaseSkill
        {
            if ( charm.CharmType == CharmType.Buff || charm.CharmType == CharmType.CleanseSingleDebuff)
            {
-               //TODO : 상대방 버프 애니메이션 재생
-               opponent?.onPlayAnimation?.Invoke(AnimationType.Skill0);
+               //TODO : 상대방 버프 받는 애니메이션 재생
+               opponent?.onPlayAnimation?.Invoke(AnimationType.Idle);
            }
            else if (charm.CharmType == CharmType.DeBuff)
            {
@@ -93,8 +93,8 @@ public class MC_Charm : BaseSkill
                    BaseCharacter receiver = BattleManager.GetInstance.GetCharacterFromIndex(i);
                    if (charm.CharmType == CharmType.Buff)
                    {
-                       //TODO : 상대방 버프 애니메이션 재생
-                       receiver.onPlayAnimation?.Invoke(AnimationType.Skill0);
+                       //TODO : 상대방 버프 받는 애니메이션 재생
+                       receiver.onPlayAnimation?.Invoke(AnimationType.Idle);
                    }
                    else if (charm.CharmType == CharmType.DeBuff|| charm.CharmType == CharmType.CleanseSingleDebuff)
                    { 

@@ -10972,7 +10972,7 @@ PrefabInstance:
     - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: charmList.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8207826904893543196, guid: 52721394bc5a118459615907eaa455b0, type: 3}
     - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: charmList.Array.data[1]
       value: 
