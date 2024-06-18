@@ -65,13 +65,13 @@ public class AllyFormation : Formation
 
         waitingCharacter.Remove(_character);
 
-        int rowOrder = formation[_index].rowOrder;
+        int rowOrder = formation[_index].RowOrder;
 
         for(int i = _index; i < formation.Length; i++)
         {
             if (formation[i])
             {
-                formation[i].rowOrder++;
+                formation[i].RowOrder++;
             }
             else
             {
@@ -115,7 +115,7 @@ public class AllyFormation : Formation
     private void SetProperty(BaseCharacter _character, bool isSummoned, int rowOrder)
     {
         _character.isSummoned = isSummoned;
-        _character.rowOrder = rowOrder;
+        _character.RowOrder = rowOrder;
         _character.gameObject.SetActive(isSummoned);
     }
 }

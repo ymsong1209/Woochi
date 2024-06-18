@@ -88,6 +88,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4635307683478757605, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635307683478757605, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: m_Size.y
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4651224405074788822, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -283,6 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HUD: {fileID: 0}
+  anim: {fileID: 0}
   characterStat: {fileID: 11400000, guid: c8762dd9f5c96da4287c1a1a55b72000, type: 2}
   health: {fileID: 0}
   size: 1
@@ -305,7 +314,6 @@ MonoBehaviour:
   isAlly: 0
   isStarting: 1
   isSummoned: 0
-  rowOrder: 0
 --- !u!1 &8620507179705111926 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6890884974774991358, guid: d65a7aefa191b904c8dded1547849368, type: 3}

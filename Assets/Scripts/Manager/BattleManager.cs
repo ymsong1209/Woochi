@@ -17,9 +17,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// </summary>
     private Queue<BaseCharacter> combatQueue = new Queue<BaseCharacter>();
     private List<BaseCharacter> processedCharacters = new List<BaseCharacter>();
+    [Header("Formation")]
     [SerializeField] private AllyFormation allies;
     [SerializeField] private Formation enemies;
 
+    [Header("Object")]
     [SerializeField] private AllyCardList allyCards;
 
     #region 이벤트
@@ -568,8 +570,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         return (null, -1); // 유효하지 않은 인덱스
     }
-    
 
+    #region 소환수 소환, 위치 이동 관련
     /// <summary>
     /// 캐릭터의 위치를 이동시키는 함수
     /// </summary>
@@ -585,14 +587,14 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         {
             if(IsCharacterThere(to))
             {
-                (allies.formation[to].rowOrder, character.rowOrder) = (character.rowOrder, allies.formation[to].rowOrder);
+                (allies.formation[to].RowOrder, character.RowOrder) = (character.RowOrder, allies.formation[to].RowOrder);
             }
         }
         else
         {
             if(IsCharacterThere(to + 4))
             {
-                (enemies.formation[to].rowOrder, character.rowOrder) = (character.rowOrder, enemies.formation[to].rowOrder);
+                (enemies.formation[to].RowOrder, character.RowOrder) = (character.RowOrder, enemies.formation[to].RowOrder);
             }
         }
     }
@@ -601,13 +603,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         if(_character == null || _target == null) return;
 
-        (_target.rowOrder, _character.rowOrder) = (_character.rowOrder, _target.rowOrder);
+        (_target.RowOrder, _character.RowOrder) = (_character.RowOrder, _target.RowOrder);
 
         InitSelection();
         StartCoroutine(ExecuteSkill(_character, _target));
     }
 
-    #region 소환수 소환, 위치 이동 관련
     /// <summary>
     /// 소환 위치 결정
     /// </summary>
@@ -710,7 +711,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         // 버프 제거
         _character.RemoveAllBuff();
         allies.UnSummon(_character);
-        StartCoroutine(ExecuteSkill(currentCharacter, currentCharacter));
+        StartCoroutine(ExecuteSkill(currentCharacter, _character));
     }
     #endregion
     #region Getter Setter

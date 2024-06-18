@@ -19,7 +19,7 @@ public class MC_Charm : BaseSkill
        MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
        if (!mainCharacter) return;
        //우치는 항상 애니메이션 재생
-       mainCharacter.onPlayAnimation?.Invoke(AnimationType.Skill0);
+       mainCharacter.onPlayAnimation?.Invoke(AnimationType.Skill1);
 
        if (charm.CharmType == CharmType.Buff)
        {

@@ -1,3 +1,6 @@
+using System.Collections;
+using UnityEngine;
+
 public class MC_Summon : BaseSkill
 {
     public BaseCharacter willSummon;    // 소환될 캐릭터
@@ -11,11 +14,6 @@ public class MC_Summon : BaseSkill
             BattleManager.GetInstance.Summon(willSummon, _Opponent);
             willSummon.onPlayAnimation?.Invoke(AnimationType.Idle);
         }
-        else
-        {
-
-        }
-
 
         SkillOwner.onPlayAnimation?.Invoke(AnimationType.Skill2);
     }

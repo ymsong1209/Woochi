@@ -9,6 +9,7 @@ using UnityEngine;
 public class BaseCharacter : MonoBehaviour
 {
     public BaseCharacterHUD HUD;
+    public BaseCharacterAnimation anim;
     public CharacterStatSO characterStat;
 
     #region Header CHARACTER STATS
@@ -65,19 +66,21 @@ public class BaseCharacter : MonoBehaviour
     public bool isStarting = false;     // 캐릭터가 전투 시작시 소환되었는지
     public bool isSummoned = false;     // 캐릭터가 소환되었는지
 
-    public int rowOrder;  // 캐릭터가 앞 열에서부터 몇 번째 순서인지
+    // 캐릭터가 앞 열에서부터 몇 번째 순서인지
+    private int rowOrder;
+    
     #endregion BATTLE STATS
 
     #region Event
     public Action onHealthChanged;
     public Action<AnimationType> onPlayAnimation;
     public Action<AttackResult, int, bool> onAttacked;
-    public Action onAnyTurnEnd;     // 아무 캐릭터의 턴이 끝날때
     #endregion
 
-    private void Start()
+    private void Awake()
     {
         HUD = GetComponent<BaseCharacterHUD>();
+        anim = GetComponent<BaseCharacterAnimation>();
     }
 
     public virtual void CheckSkillsOnTurnStart()
@@ -487,6 +490,15 @@ public class BaseCharacter : MonoBehaviour
         set { isIdle = value; }
     }
 
+    public int RowOrder
+    {
+        get { return rowOrder; }
+        set
+        {
+            rowOrder = value;
+            anim.SetSortLayer(rowOrder);
+        }
+    }
     #region 바뀐 스탯 
     public float ChangedSpeed => speed - characterStat.BaseSpeed;
     public float ChangedDefense => defense - characterStat.BaseDefense;
