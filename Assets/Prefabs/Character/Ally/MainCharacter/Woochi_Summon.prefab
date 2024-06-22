@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063ba81ef16610a4c9b946594f778c75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillSO: {fileID: 0}
+  skillSO: {fileID: 11400000, guid: 29a99f121e80c9845bc532d38c6a093e, type: 2}
   skillOwner: {fileID: 0}
   skillName: 
   skillAvailableRadius: 0000000000000000
@@ -54,3 +54,7 @@ MonoBehaviour:
   bufflist: []
   multiplier: 0
   skillAccuracy: 0
+  isAlwaysHit: 0
+  isAlwaysApplyBuff: 0
+  willSummon: {fileID: 0}
+  isSummon: 0

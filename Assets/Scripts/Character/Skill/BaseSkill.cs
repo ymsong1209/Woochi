@@ -42,7 +42,7 @@ public class BaseSkill : MonoBehaviour
 
     [SerializeField] private SkillTargetType skillTargetType;
     [SerializeField] private SkillType skillType;
-
+    [SerializeField] private int skillTargetCount = 1;
     /// <summary>
     /// 스킬 적중시 적용시킬 버프 리스트, inspector에서 세팅해줘야함
     /// </summary>
@@ -74,6 +74,7 @@ public class BaseSkill : MonoBehaviour
         skillAvailableRadius = skillSO.SkillAvailableRadius;
         skillRadius = skillSO.SkillRadius;
         skillType = skillSO.SkillType;
+        skillTargetCount = skillSO.SkillTargetCount;
         multiplier = skillSO.BaseMultiplier;
         skillAccuracy = skillSO.BaseSkillAccuracy;
         skillTargetType = skillSO.SkillTargetType;
@@ -485,6 +486,7 @@ public class BaseSkill : MonoBehaviour
     }
 
     public SkillTargetType SkillTargetType => skillTargetType;
+    public int SkillTargetCount => skillTargetCount;
     public BaseCharacter SkillOwner
     {
         get => skillOwner;

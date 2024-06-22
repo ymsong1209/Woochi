@@ -10,6 +10,7 @@ public class BaseCharacter : MonoBehaviour
 {
     public BaseCharacterHUD HUD;
     public BaseCharacterAnimation anim;
+    public BaseCharacterCollider collider;
     public CharacterStatSO characterStat;
 
     #region Header CHARACTER STATS
@@ -33,9 +34,6 @@ public class BaseCharacter : MonoBehaviour
 
    
     [Tooltip("특정 위치에서 Spawn되게 하고 싶으면 값 입력.")]
-    [SerializeField] private bool       isSpawnSpecific = false;
-    [SerializeField] private Vector3    spawnLocation;
-    [SerializeField] private Quaternion spawnRotation;
     [SerializeField] bool isMainCharacter = false;
     
     #region Header BATTLE STATS
@@ -63,12 +61,13 @@ public class BaseCharacter : MonoBehaviour
     protected bool isTurnUsed = false; //한 라운드 내에서 자신의 턴을 사용했을 경우
     protected bool isIdle = true;
 
-    public bool isStarting = false;     // 캐릭터가 전투 시작시 소환되었는지
-    public bool isSummoned = false;     // 캐릭터가 소환되었는지
+    public bool isStarting = false;     // 캐릭터가 전투 시작시 소환될건지
+    [HideInInspector] public bool isSummoned = false;     // 캐릭터가 소환되었는지
 
     // 캐릭터가 앞 열에서부터 몇 번째 순서인지
     private int rowOrder;
-    
+
+    private bool isSelected = false;     // 배틀 중 스킬 대상으로 선택된 캐릭터인지
     #endregion BATTLE STATS
 
     #region Event
@@ -81,14 +80,13 @@ public class BaseCharacter : MonoBehaviour
     {
         HUD = GetComponent<BaseCharacterHUD>();
         anim = GetComponent<BaseCharacterAnimation>();
+        collider = GetComponent<BaseCharacterCollider>();
+
+        isSummoned = isStarting;
     }
 
     public virtual void CheckSkillsOnTurnStart()
     { 
-        // foreach(BaseSkill activeskill in activeSkills)
-        // {
-        //     activeskill.CheckTurnStart();
-        // }
     }
 
     /// <summary>
@@ -96,9 +94,20 @@ public class BaseCharacter : MonoBehaviour
     /// </summary>
     public virtual void TriggerAI()
     {
-        
     }
 
+    public void OnSelected()
+    {
+        isSelected = !isSelected;
+        HUD.Selected(isSelected);
+        BattleManager.GetInstance.CharacterSelected(this);
+    }
+
+    public void InitSelect()
+    {
+        isSelected = false;
+        HUD.Selected(isSelected);
+    }
     #region 버프 처리
     /// <summary>
     /// 버프 적용 시점에 따라 적절한 버프 처리 함수 호출
@@ -473,9 +482,6 @@ public class BaseCharacter : MonoBehaviour
         get { return isAlly; }
         set { isAlly = value; }
     }
-    public bool IsSpawnSpecific => isSpawnSpecific;
-    public Vector3 SpawnLocation => spawnLocation;
-    public Quaternion SpawnRotation => spawnRotation;
     public bool IsMainCharacter => isMainCharacter;
 
     public bool IsTurnUsed

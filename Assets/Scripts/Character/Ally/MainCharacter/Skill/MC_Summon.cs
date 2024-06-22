@@ -1,5 +1,3 @@
-using System.Collections;
-using UnityEngine;
 
 public class MC_Summon : BaseSkill
 {
@@ -8,11 +6,12 @@ public class MC_Summon : BaseSkill
 
     public override void ActivateSkill(BaseCharacter _Opponent)
     {
+        _Opponent.HUD.ActivateArrow(false);
+
         // 소환, 소환 해제 시 특별한 애니메이션 있으면 여기서 처리할 것
         if(isSummon)
         {
             BattleManager.GetInstance.Summon(willSummon, _Opponent);
-            willSummon.onPlayAnimation?.Invoke(AnimationType.Idle);
         }
 
         SkillOwner.onPlayAnimation?.Invoke(AnimationType.Skill2);

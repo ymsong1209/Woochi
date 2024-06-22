@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private BaseCharacter owner;
     [SerializeField] private SpriteRenderer hpBar;
@@ -17,8 +17,6 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
     [Header("Arrow")]
     [SerializeField] private GameObject arrow;
     [SerializeField] private GameObject selectedArrow;
-
-    bool isSelected = false;
 
     private void Awake()
     {
@@ -74,8 +72,11 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
         selectedArrow.SetActive(false);
     }
 
-    public void InitSelection() => isSelected = false;
-    
+    public void Selected(bool _isSelected)
+    {
+        selectedArrow.SetActive(_isSelected);
+    }
+
     #region 마우스 이벤트
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -92,24 +93,6 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         ground.DOColor(Color.white, 0f);
         UIManager.GetInstance.enemyTooltip.SetActive(false);
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (!BattleManager.GetInstance.canChangeLocation) return;
-
-        if(isSelected)
-        {
-            selectedArrow.SetActive(false);
-            isSelected = false;
-        }
-        else
-        {
-            selectedArrow.SetActive(true);
-            isSelected = true;
-        }
-
-        BattleManager.GetInstance.CharacterSelected(owner);
     }
     #endregion
 }

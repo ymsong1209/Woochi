@@ -42,6 +42,9 @@ public class WoochiButtonList : MonoBehaviour
         if (selectedBtn == button) return;
         selectedBtn = button;
 
+        // 우치 행동 중 다른 버튼 누르면 콜라이더, 화살표 비활성화
+        BattleManager.GetInstance.DisableColliderArrow();
+
         ActivateButton(button);
         HighlightButton(button);
     }

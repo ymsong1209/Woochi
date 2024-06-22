@@ -75,7 +75,7 @@ public class Formation : MonoBehaviour
     /// 턴이 끝난 후, 바뀐 RowOrder 값을 기반으로 formation을 정렬 후 재배치한다
     /// 캐릭터들을 앞으로 당긴다
     /// </summary>
-    public void ReOrder()
+    public virtual void ReOrder()
     {
         Array.Sort(formation, (character1, character2) => {
             if (character1 == null && character2 == null)

@@ -81,7 +81,7 @@ SpriteRenderer:
   m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &115207223407414953
@@ -93,6 +93,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 5548039729745269340}
     m_Modifications:
     - target: {fileID: 2256481171755354201, guid: e0c952bebc7e5b8409335afcc264b59d, type: 3}
+      propertyPath: skillSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 29a99f121e80c9845bc532d38c6a093e, type: 2}
+    - target: {fileID: 2256481171755354201, guid: e0c952bebc7e5b8409335afcc264b59d, type: 3}
       propertyPath: skillOwner
       value: 
       objectReference: {fileID: 4927702292048258602}
@@ -100,6 +104,10 @@ PrefabInstance:
       propertyPath: summonEffect
       value: 
       objectReference: {fileID: 6622935462292684243}
+    - target: {fileID: 2256481171755354201, guid: e0c952bebc7e5b8409335afcc264b59d, type: 3}
+      propertyPath: skillTargetCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2256481171755354201, guid: e0c952bebc7e5b8409335afcc264b59d, type: 3}
       propertyPath: skillRadius.Array.data[0]
       value: 1
@@ -114,6 +122,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2256481171755354201, guid: e0c952bebc7e5b8409335afcc264b59d, type: 3}
       propertyPath: skillRadius.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2256481171755354201, guid: e0c952bebc7e5b8409335afcc264b59d, type: 3}
+      propertyPath: skillAvailableRadius.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2256481171755354201, guid: e0c952bebc7e5b8409335afcc264b59d, type: 3}
+      propertyPath: skillAvailableRadius.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2256481171755354201, guid: e0c952bebc7e5b8409335afcc264b59d, type: 3}
+      propertyPath: skillAvailableRadius.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2256481171755354201, guid: e0c952bebc7e5b8409335afcc264b59d, type: 3}
+      propertyPath: skillAvailableRadius.Array.data[3]
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2672831112880370927, guid: e0c952bebc7e5b8409335afcc264b59d, type: 3}
@@ -241,6 +265,42 @@ PrefabInstance:
       propertyPath: skillOwner
       value: 
       objectReference: {fileID: 4927702292048258602}
+    - target: {fileID: 7748665928382341646, guid: b338a7b3e8eef824d9858e2383d5565f, type: 3}
+      propertyPath: skillTargetCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7748665928382341646, guid: b338a7b3e8eef824d9858e2383d5565f, type: 3}
+      propertyPath: skillRadius.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7748665928382341646, guid: b338a7b3e8eef824d9858e2383d5565f, type: 3}
+      propertyPath: skillRadius.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7748665928382341646, guid: b338a7b3e8eef824d9858e2383d5565f, type: 3}
+      propertyPath: skillRadius.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7748665928382341646, guid: b338a7b3e8eef824d9858e2383d5565f, type: 3}
+      propertyPath: skillRadius.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7748665928382341646, guid: b338a7b3e8eef824d9858e2383d5565f, type: 3}
+      propertyPath: skillAvailableRadius.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7748665928382341646, guid: b338a7b3e8eef824d9858e2383d5565f, type: 3}
+      propertyPath: skillAvailableRadius.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7748665928382341646, guid: b338a7b3e8eef824d9858e2383d5565f, type: 3}
+      propertyPath: skillAvailableRadius.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7748665928382341646, guid: b338a7b3e8eef824d9858e2383d5565f, type: 3}
+      propertyPath: skillAvailableRadius.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -453,6 +513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HUD: {fileID: 0}
   anim: {fileID: 0}
+  collider: {fileID: 0}
   characterStat: {fileID: 11400000, guid: 8480ae2c967fddf44aa1f382e4b9e3cf, type: 2}
   health: {fileID: 0}
   size: 1
@@ -464,9 +525,6 @@ MonoBehaviour:
   resist: 0
   minStat: 0
   maxStat: 0
-  isSpawnSpecific: 0
-  spawnLocation: {x: 0, y: 0, z: 0}
-  spawnRotation: {x: 0, y: 0, z: 0, w: 0}
   isMainCharacter: 1
   isDead: 0
   activeBuffs: []
@@ -638,6 +696,10 @@ PrefabInstance:
       propertyPath: skillOwner
       value: 
       objectReference: {fileID: 4927702292048258602}
+    - target: {fileID: 5908924620349726567, guid: 09e008bff31cfc246b733c43a4ed426a, type: 3}
+      propertyPath: skillTargetCount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

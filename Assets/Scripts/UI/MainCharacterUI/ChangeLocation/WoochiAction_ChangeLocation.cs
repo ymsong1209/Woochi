@@ -13,7 +13,7 @@ public class WoochiAction_ChangeLocation : WoochiActionButton
     public override void Deactivate() 
     { 
         base.Deactivate();
-        BattleManager.GetInstance.InitSelection();
+        BattleManager.GetInstance.InitSelect();
     }
 
     void SelectSkill()
@@ -21,7 +21,5 @@ public class WoochiAction_ChangeLocation : WoochiActionButton
         MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
         MC_ChangeLocation changeLocation = mainCharacter.ChangeLocation;
         BattleManager.GetInstance.SkillSelected(changeLocation);
-        BattleManager.GetInstance.canChangeLocation = true;
-        BattleManager.GetInstance.SelectPosition(false);
     }
 }

@@ -49,6 +49,37 @@ public class AllyFormation : Formation
         Positioning();
     }
 
+    public override void ReOrder()
+    {
+        base.ReOrder();
+
+        // formation에 들어와있는 상태인데 게임 오브젝트가 비활성화되어 있다는 것은
+        // 우치가 캐릭터를 소환했음을 의미
+        for(int i = 0; i < formation.Length;)
+        {
+            var character = formation[i];
+            if (character == null) break;
+
+            if(!character.gameObject.activeSelf)
+            {
+                character.gameObject.SetActive(true);
+                break;
+            }    
+
+            i += character.Size;
+        }
+
+        // 대기열 캐릭터에 들어와있는데 게임 오브젝트가 활성화되어 있다는 것은 우치가 캐릭터를 소환 해제했음을 의미
+        foreach(var character in waitingCharacter)
+        {
+            if (character.gameObject.activeSelf)
+            {
+                character.gameObject.SetActive(false);
+                break;
+            }
+        }
+    }
+
     /// <summary>
     /// 소환 성공, 실패 반환
     /// </summary>
@@ -86,7 +117,6 @@ public class AllyFormation : Formation
 
         totalSize += _character.Size;
         SetProperty(_character, true, rowOrder);
-        ReOrder();
 
         return true;
     }
@@ -109,13 +139,11 @@ public class AllyFormation : Formation
 
         totalSize -= _character.Size;
         SetProperty(_character, false, -1);
-        ReOrder();
     }
 
     private void SetProperty(BaseCharacter _character, bool isSummoned, int rowOrder)
     {
         _character.isSummoned = isSummoned;
         _character.RowOrder = rowOrder;
-        _character.gameObject.SetActive(isSummoned);
     }
 }
