@@ -6,7 +6,7 @@ public class CH_DisasterImage : BaseSkill
 {
     public override void ActivateSkill(BaseCharacter _Opponent)
     {
-        GameObject statDebuffPrefab = Bufflist[0];
+        GameObject statDebuffPrefab = BuffPrefabList[0];
         GameObject statDebuffGameObject = Instantiate(statDebuffPrefab, transform);
         StatDeBuff statDebuff = statDebuffGameObject.GetComponent<StatDeBuff>();
         statDebuff.StatBuffName = "재앙환영";

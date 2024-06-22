@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: CS_ScrollDog
   m_EditorClassIdentifier: 
   characterName: "\uC871\uC790\uAD6C"
+  portrait: {fileID: 0}
   baseHealth: 11
-  baseSpeed: 5
+  baseSpeed: 0
   baseDefense: 0
   baseCrit: 2
   baseAccuracy: 1

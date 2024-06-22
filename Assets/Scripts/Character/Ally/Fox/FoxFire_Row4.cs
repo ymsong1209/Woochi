@@ -21,7 +21,7 @@ public class FoxFire_Row4 : BaseSkill
          return;
       }
       
-      GameObject burnDebuffPrefab = Bufflist[0];
+      GameObject burnDebuffPrefab = BuffPrefabList[0];
       GameObject burnDebuffGameObject = Instantiate(burnDebuffPrefab, transform);
       BurnDebuff burnDebuff = burnDebuffGameObject.GetComponent<BurnDebuff>();
       burnDebuff.BuffDurationTurns = 3;

@@ -244,7 +244,7 @@ public class BaseCharacter : MonoBehaviour
         return buff.BuffDurationTurns == 0;
     }
 
-    private void RemoveBuffAtIndex(int index)
+    public void RemoveBuffAtIndex(int index)
     {
         BaseBuff removebuff = activeBuffs[index];
         if (removebuff)

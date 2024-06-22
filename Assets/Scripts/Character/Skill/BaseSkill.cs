@@ -33,7 +33,7 @@ public class BaseSkill : MonoBehaviour
     private bool[] skillRadius = new bool[8];
     private SkillTargetType skillTargetType;
     private SkillType skillType;
-    private List<GameObject> bufflist = new List<GameObject>();
+    private List<GameObject> buffPrefabList = new List<GameObject>();
     
     /// <summary>
     /// 스킬 적중시 적용시킬 버프 리스트
@@ -59,7 +59,7 @@ public class BaseSkill : MonoBehaviour
         skillTargetType = skillSO.SkillTargetType;
         multiplier = skillSO.BaseMultiplier;
         skillAccuracy = skillSO.BaseSkillAccuracy;
-        bufflist = new List<GameObject>(skillSO.bufflist);
+        buffPrefabList = new List<GameObject>(skillSO.bufflist);
     }
 
     /// <summary>
@@ -432,6 +432,11 @@ public class BaseSkill : MonoBehaviour
                 opponentHealth.Heal((int)Mathf.Round(RandomStat));
             }
             break;
+            case SkillType.Special:
+            {
+                //특수 스킬은 HP에 영향을 안 미침.
+            }
+            break;
         }
     }
     
@@ -444,10 +449,10 @@ public class BaseSkill : MonoBehaviour
     public string Name => skillName;
     public float Multiplier => multiplier;
 
-    protected SkillResult SkillResult => SkillResult;
+    protected SkillResult SkillResult => skillResult;
     public SkillSO SkillSO => skillSO;
     
-    public List<GameObject> Bufflist => bufflist;
+    public List<GameObject> BuffPrefabList => buffPrefabList;
     public bool[] SkillAvailableRadius => skillAvailableRadius;
     public bool[] SkillRadius
     {
