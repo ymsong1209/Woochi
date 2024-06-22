@@ -12,6 +12,12 @@ public class ScrollDogIncreaseEvasionBuff : BaseBuff
     //회피 스택 중첩 수
     [SerializeField,ReadOnly] private int evasionStack = 0;
     
+    public ScrollDogIncreaseEvasionBuff()
+    {
+        buffEffect = BuffEffect.IncreaseEvasionOvertime;
+        buffType = BuffType.Positive;
+    }
+    
     public override int ApplyTurnEndBuff()
     {
         //회피 스택이 10번 이하이면, 회피 버프 추가.

@@ -7,7 +7,12 @@ using UnityEngine;
 public class StunDeBuff : BaseBuff
 {
 
-    //stun관련 버프. 플레이어의 턴을 건너뛰게 하고 싶음.
+    public StunDeBuff()
+    {
+        buffEffect = BuffEffect.Stun;
+        buffType = BuffType.Negative;
+    }
+
     public override int ApplyTurnStartBuff()
     {
         --buffDurationTurns;

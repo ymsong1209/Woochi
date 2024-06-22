@@ -10,6 +10,7 @@ using UnityEngine;
 /// </summary>
 public class BleedDeBuff : BaseBuff
 {
+  
     //출혈 중첩 수
     [SerializeField,ReadOnly] private int bleedPercent = 0;
     public override int ApplyTurnStartBuff()
@@ -37,6 +38,13 @@ public class BleedDeBuff : BaseBuff
         text.text = description;
         text.color = Color.red;
     }
+    
+    public BleedDeBuff()
+    {
+        buffEffect = BuffEffect.Bleed;
+        buffType = BuffType.Negative;
+    }
+    
     public int BleedPercent
     {
         get

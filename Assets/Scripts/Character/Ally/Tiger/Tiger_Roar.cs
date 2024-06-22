@@ -8,7 +8,7 @@ public class Tiger_Roar : BaseSkill
     
     public override void ActivateSkill(BaseCharacter _Opponent)
     {
-        GameObject statDebuffPrefab = bufflist[0];
+        GameObject statDebuffPrefab = Bufflist[0];
         GameObject statDebuffGameObject = Instantiate(statDebuffPrefab, transform);
         StatDeBuff statDebuff = statDebuffGameObject.GetComponent<StatDeBuff>();
         statDebuff.StatBuffName = "위축";

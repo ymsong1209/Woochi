@@ -8,6 +8,8 @@ using UnityEngine;
 /// </summary>
 public class SkillResult
 {
+    public BaseCharacter Caster; //스킬을 사용한 캐릭터
+    public BaseCharacter Opponent; //스킬을 적용할 대상
     public bool isHit = false;
     public bool isCrit = false;
 
@@ -15,68 +17,48 @@ public class SkillResult
     {
         isHit = false;
         isCrit = false;
+        Caster = null;
+        Opponent = null;
     }
 }
 
 public class BaseSkill : MonoBehaviour
 {
     [SerializeField] private SkillSO skillSO;
+    
+    private BaseCharacter skillOwner;
 
-    [Tooltip("SkillOwner를 세팅해줘야함")]
-    [SerializeField] private    BaseCharacter skillOwner;
-
-    [SerializeField] private string skillName;
-    /// <summary>
-    /// 스킬을 사용할 수 있는 열
-    /// 0~4 : 아군 1~4열
-    /// 5~8 : 적군 1~4열
-    /// </summary>
-    [SerializeField] private bool[] skillAvailableRadius = new bool[8];
-
-    /// <summary>
-    /// 스킬을 적용시킬 수 있는 열
-    /// 0~4 : 아군 1~4열
-    /// 5~8 : 적군 1~4열
-    /// </summary>
-    [SerializeField] private bool[] skillRadius = new bool[8];
-
-    [SerializeField] private SkillTargetType skillTargetType;
-    [SerializeField] private SkillType skillType;
-
-    /// <summary>
-    /// 스킬 적중시 적용시킬 버프 리스트, inspector에서 세팅해줘야함
-    /// </summary>
-    public List<GameObject> bufflist = new List<GameObject>();
+    private string skillName;
+    private bool[] skillAvailableRadius = new bool[8];
+    private bool[] skillRadius = new bool[8];
+    private SkillTargetType skillTargetType;
+    private SkillType skillType;
+    private List<GameObject> bufflist = new List<GameObject>();
+    
     /// <summary>
     /// 스킬 적중시 적용시킬 버프 리스트
     /// </summary>
     protected List<GameObject> instantiatedBuffList = new List<GameObject>();
 
-    #region Header SKILL STATS
-    [Space(10)]
-    [Tooltip("Skill Stat은 SkillSO에서 처리함.")]
-    [Header("Skill Basics")]
-   
-    #endregion Header SKILL STATS
-
-    [SerializeField,ReadOnly] private float multiplier;    // 피해량 계수
-    [SerializeField,ReadOnly] private float skillAccuracy; // 스킬 명중 수치
+    private float multiplier;    // 피해량 계수
+    private float skillAccuracy; // 스킬 명중 수치
     [SerializeField] private bool isAlwaysHit = false;     // 회피, 명중 무시하고 무조건 명중
     [SerializeField] private bool isAlwaysApplyBuff = false;// 버프를 걸 확률, 저항 판정 무시하고 무조건 적용
-    SkillResult skillResult = new SkillResult();
+    private SkillResult skillResult = new SkillResult();
 
     /// <summary>
     /// 자신이 가지고 있는 SkillSO 정보를 이용해 BaseSkill을 초기화
     /// </summary>
-    public void Initialize()
+    public void Initialize(BaseCharacter owner)
     {
+        skillOwner = owner;
         skillName = skillSO.SkillName;
         skillAvailableRadius = skillSO.SkillAvailableRadius;
         skillRadius = skillSO.SkillRadius;
         skillType = skillSO.SkillType;
+        skillTargetType = skillSO.SkillTargetType;
         multiplier = skillSO.BaseMultiplier;
         skillAccuracy = skillSO.BaseSkillAccuracy;
-        skillTargetType = skillSO.SkillTargetType;
         bufflist = new List<GameObject>(skillSO.bufflist);
     }
 
@@ -92,11 +74,13 @@ public class BaseSkill : MonoBehaviour
 
     public virtual void ActivateSkill(BaseCharacter _Opponent)
     {
+        skillResult.Init();
+        skillResult.Caster = skillOwner;
         //아군 보호 스킬등으로 보호 할 수 있음
         //최종적으로 공격해야하는 적 판정
-        BaseCharacter opponent = CheckOpponentValid(_Opponent);
+        skillResult.Opponent = CheckOpponentValid(_Opponent);
 
-        if(opponent == null)
+        if(skillResult.Opponent == null)
         {
             Debug.LogError("opponent is null");
             return;
@@ -107,7 +91,7 @@ public class BaseSkill : MonoBehaviour
         //단일공격인 경우 _opponent한테만 공격 로직 적용
         if (skillTargetType == SkillTargetType.Singular)
         {
-           ApplySkill(opponent);
+           ApplySkill(skillResult.Opponent);
         }
         //전체 공격인 경우 skillradius내부의 모든 인물에게 skill 적용
         //만일 skillradius 내부의 특정 인물에게만 로직 적용시키고 싶으면 ApplyMultiple재정의하기
@@ -118,19 +102,8 @@ public class BaseSkill : MonoBehaviour
         instantiatedBuffList.Clear();
 
         BattleManager.GetInstance.OnShakeCamera?.Invoke(skillResult.isHit, skillResult.isCrit);
-        skillResult.Init();
     }
     
-    void  ClearInstantiatedBuffList()
-    {
-        foreach (GameObject buff in instantiatedBuffList)
-        {
-            if (buff == null) continue;
-            Destroy(buff);
-        }
-        instantiatedBuffList.Clear();
-    }
-
     protected virtual void ApplySkill(BaseCharacter _opponent)
     {
         bool isCrit = false;
@@ -206,11 +179,6 @@ public class BaseSkill : MonoBehaviour
 
             }
         }
-        
-        ////
-        //TODO : receivers가 한번에 공격받는 듯한 카메라 무빙로직 추가
-        ////        
-
         foreach (BaseCharacter opponent in receivers)
         {
             ApplySkill(opponent);
@@ -476,7 +444,10 @@ public class BaseSkill : MonoBehaviour
     public string Name => skillName;
     public float Multiplier => multiplier;
 
+    protected SkillResult SkillResult => SkillResult;
     public SkillSO SkillSO => skillSO;
+    
+    public List<GameObject> Bufflist => bufflist;
     public bool[] SkillAvailableRadius => skillAvailableRadius;
     public bool[] SkillRadius
     {

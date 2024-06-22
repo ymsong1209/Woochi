@@ -294,16 +294,29 @@ public class BaseCharacter : MonoBehaviour
         
         foreach (BaseBuff buff in activeBuffs)
         {
-            if (buff.BuffEffect == BuffEffect.StatStrengthen || buff.BuffEffect == BuffEffect.StatWeaken)
+            if (buff.BuffEffect == BuffEffect.StatStrengthen)
             {
-                defense += buff.ChangeDefense;
-                crit += buff.ChangeCrit;
-                accuracy += buff.ChangeAccuracy;
-                evasion += buff.ChangeEvasion;
-                resist += buff.ChangeResist;
-                minStat += buff.ChangeMinStat;
-                maxStat += buff.ChangeMaxStat;
-                speed += buff.ChangeSpeed;
+                StatBuff statBuff = buff as StatBuff;
+                defense += statBuff.ChangeDefense;
+                crit += statBuff.ChangeCrit;
+                accuracy += statBuff.ChangeAccuracy;
+                evasion += statBuff.ChangeEvasion;
+                resist += statBuff.ChangeResist;
+                minStat += statBuff.ChangeMinStat;
+                maxStat += statBuff.ChangeMaxStat;
+                speed += statBuff.ChangeSpeed;
+            }
+            else if (buff.BuffEffect == BuffEffect.StatWeaken)
+            {
+                StatDeBuff debuff = buff as StatDeBuff;
+                defense += debuff.ChangeDefense;
+                crit += debuff.ChangeCrit;
+                accuracy += debuff.ChangeAccuracy;
+                evasion += debuff.ChangeEvasion;
+                resist += debuff.ChangeResist;
+                minStat += debuff.ChangeMinStat;
+                maxStat += debuff.ChangeMaxStat;
+                speed += debuff.ChangeSpeed;
             }
         }
         //스탯이 0 이하로 내려간 경우 0으로 조정
@@ -379,8 +392,7 @@ public class BaseCharacter : MonoBehaviour
         for(int i = 0; i < activeSkillCheckBox.Count; ++i)
         {
             BaseSkill newSkill = Instantiate(characterStat.Skills[i], this.transform);
-            newSkill.Initialize();
-            newSkill.SkillOwner = this;
+            newSkill.Initialize(this);
             if (activeSkillCheckBox[i])
             {
                 activeSkills.Add(newSkill);

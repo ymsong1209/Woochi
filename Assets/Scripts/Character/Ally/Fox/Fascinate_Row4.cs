@@ -6,7 +6,7 @@ public class Fascinate_Row4 : BaseSkill
 {
     public override void ActivateSkill(BaseCharacter _Opponent)
     {
-        GameObject stunDebuffPrefab = bufflist[0];
+        GameObject stunDebuffPrefab = Bufflist[0];
         GameObject stunDebuffGameObject = Instantiate(stunDebuffPrefab, transform);
         StunDeBuff stunDebuff = stunDebuffGameObject.GetComponent<StunDeBuff>();
         stunDebuff.BuffDurationTurns = 1;

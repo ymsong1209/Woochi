@@ -18,17 +18,7 @@ public class BaseBuff : MonoBehaviour
     [SerializeField] protected BuffEffect buffEffect;
     [SerializeField] protected BuffType buffType;
     [SerializeField] protected int chanceToApplyBuff;
-
-    #region 변화된 스탯들의 수치
-    [SerializeField, ReadOnly] protected float changeDefense;
-    [SerializeField, ReadOnly] protected float changeCrit;
-    [SerializeField, ReadOnly] protected float changeAccuracy;
-    [SerializeField, ReadOnly] protected float changeEvasion;
-    [SerializeField, ReadOnly] protected float changeResist;
-    [SerializeField, ReadOnly] protected float changeMinStat;
-    [SerializeField, ReadOnly] protected float changeMaxStat;
-    [SerializeField, ReadOnly] protected float changeSpeed;
-    #endregion 변화된 스탯들
+    
 
     /// <summary>
     /// 버프를 추가
@@ -159,48 +149,7 @@ public class BaseBuff : MonoBehaviour
         set { chanceToApplyBuff = value; }
     }
     
-    #region 변화된 스탯들의 수치 Getter Setter
-    public float ChangeDefense 
-    {
-        get { return changeDefense; }
-        set { changeDefense = value; }
-    }
-    public float ChangeCrit 
-    {
-        get { return changeCrit; }
-        set { changeCrit = value; }
-    }
-    public float ChangeAccuracy 
-    {
-        get { return changeAccuracy; }
-        set { changeAccuracy = value; }
-    }
-    public float ChangeEvasion 
-    {
-        get { return changeEvasion; }
-        set { changeEvasion = value; }
-    }
-    public float ChangeResist 
-    {
-        get { return changeResist; }
-        set { changeResist = value; }
-    }
-    public float ChangeMinStat 
-    {
-        get { return changeMinStat; }
-        set { changeMinStat = value; }
-    }
-    public float ChangeMaxStat 
-    {
-        get { return changeMaxStat; }
-        set { changeMaxStat = value; }
-    }
-    public float ChangeSpeed 
-    {
-        get { return changeSpeed; }
-        set { changeSpeed = value; }
-    }
-    #endregion 변화된 스탯들의 수치 Getter Setter
+    
 
     
     #endregion Getter Setter
