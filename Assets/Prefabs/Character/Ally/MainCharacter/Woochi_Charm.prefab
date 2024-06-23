@@ -51,6 +51,7 @@ MonoBehaviour:
   skillRadius: 0000000000000000
   skillTargetType: 0
   skillType: 0
+  skillTargetCount: 1
   bufflist: []
   multiplier: 0
   skillAccuracy: 0
