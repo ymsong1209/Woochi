@@ -8,9 +8,9 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class BaseCharacter : MonoBehaviour
 {
-    public BaseCharacterHUD HUD;
-    public BaseCharacterAnimation anim;
-    public BaseCharacterCollider collider;
+    [HideInInspector] public BaseCharacterHUD HUD;
+    [HideInInspector] public BaseCharacterAnimation anim;
+    [HideInInspector] public BaseCharacterCollider collider;
     public CharacterStatSO characterStat;
 
     #region Header CHARACTER STATS
