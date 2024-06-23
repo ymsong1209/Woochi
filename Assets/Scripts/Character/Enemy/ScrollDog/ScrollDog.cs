@@ -59,7 +59,8 @@ public class ScrollDog : BaseCharacter
                 ally = BattleUtils.FindRandomAlly(0,1);
             }
         }
+
+        BattleManager.GetInstance.CharacterSelected(ally);
         BattleManager.GetInstance.ExecuteSelectedSkill(ally);
-       
     }
 }

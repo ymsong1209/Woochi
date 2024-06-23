@@ -53,10 +53,16 @@ public class AllyCardList : MonoBehaviour
         else gameObject.SetActive(true);
     }
 
+    public void SetInteractable(bool _able)
+    {
+        foreach(var card in cards)
+        {
+            card.SetInteractable(_able);
+        }
+    }
+
     public void SelectCard(AllyCard _card)
     {
-        if (!BattleManager.GetInstance.currentCharacter.IsMainCharacter || _card.Ally.IsDead) return;
-
         MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
         MC_Summon summon = mainCharacter.SummonSkill;
         BattleManager.GetInstance.SkillSelected(summon);
@@ -70,7 +76,6 @@ public class AllyCardList : MonoBehaviour
         {
             summon.isSummon = true;
             summon.willSummon = _card.Ally;
-            BattleManager.GetInstance.SelectPosition(summon);
         }
     }
 }

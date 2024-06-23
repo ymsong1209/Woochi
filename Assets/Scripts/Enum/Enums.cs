@@ -122,7 +122,6 @@ public enum AnimationType
     Skill2,
     Skill3,
     Skill4,
-    RandomSkillAnim,
     END
 }
 

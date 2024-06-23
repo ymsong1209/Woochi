@@ -17,6 +17,6 @@ public class MC_SorceryRecovery : BaseSkill
             mainCharacter.MaxSorceryPoints);
         mainCharacter.SorceryPoints = (int)result;
         
-        SkillOwner.onPlayAnimation?.Invoke(AnimationType.Skill0);
+        SkillOwner.onPlayAnimation?.Invoke(AnimationType.Skill3);
     }
 }

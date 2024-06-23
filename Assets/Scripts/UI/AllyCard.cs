@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,8 +6,9 @@ public class AllyCard : MonoBehaviour
 {
     [SerializeField] BaseCharacter ally;
     [SerializeField] Image portrait;
+    [SerializeField] Button btn;
     [SerializeField] TextMeshProUGUI healthTxt;
-    
+
     public void UpdateHP()
     {
         float currentHP = ally.Health.CurHealth;
@@ -38,6 +37,17 @@ public class AllyCard : MonoBehaviour
 
         portrait.gameObject.SetActive(false);
         gameObject.SetActive(false);
+    }
+
+    public void SetInteractable(bool _able)
+    {
+        if (ally == null || ally.IsDead)
+        {
+            btn.interactable = false; 
+            return;
+        }
+
+        btn.interactable = _able;
     }
 
     public void UpdateCard()

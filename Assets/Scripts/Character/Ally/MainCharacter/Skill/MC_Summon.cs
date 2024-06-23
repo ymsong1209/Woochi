@@ -1,21 +1,18 @@
+
 public class MC_Summon : BaseSkill
 {
-    public BaseCharacter willSummon;    // ì†Œí™˜ë  ìºë¦­í„°
-    public bool isSummon = false;       // ì†Œí™˜í•  ê²ƒì¸ì§€ ì†Œí™˜ í•´ì œí•  ê²ƒì¸ì§€
+    public BaseCharacter willSummon;    // ¼ÒÈ¯µÉ Ä³¸¯ÅÍ
+    public bool isSummon = false;       // ¼ÒÈ¯ÇÒ °ÍÀÎÁö ¼ÒÈ¯ ÇØÁ¦ÇÒ °ÍÀÎÁö
 
     public override void ActivateSkill(BaseCharacter _Opponent)
     {
-        // ì†Œí™˜, ì†Œí™˜ í•´ì œ ì‹œ íŠ¹ë³„í•œ ì• ë‹ˆë©”ì´ì…˜ ìˆìœ¼ë©´ ì—¬ê¸°ì„œ ì²˜ë¦¬í•  ê²ƒ
+        _Opponent.HUD.ActivateArrow(false);
+
+        // ¼ÒÈ¯, ¼ÒÈ¯ ÇØÁ¦ ½Ã Æ¯º°ÇÑ ¾Ö´Ï¸ŞÀÌ¼Ç ÀÖÀ¸¸é ¿©±â¼­ Ã³¸®ÇÒ °Í
         if(isSummon)
         {
             BattleManager.GetInstance.Summon(willSummon, _Opponent);
-            willSummon.onPlayAnimation?.Invoke(AnimationType.Idle);
         }
-        else
-        {
-
-        }
-
 
         SkillOwner.onPlayAnimation?.Invoke(AnimationType.Skill2);
     }
