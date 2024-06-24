@@ -14,6 +14,15 @@ public class MainCharacter : BaseCharacter
     [SerializeField] private MC_Charm charmSkill;
     [SerializeField] private MC_ChangeLocation changeLocation;
 
+    public override void Initialize()
+    {
+        base.Initialize();
+        recoverySkill.SkillOwner = this;
+        summonSkill.SkillOwner = this;
+        charmSkill.SkillOwner = this;
+        changeLocation.SkillOwner = this;
+    }
+    
     public int SorceryPoints
     {
         get => sorceryPoints;

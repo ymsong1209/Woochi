@@ -40,20 +40,23 @@ public class WoochiSkillSelectionUI : MonoBehaviour
     {
         gameObject.SetActive(true);
         
-        BaseCharacter MainCharacter = BattleManager.GetInstance.currentCharacter;
-        if (!MainCharacter.IsMainCharacter)
+        MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
+        if (!mainCharacter)
         {
             Debug.LogError("우치 차례가 아님");
             return;
         }
         
+        UIManager.GetInstance.SetSorceryPointUI(mainCharacter.SorceryPoints);
+        UIManager.GetInstance.SetSorceryPointBackgroundUI(mainCharacter.SorceryPoints);
+        
         //우치 위치에 따른 스킬 체크
-        MainCharacter.CheckSkillsOnTurnStart();
+        mainCharacter.CheckSkillsOnTurnStart();
         //모든 스킬 비활성화
         DisableSkills();
 
         #region 스킬 아이콘 Enable, Disable 설정
-        int activeSkillsCount = MainCharacter.activeSkills.Count;
+        int activeSkillsCount = mainCharacter.activeSkills.Count;
         if (activeSkillsCount > 4)
         {
             Debug.LogError("우치 스킬이 4개 이상이 활성화되어있음.");
@@ -65,7 +68,7 @@ public class WoochiSkillSelectionUI : MonoBehaviour
         {
             if(i < activeSkillsCount)
             { 
-                BaseSkill skill = MainCharacter.activeSkills[i];
+                BaseSkill skill = mainCharacter.activeSkills[i];
                 // 스킬 아이콘에 스킬 정보 할당
                 skillIcons[i].SetSkill(skill, (IsSkillSetAvailable(skill)));
             }
