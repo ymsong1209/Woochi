@@ -14,7 +14,6 @@ public class BaseCharacterAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
 
         owner.onPlayAnimation += Play;
-        owner.onAnyTurnEnd += SetSortLayer;
     }
 
     public virtual void Play(AnimationType _type)
@@ -44,9 +43,9 @@ public class BaseCharacterAnimation : MonoBehaviour
     /// <summary>
     /// rowOrder 값으로 후열에 있는 캐릭터가 앞에 보이도록
     /// </summary>
-    void SetSortLayer()
+    public void SetSortLayer(int _rowOrder)
     {
-        body.sortingOrder = owner.rowOrder;
+        body.sortingOrder = _rowOrder;
     }    
 
     void FocusIn()

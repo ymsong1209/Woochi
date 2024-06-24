@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class BaseCharacterCollider : MonoBehaviour
 {
-    [SerializeField] private BaseCharacter colliderOwner;
+    [SerializeField] private BaseCharacter owner;
     [SerializeField] private Collider2D collider;
     private bool canInteract = false;
 
     void Start()
     {
         canInteract = false;
-        colliderOwner = GetComponent<BaseCharacter>();
+        owner = GetComponent<BaseCharacter>();
         collider = GetComponent<Collider2D>();
     }
 
@@ -23,7 +23,7 @@ public class BaseCharacterCollider : MonoBehaviour
             // 마우스 클릭시 스킬 발동
             if (IsMouseOverCollider())
             {
-                BattleManager.GetInstance.ExecuteSelectedSkill(colliderOwner);
+                BattleManager.GetInstance.ExecuteSelectedSkill(owner);
             }
         }
     }
@@ -42,6 +42,7 @@ public class BaseCharacterCollider : MonoBehaviour
             // Check if the hit Collider2D is the same as the Collider2D of this GameObject
             if (hit.collider == collider)
             {
+                owner.OnSelected();
                 return true;
             }
         }

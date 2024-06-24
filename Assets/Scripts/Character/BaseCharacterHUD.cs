@@ -72,6 +72,11 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
         selectedArrow.SetActive(false);
     }
 
+    public void Selected(bool _isSelected)
+    {
+        selectedArrow.SetActive(_isSelected);
+    }
+
     #region 마우스 이벤트
     public void OnPointerEnter(PointerEventData eventData)
     {

@@ -17,9 +17,13 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// </summary>
     private Queue<BaseCharacter> combatQueue = new Queue<BaseCharacter>();
     private List<BaseCharacter> processedCharacters = new List<BaseCharacter>();
+    private HashSet<BaseCharacter> selectedCharacters = new HashSet<BaseCharacter>();   // 스킬 대상으로 선택된 캐릭터들
+
+    [Header("Formation")]
     [SerializeField] private AllyFormation allies;
     [SerializeField] private Formation enemies;
 
+    [Header("Object")]
     [SerializeField] private AllyCardList allyCards;
 
     #region 이벤트
@@ -258,55 +262,100 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     /// <summary>
-    /// UI에서 스킬 선택 시 호출되는 메서드
+    /// 스킬 선택 시 호출되는 메서드
+    /// 이제 선택 시 알아서 콜라이더, 화살표 활성화
     /// </summary>
     public void SkillSelected(BaseSkill _selectedSkill)
     {
+        if(_selectedSkill == null) return;
         // 사용할 스킬 저장
         currentSelectedSkill = _selectedSkill;
         isSkillSelected = true;
+
+        ActivateColliderArrow();
     }
-    
-    public void ActivateColliderForSelectedSkill()
+
+    /// <summary>
+    /// 스킬을 사용할 캐릭터를 선택하면 selectedCharacters에 추가
+    /// 아군이 사용시 적 캐릭터를 클릭하면 자동으로 호출
+    /// 적이 스킬을 사용할때는 수동으로 호출
+    /// </summary>
+    /// <param name="character"></param>
+    public void CharacterSelected(BaseCharacter character)
     {
-        if(currentSelectedSkill == null) return;
+        if (selectedCharacters.Contains(character))
+        {
+            selectedCharacters.Remove(character);
+        }
+        else
+        {
+            selectedCharacters.Add(character);
+        }
+    }
+
+    /// <summary>
+    /// 스킬 사용할 캐릭터 선택 초기화
+    /// </summary>
+    public void InitSelect()
+    {
+        foreach(var character in selectedCharacters)
+        {
+            character.InitSelect();
+        }
+        selectedCharacters.Clear();
+    }
+
+    #region 콜라이더, 화살표 활성화
+    public void ActivateColliderArrow()
+    {
+        ActivateColliderForSelectedSkill();
+        EnableArrowForSelectedSkill();
+    }
+
+    private void ActivateColliderForSelectedSkill()
+    {
         DisableAllColliderInteractions();
         bool[] skillRadius = currentSelectedSkill.SkillRadius;
         for (int i = 0; i < skillRadius.Length; i++)
         {
             //현재 살아있는 적/아군에게서만 collider활성화
-            if(skillRadius[i] && BattleManager.GetInstance.IsCharacterThere(i))
+            if(skillRadius[i] && IsCharacterThere(i))
             {
-                BaseCharacter character = BattleManager.GetInstance.GetCharacterFromIndex(i);
-                BaseCharacterCollider characterCollider = character.GetComponent<BaseCharacterCollider>();
+                BaseCharacter character = GetCharacterFromIndex(i);
+                BaseCharacterCollider characterCollider = character.collider;
                 characterCollider.CanInteract = true;
             }
         }
     }
 
-    public void EnableArrowForSelectedSkill()
+    private void EnableArrowForSelectedSkill()
     {
-        if(currentSelectedSkill == null) return;
         DisableAllArrows();
         bool[] skillRadius = currentSelectedSkill.SkillRadius;
         for (int i = 0; i < skillRadius.Length; i++)
         {
-            //현재 살아있는 적/아군에게서만 collider활성화
-            if(skillRadius[i] && BattleManager.GetInstance.IsCharacterThere(i))
+            //현재 살아있는 적/아군에게서만 화살표 활성화
+            if(skillRadius[i] && IsCharacterThere(i))
             {
-                BaseCharacter character = BattleManager.GetInstance.GetCharacterFromIndex(i);
+                BaseCharacter character = GetCharacterFromIndex(i);
                 character.HUD.ActivateArrow(true);
             }
         }
     }
 
-    public void DisableAllColliderInteractions()
+    public void DisableColliderArrow()
+    {
+        DisableAllColliderInteractions();
+        DisableAllArrows();
+    }
+
+    private void DisableAllColliderInteractions()
     {
         foreach (BaseCharacter character in allies.formation)
         {
             if (character)
             {
-                BaseCharacterCollider characterCollider = character.GetComponent<BaseCharacterCollider>();
+                BaseCharacterCollider characterCollider = character.collider;
                 if (characterCollider)
                 {
                     characterCollider.CanInteract = false;
@@ -317,7 +366,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         {
             if (character)
             {
-                BaseCharacterCollider characterCollider = character.GetComponent<BaseCharacterCollider>();
+                BaseCharacterCollider characterCollider = character.collider;
                 if (characterCollider)
                 {
                     characterCollider.CanInteract = false;
@@ -326,7 +375,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
     }
 
-    public void DisableAllArrows()
+    private void DisableAllArrows()
     {
         foreach (BaseCharacter character in allies.formation)
         {
@@ -335,6 +384,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 character.HUD.ActivateArrow(false);
             }
         }
+
         foreach (BaseCharacter character in enemies.formation)
         {
             if (character)
@@ -343,35 +393,13 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             }
         }
     }
-    
+    #endregion
 
     #region 스킬 사용
     public void ExecuteSelectedSkill(BaseCharacter receiver)
     {
-        if (!currentSelectedSkill) return;
-        
-        if (currentSelectedSkill.SkillOwner && receiver)
-        {
-            StartCoroutine(ExecuteSkill(currentSelectedSkill.SkillOwner,receiver));
-        }
-    }
-
-    public void ExecuteSelectedSkill(int _index = -1)
-    {
-        if (!currentSelectedSkill) return;
-        
-        BaseCharacter receiver = null;
-        
-        //index<4인경우는 아군에게 스킬 적용
-        if (_index < 4)
-        {
-            receiver = allies.formation[_index];
-        }
-        //4<index<8인 경우는 적에게 스킬 적용
-        else if (_index < 8)
-        {
-            receiver = enemies.formation[_index - 4];
-        }
+        // 스킬 대상으로 지정한 캐릭터와 스킬 대상 수가 일치할 때 스킬 실행
+        if (selectedCharacters.Count != currentSelectedSkill.SkillTargetCount) return;
 
         if (currentSelectedSkill.SkillOwner && receiver)
         {
@@ -380,20 +408,21 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     // 스킬 실행 로직 구현
-    IEnumerator ExecuteSkill(BaseCharacter _caster, BaseCharacter receiver)
+    IEnumerator ExecuteSkill(BaseCharacter caster, BaseCharacter receiver)
     {
-        Debug.Log(currentSelectedSkill.Name + " is executed by " + _caster.name + " on " + receiver.name);
-        DisableAllColliderInteractions();
-        DisableAllArrows();
+        Debug.Log(currentSelectedSkill.Name + " is executed by " + caster.name + " on " + receiver.name);
+        DisableColliderArrow();
 
         currentSelectedSkill.ActivateSkill(receiver);
+        InitSelect();
+
         allies.CheckDeathInFormation();
         enemies.CheckDeathInFormation();
 
         OnFocusStart?.Invoke();
         OnCharacterAttacked?.Invoke(receiver, false);
         
-        yield return new WaitUntil(() => _caster.IsIdle);
+        yield return new WaitUntil(() => caster.IsIdle);
         OnFocusEnd?.Invoke();
         isSkillExecuted = true;
     }
@@ -405,12 +434,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     #endregion
-
-    public void TurnOver()
-    {
-        isSkillSelected = true;
-        isSkillExecuted = true;
-    }
 
     /// <summary>
     /// 라운드가 끝날때 적용되는 버프 실행 후, 승리 조건 체크
@@ -487,19 +510,19 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// <summary>
     /// 매개변수로 들어온 캐릭터가 현재 포메이션에서 어느 위치에 있는지
     /// </summary>
-    /// <param name="_character"></param>
+    /// <param name="character"></param>
     /// <returns></returns>
-    public int GetCharacterIndex(BaseCharacter _character)
+    public int GetCharacterIndex(BaseCharacter character)
     {
         int index = -1;
 
-        if(_character.IsAlly)
+        if(character.IsAlly)
         {
-            index = allies.FindCharacterIndex(_character);
+            index = allies.FindCharacterIndex(character);
         }
         else
         {
-            index = enemies.FindCharacterIndex(_character);
+            index = enemies.FindCharacterIndex(character);
         }
 
         return index;
@@ -560,8 +583,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         return (null, -1); // 유효하지 않은 인덱스
     }
-    
 
+    #region 소환수 소환, 위치 이동 관련
     /// <summary>
     /// 캐릭터의 위치를 이동시키는 함수
     /// </summary>
@@ -577,41 +600,27 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         {
             if(IsCharacterThere(to))
             {
-                (allies.formation[to].rowOrder, character.rowOrder) = (character.rowOrder, allies.formation[to].rowOrder);
+                (allies.formation[to].RowOrder, character.RowOrder) = (character.RowOrder, allies.formation[to].RowOrder);
             }
         }
         else
         {
             if(IsCharacterThere(to + 4))
             {
-                (enemies.formation[to].rowOrder, character.rowOrder) = (character.rowOrder, enemies.formation[to].rowOrder);
+                (enemies.formation[to].RowOrder, character.RowOrder) = (character.RowOrder, enemies.formation[to].RowOrder);
             }
         }
     }
     
-    public void MoveCharacter(BaseCharacter character, BaseCharacter target)
+    public void ChangeCharacterLocation()
     {
-        if(character == null || target == null) return;
-
-        (target.rowOrder, character.rowOrder) = (character.rowOrder, target.rowOrder);
-    }
-
-    #region 소환수 소환 관련
-    /// <summary>
-    /// 소환 위치 결정
-    /// </summary>
-    public void SelectPosition(MC_Summon _summon)
-    {
-        for(int i = 0; i < allies.formation.Length; i++)
+        List<BaseCharacter> list = new List<BaseCharacter>();
+        foreach (var character in selectedCharacters)
         {
-            BaseCharacter character = allies.formation[i];
-            if (character)
-            {
-                character.HUD.ActivateArrow(true);
-                BaseCharacterCollider characterCollider = character.GetComponent<BaseCharacterCollider>();
-                characterCollider.CanInteract = true;
-            }
+            list.Add(character);
         }
+
+        (list[0].RowOrder, list[1].RowOrder) = (list[1].RowOrder, list[0].RowOrder);
     }
 
     /// <summary>
@@ -632,7 +641,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
     public void UnSummon(BaseCharacter _character)
     {
-        // 턴 사용한 소환수 경우
+        // 턴 사용한 소환수 경우 -> 처리된 캐릭터 리스트에서 제거
         if(_character.IsTurnUsed)
         {
             foreach(var character in processedCharacters)
@@ -645,7 +654,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 }
             }
         }
-        // 턴 사용하지 않은 소환수 경우
+        // 턴 사용하지 않은 소환수 경우 -> combatQueue에서 제거
         else
         {
             Queue<BaseCharacter> tempQueue = new Queue<BaseCharacter>();
@@ -666,7 +675,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         // 버프 제거
         _character.RemoveAllBuff();
         allies.UnSummon(_character);
-        StartCoroutine(ExecuteSkill(currentCharacter, currentCharacter));
+        StartCoroutine(ExecuteSkill(currentCharacter, _character));
     }
     #endregion
     #region Getter Setter

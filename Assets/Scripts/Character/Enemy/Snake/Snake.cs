@@ -23,6 +23,7 @@ public class Snake : BaseCharacter
         if (ally != null)
         {
             BattleManager.GetInstance.SkillSelected(activeSkills[0]);
+            BattleManager.GetInstance.CharacterSelected(ally);
             BattleManager.GetInstance.ExecuteSelectedSkill(ally);
         }
 

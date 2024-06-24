@@ -15,11 +15,13 @@ public class WoochiAction_Summon : WoochiActionButton
     {
         base.Activate();
         allyUI.gameObject.SetActive(true);
+        allyUI.SetInteractable(true);
     }
 
     public override void Deactivate()
     {
         base.Deactivate();
+        allyUI.SetInteractable(false);
     }
 
 }

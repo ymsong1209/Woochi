@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c05b7143b83388549b5a356ee3426248
+guid: 341b0ccf67703914f9b44fbfa9a43d7a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,43 +136,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uC6B0\uCE58 5_1"
+      name: SorceryRecover_0
       rect:
         serializedVersion: 2
-        x: 232
-        y: 0
-        width: 919
-        height: 1095
+        x: 184
+        y: 27
+        width: 975
+        height: 956
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fa10b26e9b6c7a4197594c7ecee8ef8
-      internalID: 198448597
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\uC6B0\uCE58 5_5"
-      rect:
-        serializedVersion: 2
-        x: 1155
-        y: 0
-        width: 19
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cb8104ee27949d24a806f1e129219fbb
-      internalID: -463991570
+      spriteID: ca1977b3891a85149ba33fafc2735e19
+      internalID: 1819683621
       vertices: []
       indices: 
       edges: []
@@ -188,13 +167,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\uC6B0\uCE58 5_0": 2137796630
-      "\uC6B0\uCE58 5_1": 198448597
-      "\uC6B0\uCE58 5_2": 330118620
-      "\uC6B0\uCE58 5_3": -1245569624
-      "\uC6B0\uCE58 5_4": 977960831
-      "\uC6B0\uCE58 5_5": -463991570
-      "\uC6B0\uCE58 5_6": 188292549
+      SorceryRecover_0: 1819683621
+      SorceryRecover_1: -1783027267
+      SorceryRecover_2: 402111037
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

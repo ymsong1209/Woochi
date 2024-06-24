@@ -40,7 +40,7 @@ public class Formation : MonoBehaviour
             character.Initialize();
             character.IsAlly = isAllyFormation;
 
-            character.rowOrder = order++;
+            character.RowOrder = order++;
 
             character.TriggerBuff(BuffTiming.BattleStart);
 
@@ -75,7 +75,7 @@ public class Formation : MonoBehaviour
     /// 턴이 끝난 후, 바뀐 RowOrder 값을 기반으로 formation을 정렬 후 재배치한다
     /// 캐릭터들을 앞으로 당긴다
     /// </summary>
-    public void ReOrder()
+    public virtual void ReOrder()
     {
         Array.Sort(formation, (character1, character2) => {
             if (character1 == null && character2 == null)
@@ -85,7 +85,7 @@ public class Formation : MonoBehaviour
             else if (character2 == null)
                 return -1;
 
-            return character1.rowOrder.CompareTo(character2.rowOrder);
+            return character1.RowOrder.CompareTo(character2.RowOrder);
         });
 
         SetRowOrder();
@@ -117,7 +117,6 @@ public class Formation : MonoBehaviour
             }
 
             character.transform.DOLocalMoveX(moveX, 0.5f);
-            character.onAnyTurnEnd?.Invoke();
 
             index += character.Size;
         }
@@ -185,7 +184,7 @@ public class Formation : MonoBehaviour
         {
             if (formation[i] == null) break;
 
-            formation[i].rowOrder = i;
+            formation[i].RowOrder = i;
             i += formation[i].Size;
         }
     }

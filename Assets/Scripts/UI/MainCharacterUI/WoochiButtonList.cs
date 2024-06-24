@@ -5,6 +5,7 @@ using UnityEngine;
 public class WoochiButtonList : MonoBehaviour
 {
     [SerializeField] private List<WoochiActionButton> buttonList;
+    private WoochiActionButton selectedBtn;     // 선택한 버튼이 무엇인지
 
     public void Activate(bool isEnable)
     {
@@ -28,6 +29,8 @@ public class WoochiButtonList : MonoBehaviour
     
     public void DeactivateAllButtons()
     {
+        selectedBtn = null;
+
         foreach (var button in buttonList)
         {
             button.Deactivate();
@@ -36,6 +39,12 @@ public class WoochiButtonList : MonoBehaviour
 
     public void SelectButton(WoochiActionButton button)
     {
+        if (selectedBtn == button) return;
+        selectedBtn = button;
+
+        // 우치 행동 중 다른 버튼 누르면 콜라이더, 화살표 비활성화
+        BattleManager.GetInstance.DisableColliderArrow();
+
         ActivateButton(button);
         HighlightButton(button);
     }

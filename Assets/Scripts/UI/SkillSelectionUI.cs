@@ -12,7 +12,7 @@ public class SkillSelectionUI : MonoBehaviour
     public SkillEvent onSkillSelected; // SkillEvent 타입의 public 이벤트
 
     [SerializeField] private List<SkillIcon> skillIcons;
-    [SerializeField] private SkillIcon selectedIcon = null;
+    private SkillIcon selectedIcon = null;
 
     private void Start()
     {

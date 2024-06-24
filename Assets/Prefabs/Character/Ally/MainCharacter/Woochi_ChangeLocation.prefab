@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3780136729541033186}
-  - component: {fileID: 5908924620349726567}
+  - component: {fileID: 7748665928382341646}
   m_Layer: 0
-  m_Name: Woochi_Charm
+  m_Name: Woochi_ChangeLocation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5908924620349726567
+--- !u!114 &7748665928382341646
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2672831112880370927}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfd75cb675ad8614b9e1d00916759565, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a031c6d7b1b43e418f945f42758f135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skillSO: {fileID: 0}
@@ -51,10 +51,9 @@ MonoBehaviour:
   skillRadius: 0000000000000000
   skillTargetType: 0
   skillType: 0
-  skillTargetCount: 1
+  skillTargetCount: 2
   bufflist: []
   multiplier: 0
   skillAccuracy: 0
   isAlwaysHit: 0
   isAlwaysApplyBuff: 0
-  charm: {fileID: 0}

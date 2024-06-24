@@ -33,6 +33,7 @@ public class BaseSkill : MonoBehaviour
     private bool[] skillRadius = new bool[8];
     private SkillTargetType skillTargetType;
     private SkillType skillType;
+    [SerializeField] private int skillTargetCount = 1;
     private List<GameObject> buffPrefabList = new List<GameObject>();
     
     /// <summary>
@@ -56,6 +57,7 @@ public class BaseSkill : MonoBehaviour
         skillAvailableRadius = skillSO.SkillAvailableRadius;
         skillRadius = skillSO.SkillRadius;
         skillType = skillSO.SkillType;
+        skillTargetCount = skillSO.SkillTargetCount;
         skillTargetType = skillSO.SkillTargetType;
         multiplier = skillSO.BaseMultiplier;
         skillAccuracy = skillSO.BaseSkillAccuracy;
@@ -461,6 +463,7 @@ public class BaseSkill : MonoBehaviour
     }
 
     public SkillTargetType SkillTargetType => skillTargetType;
+    public int SkillTargetCount => skillTargetCount;
     public BaseCharacter SkillOwner
     {
         get => skillOwner;

@@ -6,6 +6,11 @@ public class ThreeTailsFox : BaseCharacter
 {
     public override void CheckSkillsOnTurnStart()
     {
+        if(IsDead)
+        {
+            return;
+        }
+
         activeSkills.Clear();
         int characterIndex = BattleManager.GetInstance.GetCharacterIndex(this);
         
