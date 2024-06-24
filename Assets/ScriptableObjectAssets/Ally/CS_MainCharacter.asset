@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: CS_MainCharacter
   m_EditorClassIdentifier: 
   characterName: "\uC804\uC6B0\uCE58"
+  portrait: {fileID: 0}
   baseHealth: 34
   baseSpeed: 3
   baseDefense: 0
@@ -24,3 +25,5 @@ MonoBehaviour:
   baseMaxStat: 7
   skills:
   - {fileID: -4761694706262891841, guid: d9b0f46b49e2f654b9cf06b29cc77d63, type: 3}
+  - {fileID: -8388043650331442943, guid: 7fa68b21b7f21e2468e10172c5a1f9e1, type: 3}
+  - {fileID: 8772081501130508669, guid: 7a076853c85b2314f875853a36ecad84, type: 3}

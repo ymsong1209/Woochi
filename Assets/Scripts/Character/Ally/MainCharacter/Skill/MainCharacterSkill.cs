@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainCharacterSkill : BaseSkill
 {
-    [SerializeField] protected int requiredSorceryPoints;
+    protected int requiredSorceryPoints;
     
     public int RequiredSorceryPoints
     {
