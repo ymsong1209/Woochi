@@ -1,6 +1,6 @@
-using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
@@ -17,10 +17,14 @@ public class BattleCameraController : MonoBehaviour
     [SerializeField] private float shakeDuration = 0.5f;
     [SerializeField] private float shakeAmount = 0.1f;
 
+    [Header("Focus")]
+    List<BaseCharacter> foucsCharacters = new List<BaseCharacter>();
+
     private void Start()
     {
         BattleManager.GetInstance.OnFocusStart += FocusIn;
         BattleManager.GetInstance.OnFocusEnd += FocusOut;
+        BattleManager.GetInstance.OnFocusEnter += FocusEnter;
         BattleManager.GetInstance.OnShakeCamera += Shake;
     }
 
@@ -29,7 +33,7 @@ public class BattleCameraController : MonoBehaviour
         mainCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("HUD"));
         postProcessVolume.enabled = true;
 
-        // targetGroup.m_Targets = targets.ToArray();
+        Place();
     }
 
     public void FocusOut()
@@ -37,9 +41,38 @@ public class BattleCameraController : MonoBehaviour
         mainCamera.cullingMask |= 1 << LayerMask.NameToLayer("HUD");
         postProcessVolume.enabled = false;
 
-        // targets.Clear();
+        foucsCharacters.Clear();
     }
 
+    public void FocusEnter(BaseCharacter character)
+    {
+        foucsCharacters.Add(character);
+    }
+
+    private void Place()
+    {
+        var sortedCharacters = foucsCharacters.
+            OrderByDescending(character => character.IsAlly)
+            .ThenBy(character => character.RowOrder)
+            .ToList();
+
+        float allyX = -2.5f;
+        float enemyX = 2.5f;
+
+        foreach (var character in sortedCharacters)
+        {
+            if (character.IsAlly)
+            {
+                character.transform.position = new Vector3(allyX, 0f, 0f);
+                allyX -= 2.5f;
+            }
+            else
+            {
+                character.transform.position = new Vector3(enemyX, 0f, 0f);
+                enemyX += 2.5f;
+            }
+        }
+    }
     public void Shake(bool _isHit, bool _isCrit)
     {
         if(_isHit)

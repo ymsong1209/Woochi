@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 
@@ -18,11 +19,6 @@ public class BaseCharacterAnimation : MonoBehaviour
 
     public virtual void Play(AnimationType _type)
     {
-        if(owner.IsDead)
-        {
-            return;
-        }
-
         animator.Play(_type.ToString());
         StartCoroutine(WaitAnim());
     }
@@ -31,6 +27,7 @@ public class BaseCharacterAnimation : MonoBehaviour
     {
         owner.IsIdle = false;
         FocusIn();
+        // Move();
 
         yield return new WaitForSeconds(1.5f);
 
@@ -38,6 +35,16 @@ public class BaseCharacterAnimation : MonoBehaviour
         FocusOut();
 
         animator.Play("Idle");
+    }
+
+    public void PlayDeadAnimation() => animator.Play("Dead");
+    
+    /// <summary>
+    /// 애니메이션 재생 시 움직임 구현
+    /// </summary>
+    private void Move()
+    {
+
     }
 
     /// <summary>
@@ -51,7 +58,7 @@ public class BaseCharacterAnimation : MonoBehaviour
     void FocusIn()
     {
         body.gameObject.layer = LayerMask.NameToLayer("Focus");
-        // BattleManager.GetInstance.OnFocusEnter?.Invoke(owner);
+        BattleManager.GetInstance.OnFocusEnter?.Invoke(owner);
     }
 
     void FocusOut()

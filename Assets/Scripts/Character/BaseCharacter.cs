@@ -413,7 +413,8 @@ public class BaseCharacter : MonoBehaviour
     {
         if(health.CheckHealthZero())
         {
-            onPlayAnimation(AnimationType.Dead);
+            anim.PlayDeadAnimation();
+            // onPlayAnimation(AnimationType.Dead);
             return true;
         }
         return false;
