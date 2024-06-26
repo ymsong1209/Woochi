@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class BurnDebuff : BaseBuff
 {
-    //burnDamage 디버프
+    public BurnDebuff()
+    {
+        buffEffect = BuffEffect.Burn;
+        buffType = BuffType.Negative;
+    }
     public override int ApplyTurnStartBuff()
     {
         //전체체력에서 5%만큼 대미지를 줌

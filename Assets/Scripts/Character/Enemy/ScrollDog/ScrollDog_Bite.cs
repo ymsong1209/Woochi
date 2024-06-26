@@ -22,7 +22,7 @@ public class ScrollDog_Bite : BaseSkill
             return;
         }
       
-        GameObject bleedDebuffPrefab = bufflist[0];
+        GameObject bleedDebuffPrefab = BuffPrefabList[0];
         GameObject bleedDebuffGameObject = Instantiate(bleedDebuffPrefab, transform);
         BleedDeBuff bleedDebuff = bleedDebuffGameObject.GetComponent<BleedDeBuff>();
         bleedDebuff.BuffDurationTurns = 3;

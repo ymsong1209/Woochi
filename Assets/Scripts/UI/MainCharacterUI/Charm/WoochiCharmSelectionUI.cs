@@ -3,11 +3,9 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-[System.Serializable]
-public class CharmEvent : UnityEvent<BaseCharm> { }
 public class WoochiCharmSelectionUI : MonoBehaviour
 {
-    public CharmEvent onCharmSelected;
+   
     [SerializeField] private List<CharmIcon> charmIcons = new List<CharmIcon>(5);
     private MainCharacter mainCharacter;
 
@@ -95,9 +93,5 @@ public class WoochiCharmSelectionUI : MonoBehaviour
         mainCharacter.CharmSkill.Charm = _charm;
         mainCharacter.CharmSkill.SetSkillForCharm();
         BattleManager.GetInstance.SkillSelected(mainCharacter.CharmSkill);
-        
-        onCharmSelected.Invoke(_charm);
     }
-    
-    public CharmEvent OnCharmSelected => onCharmSelected;
 }

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Snake_Bite : BaseSkill
 {
+    public Snake_Bite()
+    {
+        
+    }
     public override void ActivateSkill(BaseCharacter _Opponent)
     {
         base.ActivateSkill(_Opponent);

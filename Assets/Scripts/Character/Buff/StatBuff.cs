@@ -6,7 +6,23 @@ using UnityEngine;
 public class StatBuff : BaseBuff
 {
     public string StatBuffName;
-
+    
+    #region 변화된 스탯들의 수치
+    [SerializeField] protected float changeDefense;
+    [SerializeField] protected float changeCrit;
+    [SerializeField] protected float changeAccuracy;
+    [SerializeField] protected float changeEvasion;
+    [SerializeField] protected float changeResist;
+    [SerializeField] protected float changeMinStat;
+    [SerializeField] protected float changeMaxStat;
+    [SerializeField] protected float changeSpeed;
+    #endregion 변화된 스탯들
+    public StatBuff()
+    {
+        buffEffect = BuffEffect.StatStrengthen;
+        buffType = BuffType.Positive;
+    }
+    
     public override void AddBuff(BaseCharacter _buffOwner)
     {
        base.AddBuff(_buffOwner);
@@ -15,18 +31,20 @@ public class StatBuff : BaseBuff
     
     public override void StackBuff(BaseBuff _buff)
     {
+        StatBuff statBuff = _buff as StatBuff;
+        if (!statBuff) return;
         //중첩시키려는 버프의 지속시간이 무한인경우 기존 버프 지속시간 무한으로 변경
         if(_buff.BuffDurationTurns == -1) base.buffDurationTurns = -1;
         else base.buffDurationTurns += _buff.BuffDurationTurns;
         
-        base.changeAccuracy += _buff.ChangeAccuracy;
-        base.changeSpeed += _buff.ChangeSpeed;
-        base.changeDefense += _buff.ChangeDefense;
-        base.changeCrit += _buff.ChangeCrit;
-        base.changeEvasion += _buff.ChangeEvasion;
-        base.changeResist += _buff.ChangeResist;
-        base.changeMinStat += _buff.ChangeMinStat;
-        base.changeMaxStat += _buff.ChangeMaxStat;
+        changeAccuracy += statBuff.ChangeAccuracy;
+        changeSpeed += statBuff.ChangeSpeed;
+        changeDefense += statBuff.ChangeDefense;
+        changeCrit += statBuff.ChangeCrit;
+        changeEvasion += statBuff.ChangeEvasion;
+        changeResist += statBuff.ChangeResist;
+        changeMinStat += statBuff.ChangeMinStat;
+        changeMaxStat += statBuff.ChangeMaxStat;
         buffOwner.CheckForStatChange();
     }
 
@@ -83,4 +101,47 @@ public class StatBuff : BaseBuff
         text.text += description;
         text.color = Color.blue;
     }
+    
+    #region 변화된 스탯들의 수치 Getter Setter
+    public float ChangeDefense 
+    {
+        get { return changeDefense; }
+        set { changeDefense = value; }
+    }
+    public float ChangeCrit 
+    {
+        get { return changeCrit; }
+        set { changeCrit = value; }
+    }
+    public float ChangeAccuracy 
+    {
+        get { return changeAccuracy; }
+        set { changeAccuracy = value; }
+    }
+    public float ChangeEvasion 
+    {
+        get { return changeEvasion; }
+        set { changeEvasion = value; }
+    }
+    public float ChangeResist 
+    {
+        get { return changeResist; }
+        set { changeResist = value; }
+    }
+    public float ChangeMinStat 
+    {
+        get { return changeMinStat; }
+        set { changeMinStat = value; }
+    }
+    public float ChangeMaxStat 
+    {
+        get { return changeMaxStat; }
+        set { changeMaxStat = value; }
+    }
+    public float ChangeSpeed 
+    {
+        get { return changeSpeed; }
+        set { changeSpeed = value; }
+    }
+    #endregion 변화된 스탯들의 수치 Getter Setter
 }

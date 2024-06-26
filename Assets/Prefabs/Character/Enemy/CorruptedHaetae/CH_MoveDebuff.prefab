@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2672831112880370927
+--- !u!1 &8825904973982757721
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3780136729541033186}
-  - component: {fileID: -8810357365272186011}
+  - component: {fileID: 1324398890676196612}
+  - component: {fileID: 6851069812680505915}
   m_Layer: 0
-  m_Name: Fox_Fascinate_Row3
+  m_Name: CH_MoveDebuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3780136729541033186
+--- !u!4 &1324398890676196612
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2672831112880370927}
+  m_GameObject: {fileID: 8825904973982757721}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,28 +32,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-8810357365272186011
+--- !u!114 &6851069812680505915
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2672831112880370927}
+  m_GameObject: {fileID: 8825904973982757721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9ec869f4b19fb64f930028722c6e380, type: 3}
+  m_Script: {fileID: 11500000, guid: 63762e19273a8ee46bd9dfd8f230e3a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillSO: {fileID: 11400000, guid: 42659b2390b784f499a400025b5ae005, type: 2}
-  skillOwner: {fileID: 0}
-  skillName: 
-  skillAvailableRadius: 0000000000000000
-  skillRadius: 0000000000000000
-  skillTargetType: 1
-  skillType: 0
-  bufflist:
-  - {fileID: 2569674945298275565, guid: dee9d02e444ad62429e362ed7d747b0f, type: 3}
-  multiplier: 0
-  skillAccuracy: 0
+  skillSO: {fileID: 11400000, guid: f1e0af5a1bdde1d4fab4d89f6139cf87, type: 2}
   isAlwaysHit: 0
   isAlwaysApplyBuff: 0
+  statBuff: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}

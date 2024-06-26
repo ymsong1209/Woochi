@@ -4,10 +4,15 @@ using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class ProtectBuff : BaseBuff
-{
+{  
+    public ProtectBuff()
+    {
+        buffEffect = BuffEffect.Protect;
+        buffType = BuffType.Positive;
+    }
 
-    [SerializeField] private BaseCharacter protectionOwner;//´©±¸¿¡°Ô º¸È£¹Þ´ÂÁö
-
+    [SerializeField] private BaseCharacter protectionOwner;//ëˆ„êµ¬ì—ê²Œ ë³´í˜¸ë°›ëŠ”ì§€
+  
     #region Getter Setter
     public BaseCharacter ProtectionOwner => protectionOwner;
     #endregion

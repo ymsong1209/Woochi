@@ -8,11 +8,11 @@ public class Tiger_Roar : BaseSkill
     
     public override void ActivateSkill(BaseCharacter _Opponent)
     {
-        GameObject statDebuffPrefab = bufflist[0];
+        GameObject statDebuffPrefab = BuffPrefabList[0];
         GameObject statDebuffGameObject = Instantiate(statDebuffPrefab, transform);
         StatDeBuff statDebuff = statDebuffGameObject.GetComponent<StatDeBuff>();
         statDebuff.StatBuffName = "위축";
-        statDebuff.BuffDurationTurns = 1;
+        statDebuff.BuffDurationTurns = 2;
         statDebuff.ChanceToApplyBuff = 100;
         statDebuff.ChangeAccuracy = -5;
         statDebuff.ChangeMinStat = -5;
@@ -32,6 +32,7 @@ public class Tiger_Roar : BaseSkill
         roarBuff.ChanceToApplyBuff = 100;
         roarBuff.ChangeDefense = 5;
         SkillOwner.ApplyBuff(SkillOwner,roarBuff);
+        Destroy(instantiatedRoarbuff);
     }
     
 }

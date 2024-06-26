@@ -16,6 +16,7 @@ public class RecoveryConfirmButton : MonoBehaviour
         }
         MC_SorceryRecovery recoveryskill = mainCharacter.SorceryRecoverySkill; 
        BattleManager.GetInstance.SkillSelected(recoveryskill);
-       BattleManager.GetInstance.ExecuteSelectedSkill(BattleManager.GetInstance.currentCharacter);
+       BattleManager.GetInstance.CharacterSelected(mainCharacter);
+       BattleManager.GetInstance.ExecuteSelectedSkill(mainCharacter);
     }
 }
