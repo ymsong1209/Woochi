@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3612102743719917579, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 05744ed5418b6be4da77a4beabdf52de, type: 3}
     - target: {fileID: 3671869874223877086, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -141,6 +145,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8294852297275621385, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8294852297275621385, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 2.5
       objectReference: {fileID: 0}
@@ -219,6 +227,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HUD: {fileID: 0}
+  anim: {fileID: 0}
+  collider: {fileID: 0}
   characterStat: {fileID: 11400000, guid: 7c18a9b4a73a4e14693cc5f16fc325db, type: 2}
   health: {fileID: 0}
   size: 1
@@ -230,9 +240,6 @@ MonoBehaviour:
   resist: 0
   minStat: 0
   maxStat: 0
-  isSpawnSpecific: 0
-  spawnLocation: {x: 0, y: 0, z: 0}
-  spawnRotation: {x: 0, y: 0, z: 0, w: 0}
   isMainCharacter: 0
   isDead: 0
   activeBuffs: []
@@ -241,5 +248,4 @@ MonoBehaviour:
   isAlly: 0
   isStarting: 0
   isSummoned: 0
-  rowOrder: 0
   evasionBuff: {fileID: 2594652249492454651, guid: 95ed429fd9f518443acf870831bd1544, type: 3}

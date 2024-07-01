@@ -124,7 +124,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: 0.1
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -170,7 +170,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 1.5, y: -0.25}
-  m_SizeDelta: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 0.4, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3633180304952726116
 CanvasRenderer:
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 81c28b98e380bac44887720369c20b4c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 829c069e3c7252d49bc194e77af3a33b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb951702f2e1364d9e6789b19f313ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffType: 0
+  buffEffect: 0
   animator: {fileID: 0}
 --- !u!61 &2548514120158832915
 BoxCollider2D:
@@ -328,7 +328,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 2, y: -0.25}
-  m_SizeDelta: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 0.4, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4633187927541937310
 CanvasRenderer:
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6308b947a5b8dd84d8906f3948ea1957, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4001929a1726b0e4bb1cc5d93a67bca3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -401,7 +401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb951702f2e1364d9e6789b19f313ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffType: 1
+  buffEffect: 1
   animator: {fileID: 0}
 --- !u!61 &2217920123334504830
 BoxCollider2D:
@@ -519,7 +519,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 2.5, y: -0.25}
-  m_SizeDelta: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 0.4, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8186815393555312400
 CanvasRenderer:
@@ -549,7 +549,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8bd6bc58ce42a8840ac93be476abb5a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cf01819a8f4f1b640a742da53a209914, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -592,7 +592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb951702f2e1364d9e6789b19f313ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffType: 4
+  buffEffect: 4
   animator: {fileID: 0}
 --- !u!61 &3971338237664718108
 BoxCollider2D:
@@ -677,7 +677,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 3, y: -0.25}
-  m_SizeDelta: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 0.4, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8516685661954489406
 CanvasRenderer:
@@ -707,7 +707,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 842eeab4deaf25046b7eae92b2d0121e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dc0bb5246b6d41446af28b688980aad5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -750,7 +750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb951702f2e1364d9e6789b19f313ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffType: 3
+  buffEffect: 3
   animator: {fileID: 0}
 --- !u!61 &5210427500878419097
 BoxCollider2D:
@@ -930,7 +930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb951702f2e1364d9e6789b19f313ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffType: 2
+  buffEffect: 2
   animator: {fileID: 0}
 --- !u!61 &7553114666072455112
 BoxCollider2D:
