@@ -4,6 +4,8 @@ using UnityEngine;
 public class AllyFormation : Formation
 {
     public List<BaseCharacter> waitingCharacter = new List<BaseCharacter>();
+    [SerializeField] GameObject dummyPrefab;
+    private BaseCharacter dummyCharacter;
 
     public override void Initialize(List<GameObject> prefabs)
     {
@@ -42,9 +44,17 @@ public class AllyFormation : Formation
             else
             {
                 SetProperty(character, false, -1);
+                character.gameObject.SetActive(false);
                 waitingCharacter.Add(character);
             }
         }
+
+        #region DummyCharacter
+        GameObject dummy = Instantiate(dummyPrefab, transform);
+        dummyCharacter = dummy.GetComponent<BaseCharacter>();
+        dummyCharacter.gameObject.SetActive(false);
+        dummyCharacter.IsAlly = true;
+        #endregion
 
         Positioning();
     }
@@ -96,8 +106,7 @@ public class AllyFormation : Formation
 
         waitingCharacter.Remove(_character);
 
-        int rowOrder = formation[_index].RowOrder;
-
+        int rowOrder = _index;
         for(int i = _index; i < formation.Length; i++)
         {
             if (formation[i])
@@ -139,6 +148,34 @@ public class AllyFormation : Formation
 
         totalSize -= _character.Size;
         SetProperty(_character, false, -1);
+    }
+
+    public void EnableDummy()
+    {
+        for(int i = 0; i < formation.Length; i++)
+        {
+            if (formation[i] == null)
+            {
+                formation[i] = dummyCharacter;
+                dummyCharacter.gameObject.SetActive(true);
+                dummyCharacter.RowOrder = i;
+                ReOrder();
+                break;
+            }
+        }
+    }
+
+    public void DisableDummy()
+    {
+        for(int i = 0; i < formation.Length; i++)
+        {
+            if (formation[i] && formation[i].isDummy)
+            {
+                formation[i] = null;
+                dummyCharacter.HUD.ActivateArrow(false);
+                dummyCharacter.gameObject.SetActive(false);
+            }
+        }
     }
 
     private void SetProperty(BaseCharacter _character, bool isSummoned, int rowOrder)

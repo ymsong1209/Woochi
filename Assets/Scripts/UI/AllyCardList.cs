@@ -11,7 +11,7 @@ using UnityEngine;
 public class AllyCardList : MonoBehaviour
 {
     [SerializeField] List<AllyCard> cards;
-
+    
     private void Start()
     {
         BattleManager.GetInstance.OnCharacterTurnStart += ShowUI;

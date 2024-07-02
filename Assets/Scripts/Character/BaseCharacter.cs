@@ -61,11 +61,12 @@ public class BaseCharacter : MonoBehaviour
     protected bool isTurnUsed = false; //한 라운드 내에서 자신의 턴을 사용했을 경우
     protected bool isIdle = true;
 
+    public bool isDummy = false;      // 더미 캐릭터인지
     public bool isStarting = false;     // 캐릭터가 전투 시작시 소환될건지
     [HideInInspector] public bool isSummoned = false;     // 캐릭터가 소환되었는지
 
     // 캐릭터가 앞 열에서부터 몇 번째 순서인지
-    private int rowOrder;
+    [SerializeField, ReadOnly] private int rowOrder;
 
     private bool isSelected = false;     // 배틀 중 스킬 대상으로 선택된 캐릭터인지
     #endregion BATTLE STATS

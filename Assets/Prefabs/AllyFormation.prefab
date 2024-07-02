@@ -61,3 +61,4 @@ MonoBehaviour:
   isAllyFormation: 1
   totalSize: 0
   waitingCharacter: []
+  dummyPrefab: {fileID: 1974355388531398891, guid: 478733f7c7bf0f149918ffd45bef585d, type: 3}

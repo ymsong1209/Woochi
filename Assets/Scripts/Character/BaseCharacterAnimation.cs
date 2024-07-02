@@ -27,7 +27,6 @@ public class BaseCharacterAnimation : MonoBehaviour
     {
         owner.IsIdle = false;
         FocusIn();
-        // Move();
 
         yield return new WaitForSeconds(1.5f);
 
@@ -38,14 +37,6 @@ public class BaseCharacterAnimation : MonoBehaviour
     }
 
     public void PlayDeadAnimation() => animator.Play("Dead");
-    
-    /// <summary>
-    /// 애니메이션 재생 시 움직임 구현
-    /// </summary>
-    private void Move()
-    {
-
-    }
 
     /// <summary>
     /// rowOrder 값으로 후열에 있는 캐릭터가 앞에 보이도록

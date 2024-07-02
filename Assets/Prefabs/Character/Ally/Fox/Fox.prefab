@@ -292,6 +292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HUD: {fileID: 0}
   anim: {fileID: 0}
+  collider: {fileID: 0}
   characterStat: {fileID: 11400000, guid: c8762dd9f5c96da4287c1a1a55b72000, type: 2}
   health: {fileID: 0}
   size: 1
@@ -303,16 +304,14 @@ MonoBehaviour:
   resist: 0
   minStat: 0
   maxStat: 0
-  isSpawnSpecific: 0
-  spawnLocation: {x: 0, y: 0, z: 0}
-  spawnRotation: {x: 0, y: 0, z: 0, w: 0}
   isMainCharacter: 0
   isDead: 0
   activeBuffs: []
   activeSkills: []
   activeSkillCheckBox: 010001000100
   isAlly: 0
-  isStarting: 1
+  isDummy: 0
+  isStarting: 0
   isSummoned: 0
 --- !u!1 &8620507179705111926 stripped
 GameObject:

@@ -5983,33 +5983,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11083ef95a0a5db47b9ce76b348a9631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onCharmSelected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1081429682}
-        m_TargetAssemblyTypeName: BattleManager, Assembly-CSharp
-        m_MethodName: EnableArrowForSelectedSkill
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1081429682}
-        m_TargetAssemblyTypeName: BattleManager, Assembly-CSharp
-        m_MethodName: ActivateColliderForSelectedSkill
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   charmIcons:
   - {fileID: 811808265}
   - {fileID: 2126905660}
@@ -10917,9 +10890,13 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
-      propertyPath: allies.Array.data[1]
+      propertyPath: allies.Array.data[0]
       value: 
       objectReference: {fileID: 2536897304434713235, guid: 92aa63b8768f36d4cb5e10f0b8282920, type: 3}
+    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
+      propertyPath: allies.Array.data[1]
+      value: 
+      objectReference: {fileID: 1946550667272111963, guid: fb3bcba31bb16b54384116e3477e79ea, type: 3}
     - target: {fileID: 5775089594791431015, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.027509725

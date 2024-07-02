@@ -22,7 +22,6 @@ public class WoochiActionList : MonoBehaviour
 
     private void ShowUI(BaseCharacter _character, bool isEnable = false)
     {
-        
         // 우치인 경우 우치 UI 활성화
         // 우치가 스킬을 사용한 후에는 Reset함수 호출 후, isEnable이 false로 들어옴
         if (_character.IsMainCharacter)

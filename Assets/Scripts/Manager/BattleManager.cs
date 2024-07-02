@@ -420,7 +420,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         enemies.CheckDeathInFormation();
 
         OnFocusStart?.Invoke();
-        OnCharacterAttacked?.Invoke(receiver, false);
+
+        // 더미 캐릭터가 receiver인 경우 caster의 UI를 활성화
+        if (receiver.isDummy)
+            OnCharacterAttacked?.Invoke(caster, false);
+        else
+            OnCharacterAttacked?.Invoke(receiver, false);
         
         yield return new WaitUntil(() => caster.IsIdle);
         OnFocusEnd?.Invoke();
@@ -633,6 +638,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         // 소환될 위치
         int index = GetCharacterIndex(_target);
 
+        DisableDummy();
+
         if (allies.Summon(_summon, index))
         {
             processedCharacters.Add(_summon);
@@ -641,6 +648,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
     public void UnSummon(BaseCharacter _character)
     {
+        DisableDummy();
+
         // 턴 사용한 소환수 경우 -> 처리된 캐릭터 리스트에서 제거
         if(_character.IsTurnUsed)
         {
@@ -677,6 +686,10 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         allies.UnSummon(_character);
         StartCoroutine(ExecuteSkill(currentCharacter, _character));
     }
+
+    public void EnableDummy() => allies.EnableDummy();
+    public void DisableDummy() => allies.DisableDummy();
+    
     #endregion
     #region Getter Setter
 

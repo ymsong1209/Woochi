@@ -29,8 +29,8 @@ public class BaseSkill : MonoBehaviour
     private BaseCharacter skillOwner;
 
     private string skillName;
-    private bool[] skillAvailableRadius = new bool[8];
-    private bool[] skillRadius = new bool[8];
+    [SerializeField] private bool[] skillAvailableRadius = new bool[8];
+    [SerializeField] private bool[] skillRadius = new bool[8];
     private SkillTargetType skillTargetType;
     private SkillType skillType;
     [SerializeField] private int skillTargetCount = 1;
