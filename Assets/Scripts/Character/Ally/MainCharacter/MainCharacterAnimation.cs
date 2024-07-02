@@ -4,7 +4,7 @@ public class MainCharacterAnimation : BaseCharacterAnimation
 {
     public override void Play(AnimationType _type)
     {
-        if(owner.IsDead)
+        if(owner.IsDead || !owner.IsIdle)
         {
             return;
         }

@@ -59,6 +59,10 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
             case AttackResult.Normal:
                 damageTxt.text = $"{damage}";
                 break;
+            case AttackResult.Heal:
+                damageTxt.color = Color.green;
+                damageTxt.text = $"{damage}";
+                break;
         }
 
         Invoke("DeactiveDamage", 1f);

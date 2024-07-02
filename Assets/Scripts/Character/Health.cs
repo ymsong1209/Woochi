@@ -55,6 +55,8 @@ public class Health : MonoBehaviour
     public void Heal(int _healamount)
     {
         CurHealth = Mathf.Clamp(CurHealth + _healamount, 0, maxHealth);
+        owner.onPlayAnimation?.Invoke(AnimationType.Heal);
+        owner.onAttacked?.Invoke(AttackResult.Heal, _healamount, false);
     }
 
     public bool CheckHealthZero()

@@ -19,6 +19,9 @@ public class BaseCharacterAnimation : MonoBehaviour
 
     public virtual void Play(AnimationType _type)
     {
+        if(!owner.IsIdle)
+            return;
+
         animator.Play(_type.ToString());
         StartCoroutine(WaitAnim());
     }

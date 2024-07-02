@@ -281,6 +281,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDamaged: 1
   isRemote: 0
+--- !u!114 &3185326496563871571
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d83cbcd553cddb4481b0f15cb1c3325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDamaged: 1
+  isRemote: 0
 --- !u!114 &3516675628754552564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -448,6 +462,33 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &6959036355524025978
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Heal
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours:
+  - {fileID: 3185326496563871571}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 9d64305eb7669004aada64121c2f55bf, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1107 &7372008348533242408
 AnimatorStateMachine:
   serializedVersion: 6
@@ -478,6 +519,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -8118914281845546609}
     m_Position: {x: 730, y: 440, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 6959036355524025978}
+    m_Position: {x: 630, y: -70, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 6076415187692725579}

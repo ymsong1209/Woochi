@@ -164,6 +164,7 @@ public class BaseSkill : MonoBehaviour
             if (i<4 && skillRadius[i])
             {
                 BaseCharacter ally = allies.formation[i];
+                if (!ally) continue;
                 
                 //아군의 Size가 2인 경우
                 if (ally.Size == 2)

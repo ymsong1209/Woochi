@@ -311,8 +311,9 @@ MonoBehaviour:
   activeSkillCheckBox: 010001000100
   isAlly: 0
   isDummy: 0
-  isStarting: 0
+  isStarting: 1
   isSummoned: 0
+  rowOrder: 0
 --- !u!1 &8620507179705111926 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6890884974774991358, guid: d65a7aefa191b904c8dded1547849368, type: 3}

@@ -135,5 +135,6 @@ public enum AttackResult
     Miss,
     Evasion,
     Normal,
+    Heal,
     END
 }
