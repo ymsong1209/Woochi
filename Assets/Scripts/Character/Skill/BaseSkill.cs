@@ -110,8 +110,29 @@ public class BaseSkill : MonoBehaviour
     {
         bool isCrit = false;
 
-        //공격 실패시 버프 적용 안함
-        if (AttackLogic(_opponent, ref isCrit) == false) return;
+        switch (skillType)
+        {
+            case SkillType.Heal:
+            {
+                //힐 관련된건 치명타 판정만 함. 저항, 회피 판정 없이 바로 스탯 적용
+                if (CheckCrit())
+                {
+                    isCrit = true;
+                    skillResult.isCrit = true;
+                }
+                skillResult.isHit = true;
+                _opponent.onPlayAnimation?.Invoke(AnimationType.Heal);
+                ApplyStat(_opponent, isCrit);
+            }
+                break;
+            default:
+            {
+                //공격 실패시 버프 적용 안함
+                if (AttackLogic(_opponent, ref isCrit) == false) return;
+            }
+                break;
+        }
+       
 
         foreach (GameObject applyBuffGameObject in instantiatedBuffList)
         {
