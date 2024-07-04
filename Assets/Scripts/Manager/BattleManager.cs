@@ -432,8 +432,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         isSkillExecuted = true;
     }
     
-    void EnemyAction(BaseCharacter enemy)
+    void EnemyAction(BaseCharacter enemycharacter)
     {
+        BaseEnemy enemy = enemycharacter as BaseEnemy;
         enemy.TriggerAI();
         Debug.Log(enemy.name + "가 행동합니다");
     }

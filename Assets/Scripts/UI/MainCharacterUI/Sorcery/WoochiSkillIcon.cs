@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class WoochiSkillIcon : SkillIcon
 {
+    [SerializeField] private SkillElement skillElement;
     public override void OnPointerEnter(PointerEventData eventData)
    {
       base.OnPointerEnter(eventData);
@@ -44,4 +45,8 @@ public class WoochiSkillIcon : SkillIcon
             UIManager.GetInstance.SetSorceryPointBackgroundUI(mainCharacter.SorceryPoints);
         }
     }
+    
+    #region Getter Setter
+    public SkillElement SkillElement => skillElement;
+    #endregion
 }

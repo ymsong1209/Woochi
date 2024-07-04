@@ -90,12 +90,7 @@ public class BaseCharacter : MonoBehaviour
     { 
     }
 
-    /// <summary>
-    /// 몬스터 AI
-    /// </summary>
-    public virtual void TriggerAI()
-    {
-    }
+   
 
     public void OnSelected()
     {

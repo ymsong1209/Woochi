@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Snake : BaseCharacter
+public class Snake : BaseEnemy
 {
     public override void TriggerAI()
     {
