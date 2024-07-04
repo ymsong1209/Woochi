@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.malee.reorderablelist": {
+      "version": "https://github.com/cfoulston/Unity-Reorderable-List.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "ac1f508240fb752b1f9d7c222c231d7f2a33df87"
+    },
     "com.unity.2d.animation": {
       "version": "9.0.3",
       "depth": 1,
@@ -176,6 +183,13 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "3.2.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.postprocessing": {
       "version": "3.2.2",
       "depth": 0,
@@ -225,6 +239,13 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
+    },
+    "com.unity.uiextensions": {
+      "version": "https://github.com/Unity-UI-Extensions/com.unity.uiextensions.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "35b9985bf238cde2bad9c8e107c686ba3194471c"
     },
     "com.unity.visualscripting": {
       "version": "1.8.0",
