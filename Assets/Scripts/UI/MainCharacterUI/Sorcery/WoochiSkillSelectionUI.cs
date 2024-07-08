@@ -7,13 +7,15 @@ using UnityEngine.UI;
 public class WoochiSkillSelectionUI : MonoBehaviour
 {
     public SkillEvent onSkillSelected;
-    [SerializeField] private List<SkillIcon> skillIcons;
+    [SerializeField] SkillIcon[] skillIcons = new SkillIcon[(int)SkillElement.END];
 
     public void Start()
     {
-        for (int i = 0; i < skillIcons.Count; i++)
+        for (int i = 0; i < skillIcons.Length; i++)
         {
             int index = i;
+            //Default 버튼은 없을 예정이므로 Continue;
+            if (!skillIcons[i]) continue;
             Button btn = skillIcons[i].btn;
             btn.onClick.AddListener(() => SkillButtonClicked(skillIcons[index].Skill));
         }
@@ -56,28 +58,23 @@ public class WoochiSkillSelectionUI : MonoBehaviour
         DisableSkills();
 
         #region 스킬 아이콘 Enable, Disable 설정
-        int activeSkillsCount = mainCharacter.activeSkills.Count;
-        if (activeSkillsCount > 4)
+       
+        //각 버튼 오브젝트의 SkillElement에 맞춰서 스킬 세팅
+        for(int i = 0;i<mainCharacter.MainCharacterSkills.Length;++i)
         {
-            Debug.LogError("우치 스킬이 4개 이상이 활성화되어있음.");
-            return;
-        }
-        
-        //각 버튼 오브젝트의 skillelement에 맞춰서 스킬 세팅
-        for(int i = 0;i<activeSkillsCount;++i)
-        {
-            BaseSkill skill = mainCharacter.activeSkills[i];
+            BaseSkill skill = mainCharacter.MainCharacterSkills[i];
+            if (!skill) continue;
             //스킬에 속성이 설정 안되어있을 경우 예외처리
-            if (skill.SkillSO.SkillElement == SkillElement.None || skill.SkillSO.SkillElement == SkillElement.END)
+            if (skill.SkillSO.SkillElement == SkillElement.Defualt || skill.SkillSO.SkillElement == SkillElement.END)
             {
                 Debug.LogError($"{skill.SkillSO.SkillName}의 스킬의 element가 None임");
                 continue;
             }
             //skillicon을 순회하면서 같은 element의 skill이 있으면 그곳에 할당
-            for(int j = 0;j<skillIcons.Count;++j)
+            for (int j = 0; j < skillIcons.Length; ++j)
             {
                 WoochiSkillIcon woochiskillIcon = skillIcons[j] as WoochiSkillIcon;
-                if(woochiskillIcon.SkillElement == skill.SkillSO.SkillElement)
+                if (woochiskillIcon && woochiskillIcon.SkillElement == skill.SkillSO.SkillElement)
                 {
                     //만약 이미 스킬이 할당되어있는 경우 예외처리
                     if (woochiskillIcon.Skill)
@@ -85,11 +82,11 @@ public class WoochiSkillSelectionUI : MonoBehaviour
                         Debug.LogError(skill.SkillSO.SkillName + "와 같은 속성의 스킬이 이미 할당되어있음");
                         break;
                     }
+
                     skillIcons[j].SetSkill(skill, (IsSkillSetAvailable(skill)));
                     break;
                 }
             }
-            skillIcons[i].SetSkill(skill, (IsSkillSetAvailable(skill)));
         }
         
         #endregion
@@ -144,7 +141,10 @@ public class WoochiSkillSelectionUI : MonoBehaviour
     {
         foreach (SkillIcon icon in skillIcons)
         {
-            icon.SetSkill(null);
+            if (icon)
+            {
+                icon.SetSkill(null);
+            }
         }
     }
     

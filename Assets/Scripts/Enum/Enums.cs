@@ -40,7 +40,7 @@ public enum SkillType
 }
 public enum SkillElement
 {
-    None,
+    Defualt,
     Fire,
     Water,
     Wood,

@@ -55,7 +55,6 @@ public class BaseCharacter : MonoBehaviour
     /// 크기는 characterStat 내부의 skills의 길이랑 동일해야함.
     /// </summary>
     [SerializeField] protected  List<bool> activeSkillCheckBox = new List<bool>();
-    protected List<BaseSkill>   totalSkills = new List<BaseSkill>();
 
     [SerializeField,ReadOnly] protected bool isAlly;
     protected bool isTurnUsed = false; //한 라운드 내에서 자신의 턴을 사용했을 경우
@@ -383,6 +382,14 @@ public class BaseCharacter : MonoBehaviour
     /// </summary>
     public virtual void Initialize()
     {
+        InitializeStat();
+        InitializeHealth();
+        InitializeSkill();
+        isDead = false;
+    }
+    
+    protected void InitializeStat()
+    {
         speed = characterStat.BaseSpeed;
         defense = characterStat.BaseDefense;
         crit = characterStat.BaseCrit;
@@ -391,25 +398,45 @@ public class BaseCharacter : MonoBehaviour
         resist = characterStat.BaseResist;
         minStat = characterStat.BaseMinStat;
         maxStat = characterStat.BaseMaxStat;
-        isDead = false;
+    }
+
+    protected void InitializeHealth()
+    {
         health = GetComponent<Health>();
         health.MaxHealth = characterStat.BaseHealth;
         health.CurHealth = characterStat.BaseHealth;
-        #region 스킬 초기화
+    }
+
+    protected virtual void InitializeSkill()
+    {
+        DestroyActiveSkills();
         //activeSkills의 size만큼 CharacterStat의 skill을 앞에서부터 가져와서 세팅한다.
         for(int i = 0; i < activeSkillCheckBox.Count; ++i)
         {
-            BaseSkill newSkill = Instantiate(characterStat.Skills[i], this.transform);
-            newSkill.Initialize(this);
             if (activeSkillCheckBox[i])
             {
-                activeSkills.Add(newSkill);
+                InstantiateSkill(characterStat.Skills[i]);
             }
-            totalSkills.Add(newSkill);
         }
+    }
 
-
-        #endregion
+    protected void DestroyActiveSkills()
+    {
+        for (int i = activeSkills.Count - 1; i >= 0; --i)
+        {
+            if (activeSkills[i])
+            {
+                Destroy(activeSkills[i].gameObject);
+                activeSkills.RemoveAt(i);
+            }
+        }
+    }
+    
+    protected void InstantiateSkill(BaseSkill skill)
+    {
+        BaseSkill newSkill = Instantiate(skill, this.transform);
+        newSkill.Initialize(this);
+        activeSkills.Add(newSkill);
     }
     #endregion 기본 스탯 초기화
 
