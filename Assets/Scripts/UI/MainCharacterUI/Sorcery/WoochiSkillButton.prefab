@@ -32,7 +32,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -150, y: 0}
+  m_AnchoredPosition: {x: 0, y: 150}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5452624118373263168
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 3690398576026397554}
   - component: {fileID: 8670678133063313686}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: DisabledIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 8903902389130318790}
   - component: {fileID: 5161878466298584012}
   m_Layer: 5
-  m_Name: Icon
+  m_Name: EnabledIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -290,7 +290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be434f0ce7ce129479a77c86d01c28a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selected: {fileID: 8670678133063313686}
-  icon: {fileID: 8903902389130318790}
+  enabledIcon: {fileID: 8903902389130318790}
+  disabledIcon: {fileID: 8670678133063313686}
   btn: {fileID: 5161878466298584012}
   tooltipPos: {fileID: 4921992301961193429}
+  skillElement: 0

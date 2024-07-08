@@ -1189,7 +1189,6 @@ GameObject:
   m_Component:
   - component: {fileID: 365673089}
   - component: {fileID: 365673088}
-  - component: {fileID: 365673087}
   - component: {fileID: 365673090}
   m_Layer: 5
   m_Name: WoochiSkillList
@@ -1198,36 +1197,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &365673087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 365673085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.989607, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3da51d60163fca145aef6c1dc094bd8e, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &365673088
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5775,14 +5744,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.09019608, g: 0.20392157, b: 0.49019608, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ec516020c7ade5642aeba5ec934c06b4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4459117ce07e1f949a774ec11a22b583, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6854,11 +6823,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 82
+      value: 73.00001
       objectReference: {fileID: 0}
     - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 13.500019
       objectReference: {fileID: 0}
     - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6880,6 +6849,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoochiSkillButton_Metal
       objectReference: {fileID: 0}
+    - target: {fileID: 8670678133063313686, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d1827cc773d070e43be6f1d646692468, type: 3}
+    - target: {fileID: 8903902389130318790, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 404855f9c5f429f4d9a463c8f27cbedf, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7751,11 +7728,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -134
+      value: -143
       objectReference: {fileID: 0}
     - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 13.5
       objectReference: {fileID: 0}
     - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7769,6 +7746,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3690398576026397554, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3906263592782458985, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348576863028873676, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6915017062931147360, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7555472643903904406, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
       propertyPath: skillElement
       value: 1
@@ -7776,6 +7769,26 @@ PrefabInstance:
     - target: {fileID: 8369952837767494641, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
       propertyPath: m_Name
       value: WoochiSkillButton_Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670678133063313686, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdaf9d37f75679d4eaff0ac224e2ba50, type: 3}
+    - target: {fileID: 8670678133063313686, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670678133063313686, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903902389130318790, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9b154b3ec32b3dd4fb8ab8002f463c2d, type: 3}
+    - target: {fileID: 8903902389130318790, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9177,11 +9190,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 156
+      value: 147.00002
       objectReference: {fileID: 0}
     - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 13.500019
       objectReference: {fileID: 0}
     - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9203,6 +9216,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoochiSkillButton_Earth
       objectReference: {fileID: 0}
+    - target: {fileID: 8670678133063313686, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f78e138f704aac6448ad423e082b4033, type: 3}
+    - target: {fileID: 8903902389130318790, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f8dd23210a2794d46987374ad3b70a30, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9519,11 +9540,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -62.000004
+      value: -70.99999
       objectReference: {fileID: 0}
     - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 13.500019
       objectReference: {fileID: 0}
     - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9545,10 +9566,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoochiSkillButton_Water
       objectReference: {fileID: 0}
+    - target: {fileID: 8670678133063313686, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2d8fa498e15b7b4498b90a528707b68e, type: 3}
     - target: {fileID: 8903902389130318790, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3da51d60163fca145aef6c1dc094bd8e, type: 3}
+      objectReference: {fileID: 21300000, guid: 53194aca36549d74d88f15c5d6a1d7cb, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10066,11 +10091,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 9.999996
+      value: 1.0000048
       objectReference: {fileID: 0}
     - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 13.500019
       objectReference: {fileID: 0}
     - target: {fileID: 2072656118149620167, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10092,6 +10117,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoochiSkillButton_Wood
       objectReference: {fileID: 0}
+    - target: {fileID: 8670678133063313686, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5888c69d9e58b954b95f4317856984d4, type: 3}
+    - target: {fileID: 8903902389130318790, guid: b3b149bf1d1ae554f9e6c9d41d0873c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dd17f932ae1ff1f47a07f9969492dcf2, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

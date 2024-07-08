@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class WoochiSkillSelectionUI : MonoBehaviour
 {
     public SkillEvent onSkillSelected;
-    [SerializeField] SkillIcon[] skillIcons = new SkillIcon[(int)SkillElement.END];
+    [SerializeField] WoochiSkillIcon[] skillIcons = new WoochiSkillIcon[(int)SkillElement.END];
 
     public void Start()
     {
@@ -16,7 +16,7 @@ public class WoochiSkillSelectionUI : MonoBehaviour
             int index = i;
             //Default 버튼은 없을 예정이므로 Continue;
             if (!skillIcons[i]) continue;
-            Button btn = skillIcons[i].btn;
+            Button btn = skillIcons[i].Btn;
             btn.onClick.AddListener(() => SkillButtonClicked(skillIcons[index].Skill));
         }
     }
@@ -73,7 +73,7 @@ public class WoochiSkillSelectionUI : MonoBehaviour
             //skillicon을 순회하면서 같은 element의 skill이 있으면 그곳에 할당
             for (int j = 0; j < skillIcons.Length; ++j)
             {
-                WoochiSkillIcon woochiskillIcon = skillIcons[j] as WoochiSkillIcon;
+                WoochiSkillIcon woochiskillIcon = skillIcons[j];
                 if (woochiskillIcon && woochiskillIcon.SkillElement == skill.SkillSO.SkillElement)
                 {
                     //만약 이미 스킬이 할당되어있는 경우 예외처리
@@ -139,7 +139,7 @@ public class WoochiSkillSelectionUI : MonoBehaviour
     
     private void DisableSkills()
     {
-        foreach (SkillIcon icon in skillIcons)
+        foreach (WoochiSkillIcon icon in skillIcons)
         {
             if (icon)
             {
