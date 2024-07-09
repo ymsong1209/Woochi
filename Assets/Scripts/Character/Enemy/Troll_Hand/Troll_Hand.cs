@@ -31,25 +31,31 @@ public class Troll_Hand : BaseEnemy
         
         BaseCharacter ally = null;
         
-        if (randomValue < 35) // 35% 확률로 가장 낮은 체력의 아군 선택
+        if (randomValue < 50) //50% 확률로 몸통박치기
         {
-            ally = BattleUtils.FindAllyWithLeastHP(0, 1);
-        }
-        else // 65% 확률로 랜덤하게 선택
-        {
-            ally = BattleUtils.FindRandomAlly(0, 1);
-        }
-      
-        if (ally != null)
-        {
+            //아군1열의 캐릭터를 찾아 스킬 사용
+            ally = BattleUtils.FindAllyFromIndex(0);
             BattleManager.GetInstance.SkillSelected(activeSkills[0]);
-            BattleManager.GetInstance.CharacterSelected(ally);
-            BattleManager.GetInstance.ExecuteSelectedSkill(ally);
         }
+        else if (randomValue < 80) //30% 확률로 기묘한 환상
+        {
+            //랜덤한 단일 아군 대상으로 스킬 시전
+            ally = BattleUtils.FindRandomAlly(0, 1, 2, 3);
+            BattleManager.GetInstance.SkillSelected(activeSkills[1]);
+        }
+        else //20% 확률로 괴력
+        {
+            //아군1열의 캐릭터를 찾아 스킬 사용
+            ally = BattleUtils.FindAllyFromIndex(0);
+            BattleManager.GetInstance.SkillSelected(activeSkills[2]);
+        }
+        
+        BattleManager.GetInstance.CharacterSelected(ally);
+        BattleManager.GetInstance.ExecuteSelectedSkill(ally);
     }
 
     public Troll_Hand()
     {
-        
+        skillUsageCount = 0;
     }
 }

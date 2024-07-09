@@ -11087,6 +11087,10 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
+      propertyPath: temporaryDungeon
+      value: 
+      objectReference: {fileID: 11400000, guid: 34e82c526b6f9234283da0f6a36830b0, type: 2}
+    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: allies.Array.data[1]
       value: 
       objectReference: {fileID: 2536897304434713235, guid: 92aa63b8768f36d4cb5e10f0b8282920, type: 3}

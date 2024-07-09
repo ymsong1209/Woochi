@@ -28,6 +28,7 @@ public class Formation : MonoBehaviour
         totalSize = 0;
         foreach (GameObject prefab in prefabs)
         {
+            if (!prefab) continue;
             if(totalSize > 4)
             {
                 Debug.Log("총 크기가 4가 넘습니다");
