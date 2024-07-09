@@ -23,6 +23,7 @@ MonoBehaviour:
   baseResist: 20
   baseMinStat: 8
   baseMaxStat: 15
+  size: 2
   skills:
   - {fileID: -394506694602018230, guid: 52d3ba7f9b437a24fbd7f67063c03199, type: 3}
   - {fileID: -7748879869553992000, guid: 47402f7ab1ca8b344ad549be23fe6dbd, type: 3}

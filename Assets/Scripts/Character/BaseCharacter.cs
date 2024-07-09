@@ -407,6 +407,7 @@ public class BaseCharacter : MonoBehaviour
         resist = characterStat.BaseResist;
         minStat = characterStat.BaseMinStat;
         maxStat = characterStat.BaseMaxStat;
+        size = characterStat.Size;
     }
 
     protected void InitializeHealth()

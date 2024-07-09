@@ -222,6 +222,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                     {
                         yield return null;
                     }
+                    allies.ReOrder(); enemies.ReOrder();
 
                     // 스킬 사용 후 턴 종료 조건을 만족하지 못하면 반복
                     if (currentSelectedSkill && !currentCharacter.CheckTurnEndFromSkillResult(currentSelectedSkill.SkillResult))

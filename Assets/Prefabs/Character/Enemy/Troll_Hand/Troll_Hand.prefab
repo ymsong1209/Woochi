@@ -124,7 +124,7 @@ MonoBehaviour:
   isDead: 0
   activeBuffs: []
   activeSkills: []
-  activeSkillCheckBox: 
+  activeSkillCheckBox: 010101
   isAlly: 0
   isDummy: 0
   isStarting: 0
