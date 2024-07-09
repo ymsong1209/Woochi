@@ -473,7 +473,7 @@ public class BaseSkill : MonoBehaviour
     public string Name => skillName;
     public float Multiplier => multiplier;
 
-    protected SkillResult SkillResult => skillResult;
+    public SkillResult SkillResult => skillResult;
     public SkillSO SkillSO => skillSO;
     
     public List<GameObject> BuffPrefabList => buffPrefabList;

@@ -201,24 +201,51 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 continue;
             }
 
-            // 자신의 차례가 됐을 때 버프 적용
+            // 자신의 차례가 됐을 때 버프 적용후, 살아있으면 턴 시작
             if (currentCharacter.TriggerBuff(BuffTiming.TurnStart))
             {
                 // 현재 턴의 캐릭터에 맞는 UI 업데이트
                 if(currentCharacter.IsAlly)
                     OnCharacterTurnStart?.Invoke(currentCharacter, true);
-
-                // TODO : 현재 턴이 적일 시 AI로 행동 결정(임시 코드)
+                
+                //적군의 경우 AI 작동
                 if (!currentCharacter.IsAlly)
                 {
                     yield return new WaitForSeconds(1.5f);
                     EnemyAction(currentCharacter);
                 }
                 
-                // 스킬이 선택되고 실행될 때까지 대기
-                while(!isSkillSelected || !isSkillExecuted)
+                while (true)
                 {
-                    yield return null;
+                    // 스킬이 선택되고 실행될 때까지 대기
+                    while (!isSkillSelected || !isSkillExecuted)
+                    {
+                        yield return null;
+                    }
+
+                    // 스킬 사용 후 턴 종료 조건을 만족하지 못하면 반복
+                    if (currentSelectedSkill && !currentCharacter.CheckTurnEndFromSkillResult(currentSelectedSkill.SkillResult))
+                    {
+                        // 초기화 및 다시 대기
+                        isSkillSelected = false;
+                        isSkillExecuted = false;
+                        currentSelectedSkill = null;
+
+                        if (currentCharacter.IsAlly)
+                        {
+                            OnCharacterTurnStart?.Invoke(currentCharacter, true);
+                        }
+                        else
+                        {
+                            yield return new WaitForSeconds(1.5f);
+                            EnemyAction(currentCharacter);
+                        }
+                    }
+                    else
+                    {
+                        // 모든 조건이 만족되면 반복문 종료
+                        break;
+                    }
                 }
             }
 

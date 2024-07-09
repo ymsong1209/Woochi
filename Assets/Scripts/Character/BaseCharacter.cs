@@ -89,6 +89,15 @@ public class BaseCharacter : MonoBehaviour
     { 
     }
 
+    /// <summary>
+    /// skillresult에 따라서 추가 행동이 필요한 경우, false를 반환한다.
+    /// </summary>
+    /// <returns></returns>
+    public virtual bool CheckTurnEndFromSkillResult(SkillResult result)
+    {
+        return true;
+    }
+
    
 
     public void OnSelected()
