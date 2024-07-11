@@ -1,5 +1,3 @@
-
-
 public enum GameState
 {
     MAINMENU,
@@ -101,15 +99,6 @@ public enum BuffTiming
     END
 }
 
-
-/// <summary>
-/// Observer pattern에 사용할 EventType
-/// </summary>
-public enum EventType
-{
-
-}
-
 /// <summary>
 /// 어떤 애니메이션을 실행할지 결정, 스킬 더 있을 경우 추가
 /// </summary>
@@ -136,5 +125,32 @@ public enum AttackResult
     Evasion,
     Normal,
     Heal,
+    END
+}
+
+#region 맵
+public enum NodeType
+{
+    Normal,     // 일반
+    Elite,      // 정예
+    Strange,    // 기연
+    Boss,       // 보스
+    END
+}
+
+public enum NodeState
+{
+    Locked,
+    Visited,
+    Attainable
+}
+
+#endregion
+
+public enum SceneType
+{
+    Title,
+    Battle,
+    Loading,
     END
 }

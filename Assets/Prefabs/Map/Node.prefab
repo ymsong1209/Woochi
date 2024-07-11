@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6355377861824377081}
   - component: {fileID: 8351150222973212466}
   m_Layer: 0
-  m_Name: Icon
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 2813240300518541895}
   - component: {fileID: 2213175842796942346}
   m_Layer: 0
-  m_Name: Mark
+  m_Name: Visited
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 6595347245285291830}
   - component: {fileID: 629248382646666028}
   m_Layer: 0
-  m_Name: MapNode
+  m_Name: Node
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -276,6 +276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7af07b3ec77623941afda4eddd10e77f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 8351150222973212466}
-  circle: {fileID: 5633945756513871553}
-  Mark: {fileID: 2213175842796942346}
+  image: {fileID: 8351150222973212466}
+  circleImage: {fileID: 5633945756513871553}
+  visitedCircleImage: {fileID: 2213175842796942346}

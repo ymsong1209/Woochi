@@ -1,75 +1,75 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.EventSystems;
-
-public enum NodeState
-{
-    Locked,
-    Visited,
-    Attainable
-}
+using System;
 
 public class MapNode : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
 {
-    public Image icon;
-    public Image circle;
-    public Image Mark;
+    public Image image;                                                                                                                                                                                                                                                                        
+    public Image circleImage;
+    public Image visitedCircleImage;
 
     public Node Node { get; private set; }
     public NodeBlueprint NodeBlueprint { get; private set; }
 
     private float initScale;
-    private const float hoverScale = 1.2f;
+    private const float HoverScaleFactor = 1.2f;
     private float mouseDownTime;
 
-    private const float mouseDownTimeThreshold = 0.5f;
+    private const float MaxClickDuration = 0.5f;
 
-    public void Set(Node _node, NodeBlueprint _blueprint)
+    public void SetUp(Node _node, NodeBlueprint _blueprint)
     {
         Node = _node;
         NodeBlueprint = _blueprint;
 
-        icon.sprite = _blueprint.icon;
+        image.sprite = _blueprint.sprite;
 
-        if (_node.type == NodeType.Boss) transform.localScale *= 1.5f;
-        initScale = icon.transform.localScale.x;
+        if (_node.nodeType == NodeType.Boss) transform.localScale *= 1.5f;
+        initScale = image.transform.localScale.x;
 
-        circle.color = Color.white;
-        circle.gameObject.SetActive(false);
+        circleImage.color = MapManager.GetInstance.view.visitedColor;
+        circleImage.gameObject.SetActive(false);
+
+        SetState(NodeState.Locked);
     }
 
     public void SetState(NodeState _state)
     {
+        if (circleImage != null) circleImage.gameObject.SetActive(false);
+
         switch (_state)
         {
             case NodeState.Locked:
-                icon.DOKill();
-                icon.color = Color.gray;
+                image.DOKill();
+                image.color = MapManager.GetInstance.view.lockedColor;
                 break;
             case NodeState.Visited:
-                icon.DOKill();
-                icon.color = Color.white;
+                image.DOKill();
+                image.color = MapManager.GetInstance.view.visitedColor;
+
+                if (circleImage != null) circleImage.gameObject.SetActive(true);
                 break;
             case NodeState.Attainable:
-                icon.color = Color.gray;
-                icon.DOKill();
-                icon.DOColor(Color.white, 0.5f).SetLoops(-1, LoopType.Yoyo);
+                image.color = MapManager.GetInstance.view.lockedColor;
+                image.DOKill();
+                image.DOColor(Color.white, 0.5f).SetLoops(-1, LoopType.Yoyo);
                 break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(_state), _state, null);
         }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        icon.transform.DOKill();
-        icon.transform.DOScale(initScale * hoverScale, 0.3f);
+        image.transform.DOKill();
+        image.transform.DOScale(initScale * HoverScaleFactor, 0.3f);
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        icon.transform.DOKill();
-        icon.transform.DOScale(initScale, 0.3f);
+        image.transform.DOKill();
+        image.transform.DOScale(initScale, 0.3f);
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -79,17 +79,17 @@ public class MapNode : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler,
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if(Time.time - mouseDownTime < mouseDownTimeThreshold)
+        if(Time.time - mouseDownTime < MaxClickDuration)
         {
-            // Select Node
+            MapPlayerTracker.Instance.SelectNode(this);
         }
     }
 
     public void ShowVisitAnimation()
     {
         const float fillDuration = 0.3f;
-        Mark.fillAmount = 0;
+        visitedCircleImage.fillAmount = 0;
 
-        DOTween.To(() => Mark.fillAmount, x => Mark.fillAmount = x, 1, fillDuration);
+        DOTween.To(() => visitedCircleImage.fillAmount, x => visitedCircleImage.fillAmount = x, 1, fillDuration);
     }
 }
