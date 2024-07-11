@@ -88,13 +88,13 @@ MonoBehaviour:
     nodesApartDistance: 2
     randomizePosition: 0.829
     randomizeNodes: 0.739
-  - nodeType: 0
+  - nodeType: 1
     distanceFromPreviousLayer:
       min: 3
       max: 4
     nodesApartDistance: 2
     randomizePosition: 0.829
-    randomizeNodes: 0.739
+    randomizeNodes: 0
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3

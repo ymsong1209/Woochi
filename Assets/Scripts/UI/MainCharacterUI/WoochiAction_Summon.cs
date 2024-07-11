@@ -22,6 +22,7 @@ public class WoochiAction_Summon : WoochiActionButton
     public override void Deactivate()
     {
         base.Deactivate();
+        allyUI.gameObject.SetActive(false);
         allyUI.SetInteractable(false);
         BattleManager.GetInstance.DisableDummy();
     }
