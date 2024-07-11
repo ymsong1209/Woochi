@@ -22,6 +22,10 @@ public class MainCharacter : BaseCharacter
         summonSkill.SkillOwner = this;
         charmSkill.SkillOwner = this;
         changeLocation.SkillOwner = this;
+
+        summonSkill.SkillRadius = new bool[] {true, true, true, true, false, false, false, false};
+        changeLocation.SkillRadius = new bool[] {true, true, true, true, false, false, false, false};
+
     }
 
     protected override void InitializeSkill()

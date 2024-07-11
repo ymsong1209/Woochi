@@ -48,7 +48,8 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     public void SaveData()
     {
-        DataCloud.SavePlayerData();
+        if(!DataCloud.dontSave)
+            DataCloud.SavePlayerData();
     }
 
     public void LoadData()

@@ -25,7 +25,6 @@ public class Test : MonoBehaviour
         {
             if (int.TryParse(inputField.text, out int id))
             {
-                Debug.Log(id);
                 idList[index++] = id;
             }
         }

@@ -30,7 +30,6 @@ public class PlayerData
         isProgressing = false;
         
         allies = new List<int>();
-        formation = new int[] { 0, -1, -1, -1 };
         currentMap = null;
     }
 }

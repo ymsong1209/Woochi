@@ -1,9 +1,10 @@
 using Newtonsoft.Json;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class DataCloud
 {
+    public static bool dontSave = false;        // 저장하지 않을 때  
+
     public static PlayerData playerData;        // 플레이어 데이터
     
     public static void SavePlayerData()
@@ -20,7 +21,6 @@ public static class DataCloud
         if (PlayerPrefs.HasKey("PlayerData"))
         {
             string playerDataJson = PlayerPrefs.GetString("PlayerData");
-            Debug.Log(playerDataJson);
 
             playerData = JsonConvert.DeserializeObject<PlayerData>(playerDataJson);
         }

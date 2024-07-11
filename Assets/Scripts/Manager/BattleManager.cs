@@ -1,3 +1,4 @@
+using OneLine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -57,16 +58,30 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         CurState = BattleState.IDLE;
 
-        var allyList = GameManager.GetInstance.CharcterLibrary.Get(DataCloud.playerData.formation);
-        allies.Initialize(allyList);
-        allyCards.Initialize(allies);
-
+        #region 테스트할 수 있게
 #if UNITY_EDITOR
-        if(isTest)
+        if (isTest)
         {
+            DataCloud.dontSave = true;
+
+            InitializeAlly(testAlly);
             InitializeBattle(testEnemy);
         }
+        else
+        {
+            InitializeAlly(DataCloud.playerData.formation);    
+        }
+#else
+        InitializeAlly(DataCloud.playerData.formation);
 #endif
+        #endregion
+    }
+
+    private void InitializeAlly(int[] allyIDs)
+    {
+        var allyList = GameManager.GetInstance.CharcterLibrary.Get(allyIDs);
+        allies.Initialize(allyList);
+        allyCards.Initialize(allies);
     }
 
     /// <summary>
@@ -74,7 +89,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// </summary>
     public void InitializeBattle(int[] enemyIDs)
     {
-        if (enemyIDs == null || enemyIDs.Length == 0) { Debug.LogError("Null Dungeon"); return; }
+        if (enemyIDs == null || enemyIDs.Length == 0) 
+        { 
+            Debug.LogError("Null Dungeon"); 
+            return; 
+        }
 
         CurState = BattleState.Initialization;
 

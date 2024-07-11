@@ -15,6 +15,7 @@ public class AllyFormation : Formation
         }
 
         int order = 0;
+        totalSize = 0;
 
         foreach (GameObject prefab in prefabs)
         {
