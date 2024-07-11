@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /// <summary>
-/// UI¿¡¼­ ½ºÅ³ ¾ÆÀÌÄÜÀ» ³ªÅ¸³¿
+/// UIì—ì„œ ìŠ¤í‚¬ ì•„ì´ì½˜ì„ ë‚˜íƒ€ëƒ„
 /// </summary>
 [DisallowMultipleComponent]
 public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -11,7 +11,7 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public  Image       selected;
     public  Image       icon;
     public  Button      btn;
-    public  Transform   tooltipPos;     // ÅøÆÁ À§Ä¡¸¦ ÁöÁ¤ÇÏ±â À§ÇØ
+    public  Transform   tooltipPos;     // íˆ´íŒ ìœ„ì¹˜ë¥¼ ì§€ì •í•˜ê¸° ìœ„í•´
 
     protected BaseSkill skill;
 
@@ -24,7 +24,7 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             btn.interactable = isEnable;
             skill = _skill;
         }
-        //_skillÀÌ nullÀÏ °æ¿ì ºó skill·Î ÃÊ±âÈ­
+        //_skillì´ nullì¼ ê²½ìš° ë¹ˆ skillë¡œ ì´ˆê¸°í™”
         else
         {
             icon.gameObject.SetActive(false);

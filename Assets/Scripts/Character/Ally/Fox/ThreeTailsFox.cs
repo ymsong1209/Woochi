@@ -11,49 +11,39 @@ public class ThreeTailsFox : BaseCharacter
             return;
         }
 
-        activeSkills.Clear();
+        DestroyActiveSkills();
         int characterIndex = BattleManager.GetInstance.GetCharacterIndex(this);
-        
-        #region 꼬리불 처리
+    
+        // 꼬리불 처리
         if (characterIndex == 0 || characterIndex == 1)
         {
-            activeSkills.Add(totalSkills[1]);
+            InstantiateSkill(characterStat.Skills[1]);
         }
         else if(characterIndex == 2 || characterIndex == 3)
         {
-            activeSkills.Add(totalSkills[0]);
+            InstantiateSkill(characterStat.Skills[0]);
         }
-        #endregion
 
-        #region 여우불
+        // 여우불
         if (characterIndex == 2)
         {
-            activeSkills.Add(totalSkills[2]);
+            InstantiateSkill(characterStat.Skills[2]);
         }
         else if(characterIndex == 3)
         {
-            activeSkills.Add(totalSkills[3]);
+            InstantiateSkill(characterStat.Skills[3]);
         }
-        else
-        {
-            //3열과 4열중 어디에도 없을 경우 여우불 없음
-        }
-        #endregion
+        // 3열과 4열중 어디에도 없을 경우 여우불 없음
 
-        #region 홀리기
+        // 홀리기
         if (characterIndex == 2)
         {
-            activeSkills.Add(totalSkills[5]);
+            InstantiateSkill(characterStat.Skills[5]);
         }
         else if(characterIndex == 3)
         {
-            activeSkills.Add(totalSkills[4]);
+            InstantiateSkill(characterStat.Skills[4]);
         }
-        else
-        {
-            //3열과 4열중 어디에도 없을 경우 홀리기 없음
-            //activeSkills.Add(totalSkills[4]);
-        }
-        #endregion
+        // 3열과 4열중 어디에도 없을 경우 홀리기 없음
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScrollDog : BaseCharacter
+public class ScrollDog : BaseEnemy
 {
     [SerializeField] private ScrollDogIncreaseEvasionBuff evasionBuff;
     public override void Initialize()

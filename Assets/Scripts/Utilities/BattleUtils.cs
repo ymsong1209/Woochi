@@ -112,4 +112,26 @@ public class BattleUtils
         Formation enemies = BattleManager.GetInstance.Enemies;
         return FindRandomCharacter(enemies, indices);
     }
+
+    public static BaseCharacter FindAllyFromIndex(int index)
+    {
+        Formation allies = BattleManager.GetInstance.Allies;
+        if (allies.formation.Length >= index && index >= 0 && allies.formation[index])
+        {
+            return allies.formation[index];
+        }
+
+        return null;
+    }
+    
+    public static BaseCharacter FindEnemyFromIndex(int index)
+    {
+        Formation enemies = BattleManager.GetInstance.Enemies;
+        if (enemies.formation.Length >= index && index >= 0 && enemies.formation[index])
+        {
+            return enemies.formation[index];
+        }
+
+        return null;
+    }
 }

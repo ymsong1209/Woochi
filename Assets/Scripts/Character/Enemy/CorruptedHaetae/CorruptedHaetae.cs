@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CorruptedHaetae : BaseCharacter
+public class CorruptedHaetae : BaseEnemy
 {
     public override void TriggerAI()
     {

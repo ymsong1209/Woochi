@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UndeadArcher : BaseCharacter
+public class UndeadArcher : BaseEnemy
 {
     public override void TriggerAI()
     {
