@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 4765174429504772050}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.027509725, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,10 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
-  temporaryDungeon: {fileID: 11400000, guid: f3ddd85be6c495549ab2bbf60ad4f943, type: 2}
   allies:
   - {fileID: 1946550667272111963, guid: fb3bcba31bb16b54384116e3477e79ea, type: 3}
-  - {fileID: 3306509121491266149, guid: 397f639ea948d3d4a891c0923b4bcbf0, type: 3}
+  - {fileID: 2536897304434713235, guid: 92aa63b8768f36d4cb5e10f0b8282920, type: 3}
   - {fileID: 27191659041353302, guid: f1f1d3eb84fe4284791bfa40d1568d56, type: 3}
   charmList:
   - {fileID: 8207826904893543196, guid: 6edfe98f41ee00e409bf3200e1c2cd21, type: 3}
@@ -56,3 +55,5 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  charcterLibrary: {fileID: 11400000, guid: b5d15880e3c69a541abfc5a2825f5a4e, type: 2}
+  abnormalLibrary: {fileID: 11400000, guid: c0eb4296ed77cf64491fb6929595102e, type: 2}

@@ -1,37 +1,31 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [DisallowMultipleComponent]
 public class GameManager : SingletonMonobehaviour<GameManager>
 {
-   
+    
     [HeaderTooltip("GAME STATE", "Game State는 Inspector에서 수정 불가")]
     [SerializeField,ReadOnly] private GameState gameState;
-    public DungeonInfoSO temporaryDungeon;
-    [SerializeField] private List<GameObject> allies = new List<GameObject>();
-
 
     [SerializeField] private BaseCharm[] charmList = new BaseCharm[5];
+
+    [Header("Library")]
+    [SerializeField] private Library charcterLibrary;
+    [SerializeField] private Library abnormalLibrary;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
+
+        if(DataCloud.playerData == null)
+            LoadData();
+    }
 
     void Start()
     {
         SelectRoom();
-        
-    }
-
-   
-    void Update()
-    {
-        if(gameState == GameState.SELECTROOM)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                gameState = GameState.BATTLE;
-                Debug.Log("GameState : Battle");
-                BattleManager.GetInstance.InitializeBattle(temporaryDungeon);
-            }
-        }
     }
 
     public void SelectRoom()
@@ -52,9 +46,36 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         }
     }
 
+    public void SaveData()
+    {
+        DataCloud.SavePlayerData();
+    }
+
+    public void LoadData()
+    {
+        DataCloud.LoadPlayerData();
+    }
+
+    public void ResetData()
+    {
+        DataCloud.ResetPlayerData();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveData();
+    }
 
     #region Getter Setter
-    public List<GameObject> Allies => allies;
     public BaseCharm[] CharmList => charmList;
+
+    public Library CharcterLibrary => charcterLibrary;
+    public Library AbnormalLibrary => abnormalLibrary;
     #endregion
 }

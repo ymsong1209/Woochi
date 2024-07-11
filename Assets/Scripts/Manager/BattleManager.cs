@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BattleManager : SingletonMonobehaviour<BattleManager>
@@ -44,41 +45,55 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     private bool isSkillExecuted = false;
     #endregion
 
+#if UNITY_EDITOR
+    // 테스트해보고 싶은 아군, 적 캐릭터들이 있을 때 사용
+    [Header("Test")]
+    [SerializeField] private bool isTest = false;
+    [SerializeField] private int[] testAlly;
+    [SerializeField] private int[] testEnemy;
+#endif
+
     private void Start()
     {
         CurState = BattleState.IDLE;
 
-        allies.Initialize(GameManager.GetInstance.Allies);
+        var allyList = GameManager.GetInstance.CharcterLibrary.Get(DataCloud.playerData.formation);
+        allies.Initialize(allyList);
         allyCards.Initialize(allies);
+
+#if UNITY_EDITOR
+        if(isTest)
+        {
+            InitializeBattle(testEnemy);
+        }
+#endif
     }
 
     /// <summary>
     /// DungeonInfoSO 정보를 받아와서 아군과 적군 위치값 설정
     /// </summary>
-    public void InitializeBattle(DungeonInfoSO dungeon)
+    public void InitializeBattle(int[] enemyIDs)
     {
+        if (enemyIDs == null || enemyIDs.Length == 0) { Debug.LogError("Null Dungeon"); return; }
+
         CurState = BattleState.Initialization;
-        if (dungeon == null) { Debug.LogError("Null Dungeon"); return; }
 
         currentRound = 0;
         combatQueue.Clear();
+        processedCharacters.Clear();
 
-        // 아군, 적군 포메이션 초기화
-        enemies.Initialize(dungeon.EnemyList);
+        var enemyList = GameManager.GetInstance.CharcterLibrary.Get(enemyIDs);
+        enemies.Initialize(enemyList);
         allyCards.UpdateList();
 
-        for (int index = 0; index < allies.formation.Length;)
+        foreach(Formation form in new Formation[] { allies, enemies })
         {
-            if (allies.formation[index] == null) break;
-            combatQueue.Enqueue(allies.formation[index]);
-            index += allies.formation[index].Size;
-        }
-
-        for (int index = 0; index < enemies.formation.Length;)
-        {
-            if (enemies.formation[index] == null) break;
-            combatQueue.Enqueue(enemies.formation[index]);
-            index += enemies.formation[index].Size;
+            for (int index = 0; index < form.formation.Length;)
+            {
+                if (form.formation[index] == null) break;
+                combatQueue.Enqueue(form.formation[index]);
+                index += form.formation[index].Size;
+            }
         }
 
         #region PreRound 상태로 넘어감
@@ -351,25 +366,17 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
     private void DisableAllColliderInteractions()
     {
-        foreach (BaseCharacter character in allies.formation)
+        foreach (Formation form in new Formation[] { allies, enemies })
         {
-            if (character)
+            foreach (BaseCharacter character in form.formation)
             {
-                BaseCharacterCollider characterCollider = character.collider;
-                if (characterCollider)
+                if (character)
                 {
-                    characterCollider.CanInteract = false;
-                }
-            }
-        }
-        foreach (BaseCharacter character in enemies.formation)
-        {
-            if (character)
-            {
-                BaseCharacterCollider characterCollider = character.collider;
-                if (characterCollider)
-                {
-                    characterCollider.CanInteract = false;
+                    BaseCharacterCollider characterCollider = character.collider;
+                    if (characterCollider)
+                    {
+                        characterCollider.CanInteract = false;
+                    }
                 }
             }
         }
@@ -377,19 +384,14 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
     private void DisableAllArrows()
     {
-        foreach (BaseCharacter character in allies.formation)
+        foreach (Formation form in new Formation[] { allies, enemies })
         {
-            if (character)
-            { 
-                character.HUD.ActivateArrow(false);
-            }
-        }
-
-        foreach (BaseCharacter character in enemies.formation)
-        {
-            if (character)
+            foreach (BaseCharacter character in form.formation)
             {
-                character.HUD.ActivateArrow(false);
+                if (character)
+                {
+                    character.HUD.ActivateArrow(false);
+                }
             }
         }
     }
@@ -509,7 +511,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         //적군 삭제
         enemies.CleanUp();
         combatQueue.Clear();
-        GameManager.GetInstance.SelectRoom();
+
+        // ToDo : 결과창에서 확인버튼 누르고 지도 다시 띄워야 함
+        // 테스트 코드
+        if(MapManager.GetInstance != null)
+            MapManager.GetInstance.view.FadeInOut(true);
     }
 
     /// <summary>

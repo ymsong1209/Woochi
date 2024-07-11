@@ -20,7 +20,6 @@ public class AllyFormation : Formation
         {
             if (totalSize > 4)
             {
-                Debug.Log("총 크기가 4가 넘습니다");
                 return;
             }
 
@@ -30,7 +29,6 @@ public class AllyFormation : Formation
             character.Initialize();
             character.IsAlly = isAllyFormation;
 
-            // 캐릭터가 처음부터 소환되는 경우와 아닌 경우를 구분한다
             if (character.isStarting)
             {
                 SetProperty(character, true, order++);
@@ -90,17 +88,10 @@ public class AllyFormation : Formation
         }
     }
 
-    /// <summary>
-    /// 소환 성공, 실패 반환
-    /// </summary>
-    /// <param name="_character">소환할 캐릭터</param>
-    /// <param name="_index">소환될 위치의 인덱스</param>
-    /// <returns></returns>
     public bool Summon(BaseCharacter _character, int _index)
     {
         if(totalSize + _character.Size > 4)
         {
-            Debug.Log("총 크기가 4가 넘습니다");
             return false;
         }
 

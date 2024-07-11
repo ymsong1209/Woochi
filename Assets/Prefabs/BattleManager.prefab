@@ -49,6 +49,9 @@ MonoBehaviour:
   allies: {fileID: 0}
   enemies: {fileID: 0}
   allyCards: {fileID: 0}
+  isTest: 0
+  testAlly: 
+  testEnemy: 00000000000000000000000000000000
 --- !u!114 &8540004010816379627
 MonoBehaviour:
   m_ObjectHideFlags: 0
