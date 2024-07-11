@@ -129,7 +129,14 @@ public static class HelperUtilities
         return false;
     }
 
-
+    /// <summary>
+    /// 씬 이동 : 로딩 씬 먼저 이동 후 다른 씬으로 이동한다
+    /// </summary>
+    /// <param name="sceneType">Build Setting에 등록되어 있는 씬 순서대로 동작</param>
+    public static void MoveScene(SceneType sceneType)
+    {
+        LoadingScene.LoadScene(sceneType);
+    }
 
 
 }
