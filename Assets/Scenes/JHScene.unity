@@ -1186,6 +1186,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 749554646}
     - target: {fileID: 6047043372224912184, guid: 56a27495f0a512c408751da061e9230f, type: 3}
+      propertyPath: abnormal
+      value: 
+      objectReference: {fileID: 11400000, guid: 551b024820da5b944a960bd8ff04ccb5, type: 2}
+    - target: {fileID: 6047043372224912184, guid: 56a27495f0a512c408751da061e9230f, type: 3}
       propertyPath: allyCards
       value: 
       objectReference: {fileID: 494983099}
@@ -1647,6 +1651,10 @@ PrefabInstance:
     - target: {fileID: 2435222398793476250, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113910864162851284, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3318737396394711816, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
       propertyPath: m_AnchorMax.y

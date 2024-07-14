@@ -9,9 +9,13 @@ public class MapConfig : ScriptableObject
     // 이 Map에 사용할 노드들(지역마다 특수한 노드들이 있을 수 있음)
     public List<NodeBlueprint> nodeBlueprints;
 
+    [OneLineWithHeader]
+    [SerializeField] private List<RandomNode> randomNodes;
+
     [Tooltip("나타날 적들의 ID로 템플릿을 입력해주세요(ex. 3 3 4 4)")]
     [OneLineWithHeader]
-    [SerializeField] private List<Template> normalTemplates;             // 적들이 등장하는 템플릿
+    [SerializeField] private List<Template> normalTemplates;             // 일반 적들이 등장하는 템플릿
+    [SerializeField] private List<Template> eliteTemplates;              // 정예 적들이 등장하는 템플릿
     [SerializeField] private List<int> abnormals;                        // 이 스테이지에서 나타날 이상들
 
     // 맵의 폭
@@ -35,10 +39,61 @@ public class MapConfig : ScriptableObject
     {
         return normalTemplates.Random().id;
     }
+
+    public int[] GetEliteEnemy()
+    {
+        // 정예 적 템플릿 없어서 임의 처리
+        return normalTemplates.Random().id;
+    }
+
+    public NodeType GetRandomType()
+    {
+        float randomValue = Random.Range(0f, 1f);
+        float cumulative = 0f;
+
+        foreach(var randomNode in randomNodes)
+        {
+            cumulative += randomNode.probability;
+
+            if (randomValue <= cumulative)
+            {
+                return randomNode.nodeType;
+            }
+        }
+
+        return NodeType.Normal;
+    }
+
+    private void OnValidate()
+    {
+        if (randomNodes.Count == 0) return;
+
+        float sum = 0f;
+
+        for(int i = 0; i < randomNodes.Count; i++)
+        {
+            sum += randomNodes[i].probability;
+        }
+
+        if(sum != 1f)
+        {
+            Debug.LogError("Random Node의 확률의 합이 1이 아닙니다.");
+        }
+    }
 }
 
 [System.Serializable]
 public class Template
 {
     public int[] id;
+}
+
+/// <summary>
+/// 랜덤으로 노드를 생성할 때 이 노드 타입이 어떤 확률로 나올지
+/// </summary>
+[System.Serializable]
+public class RandomNode
+{
+    public NodeType nodeType;   // 노드 타입
+    public float probability;   // 확률
 }

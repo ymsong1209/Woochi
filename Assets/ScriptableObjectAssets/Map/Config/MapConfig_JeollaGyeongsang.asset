@@ -18,6 +18,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e4fa7259d10083142a9528a4f62c86df, type: 2}
   - {fileID: 11400000, guid: 8101efe21e8178d499873bbe2ccd544b, type: 2}
   - {fileID: 11400000, guid: 69079617bac4c494c86d8781aba2fdbf, type: 2}
+  randomNodes: []
+  normalTemplates: []
+  eliteTemplates: []
+  abnormals: 
   numOfPreBossNodes:
     min: 3
     max: 4
@@ -31,82 +35,142 @@ MonoBehaviour:
       min: 0
       max: 0
     nodesApartDistance: 2
+    isRandomNode: 0
+    isRandomEnemy: 1
+    enemyIDs: 
     randomizePosition: 0
-    randomizeNodes: 0
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
       max: 4
     nodesApartDistance: 2
+    isRandomNode: 1
+    isRandomEnemy: 1
+    enemyIDs: 
     randomizePosition: 0.587
-    randomizeNodes: 0.728
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
       max: 4
     nodesApartDistance: 2
+    isRandomNode: 1
+    isRandomEnemy: 1
+    enemyIDs: 
     randomizePosition: 0.509
-    randomizeNodes: 0
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
       max: 4
     nodesApartDistance: 2
+    isRandomNode: 1
+    isRandomEnemy: 1
+    enemyIDs: 
     randomizePosition: 0.542
-    randomizeNodes: 0.739
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
       max: 4
     nodesApartDistance: 2
+    isRandomNode: 1
+    isRandomEnemy: 1
+    enemyIDs: 
     randomizePosition: 0.176
-    randomizeNodes: 0.739
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
       max: 4
     nodesApartDistance: 2
+    isRandomNode: 1
+    isRandomEnemy: 1
+    enemyIDs: 
     randomizePosition: 0.649
-    randomizeNodes: 0.739
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
       max: 4
     nodesApartDistance: 2
+    isRandomNode: 1
+    isRandomEnemy: 1
+    enemyIDs: 
     randomizePosition: 0.176
-    randomizeNodes: 0.739
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
       max: 4
     nodesApartDistance: 2
+    isRandomNode: 1
+    isRandomEnemy: 1
+    enemyIDs: 
     randomizePosition: 0.829
-    randomizeNodes: 0.739
-  - nodeType: 0
+  - nodeType: 1
     distanceFromPreviousLayer:
       min: 3
       max: 4
     nodesApartDistance: 2
+    isRandomNode: 0
+    isRandomEnemy: 0
+    enemyIDs: b80b0000
     randomizePosition: 0.829
-    randomizeNodes: 0.739
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
       max: 4
     nodesApartDistance: 2
+    isRandomNode: 1
+    isRandomEnemy: 1
+    enemyIDs: 
     randomizePosition: 0.524
-    randomizeNodes: 0.73840004
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
       max: 4
     nodesApartDistance: 2
+    isRandomNode: 1
+    isRandomEnemy: 1
+    enemyIDs: 
     randomizePosition: 0.526
-    randomizeNodes: 0
+  - nodeType: 0
+    distanceFromPreviousLayer:
+      min: 3
+      max: 4
+    nodesApartDistance: 2
+    isRandomNode: 1
+    isRandomEnemy: 1
+    enemyIDs: 
+    randomizePosition: 0.194
+  - nodeType: 0
+    distanceFromPreviousLayer:
+      min: 3
+      max: 4
+    nodesApartDistance: 2
+    isRandomNode: 1
+    isRandomEnemy: 1
+    enemyIDs: 
+    randomizePosition: 0.194
+  - nodeType: 0
+    distanceFromPreviousLayer:
+      min: 3
+      max: 4
+    nodesApartDistance: 2
+    isRandomNode: 1
+    isRandomEnemy: 1
+    enemyIDs: 
+    randomizePosition: 0.194
+  - nodeType: 0
+    distanceFromPreviousLayer:
+      min: 3
+      max: 4
+    nodesApartDistance: 2
+    isRandomNode: 1
+    isRandomEnemy: 1
+    enemyIDs: 
+    randomizePosition: 0.194
   - nodeType: 3
     distanceFromPreviousLayer:
       min: 5
       max: 6
     nodesApartDistance: 2
+    isRandomNode: 0
+    isRandomEnemy: 1
+    enemyIDs: 
     randomizePosition: 0.194
-    randomizeNodes: 0

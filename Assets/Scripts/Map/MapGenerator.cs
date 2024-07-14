@@ -6,10 +6,6 @@ public static class MapGenerator
 {
     private static MapConfig config;
 
-    // 랜덤으로 생성할 노드들을 지정
-    private static readonly List<NodeType> RandomNodes = new List<NodeType>
-        {NodeType.Normal, NodeType.Elite, NodeType.Strange};
-
     // 레이어 간 y축으로 얼마나 떨어져 있는지
     private static List<float> layerDistances;
 
@@ -67,15 +63,14 @@ public static class MapGenerator
 
         for (int i = 0; i < config.GridWidth; i++)
         {
-            NodeType nodeType = Random.Range(0f, 1f) < layer.randomizeNodes ? RandomNodes.Random() : layer.nodeType;
-
+            NodeType nodeType = layer.isRandomNode ? config.GetRandomType() : layer.nodeType;
             Node node = new Node(nodeType, new Vector2Int(i, layerIndex))
             {
                 position = new Vector2(-offset + i * layer.nodesApartDistance, GetDistanceToLayer(layerIndex)),
-                abnormalID = config.GetAbnormal()
+                abnormalID = config.GetAbnormal(),
+                enemyIDs = layer.isRandomEnemy ? GetEnemyID(nodeType) : layer.enemyIDs
             };
 
-            SetEnemyID(node);
             nodesOnThisLayer.Add(node);
         }
 
@@ -86,20 +81,21 @@ public static class MapGenerator
     /// 해당 노드에 나타날 적의 ID들을 설정함
     /// 게임오브젝트를 설정하면 직렬화가 안되어 저장이 안됨
     /// </summary>
-    private static void SetEnemyID(Node _node)
+    private static int[] GetEnemyID(NodeType _nodeType)
     {
-        switch(_node.nodeType)
+        switch(_nodeType)
         {
             case NodeType.Normal:
-                _node.enemyIDs = config.GetNormalEnemy();
-                break;
+                return config.GetNormalEnemy();
             case NodeType.Elite:
-                break;
+                return config.GetEliteEnemy();
             case NodeType.Strange:
-                break;
+                return new int[] { -1 };
             case NodeType.Boss:
                 break;
         }
+
+        return null;
     }
 
     private static void RandomizeNodePositions()

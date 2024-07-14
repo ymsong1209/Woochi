@@ -1,4 +1,3 @@
-using OneLine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,8 +10,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     private BattleState         CurState;
     public  BaseCharacter       currentCharacter;               //현재 누구 차례인지
     private BaseSkill           currentSelectedSkill;           //현재 선택된 스킬
-    private int                 currentRound;                   //현재 몇 라운드인지
-    
+    private int                 currentRound;                   //현재 몇 라운드인지    
 
     /// <summary>
     /// 아군이랑 적군의 싸움 순서
@@ -27,6 +25,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
     [Header("Object")]
     [SerializeField] private AllyCardList allyCards;
+    [SerializeField] private Abnormal abnormal;     // 현재 노드의 이상(기본값 : None)
 
     #region 이벤트
     /// <summary>
