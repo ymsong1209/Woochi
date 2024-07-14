@@ -61,14 +61,16 @@ public class BattleCameraController : MonoBehaviour
 
         foreach (var character in sortedCharacters)
         {
+            Vector3 battlePos = character.transform.position;
+
             if (character.IsAlly)
             {
-                character.transform.position = new Vector3(allyX, 0f, 0f);
+                battlePos.x = allyX;
                 allyX -= 2.5f;
             }
             else
             {
-                character.transform.position = new Vector3(enemyX, 0f, 0f);
+                battlePos.x = enemyX;
                 enemyX += 2.5f;
             }
         }

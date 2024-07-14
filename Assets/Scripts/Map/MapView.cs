@@ -59,12 +59,12 @@ public class MapView : MonoBehaviour
 
     private void Start()
     {
-        scrollRect.gameObject.SetActive(false);
+        mapObject.SetActive(false);
     }
 
     protected void ClearMap()
     {
-        scrollRect.gameObject.SetActive(false);
+        mapObject.SetActive(false);
 
         foreach (ScrollRect scrollRect in new[] { scrollRect })
             foreach (Transform t in scrollRect.content)
@@ -133,7 +133,7 @@ public class MapView : MonoBehaviour
 
     protected void CreateMapParent()
     {
-        scrollRect.gameObject.SetActive(true);
+        mapObject.SetActive(true);
 
         firstParent = new GameObject("OuterMapParent");
         firstParent.transform.SetParent(scrollRect.content);
