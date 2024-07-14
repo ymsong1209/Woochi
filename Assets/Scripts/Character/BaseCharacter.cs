@@ -23,7 +23,7 @@ public class BaseCharacter : MonoBehaviour
     #endregion Header CHARACTER STATS
     #region Character Stats
     [SerializeField]            private Health  health;
-    [SerializeField]            private int     size = 1;
+    [SerializeField,ReadOnly]   private int     size = 1;
     [SerializeField,ReadOnly]   private float   speed;
     [SerializeField,ReadOnly]   private float   defense;
     [SerializeField,ReadOnly]   private float   crit;
