@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 [RequireComponent(typeof(Health))]
@@ -12,7 +13,8 @@ public class BaseCharacter : MonoBehaviour
     [HideInInspector] public BaseCharacterAnimation anim;
     [HideInInspector] public BaseCharacterCollider collider;
     public CharacterStatSO characterStat;
-
+    [HideInInspector] private BuffList buffList;
+    
     #region Header CHARACTER STATS
 
     [Space(10)]
@@ -21,7 +23,7 @@ public class BaseCharacter : MonoBehaviour
     #endregion Header CHARACTER STATS
     #region Character Stats
     [SerializeField]            private Health  health;
-    [SerializeField]            private int     size = 1;
+    [SerializeField,ReadOnly]   private int     size = 1;
     [SerializeField,ReadOnly]   private float   speed;
     [SerializeField,ReadOnly]   private float   defense;
     [SerializeField,ReadOnly]   private float   crit;
@@ -81,6 +83,7 @@ public class BaseCharacter : MonoBehaviour
         HUD = GetComponent<BaseCharacterHUD>();
         anim = GetComponent<BaseCharacterAnimation>();
         collider = GetComponent<BaseCharacterCollider>();
+        buffList = GetComponentInChildren<BuffList>();
 
         isSummoned = isStarting;
     }
@@ -196,60 +199,11 @@ public class BaseCharacter : MonoBehaviour
         }
 
         // 새 버프 추가
-        BaseBuff new_buff = InstantiateBuffAtIcon(_Opponent, _buff);
+        BaseBuff new_buff = buffList.InstantiateBuffAtIcon(_Opponent, _buff);
         new_buff.AddBuff(_Opponent);
         return new_buff;
     }
-    BaseBuff InstantiateBuffAtIcon(BaseCharacter opponent, BaseBuff buff)
-    {
-        // Find the bufflistcanvas GameObject under the opponent
-        Transform buffList = opponent.transform.Find("BuffList");
-        if (buffList == null)
-        {
-            Debug.LogError("buffList not found under opponent" + opponent.gameObject.name.ToString());
-            return null;
-        }
-        
-        // 모든 자손을 순회하여 알맞은 BuffIcon을 찾음
-        Transform targetChild = FindBuffIconTransform(buffList, buff.BuffEffect);
-        if (targetChild == null)
-        {
-            Debug.LogError("No matching BuffIcon found under BuffListCanvas");
-            return null;
-        }
     
-        BuffIcon buffIcon = targetChild.GetComponent<BuffIcon>();
-        if (buffIcon != null && !buffIcon.gameObject.activeSelf)
-        {
-            buffIcon.gameObject.SetActive(true);
-            buffIcon.Activate();
-        }
-        
-        BaseBuff instantiatedBuff = Instantiate(buff, targetChild);
-        return instantiatedBuff;
-    }
-    
-    // 재귀적으로 BuffIcon을 찾는 메서드
-    Transform FindBuffIconTransform(Transform parent, BuffEffect buffEffect)
-    {
-        for (int i = 0; i < parent.childCount; i++)
-        {
-            Transform child = parent.GetChild(i);
-            BuffIcon buffIcon = child.GetComponent<BuffIcon>();
-
-            if (buffIcon != null && buffIcon.BuffEffect == buffEffect)
-            {
-                return child;
-            }
-
-            Transform foundChild = FindBuffIconTransform(child, buffEffect);
-            if (foundChild != null)
-            {
-                return foundChild;
-            }
-        }
-        return null;
-    }
 
     private bool ShouldRemoveBuff(BaseBuff buff)
     {

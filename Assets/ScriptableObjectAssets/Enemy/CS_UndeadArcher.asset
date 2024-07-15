@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4bbbce2a03c2d4a95b7ced04f3ebb7, type: 3}
   m_Name: CS_UndeadArcher
   m_EditorClassIdentifier: 
-  characterName: UndeadArcher
+  characterName: "\uBD88\uC0AC\uBCD1(\uD65C)"
+  portrait: {fileID: 0}
   baseHealth: 13
   baseSpeed: 1
   baseDefense: 0
@@ -22,6 +23,7 @@ MonoBehaviour:
   baseResist: 10
   baseMinStat: 4
   baseMaxStat: 9
+  size: 1
   skills:
   - {fileID: -3393635935794670336, guid: 427a8cd1e09434e4eaa20450c2f12fa8, type: 3}
   - {fileID: 3870576938094616928, guid: d62a8a917ad846b4285bb8dd57bffb3f, type: 3}
