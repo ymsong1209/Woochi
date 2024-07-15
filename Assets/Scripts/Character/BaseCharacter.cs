@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 [RequireComponent(typeof(Health))]
@@ -23,15 +22,7 @@ public class BaseCharacter : MonoBehaviour
     #endregion Header CHARACTER STATS
     #region Character Stats
     [SerializeField]            private Health  health;
-    [SerializeField,ReadOnly]   private int     size = 1;
-    [SerializeField,ReadOnly]   private float   speed;
-    [SerializeField,ReadOnly]   private float   defense;
-    [SerializeField,ReadOnly]   private float   crit;
-    [SerializeField,ReadOnly]   private float   accuracy;
-    [SerializeField,ReadOnly]   private float   evasion;
-    [SerializeField,ReadOnly]   private float   resist;
-    [SerializeField,ReadOnly]   private float   minStat;
-    [SerializeField,ReadOnly]   private float   maxStat;
+    [SerializeField]            private Stat    stat;
     #endregion
 
    
@@ -84,6 +75,9 @@ public class BaseCharacter : MonoBehaviour
         anim = GetComponent<BaseCharacterAnimation>();
         collider = GetComponent<BaseCharacterCollider>();
         buffList = GetComponentInChildren<BuffList>();
+
+        if(characterStat != null)
+            characterStat.Initialize();
 
         isSummoned = isStarting;
     }
@@ -253,51 +247,21 @@ public class BaseCharacter : MonoBehaviour
     public void CheckForStatChange()
     {
         //기존 스탯 다시 초기화
-        defense = characterStat.BaseDefense;
-        crit = characterStat.BaseCrit;
-        accuracy = characterStat.BaseAccuracy;
-        evasion = characterStat.BaseEvasion;
-        resist = characterStat.BaseResist;
-        minStat = characterStat.BaseMinStat;
-        maxStat = characterStat.BaseMaxStat;
-        speed = characterStat.BaseSpeed;
+        stat = characterStat.BaseStat;
         
         foreach (BaseBuff buff in activeBuffs)
         {
             if (buff.BuffEffect == BuffEffect.StatStrengthen)
             {
                 StatBuff statBuff = buff as StatBuff;
-                defense += statBuff.ChangeDefense;
-                crit += statBuff.ChangeCrit;
-                accuracy += statBuff.ChangeAccuracy;
-                evasion += statBuff.ChangeEvasion;
-                resist += statBuff.ChangeResist;
-                minStat += statBuff.ChangeMinStat;
-                maxStat += statBuff.ChangeMaxStat;
-                speed += statBuff.ChangeSpeed;
+                stat += statBuff.ChangeStat;
             }
             else if (buff.BuffEffect == BuffEffect.StatWeaken)
             {
                 StatDeBuff debuff = buff as StatDeBuff;
-                defense += debuff.ChangeDefense;
-                crit += debuff.ChangeCrit;
-                accuracy += debuff.ChangeAccuracy;
-                evasion += debuff.ChangeEvasion;
-                resist += debuff.ChangeResist;
-                minStat += debuff.ChangeMinStat;
-                maxStat += debuff.ChangeMaxStat;
-                speed += debuff.ChangeSpeed;
+                stat += debuff.ChangeStat;
             }
         }
-        //스탯이 0 이하로 내려간 경우 0으로 조정
-        defense = Mathf.Max(defense, 0);
-        crit = Mathf.Max(crit, 0);
-        accuracy = Mathf.Max(accuracy, 0);
-        evasion = Mathf.Max(evasion, 0);
-        resist = Mathf.Max(resist, 0);
-        minStat = Mathf.Max(minStat, 0);
-        maxStat = Mathf.Max(maxStat, 0);
-        speed = Mathf.Max(speed, 0);
     }
     
     /// <summary>
@@ -353,22 +317,14 @@ public class BaseCharacter : MonoBehaviour
     
     protected void InitializeStat()
     {
-        speed = characterStat.BaseSpeed;
-        defense = characterStat.BaseDefense;
-        crit = characterStat.BaseCrit;
-        accuracy = characterStat.BaseAccuracy;
-        evasion = characterStat.BaseEvasion;
-        resist = characterStat.BaseResist;
-        minStat = characterStat.BaseMinStat;
-        maxStat = characterStat.BaseMaxStat;
-        size = characterStat.Size;
+        stat = characterStat.BaseStat;
     }
 
     protected void InitializeHealth()
     {
         health = GetComponent<Health>();
-        health.MaxHealth = characterStat.BaseHealth;
-        health.CurHealth = characterStat.BaseHealth;
+        health.MaxHealth = stat.health;
+        health.CurHealth = stat.health;
     }
 
     protected virtual void InitializeSkill()
@@ -436,53 +392,11 @@ public class BaseCharacter : MonoBehaviour
     #endregion
 
     #region Getter Setter
-    public int Size => size;
+    public int Size => characterStat.Size;
 
     public Health Health => health;
 
-    public float Speed
-    {
-        get { return speed; }
-        set { speed = value; }
-    }
-
-    public float Defense
-    {
-        get { return defense; }
-        set { defense = value; }
-    }
-    public float Crit
-    {
-        get { return crit; }
-        set { crit = value; }
-    }
-    public float Accuracy
-    {
-        get { return accuracy; }
-        set { accuracy = value; }
-    }
-    public float Evasion
-    {
-        get { return evasion; }
-        set { evasion = value; }
-    }
-    public float Resist
-    {
-        get { return resist; }
-        set { resist = value; }
-    }
-
-    public float MinStat
-    {
-        get { return minStat; }
-        set { minStat = value; }
-    }
-
-    public float MaxStat
-    {
-        get { return maxStat; }
-        set { maxStat = value; }
-    }
+    public Stat Stat => stat;
 
     public bool IsDead => isDead;
     public bool IsAlly
@@ -514,14 +428,14 @@ public class BaseCharacter : MonoBehaviour
         }
     }
     #region 바뀐 스탯 
-    public float ChangedSpeed => speed - characterStat.BaseSpeed;
-    public float ChangedDefense => defense - characterStat.BaseDefense;
-    public float ChangedCrit => crit - characterStat.BaseCrit;
-    public float ChangedAccuracy => accuracy - characterStat.BaseAccuracy;
-    public float ChangedEvasion => evasion - characterStat.BaseEvasion;
-    public float ChangedResist => resist - characterStat.BaseResist;
-    public float ChangedMinStat => minStat - characterStat.BaseMinStat;
-    public float ChangedMaxStat => maxStat - characterStat.BaseMaxStat;
+    public float ChangedSpeed => stat.speed - characterStat.BaseStat.speed;
+    public float ChangedDefense => stat.defense - characterStat.BaseStat.defense;
+    public float ChangedCrit => stat.crit - characterStat.BaseStat.crit;
+    public float ChangedAccuracy => stat.accuracy - characterStat.BaseStat.accuracy;
+    public float ChangedEvasion => stat.evasion - characterStat.BaseStat.evasion;
+    public float ChangedResist => stat.resist - characterStat.BaseStat.resist;
+    public float ChangedMinStat => stat.minStat - characterStat.BaseStat.minStat;
+    public float ChangedMaxStat => stat.maxStat - characterStat.BaseStat.maxStat;
     #endregion
 
     #endregion

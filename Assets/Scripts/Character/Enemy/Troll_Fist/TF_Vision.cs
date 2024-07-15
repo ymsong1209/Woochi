@@ -14,7 +14,7 @@ public class TF_Vision : BaseSkill
         statDebuff.StatBuffName = "기묘한 환상";
         statDebuff.BuffDurationTurns = 3;
         statDebuff.ChanceToApplyBuff = 100;
-        statDebuff.ChangeAccuracy = -2;
+        statDebuff.ChangeStat.accuracy = -2;
         instantiatedBuffList.Add(statDebuffGameObject);
         
         base.ActivateSkill(_Opponent);

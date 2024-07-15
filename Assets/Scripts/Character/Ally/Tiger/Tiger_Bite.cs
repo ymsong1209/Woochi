@@ -10,12 +10,12 @@ public class Tiger_Bite : BaseSkill
         Health opponentHealth = _opponent.gameObject.GetComponent<Health>();
         //최소, 최대 대미지 사이의 수치를 고름
 
-        float RandomStat = Random.Range(SkillOwner.MinStat, SkillOwner.MaxStat);
+        float RandomStat = Random.Range(SkillOwner.Stat.minStat, SkillOwner.Stat.maxStat);
         //피해량 계수를 곱함
         RandomStat *= (Multiplier / 100);
 
         //방어 스탯을 뺀 base 스탯을 구함
-        RandomStat = RandomStat * (100 - _opponent.Defense) / 100;
+        RandomStat = RandomStat * (100 - _opponent.Stat.defense) / 100;
         if (_isCrit) RandomStat = RandomStat * 2;
 
         // 물어뜯기로 피해를 입히면 적의 잃은 체력의 20% 만큼 추가 피해를 줌

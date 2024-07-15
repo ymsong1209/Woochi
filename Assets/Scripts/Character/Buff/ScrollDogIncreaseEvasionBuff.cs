@@ -28,7 +28,7 @@ public class ScrollDogIncreaseEvasionBuff : BaseBuff
             evasionBuff.StatBuffName = "족자";
             evasionBuff.BuffDurationTurns = -1;
             evasionBuff.ChanceToApplyBuff = 100;
-            evasionBuff.ChangeEvasion = 2;
+            evasionBuff.ChangeStat.evasion = 2;
             buffOwner.ApplyBuff(buffOwner,evasionBuff);
             evasionStack++;
         }

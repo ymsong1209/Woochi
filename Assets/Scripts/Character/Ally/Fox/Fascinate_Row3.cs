@@ -12,8 +12,8 @@ public class Fascinate_Row3 : BaseSkill
         statDebuff.StatBuffName = "홀리기";
         statDebuff.BuffDurationTurns = 2;
         statDebuff.ChanceToApplyBuff = 100;
-        statDebuff.ChangeAccuracy = -10;
-        statDebuff.ChangeSpeed = -10;
+        statDebuff.ChangeStat.accuracy = -10;
+        statDebuff.ChangeStat.speed = -10;
         
         instantiatedBuffList.Add(statDebuffGameObject);
         

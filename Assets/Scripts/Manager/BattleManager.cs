@@ -191,7 +191,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
 
         // allCharacters 리스트를 속도에 따라 재정렬
-        allCharacters.Sort((character1, character2) => character2.Speed.CompareTo(character1.Speed));
+        allCharacters.Sort((character1, character2) => character2.Stat.speed.CompareTo(character1.Stat.speed));
 
         // 재정렬된 리스트를 바탕으로 combatQueue 재구성
         combatQueue.Clear();

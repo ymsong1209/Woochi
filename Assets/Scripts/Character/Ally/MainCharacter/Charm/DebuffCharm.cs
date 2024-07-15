@@ -7,14 +7,7 @@ using UnityEngine;
 public class DebuffCharm : BaseCharm
 {
     #region 변화된 스탯들의 수치
-    [SerializeField] protected float changeDefense;
-    [SerializeField] protected float changeCrit;
-    [SerializeField] protected float changeAccuracy;
-    [SerializeField] protected float changeEvasion;
-    [SerializeField] protected float changeResist;
-    [SerializeField] protected float changeMinStat;
-    [SerializeField] protected float changeMaxStat;
-    [SerializeField] protected float changeSpeed;
+    [SerializeField] protected Stat changeStat;
     #endregion 변화된 스탯들 frame update
 
     public override void Activate(BaseCharacter opponent)
@@ -22,14 +15,7 @@ public class DebuffCharm : BaseCharm
         StatDeBuff buff = GetComponent<StatDeBuff>();
         buff.StatBuffName = CharmName;
         buff.BuffDurationTurns = Turns;
-        buff.ChangeDefense = changeDefense;
-        buff.ChangeCrit = changeCrit;
-        buff.ChangeAccuracy = changeAccuracy;
-        buff.ChangeEvasion = changeEvasion;
-        buff.ChangeResist = changeResist;
-        buff.ChangeMinStat = changeMinStat;
-        buff.ChangeMaxStat = changeMaxStat;
-        buff.ChangeSpeed = changeSpeed;
+        buff.ChangeStat = changeStat;
         opponent.ApplyBuff(opponent, buff);
     }
     
