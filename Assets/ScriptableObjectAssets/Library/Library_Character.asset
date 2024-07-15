@@ -23,9 +23,13 @@ MonoBehaviour:
     prefab: {fileID: 3657592949406269409, guid: ca42e7c8e1bb2fc499b9e67b93790fb5, type: 3}
   - ID: 1001
     prefab: {fileID: 4899969595569058128, guid: 13ba160c3aefafb49b4b8f5b869cf480, type: 3}
+  - ID: 1002
+    prefab: {fileID: 4899969595569058128, guid: db84564163569c74182df3150517505f, type: 3}
   - ID: 1003
     prefab: {fileID: 3657592949406269409, guid: 2384c82cc70f9ce4ca67136e5d091bfd, type: 3}
   - ID: 2000
     prefab: {fileID: 1980818747636440210, guid: 75de17bc6525225438fc607272d0d5e2, type: 3}
+  - ID: 2001
+    prefab: {fileID: 1980818747636440210, guid: 1de0a64c24574af4194fde0624e35fa2, type: 3}
   - ID: 3000
     prefab: {fileID: 1980818747636440210, guid: 6f8a87b93bb345e4f80e5160969e4fc3, type: 3}
