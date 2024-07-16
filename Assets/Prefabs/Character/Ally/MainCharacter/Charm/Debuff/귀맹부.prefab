@@ -51,14 +51,16 @@ MonoBehaviour:
   charmType: 1
   charmTargetType: 1
   charmIcon: {fileID: 0}
-  changeDefense: 0
-  changeCrit: 0
-  changeAccuracy: 0
-  changeEvasion: -10
-  changeResist: 0
-  changeMinStat: 0
-  changeMaxStat: 0
-  changeSpeed: 0
+  changeStat:
+    health: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: -10
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
 --- !u!114 &-2340462103314977772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,12 +78,14 @@ MonoBehaviour:
   buffEffect: 3
   buffType: 2
   chanceToApplyBuff: 0
-  changeDefense: 0
-  changeCrit: 0
-  changeAccuracy: 0
-  changeEvasion: 0
-  changeResist: 0
-  changeMinStat: 0
-  changeMaxStat: 0
-  changeSpeed: 0
   StatBuffName: 
+  changeStat:
+    health: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0

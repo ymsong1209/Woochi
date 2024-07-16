@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4bbbce2a03c2d4a95b7ced04f3ebb7, type: 3}
   m_Name: CS_Fox
   m_EditorClassIdentifier: 
-  characterName: "\uC0BC\uBBF8\uD638"
+  ID: 1
   portrait: {fileID: 21300000, guid: 1201bd35528ac4048847fed61b745377, type: 3}
-  baseHealth: 22
-  baseSpeed: 7
-  baseDefense: 0
-  baseCrit: 5
-  baseAccuracy: 0
-  baseEvasion: 5
-  baseResist: 20
-  baseMinStat: 5
-  baseMaxStat: 9
+  baseStat:
+    health: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
   skills:
   - {fileID: -7862539051028592976, guid: 48acee4a8f9298c43b59bfbece7902f6, type: 3}
   - {fileID: -5674623204973174011, guid: deef6a64580762146bac3ba5b49cd971, type: 3}

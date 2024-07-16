@@ -9,12 +9,12 @@ public class Tiger_Rip : BaseSkill
         Health opponentHealth = _opponent.gameObject.GetComponent<Health>();
         //최소, 최대 대미지 사이의 수치를 고름
 
-        float randomStat = Random.Range(SkillOwner.MinStat, SkillOwner.MaxStat);
+        float randomStat = Random.Range(SkillOwner.Stat.minStat, SkillOwner.Stat.maxStat);
         //피해량 계수를 곱함
         randomStat *= (Multiplier / 100);
 
         //방어 스탯을 뺌
-        randomStat = randomStat * (100 - _opponent.Defense) / 100;
+        randomStat = randomStat * (100 - _opponent.Stat.defense) / 100;
 
         //적에게 출혈 버프가 붙어있으면 1.5배의 대미지
         bool hasBleed = false;

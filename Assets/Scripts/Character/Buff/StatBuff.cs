@@ -1,21 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 public class StatBuff : BaseBuff
 {
     public string StatBuffName;
-    
+
     #region 변화된 스탯들의 수치
-    [SerializeField] protected float changeDefense;
-    [SerializeField] protected float changeCrit;
-    [SerializeField] protected float changeAccuracy;
-    [SerializeField] protected float changeEvasion;
-    [SerializeField] protected float changeResist;
-    [SerializeField] protected float changeMinStat;
-    [SerializeField] protected float changeMaxStat;
-    [SerializeField] protected float changeSpeed;
+    [SerializeField] protected Stat changeStat;
     #endregion 변화된 스탯들
     public StatBuff()
     {
@@ -37,14 +28,7 @@ public class StatBuff : BaseBuff
         if(_buff.BuffDurationTurns == -1) base.buffDurationTurns = -1;
         else base.buffDurationTurns += _buff.BuffDurationTurns;
         
-        changeAccuracy += statBuff.ChangeAccuracy;
-        changeSpeed += statBuff.ChangeSpeed;
-        changeDefense += statBuff.ChangeDefense;
-        changeCrit += statBuff.ChangeCrit;
-        changeEvasion += statBuff.ChangeEvasion;
-        changeResist += statBuff.ChangeResist;
-        changeMinStat += statBuff.ChangeMinStat;
-        changeMaxStat += statBuff.ChangeMaxStat;
+        changeStat += statBuff.ChangeStat;
         buffOwner.CheckForStatChange();
     }
 
@@ -65,83 +49,49 @@ public class StatBuff : BaseBuff
         {
             description =  StatBuffName + BuffDurationTurns+": ";
         }
-        if (changeDefense > 0)
+        if (changeStat.defense > 0)
         {
-            description += "방어력 : +" + changeDefense + " ";
+            description += "방어력 : +" + changeStat.defense + " ";
         }
-        if (changeCrit > 0)
+        if (changeStat.crit > 0)
         {
-            description += "치명타 : +" + changeCrit + " ";
+            description += "치명타 : +" + changeStat.crit + " ";
         }
-        if (changeAccuracy > 0)
+        if (changeStat.accuracy > 0)
         {
-            description += "명중 : +" + changeAccuracy + " ";
+            description += "명중 : +" + changeStat.accuracy + " ";
         }
-        if (changeEvasion > 0)
+        if (changeStat.evasion > 0)
         {
-            description += "회피 : +" + changeEvasion + " ";
+            description += "회피 : +" + changeStat.evasion + " ";
         }
-        if (changeResist > 0)
+        if (changeStat.resist > 0)
         {
-            description += "저항 : +" + changeResist + " ";
+            description += "저항 : +" + changeStat.resist + " ";
         }
-        if (changeMinStat > 0)
+        if (changeStat.minStat > 0)
         {
-            description += "최소 스탯 : +" + changeMinStat + " ";
+            description += "최소 스탯 : +" + changeStat.minStat + " ";
         }
-        if (changeMaxStat > 0)
+        if (changeStat.maxStat > 0)
         {
-            description += "최대 스탯 : +" + changeMaxStat + " ";
+            description += "최대 스탯 : +" + changeStat.maxStat + " ";
         }
-        if (changeSpeed > 0)
+        if (changeStat.speed > 0)
         {
-            description += "속도 : +" + changeSpeed + " ";
+            description += "속도 : +" + changeStat.speed + " ";
         }
         description += "\n";
         text.text += description;
         text.color = Color.blue;
     }
-    
+
     #region 변화된 스탯들의 수치 Getter Setter
-    public float ChangeDefense 
+    public Stat ChangeStat
     {
-        get { return changeDefense; }
-        set { changeDefense = value; }
+        get => changeStat;
+        set => changeStat = value;
     }
-    public float ChangeCrit 
-    {
-        get { return changeCrit; }
-        set { changeCrit = value; }
-    }
-    public float ChangeAccuracy 
-    {
-        get { return changeAccuracy; }
-        set { changeAccuracy = value; }
-    }
-    public float ChangeEvasion 
-    {
-        get { return changeEvasion; }
-        set { changeEvasion = value; }
-    }
-    public float ChangeResist 
-    {
-        get { return changeResist; }
-        set { changeResist = value; }
-    }
-    public float ChangeMinStat 
-    {
-        get { return changeMinStat; }
-        set { changeMinStat = value; }
-    }
-    public float ChangeMaxStat 
-    {
-        get { return changeMaxStat; }
-        set { changeMaxStat = value; }
-    }
-    public float ChangeSpeed 
-    {
-        get { return changeSpeed; }
-        set { changeSpeed = value; }
-    }
+
     #endregion 변화된 스탯들의 수치 Getter Setter
 }

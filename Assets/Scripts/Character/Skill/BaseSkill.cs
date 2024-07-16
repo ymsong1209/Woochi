@@ -270,7 +270,7 @@ public class BaseSkill : MonoBehaviour
     {
         if (isAlwaysHit) return true;
         int RandomValue = Random.Range(0, 100);
-        if (RandomValue < skillAccuracy + skillOwner.Accuracy) return true;
+        if (RandomValue < skillAccuracy + skillOwner.Stat.accuracy) return true;
         else return false;
     }
 
@@ -282,7 +282,7 @@ public class BaseSkill : MonoBehaviour
     {
         if (isAlwaysHit) return true;
         int RandomValue = Random.Range(0, 100);
-        if (RandomValue > _opponent.Evasion) return true;
+        if (RandomValue > _opponent.Stat.evasion) return true;
         return false;
     }
 
@@ -306,7 +306,7 @@ public class BaseSkill : MonoBehaviour
     {
         if (isAlwaysApplyBuff) return true;
         int RandomValue = Random.Range(0, 100);
-        if (RandomValue > _opponent.Resist) return true;
+        if (RandomValue > _opponent.Stat.resist) return true;
         return false;
     }
 
@@ -316,7 +316,7 @@ public class BaseSkill : MonoBehaviour
     protected bool CheckCrit()
     {
         int RandomValue = Random.Range(0, 100);
-        if (RandomValue < skillOwner.Crit) return true;
+        if (RandomValue < skillOwner.Stat.crit) return true;
         return false;
     }
 
@@ -434,7 +434,7 @@ public class BaseSkill : MonoBehaviour
         Health opponentHealth = _opponent.gameObject.GetComponent<Health>();
         //최소, 최대 대미지 사이의 수치를 고름
         
-        float RandomStat = Random.Range(skillOwner.MinStat, skillOwner.MaxStat);
+        float RandomStat = Random.Range(skillOwner.Stat.minStat, skillOwner.Stat.maxStat);
         //피해량 계수를 곱함
         RandomStat *= (multiplier / 100);
        
@@ -443,7 +443,7 @@ public class BaseSkill : MonoBehaviour
             case SkillType.Attack:
             {
                 //방어 스탯을 뺌
-                RandomStat = RandomStat * (100 - _opponent.Defense) / 100;
+                RandomStat = RandomStat * (100 - _opponent.Stat.defense) / 100;
                 if (_isCrit) RandomStat = RandomStat * 2;
 
                 opponentHealth.ApplyDamage((int)Mathf.Round(RandomStat), _isCrit);

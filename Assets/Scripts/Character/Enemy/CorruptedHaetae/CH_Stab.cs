@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CH_Stab : BaseSkill
@@ -20,7 +18,7 @@ public class CH_Stab : BaseSkill
         Health opponentHealth = _opponent.gameObject.GetComponent<Health>();
         //최소, 최대 대미지 사이의 수치를 고름
         
-        float RandomStat = Random.Range(SkillOwner.MinStat, SkillOwner.MaxStat);
+        float RandomStat = Random.Range(SkillOwner.Stat.minStat, SkillOwner.Stat.maxStat);
         //피해량 계수를 곱함
         RandomStat *= (Multiplier / 100);
         if (_isCrit) RandomStat = RandomStat * 2;

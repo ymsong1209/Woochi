@@ -26,7 +26,7 @@ public class AllyCard : MonoBehaviour
         ally.onHealthChanged += UpdateHP;
 
         portrait.gameObject.SetActive(true);
-        portrait.sprite = ally.characterStat.Portrait;
+        portrait.sprite = ally.Portrait;
 
         gameObject.SetActive(true);
     }

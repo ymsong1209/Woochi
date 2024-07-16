@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4bbbce2a03c2d4a95b7ced04f3ebb7, type: 3}
   m_Name: CS_ScrollDog
   m_EditorClassIdentifier: 
-  characterName: "\uC871\uC790\uAD6C"
+  ID: 1003
   portrait: {fileID: 0}
-  baseHealth: 11
-  baseSpeed: 0
-  baseDefense: 0
-  baseCrit: 2
-  baseAccuracy: 1
-  baseEvasion: 5
-  baseResist: 0
-  baseMinStat: 4
-  baseMaxStat: 8
+  baseStat:
+    health: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
   skills:
   - {fileID: -3160245103194300316, guid: ec272f27a19a31d45889329cedeb94a7, type: 3}
   - {fileID: -3160245103194300316, guid: ec272f27a19a31d45889329cedeb94a7, type: 3}
