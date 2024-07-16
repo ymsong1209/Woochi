@@ -16,9 +16,9 @@ public class CharacterStatSO : ScriptableObject
     public int ID;              
     public Sprite portrait;
 
-    private string characterName;
-    private int size;
-    private int cost;
+    [ReadOnly] public string characterName;
+    [ReadOnly] public int size;
+    [ReadOnly] public int cost;
 
     #region Header CHARACTER STATS
 
@@ -46,9 +46,6 @@ public class CharacterStatSO : ScriptableObject
     }
 
     #region Getter Method
-    public string CharacterName => characterName;
-    public int Size => size;
-    public int Cost => cost;
     public Stat BaseStat => baseStat;
     public List<BaseSkill> Skills => skills;
     #endregion

@@ -43,7 +43,7 @@ public class AllyCharacterUI : MonoBehaviour
     /// <param name="_character"></param>
     private void ShowCharacterInfo(BaseCharacter _character)
     {
-        characterName.text = _character.characterStat.CharacterName;
+        characterName.text = _character.Name;
     }
 
     /// <summary>

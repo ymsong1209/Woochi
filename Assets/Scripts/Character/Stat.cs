@@ -4,15 +4,15 @@ using UnityEngine;
 [System.Serializable]
 public class Stat
 {
-    public int health;
-    public int speed;
-    public float defense;
-    public float crit;
-    public float accuracy;
-    public float evasion;
-    public float resist;
-    public float minStat;
-    public float maxStat;
+    [ReadOnly(true)] public int health;
+    [ReadOnly(true)] public int speed;
+    [ReadOnly(true)] public float defense;
+    [ReadOnly(true)] public float crit;
+    [ReadOnly(true)] public float accuracy;
+    [ReadOnly(true)] public float evasion;
+    [ReadOnly(true)] public float resist;
+    [ReadOnly(true)] public float minStat;
+    [ReadOnly(true)] public float maxStat;
 
     public Stat()
     {
@@ -48,16 +48,15 @@ public class Stat
     public static Stat operator+(Stat a, Stat b)
     {
         Stat result = new Stat();
-        result.health   = a.health + b.health;
-        result.speed    = a.speed + b.speed;
-        result.defense  = a.defense + b.defense;
-        result.crit     = a.crit + b.crit;
-        result.accuracy = a.accuracy + b.accuracy;
-        result.evasion  = a.evasion + b.evasion;
-        result.resist   = a.resist + b.resist;
-        result.minStat  = a.minStat + b.minStat;
-        result.maxStat  = a.maxStat + b.maxStat;
+        result.health   = Mathf.Clamp(a.health + b.health, 0, 999);
+        result.speed    = Mathf.Clamp(a.speed + b.speed, 0, 999);
+        result.defense  = Mathf.Clamp(a.defense + b.defense, 0, 999);
+        result.crit     = Mathf.Clamp(a.crit + b.crit, 0, 999);
+        result.accuracy = Mathf.Clamp(a.accuracy + b.accuracy, 0, 999);
+        result.evasion  = Mathf.Clamp(a.evasion + b.evasion, 0, 999);
+        result.resist   = Mathf.Clamp(a.resist + b.resist, 0, 999);
+        result.minStat  = Mathf.Clamp(a.minStat + b.minStat, 0, 999);
+        result.maxStat  = Mathf.Clamp(a.maxStat + b.maxStat, 0, 999);
         return result;
     }
-
 }

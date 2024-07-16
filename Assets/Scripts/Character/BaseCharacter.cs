@@ -11,8 +11,9 @@ public class BaseCharacter : MonoBehaviour
     [HideInInspector] public BaseCharacterHUD HUD;
     [HideInInspector] public BaseCharacterAnimation anim;
     [HideInInspector] public BaseCharacterCollider collider;
-    public CharacterStatSO characterStat;
-    [HideInInspector] private BuffList buffList;
+
+    [SerializeField]  protected CharacterStatSO characterStat;
+    private BuffList buffList;
     
     #region Header CHARACTER STATS
 
@@ -94,8 +95,6 @@ public class BaseCharacter : MonoBehaviour
     {
         return true;
     }
-
-   
 
     public void OnSelected()
     {
@@ -392,10 +391,11 @@ public class BaseCharacter : MonoBehaviour
     #endregion
 
     #region Getter Setter
-    public int Size => characterStat.Size;
-
+    public Sprite Portrait => characterStat.portrait;
+    public string Name => characterStat.characterName;
+    public int Size => characterStat.size;
+    public int Cost => characterStat.cost;
     public Health Health => health;
-
     public Stat Stat => stat;
 
     public bool IsDead => isDead;
