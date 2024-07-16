@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4bbbce2a03c2d4a95b7ced04f3ebb7, type: 3}
   m_Name: CS_Snake
   m_EditorClassIdentifier: 
-  characterName: "\uB300\uC0AC"
+  ID: 1000
   portrait: {fileID: 0}
-  baseHealth: 15
-  baseSpeed: 4
-  baseDefense: 0
-  baseCrit: 3
-  baseAccuracy: 0
-  baseEvasion: 3
-  baseResist: 10
-  baseMinStat: 3
-  baseMaxStat: 8
-  size: 1
+  baseStat:
+    health: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
   skills:
   - {fileID: 1680532968612495820, guid: c8aa9c625b19ced43ab19ce535495d49, type: 3}
