@@ -36,7 +36,6 @@ public class BaseBuff : MonoBehaviour
     /// <returns></returns>
     public virtual int ApplyBattleStartBuff()
     {
-        if (buffOwner.CheckDead()) return -1;
         return 0;
     }
 
@@ -47,7 +46,6 @@ public class BaseBuff : MonoBehaviour
     /// </summary>
     public virtual int ApplyRoundStartBuff()
     {
-        if (buffOwner.CheckDead()) return -1;
         return 0;
     }
 
@@ -59,7 +57,6 @@ public class BaseBuff : MonoBehaviour
     public virtual int ApplyTurnStartBuff()
     {
         if(buffDurationTurns > 0) --buffDurationTurns;
-        if (buffOwner.CheckDead()) return -1;
         return 0;
     }
     /// <summary>
@@ -69,7 +66,6 @@ public class BaseBuff : MonoBehaviour
     /// </summary>
     public virtual int ApplyTurnEndBuff()
     {
-        if (buffOwner.CheckDead()) return -1;
         return 0;
     }
 
@@ -80,7 +76,6 @@ public class BaseBuff : MonoBehaviour
     /// </summary>
     public virtual int ApplyRoundEndBuff()
     {
-        if (buffOwner.CheckDead()) return -1;
         return 0;
     }
 
@@ -92,7 +87,6 @@ public class BaseBuff : MonoBehaviour
     public virtual int ApplyBattleEndBuff()
     {
         RemoveBuff();
-        if (buffOwner.CheckDead()) return -1;
         return 0;
     }
 

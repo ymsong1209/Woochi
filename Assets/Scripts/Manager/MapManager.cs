@@ -14,10 +14,10 @@ public class MapManager : SingletonMonobehaviour<MapManager>
             CurrentMap = DataCloud.playerData.currentMap;
             view.ShowMap(CurrentMap);
 
-            // º¸½º±îÁö ±ü ¸ÊÀÌ¶ó¸é
+            // ë³´ìŠ¤ê¹Œì§€ ê¹¬ ë§µì´ë¼ë©´
             if(CurrentMap.path.Any(p => p.Equals(CurrentMap.GetBossNode().point)))
             {
-                // ToDo : ´ÙÀ½ ½ºÅ×ÀÌÁö ³Ñ¾î°¥ ¼ö ÀÖ°Ô
+                // ToDo : ë‹¤ìŒ ìŠ¤í…Œì´ì§€ ë„˜ì–´ê°ˆ ìˆ˜ ìˆê²Œ
             }
         }
         else

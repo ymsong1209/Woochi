@@ -147,18 +147,16 @@ public class BaseCharacter : MonoBehaviour
     /// </summary>
     private bool TriggerBuffs(Func<BaseBuff, int> applyBuffMethod)
     {
-        bool mightDead = false;
+        bool turnSkipped = false;
 
         for (int i = activeBuffs.Count - 1; i >= 0; i--)
         {
-            //캐릭터의 턴이 스킵되거나, 캐릭터가 죽을 경우 mightDead를 true로 설정
+            //캐릭터의 턴이 스킵되거나, 캐릭터가 죽을 경우 turnSkipped를 true로 설정
+            //버프를 통해 받은 대미지 반환. 죽었거나 기절한 경우 -1 반환
             int result = applyBuffMethod(activeBuffs[i]);
-            if (result != 0)
+            if (result == -1)
             {
-                if (result == -1)
-                {
-                    mightDead = true;
-                }
+                turnSkipped = true;
             }
            
 
@@ -168,17 +166,13 @@ public class BaseCharacter : MonoBehaviour
                 RemoveBuffAtIndex(i);
             }
         }
-        if (mightDead)
+        
+        //죽었을 경우 버프 처리 하고 죽음
+        if (CheckDeadAndPlayAnim() || turnSkipped)
         {
-            //죽었을 경우 버프 처리 하고 죽음
-            if (CheckDead())
-            {
-                return HandleDeath();
-            }
-            //턴을 스킵만 함
             return false;
         }
-
+       
         return true;
     }
     
@@ -232,10 +226,10 @@ public class BaseCharacter : MonoBehaviour
         }
     }
 
-    private bool HandleDeath()
+    private void HandleDeath()
     {
         RemoveAllBuff();
-        return false;
+        anim.PlayDeadAnimation();
     }
 
     public void RemoveAllBuff()
@@ -408,17 +402,19 @@ public class BaseCharacter : MonoBehaviour
     /// <summary>
     /// Character가 죽었는지 확인
     /// </summary>
-    public bool CheckDead()
+    public bool CheckDeadAndPlayAnim()
     {
         if(health.CheckHealthZero())
         {
-            anim.PlayDeadAnimation();
-            // onPlayAnimation(AnimationType.Dead);
+            HandleDeath();
             return true;
         }
         return false;
     }
 
+    /// <summary>
+    /// Animator를 통해 캐릭터를 죽은 상태로 변경
+    /// </summary>
     public virtual void SetDead()
     {
         isDead = true;

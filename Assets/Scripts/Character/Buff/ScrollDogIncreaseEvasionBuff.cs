@@ -32,7 +32,6 @@ public class ScrollDogIncreaseEvasionBuff : BaseBuff
             buffOwner.ApplyBuff(buffOwner,evasionBuff);
             evasionStack++;
         }
-        if (buffOwner.CheckDead()) return -1;
         return 0;
     }
 

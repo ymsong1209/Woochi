@@ -447,7 +447,7 @@ public class BaseSkill : MonoBehaviour
                 if (_isCrit) RandomStat = RandomStat * 2;
 
                 opponentHealth.ApplyDamage((int)Mathf.Round(RandomStat), _isCrit);
-                _opponent.CheckDead();
+                _opponent.CheckDeadAndPlayAnim();
             }
             break;
             case SkillType.Heal:

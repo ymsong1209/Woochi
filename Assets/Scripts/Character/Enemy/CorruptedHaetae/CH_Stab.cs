@@ -27,6 +27,6 @@ public class CH_Stab : BaseSkill
         //부정한 찌르기는 방어력을 무시하고 대미지를 준다.
         
         opponentHealth.ApplyDamage((int)Mathf.Round(RandomStat), _isCrit);
-        _opponent.CheckDead();
+        _opponent.CheckDeadAndPlayAnim();
     }
 }
