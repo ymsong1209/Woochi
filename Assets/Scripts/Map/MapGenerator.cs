@@ -90,7 +90,7 @@ public static class MapGenerator
             case NodeType.Elite:
                 return config.GetEliteEnemy();
             case NodeType.Strange:
-                return new int[] { -1 };
+                return config.GetNormalEnemy();
             case NodeType.Boss:
                 break;
         }
