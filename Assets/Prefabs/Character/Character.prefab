@@ -413,17 +413,17 @@ MonoBehaviour:
   anim: {fileID: 0}
   collider: {fileID: 0}
   characterStat: {fileID: 0}
-  buffList: {fileID: 3613338152114866867}
   health: {fileID: 0}
-  size: 1
-  speed: 0
-  defense: 0
-  crit: 0
-  accuracy: 0
-  evasion: 0
-  resist: 0
-  minStat: 0
-  maxStat: 0
+  stat:
+    health: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
   isMainCharacter: 0
   isDead: 0
   activeBuffs: []
@@ -1000,11 +1000,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7997150688701690124, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.25
       objectReference: {fileID: 0}
     - target: {fileID: 7997150688701690124, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4
+      value: -3.7
       objectReference: {fileID: 0}
     - target: {fileID: 7997150688701690124, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1048,17 +1048,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7997150688701690124, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
   m_PrefabInstance: {fileID: 5636919431809584449}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3613338152114866867 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8944003433349613554, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
-  m_PrefabInstance: {fileID: 5636919431809584449}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1680873af9599744595693ee2cef4989, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6769676886233686113
 PrefabInstance:
   m_ObjectHideFlags: 0
