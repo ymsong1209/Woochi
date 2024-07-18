@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9483a26c0d4ef4c8821b5c232bedf1, type: 3}
   m_Name: 118 Abnormal_FogMountain
   m_EditorClassIdentifier: 
-  cost: 2
+  ID: 118
   Name: "\uC548\uAC1C \uB080 \uC0B0"
+  cost: 2

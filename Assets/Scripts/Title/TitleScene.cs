@@ -15,11 +15,11 @@ public class TitleScene : MonoBehaviour
         #region Event
         beginBtn.onClick.AddListener(Begin);
         continueBtn.onClick.AddListener(Continue);
-        deleteBtn.onClick.AddListener(() => GameManager.GetInstance.ResetData());
+        deleteBtn.onClick.AddListener(() => GameManager.GetInstance.DeleteData());
         testBtn.onClick.AddListener(Test);
         #endregion
 
-        continueBtn.interactable = DataCloud.playerData.isProgressing;
+        continueBtn.interactable = (DataCloud.playerData.currentMap != null);
     }
 
     public void Departure(bool isBegin)

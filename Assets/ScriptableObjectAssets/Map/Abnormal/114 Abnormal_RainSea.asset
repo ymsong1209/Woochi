@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9483a26c0d4ef4c8821b5c232bedf1, type: 3}
   m_Name: 114 Abnormal_RainSea
   m_EditorClassIdentifier: 
-  cost: 3
+  ID: 114
   Name: "\uBE44 \uC624\uB294 \uBC14\uB2E4"
+  cost: 3

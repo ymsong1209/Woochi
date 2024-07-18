@@ -13,18 +13,18 @@ MonoBehaviour:
   m_Name: MapConfig_SeoulGyeongi
   m_EditorClassIdentifier: 
   stageName: "\uC11C\uC6B8,\uACBD\uAE30"
-  nodeBlueprints:
-  - {fileID: 11400000, guid: e8257e5053259e04c8c3092a00db2761, type: 2}
-  - {fileID: 11400000, guid: e4fa7259d10083142a9528a4f62c86df, type: 2}
-  - {fileID: 11400000, guid: 8101efe21e8178d499873bbe2ccd544b, type: 2}
-  - {fileID: 11400000, guid: 69079617bac4c494c86d8781aba2fdbf, type: 2}
-  randomNodes:
-  - nodeType: 0
-    probability: 0.49
-  - nodeType: 1
-    probability: 0.21
-  - nodeType: 2
-    probability: 0.3
+  randomNodeTypes:
+    list:
+    - value: 0
+      probability: 0.49
+    - value: 1
+      probability: 0.21
+    - value: 2
+      probability: 0.3
+  randomAbnormals:
+    list:
+    - value: 0
+      probability: 0
   normalTemplates:
   - id: e8030000e8030000e8030000e8030000
   - id: e8030000e8030000eb030000eb030000

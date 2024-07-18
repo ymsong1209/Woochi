@@ -35,4 +35,9 @@ public static class DataCloud
         playerData.ResetData();
     }
 
+    public static void DeletePlayerData()
+    {
+        PlayerPrefs.DeleteKey("PlayerData");
+        playerData = new PlayerData();
+    }
 }

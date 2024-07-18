@@ -77,9 +77,6 @@ public class BaseCharacter : MonoBehaviour
         collider = GetComponent<BaseCharacterCollider>();
         buffList = GetComponentInChildren<BuffList>();
 
-        if(characterStat != null)
-            characterStat.Initialize();
-
         isSummoned = isStarting;
     }
 
@@ -297,6 +294,8 @@ public class BaseCharacter : MonoBehaviour
 
 
     #region 기본 스탯 초기화
+    public void InitializeStatSO() => characterStat.Initialize();
+
     /// <summary>
     /// 기본 스탯 초기화
     /// </summary>

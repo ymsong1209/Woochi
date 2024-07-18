@@ -13,6 +13,7 @@ public class MapView : MonoBehaviour
 {
     [SerializeField] private List<MapConfig> allMapConfigs;
     [SerializeField] private GameObject nodePrefab;
+    [SerializeField] private List<NodeBlueprint> nodeBlueprints;
 
     [Header("Stage Settings")]
     public Sprite background;
@@ -326,7 +327,6 @@ public class MapView : MonoBehaviour
 
     private NodeBlueprint GetBlueprint(NodeType type)
     {
-        MapConfig config = GetConfig(MapManager.GetInstance.CurrentMap.configName);
-        return config.nodeBlueprints.FirstOrDefault(n => n.nodeType == type);
+        return nodeBlueprints.FirstOrDefault(n => n.nodeType == type);
     }
 }

@@ -78,7 +78,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
     private void InitializeAlly(int[] allyIDs)
     {
-        var allyList = GameManager.GetInstance.CharcterLibrary.Get(allyIDs);
+        var allyList = GameManager.GetInstance.Library.GetCharacterList(allyIDs);
         allies.Initialize(allyList);
         allyCards.Initialize(allies);
     }
@@ -100,7 +100,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         combatQueue.Clear();
         processedCharacters.Clear();
 
-        var enemyList = GameManager.GetInstance.CharcterLibrary.Get(enemyIDs);
+        var enemyList = GameManager.GetInstance.Library.GetCharacterList(enemyIDs);
         enemies.Initialize(enemyList);
         allyCards.UpdateList();
 

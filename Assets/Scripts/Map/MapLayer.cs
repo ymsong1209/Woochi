@@ -19,7 +19,7 @@ public class MapLayer
     public bool isRandomEnemy = true;
 
     [Tooltip("고정이라면 어떤 적이 나와야 하는지")]
-    [OneLineWithHeader] public int[] enemyIDs;
+    public int[] enemyIDs;
 
     [Tooltip("이 값이 0에 가까우면 직선에 가까워지고 1에 가까우면 Layer의 노드들이 흩어져 있는 느낌")]
     [Range(0f, 1f)] public float randomizePosition;

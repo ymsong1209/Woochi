@@ -6,10 +6,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Library_", menuName = "Scriptable Objects/Library")]
 public class Library : ScriptableObject
 {
-    [OneLineWithHeader]
-    [SerializeField] private List<Entry> entryList;
+    // Warning!. 변수 이름 수정하면 데이터 싹 날라감
 
-    public GameObject Get(int id)
+    #region Character Prefab
+    [OneLineWithHeader, SerializeField] private List<Entry<GameObject>> characters;
+    public GameObject GetCharacter(int id)
     {
         if(id < 0)
         {
@@ -17,16 +18,16 @@ public class Library : ScriptableObject
             return null;
         }
 
-        return entryList.FirstOrDefault(entry => entry.ID == id).prefab;
+        return characters.FirstOrDefault(entry => entry.ID == id).value;
     }
 
-    public List<GameObject> Get(int[] IDs)
+    public List<GameObject> GetCharacterList(int[] IDs)
     {
         List<GameObject> list = new List<GameObject>();
 
         foreach(int id in IDs)
         {
-            GameObject entry = Get(id);
+            GameObject entry = GetCharacter(id);
 
             if(entry != null)
                 list.Add(entry);
@@ -34,11 +35,46 @@ public class Library : ScriptableObject
 
         return list;
     }
+    #endregion
+
+    #region Abnormal
+    [OneLineWithHeader, SerializeField] private List<Entry<Abnormal>> abnormals;
+
+    public Abnormal GetAbnormal(int id)
+    {
+        if(id < 0)
+        {
+            Debug.Log("Library: ID out of range");
+            return null;
+        }
+
+        return abnormals.FirstOrDefault(entry => entry.ID == id).value;
+    }
+    #endregion
+
+    /// <summary>
+    /// 구글 스프레드 시트의 데이터를 가져와서 스크립터블 초기화 -> 딱 한번만
+    /// </summary>
+    public void Initialize()
+    {
+        foreach(var character in characters)
+        {
+            if (character.value == null) continue;
+
+            BaseCharacter baseCharacter = character.value.GetComponent<BaseCharacter>();
+            baseCharacter.InitializeStatSO();
+        }
+
+        foreach(var abnormal in abnormals)
+        {
+            abnormal.value.Initialize();
+        }
+    }
 }
 
 [System.Serializable]
-public class Entry
+public class Entry<T>
 {
-    public int ID;
-    public GameObject prefab;
+    public int  ID;
+    public T    value;
 }

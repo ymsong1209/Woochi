@@ -11,8 +11,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     [SerializeField] private BaseCharm[] charmList = new BaseCharm[5];
 
     [Header("Library")]
-    [SerializeField] private Library charcterLibrary;
-    [SerializeField] private Library abnormalLibrary;
+    [SerializeField] private Library library;
 
     protected override void Awake()
     {
@@ -54,12 +53,14 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     public void LoadData()
     {
+        library.Initialize();
+
         DataCloud.LoadPlayerData();
     }
 
-    public void ResetData()
+    public void DeleteData()
     {
-        DataCloud.ResetPlayerData();
+        DataCloud.DeletePlayerData();
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -76,7 +77,6 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     #region Getter Setter
     public BaseCharm[] CharmList => charmList;
 
-    public Library CharcterLibrary => charcterLibrary;
-    public Library AbnormalLibrary => abnormalLibrary;
+    public Library Library => library;
     #endregion
 }

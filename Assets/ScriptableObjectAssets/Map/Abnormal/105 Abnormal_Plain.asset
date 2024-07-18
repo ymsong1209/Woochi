@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9483a26c0d4ef4c8821b5c232bedf1, type: 3}
   m_Name: 105 Abnormal_Plain
   m_EditorClassIdentifier: 
-  cost: 1
+  ID: 105
   Name: "\uD3C9\uC57C"
+  cost: 1
