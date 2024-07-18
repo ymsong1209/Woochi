@@ -63,11 +63,11 @@ public static class MapGenerator
 
         for (int i = 0; i < config.GridWidth; i++)
         {
-            NodeType nodeType = layer.isRandomNode ? config.GetRandomType() : layer.nodeType;
+            NodeType nodeType = layer.isRandomNode ? config.GetNodeType() : layer.nodeType;
             Node node = new Node(nodeType, new Vector2Int(i, layerIndex))
             {
                 position = new Vector2(-offset + i * layer.nodesApartDistance, GetDistanceToLayer(layerIndex)),
-                abnormalID = config.GetAbnormal(),
+                abnormalID = nodeType == NodeType.Strange ? 0 : config.GetAbnormal(),
                 enemyIDs = layer.isRandomEnemy ? GetEnemyID(nodeType) : layer.enemyIDs
             };
 
