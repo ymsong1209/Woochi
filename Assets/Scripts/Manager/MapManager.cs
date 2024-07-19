@@ -11,7 +11,7 @@ public class MapManager : SingletonMonobehaviour<MapManager>
     {
         if(DataCloud.playerData.currentMap != null)
         {
-            CurrentMap = DataCloud.playerData.currentMap;
+            CurrentMap = new Map(DataCloud.playerData.currentMap);
             view.ShowMap(CurrentMap);
 
             // 보스까지 깬 맵이라면
@@ -26,7 +26,7 @@ public class MapManager : SingletonMonobehaviour<MapManager>
         }
     }
     
-    public void GenerateNewMap()
+    private void GenerateNewMap()
     {
         Map map = MapGenerator.GetMap(config);
         CurrentMap = map;
@@ -39,17 +39,17 @@ public class MapManager : SingletonMonobehaviour<MapManager>
         view.FadeInOut(false);
     }
 
+    public void CompleteNode()
+    {
+        SaveMap();
+        view.FadeInOut(true);
+    }
+
     public void SaveMap()
     {
         if (CurrentMap == null) return;
 
-        DataCloud.playerData.isProgressing = true;
-        DataCloud.playerData.currentMap = CurrentMap;
+        DataCloud.playerData.currentMap = new Map(CurrentMap);
         DataCloud.SavePlayerData();
-    }
-
-    private void OnApplicationQuit()
-    {
-        SaveMap();
     }
 }

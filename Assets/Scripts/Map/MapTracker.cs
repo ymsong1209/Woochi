@@ -46,7 +46,6 @@ public class MapPlayerTracker : MonoBehaviour
     {
         Locked = lockAfterSelecting;
         MapManager.GetInstance.CurrentMap.path.Add(mapNode.Node.point);
-        MapManager.GetInstance.SaveMap();
         view.SetAttainableNodes();
         view.SetLineColors();
         mapNode.ShowVisitAnimation();

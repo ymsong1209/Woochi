@@ -5,7 +5,6 @@ public class PlayerData
 {
     // bool
     public bool isFirstPlay;    // 게임을 완전 처음 시작 -> 튜토리얼
-    public bool isProgressing;  // 진행중이던 게임이 있는지
 
     // Ally
     public List<int> allies;    // 플레이어(우치)가 소유하고 있는 소환수(우치 자기자신도 포함)
@@ -17,7 +16,6 @@ public class PlayerData
     public PlayerData()
     {
         isFirstPlay = true;
-        isProgressing = false;
 
         allies = new List<int>();
         formation = new int[] { 0, -1, -1, -1};
@@ -27,8 +25,6 @@ public class PlayerData
 
     public void ResetData()
     {
-        isProgressing = false;
-        
         allies = new List<int>();
         currentMap = null;
     }

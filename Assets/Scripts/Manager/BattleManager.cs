@@ -562,7 +562,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         // ToDo : 결과창에서 확인버튼 누르고 지도 다시 띄워야 함
         // 테스트 코드
         if(MapManager.GetInstance != null)
-            MapManager.GetInstance.view.FadeInOut(true);
+            MapManager.GetInstance.CompleteNode();
     }
 
     /// <summary>
