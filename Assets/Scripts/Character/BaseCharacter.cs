@@ -11,7 +11,7 @@ public class BaseCharacter : MonoBehaviour
     [HideInInspector] public BaseCharacterHUD HUD;
     [HideInInspector] public BaseCharacterAnimation anim;
     [HideInInspector] public BaseCharacterCollider collider;
-
+    
     [SerializeField]  protected CharacterStatSO characterStat;
     private BuffList buffList;
     
@@ -23,6 +23,7 @@ public class BaseCharacter : MonoBehaviour
     #endregion Header CHARACTER STATS
     #region Character Stats
     [SerializeField]            private Health  health;
+    private SpriteRenderer sprite;   
     [SerializeField]            private Stat    stat;
     #endregion
 
@@ -76,6 +77,7 @@ public class BaseCharacter : MonoBehaviour
         anim = GetComponent<BaseCharacterAnimation>();
         collider = GetComponent<BaseCharacterCollider>();
         buffList = GetComponentInChildren<BuffList>();
+        sprite = transform.Find("Sprite").GetComponent<SpriteRenderer>();
 
         if(characterStat != null)
             characterStat.Initialize();
@@ -392,6 +394,7 @@ public class BaseCharacter : MonoBehaviour
     public int Size => characterStat.size;
     public int Cost => characterStat.cost;
     public Health Health => health;
+    public SpriteRenderer Sprite => sprite;
     public Stat Stat => stat;
 
     public bool IsDead => isDead;
