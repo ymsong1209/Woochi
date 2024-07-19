@@ -44,6 +44,10 @@ PrefabInstance:
       propertyPath: isDummy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6060628860442793064, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: characterStat
+      value: 
+      objectReference: {fileID: 11400000, guid: 8480ae2c967fddf44aa1f382e4b9e3cf, type: 2}
     - target: {fileID: 7088439537742152075, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_IsActive
       value: 0
