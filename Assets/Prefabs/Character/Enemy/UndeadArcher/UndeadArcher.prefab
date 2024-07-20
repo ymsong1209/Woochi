@@ -20,10 +20,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2360390286662990925, guid: d65a7aefa191b904c8dded1547849368, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2829200758362975625, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -183,20 +179,23 @@ MonoBehaviour:
   collider: {fileID: 0}
   characterStat: {fileID: 11400000, guid: 7611a59cfabdf004e8d61ee751c2d013, type: 2}
   health: {fileID: 0}
-  size: 1
-  speed: 0
-  defense: 0
-  crit: 0
-  accuracy: 0
-  evasion: 0
-  resist: 0
-  minStat: 0
-  maxStat: 0
+  stat:
+    health: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
   isMainCharacter: 0
   isDead: 0
   activeBuffs: []
   activeSkills: []
   activeSkillCheckBox: 0101
   isAlly: 0
+  isDummy: 0
   isStarting: 0
   isSummoned: 0
+  rowOrder: 0

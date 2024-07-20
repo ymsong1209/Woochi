@@ -44,10 +44,6 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2360390286662990925, guid: d65a7aefa191b904c8dded1547849368, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2474127869528763544, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -295,15 +291,16 @@ MonoBehaviour:
   collider: {fileID: 0}
   characterStat: {fileID: 11400000, guid: c8762dd9f5c96da4287c1a1a55b72000, type: 2}
   health: {fileID: 0}
-  size: 1
-  speed: 0
-  defense: 0
-  crit: 0
-  accuracy: 0
-  evasion: 0
-  resist: 0
-  minStat: 0
-  maxStat: 0
+  stat:
+    health: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
   isMainCharacter: 0
   isDead: 0
   activeBuffs: []
