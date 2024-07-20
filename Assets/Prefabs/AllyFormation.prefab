@@ -50,14 +50,14 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   singlePos:
-  - -2.5
-  - -5
-  - -7.5
-  - -10
+  - -3
+  - -6
+  - -9
+  - -12
   multiPos:
   - -4
-  - -6.25
-  - -9
+  - -7.25
+  - -11
   isAllyFormation: 1
   totalSize: 0
   waitingCharacter: []
