@@ -8,7 +8,7 @@ public class ScrollDog : BaseEnemy
     public override void Initialize()
     {
         base.Initialize();
-        ApplyBuff(this,evasionBuff);
+        ApplyBuff(this,this,evasionBuff);
     }
     
     public override void TriggerAI()

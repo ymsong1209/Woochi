@@ -5,10 +5,10 @@ using UnityEngine;
 public class FoxFire_Row4_CureBuff : BaseBuff
 {
     private BaseCharacter fox;
-    public override void AddBuff(BaseCharacter _buffOwner)
+    public override void AddBuff(BaseCharacter caster, BaseCharacter _buffOwner)
     {
         base.buffDurationTurns = 3;
-        base.AddBuff(_buffOwner);
+        base.AddBuff(caster, _buffOwner);
     }
     
     public override int ApplyTurnStartBuff()

@@ -89,7 +89,7 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private void SetBuffDescription(TextMeshProUGUI text)
     {
         text.text = "No Child Buffs";
-        BaseBuff childBuff = ReturnChildBuffExceptStatBuff();
+        BaseBuff childBuff = ReturnChildBuffExceptStatandCureBuff();
         
         if (childBuff)
         {
@@ -116,9 +116,9 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     
     
 
-    BaseBuff ReturnChildBuffExceptStatBuff()
+    BaseBuff ReturnChildBuffExceptStatandCureBuff()
     {
-        if(buffEffect == BuffEffect.StatStrengthen || buffEffect == BuffEffect.StatWeaken)
+        if(buffEffect == BuffEffect.StatStrengthen || buffEffect == BuffEffect.StatWeaken || buffEffect == BuffEffect.DotCureByDamage)
         {
             return null;
         }

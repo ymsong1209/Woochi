@@ -16,8 +16,11 @@ public class DebuffCharm : BaseCharm
         buff.StatBuffName = CharmName;
         buff.BuffDurationTurns = Turns;
         buff.ChangeStat = changeStat;
-        opponent.ApplyBuff(opponent, buff);
+        BaseCharacter caster = BattleManager.GetInstance.currentCharacter;
+        if (caster.IsMainCharacter)
+        {
+            opponent.ApplyBuff(caster, opponent, buff);
+        }
     }
-    
-    
+
 }

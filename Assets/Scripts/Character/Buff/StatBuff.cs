@@ -14,9 +14,9 @@ public class StatBuff : BaseBuff
         buffType = BuffType.Positive;
     }
     
-    public override void AddBuff(BaseCharacter _buffOwner)
+    public override void AddBuff(BaseCharacter caster, BaseCharacter _buffOwner)
     {
-       base.AddBuff(_buffOwner);
+       base.AddBuff(caster, _buffOwner);
        buffOwner.CheckForStatChange();
     }
     

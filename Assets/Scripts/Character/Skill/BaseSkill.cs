@@ -337,12 +337,12 @@ public class BaseSkill : MonoBehaviour
         }
 
         // 새 버프 추가
-        BaseBuff new_buff = InstantiateBuffAtIcon(_Opponent, _buff);
-        new_buff.AddBuff(_Opponent);
+        BaseBuff new_buff = TransferBuffAtIcon(_Opponent, _buff);
+        new_buff.AddBuff(skillOwner, _Opponent);
         return new_buff;
     }
 
-    BaseBuff InstantiateBuffAtIcon(BaseCharacter opponent, BaseBuff buff)
+    BaseBuff TransferBuffAtIcon(BaseCharacter opponent, BaseBuff buff)
     {
         // Find the bufflistcanvas GameObject under the opponent
         Transform buffList = opponent.transform.Find("BuffList");
@@ -367,8 +367,9 @@ public class BaseSkill : MonoBehaviour
             buffIcon.Activate();
         }
         
-        BaseBuff instantiatedBuff = Instantiate(buff, targetChild);
-        return instantiatedBuff;
+        //buff.gameobject를 targetBuffIcon의 자식으로 설정
+        buff.transform.SetParent(buffIcon.transform, false);
+        return buff;
     }
     
     // 재귀적으로 BuffIcon을 찾는 메서드
@@ -445,7 +446,8 @@ public class BaseSkill : MonoBehaviour
                 //방어 스탯을 뺌
                 RandomStat = RandomStat * (100 - _opponent.Stat.defense) / 100;
                 if (_isCrit) RandomStat = RandomStat * 2;
-
+                //TODO : 버프 순회해서 스킬 속성에 따라 감소되는 버프를 확인해서 최종대미지에서 감소
+                
                 opponentHealth.ApplyDamage((int)Mathf.Round(RandomStat), _isCrit);
                 _opponent.CheckDeadAndPlayAnim();
             }
