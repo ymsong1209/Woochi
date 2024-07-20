@@ -554,6 +554,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         {
             //패배 화면 뜨기
         }
+
+        foreach (BaseCharacter ally in allies.formation)
+        {
+            ally.TriggerBuff(BuffTiming.BattleEnd);
+            ally.RemoveAllBuff();
+        }
         
         //적군 삭제
         enemies.CleanUp();

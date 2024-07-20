@@ -24,10 +24,10 @@ public class BaseBuff : MonoBehaviour
     /// <summary>
     /// 버프를 추가
     /// </summary>
-    public virtual void AddBuff(BaseCharacter _caster, BaseCharacter _buffOwner)
+    public virtual void AddBuff(BaseCharacter _caster, BaseCharacter receiver)
     {
         caster = _caster;
-        buffOwner = _buffOwner;
+        buffOwner = receiver;
         buffOwner.activeBuffs.Add(this);
     }
 
@@ -88,7 +88,6 @@ public class BaseBuff : MonoBehaviour
     /// </summary>
     public virtual int ApplyBattleEndBuff()
     {
-        RemoveBuff();
         return 0;
     }
 
@@ -101,7 +100,9 @@ public class BaseBuff : MonoBehaviour
         BuffIcon icon = transform.parent.GetComponent<BuffIcon>();
         if (icon)
         {
-            icon.CheckChildBuffs(this);
+            this.transform.parent = null;
+            if(icon.transform.childCount == 0) icon.DeActivate();
+            //icon.CheckChildBuffs(this);
         }
         Destroy(gameObject);
     }

@@ -32,7 +32,6 @@ public class Tiger_Roar : BaseSkill
         roarBuff.ChanceToApplyBuff = 100;
         roarBuff.ChangeStat.defense = 5;
         SkillOwner.ApplyBuff(SkillOwner,SkillOwner,roarBuff);
-        Destroy(instantiatedRoarbuff);
     }
     
 }

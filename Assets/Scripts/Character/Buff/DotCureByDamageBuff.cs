@@ -8,9 +8,9 @@ public class DotCureByDamageBuff : BaseBuff
 {
     public string BuffName;
 
-    private float dotCureAmount;
-    private float minDamage;
-    private float maxDamage;
+    [SerializeField] private float dotCureAmount;
+    [SerializeField] private float minDamage;
+    [SerializeField] private float maxDamage;
     
     public DotCureByDamageBuff()
     {

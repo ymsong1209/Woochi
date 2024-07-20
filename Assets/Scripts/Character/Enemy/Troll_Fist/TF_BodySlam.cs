@@ -28,7 +28,6 @@ public class TF_BodySlam : BaseSkill
             gritbuff.BuffDurationTurns = 2;
             gritbuff.ChangeStat.defense = 2;
             SkillOwner.ApplyBuff(SkillOwner,SkillOwner,gritbuff);
-            Destroy(instantiatedGritbuff);
         }
     }
 }
