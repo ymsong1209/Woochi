@@ -8,7 +8,7 @@ using TMPro;
 /// </summary>
 public class ScrollDogIncreaseEvasionBuff : BaseBuff
 {
-    [SerializeField] private GameObject evasionBuffGameObject;
+    [SerializeField] private GameObject statBuffGameObject;
     //회피 스택 중첩 수
     [SerializeField,ReadOnly] private int evasionStack = 0;
     
@@ -23,7 +23,7 @@ public class ScrollDogIncreaseEvasionBuff : BaseBuff
         //회피 스택이 10번 이하이면, 회피 버프 추가.
         if (evasionStack < 10)
         {
-            GameObject instantiatedevasionbuff = Instantiate(evasionBuffGameObject, transform);
+            GameObject instantiatedevasionbuff = Instantiate(statBuffGameObject, transform);
             StatBuff evasionBuff = instantiatedevasionbuff.GetComponent<StatBuff>();
             evasionBuff.StatBuffName = "족자";
             evasionBuff.BuffDurationTurns = -1;
