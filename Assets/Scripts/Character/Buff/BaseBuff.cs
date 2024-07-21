@@ -9,6 +9,7 @@ using UnityEngine.Serialization;
 public class BaseBuff : MonoBehaviour
 {
 
+    private BaseCharacter caster; //버프를 건 사람
     [SerializeField] protected BaseCharacter buffOwner;
     /// <summary>
     /// 현재 버프가 몇턴 남았는지
@@ -23,9 +24,10 @@ public class BaseBuff : MonoBehaviour
     /// <summary>
     /// 버프를 추가
     /// </summary>
-    public virtual void AddBuff(BaseCharacter _buffOwner)
+    public virtual void AddBuff(BaseCharacter _caster, BaseCharacter receiver)
     {
-        buffOwner = _buffOwner;
+        caster = _caster;
+        buffOwner = receiver;
         buffOwner.activeBuffs.Add(this);
     }
 
@@ -86,7 +88,6 @@ public class BaseBuff : MonoBehaviour
     /// </summary>
     public virtual int ApplyBattleEndBuff()
     {
-        RemoveBuff();
         return 0;
     }
 
@@ -99,7 +100,9 @@ public class BaseBuff : MonoBehaviour
         BuffIcon icon = transform.parent.GetComponent<BuffIcon>();
         if (icon)
         {
-            icon.CheckChildBuffs(this);
+            this.transform.parent = null;
+            if(icon.transform.childCount == 0) icon.DeActivate();
+            //icon.CheckChildBuffs(this);
         }
         Destroy(gameObject);
     }
@@ -120,6 +123,8 @@ public class BaseBuff : MonoBehaviour
     
 
     #region Getter Setter
+
+    public BaseCharacter Caster => caster;
     public int BuffDurationTurns
     {
         get { return buffDurationTurns; }

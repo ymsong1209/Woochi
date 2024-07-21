@@ -52,13 +52,16 @@ public class Health : MonoBehaviour
         shield = 0;
     }
 
-    public void Heal(int _healamount)
+    public void Heal(int _healamount, bool playAnimation = true)
     {
         CurHealth = Mathf.Clamp(CurHealth + _healamount, 0, maxHealth);
-        owner.onPlayAnimation?.Invoke(AnimationType.Heal);
+        if (playAnimation)
+        {
+            owner.onPlayAnimation?.Invoke(AnimationType.Heal);
+        }
         owner.onAttacked?.Invoke(AttackResult.Heal, _healamount, false);
     }
-
+    
     public bool CheckHealthZero()
     {
         if (CurHealth <= 0)

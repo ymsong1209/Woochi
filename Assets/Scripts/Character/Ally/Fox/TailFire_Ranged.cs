@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 꼬리불 3,4열 일때는 적 2,3,4열을 대상으로 타격
+/// 타격된 적은 20%의 확률로 화상 디버프
+/// 원거리 스킬
+/// </summary>
 public class TailFire_Ranged : BaseSkill
 {
     public override void ActivateSkill(BaseCharacter _Opponent)

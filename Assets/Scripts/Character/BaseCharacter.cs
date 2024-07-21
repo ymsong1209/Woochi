@@ -172,10 +172,10 @@ public class BaseCharacter : MonoBehaviour
     /// buff gameobject는 instantiated되어서 opponent에 붙어있음.
     /// </summary>
     /// <returns></returns>
-    public virtual BaseBuff ApplyBuff(BaseCharacter _Opponent, BaseBuff _buff)
+    public virtual BaseBuff ApplyBuff(BaseCharacter caster, BaseCharacter receiver, BaseBuff _buff)
     {
 
-        BaseBuff activeBuff = _Opponent.FindMatchingBuff(_buff);
+        BaseBuff activeBuff = receiver.FindMatchingBuff(_buff);
 
         if (activeBuff)
         {
@@ -185,8 +185,8 @@ public class BaseCharacter : MonoBehaviour
         }
 
         // 새 버프 추가
-        BaseBuff new_buff = buffList.InstantiateBuffAtIcon(_Opponent, _buff);
-        new_buff.AddBuff(_Opponent);
+        BaseBuff new_buff = buffList.TransferBuffAtIcon(receiver, _buff);
+        new_buff.AddBuff(caster, receiver);
         return new_buff;
     }
     
@@ -263,33 +263,43 @@ public class BaseCharacter : MonoBehaviour
     {
         foreach (BaseBuff activeBuff in activeBuffs)
         {
-            if (activeBuff == null) continue;
+            if (activeBuff == null || activeBuff.BuffEffect != _buff.BuffEffect) continue;
 
-            if (activeBuff.BuffEffect == _buff.BuffEffect)
+            if (_buff.BuffEffect == BuffEffect.StatStrengthen || _buff.BuffEffect == BuffEffect.StatWeaken || _buff.BuffEffect == BuffEffect.DotCureByDamage)
             {
-                // 스탯 변경 버프는 스탯 변경 버프끼리
-                if (_buff.BuffEffect == BuffEffect.StatStrengthen || _buff.BuffEffect == BuffEffect.StatWeaken)
-                {
-                    StatBuff activeStatBuff = activeBuff as StatBuff;
-                    StatBuff statBuff = _buff as StatBuff;
-
-                    StatDeBuff activeStatDebuff = activeBuff as StatDeBuff;
-                    StatDeBuff statDebuff = _buff as StatDeBuff;
-
-                    if ((activeStatBuff != null && statBuff != null && activeStatBuff.StatBuffName == statBuff.StatBuffName) ||
-                        (activeStatDebuff != null && statDebuff != null && activeStatDebuff.StatBuffName == statDebuff.StatBuffName))
-                    {
-                        return activeBuff;
-                    }
-                }
-                else
+                if (IsMatchingStatBuff(activeBuff, _buff) || IsMatchingStatDeBuff(activeBuff, _buff) || IsMatchingDotCureByDamageBuff(activeBuff, _buff))
                 {
                     return activeBuff;
                 }
             }
+            else
+            {
+                return activeBuff;
+            }
         }
 
         return null;
+    }
+    
+    private bool IsMatchingStatBuff(BaseBuff activeBuff, BaseBuff _buff)
+    {
+        StatBuff activeStatBuff = activeBuff as StatBuff;
+        StatBuff statBuff = _buff as StatBuff;
+        return activeStatBuff != null && statBuff != null && activeStatBuff.StatBuffName == statBuff.StatBuffName;
+    }
+
+    private bool IsMatchingStatDeBuff(BaseBuff activeBuff, BaseBuff _buff)
+    {
+        StatDeBuff activeStatDebuff = activeBuff as StatDeBuff;
+        StatDeBuff statDebuff = _buff as StatDeBuff;
+        return activeStatDebuff != null && statDebuff != null && activeStatDebuff.StatBuffName == statDebuff.StatBuffName;
+    }
+
+    private bool IsMatchingDotCureByDamageBuff(BaseBuff activeBuff, BaseBuff _buff)
+    {
+        DotCureByDamageBuff activeDotHealBuff = activeBuff as DotCureByDamageBuff;
+        DotCureByDamageBuff dotHealBuff = _buff as DotCureByDamageBuff;
+        return activeDotHealBuff != null && dotHealBuff != null && activeDotHealBuff.BuffName == dotHealBuff.BuffName;
     }
 
     #endregion

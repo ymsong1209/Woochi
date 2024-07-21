@@ -17,42 +17,51 @@ public class MC_Charm : BaseSkill
    private void ActivateCharm(BaseCharacter opponent)
    {
        BaseCharacter mainCharacter = BattleManager.GetInstance.currentCharacter;
-       if (charm.CharmTargetType == CharmTargetType.Singular)
+       BaseCharm InstantiatedCharm = Instantiate(charm, mainCharacter.transform);
+    
+       if (InstantiatedCharm.CharmTargetType == CharmTargetType.Singular)
        {
-           charm.Activate(opponent);
+           InstantiatedCharm.Activate(opponent);
        }
-       else if (charm.CharmTargetType == CharmTargetType.SingularWithSelf)
+       else if (InstantiatedCharm.CharmTargetType == CharmTargetType.SingularWithSelf)
        {
-           charm.Activate(opponent);
+           InstantiatedCharm.Activate(opponent);
            if (opponent != mainCharacter)
            {
-               charm.Activate(mainCharacter);
+               BaseCharm newCharmInstance = Instantiate(charm, mainCharacter.transform);
+               newCharmInstance.Activate(mainCharacter);
            }
        }
-       else if (charm.CharmTargetType == CharmTargetType.Multiple)
+       else if (InstantiatedCharm.CharmTargetType == CharmTargetType.Multiple)
        {
-           for (int i = 0; i < charm.CharmRadius.Length; ++i)
+           for (int i = 0; i < InstantiatedCharm.CharmRadius.Length; ++i)
            {
-               if (charm.CharmRadius[i])
+               if (InstantiatedCharm.CharmRadius[i])
                {
                    BaseCharacter receiver = BattleManager.GetInstance.GetCharacterFromIndex(i);
-                   charm.Activate(receiver);
+                   BaseCharm newCharmInstance = Instantiate(charm, receiver.transform);
+                   newCharmInstance.Activate(receiver);
                }
            }
        }
-       else if (charm.CharmTargetType == CharmTargetType.MultipleWithSelf)
+       else if (InstantiatedCharm.CharmTargetType == CharmTargetType.MultipleWithSelf)
        {
-           charm.Activate(mainCharacter);
-           for (int i = 0; i < charm.CharmRadius.Length; ++i)
+           InstantiatedCharm.Activate(mainCharacter);
+           for (int i = 0; i < InstantiatedCharm.CharmRadius.Length; ++i)
            {
-               if (charm.CharmRadius[i])
+               if (InstantiatedCharm.CharmRadius[i])
                {
                    BaseCharacter receiver = BattleManager.GetInstance.GetCharacterFromIndex(i);
-                   if(receiver!= mainCharacter) charm.Activate(receiver);
+                   if (receiver != mainCharacter)
+                   {
+                       BaseCharm newCharmInstance = Instantiate(charm, receiver.transform);
+                       newCharmInstance.Activate(receiver);
+                   }
                }
            }
        }
    }
+
    
    private void PlayAnimation(BaseCharacter opponent)
    {

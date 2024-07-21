@@ -1169,6 +1169,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6047043372224912184, guid: 56a27495f0a512c408751da061e9230f, type: 3}
       propertyPath: testAlly.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047043372224912184, guid: 56a27495f0a512c408751da061e9230f, type: 3}
+      propertyPath: testAlly.Array.data[2]
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6047043372224912184, guid: 56a27495f0a512c408751da061e9230f, type: 3}

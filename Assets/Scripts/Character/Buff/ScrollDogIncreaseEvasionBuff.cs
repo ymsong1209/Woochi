@@ -29,7 +29,7 @@ public class ScrollDogIncreaseEvasionBuff : BaseBuff
             evasionBuff.BuffDurationTurns = -1;
             evasionBuff.ChanceToApplyBuff = 100;
             evasionBuff.ChangeStat.evasion = 2;
-            buffOwner.ApplyBuff(buffOwner,evasionBuff);
+            buffOwner.ApplyBuff(buffOwner,buffOwner,evasionBuff);
             evasionStack++;
         }
         return 0;

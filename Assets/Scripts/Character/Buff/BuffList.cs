@@ -6,7 +6,7 @@ public class BuffList : MonoBehaviour
 {
     [SerializeField] private BuffIcon[] buffIcons = new BuffIcon[(int)BuffEffect.END];
     
-    public BaseBuff InstantiateBuffAtIcon(BaseCharacter opponent, BaseBuff buff)
+    public BaseBuff TransferBuffAtIcon(BaseCharacter opponent, BaseBuff buff)
     {
         // Find the bufflistcanvas GameObject under the opponent
         Transform buffList = opponent.transform.Find("BuffList");
@@ -24,8 +24,9 @@ public class BuffList : MonoBehaviour
             targetBuffIcon.gameObject.SetActive(true);
             targetBuffIcon.Activate();
         }
-        BaseBuff instantiatedBuff = Instantiate(buff, targetBuffIcon.transform);
-        return instantiatedBuff;
+        //buff.gameobject를 targetBuffIcon의 자식으로 설정
+        buff.transform.SetParent(targetBuffIcon.transform, false);
+        return buff;
         
     }
 }

@@ -18,7 +18,7 @@ public class CH_MoveDebuff : BaseSkill
             BaseBuff buff = SkillOwner.activeBuffs[i];
             if (buff.BuffType == BuffType.Negative)
             {
-                opponent.ApplyBuff(opponent, buff);
+                opponent.ApplyBuff(buff.Caster, opponent, buff);
                 SkillOwner.RemoveBuffAtIndex(i);
                 IncreaseStat();
             }
@@ -36,7 +36,7 @@ public class CH_MoveDebuff : BaseSkill
         statBuff.ChangeStat.maxStat = 1;
         statBuff.ChangeStat.speed = 1;
         statBuff.ChangeStat.defense = 1;
-        SkillOwner.ApplyBuff(SkillOwner,statBuff);
+        SkillOwner.ApplyBuff(SkillOwner,SkillOwner,statBuff);
         SkillOwner.CheckForStatChange();
     }
     

@@ -73,10 +73,11 @@ public enum BuffEffect
     Stun,
     StatWeaken,
     StatStrengthen,
-    HealOverTime,
-    Protect, //보호를 해줄때
-    Shield, //보호받을때
-    IncreaseEvasionOvertime,//족자구 회피 증가 버프
+    DotCure,                    //도트힐
+    Protect,                    //보호를 해줄때
+    Shield,                     //보호받을때
+    IncreaseEvasionOvertime,    //족자구 회피 증가 버프
+    DotCureByDamage,            //피해량 기반으로 도트힐
     END
 }
 

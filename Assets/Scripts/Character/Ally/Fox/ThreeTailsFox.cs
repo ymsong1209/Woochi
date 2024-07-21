@@ -45,5 +45,11 @@ public class ThreeTailsFox : BaseCharacter
             InstantiateSkill(characterStat.Skills[4]);
         }
         // 3열과 4열중 어디에도 없을 경우 홀리기 없음
+        
+        // 푸른불꽃
+        if (characterIndex == 3)
+        {
+            InstantiateSkill(characterStat.Skills[6]);
+        }
     }
 }

@@ -5,16 +5,13 @@ using UnityEngine;
 
 public class BurnDebuff : BaseBuff
 {
-    public BurnDebuff()
-    {
-        buffEffect = BuffEffect.Burn;
-        buffType = BuffType.Negative;
-    }
+    private float burnDamage;
+    
     public override int ApplyTurnStartBuff()
     {
-        //전체체력에서 5%만큼 대미지를 줌
-        float burnDamage = buffOwner.Health.MaxHealth * 5f / 100f;
-        buffOwner.Health.ApplyDamage((int)Mathf.Round(burnDamage));
+        //전체체력에서 burnDamage%만큼 대미지를 줌
+        float burnAmount = buffOwner.Health.MaxHealth * burnDamage / 100f;
+        buffOwner.Health.ApplyDamage((int)Mathf.Round(burnAmount));
 
         --buffDurationTurns;
 
@@ -22,7 +19,7 @@ public class BurnDebuff : BaseBuff
 
         //checkdead는 캐릭터가 죽었을경우 true 반환
         //ApplyTurnStartBuff는 버프 실행 후 캐릭터가 살았으면 true 반환
-        return (int)Mathf.Round(burnDamage);
+        return (int)Mathf.Round(burnAmount);
     }
 
     //화상 스택이 쌓일 경우 지속 시간이 3턴만큼 늘어난다.
@@ -37,4 +34,12 @@ public class BurnDebuff : BaseBuff
         text.text = description;
         text.color = Color.red;
     }
+    
+    public BurnDebuff()
+    {
+        buffEffect = BuffEffect.Burn;
+        buffType = BuffType.Negative;
+        burnDamage = 5f;
+    }
+    
 }

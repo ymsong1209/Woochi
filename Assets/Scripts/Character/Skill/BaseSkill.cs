@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -101,6 +102,11 @@ public class BaseSkill : MonoBehaviour
         { 
             ApplyMultiple();
         }
+        
+        foreach(var obj in instantiatedBuffList)
+        {
+            Destroy(obj);
+        }
         instantiatedBuffList.Clear();
 
         BattleManager.GetInstance.OnShakeCamera?.Invoke(skillResult.isHit, skillResult.isCrit);
@@ -137,8 +143,9 @@ public class BaseSkill : MonoBehaviour
         foreach (GameObject applyBuffGameObject in instantiatedBuffList)
         {
             if (!applyBuffGameObject) continue;
+            GameObject clonedbuff = Instantiate(applyBuffGameObject);
 
-            BaseBuff buffToApply = applyBuffGameObject.GetComponent<BaseBuff>();
+            BaseBuff buffToApply = clonedbuff.GetComponent<BaseBuff>();
             if (!buffToApply) continue;
 
             // 버프 적용 가능 여부 판단
@@ -147,7 +154,7 @@ public class BaseSkill : MonoBehaviour
             // 치명타 여부에 따라 저항 무시 또는 저항 수치 판단
             if (isCrit || CheckResist(_opponent))
             {
-                ApplyBuff(_opponent, buffToApply);
+                _opponent.ApplyBuff(skillOwner, _opponent, buffToApply);
             }
         }
     }
@@ -319,115 +326,7 @@ public class BaseSkill : MonoBehaviour
         if (RandomValue < skillOwner.Stat.crit) return true;
         return false;
     }
-
-    /// <summary>
-    /// buff gameobject는 instantiated되어서 opponent에 붙어있음.
-    /// </summary>
-    /// <returns></returns>
-    public virtual BaseBuff ApplyBuff(BaseCharacter _Opponent, BaseBuff _buff)
-    {
-        
-        BaseBuff activeBuff = FindMatchingBuff(_Opponent, _buff);
-
-        if (activeBuff)
-        {
-            // 기존 버프와 중첩
-            activeBuff.StackBuff(_buff);
-            return activeBuff;
-        }
-
-        // 새 버프 추가
-        BaseBuff new_buff = InstantiateBuffAtIcon(_Opponent, _buff);
-        new_buff.AddBuff(_Opponent);
-        return new_buff;
-    }
-
-    BaseBuff InstantiateBuffAtIcon(BaseCharacter opponent, BaseBuff buff)
-    {
-        // Find the bufflistcanvas GameObject under the opponent
-        Transform buffList = opponent.transform.Find("BuffList");
-        if (buffList == null)
-        {
-            Debug.LogError("buffList not found under opponent" + opponent.gameObject.name.ToString());
-            return null;
-        }
-        
-        // 모든 자손을 순회하여 알맞은 uffIcon을 찾음
-        Transform targetChild = FindBuffIconTransform(buffList, buff.BuffEffect);
-        if (targetChild == null)
-        {
-            Debug.LogError("No matching BuffIcon found under BuffListCanvas");
-            return null;
-        }
     
-        BuffIcon buffIcon = targetChild.GetComponent<BuffIcon>();
-        if (buffIcon != null && !buffIcon.gameObject.activeSelf)
-        {
-            buffIcon.gameObject.SetActive(true);
-            buffIcon.Activate();
-        }
-        
-        BaseBuff instantiatedBuff = Instantiate(buff, targetChild);
-        return instantiatedBuff;
-    }
-    
-    // 재귀적으로 BuffIcon을 찾는 메서드
-    Transform FindBuffIconTransform(Transform parent, BuffEffect buffEffect)
-    {
-        for (int i = 0; i < parent.childCount; i++)
-        {
-            Transform child = parent.GetChild(i);
-            BuffIcon buffIcon = child.GetComponent<BuffIcon>();
-
-            if (buffIcon != null && buffIcon.BuffEffect == buffEffect)
-            {
-                return child;
-            }
-
-            Transform foundChild = FindBuffIconTransform(child, buffEffect);
-            if (foundChild != null)
-            {
-                return foundChild;
-            }
-        }
-        return null;
-    }
-    
-    /// <summary>
-    /// opponent의 activebuffs에서 _buff와 같은 버프를 찾아 반환
-    /// </summary>
-    private BaseBuff FindMatchingBuff(BaseCharacter _Opponent, BaseBuff _buff)
-    {
-        foreach (BaseBuff activeBuff in _Opponent.activeBuffs)
-        {
-            if (activeBuff == null) continue;
-
-            if (activeBuff.BuffEffect == _buff.BuffEffect)
-            {
-                // 스탯 변경 버프는 스탯 변경 버프끼리
-                if (_buff.BuffEffect == BuffEffect.StatStrengthen || _buff.BuffEffect == BuffEffect.StatWeaken)
-                {
-                    StatBuff activeStatBuff = activeBuff as StatBuff;
-                    StatBuff statBuff = _buff as StatBuff;
-
-                    StatDeBuff activeStatDebuff = activeBuff as StatDeBuff;
-                    StatDeBuff statDebuff = _buff as StatDeBuff;
-
-                    if ((activeStatBuff != null && statBuff != null && activeStatBuff.StatBuffName == statBuff.StatBuffName) ||
-                        (activeStatDebuff != null && statDebuff != null && activeStatDebuff.StatBuffName == statDebuff.StatBuffName))
-                    {
-                        return activeBuff;
-                    }
-                }
-                else
-                {
-                    return activeBuff;
-                }
-            }
-        }
-
-        return null;
-    }
 
     protected virtual void ApplyStat(BaseCharacter _opponent, bool _isCrit)
     {
@@ -445,7 +344,8 @@ public class BaseSkill : MonoBehaviour
                 //방어 스탯을 뺌
                 RandomStat = RandomStat * (100 - _opponent.Stat.defense) / 100;
                 if (_isCrit) RandomStat = RandomStat * 2;
-
+                //TODO : 버프 순회해서 스킬 속성에 따라 감소되는 버프를 확인해서 최종대미지에서 감소
+                
                 opponentHealth.ApplyDamage((int)Mathf.Round(RandomStat), _isCrit);
                 _opponent.CheckDeadAndPlayAnim();
             }
