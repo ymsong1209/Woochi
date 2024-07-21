@@ -10,7 +10,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     private BattleState         CurState;
     public  BaseCharacter       currentCharacter;               //현재 누구 차례인지
     private BaseSkill           currentSelectedSkill;           //현재 선택된 스킬
-    private int                 currentRound;                   //현재 몇 라운드인지    
+    private int                 currentRound;                   //현재 몇 라운드인지
+    private int                 hardShip;                       // 역경 수치
 
     /// <summary>
     /// 아군이랑 적군의 싸움 순서
@@ -26,6 +27,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     [Header("Object")]
     [SerializeField] private AllyCardList allyCards;
     [SerializeField] private Abnormal abnormal;     // 현재 노드의 이상(기본값 : None)
+    [SerializeField] private BattleReward reward;   // 전투 보상
 
     #region 이벤트
     /// <summary>
@@ -99,6 +101,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         currentRound = 0;
         combatQueue.Clear();
         processedCharacters.Clear();
+        hardShip = 0;
 
         var enemyList = GameManager.GetInstance.Library.GetCharacterList(enemyIDs);
         enemies.Initialize(enemyList);
@@ -549,6 +552,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         if (_victory)
         {
             //승리 화면 뜬 후 보상 정산
+            reward.ShowReward(10);
         }
         else
         {
