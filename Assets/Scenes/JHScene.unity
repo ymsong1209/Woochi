@@ -474,6 +474,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3148756985082773213, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
   m_PrefabInstance: {fileID: 6980557996798469671}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &643002637 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3634306318294711453, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
+  m_PrefabInstance: {fileID: 6980557996798469671}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc0b486bf8c82f4cad200ba50e759c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &715012379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,6 +1192,10 @@ PrefabInstance:
       propertyPath: allies
       value: 
       objectReference: {fileID: 1321433242}
+    - target: {fileID: 6047043372224912184, guid: 56a27495f0a512c408751da061e9230f, type: 3}
+      propertyPath: reward
+      value: 
+      objectReference: {fileID: 643002637}
     - target: {fileID: 6047043372224912184, guid: 56a27495f0a512c408751da061e9230f, type: 3}
       propertyPath: enemies
       value: 

@@ -567,7 +567,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         
         //적군 삭제
         enemies.CleanUp();
-        combatQueue.Clear();
 
         // ToDo : 결과창에서 확인버튼 누르고 지도 다시 띄워야 함
         // 테스트 코드
