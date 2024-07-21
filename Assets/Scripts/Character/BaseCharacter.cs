@@ -77,7 +77,6 @@ public class BaseCharacter : MonoBehaviour
         anim = GetComponent<BaseCharacterAnimation>();
         collider = GetComponent<BaseCharacterCollider>();
         buffList = GetComponentInChildren<BuffList>();
-        sprite = transform.Find("Sprite").GetComponent<SpriteRenderer>();
 
         isSummoned = isStarting;
     }
@@ -403,7 +402,6 @@ public class BaseCharacter : MonoBehaviour
     public int Size => characterStat.size;
     public int Cost => characterStat.cost;
     public Health Health => health;
-    public SpriteRenderer Sprite => sprite;
     public Stat Stat => stat;
 
     public bool IsDead => isDead;

@@ -107,7 +107,6 @@ public class Formation : MonoBehaviour
             if (formation[index] == null) return;
 
             BaseCharacter character = formation[index];
-            character.Sprite.sortingOrder = index;
 
             if(character.Size == 1)
             {
