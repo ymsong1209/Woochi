@@ -5,8 +5,8 @@ using OneLine;
 [System.Serializable]
 public class RandomList<T>
 {
-    [OneLineWithHeader, SerializeField]
-    private List<RandomObject<T>> list;
+    [OneLineWithHeader]
+    public List<RandomObject<T>> list;
 
     /// <summary>
     /// 정해진 확률대로 얻어오는 함수

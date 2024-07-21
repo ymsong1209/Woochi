@@ -154,3 +154,13 @@ public enum SceneType
     Loading,
     END
 }
+
+public enum RareType
+{
+    Lowest,
+    Low,
+    Middle,
+    High,
+    Highest,
+    END
+}

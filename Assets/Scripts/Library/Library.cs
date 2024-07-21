@@ -12,7 +12,7 @@ public class Library : ScriptableObject
     [OneLineWithHeader, SerializeField] private List<Entry<GameObject>> characters;
     public GameObject GetCharacter(int id)
     {
-        if(id < 0)
+        if (id < 0)
         {
             Debug.Log("Library: ID out of range");
             return null;
@@ -25,11 +25,11 @@ public class Library : ScriptableObject
     {
         List<GameObject> list = new List<GameObject>();
 
-        foreach(int id in IDs)
+        foreach (int id in IDs)
         {
             GameObject entry = GetCharacter(id);
 
-            if(entry != null)
+            if (entry != null)
                 list.Add(entry);
         }
 
@@ -42,7 +42,7 @@ public class Library : ScriptableObject
 
     public Abnormal GetAbnormal(int id)
     {
-        if(id < 0)
+        if (id < 0)
         {
             Debug.Log("Library: ID out of range");
             return null;
@@ -52,12 +52,23 @@ public class Library : ScriptableObject
     }
     #endregion
 
+    #region Reward
+    [SerializeField] private RewardList[] rewardLists;
+
+    public Reward GetReward(RareType rarity)
+    {
+        var list = rewardLists[(int)rarity].rewards;
+
+        return list.Random();
+    }
+
+    #endregion
     /// <summary>
     /// 구글 스프레드 시트의 데이터를 가져와서 스크립터블 초기화 -> 딱 한번만
     /// </summary>
     public void Initialize()
     {
-        foreach(var character in characters)
+        foreach (var character in characters)
         {
             if (character.value == null) continue;
 
@@ -65,7 +76,7 @@ public class Library : ScriptableObject
             baseCharacter.InitializeStatSO();
         }
 
-        foreach(var abnormal in abnormals)
+        foreach (var abnormal in abnormals)
         {
             abnormal.value.Initialize();
         }
@@ -75,6 +86,13 @@ public class Library : ScriptableObject
 [System.Serializable]
 public class Entry<T>
 {
-    public int  ID;
-    public T    value;
+    public int ID;
+    public T value;
+}
+
+[System.Serializable]
+public class RewardList
+{
+    public RareType rarity;
+    public List<Reward> rewards;
 }
