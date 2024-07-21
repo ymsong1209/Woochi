@@ -8,7 +8,9 @@ public class ScrollDog : BaseEnemy
     public override void Initialize()
     {
         base.Initialize();
-        ApplyBuff(this,this,evasionBuff);
+        GameObject instantiatedEvasionBuff = Instantiate(evasionBuff.gameObject, transform);
+        ScrollDogIncreaseEvasionBuff roarBuff = instantiatedEvasionBuff.GetComponent<ScrollDogIncreaseEvasionBuff>();
+        ApplyBuff(this,this,roarBuff);
     }
     
     public override void TriggerAI()

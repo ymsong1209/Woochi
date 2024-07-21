@@ -49,13 +49,5 @@ MonoBehaviour:
   buffEffect: 8
   buffType: 1
   chanceToApplyBuff: 0
-  changeDefense: 0
-  changeCrit: 0
-  changeAccuracy: 0
-  changeEvasion: 0
-  changeResist: 0
-  changeMinStat: 0
-  changeMaxStat: 0
-  changeSpeed: 0
-  evasionBuffGameObject: {fileID: 2569674945298275565, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+  statBuffGameObject: {fileID: 2569674945298275565, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
   evasionStack: 0
