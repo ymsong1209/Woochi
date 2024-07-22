@@ -19,7 +19,7 @@ public class TitleScene : MonoBehaviour
         testBtn.onClick.AddListener(Test);
         #endregion
 
-        continueBtn.interactable = (DataCloud.playerData.currentMap != null);
+        continueBtn.interactable = DataCloud.playerData.hasSaveData;
     }
 
     public void Departure(bool isBegin)

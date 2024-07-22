@@ -23,8 +23,7 @@ public class AllyCardList : MonoBehaviour
     /// <param name="_allies">우치의 소환수 목록(아직 fix된게 없기에 임시임)</param>
     public void Initialize(AllyFormation _allies)
     {
-        List<BaseCharacter> characters = _allies.GetCharacters();
-        characters.AddRange(_allies.waitingCharacter);
+        List<BaseCharacter> characters = _allies.GetAllies();
 
         for(int i = 0; i < cards.Count; i++)
         {

@@ -91,6 +91,7 @@ public class Health : MonoBehaviour
         set 
         { 
             curHealth = value; 
+            owner.Stat.curHealth = value;
             owner.onHealthChanged?.Invoke();
         }
     }

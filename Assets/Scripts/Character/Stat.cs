@@ -4,7 +4,9 @@ using UnityEngine;
 [System.Serializable]
 public class Stat
 {
-    [ReadOnly(true)] public int health;
+    [ReadOnly(true)] public int Exp;
+    [ReadOnly(true)] public int maxHealth;
+    [ReadOnly(true)] public int curHealth;
     [ReadOnly(true)] public int speed;
     [ReadOnly(true)] public float defense;
     [ReadOnly(true)] public float crit;
@@ -16,12 +18,13 @@ public class Stat
 
     public Stat()
     {
-        health = 0; speed = 0; defense = 0; crit = 0; accuracy = 0; evasion = 0; resist = 0; minStat = 0; maxStat = 0;
+        Exp = 0; maxHealth = 0; curHealth = 0; speed = 0; defense = 0; crit = 0; accuracy = 0; evasion = 0; resist = 0; minStat = 0; maxStat = 0;
     }
 
     public Stat(CharacterData data)
     {
-        health = Mathf.Clamp(data.health, 0, 999);
+        maxHealth = Mathf.Clamp(data.health, 0, 999);
+        curHealth = maxHealth;
         speed = Mathf.Clamp(data.speed, 0, 999);
         defense = Mathf.Clamp(data.defense, 0, 999);
         crit = Mathf.Clamp(data.crit, 0, 999);
@@ -34,7 +37,9 @@ public class Stat
 
     public Stat(Stat stat)
     {
-        health = stat.health;
+        Exp = stat.Exp;
+        maxHealth = stat.maxHealth;
+        curHealth = stat.curHealth;
         speed = stat.speed;
         defense = stat.defense;
         crit = stat.crit;
@@ -48,7 +53,9 @@ public class Stat
     public static Stat operator+(Stat a, Stat b)
     {
         Stat result = new Stat();
-        result.health   = Mathf.Clamp(a.health + b.health, 0, 999);
+        result.Exp      = Mathf.Clamp(a.Exp + b.Exp, 0, 999);
+        result.maxHealth   = Mathf.Clamp(a.maxHealth + b.maxHealth, 0, 999);
+        result.curHealth   = Mathf.Clamp(a.curHealth + b.curHealth, 0, 999);
         result.speed    = Mathf.Clamp(a.speed + b.speed, 0, 999);
         result.defense  = Mathf.Clamp(a.defense + b.defense, 0, 999);
         result.crit     = Mathf.Clamp(a.crit + b.crit, 0, 999);

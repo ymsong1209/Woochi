@@ -48,10 +48,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     #endregion
 
 #if UNITY_EDITOR
-    // 테스트해보고 싶은 아군, 적 캐릭터들이 있을 때 사용
+    // 테스트해보고 싶은 적 캐릭터들이 있을 때 사용
     [Header("Test")]
     [SerializeField] private bool isTest = false;
-    [SerializeField] private int[] testAlly;
     [SerializeField] private int[] testEnemy;
 #endif
 
@@ -59,18 +58,13 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         CurState = BattleState.IDLE;
 
+        InitializeAlly();
         #region 테스트할 수 있게
 #if UNITY_EDITOR
         if (isTest)
         {
             DataCloud.dontSave = true;
-
-            InitializeAlly(testAlly);
             InitializeBattle(testEnemy);
-        }
-        else
-        {
-            InitializeAlly(DataCloud.playerData.formation);    
         }
 #else
         InitializeAlly(DataCloud.playerData.formation);
@@ -78,9 +72,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         #endregion
     }
 
-    private void InitializeAlly(int[] allyIDs)
+    private void InitializeAlly()
     {
+        var allyIDs = DataCloud.playerData.battleData.allies.ToArray();
         var allyList = GameManager.GetInstance.Library.GetCharacterList(allyIDs);
+
         allies.Initialize(allyList);
         allyCards.Initialize(allies);
     }
@@ -559,14 +555,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             //패배 화면 뜨기
         }
 
-        foreach (BaseCharacter ally in allies.formation)
-        {
-            ally.TriggerBuff(BuffTiming.BattleEnd);
-            ally.RemoveAllBuff();
-        }
-        
-        //적군 삭제
-        enemies.CleanUp();
+        allies.BattleEnd(); enemies.BattleEnd();
+
+        allies.SaveBattleData();
 
         // ToDo : 결과창에서 확인버튼 누르고 지도 다시 띄워야 함
         // 테스트 코드

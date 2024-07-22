@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Health))]
@@ -23,12 +24,9 @@ public class BaseCharacter : MonoBehaviour
     #endregion Header CHARACTER STATS
     #region Character Stats
     [SerializeField]            private Health  health;
-    private SpriteRenderer sprite;   
     [SerializeField]            private Stat    stat;
     #endregion
-
    
-    [Tooltip("특정 위치에서 Spawn되게 하고 싶으면 값 입력.")]
     [SerializeField] bool isMainCharacter = false;
     
     #region Header BATTLE STATS
@@ -56,7 +54,6 @@ public class BaseCharacter : MonoBehaviour
     protected bool isIdle = true;
 
     public bool isDummy = false;      // 더미 캐릭터인지
-    public bool isStarting = false;     // 캐릭터가 전투 시작시 소환될건지
     [HideInInspector] public bool isSummoned = false;     // 캐릭터가 소환되었는지
 
     // 캐릭터가 앞 열에서부터 몇 번째 순서인지
@@ -77,8 +74,6 @@ public class BaseCharacter : MonoBehaviour
         anim = GetComponent<BaseCharacterAnimation>();
         collider = GetComponent<BaseCharacterCollider>();
         buffList = GetComponentInChildren<BuffList>();
-
-        isSummoned = isStarting;
     }
 
     public virtual void CheckSkillsOnTurnStart()
@@ -320,14 +315,23 @@ public class BaseCharacter : MonoBehaviour
     
     protected void InitializeStat()
     {
-        stat = characterStat.BaseStat;
+        // 세이브 데이터가 있고 아군이면 세이브 데이터에서 스탯을 가져와야 함
+        if (DataCloud.playerData.hasSaveData && IsAlly)
+        {
+            StatData statData = DataCloud.playerData.battleData.statData.FirstOrDefault(s => s.ID == ID);
+            stat = new Stat(statData.stat);
+        }
+        else
+        {
+            stat = new Stat(characterStat.BaseStat);
+        }
     }
 
     protected void InitializeHealth()
     {
         health = GetComponent<Health>();
-        health.MaxHealth = stat.health;
-        health.CurHealth = stat.health;
+        health.MaxHealth = stat.maxHealth;
+        health.CurHealth = stat.curHealth;
     }
 
     protected virtual void InitializeSkill()
@@ -397,6 +401,7 @@ public class BaseCharacter : MonoBehaviour
     #endregion
 
     #region Getter Setter
+    public int ID => characterStat.ID;
     public Sprite Portrait => characterStat.portrait;
     public string Name => characterStat.characterName;
     public int Size => characterStat.size;

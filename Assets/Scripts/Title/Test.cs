@@ -29,7 +29,7 @@ public class Test : MonoBehaviour
             }
         }
 
-        DataCloud.playerData.formation = idList;
+        DataCloud.playerData.battleData.formation = idList;
 
         gameObject.SetActive(false);
     }
