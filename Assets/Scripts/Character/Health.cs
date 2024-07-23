@@ -1,22 +1,18 @@
-using System;
+using Newtonsoft.Json;
 using UnityEngine;
-using UnityEngine.Events;
 
-
-[DisallowMultipleComponent]
-public class Health : MonoBehaviour
+[System.Serializable]
+public class Health
 {
-    private BaseCharacter owner;
-    [SerializeField] private int maxHealth;
-    [SerializeField] private int curHealth;
-    [SerializeField] private int shield;
+    [JsonIgnore] private BaseCharacter owner;
+    [SerializeField, ReadOnly] private int maxHealth;
+    [SerializeField, ReadOnly] private int curHealth;
+    [SerializeField, ReadOnly] private int shield;
 
-
-    private void Awake()
+    public Health(BaseCharacter _owner)
     {
-        owner = GetComponent<BaseCharacter>();
+        owner = _owner;
     }
-
     /// <summary>
     /// 대미지를 받는 공식, _penetrate가 true일 경우에는 쉴드를 뚫는 관통형 대미지
     /// </summary>
@@ -91,20 +87,9 @@ public class Health : MonoBehaviour
         set 
         { 
             curHealth = value; 
-            owner.Stat.curHealth = value;
             owner.onHealthChanged?.Invoke();
         }
     }
 
     #endregion
-
-    #region Validation
-    private void OnValidate()
-    {
-        if(maxHealth < curHealth)
-        {
-            Debug.Log("Maxhealth is below than Curhealth in " + this.gameObject.name);
-        }
-    }
-    #endregion Validation
 }

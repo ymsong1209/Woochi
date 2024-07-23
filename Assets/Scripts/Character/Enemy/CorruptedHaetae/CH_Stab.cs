@@ -15,7 +15,7 @@ public class CH_Stab : BaseSkill
     
     protected override void ApplyStat(BaseCharacter _opponent, bool _isCrit)
     {
-        Health opponentHealth = _opponent.gameObject.GetComponent<Health>();
+        Health opponentHealth = _opponent.Health;
         //최소, 최대 대미지 사이의 수치를 고름
         
         float RandomStat = Random.Range(SkillOwner.Stat.minStat, SkillOwner.Stat.maxStat);

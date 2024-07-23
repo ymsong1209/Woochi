@@ -6,7 +6,7 @@ public class Tiger_Rip : BaseSkill
 {
     protected override void ApplyStat(BaseCharacter _opponent, bool _isCrit)
     {
-        Health opponentHealth = _opponent.gameObject.GetComponent<Health>();
+        Health opponentHealth = _opponent.Health;
         //최소, 최대 대미지 사이의 수치를 고름
 
         float randomStat = Random.Range(SkillOwner.Stat.minStat, SkillOwner.Stat.maxStat);
