@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class StatBuff : BaseBuff
 {
-    public string StatBuffName;
-
     #region 변화된 스탯들의 수치
     [SerializeField] protected Stat changeStat;
     #endregion 변화된 스탯들
@@ -43,11 +41,11 @@ public class StatBuff : BaseBuff
         string description = "";
         if(BuffDurationTurns == -1)
         {
-            description = StatBuffName + ": ";
+            description = buffName + ": ";
         }
         else
         {
-            description =  StatBuffName + BuffDurationTurns+": ";
+            description =  buffName + BuffDurationTurns+": ";
         }
         if (changeStat.defense > 0)
         {

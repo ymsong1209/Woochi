@@ -24,7 +24,7 @@ public class TF_BodySlam : BaseSkill
             //씨름꾼의 끈기 버프 중첩시 지속 시간과 수치 중첩
             GameObject instantiatedGritbuff = Instantiate(gritBuffGameObject, transform);
             StatBuff gritbuff = instantiatedGritbuff.GetComponent<StatBuff>();
-            gritbuff.StatBuffName = "씨름꾼의 끈기";
+            gritbuff.BuffName = "씨름꾼의 끈기";
             gritbuff.BuffDurationTurns = 2;
             gritbuff.ChangeStat.defense = 2;
             SkillOwner.ApplyBuff(SkillOwner,SkillOwner,gritbuff);

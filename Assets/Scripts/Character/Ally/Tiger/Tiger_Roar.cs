@@ -11,7 +11,7 @@ public class Tiger_Roar : BaseSkill
         GameObject statDebuffPrefab = BuffPrefabList[0];
         GameObject statDebuffGameObject = Instantiate(statDebuffPrefab, transform);
         StatDeBuff statDebuff = statDebuffGameObject.GetComponent<StatDeBuff>();
-        statDebuff.StatBuffName = "위축";
+        statDebuff.BuffName = "위축";
         statDebuff.BuffDurationTurns = 2;
         statDebuff.ChanceToApplyBuff = 100;
         statDebuff.ChangeStat.accuracy = -5;
@@ -27,7 +27,7 @@ public class Tiger_Roar : BaseSkill
         base.ApplyMultiple();
         GameObject instantiatedRoarbuff = Instantiate(roarBuffGameObject, transform);
         StatBuff roarBuff = instantiatedRoarbuff.GetComponent<StatBuff>();
-        roarBuff.StatBuffName = "산군의포효";
+        roarBuff.BuffName = "산군의포효";
         roarBuff.BuffDurationTurns = 3;
         roarBuff.ChanceToApplyBuff = 100;
         roarBuff.ChangeStat.defense = 5;

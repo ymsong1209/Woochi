@@ -43,7 +43,7 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                     StatBuff statStrengthenBuff = _buff as StatBuff;
                     // child가 statstrengthen인지 확인
                     if (statStrengthenBuff && childStatStrengthenBuff 
-                                           && statStrengthenBuff.StatBuffName == childStatStrengthenBuff.StatBuffName)
+                                           && statStrengthenBuff.BuffName == childStatStrengthenBuff.BuffName)
                     {
                         childStatStrengthenBuff.transform.parent = null;
                     }
@@ -58,7 +58,7 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                     StatDeBuff statWeakenBuff = _buff as StatDeBuff;
                     // child가 statweaken인지 확인
                     if (statWeakenBuff && childStatWeakenBuff 
-                                       && statWeakenBuff.StatBuffName == childStatWeakenBuff.StatBuffName)
+                                       && statWeakenBuff.BuffName == childStatWeakenBuff.BuffName)
                     {
                         childStatWeakenBuff.transform.parent = null;
                     }

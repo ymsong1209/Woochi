@@ -27,7 +27,7 @@ public class CH_MoveDebuff : BaseSkill
 
     private void IncreaseStat()
     {
-        statBuff.StatBuffName = "부정한 율법";
+        statBuff.BuffName = "부정한 율법";
         statBuff.BuffDurationTurns = -1;
         statBuff.ChangeStat.accuracy = 1;
         statBuff.ChangeStat.crit = 1;
