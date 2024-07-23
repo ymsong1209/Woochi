@@ -391,6 +391,8 @@ public class BaseCharacter : MonoBehaviour
     public Health Health => health;
     public SpriteRenderer Sprite => sprite;
     public Stat Stat => stat;
+    
+    public BuffList BuffList => buffList;
 
     public bool IsDead => isDead;
     public bool IsAlly

@@ -9,6 +9,7 @@ using UnityEngine.Serialization;
 public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [FormerlySerializedAs("buffType")] [SerializeField] private BuffEffect buffEffect;
+    [SerializeField] private BuffType bufftype;
     [SerializeField] private Animator animator;
    
 
@@ -22,55 +23,7 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         gameObject.SetActive(false);
     }
-
-    public void CheckChildBuffs(BaseBuff _buff)
-    {
-        // Check if buffType is not statstrengthen or statweaken
-        if (buffEffect != BuffEffect.StatStrengthen && buffEffect != BuffEffect.StatWeaken)
-        {
-            //부모 자식 연결 해제
-            _buff.transform.parent = null;
-            DeActivate();
-        }
-        else
-        {
-            if (_buff.BuffEffect == BuffEffect.StatStrengthen)
-            {
-                for (int i = 0; i < transform.childCount; i++)
-                {
-                    BaseBuff childBuff = transform.GetChild(i).GetComponent<BaseBuff>();
-                    StatBuff childStatStrengthenBuff = childBuff as StatBuff;
-                    StatBuff statStrengthenBuff = _buff as StatBuff;
-                    // child가 statstrengthen인지 확인
-                    if (statStrengthenBuff && childStatStrengthenBuff 
-                                           && statStrengthenBuff.BuffName == childStatStrengthenBuff.BuffName)
-                    {
-                        childStatStrengthenBuff.transform.parent = null;
-                    }
-                }
-            }
-            else if (_buff.BuffEffect == BuffEffect.StatWeaken)
-            {
-                for (int i = 0; i < transform.childCount; i++)
-                {
-                    BaseBuff childBuff = transform.GetChild(i).GetComponent<BaseBuff>();
-                    StatDeBuff childStatWeakenBuff = childBuff as StatDeBuff;
-                    StatDeBuff statWeakenBuff = _buff as StatDeBuff;
-                    // child가 statweaken인지 확인
-                    if (statWeakenBuff && childStatWeakenBuff 
-                                       && statWeakenBuff.BuffName == childStatWeakenBuff.BuffName)
-                    {
-                        childStatWeakenBuff.transform.parent = null;
-                    }
-                }
-            }
-            
-            if (transform.childCount == 0)
-            {
-                DeActivate();
-            }
-        }
-    }
+    
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -135,10 +88,7 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     
     #region Getter Setter
     public BuffEffect BuffEffect => buffEffect;
-    // public BuffType SkillOwner
-    // {
-    //     get { return skillOwner; }
-    //     set { skillOwner = value; }
-    // }
+    public BuffType BuffType => bufftype;
+
     #endregion
 }

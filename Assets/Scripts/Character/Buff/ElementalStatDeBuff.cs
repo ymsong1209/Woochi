@@ -1,26 +1,27 @@
 using TMPro;
 using UnityEngine;
 
-public class ElementalStatBuff : BaseBuff
+public class ElementalStatDeBuff : BaseBuff
 {
     [SerializeField] private SkillElement element;
     [SerializeField] private float changeStat;
-    public ElementalStatBuff()
+    
+    public ElementalStatDeBuff()
     {
-        buffEffect = BuffEffect.ElementalStatStrengthen;
-        buffType = BuffType.Positive;
+        buffEffect = BuffEffect.ElementalStatWeaken;
+        buffType = BuffType.Negative;
         element = SkillElement.Defualt;
     }
     
     public override void StackBuff(BaseBuff inputBuff)
     {
-        ElementalStatBuff elementalStatBuff = inputBuff as ElementalStatBuff;
-        if (!elementalStatBuff || elementalStatBuff.BuffName!= this.BuffName || elementalStatBuff.element!= this.element) return;
+        ElementalStatDeBuff elementalStatDeBuff = inputBuff as ElementalStatDeBuff;
+        if (!elementalStatDeBuff || elementalStatDeBuff.BuffName!= this.BuffName || elementalStatDeBuff.element!= this.element) return;
         //중첩시키려는 버프의 지속시간이 무한인경우 기존 버프 지속시간 무한으로 변경
         if(inputBuff.BuffDurationTurns == -1) base.buffDurationTurns = -1;
         //아닐 경우 버프 지속시간은 갱신
         else base.buffDurationTurns = inputBuff.BuffDurationTurns;
-        changeStat = elementalStatBuff.ChangeStat;
+        changeStat = elementalStatDeBuff.ChangeStat;
     }
     
     public override void SetBuffDescription(TextMeshProUGUI text)
@@ -58,9 +59,9 @@ public class ElementalStatBuff : BaseBuff
                 break;
         }
 
-        description += " " + changeStat + "만큼 증가\n";
+        description += " " + changeStat + "만큼 감소\n";
         text.text += description;
-        text.color = Color.blue;
+        text.color = Color.red;
     }
 
 

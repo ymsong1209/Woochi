@@ -337,6 +337,7 @@ public class BaseSkill : MonoBehaviour
             case SkillType.Attack:
             {
                 float Damage = CalculateDamage(receiver, isCrit);
+                Damage = Mathf.Clamp(CalculateElementalDamageBuff(Damage),0,9999);
                 opponentHealth.ApplyDamage((int)Mathf.Round(Damage), isCrit);
                 receiver.CheckDeadAndPlayAnim();
             }
@@ -364,6 +365,28 @@ public class BaseSkill : MonoBehaviour
         return RandomStat;
     }
     
+    protected float CalculateElementalDamageBuff(float damage)
+    {
+        foreach (BaseBuff buff in SkillOwner.activeBuffs)
+        {
+            if (buff.BuffEffect == BuffEffect.ElementalStatStrengthen ||
+                buff.BuffEffect == BuffEffect.ElementalStatWeaken)
+            {
+                ElementalStatBuff elementalStatBuff = buff as ElementalStatBuff;
+                if (elementalStatBuff && elementalStatBuff.Element == skillSO.SkillElement)
+                {
+                    damage += elementalStatBuff.ChangeStat;
+                }
+                ElementalStatDeBuff elementalStatDeBuff = buff as ElementalStatDeBuff;
+                if (elementalStatDeBuff && elementalStatDeBuff.Element == skillSO.SkillElement)
+                {
+                    damage += elementalStatDeBuff.ChangeStat;
+                }
+            }
+        }
+
+        return damage;
+    }
     protected virtual float CalculateHeal(BaseCharacter receiver, bool isCrit)
     {
         float RandomStat = Random.Range(skillOwner.Stat.minStat, skillOwner.Stat.maxStat);
