@@ -18,7 +18,6 @@ public class CH_DisasterImage : BaseSkill
         statDebuff.ChangeStat.maxStat = -2;
         statDebuff.ChangeStat.speed = -2;
         instantiatedBuffList.Add(statDebuffGameObject);
-        BaseCharacter opponent = BattleUtils.FindRandomAlly(0, 1, 2, 3);
-        base.ActivateSkill(opponent);
+        base.ActivateSkill(_Opponent);
     }
 }

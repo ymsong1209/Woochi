@@ -94,19 +94,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4040513414615381807, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Size.x
-      value: 5.063649
+      value: 5.2559195
       objectReference: {fileID: 0}
     - target: {fileID: 4040513414615381807, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Size.y
-      value: 5.967678
+      value: 5.7113175
       objectReference: {fileID: 0}
     - target: {fileID: 4040513414615381807, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Offset.x
-      value: -0.03182459
+      value: -0.06386936
       objectReference: {fileID: 0}
     - target: {fileID: 4040513414615381807, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Offset.y
-      value: 1.4044161
+      value: 0.78915095
       objectReference: {fileID: 0}
     - target: {fileID: 4040513414615381807, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
@@ -130,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4716238156241379999, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Name
-      value: Troll_Hand
+      value: Troll_Fist
       objectReference: {fileID: 0}
     - target: {fileID: 7353766205308395991, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Size.x
@@ -175,15 +175,16 @@ MonoBehaviour:
   collider: {fileID: 0}
   characterStat: {fileID: 11400000, guid: 0173b4d72c758174da74eadf8a27d0b9, type: 2}
   health: {fileID: 0}
-  size: 1
-  speed: 0
-  defense: 0
-  crit: 0
-  accuracy: 0
-  evasion: 0
-  resist: 0
-  minStat: 0
-  maxStat: 0
+  stat:
+    health: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
   isMainCharacter: 0
   isDead: 0
   activeBuffs: []

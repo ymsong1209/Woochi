@@ -4,29 +4,42 @@ using UnityEngine;
 
 public class CH_MoveDebuff : BaseSkill
 {
-    [SerializeField] private StatBuff statBuff;
+    [SerializeField] private GameObject StatBuffGameObject;
     public override void ActivateSkill(BaseCharacter _Opponent)
     {
         base.ActivateSkill(_Opponent);
-        TransferBuff(SkillResult.Opponent);
+        if (SkillResult.isHit)
+        {
+            TransferBuff(SkillResult.Opponent);
+        }
     }
 
     private void TransferBuff(BaseCharacter opponent)
     {
-        for (int i = SkillOwner.activeBuffs.Count - 1; i >= 0; i--)
+        for(int i = SkillOwner.BuffList.BuffIcons.Length - 1; i >= 0; i--)
         {
-            BaseBuff buff = SkillOwner.activeBuffs[i];
-            if (buff.BuffType == BuffType.Negative)
+            BuffIcon targetBuffIcon = SkillOwner.BuffList.BuffIcons[i];
+            if (targetBuffIcon && targetBuffIcon.gameObject.activeSelf)
             {
-                opponent.ApplyBuff(buff.Caster, opponent, buff);
-                SkillOwner.RemoveBuffAtIndex(i);
-                IncreaseStat();
+                for (int j = targetBuffIcon.transform.childCount - 1; j >= 0; j--)
+                {
+                    BaseBuff buff = targetBuffIcon.transform.GetChild(j).GetComponent<BaseBuff>();
+                    if (buff.BuffType == BuffType.Negative)
+                    {
+                        opponent.ApplyBuff(buff.Caster, opponent, buff);
+                        SkillOwner.activeBuffs.Remove(buff);
+                        IncreaseStat();
+                    }
+                }
+                if(targetBuffIcon.transform.childCount == 0) targetBuffIcon.DeActivate();
             }
         }
     }
 
     private void IncreaseStat()
     {
+        GameObject instantiatedStat = Instantiate(StatBuffGameObject, transform);
+        StatBuff statBuff = instantiatedStat.GetComponent<StatBuff>();
         statBuff.BuffName = "부정한 율법";
         statBuff.BuffDurationTurns = -1;
         statBuff.ChangeStat.accuracy = 1;

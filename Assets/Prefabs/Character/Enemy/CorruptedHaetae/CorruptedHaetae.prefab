@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 340442382073484404, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.503
+      objectReference: {fileID: 0}
     - target: {fileID: 1003585335962295957, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -67,17 +71,99 @@ PrefabInstance:
     - target: {fileID: 3953031413515326129, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 0c7fa85f5276d984d90afecbec9169a4, type: 3}
+      objectReference: {fileID: 21300000, guid: b1736809d31f1184fa7a543126fe9e38, type: 3}
     - target: {fileID: 3953031413515326129, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040513414615381807, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040513414615381807, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040513414615381807, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040513414615381807, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241449256750503135, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241449256750503135, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241449256750503135, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241449256750503135, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.197
       objectReference: {fileID: 0}
     - target: {fileID: 4716238156241379999, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Name
       value: CorruptedHaetae
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8508918373832428729, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1d4db804235a16c44b5a9b8ec14af320, type: 2}
+    m_RemovedComponents:
+    - {fileID: 2767518271787080996, guid: 13333dec91112de4684af90796b86443, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4716238156241379999, guid: 13333dec91112de4684af90796b86443, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: -187422951790255057}
   m_SourcePrefab: {fileID: 100100000, guid: 13333dec91112de4684af90796b86443, type: 3}
+--- !u!1 &1980818747636440210 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4716238156241379999, guid: 13333dec91112de4684af90796b86443, type: 3}
+  m_PrefabInstance: {fileID: 6489187586054356493}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-187422951790255057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980818747636440210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e169101d5ebdf458973b026afc4ac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HUD: {fileID: 0}
+  anim: {fileID: 0}
+  collider: {fileID: 0}
+  characterStat: {fileID: 11400000, guid: 73b945b10ddcfde46a0849c5565f43e8, type: 2}
+  health: {fileID: 0}
+  stat:
+    health: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
+  isMainCharacter: 0
+  isDead: 0
+  activeBuffs: []
+  activeSkills: []
+  activeSkillCheckBox: 01010101
+  isAlly: 0
+  isDummy: 0
+  isStarting: 0
+  isSummoned: 0
+  rowOrder: 0

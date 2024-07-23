@@ -146,15 +146,27 @@ public class BaseSkill : MonoBehaviour
             GameObject clonedbuff = Instantiate(applyBuffGameObject);
 
             BaseBuff buffToApply = clonedbuff.GetComponent<BaseBuff>();
-            if (!buffToApply) continue;
+            if (!buffToApply)
+            {
+                Destroy(clonedbuff);
+                continue;
+            }
 
             // 버프 적용 가능 여부 판단
-            if (!CheckApplyBuff(buffToApply)) continue;
+            if (!CheckApplyBuff(buffToApply))
+            {
+                Destroy(clonedbuff);
+                continue;
+            }
 
             // 치명타 여부에 따라 저항 무시 또는 저항 수치 판단
             if (isCrit || CheckResist(_opponent))
             {
                 _opponent.ApplyBuff(skillOwner, _opponent, buffToApply);
+            }
+            else
+            {
+                Destroy(clonedbuff);
             }
         }
     }

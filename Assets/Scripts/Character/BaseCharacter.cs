@@ -259,6 +259,20 @@ public class BaseCharacter : MonoBehaviour
                 stat += debuff.ChangeStat;
             }
         }
+        ClampStat();
+    }
+    
+    private void ClampStat()
+    {
+        stat.health = Mathf.Clamp(stat.health, 0, 999);
+        stat.speed = Mathf.Clamp(stat.speed, 0, 999);
+        stat.defense = Mathf.Clamp(stat.defense, 0, 999);
+        stat.crit = Mathf.Clamp(stat.crit, 0, 999);
+        stat.accuracy = Mathf.Clamp(stat.accuracy, 0, 999);
+        stat.evasion = Mathf.Clamp(stat.evasion, 0, 999);
+        stat.resist = Mathf.Clamp(stat.resist, 0, 999);
+        stat.minStat = Mathf.Clamp(stat.minStat, 0, 999);
+        stat.maxStat = Mathf.Clamp(stat.maxStat, 0, 999);
     }
     
     /// <summary>

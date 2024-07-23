@@ -103,7 +103,6 @@ public class BaseBuff : MonoBehaviour
         {
             this.transform.parent = null;
             if(icon.transform.childCount == 0) icon.DeActivate();
-            //icon.CheckChildBuffs(this);
         }
         Destroy(gameObject);
     }

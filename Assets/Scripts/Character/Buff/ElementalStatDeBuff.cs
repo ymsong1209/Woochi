@@ -65,7 +65,12 @@ public class ElementalStatDeBuff : BaseBuff
     }
 
 
-    public SkillElement Element => element;
+    public SkillElement Element
+    {
+        get => element;
+        set => element = value;
+    }
+
     public float ChangeStat
     {
         get => changeStat;

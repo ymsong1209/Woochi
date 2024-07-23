@@ -94,19 +94,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4040513414615381807, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Size.x
-      value: 5.063649
+      value: 5.9236293
       objectReference: {fileID: 0}
     - target: {fileID: 4040513414615381807, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Size.y
-      value: 5.967678
+      value: 5.7562075
       objectReference: {fileID: 0}
     - target: {fileID: 4040513414615381807, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Offset.x
-      value: -0.03182459
+      value: -0.038873434
       objectReference: {fileID: 0}
     - target: {fileID: 4040513414615381807, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Offset.y
-      value: 1.4044161
+      value: 0.79115105
       objectReference: {fileID: 0}
     - target: {fileID: 4040513414615381807, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
@@ -175,15 +175,16 @@ MonoBehaviour:
   collider: {fileID: 0}
   characterStat: {fileID: 11400000, guid: f9fc6ffdc8aac1f4593163fc6ad936d5, type: 2}
   health: {fileID: 0}
-  size: 1
-  speed: 0
-  defense: 0
-  crit: 0
-  accuracy: 0
-  evasion: 0
-  resist: 0
-  minStat: 0
-  maxStat: 0
+  stat:
+    health: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
   isMainCharacter: 0
   isDead: 0
   activeBuffs: []

@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillSO: {fileID: 11400000, guid: f1e0af5a1bdde1d4fab4d89f6139cf87, type: 2}
+  skillTargetCount: 1
   isAlwaysHit: 0
   isAlwaysApplyBuff: 0
-  statBuff: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+  StatBuffGameObject: {fileID: 2569674945298275565, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
