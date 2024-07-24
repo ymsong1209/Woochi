@@ -1,3 +1,4 @@
+using DataTable;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -9,10 +10,30 @@ public class Health
     [SerializeField, ReadOnly] private int curHealth;
     [SerializeField, ReadOnly] private int shield;
 
-    public Health(BaseCharacter _owner)
+    public Health()
     {
-        owner = _owner;
+        owner = null;
     }
+
+    public Health(Health health)
+    {
+        maxHealth = health.maxHealth;
+        curHealth = health.curHealth;
+        shield = health.shield;
+    }
+
+    public Health(CharacterData characterData)
+    {
+        maxHealth = characterData.health;
+        curHealth = maxHealth;
+        shield = 0;
+    }
+
+    public void SetOwner(BaseCharacter owner)
+    {
+        this.owner = owner;
+    }
+
     /// <summary>
     /// 대미지를 받는 공식, _penetrate가 true일 경우에는 쉴드를 뚫는 관통형 대미지
     /// </summary>
@@ -86,8 +107,10 @@ public class Health
         get { return curHealth; }
         set 
         { 
-            curHealth = value; 
-            owner.onHealthChanged?.Invoke();
+            curHealth = value;
+            
+            if(owner != null)
+                owner.onHealthChanged?.Invoke();
         }
     }
 

@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Tiger_Bite : BaseSkill
 {
-
     protected override void ApplyStat(BaseCharacter _opponent, bool _isCrit)
     {
         Health opponentHealth = _opponent.Health;
         //최소, 최대 대미지 사이의 수치를 고름
+        Stat stat = SkillOwner.Stat;
 
-        float RandomStat = Random.Range(SkillOwner.Stat.minStat, SkillOwner.Stat.maxStat);
+        float RandomStat = Random.Range(stat.minStat, stat.maxStat);
         //피해량 계수를 곱함
         RandomStat *= (Multiplier / 100);
 
         //방어 스탯을 뺀 base 스탯을 구함
-        RandomStat = RandomStat * (100 - _opponent.Stat.defense) / 100;
+        RandomStat = RandomStat * (100 - stat.defense) / 100;
         if (_isCrit) RandomStat = RandomStat * 2;
 
         // 물어뜯기로 피해를 입히면 적의 잃은 체력의 20% 만큼 추가 피해를 줌

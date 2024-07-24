@@ -1,7 +1,6 @@
 public class PlayerData
 {
     // bool
-    public bool isFirstPlay;    // 게임을 완전 처음 시작 -> 튜토리얼
     public bool hasSaveData;    // 저장된 데이터가 있는지
 
     // Battle
@@ -15,7 +14,6 @@ public class PlayerData
 
     public PlayerData()
     {
-        isFirstPlay = true;
         ResetData();
     }
 
@@ -27,5 +25,33 @@ public class PlayerData
         currentMap = null;
 
         gold = 0;
+    }
+
+    public CharacterInfoData LoadInfo(int ID)
+    {
+        foreach(var info in battleData.characterInfoList)
+        {
+            if (info.ID == ID)
+            {
+                return info;
+            }
+        }
+
+        return null;
+    }
+
+    public void SaveInfo(CharacterInfoData newCharacterInfo)
+    {
+        foreach (var info in battleData.characterInfoList)
+        {
+            if (info.ID == newCharacterInfo.ID)
+            {
+                info.baseStat = new Stat(newCharacterInfo.baseStat);
+                info.health = newCharacterInfo.health;
+                return;
+            }
+        }
+
+        battleData.characterInfoList.Add(newCharacterInfo);
     }
 }

@@ -22,17 +22,6 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             LoadData();
     }
 
-    void Start()
-    {
-        SelectRoom();
-    }
-
-    public void SelectRoom()
-    {
-        gameState = GameState.SELECTROOM;
-        Debug.Log("GameState : SelectRoom");
-    }
-    
     public void RemoveCharm(BaseCharm charm)
     {
         for(int i = 0;i<charmList.Length;++i)
@@ -47,15 +36,17 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     public void SaveData()
     {
-        if(!DataCloud.dontSave)
+        if (!DataCloud.dontSave)
+        {
+            DataCloud.playerData.hasSaveData = true;
             DataCloud.SavePlayerData();
+        }
     }
 
     public void LoadData()
     {
-        library.Initialize();
-
         DataCloud.LoadPlayerData();
+        library.Initialize();
     }
 
     public void DeleteData()
@@ -69,9 +60,10 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 #endif
     }
 
-    private void OnApplicationQuit()
+    public void ResetGame()
     {
-        SaveData();
+        DataCloud.ResetPlayerData();
+        LoadData();
     }
 
     #region Getter Setter

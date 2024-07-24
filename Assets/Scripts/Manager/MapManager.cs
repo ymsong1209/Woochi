@@ -11,7 +11,7 @@ public class MapManager : SingletonMonobehaviour<MapManager>
     {
         if(DataCloud.playerData.currentMap != null)
         {
-            CurrentMap = new Map(DataCloud.playerData.currentMap);
+            CurrentMap = DataCloud.playerData.currentMap;
             view.ShowMap(CurrentMap);
 
             // 보스까지 깬 맵이라면
@@ -45,11 +45,10 @@ public class MapManager : SingletonMonobehaviour<MapManager>
         view.FadeInOut(true);
     }
 
-    public void SaveMap()
+    private void SaveMap()
     {
         if (CurrentMap == null) return;
 
-        DataCloud.playerData.currentMap = new Map(CurrentMap);
-        DataCloud.SavePlayerData();
+        DataCloud.playerData.currentMap = CurrentMap;
     }
 }

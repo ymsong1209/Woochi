@@ -66,8 +66,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             DataCloud.dontSave = true;
             InitializeBattle(testEnemy);
         }
-#else
-        InitializeAlly(DataCloud.playerData.formation);
 #endif
         #endregion
     }
@@ -557,12 +555,10 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         allies.BattleEnd(); enemies.BattleEnd();
 
-        allies.SaveBattleData();
+        MapManager.GetInstance.CompleteNode();
 
-        // ToDo : 결과창에서 확인버튼 누르고 지도 다시 띄워야 함
-        // 테스트 코드
-        if(MapManager.GetInstance != null)
-            MapManager.GetInstance.CompleteNode();
+        // 전투가 종료되었을때만 저장
+        GameManager.GetInstance.SaveData();
     }
 
     /// <summary>

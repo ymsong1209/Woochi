@@ -203,32 +203,22 @@ public class AllyFormation : Formation
         {
             character.TriggerBuff(BuffTiming.BattleEnd);
             character.RemoveAllBuff();
+            character.SaveStat();
         }
+
+        SaveFormation();
     }
 
-    public void SaveBattleData()
+    private void SaveFormation()
     {
-        // 포메이션 저장
-        {   
-            int[] newFormation = new int[4] { -1, -1, -1, -1 };
-            List<BaseCharacter> characters = GetBattleCharacter();
+        int[] newFormation = new int[4] { -1, -1, -1, -1 };
+        List<BaseCharacter> characters = GetBattleCharacter();
 
-            for (int i = 0; i < characters.Count; i++)
-            {
-                newFormation[i] = characters[i].ID;
-            }
-            DataCloud.playerData.battleData.formation = newFormation;
-        }
-
-        // 스탯 데이터 저장
+        for (int i = 0; i < characters.Count; i++)
         {
-            foreach (var character in allCharacter)
-            {
-                Debug.Log(character.Name + character.Stat.curHealth);
-                StatData statData = new StatData(character.ID, character.Stat);
-                DataCloud.playerData.battleData.AddStatData(statData);
-            }
+            newFormation[i] = characters[i].ID;
         }
+        DataCloud.playerData.battleData.formation = newFormation;
     }
 
     private void SetProperty(BaseCharacter _character, bool isSummoned, int rowOrder)

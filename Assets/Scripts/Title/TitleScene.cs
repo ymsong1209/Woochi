@@ -27,7 +27,7 @@ public class TitleScene : MonoBehaviour
         // 진행중이던 게임 정보 삭제
         if (isBegin)
         {
-            DataCloud.ResetPlayerData();
+            GameManager.GetInstance.ResetGame();
         }
 
         HelperUtilities.MoveScene(SceneType.Battle);

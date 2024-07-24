@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[RequireComponent(typeof(Health))]
 [RequireComponent(typeof(BaseCharacterHUD))]
 [RequireComponent(typeof(BaseCharacterCollider))]
 [DisallowMultipleComponent]
@@ -15,7 +14,7 @@ public class BaseCharacter : MonoBehaviour
     
     [SerializeField]  protected CharacterStatSO characterStat;
     private BuffList buffList;
-    
+
     #region Header CHARACTER STATS
 
     [Space(10)]
@@ -23,8 +22,9 @@ public class BaseCharacter : MonoBehaviour
 
     #endregion Header CHARACTER STATS
     #region Character Stats
-    [SerializeField]            private Health  health;
-    [SerializeField]            private Stat    stat;
+    [SerializeField]    private Health health = new Health();
+    [SerializeField]    private Stat    baseStat;
+    [SerializeField]    private Stat    rewardStat;
     #endregion
    
     [SerializeField] bool isMainCharacter = false;
@@ -101,6 +101,16 @@ public class BaseCharacter : MonoBehaviour
         isSelected = false;
         HUD.Selected(isSelected);
     }
+
+    /// <summary>
+    /// 전투가 끝날 때 캐릭터의 스탯, 체력을 저장
+    /// </summary>
+    public virtual void SaveStat()
+    {
+        CharacterInfoData info = new CharacterInfoData(ID, baseStat, rewardStat, health);
+        DataCloud.playerData.SaveInfo(info);
+    }
+
     #region 버프 처리
     /// <summary>
     /// 버프 적용 시점에 따라 적절한 버프 처리 함수 호출
@@ -233,19 +243,19 @@ public class BaseCharacter : MonoBehaviour
     public void CheckForStatChange()
     {
         //기존 스탯 다시 초기화
-        stat = characterStat.BaseStat;
+        baseStat = new Stat(characterStat.BaseStat);
         
         foreach (BaseBuff buff in activeBuffs)
         {
             if (buff.BuffEffect == BuffEffect.StatStrengthen)
             {
                 StatBuff statBuff = buff as StatBuff;
-                stat += statBuff.ChangeStat;
+                baseStat += statBuff.ChangeStat;
             }
             else if (buff.BuffEffect == BuffEffect.StatWeaken)
             {
                 StatDeBuff debuff = buff as StatDeBuff;
-                stat += debuff.ChangeStat;
+                baseStat += debuff.ChangeStat;
             }
         }
     }
@@ -310,28 +320,21 @@ public class BaseCharacter : MonoBehaviour
         InitializeStat();
         InitializeHealth();
         InitializeSkill();
-        isDead = false;
     }
     
     protected void InitializeStat()
     {
-        // 세이브 데이터가 있고 아군이면 세이브 데이터에서 스탯을 가져와야 함
-        if (DataCloud.playerData.hasSaveData && IsAlly)
-        {
-            StatData statData = DataCloud.playerData.battleData.statData.FirstOrDefault(s => s.ID == ID);
-            stat = new Stat(statData.stat);
-        }
-        else
-        {
-            stat = new Stat(characterStat.BaseStat);
-        }
+        baseStat = new Stat(characterStat.BaseStat);
+        rewardStat = new Stat();
     }
 
     protected void InitializeHealth()
     {
-        health = GetComponent<Health>();
-        health.MaxHealth = stat.maxHealth;
-        health.CurHealth = stat.curHealth;
+        health.SetOwner(this);
+        health.MaxHealth = characterStat.BaseHealth.MaxHealth;
+        health.CurHealth = characterStat.BaseHealth.CurHealth;
+
+        isDead = (health.CurHealth <= 0);
     }
 
     protected virtual void InitializeSkill()
@@ -407,8 +410,7 @@ public class BaseCharacter : MonoBehaviour
     public int Size => characterStat.size;
     public int Cost => characterStat.cost;
     public Health Health => health;
-    public Stat Stat => stat;
-
+    public Stat Stat => baseStat + rewardStat;
     public bool IsDead => isDead;
     public bool IsAlly
     {
@@ -439,14 +441,14 @@ public class BaseCharacter : MonoBehaviour
         }
     }
     #region 바뀐 스탯 
-    public float ChangedSpeed => stat.speed - characterStat.BaseStat.speed;
-    public float ChangedDefense => stat.defense - characterStat.BaseStat.defense;
-    public float ChangedCrit => stat.crit - characterStat.BaseStat.crit;
-    public float ChangedAccuracy => stat.accuracy - characterStat.BaseStat.accuracy;
-    public float ChangedEvasion => stat.evasion - characterStat.BaseStat.evasion;
-    public float ChangedResist => stat.resist - characterStat.BaseStat.resist;
-    public float ChangedMinStat => stat.minStat - characterStat.BaseStat.minStat;
-    public float ChangedMaxStat => stat.maxStat - characterStat.BaseStat.maxStat;
+    public float ChangedSpeed => baseStat.speed - characterStat.BaseStat.speed;
+    public float ChangedDefense => baseStat.defense - characterStat.BaseStat.defense;
+    public float ChangedCrit => baseStat.crit - characterStat.BaseStat.crit;
+    public float ChangedAccuracy => baseStat.accuracy - characterStat.BaseStat.accuracy;
+    public float ChangedEvasion => baseStat.evasion - characterStat.BaseStat.evasion;
+    public float ChangedResist => baseStat.resist - characterStat.BaseStat.resist;
+    public float ChangedMinStat => baseStat.minStat - characterStat.BaseStat.minStat;
+    public float ChangedMaxStat => baseStat.maxStat - characterStat.BaseStat.maxStat;
     #endregion
 
     #endregion

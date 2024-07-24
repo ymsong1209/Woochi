@@ -12,7 +12,6 @@ public static class DataCloud
         string json = JsonConvert.SerializeObject(playerData, Formatting.Indented,
                 new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 
-        playerData.hasSaveData = true;
         PlayerPrefs.SetString("PlayerData", json);
         PlayerPrefs.Save();
     }
@@ -34,11 +33,12 @@ public static class DataCloud
     public static void ResetPlayerData()
     {
         playerData.ResetData();
+        SavePlayerData();
     }
 
     public static void DeletePlayerData()
     {
         PlayerPrefs.DeleteKey("PlayerData");
-        playerData = new PlayerData();
+        playerData = null;
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DataTable;
+using System.Linq;
 
 [CreateAssetMenu(fileName = "CS_", menuName = "Scriptable Objects/Character/CharacterStat")]
 public class CharacterStatSO : ScriptableObject
@@ -26,7 +27,9 @@ public class CharacterStatSO : ScriptableObject
     [Header("Character Stats")]
 
     #endregion Header CHARACTER STATS
-    [SerializeField] private Stat baseStat;
+    [SerializeField] private Stat baseStat;         // 레벨에 따른 기본 스탯
+    [SerializeField] private Stat rewardStat;       // 보상으로 얻은 스탯
+    [SerializeField] private Health baseHealth;
 
     #region Header CHARACTER SKILLS
 
@@ -42,11 +45,28 @@ public class CharacterStatSO : ScriptableObject
         characterName = data.characterName;
         size = data.size;
         cost = data.cost;
-        baseStat = new Stat(data);
+
+        CharacterInfoData info = DataCloud.playerData.LoadInfo(ID);
+        if(info != null)
+        {
+            baseStat = new Stat(info.baseStat);
+            rewardStat = new Stat(info.rewardStat);
+            baseHealth = new Health(info.health);
+        }
+        else
+        { 
+            baseStat = new Stat(data);
+            rewardStat = new Stat();
+            baseHealth = new Health(data);
+        }
     }
+
+    public void UpdateBaseStat(Stat stat) { baseStat = new Stat(stat); }
 
     #region Getter Method
     public Stat BaseStat => baseStat;
+    public Stat RewardStat => rewardStat;
+    public Health BaseHealth => baseHealth;
     public List<BaseSkill> Skills => skills;
     #endregion
 
