@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9483a26c0d4ef4c8821b5c232bedf1, type: 3}
   m_Name: 112 Abnormal_FogSwamp
   m_EditorClassIdentifier: 
-  cost: 3
+  ID: 112
   Name: "\uC548\uAC1C \uB080 \uB2AA"
+  cost: 3
+  buffList:
+  - {fileID: 3070074099598258082, guid: 990e6b83167f13c4ebe8eacc59643ac2, type: 3}
+  - {fileID: 3070074099598258082, guid: 4f6975aacf5e7014c9064244a0dbad62, type: 3}

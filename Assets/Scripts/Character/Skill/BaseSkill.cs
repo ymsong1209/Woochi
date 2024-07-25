@@ -342,7 +342,7 @@ public class BaseSkill : MonoBehaviour
 
     protected virtual void ApplyStat(BaseCharacter receiver, bool isCrit)
     {
-        Health opponentHealth = receiver.gameObject.GetComponent<Health>();
+        Health opponentHealth = receiver.Health;
        
         switch (skillType)
         {

@@ -9,7 +9,7 @@ public class BuffList : MonoBehaviour
     public BaseBuff TransferBuffAtIcon(BaseCharacter opponent, BaseBuff buff)
     {
         // Find the bufflistcanvas GameObject under the opponent
-        Transform buffList = opponent.transform.Find("BuffList");
+        Transform buffList = opponent.BuffList.transform;
         if (buffList == null)
         {
             Debug.LogError("buffList not found under opponent" + opponent.gameObject.name.ToString());

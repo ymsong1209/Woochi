@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d1a78f3fb971f4cb69b1602682ff04, type: 3}
+  m_Name: Reward_TotemPole
+  m_EditorClassIdentifier: 
+  rarity: 4
+  rewardName: "\uC19F\uB300"
+  description: "\uB2E4\uC74C 10\uBC88\uC758 \uC804\uD22C \uC2DC \uBAA8\uB4E0 \uC801
+    \uBAA8\uB4E0 \uB2A5\uB825\uCE58 -10"

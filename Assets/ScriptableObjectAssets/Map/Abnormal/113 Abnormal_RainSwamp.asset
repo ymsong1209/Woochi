@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9483a26c0d4ef4c8821b5c232bedf1, type: 3}
   m_Name: 113 Abnormal_RainSwamp
   m_EditorClassIdentifier: 
-  cost: 4
+  ID: 113
   Name: "\uBE44 \uC624\uB294 \uB2AA"
+  cost: 4
+  buffList:
+  - {fileID: 3070074099598258082, guid: ec03ae00f68bf6a4584bae53e6b2c5eb, type: 3}
+  - {fileID: 3070074099598258082, guid: 4f6975aacf5e7014c9064244a0dbad62, type: 3}

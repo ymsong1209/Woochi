@@ -1,8 +1,22 @@
+using DataTable;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Abnormal", menuName = "Scriptable Objects/Map/Abnormal")]
 public class Abnormal : ScriptableObject
 {
-    public int cost;
-    public string Name;
+    [Tooltip("ID만 채워주면 자동으로 데이터 초기화")]
+    public int ID;
+    [ReadOnly(true)] public string Name;
+    [ReadOnly(true)] public int cost;
+
+    public List<GameObject> buffList;
+
+    public void Initialize()
+    {
+        AbnormalData data = AbnormalData.GetDictionary()[ID];
+
+        Name = data.abnormalName;
+        cost = data.cost;
+    }
 }

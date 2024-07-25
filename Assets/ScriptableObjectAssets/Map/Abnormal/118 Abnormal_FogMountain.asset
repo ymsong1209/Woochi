@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9483a26c0d4ef4c8821b5c232bedf1, type: 3}
   m_Name: 118 Abnormal_FogMountain
   m_EditorClassIdentifier: 
-  cost: 2
+  ID: 118
   Name: "\uC548\uAC1C \uB080 \uC0B0"
+  cost: 2
+  buffList:
+  - {fileID: 3070074099598258082, guid: 990e6b83167f13c4ebe8eacc59643ac2, type: 3}
+  - {fileID: 3070074099598258082, guid: eea2d74a63069004ab8bb576a0a7dc5f, type: 3}

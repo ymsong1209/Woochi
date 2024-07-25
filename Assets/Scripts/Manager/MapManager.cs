@@ -26,7 +26,7 @@ public class MapManager : SingletonMonobehaviour<MapManager>
         }
     }
     
-    public void GenerateNewMap()
+    private void GenerateNewMap()
     {
         Map map = MapGenerator.GetMap(config);
         CurrentMap = map;
@@ -35,21 +35,20 @@ public class MapManager : SingletonMonobehaviour<MapManager>
 
     public void SelectNode(MapNode _mapNode)
     {
-        BattleManager.GetInstance.InitializeBattle(_mapNode.Node.enemyIDs);
+        BattleManager.GetInstance.InitializeBattle(_mapNode.Node.enemyIDs, _mapNode.Node.abnormalID);
         view.FadeInOut(false);
     }
 
-    public void SaveMap()
+    public void CompleteNode()
+    {
+        SaveMap();
+        view.FadeInOut(true);
+    }
+
+    private void SaveMap()
     {
         if (CurrentMap == null) return;
 
-        DataCloud.playerData.isProgressing = true;
         DataCloud.playerData.currentMap = CurrentMap;
-        DataCloud.SavePlayerData();
-    }
-
-    private void OnApplicationQuit()
-    {
-        SaveMap();
     }
 }

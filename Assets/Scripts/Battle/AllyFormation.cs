@@ -1,9 +1,9 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AllyFormation : Formation
 {
-    public List<BaseCharacter> waitingCharacter = new List<BaseCharacter>();
     [SerializeField] GameObject dummyPrefab;
     private BaseCharacter dummyCharacter;
 
@@ -14,37 +14,34 @@ public class AllyFormation : Formation
             formation[i] = null;
         }
 
-        int order = 0;
         totalSize = 0;
 
+        // 플레이어가 소유한 소환수를 일단 모두 생성(우치 포함)
         foreach (GameObject prefab in prefabs)
         {
-            if (totalSize > 4)
-            {
-                return;
-            }
-
             GameObject characterPrefab = Instantiate(prefab, transform);
             BaseCharacter character = characterPrefab.GetComponent<BaseCharacter>();
 
-            character.Initialize();
             character.IsAlly = isAllyFormation;
+            character.Initialize();
+            SetProperty(character, false, -1);
+            character.gameObject.SetActive(false);
+            allCharacter.Add(character);
+        }
 
-            if (character.isStarting)
-            {
-                SetProperty(character, true, order++);
-                character.TriggerBuff(BuffTiming.BattleStart);
+        // 포메이션에 등록한 소환수를 포메이션에 등록
+        int[] battleFormation = DataCloud.playerData.battleData.formation;
+        for(int i = 0; i < 4; i++)
+        {
+            if (battleFormation[i] == -1) continue;
 
-                for (int i = 0; i < character.Size; i++)
-                {
-                    formation[totalSize++] = character;
-                }
-            }
-            else
+            BaseCharacter character = allCharacter.FirstOrDefault(c => c.ID == battleFormation[i]);
+            SetProperty(character, true, i);
+            character.gameObject.SetActive(true);
+            character.TriggerBuff(BuffTiming.BattleStart);
+            for(int s = 0; s < character.Size; s++)
             {
-                SetProperty(character, false, -1);
-                character.gameObject.SetActive(false);
-                waitingCharacter.Add(character);
+                formation[totalSize++] = character;
             }
         }
 
@@ -79,9 +76,9 @@ public class AllyFormation : Formation
         }
 
         // 대기열 캐릭터에 들어와있는데 게임 오브젝트가 활성화되어 있다는 것은 우치가 캐릭터를 소환 해제했음을 의미
-        foreach(var character in waitingCharacter)
+        foreach(var character in allCharacter)
         {
-            if (character.gameObject.activeSelf)
+            if (character.gameObject.activeSelf && !character.isSummoned)
             {
                 character.gameObject.SetActive(false);
                 break;
@@ -95,8 +92,6 @@ public class AllyFormation : Formation
         {
             return false;
         }
-
-        waitingCharacter.Remove(_character);
 
         int rowOrder = _index;
         for(int i = _index; i < formation.Length; i++)
@@ -124,8 +119,6 @@ public class AllyFormation : Formation
 
     public void UnSummon(BaseCharacter _character)
     {
-        waitingCharacter.Add(_character);
-        
         for(int i = 0; i < 4; i++)
         {
             if (formation[i] == _character)
@@ -168,6 +161,64 @@ public class AllyFormation : Formation
                 dummyCharacter.gameObject.SetActive(false);
             }
         }
+    }
+
+    /// <summary>
+    /// 우치 제외 소환수만 반환
+    /// </summary>
+    public List<BaseCharacter> GetAllies()
+    {
+        List<BaseCharacter> list = new List<BaseCharacter>();
+
+        foreach(var character in allCharacter)
+        {
+            if(character.IsMainCharacter) continue;
+            list.Add(character);
+        }
+
+        return list;
+    }
+
+    /// <summary>
+    /// 전투에 참여한 캐릭터만 반환
+    /// </summary>
+    /// <returns></returns>
+    public List<BaseCharacter> GetBattleCharacter()
+    {
+        List<BaseCharacter> list = new List<BaseCharacter>();
+
+        for(int i = 0; i < formation.Length;)
+        {
+            if (formation[i] == null) break;
+            list.Add(formation[i]);
+            i += formation[i].Size;
+        }
+
+        return list;
+    }
+
+    public override void BattleEnd()
+    {
+        foreach(var character in allCharacter)
+        {
+            character.TriggerBuff(BuffTiming.BattleEnd);
+            character.RemoveAllBuff();
+            character.SaveStat();
+        }
+
+        SaveFormation();
+    }
+
+    private void SaveFormation()
+    {
+        int[] newFormation = new int[4] { -1, -1, -1, -1 };
+        List<BaseCharacter> characters = GetBattleCharacter();
+
+        for (int i = 0; i < characters.Count; i++)
+        {
+            newFormation[i] = characters[i].ID;
+        }
+        DataCloud.playerData.battleData.formation = newFormation;
     }
 
     private void SetProperty(BaseCharacter _character, bool isSummoned, int rowOrder)

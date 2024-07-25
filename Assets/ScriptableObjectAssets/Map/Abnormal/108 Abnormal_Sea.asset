@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9483a26c0d4ef4c8821b5c232bedf1, type: 3}
   m_Name: 108 Abnormal_Sea
   m_EditorClassIdentifier: 
-  cost: 1
+  ID: 108
   Name: "\uBC14\uB2E4"
+  cost: 1
+  buffList:
+  - {fileID: 3070074099598258082, guid: 9b331b2247614a2488a5ed27d0a7570b, type: 3}

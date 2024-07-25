@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9483a26c0d4ef4c8821b5c232bedf1, type: 3}
   m_Name: 116 Abnormal_StormSea
   m_EditorClassIdentifier: 
-  cost: 4
+  ID: 116
   Name: "\uD3ED\uD48D\uC6B0 \uCE58\uB294 \uBC14\uB2E4"
+  cost: 4
+  buffList:
+  - {fileID: 3070074099598258082, guid: bf7353b7bc397934a8631fabf198c827, type: 3}
+  - {fileID: 3070074099598258082, guid: 9b331b2247614a2488a5ed27d0a7570b, type: 3}

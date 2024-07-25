@@ -10,7 +10,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     private BattleState         CurState;
     public  BaseCharacter       currentCharacter;               //현재 누구 차례인지
     private BaseSkill           currentSelectedSkill;           //현재 선택된 스킬
-    private int                 currentRound;                   //현재 몇 라운드인지    
+    private int                 currentRound;                   //현재 몇 라운드인지
+    private int                 hardShip;                       // 역경 수치
 
     /// <summary>
     /// 아군이랑 적군의 싸움 순서
@@ -26,6 +27,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     [Header("Object")]
     [SerializeField] private AllyCardList allyCards;
     [SerializeField] private Abnormal abnormal;     // 현재 노드의 이상(기본값 : None)
+    [SerializeField] private BattleReward reward;   // 전투 보상
 
     #region 이벤트
     /// <summary>
@@ -46,10 +48,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     #endregion
 
 #if UNITY_EDITOR
-    // 테스트해보고 싶은 아군, 적 캐릭터들이 있을 때 사용
+    // 테스트해보고 싶은 적 캐릭터들이 있을 때 사용
     [Header("Test")]
     [SerializeField] private bool isTest = false;
-    [SerializeField] private int[] testAlly;
     [SerializeField] private int[] testEnemy;
 #endif
 
@@ -57,28 +58,23 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         CurState = BattleState.IDLE;
 
+        InitializeAlly();
         #region 테스트할 수 있게
 #if UNITY_EDITOR
         if (isTest)
         {
             DataCloud.dontSave = true;
-
-            InitializeAlly(testAlly);
             InitializeBattle(testEnemy);
         }
-        else
-        {
-            InitializeAlly(DataCloud.playerData.formation);    
-        }
-#else
-        InitializeAlly(DataCloud.playerData.formation);
 #endif
         #endregion
     }
 
-    private void InitializeAlly(int[] allyIDs)
+    private void InitializeAlly()
     {
-        var allyList = GameManager.GetInstance.CharcterLibrary.Get(allyIDs);
+        var allyIDs = DataCloud.playerData.battleData.allies.ToArray();
+        var allyList = GameManager.GetInstance.Library.GetCharacterList(allyIDs);
+
         allies.Initialize(allyList);
         allyCards.Initialize(allies);
     }
@@ -86,7 +82,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// <summary>
     /// DungeonInfoSO 정보를 받아와서 아군과 적군 위치값 설정
     /// </summary>
-    public void InitializeBattle(int[] enemyIDs)
+    public void InitializeBattle(int[] enemyIDs, int abnormalID = 100)
     {
         if (enemyIDs == null || enemyIDs.Length == 0) 
         { 
@@ -99,8 +95,10 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         currentRound = 0;
         combatQueue.Clear();
         processedCharacters.Clear();
+        hardShip = 0;
+        abnormal = GameManager.GetInstance.Library.GetAbnormal(abnormalID);
 
-        var enemyList = GameManager.GetInstance.CharcterLibrary.Get(enemyIDs);
+        var enemyList = GameManager.GetInstance.Library.GetCharacterList(enemyIDs);
         enemies.Initialize(enemyList);
         allyCards.UpdateList();
 
@@ -114,10 +112,43 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             }
         }
 
+        InitializeAbnormal();
+
         #region PreRound 상태로 넘어감
         PreRound();
         #endregion
 
+    }
+
+    private void InitializeAbnormal()
+    {
+        var buffList = abnormal.buffList;
+        foreach (var buffPrefab in buffList)
+        {
+            AbnormalBuff buff = buffPrefab.GetComponent<AbnormalBuff>();
+
+            if (buff.applyAlly)
+            {
+                var allyList = allies.GetCharacters();
+                foreach (var ally in allyList)
+                {
+                    GameObject buffObject = Instantiate(buffPrefab, ally.transform);
+                    AbnormalBuff abnormalBuff = buffObject.GetComponent<AbnormalBuff>();
+                    ally.ApplyBuff(ally, ally, abnormalBuff);
+                }
+            }
+            
+            if(buff.applyEnemy)
+            {
+                var enemyList = enemies.GetCharacters();
+                foreach (var enemy in enemyList)
+                {
+                    GameObject buffObject = Instantiate(buffPrefab, enemy.transform);
+                    AbnormalBuff abnormalBuff = buffObject.GetComponent<AbnormalBuff>();
+                    enemy.ApplyBuff(enemy, enemy, abnormalBuff);
+                }
+            }
+        }
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
@@ -549,26 +580,19 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         if (_victory)
         {
             //승리 화면 뜬 후 보상 정산
+            reward.ShowReward(10);
         }
         else
         {
             //패배 화면 뜨기
         }
 
-        foreach (BaseCharacter ally in allies.formation)
-        {
-            ally.TriggerBuff(BuffTiming.BattleEnd);
-            ally.RemoveAllBuff();
-        }
-        
-        //적군 삭제
-        enemies.CleanUp();
-        combatQueue.Clear();
+        allies.BattleEnd(); enemies.BattleEnd();
 
-        // ToDo : 결과창에서 확인버튼 누르고 지도 다시 띄워야 함
-        // 테스트 코드
-        if(MapManager.GetInstance != null)
-            MapManager.GetInstance.view.FadeInOut(true);
+        MapManager.GetInstance.CompleteNode();
+
+        // 전투가 종료되었을때만 저장
+        GameManager.GetInstance.SaveData();
     }
 
     /// <summary>

@@ -1,20 +1,37 @@
-using System;
+using DataTable;
+using Newtonsoft.Json;
 using UnityEngine;
-using UnityEngine.Events;
 
-
-[DisallowMultipleComponent]
-public class Health : MonoBehaviour
+[System.Serializable]
+public class Health
 {
-    private BaseCharacter owner;
-    [SerializeField] private int maxHealth;
-    [SerializeField] private int curHealth;
-    [SerializeField] private int shield;
+    [JsonIgnore] private BaseCharacter owner;
+    [SerializeField, ReadOnly] private int maxHealth;
+    [SerializeField, ReadOnly] private int curHealth;
+    [SerializeField, ReadOnly] private int shield;
 
-
-    private void Awake()
+    public Health()
     {
-        owner = GetComponent<BaseCharacter>();
+        owner = null;
+    }
+
+    public Health(Health health)
+    {
+        maxHealth = health.maxHealth;
+        curHealth = health.curHealth;
+        shield = health.shield;
+    }
+
+    public Health(CharacterData characterData)
+    {
+        maxHealth = characterData.health;
+        curHealth = maxHealth;
+        shield = 0;
+    }
+
+    public void SetOwner(BaseCharacter owner)
+    {
+        this.owner = owner;
     }
 
     /// <summary>
@@ -90,20 +107,12 @@ public class Health : MonoBehaviour
         get { return curHealth; }
         set 
         { 
-            curHealth = value; 
-            owner.onHealthChanged?.Invoke();
+            curHealth = value;
+            
+            if(owner != null)
+                owner.onHealthChanged?.Invoke();
         }
     }
 
     #endregion
-
-    #region Validation
-    private void OnValidate()
-    {
-        if(maxHealth < curHealth)
-        {
-            Debug.Log("Maxhealth is below than Curhealth in " + this.gameObject.name);
-        }
-    }
-    #endregion Validation
 }

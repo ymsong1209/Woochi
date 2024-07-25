@@ -1,35 +1,57 @@
-using System.Collections.Generic;
-using UnityEngine;
-
 public class PlayerData
 {
     // bool
-    public bool isFirstPlay;    // 게임을 완전 처음 시작 -> 튜토리얼
-    public bool isProgressing;  // 진행중이던 게임이 있는지
+    public bool hasSaveData;    // 저장된 데이터가 있는지
 
-    // Ally
-    public List<int> allies;    // 플레이어(우치)가 소유하고 있는 소환수(우치 자기자신도 포함)
-    public int[] formation;     // 전투에 참여할 포메이션(-1은 빈자리)
+    // Battle
+    public BattleData battleData;
 
     // Map Data
     public Map currentMap;
 
+    // Default
+    public int gold = 0;
+
     public PlayerData()
     {
-        isFirstPlay = true;
-        isProgressing = false;
-
-        allies = new List<int>();
-        formation = new int[] { 0, -1, -1, -1};
-        currentMap = null;
-
+        ResetData();
     }
 
     public void ResetData()
     {
-        isProgressing = false;
-        
-        allies = new List<int>();
+        hasSaveData = false;
+
+        battleData = new BattleData();
         currentMap = null;
+
+        gold = 0;
+    }
+
+    public CharacterInfoData LoadInfo(int ID)
+    {
+        foreach(var info in battleData.characterInfoList)
+        {
+            if (info.ID == ID)
+            {
+                return info;
+            }
+        }
+
+        return null;
+    }
+
+    public void SaveInfo(CharacterInfoData newCharacterInfo)
+    {
+        foreach (var info in battleData.characterInfoList)
+        {
+            if (info.ID == newCharacterInfo.ID)
+            {
+                info.baseStat = new Stat(newCharacterInfo.baseStat);
+                info.health = newCharacterInfo.health;
+                return;
+            }
+        }
+
+        battleData.characterInfoList.Add(newCharacterInfo);
     }
 }

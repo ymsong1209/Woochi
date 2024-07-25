@@ -45,15 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
-  allies:
-  - {fileID: 1946550667272111963, guid: fb3bcba31bb16b54384116e3477e79ea, type: 3}
-  - {fileID: 2536897304434713235, guid: 92aa63b8768f36d4cb5e10f0b8282920, type: 3}
-  - {fileID: 27191659041353302, guid: f1f1d3eb84fe4284791bfa40d1568d56, type: 3}
   charmList:
   - {fileID: 8207826904893543196, guid: 6edfe98f41ee00e409bf3200e1c2cd21, type: 3}
   - {fileID: 8207826904893543196, guid: a7f2ff85543b2d2459a56cd14d25ff4d, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  charcterLibrary: {fileID: 11400000, guid: b5d15880e3c69a541abfc5a2825f5a4e, type: 2}
-  abnormalLibrary: {fileID: 11400000, guid: c0eb4296ed77cf64491fb6929595102e, type: 2}
+  library: {fileID: 11400000, guid: b5d15880e3c69a541abfc5a2825f5a4e, type: 2}

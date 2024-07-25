@@ -9,11 +9,19 @@ public class Map
     public List<Vector2Int> path;   // 플레이어가 이동한 경로
     public string configName;       // 이 Map을 만들 때 사용한 config의 이름 => Json 저장 위해 string
 
+    [JsonConstructor]
     public Map(string configName, List<Node> nodes, List<Vector2Int> path)
     {
         this.configName = configName;
         this.nodes = nodes;
         this.path = path;
+    }
+
+    public Map(Map _map)
+    {
+        configName = _map.configName;
+        nodes = new List<Node>(_map.nodes);
+        path = new List<Vector2Int>(_map.path);
     }
 
     public Node GetBossNode()

@@ -7,7 +7,7 @@ public class Tiger_Bite : BaseSkill
     protected override void ApplyStat(BaseCharacter receiver, bool isCrit)
     {
         float Damage = CalculateDamage(receiver, isCrit);
-        Health opponentHealth = receiver.gameObject.GetComponent<Health>();
+        Health opponentHealth = receiver.Health;
         // 물어뜯기로 피해를 입히면 적의 잃은 체력의 20% 만큼 추가 피해를 줌
         Damage +=  (opponentHealth.MaxHealth - opponentHealth.CurHealth) * 0.2f;
         Damage = Mathf.Clamp(CalculateElementalDamageBuff(Damage),0,9999);

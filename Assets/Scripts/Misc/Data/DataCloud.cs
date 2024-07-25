@@ -21,8 +21,8 @@ public static class DataCloud
         if (PlayerPrefs.HasKey("PlayerData"))
         {
             string playerDataJson = PlayerPrefs.GetString("PlayerData");
-
-            playerData = JsonConvert.DeserializeObject<PlayerData>(playerDataJson);
+            playerData = JsonConvert.DeserializeObject<PlayerData>(playerDataJson, 
+                new JsonSerializerSettings { ObjectCreationHandling = ObjectCreationHandling.Replace});
         }
         else
         {
@@ -33,6 +33,12 @@ public static class DataCloud
     public static void ResetPlayerData()
     {
         playerData.ResetData();
+        SavePlayerData();
     }
 
+    public static void DeletePlayerData()
+    {
+        PlayerPrefs.DeleteKey("PlayerData");
+        playerData = null;
+    }
 }

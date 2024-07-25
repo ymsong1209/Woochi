@@ -364,7 +364,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9196048527430195161}
   - component: {fileID: 6060628860442793064}
-  - component: {fileID: 2996513413138376824}
   - component: {fileID: 5365637576824019810}
   - component: {fileID: 317045070324450805}
   - component: {fileID: 3401791839515459526}
@@ -413,10 +412,13 @@ MonoBehaviour:
   anim: {fileID: 0}
   collider: {fileID: 0}
   characterStat: {fileID: 0}
-  health: {fileID: 0}
-  sprite: {fileID: 4947313877317803005}
+  health:
+    maxHealth: 0
+    curHealth: 0
+    shield: 0
   stat:
-    health: 0
+    Exp: 0
+    maxHealth: 0
     speed: 0
     defense: 0
     crit: 0
@@ -432,24 +434,8 @@ MonoBehaviour:
   activeSkillCheckBox: 
   isAlly: 0
   isDummy: 0
-  isStarting: 0
   isSummoned: 0
   rowOrder: 0
---- !u!114 &2996513413138376824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3675200626947582931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91e41df813da39c4c844c3efbb4b594c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 0
-  curHealth: 0
-  shield: 0
 --- !u!114 &5365637576824019810
 MonoBehaviour:
   m_ObjectHideFlags: 0

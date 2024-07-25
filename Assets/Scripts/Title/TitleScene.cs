@@ -15,11 +15,11 @@ public class TitleScene : MonoBehaviour
         #region Event
         beginBtn.onClick.AddListener(Begin);
         continueBtn.onClick.AddListener(Continue);
-        deleteBtn.onClick.AddListener(() => GameManager.GetInstance.ResetData());
+        deleteBtn.onClick.AddListener(() => GameManager.GetInstance.DeleteData());
         testBtn.onClick.AddListener(Test);
         #endregion
 
-        continueBtn.interactable = DataCloud.playerData.isProgressing;
+        continueBtn.interactable = DataCloud.playerData.hasSaveData;
     }
 
     public void Departure(bool isBegin)
@@ -27,7 +27,7 @@ public class TitleScene : MonoBehaviour
         // 진행중이던 게임 정보 삭제
         if (isBegin)
         {
-            DataCloud.ResetPlayerData();
+            GameManager.GetInstance.ResetGame();
         }
 
         HelperUtilities.MoveScene(SceneType.Battle);

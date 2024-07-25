@@ -11,8 +11,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     [SerializeField] private BaseCharm[] charmList = new BaseCharm[5];
 
     [Header("Library")]
-    [SerializeField] private Library charcterLibrary;
-    [SerializeField] private Library abnormalLibrary;
+    [SerializeField] private Library library;
 
     protected override void Awake()
     {
@@ -23,17 +22,6 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             LoadData();
     }
 
-    void Start()
-    {
-        SelectRoom();
-    }
-
-    public void SelectRoom()
-    {
-        gameState = GameState.SELECTROOM;
-        Debug.Log("GameState : SelectRoom");
-    }
-    
     public void RemoveCharm(BaseCharm charm)
     {
         for(int i = 0;i<charmList.Length;++i)
@@ -48,18 +36,22 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     public void SaveData()
     {
-        if(!DataCloud.dontSave)
+        if (!DataCloud.dontSave)
+        {
+            DataCloud.playerData.hasSaveData = true;
             DataCloud.SavePlayerData();
+        }
     }
 
     public void LoadData()
     {
         DataCloud.LoadPlayerData();
+        library.Initialize();
     }
 
-    public void ResetData()
+    public void DeleteData()
     {
-        DataCloud.ResetPlayerData();
+        DataCloud.DeletePlayerData();
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -68,15 +60,15 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 #endif
     }
 
-    private void OnApplicationQuit()
+    public void ResetGame()
     {
-        SaveData();
+        DataCloud.ResetPlayerData();
+        LoadData();
     }
 
     #region Getter Setter
     public BaseCharm[] CharmList => charmList;
 
-    public Library CharcterLibrary => charcterLibrary;
-    public Library AbnormalLibrary => abnormalLibrary;
+    public Library Library => library;
     #endregion
 }

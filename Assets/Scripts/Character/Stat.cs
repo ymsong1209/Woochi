@@ -4,7 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class Stat
 {
-    [ReadOnly(true)] public int health;
+    [ReadOnly(true)] public int maxHealth;
     [ReadOnly(true)] public int speed;
     [ReadOnly(true)] public float defense;
     [ReadOnly(true)] public float crit;
@@ -16,12 +16,12 @@ public class Stat
 
     public Stat()
     {
-        health = 0; speed = 0; defense = 0; crit = 0; accuracy = 0; evasion = 0; resist = 0; minStat = 0; maxStat = 0;
+        maxHealth = 0; speed = 0; defense = 0; crit = 0; accuracy = 0; evasion = 0; resist = 0; minStat = 0; maxStat = 0;
     }
 
     public Stat(CharacterData data)
     {
-        health = Mathf.Clamp(data.health, 0, 999);
+        maxHealth = Mathf.Clamp(data.health, 0, 999);
         speed = Mathf.Clamp(data.speed, 0, 999);
         defense = Mathf.Clamp(data.defense, 0, 999);
         crit = Mathf.Clamp(data.crit, 0, 999);
@@ -34,7 +34,7 @@ public class Stat
 
     public Stat(Stat stat)
     {
-        health = stat.health;
+        maxHealth = stat.maxHealth;
         speed = stat.speed;
         defense = stat.defense;
         crit = stat.crit;

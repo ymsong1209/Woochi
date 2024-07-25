@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9483a26c0d4ef4c8821b5c232bedf1, type: 3}
   m_Name: 106 Abnormal_Mountain
   m_EditorClassIdentifier: 
-  cost: 1
+  ID: 106
   Name: "\uC0B0"
+  cost: 1
+  buffList:
+  - {fileID: 3070074099598258082, guid: eea2d74a63069004ab8bb576a0a7dc5f, type: 3}

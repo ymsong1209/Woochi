@@ -7,6 +7,7 @@ public class Formation : MonoBehaviour
 {
     public BaseCharacter[] formation = new BaseCharacter[4];
 
+    protected List<BaseCharacter> allCharacter = new List<BaseCharacter>();
     [SerializeField] protected float[] singlePos = new float[4];
     [SerializeField] protected float[] multiPos = new float[3];
 
@@ -28,7 +29,6 @@ public class Formation : MonoBehaviour
         totalSize = 0;
         foreach (GameObject prefab in prefabs)
         {
-            if (!prefab) continue;
             if(totalSize > 4)
             {
                 Debug.Log("총 크기가 4가 넘습니다");
@@ -38,12 +38,11 @@ public class Formation : MonoBehaviour
             GameObject characterPrefab = Instantiate(prefab, transform);
             BaseCharacter character = characterPrefab.GetComponent<BaseCharacter>();
 
-            character.Initialize();
             character.IsAlly = isAllyFormation;
-
             character.RowOrder = order++;
-
+            character.Initialize();
             character.TriggerBuff(BuffTiming.BattleStart);
+            allCharacter.Add(character);
 
             for (int i = 0; i < character.Size; i++)
             {
@@ -107,7 +106,6 @@ public class Formation : MonoBehaviour
             if (formation[index] == null) return;
 
             BaseCharacter character = formation[index];
-            character.Sprite.sortingOrder = index;
 
             if(character.Size == 1)
             {
@@ -144,28 +142,9 @@ public class Formation : MonoBehaviour
         return index;
     }
 
-    /// <summary>
-    /// 이 포메이션에 있는 캐릭터의 정보들(size가 2인 캐릭터 구별 위함)
-    /// </summary>
-    public List<BaseCharacter> GetCharacters()
-    {
-        List<BaseCharacter> list = new List<BaseCharacter>();
+    public List<BaseCharacter> GetCharacters() => allCharacter;
 
-        for(int size = 0; size < formation.Length;) 
-        {
-            if (formation[size] == null) break;
-            
-            // 우치가 아닌 경우 리스트에 추가
-            if (!formation[size].IsMainCharacter)
-                list.Add(formation[size]);
-
-            size += formation[size].Size;
-        }
-
-        return list;
-    }
-
-    public void CleanUp()
+    private void CleanUp()
     {
         foreach(BaseCharacter character in formation)
         {
@@ -178,6 +157,13 @@ public class Formation : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+
+        allCharacter.Clear();
+    }
+
+    public virtual void BattleEnd()
+    {
+        CleanUp();
     }
 
     private void SetRowOrder()

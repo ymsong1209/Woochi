@@ -13,25 +13,41 @@ MonoBehaviour:
   m_Name: MapConfig_SeoulGyeongi
   m_EditorClassIdentifier: 
   stageName: "\uC11C\uC6B8,\uACBD\uAE30"
-  nodeBlueprints:
-  - {fileID: 11400000, guid: e8257e5053259e04c8c3092a00db2761, type: 2}
-  - {fileID: 11400000, guid: e4fa7259d10083142a9528a4f62c86df, type: 2}
-  - {fileID: 11400000, guid: 8101efe21e8178d499873bbe2ccd544b, type: 2}
-  - {fileID: 11400000, guid: 69079617bac4c494c86d8781aba2fdbf, type: 2}
-  randomNodes:
-  - nodeType: 0
-    probability: 0.49
-  - nodeType: 1
-    probability: 0.21
-  - nodeType: 2
-    probability: 0.3
+  randomNodeTypes:
+    list:
+    - value: 0
+      probability: 0.49
+    - value: 1
+      probability: 0.21
+    - value: 2
+      probability: 0.3
+  randomAbnormals:
+    list:
+    - value: 100
+      probability: 0.35
+    - value: 101
+      probability: 0.15
+    - value: 105
+      probability: 0.15
+    - value: 106
+      probability: 0.15
+    - value: 109
+      probability: 0.1
+    - value: 110
+      probability: 0.1
   normalTemplates:
-  - id: e8030000e8030000e8030000e8030000
-  - id: e8030000e8030000eb030000eb030000
-  - id: e9030000e9030000e8030000e8030000
-  - id: e9030000e9030000e9030000e9030000
+  - id: e8030000e8030000e9030000e9030000
+  - id: ea030000eb030000e9030000e9030000
+  - id: ea030000ea030000eb030000
+  - id: ea030000ea030000e9030000e9030000
+  - id: d0070000e9030000
+  - id: d0070000eb030000
+  - id: d0070000eb030000e9030000
+  - id: d1070000eb030000e9030000
+  - id: d1070000e9030000e9030000
+  - id: eb030000e9030000e9030000
+  - id: eb030000eb030000e9030000e9030000
   eliteTemplates: []
-  abnormals: 00000000010000000500000006000000090000000a000000
   numOfPreBossNodes:
     min: 3
     max: 4
@@ -44,7 +60,7 @@ MonoBehaviour:
     distanceFromPreviousLayer:
       min: 0
       max: 0
-    nodesApartDistance: 2
+    nodesApartDistance: 3
     isRandomNode: 0
     isRandomEnemy: 1
     enemyIDs: 
@@ -52,8 +68,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -61,8 +77,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -70,8 +86,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -79,8 +95,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -88,8 +104,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -97,8 +113,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -106,8 +122,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -115,8 +131,8 @@ MonoBehaviour:
   - nodeType: 1
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 0
     isRandomEnemy: 0
     enemyIDs: b80b0000
@@ -124,8 +140,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -133,8 +149,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -142,8 +158,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -151,8 +167,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -160,8 +176,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -169,18 +185,18 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
     randomizePosition: 0.194
   - nodeType: 3
     distanceFromPreviousLayer:
-      min: 5
-      max: 6
-    nodesApartDistance: 2
+      min: 4
+      max: 4
+    nodesApartDistance: 0
     isRandomNode: 0
     isRandomEnemy: 1
     enemyIDs: 
-    randomizePosition: 0.194
+    randomizePosition: 0

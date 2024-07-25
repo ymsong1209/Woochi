@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9483a26c0d4ef4c8821b5c232bedf1, type: 3}
   m_Name: 102 Abnormal_Fog
   m_EditorClassIdentifier: 
-  cost: 1
+  ID: 102
   Name: "\uC548\uAC1C"
+  cost: 1
+  buffList:
+  - {fileID: 3070074099598258082, guid: 990e6b83167f13c4ebe8eacc59643ac2, type: 3}
