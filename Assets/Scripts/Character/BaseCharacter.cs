@@ -265,15 +265,15 @@ public class BaseCharacter : MonoBehaviour
     
     private void ClampStat()
     {
-        stat.health = Mathf.Clamp(stat.health, 0, 999);
-        stat.speed = Mathf.Clamp(stat.speed, 0, 999);
-        stat.defense = Mathf.Clamp(stat.defense, 0, 999);
-        stat.crit = Mathf.Clamp(stat.crit, 0, 999);
-        stat.accuracy = Mathf.Clamp(stat.accuracy, 0, 999);
-        stat.evasion = Mathf.Clamp(stat.evasion, 0, 999);
-        stat.resist = Mathf.Clamp(stat.resist, 0, 999);
-        stat.minStat = Mathf.Clamp(stat.minStat, 0, 999);
-        stat.maxStat = Mathf.Clamp(stat.maxStat, 0, 999);
+        baseStat.maxHealth = Mathf.Clamp(baseStat.maxHealth, 0, 999);
+        baseStat.speed = Mathf.Clamp(baseStat.speed, 0, 999);
+        baseStat.defense = Mathf.Clamp(baseStat.defense, 0, 999);
+        baseStat.crit = Mathf.Clamp(baseStat.crit, 0, 999);
+        baseStat.accuracy = Mathf.Clamp(baseStat.accuracy, 0, 999);
+        baseStat.evasion = Mathf.Clamp(baseStat.evasion, 0, 999);
+        baseStat.resist = Mathf.Clamp(baseStat.resist, 0, 999);
+        baseStat.minStat = Mathf.Clamp(baseStat.minStat, 0, 999);
+        baseStat.maxStat = Mathf.Clamp(baseStat.maxStat, 0, 999);
     }
     
     /// <summary>

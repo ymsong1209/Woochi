@@ -48,7 +48,7 @@ public class Stat
     public static Stat operator+(Stat a, Stat b)
     {
         Stat result = new Stat();
-        result.health = a.health + b.health;
+        result.maxHealth = a.maxHealth + b.maxHealth;
         result.speed = a.speed + b.speed;
         result.defense = a.defense + b.defense;
         result.crit = a.crit + b.crit;

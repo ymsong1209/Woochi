@@ -25,9 +25,6 @@ public class CH_Stab : BaseSkill
     }
     protected override float CalculateDamage(BaseCharacter receiver, bool isCrit)
     {
-        Health opponentHealth = _opponent.Health;
-        //최소, 최대 대미지 사이의 수치를 고름
-        
         float RandomStat = Random.Range(SkillOwner.Stat.minStat, SkillOwner.Stat.maxStat);
         RandomStat *= (Multiplier / 100);
         //부정한 찌르기는 방어력을 무시하고 대미지를 준다.
