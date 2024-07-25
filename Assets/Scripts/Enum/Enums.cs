@@ -80,6 +80,7 @@ public enum BuffEffect
     DotCureByDamage,            //피해량 기반으로 도트힐
     ElementalStatStrengthen,    //속성별 스탯 강화
     ElementalStatWeaken,
+    IncreaseCritOvertime,       //족자구 회피 증가 버프
     END
 }
 

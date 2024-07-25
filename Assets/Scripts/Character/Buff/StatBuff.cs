@@ -3,9 +3,8 @@ using UnityEngine;
 
 public class StatBuff : BaseBuff
 {
-    #region 변화된 스탯들의 수치
+    
     [SerializeField] protected Stat changeStat;
-    #endregion 변화된 스탯들
     public StatBuff()
     {
         buffEffect = BuffEffect.StatStrengthen;
@@ -16,6 +15,16 @@ public class StatBuff : BaseBuff
     {
        base.AddBuff(caster, _buffOwner);
        buffOwner.CheckForStatChange();
+    }
+    
+    public override int ApplyTurnStartBuff()
+    {
+        return 0;
+    }
+    public override int ApplyTurnEndBuff()
+    {
+        if(buffDurationTurns > 0) --buffDurationTurns;
+        return 0;
     }
     
     public override void StackBuff(BaseBuff _buff)

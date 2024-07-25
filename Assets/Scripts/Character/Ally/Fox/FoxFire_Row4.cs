@@ -8,7 +8,6 @@ using UnityEngine;
 /// </summary>
 public class FoxFire_Row4 : BaseSkill
 {
-   [SerializeField] private GameObject cureBuffPrefab;
    public override void ActivateSkill(BaseCharacter _opponent)
    {
       GameObject burnDebuffPrefab = BuffPrefabList[0];
@@ -19,15 +18,6 @@ public class FoxFire_Row4 : BaseSkill
       instantiatedBuffList.Add(burnDebuffGameObject);
       
       base.ActivateSkill(_opponent);
-
-      if (SkillResult.Opponent && SkillResult.Opponent.IsAlly)
-      {
-         //아군에 준 버프는 반드시 명중. 검사 로직 건너뜀
-         GameObject curebuffInstantiated = Instantiate(cureBuffPrefab, transform);
-         FoxFire_Row4_CureBuff cureBuff = curebuffInstantiated.GetComponent<FoxFire_Row4_CureBuff>();
-         BaseBuff buff = SkillOwner.ApplyBuff(SkillOwner,_opponent, cureBuff);
-         cureBuff.SetFox(SkillOwner);
-      }
    }
    
 }

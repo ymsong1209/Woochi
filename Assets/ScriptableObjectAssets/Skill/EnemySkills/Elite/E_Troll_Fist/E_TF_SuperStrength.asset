@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f970e1487b951641bb3562062edf1db, type: 3}
+  m_Name: E_TF_SuperStrength
+  m_EditorClassIdentifier: 
+  skillIcon: {fileID: 0}
+  skillName: "\uAD34\uB825"
+  animType: 5
+  skillAvailableRadius: 0000000001010101
+  skillRadius: 0100000000000000
+  skillType: 0
+  skillTargetType: 0
+  skillElement: 0
+  skillTargetCount: 1
+  bufflist: []
+  baseMultiplier: 100
+  baseSkillAccuracy: 60

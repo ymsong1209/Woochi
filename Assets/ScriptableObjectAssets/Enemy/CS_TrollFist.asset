@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4bbbce2a03c2d4a95b7ced04f3ebb7, type: 3}
   m_Name: CS_TrollFist
   m_EditorClassIdentifier: 
-  ID: 2000
+  ID: 1004
   portrait: {fileID: 21300000, guid: dbaf8ce0fbf07d143807a4b5701e050c, type: 3}
+  characterName: 
+  size: 0
+  cost: 0
   baseStat:
     health: 0
     speed: 0

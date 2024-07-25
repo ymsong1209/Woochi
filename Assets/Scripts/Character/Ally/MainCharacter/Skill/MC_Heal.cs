@@ -6,7 +6,7 @@ public class MC_Heal : MainCharacterSkill
 {
     [SerializeField]  int healAmount;
     
-    protected virtual void ApplyStat(BaseCharacter _opponent, bool _isCrit)
+    protected override void ApplyStat(BaseCharacter _opponent, bool _isCrit)
     {
         Health opponentHealth = _opponent.gameObject.GetComponent<Health>();
         //최소, 최대 대미지 사이의 수치를 고름

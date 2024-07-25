@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4bbbce2a03c2d4a95b7ced04f3ebb7, type: 3}
   m_Name: CS_TrollHammer
   m_EditorClassIdentifier: 
-  ID: 2001
+  ID: 1005
   portrait: {fileID: 21300000, guid: fa95b18ad37e1d64e95f87f7e7e5c873, type: 3}
+  characterName: 
+  size: 0
+  cost: 0
   baseStat:
     health: 0
     speed: 0

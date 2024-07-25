@@ -17,6 +17,16 @@ public class StatDeBuff : BaseBuff
         buffOwner.CheckForStatChange();
     }
     
+    public override int ApplyTurnStartBuff()
+    {
+        return 0;
+    }
+    public override int ApplyTurnEndBuff()
+    {
+        if(buffDurationTurns > 0) --buffDurationTurns;
+        return 0;
+    }
+    
     public override void StackBuff(BaseBuff _buff)
     {
         StatDeBuff statDeBuff = _buff as StatDeBuff;

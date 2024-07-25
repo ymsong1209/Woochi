@@ -40,7 +40,7 @@ public class BattleUtils
     /// 주어진 Formation에서 무작위 캐릭터를 특정 인덱스 집합 내에서 찾는다.
     /// </summary>
     /// <param name="formationClass">Formation 객체</param>
-    /// <param name="indices">탐색할 인덱스의 집합</param>
+    /// <param name="indices">탐색할 인덱스의 집합 : 0,1,2,3</param>
     /// <returns>무작위 캐릭터, 없으면 null</returns>
     public static BaseCharacter FindRandomCharacter(Formation formationClass, params int[] indices)
     {
@@ -72,7 +72,7 @@ public class BattleUtils
     /// <summary>
     /// Allies Formation에서 특정 인덱스 집합 내 가장 HP가 적은 아군을 찾습니다.
     /// </summary>
-    /// <param name="indices">탐색할 인덱스의 집합</param>
+    /// <param name="indices">탐색할 인덱스의 집합 : 0,1,2,3</param>
     /// <returns>가장 HP가 적은 아군, 없으면 null</returns>
     public static BaseCharacter FindAllyWithLeastHP(params int[] indices)
     {
@@ -83,7 +83,7 @@ public class BattleUtils
     /// <summary>
     /// Allies Formation에서 특정 인덱스 집합 내 무작위 아군을 찾습니다.
     /// </summary>
-    /// <param name="indices">탐색할 인덱스의 집합</param>
+    /// <param name="indices">탐색할 인덱스의 집합 : 0,1,2,3</param>
     /// <returns>무작위 아군, 없으면 null</returns>
     public static BaseCharacter FindRandomAlly(params int[] indices)
     {
@@ -113,6 +113,11 @@ public class BattleUtils
         return FindRandomCharacter(enemies, indices);
     }
 
+    /// <summary>
+    /// 주어진 인덱스에 해당하는 아군 반환
+    /// </summary>
+    /// <param name="index">탐색할 인덱스 (0, 1, 2, 3 중 하나)</param>
+    /// <returns>1,2,3,4열의 아군, 없으면 null</returns>
     public static BaseCharacter FindAllyFromIndex(int index)
     {
         Formation allies = BattleManager.GetInstance.Allies;

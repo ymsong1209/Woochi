@@ -20,18 +20,20 @@ public class Tiger_Roar : BaseSkill
         instantiatedBuffList.Add(statDebuffGameObject);
         
         base.ActivateSkill(_Opponent);
+        
+        GameObject instantiatedRoarbuff = Instantiate(roarBuffGameObject, transform);
+        StatBuff roarBuff = instantiatedRoarbuff.GetComponent<StatBuff>();
+        roarBuff.BuffName = "산군의포효";
+        roarBuff.BuffDurationTurns = 4; //버프를 자신에게 걸고 이후 3턴동안 지속
+        roarBuff.ChanceToApplyBuff = 100;
+        roarBuff.ChangeStat.defense = 5;
+        SkillOwner.ApplyBuff(SkillOwner,SkillOwner,roarBuff);
     }
     
     protected override void ApplyMultiple()
     {
         base.ApplyMultiple();
-        GameObject instantiatedRoarbuff = Instantiate(roarBuffGameObject, transform);
-        StatBuff roarBuff = instantiatedRoarbuff.GetComponent<StatBuff>();
-        roarBuff.BuffName = "산군의포효";
-        roarBuff.BuffDurationTurns = 3;
-        roarBuff.ChanceToApplyBuff = 100;
-        roarBuff.ChangeStat.defense = 5;
-        SkillOwner.ApplyBuff(SkillOwner,SkillOwner,roarBuff);
+       
     }
     
 }

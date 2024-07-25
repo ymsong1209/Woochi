@@ -3,9 +3,9 @@ using UnityEngine;
 
 public static class DataCloud
 {
-    public static bool dontSave = false;        // ÀúÀåÇÏÁö ¾ÊÀ» ¶§  
+    public static bool dontSave = false;        // ì €ì¥í•˜ì§€ ì•Šì„ ë•Œ  
 
-    public static PlayerData playerData;        // ÇÃ·¹ÀÌ¾î µ¥ÀÌÅÍ
+    public static PlayerData playerData;        // í”Œë ˆì´ì–´ ë°ì´í„°
     
     public static void SavePlayerData()
     {

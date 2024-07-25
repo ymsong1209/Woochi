@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4bbbce2a03c2d4a95b7ced04f3ebb7, type: 3}
+  m_Name: CS_E_ScrollDog
+  m_EditorClassIdentifier: 
+  ID: 5003
+  portrait: {fileID: 0}
+  characterName: "\uC0AC\uB098\uC6B4 \uC871\uC790\uAD6C"
+  size: 1
+  cost: 4
+  baseStat:
+    health: 28
+    speed: 12
+    defense: 1
+    crit: 5
+    accuracy: 5
+    evasion: 15
+    resist: 5
+    minStat: 6
+    maxStat: 11
+  skills:
+  - {fileID: -5034647490118650099, guid: 619e4b5d4257d1f489d6fdc8d63ed4af, type: 3}
+  - {fileID: 6053676695746164403, guid: 6da877ddf8d5a964ba80db64ab080d7d, type: 3}

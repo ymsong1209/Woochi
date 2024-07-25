@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1003
   portrait: {fileID: 0}
+  characterName: 
+  size: 0
+  cost: 0
   baseStat:
     health: 0
     speed: 0
@@ -26,4 +29,4 @@ MonoBehaviour:
     maxStat: 0
   skills:
   - {fileID: -3160245103194300316, guid: ec272f27a19a31d45889329cedeb94a7, type: 3}
-  - {fileID: -3160245103194300316, guid: ec272f27a19a31d45889329cedeb94a7, type: 3}
+  - {fileID: 7567498775990734686, guid: 2209a3938963db64b898c96380a44290, type: 3}
