@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7788646414597159809}
-  - component: {fileID: 2669461611011049665}
+  - component: {fileID: 5239870699780254164}
   m_Layer: 0
-  m_Name: Fog
+  m_Name: Sea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2669461611011049665
+--- !u!114 &5239870699780254164
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,14 +49,14 @@ MonoBehaviour:
   buffEffect: 3
   buffType: 2
   chanceToApplyBuff: 100
-  buffName: "\uC548\uAC1C"
+  buffName: "\uBC14\uB2E4"
   changeStat:
     maxHealth: 0
-    speed: 0
+    speed: 2
     defense: 0
-    crit: 5
-    accuracy: -5
-    evasion: 0
+    crit: 0
+    accuracy: -3
+    evasion: 2
     resist: 0
     minStat: 0
     maxStat: 0

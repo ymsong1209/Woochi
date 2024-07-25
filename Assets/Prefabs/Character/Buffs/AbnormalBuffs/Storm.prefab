@@ -49,9 +49,9 @@ MonoBehaviour:
   buffEffect: 3
   buffType: 2
   chanceToApplyBuff: 100
-  StatBuffName: "\uD3ED\uD48D"
+  buffName: "\uD3ED\uD48D"
   changeStat:
-    health: 0
+    maxHealth: 0
     speed: 0
     defense: 0
     crit: -3
@@ -60,3 +60,5 @@ MonoBehaviour:
     resist: 0
     minStat: -3
     maxStat: -3
+  applyAlly: 1
+  applyEnemy: 0

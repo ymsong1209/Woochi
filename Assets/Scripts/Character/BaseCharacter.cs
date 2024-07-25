@@ -396,6 +396,9 @@ public class BaseCharacter : MonoBehaviour
     public int Cost => characterStat.cost;
     public Health Health => health;
     public Stat Stat => baseStat + rewardStat;
+    public Stat BaseStat => baseStat;
+    public Stat RewardStat => rewardStat;
+
     public BuffList BuffList => buffList;
 
     public bool IsDead => isDead;

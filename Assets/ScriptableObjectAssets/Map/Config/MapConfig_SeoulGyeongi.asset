@@ -23,8 +23,18 @@ MonoBehaviour:
       probability: 0.3
   randomAbnormals:
     list:
-    - value: 0
-      probability: 0
+    - value: 100
+      probability: 0.35
+    - value: 101
+      probability: 0.15
+    - value: 105
+      probability: 0.15
+    - value: 106
+      probability: 0.15
+    - value: 109
+      probability: 0.1
+    - value: 110
+      probability: 0.1
   normalTemplates:
   - id: e8030000e8030000e9030000e9030000
   - id: ea030000eb030000e9030000e9030000
@@ -50,7 +60,7 @@ MonoBehaviour:
     distanceFromPreviousLayer:
       min: 0
       max: 0
-    nodesApartDistance: 2
+    nodesApartDistance: 3
     isRandomNode: 0
     isRandomEnemy: 1
     enemyIDs: 
@@ -58,8 +68,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -67,8 +77,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -76,8 +86,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -85,8 +95,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -94,8 +104,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -103,8 +113,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -112,8 +122,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -121,8 +131,8 @@ MonoBehaviour:
   - nodeType: 1
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 0
     isRandomEnemy: 0
     enemyIDs: b80b0000
@@ -130,8 +140,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -139,8 +149,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -148,8 +158,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -157,8 +167,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -166,8 +176,8 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -175,18 +185,18 @@ MonoBehaviour:
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 3
-      max: 4
-    nodesApartDistance: 2
+      max: 3
+    nodesApartDistance: 3
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
     randomizePosition: 0.194
   - nodeType: 3
     distanceFromPreviousLayer:
-      min: 5
-      max: 6
-    nodesApartDistance: 2
+      min: 4
+      max: 4
+    nodesApartDistance: 0
     isRandomNode: 0
     isRandomEnemy: 1
     enemyIDs: 
-    randomizePosition: 0.194
+    randomizePosition: 0

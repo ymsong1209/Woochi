@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7788646414597159809}
-  - component: {fileID: 1551108939629333297}
+  - component: {fileID: 4829945344440307588}
   m_Layer: 0
   m_Name: Rain
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1551108939629333297
+--- !u!114 &4829945344440307588
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3070074099598258082}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c732f99673ec4774dbdfbd1fa9369a12, type: 3}
+  m_Script: {fileID: 11500000, guid: e9c52a1c8271fbf418ef19d32cc061e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buffOwner: {fileID: 0}
@@ -49,9 +49,9 @@ MonoBehaviour:
   buffEffect: 3
   buffType: 2
   chanceToApplyBuff: 100
-  StatBuffName: "\uC6B0\uCC9C"
+  buffName: "\uC6B0\uCC9C"
   changeStat:
-    health: 0
+    maxHealth: 0
     speed: -1
     defense: 0
     crit: -1
@@ -60,3 +60,5 @@ MonoBehaviour:
     resist: 0
     minStat: 0
     maxStat: 0
+  applyAlly: 1
+  applyEnemy: 0

@@ -35,7 +35,7 @@ public class MapManager : SingletonMonobehaviour<MapManager>
 
     public void SelectNode(MapNode _mapNode)
     {
-        BattleManager.GetInstance.InitializeBattle(_mapNode.Node.enemyIDs);
+        BattleManager.GetInstance.InitializeBattle(_mapNode.Node.enemyIDs, _mapNode.Node.abnormalID);
         view.FadeInOut(false);
     }
 

@@ -82,7 +82,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// <summary>
     /// DungeonInfoSO 정보를 받아와서 아군과 적군 위치값 설정
     /// </summary>
-    public void InitializeBattle(int[] enemyIDs)
+    public void InitializeBattle(int[] enemyIDs, int abnormalID = 100)
     {
         if (enemyIDs == null || enemyIDs.Length == 0) 
         { 
@@ -96,6 +96,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         combatQueue.Clear();
         processedCharacters.Clear();
         hardShip = 0;
+        abnormal = GameManager.GetInstance.Library.GetAbnormal(abnormalID);
 
         var enemyList = GameManager.GetInstance.Library.GetCharacterList(enemyIDs);
         enemies.Initialize(enemyList);
@@ -111,10 +112,43 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             }
         }
 
+        InitializeAbnormal();
+
         #region PreRound 상태로 넘어감
         PreRound();
         #endregion
 
+    }
+
+    private void InitializeAbnormal()
+    {
+        var buffList = abnormal.buffList;
+        foreach (var buffPrefab in buffList)
+        {
+            AbnormalBuff buff = buffPrefab.GetComponent<AbnormalBuff>();
+
+            if (buff.applyAlly)
+            {
+                var allyList = allies.GetCharacters();
+                foreach (var ally in allyList)
+                {
+                    GameObject buffObject = Instantiate(buffPrefab, ally.transform);
+                    AbnormalBuff abnormalBuff = buffObject.GetComponent<AbnormalBuff>();
+                    ally.ApplyBuff(ally, ally, abnormalBuff);
+                }
+            }
+            
+            if(buff.applyEnemy)
+            {
+                var enemyList = enemies.GetCharacters();
+                foreach (var enemy in enemyList)
+                {
+                    GameObject buffObject = Instantiate(buffPrefab, enemy.transform);
+                    AbnormalBuff abnormalBuff = buffObject.GetComponent<AbnormalBuff>();
+                    enemy.ApplyBuff(enemy, enemy, abnormalBuff);
+                }
+            }
+        }
     }
 
     // ReSharper disable Unity.PerformanceAnalysis

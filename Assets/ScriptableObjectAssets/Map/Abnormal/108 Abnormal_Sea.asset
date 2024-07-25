@@ -15,3 +15,5 @@ MonoBehaviour:
   ID: 108
   Name: "\uBC14\uB2E4"
   cost: 1
+  buffList:
+  - {fileID: 3070074099598258082, guid: 9b331b2247614a2488a5ed27d0a7570b, type: 3}

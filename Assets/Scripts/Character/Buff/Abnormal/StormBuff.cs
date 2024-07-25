@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StormBuff : StatDeBuff
+public class StormBuff : AbnormalBuff
 {
     public override int ApplyTurnStartBuff()
     {

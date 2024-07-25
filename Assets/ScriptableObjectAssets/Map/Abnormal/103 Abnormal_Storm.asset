@@ -15,3 +15,5 @@ MonoBehaviour:
   ID: 103
   Name: "\uD3ED\uD48D"
   cost: 3
+  buffList:
+  - {fileID: 3070074099598258082, guid: bf7353b7bc397934a8631fabf198c827, type: 3}
