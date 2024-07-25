@@ -10,7 +10,7 @@ public class MC_Bind : MainCharacterSkill
         GameObject statDebuffPrefab = BuffPrefabList[0];
         GameObject statDebuffGameObject = Instantiate(statDebuffPrefab, transform);
         StatDeBuff statDeBuff = statDebuffGameObject.GetComponent<StatDeBuff>();
-        statDeBuff.StatBuffName = "옭아매기";
+        statDeBuff.BuffName = "옭아매기";
         statDeBuff.BuffDurationTurns = 4;
         statDeBuff.ChanceToApplyBuff = 80;
         statDeBuff.ChangeStat.speed = -2;

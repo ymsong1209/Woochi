@@ -9,7 +9,7 @@ public class CH_DisasterImage : BaseSkill
         GameObject statDebuffPrefab = BuffPrefabList[0];
         GameObject statDebuffGameObject = Instantiate(statDebuffPrefab, transform);
         StatDeBuff statDebuff = statDebuffGameObject.GetComponent<StatDeBuff>();
-        statDebuff.StatBuffName = "재앙환영";
+        statDebuff.BuffName = "재앙환영";
         statDebuff.BuffDurationTurns = 4;
         statDebuff.ChanceToApplyBuff = 100;
         statDebuff.ChangeStat.accuracy = -2;

@@ -178,9 +178,11 @@ public class BaseCharacter : MonoBehaviour
     /// <returns></returns>
     public virtual BaseBuff ApplyBuff(BaseCharacter caster, BaseCharacter receiver, BaseBuff _buff)
     {
-
+    
+        //같은 종류가 있는 버프가 활성화되어있는지 먼저 확인
         BaseBuff activeBuff = receiver.FindMatchingBuff(_buff);
 
+        //같은 종류의 버프가 이미 존재할경우
         if (activeBuff)
         {
             // 기존 버프와 중첩
@@ -269,9 +271,13 @@ public class BaseCharacter : MonoBehaviour
         {
             if (activeBuff == null || activeBuff.BuffEffect != _buff.BuffEffect) continue;
 
-            if (_buff.BuffEffect == BuffEffect.StatStrengthen || _buff.BuffEffect == BuffEffect.StatWeaken || _buff.BuffEffect == BuffEffect.DotCureByDamage)
+            if (_buff.BuffEffect == BuffEffect.StatStrengthen ||
+                _buff.BuffEffect == BuffEffect.StatWeaken || 
+                _buff.BuffEffect == BuffEffect.DotCureByDamage ||
+                _buff.BuffEffect == BuffEffect.ElementalStatStrengthen ||
+                _buff.BuffEffect == BuffEffect.ElementalStatWeaken )
             {
-                if (IsMatchingStatBuff(activeBuff, _buff) || IsMatchingStatDeBuff(activeBuff, _buff) || IsMatchingDotCureByDamageBuff(activeBuff, _buff))
+                if (activeBuff.BuffName == _buff.BuffName)
                 {
                     return activeBuff;
                 }
@@ -283,27 +289,6 @@ public class BaseCharacter : MonoBehaviour
         }
 
         return null;
-    }
-    
-    private bool IsMatchingStatBuff(BaseBuff activeBuff, BaseBuff _buff)
-    {
-        StatBuff activeStatBuff = activeBuff as StatBuff;
-        StatBuff statBuff = _buff as StatBuff;
-        return activeStatBuff != null && statBuff != null && activeStatBuff.StatBuffName == statBuff.StatBuffName;
-    }
-
-    private bool IsMatchingStatDeBuff(BaseBuff activeBuff, BaseBuff _buff)
-    {
-        StatDeBuff activeStatDebuff = activeBuff as StatDeBuff;
-        StatDeBuff statDebuff = _buff as StatDeBuff;
-        return activeStatDebuff != null && statDebuff != null && activeStatDebuff.StatBuffName == statDebuff.StatBuffName;
-    }
-
-    private bool IsMatchingDotCureByDamageBuff(BaseBuff activeBuff, BaseBuff _buff)
-    {
-        DotCureByDamageBuff activeDotHealBuff = activeBuff as DotCureByDamageBuff;
-        DotCureByDamageBuff dotHealBuff = _buff as DotCureByDamageBuff;
-        return activeDotHealBuff != null && dotHealBuff != null && activeDotHealBuff.BuffName == dotHealBuff.BuffName;
     }
 
     #endregion
@@ -411,6 +396,8 @@ public class BaseCharacter : MonoBehaviour
     public int Cost => characterStat.cost;
     public Health Health => health;
     public Stat Stat => baseStat + rewardStat;
+    public BuffList BuffList => buffList;
+
     public bool IsDead => isDead;
     public bool IsAlly
     {

@@ -6,8 +6,6 @@ using UnityEngine;
 /// </summary>
 public class DotCureByDamageBuff : BaseBuff
 {
-    public string BuffName;
-
     [SerializeField] private float dotCureAmount;
     [SerializeField] private float minDamage;
     [SerializeField] private float maxDamage;

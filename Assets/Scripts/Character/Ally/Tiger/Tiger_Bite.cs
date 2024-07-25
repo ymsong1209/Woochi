@@ -4,28 +4,18 @@ using UnityEngine;
 
 public class Tiger_Bite : BaseSkill
 {
-    protected override void ApplyStat(BaseCharacter _opponent, bool _isCrit)
+    protected override void ApplyStat(BaseCharacter receiver, bool isCrit)
     {
-        Health opponentHealth = _opponent.Health;
-        //최소, 최대 대미지 사이의 수치를 고름
-        Stat stat = SkillOwner.Stat;
-
-        float RandomStat = Random.Range(stat.minStat, stat.maxStat);
-        //피해량 계수를 곱함
-        RandomStat *= (Multiplier / 100);
-
-        //방어 스탯을 뺀 base 스탯을 구함
-        RandomStat = RandomStat * (100 - stat.defense) / 100;
-        if (_isCrit) RandomStat = RandomStat * 2;
-
+        float Damage = CalculateDamage(receiver, isCrit);
+        Health opponentHealth = receiver.gameObject.GetComponent<Health>();
         // 물어뜯기로 피해를 입히면 적의 잃은 체력의 20% 만큼 추가 피해를 줌
-        RandomStat +=  (opponentHealth.MaxHealth - opponentHealth.CurHealth) * 0.2f;
-
-        //적에게 최종적인 대미지를 줌
-        opponentHealth.ApplyDamage((int)Mathf.Round(RandomStat));
-
+        Damage +=  (opponentHealth.MaxHealth - opponentHealth.CurHealth) * 0.2f;
+        Damage = Mathf.Clamp(CalculateElementalDamageBuff(Damage),0,9999);
         //호랑이는 준 피해의 30%만큼 회복함.
-        int healamount = (int)Mathf.Round(RandomStat * 0.3f);
+        int healamount = (int)Mathf.Round(Damage * 0.3f);
         SkillOwner.Health.Heal(healamount);
+        
+        opponentHealth.ApplyDamage((int)Mathf.Round(Damage), isCrit);
+        receiver.CheckDeadAndPlayAnim();
     }
 }

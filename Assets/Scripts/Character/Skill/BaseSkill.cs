@@ -328,32 +328,24 @@ public class BaseSkill : MonoBehaviour
     }
     
 
-    protected virtual void ApplyStat(BaseCharacter _opponent, bool _isCrit)
+    protected virtual void ApplyStat(BaseCharacter receiver, bool isCrit)
     {
-        Health opponentHealth = _opponent.Health;
-        //최소, 최대 대미지 사이의 수치를 고름
-        
-        float RandomStat = Random.Range(skillOwner.Stat.minStat, skillOwner.Stat.maxStat);
-        //피해량 계수를 곱함
-        RandomStat *= (multiplier / 100);
+        Health opponentHealth = receiver.Health;
        
         switch (skillType)
         {
             case SkillType.Attack:
             {
-                //방어 스탯을 뺌
-                RandomStat = RandomStat * (100 - _opponent.Stat.defense) / 100;
-                if (_isCrit) RandomStat = RandomStat * 2;
-                //TODO : 버프 순회해서 스킬 속성에 따라 감소되는 버프를 확인해서 최종대미지에서 감소
-                
-                opponentHealth.ApplyDamage((int)Mathf.Round(RandomStat), _isCrit);
-                _opponent.CheckDeadAndPlayAnim();
+                float Damage = CalculateDamage(receiver, isCrit);
+                Damage = Mathf.Clamp(CalculateElementalDamageBuff(Damage),0,9999);
+                opponentHealth.ApplyDamage((int)Mathf.Round(Damage), isCrit);
+                receiver.CheckDeadAndPlayAnim();
             }
             break;
             case SkillType.Heal:
             {
-                if (_isCrit) RandomStat = RandomStat * 2;
-                opponentHealth.Heal((int)Mathf.Round(RandomStat));
+                float HealAmount = CalculateHeal(receiver, isCrit);
+                opponentHealth.Heal((int)Mathf.Round(HealAmount));
             }
             break;
             case SkillType.Special:
@@ -362,6 +354,45 @@ public class BaseSkill : MonoBehaviour
             }
             break;
         }
+    }
+    
+    protected virtual float CalculateDamage(BaseCharacter receiver, bool isCrit)
+    {
+        float RandomStat = Random.Range(skillOwner.Stat.minStat, skillOwner.Stat.maxStat);
+        RandomStat *= (multiplier / 100);
+        RandomStat = RandomStat * (1 - receiver.Stat.defense/(receiver.Stat.defense + 100));
+        if (isCrit) RandomStat = RandomStat * 2;
+        return RandomStat;
+    }
+    
+    protected float CalculateElementalDamageBuff(float damage)
+    {
+        foreach (BaseBuff buff in SkillOwner.activeBuffs)
+        {
+            if (buff.BuffEffect == BuffEffect.ElementalStatStrengthen ||
+                buff.BuffEffect == BuffEffect.ElementalStatWeaken)
+            {
+                ElementalStatBuff elementalStatBuff = buff as ElementalStatBuff;
+                if (elementalStatBuff && elementalStatBuff.Element == skillSO.SkillElement)
+                {
+                    damage += elementalStatBuff.ChangeStat;
+                }
+                ElementalStatDeBuff elementalStatDeBuff = buff as ElementalStatDeBuff;
+                if (elementalStatDeBuff && elementalStatDeBuff.Element == skillSO.SkillElement)
+                {
+                    damage += elementalStatDeBuff.ChangeStat;
+                }
+            }
+        }
+
+        return damage;
+    }
+    protected virtual float CalculateHeal(BaseCharacter receiver, bool isCrit)
+    {
+        float RandomStat = Random.Range(skillOwner.Stat.minStat, skillOwner.Stat.maxStat);
+        RandomStat *= (multiplier / 100);
+        if (isCrit) RandomStat = RandomStat * 2;
+        return RandomStat;
     }
     
 

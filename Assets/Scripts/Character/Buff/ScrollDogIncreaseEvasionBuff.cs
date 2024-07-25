@@ -25,7 +25,7 @@ public class ScrollDogIncreaseEvasionBuff : BaseBuff
         {
             GameObject instantiatedevasionbuff = Instantiate(statBuffGameObject, transform);
             StatBuff evasionBuff = instantiatedevasionbuff.GetComponent<StatBuff>();
-            evasionBuff.StatBuffName = "족자";
+            evasionBuff.BuffName = "족자";
             evasionBuff.BuffDurationTurns = -1;
             evasionBuff.ChanceToApplyBuff = 100;
             evasionBuff.ChangeStat.evasion = 2;

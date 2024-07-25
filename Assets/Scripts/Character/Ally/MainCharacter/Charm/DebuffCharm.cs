@@ -13,7 +13,7 @@ public class DebuffCharm : BaseCharm
     public override void Activate(BaseCharacter opponent)
     {
         StatDeBuff buff = GetComponent<StatDeBuff>();
-        buff.StatBuffName = CharmName;
+        buff.BuffName = CharmName;
         buff.BuffDurationTurns = Turns;
         buff.ChangeStat = changeStat;
         BaseCharacter caster = BattleManager.GetInstance.currentCharacter;

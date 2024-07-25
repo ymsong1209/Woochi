@@ -4,33 +4,22 @@ using UnityEngine;
 
 public class Tiger_Rip : BaseSkill
 {
-    protected override void ApplyStat(BaseCharacter _opponent, bool _isCrit)
+    protected override float CalculateDamage(BaseCharacter receiver, bool isCrit)
     {
-        Health opponentHealth = _opponent.Health;
-        //최소, 최대 대미지 사이의 수치를 고름
-        Stat stat = SkillOwner.Stat;
-
-        float randomStat = Random.Range(stat.minStat, stat.maxStat);
-        //피해량 계수를 곱함
-        randomStat *= (Multiplier / 100);
-
-        //방어 스탯을 뺌
-        randomStat = randomStat * (100 - stat.defense) / 100;
-
+        float RandomStat = Random.Range(SkillOwner.Stat.minStat, SkillOwner.Stat.maxStat);
+        RandomStat *= (Multiplier / 100);
+        RandomStat = RandomStat * (1 - receiver.Stat.defense/(receiver.Stat.defense + 100));
         //적에게 출혈 버프가 붙어있으면 1.5배의 대미지
         bool hasBleed = false;
-        foreach(BaseBuff buff in _opponent.activeBuffs)
+        foreach(BaseBuff buff in receiver.activeBuffs)
         {
             if(buff.BuffEffect == BuffEffect.Bleed)
             {
                 hasBleed = true;
             }
         }
-        if (hasBleed) randomStat *= 1.5f;
-
-        //치명타일 경우 최종대미지가 2배
-        if (_isCrit) randomStat *= 2;
-
-        opponentHealth.ApplyDamage((int)Mathf.Round(randomStat));
+        if (hasBleed) RandomStat *= 1.5f;
+        if (isCrit) RandomStat = RandomStat * 2;
+        return RandomStat;
     }
 }

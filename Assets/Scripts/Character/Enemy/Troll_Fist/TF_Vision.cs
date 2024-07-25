@@ -11,7 +11,7 @@ public class TF_Vision : BaseSkill
         GameObject statDebuffPrefab = BuffPrefabList[0];
         GameObject statDebuffGameObject = Instantiate(statDebuffPrefab, transform);
         StatDeBuff statDebuff = statDebuffGameObject.GetComponent<StatDeBuff>();
-        statDebuff.StatBuffName = "기묘한 환상";
+        statDebuff.BuffName = "기묘한 환상";
         statDebuff.BuffDurationTurns = 3;
         statDebuff.ChanceToApplyBuff = 100;
         statDebuff.ChangeStat.accuracy = -2;

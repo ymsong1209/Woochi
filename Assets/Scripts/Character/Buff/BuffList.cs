@@ -29,4 +29,6 @@ public class BuffList : MonoBehaviour
         return buff;
         
     }
+
+    public BuffIcon[] BuffIcons => buffIcons;
 }

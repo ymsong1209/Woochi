@@ -19,6 +19,7 @@ public class BaseBuff : MonoBehaviour
     [SerializeField] protected BuffEffect buffEffect;
     [SerializeField] protected BuffType buffType;
     [SerializeField] protected int chanceToApplyBuff;
+    [SerializeField] protected string buffName;
     
 
     /// <summary>
@@ -144,13 +145,16 @@ public class BaseBuff : MonoBehaviour
     
     public int ChanceToApplyBuff
     {
-        get { return chanceToApplyBuff; }
-        set { chanceToApplyBuff = value; }
+        get => chanceToApplyBuff;
+        set => chanceToApplyBuff = value;
     }
-    
-    
 
-    
+    public string BuffName
+    {
+        get => buffName;
+        set => buffName = value;
+    }
+
     #endregion Getter Setter
 
     #region Validation
