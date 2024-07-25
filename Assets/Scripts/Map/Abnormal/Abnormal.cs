@@ -1,4 +1,5 @@
 using DataTable;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Abnormal", menuName = "Scriptable Objects/Map/Abnormal")]
@@ -8,6 +9,8 @@ public class Abnormal : ScriptableObject
     public int ID;
     [ReadOnly(true)] public string Name;
     [ReadOnly(true)] public int cost;
+
+    public List<GameObject> buffList;
 
     public void Initialize()
     {
