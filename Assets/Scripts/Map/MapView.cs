@@ -17,7 +17,6 @@ public class MapView : MonoBehaviour
 
     [Header("Stage Settings")]
     public Sprite background;
-    public TextMeshProUGUI stageNameTxt;
     public Image fadeImage;
 
     [Header("Line Settings")]
@@ -26,6 +25,9 @@ public class MapView : MonoBehaviour
     public int linePointsCount = 10;
     [Tooltip("Distance from the node till the line starting point")]
     public float offsetFromNodes = 1f;
+    [Tooltip("º¸Á¤°ª")]
+    public Vector2 correction = Vector2.zero;
+
     [Header("Colors")]
     [Tooltip("Node Visited or Attainable color")]
     public Color32 visitedColor = Color.white;
@@ -100,20 +102,11 @@ public class MapView : MonoBehaviour
         SetLineColors();
 
         CreateMapBackground(m);
-
-        SetStageInfo();
     }
 
     public void FadeInOut(bool isActiveScroll)
     {
         mapObject.SetActive(isActiveScroll);
-    }
-
-    private void SetStageInfo()
-    {
-        if (stageNameTxt == null) return;
-
-        stageNameTxt.text = GetConfig(MapManager.GetInstance.CurrentMap.configName).stageName;
     }
 
     protected void CreateMapBackground(Map m)
@@ -188,6 +181,10 @@ public class MapView : MonoBehaviour
         NodeBlueprint blueprint = GetBlueprint(node.nodeType);
         mapNode.SetUp(node, blueprint);
         mapNode.transform.localPosition = GetNodePosition(node);
+        if(node.nodeType == NodeType.Boss)
+        {
+            mapNode.transform.localScale = new Vector3(2f, 2f, 2f);
+        }
         return mapNode;
     }
 
@@ -196,7 +193,7 @@ public class MapView : MonoBehaviour
         float length = padding + Map.DistanceBetweenFirstAndLastLayers() * unitsToPixelsMultiplier;
 
         return new Vector2(-backgroundPadding.x / 2f, (padding - length) / 2f) +
-                       node.position * unitsToPixelsMultiplier;
+                       node.position * unitsToPixelsMultiplier + correction;
     }
 
     public void SetAttainableNodes()
