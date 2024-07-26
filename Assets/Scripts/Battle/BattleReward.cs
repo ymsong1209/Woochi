@@ -1,9 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DataTable;
+using UnityEngine.UI;
 
 public class BattleReward : MonoBehaviour
 {
+    [SerializeField] private GameObject rewardPanel;
+    [SerializeField] private Button nextBtn;
+
+
     [SerializeField, ReadOnly(true)] private RandomList<RareType> rarityList;
     private HashSet<Reward> rewardSet = new HashSet<Reward>();
 
@@ -11,7 +16,8 @@ public class BattleReward : MonoBehaviour
 
     void Start()
     {
-        
+        nextBtn.onClick.AddListener(Next);
+        rewardPanel.SetActive(false);
     }
 
     public void ShowReward(int hardShip)
@@ -24,6 +30,10 @@ public class BattleReward : MonoBehaviour
         {
             Debug.Log(reward.rewardName);
         }
+
+        DataCloud.playerData.gold += 100;
+
+        rewardPanel.SetActive(true);
     }
 
     /// <summary>
@@ -59,5 +69,11 @@ public class BattleReward : MonoBehaviour
             RareType rarity = GetRarity(grade);
             rewardSet.Add(GameManager.GetInstance.Library.GetReward(rarity));
         }
+    }
+
+    private void Next()
+    {
+        rewardPanel.SetActive(false);
+        MapManager.GetInstance.CompleteNode();
     }
 }

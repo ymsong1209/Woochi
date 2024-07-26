@@ -75,8 +75,8 @@ public class Health
         if (playAnimation)
         {
             owner.onPlayAnimation?.Invoke(AnimationType.Heal);
+            owner.onAttacked?.Invoke(AttackResult.Heal, _healamount, false);
         }
-        owner.onAttacked?.Invoke(AttackResult.Heal, _healamount, false);
     }
     
     public bool CheckHealthZero()

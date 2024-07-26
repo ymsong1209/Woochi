@@ -589,8 +589,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         allies.BattleEnd(); enemies.BattleEnd();
 
-        MapManager.GetInstance.CompleteNode();
-
         // 전투가 종료되었을때만 저장
         GameManager.GetInstance.SaveData();
     }
@@ -776,7 +774,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     #endregion
     #region Getter Setter
 
-    public Formation Allies => allies;
+    public AllyFormation Allies => allies;
 
     public Formation Enemies => enemies;
 
