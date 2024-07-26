@@ -53,7 +53,7 @@ public class BaseCharacter : MonoBehaviour
     protected bool isTurnUsed = false; //한 라운드 내에서 자신의 턴을 사용했을 경우
     protected bool isIdle = true;
 
-    public bool isDummy = false;      // 더미 캐릭터인지
+    public bool isDummy = false;      // 우치 소환전용 더미 캐릭터인지
     [HideInInspector] public bool isSummoned = false;     // 캐릭터가 소환되었는지
 
     // 캐릭터가 앞 열에서부터 몇 번째 순서인지

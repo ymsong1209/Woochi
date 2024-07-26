@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using TMPro;
 
 /// <summary>
-/// »ı¼ºÇÑ MapÀ» È­¸é¿¡ Ç¥½ÃÇÏ´Â Å¬·¡½º
+/// ìƒì„±í•œ Mapì„ í™”ë©´ì— í‘œì‹œí•˜ëŠ” í´ë˜ìŠ¤
 /// </summary>
 public class MapView : MonoBehaviour
 {
@@ -25,7 +25,7 @@ public class MapView : MonoBehaviour
     public int linePointsCount = 10;
     [Tooltip("Distance from the node till the line starting point")]
     public float offsetFromNodes = 1f;
-    [Tooltip("º¸Á¤°ª")]
+    [Tooltip("ë³´ì •ê°’")]
     public Vector2 correction = Vector2.zero;
 
     [Header("Colors")]

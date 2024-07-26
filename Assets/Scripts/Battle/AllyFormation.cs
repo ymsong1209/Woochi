@@ -5,7 +5,7 @@ using UnityEngine;
 public class AllyFormation : Formation
 {
     [SerializeField] GameObject dummyPrefab;
-    private BaseCharacter dummyCharacter;
+    private BaseCharacter dummyCharacter; //ìš°ì¹˜ ì†Œí™˜ìˆ˜ ì†Œí™˜ìš© ë”ë¯¸ ìºë¦­í„°
 
     public override void Initialize(List<GameObject> prefabs)
     {
@@ -16,7 +16,7 @@ public class AllyFormation : Formation
 
         totalSize = 0;
 
-        // ÇÃ·¹ÀÌ¾î°¡ ¼ÒÀ¯ÇÑ ¼ÒÈ¯¼ö¸¦ ÀÏ´Ü ¸ğµÎ »ı¼º(¿ìÄ¡ Æ÷ÇÔ)
+        // í”Œë ˆì´ì–´ê°€ ì†Œìœ í•œ ì†Œí™˜ìˆ˜ë¥¼ ì¼ë‹¨ ëª¨ë‘ ìƒì„±(ìš°ì¹˜ í¬í•¨)
         foreach (GameObject prefab in prefabs)
         {
             GameObject characterPrefab = Instantiate(prefab, transform);
@@ -29,7 +29,7 @@ public class AllyFormation : Formation
             allCharacter.Add(character);
         }
 
-        // Æ÷¸ŞÀÌ¼Ç¿¡ µî·ÏÇÑ ¼ÒÈ¯¼ö¸¦ Æ÷¸ŞÀÌ¼Ç¿¡ µî·Ï
+        // í¬ë©”ì´ì…˜ì— ë“±ë¡í•œ ì†Œí™˜ìˆ˜ë¥¼ í¬ë©”ì´ì…˜ì— ë“±ë¡
         int[] battleFormation = DataCloud.playerData.battleData.formation;
         for(int i = 0; i < 4; i++)
         {
@@ -59,8 +59,8 @@ public class AllyFormation : Formation
     {
         base.ReOrder();
 
-        // formation¿¡ µé¾î¿ÍÀÖ´Â »óÅÂÀÎµ¥ °ÔÀÓ ¿ÀºêÁ§Æ®°¡ ºñÈ°¼ºÈ­µÇ¾î ÀÖ´Ù´Â °ÍÀº
-        // ¿ìÄ¡°¡ Ä³¸¯ÅÍ¸¦ ¼ÒÈ¯ÇßÀ½À» ÀÇ¹Ì
+        // formationì— ë“¤ì–´ì™€ìˆëŠ” ìƒíƒœì¸ë° ê²Œì„ ì˜¤ë¸Œì íŠ¸ê°€ ë¹„í™œì„±í™”ë˜ì–´ ìˆë‹¤ëŠ” ê²ƒì€
+        // ìš°ì¹˜ê°€ ìºë¦­í„°ë¥¼ ì†Œí™˜í–ˆìŒì„ ì˜ë¯¸
         for(int i = 0; i < formation.Length;)
         {
             var character = formation[i];
@@ -75,7 +75,7 @@ public class AllyFormation : Formation
             i += character.Size;
         }
 
-        // ´ë±â¿­ Ä³¸¯ÅÍ¿¡ µé¾î¿ÍÀÖ´Âµ¥ °ÔÀÓ ¿ÀºêÁ§Æ®°¡ È°¼ºÈ­µÇ¾î ÀÖ´Ù´Â °ÍÀº ¿ìÄ¡°¡ Ä³¸¯ÅÍ¸¦ ¼ÒÈ¯ ÇØÁ¦ÇßÀ½À» ÀÇ¹Ì
+        // ëŒ€ê¸°ì—´ ìºë¦­í„°ì— ë“¤ì–´ì™€ìˆëŠ”ë° ê²Œì„ ì˜¤ë¸Œì íŠ¸ê°€ í™œì„±í™”ë˜ì–´ ìˆë‹¤ëŠ” ê²ƒì€ ìš°ì¹˜ê°€ ìºë¦­í„°ë¥¼ ì†Œí™˜ í•´ì œí–ˆìŒì„ ì˜ë¯¸
         foreach(var character in allCharacter)
         {
             if (character.gameObject.activeSelf && !character.isSummoned)
@@ -164,7 +164,7 @@ public class AllyFormation : Formation
     }
 
     /// <summary>
-    /// ¿ìÄ¡ Á¦¿Ü ¼ÒÈ¯¼ö¸¸ ¹İÈ¯
+    /// ìš°ì¹˜ ì œì™¸ ì†Œí™˜ìˆ˜ë§Œ ë°˜í™˜
     /// </summary>
     public List<BaseCharacter> GetAllies()
     {
@@ -180,7 +180,7 @@ public class AllyFormation : Formation
     }
 
     /// <summary>
-    /// ÀüÅõ¿¡ Âü¿©ÇÑ Ä³¸¯ÅÍ¸¸ ¹İÈ¯
+    /// ì „íˆ¬ì— ì°¸ì—¬í•œ ìºë¦­í„°ë§Œ ë°˜í™˜
     /// </summary>
     /// <returns></returns>
     public List<BaseCharacter> GetBattleCharacter()
