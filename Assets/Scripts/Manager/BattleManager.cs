@@ -113,6 +113,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
 
         InitializeAbnormal();
+        UIManager.GetInstance.ActivateOpenMapUI(false);
 
         #region PreRound 상태로 넘어감
         PreRound();
@@ -580,7 +581,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         if (_victory)
         {
             //승리 화면 뜬 후 보상 정산
-            reward.ShowReward(10);
+            //reward.ShowReward(10);
         }
         else
         {
@@ -593,6 +594,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         // 전투가 종료되었을때만 저장
         GameManager.GetInstance.SaveData();
+
+        UIManager.GetInstance.ActivateOpenMapUI(true);
     }
 
     /// <summary>

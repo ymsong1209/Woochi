@@ -39,6 +39,8 @@ MonoBehaviour:
     value: {fileID: 3657592949406269409, guid: 1729646570ada624c9d1b299b1f0e717, type: 3}
   - ID: 5004
     value: {fileID: 1980818747636440210, guid: a8c5bbb74066f224685f9f86f499d8eb, type: 3}
+  - ID: 10000
+    value: {fileID: 3657592949406269409, guid: b24138b9257965b41bec894d078458db, type: 3}
   abnormals:
   - ID: 100
     value: {fileID: 11400000, guid: 551b024820da5b944a960bd8ff04ccb5, type: 2}
