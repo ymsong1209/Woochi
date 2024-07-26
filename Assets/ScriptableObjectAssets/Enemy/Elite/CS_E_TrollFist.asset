@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4bbbce2a03c2d4a95b7ced04f3ebb7, type: 3}
   m_Name: CS_E_TrollFist
   m_EditorClassIdentifier: 
-  ID: 1004
+  ID: 5004
   portrait: {fileID: 21300000, guid: dbaf8ce0fbf07d143807a4b5701e050c, type: 3}
   characterName: 
   size: 0
   cost: 0
   baseStat:
-    health: 0
+    maxHealth: 0
     speed: 0
     defense: 0
     crit: 0
@@ -27,6 +27,20 @@ MonoBehaviour:
     resist: 0
     minStat: 0
     maxStat: 0
+  rewardStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
+  baseHealth:
+    maxHealth: 0
+    curHealth: 0
+    shield: 0
   skills:
   - {fileID: -394506694602018230, guid: 52d3ba7f9b437a24fbd7f67063c03199, type: 3}
   - {fileID: -7748879869553992000, guid: 47402f7ab1ca8b344ad549be23fe6dbd, type: 3}
