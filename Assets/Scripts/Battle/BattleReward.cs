@@ -7,29 +7,35 @@ public class BattleReward : MonoBehaviour
 {
     [SerializeField] private GameObject rewardPanel;
     [SerializeField] private Button nextBtn;
+    [SerializeField] private Button rerollBtn;
 
 
     [SerializeField, ReadOnly(true)] private RandomList<RareType> rarityList;
     private HashSet<Reward> rewardSet = new HashSet<Reward>();
 
     [SerializeField] private int rewardCount = 5;
+    [SerializeField] private int rerollPrice = 100;
+
+    private int grade = 0;      // 역경 단계
 
     void Start()
     {
         nextBtn.onClick.AddListener(Next);
+        rerollBtn.onClick.AddListener(ReRoll);
         rewardPanel.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        rerollPrice = 100;
+        grade = 0;
     }
 
     public void ShowReward(int hardShip)
     {
-        int grade = CalculateGrade(hardShip);
+        grade = CalculateGrade(hardShip);
 
-        SetReward(grade);
-
-        foreach(Reward reward in rewardSet)
-        {
-            Debug.Log(reward.rewardName);
-        }
+        SetReward();
 
         DataCloud.playerData.gold += 100;
 
@@ -61,13 +67,27 @@ public class BattleReward : MonoBehaviour
         return rarityList.Get();
     }
 
-    private void SetReward(int grade)
+    private void SetReward()
     {
         while(rewardSet.Count < rewardCount)
         {
             Debug.Log("Reward Set Count: " + rewardSet.Count + " / " + rewardCount);
             RareType rarity = GetRarity(grade);
             rewardSet.Add(GameManager.GetInstance.Library.GetReward(rarity));
+        }
+
+        foreach (var reward in rewardSet)
+        {
+            Debug.Log(reward.rewardName);
+        }
+    }
+
+    private void ReRoll()
+    {
+        if (HelperUtilities.CanBuy(rerollPrice))
+        {
+            SetReward();
+            rerollPrice *= 2;
         }
     }
 

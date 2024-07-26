@@ -12,24 +12,18 @@ public class Tool : MonoBehaviour
     private void Awake()
     {
         btn = GetComponent<Button>();
-        btn.onClick.AddListener(CheckUsable);
+        btn.onClick.AddListener(Use);
     }
 
     public virtual void Use()
     {
-        Debug.Log($"{toolName}을 {price}만큼 지불해 사용합니다");
-        DataCloud.playerData.gold -= price;
-    }
-
-    public void CheckUsable()
-    {
-        if(DataCloud.playerData.gold < price)
+        if (HelperUtilities.CanBuy(price))
         {
-            Debug.Log("골드가 부족합니다");
+            Debug.Log($"{toolName}을 {price}만큼 지불해 사용합니다");
         }
         else
         {
-            Use();
+            return;
         }
     }
 
