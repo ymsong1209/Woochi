@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using DG.Tweening;
+using TMPro;
 public class WoochiSkillSelectionUI : MonoBehaviour
 {
     public SkillEvent onSkillSelected;
     [SerializeField] WoochiSkillIcon[] skillIcons = new WoochiSkillIcon[(int)SkillElement.END];
-
+    
     public void Start()
     {
         for (int i = 0; i < skillIcons.Length; i++)
@@ -34,8 +36,8 @@ public class WoochiSkillSelectionUI : MonoBehaviour
             Debug.LogError("우치가 아님");
             return;
         }
-        UIManager.GetInstance.SetSorceryPointUI(mainCharacter.SorceryPoints);
-        UIManager.GetInstance.SetSorceryPointBackgroundUI(mainCharacter.SorceryPoints);
+        UIManager.GetInstance.SorceryPoint.fillAmount = (float)mainCharacter.SorceryPoints / (float)mainCharacter.MaxSorceryPoints;
+        UIManager.GetInstance.SorceryPointBackground.fillAmount = (float)mainCharacter.SorceryPoints / (float)mainCharacter.MaxSorceryPoints;
     }
     
     public void Activate()
@@ -49,8 +51,8 @@ public class WoochiSkillSelectionUI : MonoBehaviour
             return;
         }
         
-        UIManager.GetInstance.SetSorceryPointUI(mainCharacter.SorceryPoints);
-        UIManager.GetInstance.SetSorceryPointBackgroundUI(mainCharacter.SorceryPoints);
+        UIManager.GetInstance.SorceryPoint.fillAmount = (float)mainCharacter.SorceryPoints / (float)mainCharacter.MaxSorceryPoints;
+        UIManager.GetInstance.SorceryPointBackground.fillAmount = (float)mainCharacter.SorceryPoints / (float)mainCharacter.MaxSorceryPoints;
         
         //우치 위치에 따른 스킬 체크
         mainCharacter.CheckSkillsOnTurnStart();
@@ -96,7 +98,7 @@ public class WoochiSkillSelectionUI : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-
+    
     /// <summary>
     /// 스킬 슬롯에 스킬 버튼이 활성화가 되는지 확인
     /// </summary>

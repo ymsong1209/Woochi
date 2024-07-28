@@ -9,6 +9,7 @@ public class WoochiRecoveryUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI recoveryText;
     [SerializeField] private Image recoverySorceryPoint;
     [SerializeField] private Image recoverySorceryPointBackground;
+    [SerializeField] private TextMeshProUGUI recoveryPointsText;
   
 
     public void Initialize()
@@ -33,6 +34,12 @@ public class WoochiRecoveryUI : MonoBehaviour
         float result = Mathf.Clamp(currentSorceryPointRate + recoveryPointsRate, 0, 1);
         recoverySorceryPoint.fillAmount = currentSorceryPointRate;
         recoverySorceryPointBackground.fillAmount = result;
+        
+        int finalpoint = mainCharacter.SorceryPoints +
+                         (int)(mainCharacter.SorceryRecoveryPoints * mainCharacter.MaxSorceryPoints / 100.0f);
+        finalpoint = Mathf.Clamp(finalpoint, 0, mainCharacter.MaxSorceryPoints);
+        string recoveryPoints = mainCharacter.SorceryPoints + "/" + mainCharacter.MaxSorceryPoints + " -> " + finalpoint + "/" + mainCharacter.MaxSorceryPoints;
+        recoveryPointsText.text = recoveryPoints;
     }
     
     public void Deactivate()

@@ -485,6 +485,17 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         {
             StartCoroutine(ExecuteSkill(currentSelectedSkill.SkillOwner,receiver));
         }
+        
+        //우치가 스킬을 사용한경우 도력감소
+        if (currentCharacter.IsMainCharacter)
+        {
+            MainCharacter mainCharacter = currentCharacter as MainCharacter;
+            MainCharacterSkill mainCharacterSkill = currentSelectedSkill as MainCharacterSkill;
+            if (!mainCharacter) return;
+            if (!mainCharacterSkill) return;
+            mainCharacter.SorceryPoints -= mainCharacterSkill.RequiredSorceryPoints;
+            Mathf.Clamp(mainCharacter.SorceryPoints, 0, mainCharacter.MaxSorceryPoints);
+        }
     }
 
     // 스킬 실행 로직 구현

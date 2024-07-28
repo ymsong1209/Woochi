@@ -114,4 +114,7 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     {
         openMapUI.SetActive(isActivate);
     }
+    
+    public Image SorceryPoint => sorceryPoint;
+    public Image SorceryPointBackground => sorceryPointBackground;
 }

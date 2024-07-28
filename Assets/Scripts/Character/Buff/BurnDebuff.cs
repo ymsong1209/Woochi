@@ -30,7 +30,8 @@ public class BurnDebuff : BaseBuff
     
     public override void SetBuffDescription(TextMeshProUGUI text)
     {
-        string description = "화상" + buffDurationTurns+ " : 매턴마다 최대 체력의 5% 만큼 피해를 입습니다.";
+        float burnAmount = buffOwner.Health.MaxHealth * burnDamage / 100f;
+        string description = "화상" + buffDurationTurns+ " : 매턴마다"+ burnAmount + "만큼 피해를 입습니다.";
         text.text = description;
         text.color = Color.red;
     }
