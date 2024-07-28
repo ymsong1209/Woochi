@@ -41,6 +41,6 @@ public class ScrollDogIncreaseCritBuff : BaseBuff
         description += "(최대 10번까지 중첩 가능)\n";
         description += "현재 중첩 수 : " + critStack + "\n";
         text.text = description;
-        text.color = Color.red;
+        SetBuffColor(text);
     }
 }

@@ -33,7 +33,7 @@ public class BurnDebuff : BaseBuff
         float burnAmount = buffOwner.Health.MaxHealth * burnDamage / 100f;
         string description = "화상" + buffDurationTurns+ " : 매턴마다"+ burnAmount + "만큼 피해를 입습니다.";
         text.text = description;
-        text.color = Color.red;
+        SetBuffColor(text);
     }
     
     public BurnDebuff()

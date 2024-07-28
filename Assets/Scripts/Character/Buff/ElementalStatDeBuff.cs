@@ -61,7 +61,7 @@ public class ElementalStatDeBuff : BaseBuff
 
         description += " " + changeStat + "만큼 감소\n";
         text.text += description;
-        text.color = Color.red;
+        SetBuffColor(text);
     }
 
 

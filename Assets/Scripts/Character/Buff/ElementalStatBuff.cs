@@ -60,7 +60,7 @@ public class ElementalStatBuff : BaseBuff
 
         description += " " + changeStat + "만큼 증가\n";
         text.text += description;
-        text.color = Color.blue;
+        SetBuffColor(text);
     }
 
 

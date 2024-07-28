@@ -20,6 +20,7 @@ public class BaseBuff : MonoBehaviour
     [SerializeField] protected BuffType buffType;
     [SerializeField] protected int chanceToApplyBuff;
     [SerializeField] protected string buffName;
+    [SerializeField] protected Color buffColor;
     
 
     /// <summary>
@@ -120,7 +121,20 @@ public class BaseBuff : MonoBehaviour
         text.text = "Buff Description\n";
         text.color = Color.magenta;
     }
-    
+
+    protected void SetBuffColor(TextMeshProUGUI text)
+    {
+        Color positiveBuffColor;
+        Color negativeBuffColor;
+
+        // HTML 색상 코드로 색상 정의
+        ColorUtility.TryParseHtmlString("#8aafdc", out positiveBuffColor); // 파랑색
+        ColorUtility.TryParseHtmlString("#ffa1a1", out negativeBuffColor); // ffa1a1
+        if(buffType == BuffType.Positive) buffColor = positiveBuffColor;
+        else if(buffType == BuffType.Negative) buffColor = negativeBuffColor;
+        else buffColor = Color.white;
+        text.color = buffColor;
+    }
 
     #region Getter Setter
 
