@@ -138,17 +138,23 @@ public static class HelperUtilities
         LoadingScene.LoadScene(sceneType);
     }
 
-    public static bool CanBuy(int price)
+    public static bool Buy(int price)
     {
         if (DataCloud.playerData.gold >= price)
         {
             DataCloud.playerData.gold -= price;
+            EventManager.GetInstance.onChangedGold?.Invoke();   
             return true;
         }
         else
         {
-            Debug.Log($"{price}만큼 돈이 부족해요");
             return false;
         }
+    }
+
+    public static void AddGold(int gold)
+    {
+        DataCloud.playerData.gold += gold;
+        EventManager.GetInstance.onChangedGold?.Invoke();
     }
 }

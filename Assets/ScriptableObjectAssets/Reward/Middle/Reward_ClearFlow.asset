@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d1a78f3fb971f4cb69b1602682ff04, type: 3}
+  m_Script: {fileID: 11500000, guid: af273ef6d03f6964d99b1c6294525504, type: 3}
   m_Name: Reward_ClearFlow
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
   rarity: 2
   rewardName: "\uC120\uBA85\uD55C \uD750\uB984"
   description: "\uC7AC\uD654 +300"
+  rewardGold: 300

@@ -99,6 +99,9 @@ public class Health
         get { return maxHealth; }
         set { 
             maxHealth = value;
+
+            if (owner != null)
+                owner.onHealthChanged?.Invoke();
         }
     }
 

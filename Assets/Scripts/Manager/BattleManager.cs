@@ -113,6 +113,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
 
         InitializeAbnormal();
+        CalculateHardShip();
 
         #region PreRound 상태로 넘어감
         PreRound();
@@ -148,6 +149,16 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                     enemy.ApplyBuff(enemy, enemy, abnormalBuff);
                 }
             }
+        }
+    }
+
+    private void CalculateHardShip()
+    {
+        hardShip = abnormal.cost;
+        var enemyList = enemies.GetCharacters();
+        foreach (var enemy in enemyList)
+        {
+            hardShip += enemy.Cost;
         }
     }
 
@@ -580,7 +591,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         if (_victory)
         {
             //승리 화면 뜬 후 보상 정산
-            reward.ShowReward(10);
+            HelperUtilities.AddGold(100);
+            reward.ShowReward(hardShip);
         }
         else
         {

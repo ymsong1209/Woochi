@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d1a78f3fb971f4cb69b1602682ff04, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a8a3e235c946c04681ce255116e2daf, type: 3}
   m_Name: Reward_QuickPotion
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
   rarity: 0
   rewardName: "\uAE09\uC870\uB41C \uD658\uC57D"
   description: "\uC6B0\uCE58 \uCCB4\uB825 15 \uD68C\uBCF5"
+  healAmount: 15
+  forWoochi: 1
+  forAllies: 0

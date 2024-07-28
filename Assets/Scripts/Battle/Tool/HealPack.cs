@@ -9,7 +9,7 @@ public class HealPack : Tool
         base.Use();
 
         AllyFormation allyFormation = BattleManager.GetInstance.Allies;
-        var allies = allyFormation.GetCharacters();
+        var allies = allyFormation.GetAllies();
         foreach(var ally in allies)
         {
             ally.Health.Heal(healAmount, false);

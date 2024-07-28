@@ -168,3 +168,16 @@ public enum RareType
     Highest,
     END
 }
+
+public enum StatType
+{
+    Health,
+    Speed,
+    Defense,
+    Crit,
+    Accuracy,
+    Evasion,
+    Resist,
+    Damage,
+    END
+}

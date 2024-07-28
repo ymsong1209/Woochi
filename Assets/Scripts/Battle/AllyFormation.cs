@@ -197,6 +197,12 @@ public class AllyFormation : Formation
         return list;
     }
 
+    public MainCharacter GetWoochi()
+    {
+        var woochi = allCharacter.FirstOrDefault(c => c.IsMainCharacter);
+        return woochi as MainCharacter;
+    }
+
     public override void BattleEnd()
     {
         foreach(var character in allCharacter)
