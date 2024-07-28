@@ -137,6 +137,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 4635307683478757605, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: m_Size.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635307683478757605, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: m_Size.y
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635307683478757605, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635307683478757605, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4651224405074788822, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -318,24 +334,39 @@ MonoBehaviour:
   anim: {fileID: 0}
   collider: {fileID: 0}
   characterStat: {fileID: 11400000, guid: 8480ae2c967fddf44aa1f382e4b9e3cf, type: 2}
-  health: {fileID: 0}
-  size: 1
-  speed: 0
-  defense: 0
-  crit: 0
-  accuracy: 0
-  evasion: 0
-  resist: 0
-  minStat: 0
-  maxStat: 0
+  health:
+    maxHealth: 0
+    curHealth: 0
+    shield: 0
+  baseStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
+  rewardStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
   isMainCharacter: 1
   isDead: 0
   activeBuffs: []
   activeSkills: []
   activeSkillCheckBox: 010101
   isAlly: 0
-  isStarting: 1
+  isDummy: 0
   isSummoned: 0
+  rowOrder: 0
   maxSorceryPoints: 200
   sorceryPoints: 100
   sorceryRecoveryPoints: 35
@@ -356,6 +387,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 8631172972090023544}
+  elementSprites:
+  - {fileID: 0}
+  - {fileID: 21300000, guid: 9cf2750af0d72e94c8d60f41e9ca65da, type: 3}
+  - {fileID: 21300000, guid: 9ed2fb26fd59ad2469bcb5972c0d5dda, type: 3}
+  - {fileID: 21300000, guid: 2b39b9698a882e948983efcd87edd5a8, type: 3}
+  - {fileID: 21300000, guid: 890898e805f381f4b93ea607d8af31a0, type: 3}
+  - {fileID: 21300000, guid: c0a674b86ab30f748bc03229525e8a54, type: 3}
+  elementEffect: {fileID: 8301152344895153504}
 --- !u!212 &5885584093676959224
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -411,6 +450,11 @@ SpriteRenderer:
 --- !u!4 &5548039729745269340 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9196048527430195161, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+  m_PrefabInstance: {fileID: 3702088451345319301}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &8301152344895153504 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4635307683478757605, guid: d65a7aefa191b904c8dded1547849368, type: 3}
   m_PrefabInstance: {fileID: 3702088451345319301}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &8631172972090023544 stripped

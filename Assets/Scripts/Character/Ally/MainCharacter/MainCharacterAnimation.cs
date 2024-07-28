@@ -1,7 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MainCharacterAnimation : BaseCharacterAnimation
 {
+    [SerializeField] private List<Sprite> elementSprites;
+    [SerializeField] private SpriteRenderer elementEffect;
+
     public override void Play(AnimationType _type)
     {
         if(owner.IsDead || !owner.IsIdle)
@@ -20,5 +24,16 @@ public class MainCharacterAnimation : BaseCharacterAnimation
         }
 
         StartCoroutine(WaitAnim());
+    }
+
+    public void ShowElement(SkillElement skillElement)
+    {
+        elementEffect.sprite = elementSprites[(int)skillElement];
+        Invoke("HideEffect", 1.5f);
+    }
+
+    private void HideEffect()
+    {
+        elementEffect.sprite = null;
     }
 }

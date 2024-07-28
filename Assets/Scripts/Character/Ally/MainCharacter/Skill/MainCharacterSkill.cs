@@ -13,4 +13,12 @@ public class MainCharacterSkill : BaseSkill
             return requiredSorceryPoints;
         }
     }
+
+    public override void ActivateSkill(BaseCharacter _Opponent)
+    {
+        base.ActivateSkill(_Opponent);
+
+        var animation = SkillOwner.anim as MainCharacterAnimation;
+        animation.ShowElement(SkillSO.SkillElement);
+    }
 }
