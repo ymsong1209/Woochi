@@ -56,7 +56,7 @@ public class DotCureByDamageBuff : BaseBuff
         description = BuffName + ": 매턴마다 "+  (int)Mathf.Round(maxDamage * dotCureAmount / 100f)+"만큼 회복.";
         description += "\n";
         text.text += description;
-        text.color = Color.blue;
+        SetBuffColor(text);
     }
     
     #region Getter Setter

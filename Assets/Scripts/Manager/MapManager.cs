@@ -42,7 +42,6 @@ public class MapManager : SingletonMonobehaviour<MapManager>
     public void CompleteNode()
     {
         SaveMap();
-        view.FadeInOut(true);
     }
 
     private void SaveMap()

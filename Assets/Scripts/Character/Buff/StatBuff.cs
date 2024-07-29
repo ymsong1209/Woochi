@@ -48,49 +48,68 @@ public class StatBuff : BaseBuff
     public override void SetBuffDescription(TextMeshProUGUI text)
     {
         string description = "";
-        if(BuffDurationTurns == -1)
+        int statCount = 0; // 추가된 스탯의 개수를 세기 위한 변수
+
+        if (BuffDurationTurns == -1)
         {
             description = buffName + ": ";
         }
         else
         {
-            description =  buffName + BuffDurationTurns+": ";
+            description = buffName + " " + BuffDurationTurns + ": ";
         }
+
         if (changeStat.defense > 0)
         {
+            if (statCount > 0 && statCount % 2 == 0) description += "\n";
             description += "방어력 : +" + changeStat.defense + " ";
+            statCount++;
         }
         if (changeStat.crit > 0)
         {
+            if (statCount > 0 && statCount % 2 == 0) description += "\n";
             description += "치명타 : +" + changeStat.crit + " ";
+            statCount++;
         }
         if (changeStat.accuracy > 0)
         {
+            if (statCount > 0 && statCount % 2 == 0) description += "\n";
             description += "명중 : +" + changeStat.accuracy + " ";
+            statCount++;
         }
         if (changeStat.evasion > 0)
         {
+            if (statCount > 0 && statCount % 2 == 0) description += "\n";
             description += "회피 : +" + changeStat.evasion + " ";
+            statCount++;
         }
         if (changeStat.resist > 0)
         {
+            if (statCount > 0 && statCount % 2 == 0) description += "\n";
             description += "저항 : +" + changeStat.resist + " ";
+            statCount++;
         }
         if (changeStat.minStat > 0)
         {
+            if (statCount > 0 && statCount % 2 == 0) description += "\n";
             description += "최소 스탯 : +" + changeStat.minStat + " ";
+            statCount++;
         }
         if (changeStat.maxStat > 0)
         {
+            if (statCount > 0 && statCount % 2 == 0) description += "\n";
             description += "최대 스탯 : +" + changeStat.maxStat + " ";
+            statCount++;
         }
         if (changeStat.speed > 0)
         {
+            if (statCount > 0 && statCount % 2 == 0) description += "\n";
             description += "속도 : +" + changeStat.speed + " ";
+            statCount++;
         }
         description += "\n";
         text.text += description;
-        text.color = Color.blue;
+        SetBuffColor(text);
     }
 
     #region 변화된 스탯들의 수치 Getter Setter

@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 10000
   portrait: {fileID: 21300000, guid: c2823c1f269b4604cbdf5cf73baa8384, type: 3}
-  characterName: 
-  size: 0
+  characterName: DummyEnemy
+  size: 1
   cost: 0
   baseStat:
-    maxHealth: 0
+    maxHealth: 1
     speed: 0
     defense: 0
     crit: 0
@@ -38,8 +38,8 @@ MonoBehaviour:
     minStat: 0
     maxStat: 0
   baseHealth:
-    maxHealth: 0
-    curHealth: 0
+    maxHealth: 1
+    curHealth: 1
     shield: 0
   skills:
-  - {fileID: 0}
+  - {fileID: -8759090313018549695, guid: d97808bbc73292143a2480025ddbdb28, type: 3}
