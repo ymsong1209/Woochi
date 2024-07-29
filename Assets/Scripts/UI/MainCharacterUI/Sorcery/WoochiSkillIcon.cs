@@ -59,7 +59,7 @@ public class WoochiSkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExit
     
     public void OnPointerExit(PointerEventData eventData)
     {
-        UIManager.GetInstance.skillTooltip.SetActive(false);
+        UIManager.GetInstance.skillDescriptionUI.Deactivate();
         //우치 스킬이 선택되지 않았으면 도력 게이지 다시 원래대로 회복
         if(!BattleManager.GetInstance.CurrentSelectedSkill)
         {

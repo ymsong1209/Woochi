@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -169,6 +170,11 @@ public class BaseSkill : MonoBehaviour
                 Destroy(clonedbuff);
             }
         }
+    }
+
+    public virtual void SetSkillDescription(TextMeshProUGUI text)
+    {
+        
     }
 
     //SkillRadius에 있는 적들 전체에게 스킬 적용

@@ -48,7 +48,7 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public virtual void OnPointerExit(PointerEventData eventData)
     {
-        UIManager.GetInstance.skillTooltip.SetActive(false);
+        UIManager.GetInstance.skillDescriptionUI.Deactivate();
     }
 
     #region Getter, Setter

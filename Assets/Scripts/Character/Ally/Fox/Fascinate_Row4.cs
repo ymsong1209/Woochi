@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Fascinate_Row4 : BaseSkill
 {
@@ -15,5 +16,8 @@ public class Fascinate_Row4 : BaseSkill
         
         base.ActivateSkill(_Opponent);
     }
-  
+    public override void SetSkillDescription(TextMeshProUGUI text)
+    {
+        text.text = "홀리기(단일)\n" + "대상에게 " + SkillSO.BaseMultiplier +"%의 피해를 주고 \n 기절 부여";
+    }
 }

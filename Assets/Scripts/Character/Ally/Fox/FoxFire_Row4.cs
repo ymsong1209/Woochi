@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 /// <summary>
 /// 4열일때 적 1,2,3,4열 중 하나를 대상으로 타격
@@ -19,5 +20,8 @@ public class FoxFire_Row4 : BaseSkill
       
       base.ActivateSkill(_opponent);
    }
-   
+   public override void SetSkillDescription(TextMeshProUGUI text)
+   {
+      text.text = "여우불(단일)\n" + "대상에게 " + SkillSO.BaseMultiplier +"%의 피해를 주고 \n 화상 부여";
+   }
 }

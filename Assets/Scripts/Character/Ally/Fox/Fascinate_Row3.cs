@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Fascinate_Row3 : BaseSkill
 {
@@ -19,5 +20,9 @@ public class Fascinate_Row3 : BaseSkill
         
         base.ActivateSkill(_Opponent);
         BattleManager.GetInstance.MoveCharacter(SkillOwner, -1);
+    }
+    public override void SetSkillDescription(TextMeshProUGUI text)
+    {
+        text.text = "홀리기(광역)\n" + "대상 전체에게 " + SkillSO.BaseMultiplier +"%의 피해를 주고 \n 홀림 부여";
     }
 }

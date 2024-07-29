@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class Tiger_Slam : BaseSkill
 {
     public override void ActivateSkill(BaseCharacter _Opponent)
@@ -14,5 +14,9 @@ public class Tiger_Slam : BaseSkill
         instantiatedBuffList.Add(stunDebuffGameObject);
         
         base.ActivateSkill(_Opponent);
+    }
+    public override void SetSkillDescription(TextMeshProUGUI text)
+    {
+        text.text = "내려찍기\n" + "대상에게 " + SkillSO.BaseMultiplier +"%의 피해를 주고 \n 기절 부여";
     }
 }
