@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using DataTable;
 using UnityEngine.UI;
-using DG.Tweening;
 using TMPro;
 
 public class BattleReward : MonoBehaviour
@@ -107,16 +106,19 @@ public class BattleReward : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 화살표 눌렀을 때 보상 창 닫기
+    /// 보상 받았으면 저장
+    /// </summary>
     private void Next()
     {
         rewardPanel.SetActive(false);
-
-        DOTween.Sequence().AppendInterval(1f).OnComplete(() => MapManager.GetInstance.CompleteNode());
+        GameManager.GetInstance.SaveData();
     }
 
     private void SetGold()
     {
-        goldTxt.text = DataCloud.playerData.gold.ToString();
+        goldTxt.text = $"{DataCloud.playerData.gold}개";
     }
 
     /// <summary>

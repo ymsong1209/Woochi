@@ -49,8 +49,9 @@ MonoBehaviour:
   allies: {fileID: 0}
   enemies: {fileID: 0}
   allyCards: {fileID: 0}
+  abnormal: {fileID: 11400000, guid: 551b024820da5b944a960bd8ff04ccb5, type: 2}
+  reward: {fileID: 0}
   isTest: 0
-  testAlly: 
   testEnemy: 00000000000000000000000000000000
 --- !u!114 &8540004010816379627
 MonoBehaviour:

@@ -28,7 +28,6 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     [SerializeField] private Image sorceryPoint;
     [SerializeField] private Image sorceryPointBackground;
     [SerializeField] private GameObject charmToolTip;
-    [SerializeField] private GameObject openMapUI;
     
     public void SetSkillToolTip(BaseSkill _skill, Vector3 position)
     {
@@ -109,11 +108,6 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     }
     
     #endregion MainCharacterUI
-    
-    public void ActivateOpenMapUI(bool isActivate)
-    {
-        openMapUI.SetActive(isActivate);
-    }
     
     public Image SorceryPoint => sorceryPoint;
     public Image SorceryPointBackground => sorceryPointBackground;

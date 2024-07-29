@@ -14,6 +14,8 @@ public class HealPack : Tool
         {
             ally.Health.Heal(healAmount, false);
         }
+
+        healAmount += 10;
     }
 
     protected override string GetDescription()

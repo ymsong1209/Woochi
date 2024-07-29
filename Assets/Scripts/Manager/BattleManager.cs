@@ -115,8 +115,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         InitializeAbnormal();
         CalculateHardShip();
 
-        UIManager.GetInstance.ActivateOpenMapUI(false);
-
         #region PreRound 상태로 넘어감
         PreRound();
         #endregion
@@ -613,11 +611,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
 
         allies.BattleEnd(); enemies.BattleEnd();
-
-        // 전투가 종료되었을때만 저장
-        GameManager.GetInstance.SaveData();
-
-        UIManager.GetInstance.ActivateOpenMapUI(true);
     }
 
     /// <summary>

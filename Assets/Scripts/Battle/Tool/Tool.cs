@@ -5,21 +5,16 @@ using UnityEngine.UI;
 
 public class Tool : MonoBehaviour, IPointerEnterHandler
 {
-    private Button btn;
+    [SerializeField] private Button btn;
     [SerializeField] private TextMeshProUGUI priceTxt;
 
     [SerializeField] protected string toolName;
     [SerializeField] protected string description;
     protected int price;
 
-    private void Awake()
-    {
-        btn = GetComponent<Button>();
-        btn.onClick.AddListener(Use);
-    }
-
     private void Start()
     {
+        btn.onClick.AddListener(Use);
         Price = 100;
     }
 
