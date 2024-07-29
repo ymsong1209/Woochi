@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c4bbbce2a03c2d4a95b7ced04f3ebb7, type: 3}
-  m_Name: CS_E_TrollFist
+  m_Name: CS_E_TrollHammer
   m_EditorClassIdentifier: 
-  ID: 5004
-  portrait: {fileID: 21300000, guid: dbaf8ce0fbf07d143807a4b5701e050c, type: 3}
+  ID: 5005
+  portrait: {fileID: 21300000, guid: fa95b18ad37e1d64e95f87f7e7e5c873, type: 3}
   characterName: 
   size: 0
   cost: 0
@@ -42,6 +42,6 @@ MonoBehaviour:
     curHealth: 0
     shield: 0
   skills:
-  - {fileID: 8493001182509114943, guid: efad3fef19a760c47b5af52a104f9fe0, type: 3}
-  - {fileID: 8029080948700395841, guid: 44c3cdcefe9ca214da95f760128ecc19, type: 3}
-  - {fileID: 2880402362071563839, guid: 90c62b36de5dff343846a6b766a61ab1, type: 3}
+  - {fileID: -2626052723625432060, guid: d46ca61fb4d03b446bde26f88b12ca22, type: 3}
+  - {fileID: 8054675701090088192, guid: e8b9453e1f60172478b99d697cd3fdd9, type: 3}
+  - {fileID: 7587098127194302770, guid: fd8ef7b67903ae646b51e725b8998e35, type: 3}
