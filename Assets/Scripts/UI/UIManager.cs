@@ -34,6 +34,12 @@ public class UIManager : SingletonMonobehaviour<UIManager>
         skillDescriptionUI.transform.position = position;
     }
 
+    public void SetCharmToolTip(BaseCharm _charm, Vector3 position)
+    {
+        skillDescriptionUI.Activate(_charm);
+        skillDescriptionUI.transform.position = position;
+    }
+    
     public void SetEnemyToolTip(BaseCharacter _character)
     {
         enemyTooltip.SetActive(true);
@@ -98,12 +104,7 @@ public class UIManager : SingletonMonobehaviour<UIManager>
         sorceryPointBackground.DOFillAmount(scale, 1f).SetEase(Ease.OutCubic);
     }
     
-    public void SetCharmToolTip(BaseCharm _charm, Vector3 position)
-    {
-        //skillTooltip.SetActive(true);
-        //skillTooltip.transform.position = position;
-        //skillNameTxt.text = _charm.CharmName;
-    }
+
     
     #endregion MainCharacterUI
     
