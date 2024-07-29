@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1324398890676196612}
-  - component: {fileID: 4334153321131598469}
+  - component: {fileID: 8054675701090088192}
   m_Layer: 0
-  m_Name: TH_Vision
+  m_Name: E_TH_BodySlam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4334153321131598469
+--- !u!114 &8054675701090088192
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,10 +41,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8825904973982757721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed91df2de5796664eaa0e997f84e87a2, type: 3}
+  m_Script: {fileID: 11500000, guid: b8d6cdae503bbe241b12a5e375772250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillSO: {fileID: 11400000, guid: 6a87507030aacfd4b8a49f9432b952eb, type: 2}
+  skillSO: {fileID: 11400000, guid: 6cfd6d63dc13b0f4aa663c057de0b890, type: 2}
   skillTargetCount: 1
   isAlwaysHit: 0
   isAlwaysApplyBuff: 0
+  statBuffGameObject: {fileID: 2569674945298275565, guid: 7494b86e9b118144ea08c4f925621526, type: 3}

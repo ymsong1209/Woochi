@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class E_ScrollDog : BaseEnemy
+public class E_ScrollDog : BaseElite
 {
     [SerializeField] private ScrollDogIncreaseCritBuff critBuff;
     public override void Initialize()

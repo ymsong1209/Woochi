@@ -31,6 +31,7 @@ public class BurnDebuff : BaseBuff
     public override void SetBuffDescription(TextMeshProUGUI text)
     {
         float burnAmount = buffOwner.Health.MaxHealth * burnDamage / 100f;
+        burnAmount = (int)Mathf.Round(burnAmount);
         string description = "화상" + buffDurationTurns+ " : 매턴마다"+ burnAmount + "만큼 피해를 입습니다.";
         text.text = description;
         SetBuffColor(text);

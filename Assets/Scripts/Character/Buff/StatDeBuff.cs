@@ -49,7 +49,7 @@ public class StatDeBuff : BaseBuff
     {
         string description = "";
         int statCount = 0;
-
+    
         if (BuffDurationTurns == -1)
         {
             description = buffName + ": ";
@@ -58,50 +58,50 @@ public class StatDeBuff : BaseBuff
         {
             description = buffName + " " + BuffDurationTurns + ": ";
         }
-
-        if (changeStat.defense < 0)
+    
+        if (!Mathf.Approximately(changeStat.defense, 0))
         {
             if (statCount > 0 && statCount % 2 == 0) description += "\n";
             description += "방어력 : " + changeStat.defense + " ";
             statCount++;
         }
-        if (changeStat.crit < 0)
+        if (!Mathf.Approximately(changeStat.crit, 0))
         {
             if (statCount > 0 && statCount % 2 == 0) description += "\n";
             description += "치명타 : " + changeStat.crit + " ";
             statCount++;
         }
-        if (changeStat.accuracy < 0)
+        if (!Mathf.Approximately(changeStat.accuracy, 0))
         {
             if (statCount > 0 && statCount % 2 == 0) description += "\n";
             description += "명중 : " + changeStat.accuracy + " ";
             statCount++;
         }
-        if (changeStat.evasion < 0)
+        if (!Mathf.Approximately(changeStat.evasion, 0))
         {
             if (statCount > 0 && statCount % 2 == 0) description += "\n";
             description += "회피 : " + changeStat.evasion + " ";
             statCount++;
         }
-        if (changeStat.resist < 0)
+        if (!Mathf.Approximately(changeStat.resist, 0))
         {
             if (statCount > 0 && statCount % 2 == 0) description += "\n";
             description += "저항 : " + changeStat.resist + " ";
             statCount++;
         }
-        if (changeStat.minStat < 0)
+        if (!Mathf.Approximately(changeStat.minStat, 0))
         {
             if (statCount > 0 && statCount % 2 == 0) description += "\n";
             description += "최소 스탯 : " + changeStat.minStat + " ";
             statCount++;
         }
-        if (changeStat.maxStat < 0)
+        if (!Mathf.Approximately(changeStat.maxStat, 0))
         {
             if (statCount > 0 && statCount % 2 == 0) description += "\n";
             description += "최대 스탯 : " + changeStat.maxStat + " ";
             statCount++;
         }
-        if (changeStat.speed < 0)
+        if (!Mathf.Approximately(changeStat.speed, 0))
         {
             if (statCount > 0 && statCount % 2 == 0) description += "\n";
             description += "속도 : " + changeStat.speed + " ";
