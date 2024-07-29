@@ -157,4 +157,18 @@ public static class HelperUtilities
         DataCloud.playerData.gold += gold;
         EventManager.GetInstance.onChangedGold?.Invoke();
     }
+
+    public static void AddRandomCharm()
+    {
+        var charmList = DataCloud.playerData.battleData.charms;
+        if(charmList.Count >= 5)
+        {
+            Debug.Log("부적은 5개까지만 가질 수 있습니다");
+            return;
+        }
+
+        int charmCount = GameManager.GetInstance.Library.CharmCount;
+        int randomCharmID = UnityEngine.Random.Range(0, charmCount);
+        charmList.Add(randomCharmID);
+    }
 }

@@ -63,6 +63,24 @@ public class Library : ScriptableObject
     }
 
     #endregion
+
+    #region Charm
+    [OneLineWithHeader, SerializeField] private List<Entry<BaseCharm>> charms;
+
+    public BaseCharm GetCharm(int id)
+    {
+        if (id < 0)
+        {
+            Debug.Log("Library: ID out of range");
+            return null;
+        }
+
+        return charms.FirstOrDefault(entry => entry.ID == id).value;
+    }
+
+    public int CharmCount => charms.Count;
+    #endregion
+
     /// <summary>
     /// 구글 스프레드 시트의 데이터를 가져와서 스크립터블 초기화 -> 딱 한번만
     /// </summary>
