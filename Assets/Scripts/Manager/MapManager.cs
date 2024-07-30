@@ -50,5 +50,6 @@ public class MapManager : SingletonMonobehaviour<MapManager>
         if (CurrentMap == null) return;
 
         DataCloud.playerData.currentMap = CurrentMap;
+        GameManager.GetInstance.SaveData();
     }
 }

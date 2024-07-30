@@ -87,7 +87,7 @@ MonoBehaviour:
   rewardLists:
   - rarity: 0
     rewards:
-    - {fileID: 11400000, guid: 59adbe4f50a6cfc448f10a2921e23c4c, type: 2}
+    - {fileID: 11400000, guid: 82e6b4f0ab93d6e47ae5d563a231acc5, type: 2}
     - {fileID: 11400000, guid: 3cea06ffdc780334a8a38e4dabe84ca9, type: 2}
     - {fileID: 11400000, guid: 7cec8b81ce231534eb3fd6dc9939c809, type: 2}
     - {fileID: 11400000, guid: de13fe7dab3229f4b9b2f90cd096d690, type: 2}
