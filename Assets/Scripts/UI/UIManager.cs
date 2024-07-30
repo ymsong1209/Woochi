@@ -11,8 +11,7 @@ using UnityEngine.UI;
 public class UIManager : SingletonMonobehaviour<UIManager>
 {
     [HeaderTooltip("Skill Tooltip","스킬 아이콘에 마우스 올릴 시 뜨는 툴팁")]
-    public GameObject skillTooltip;
-    [SerializeField] private TextMeshProUGUI skillNameTxt;
+    public SkillDescriptionUI skillDescriptionUI;
 
     [HeaderTooltip("Enemy Tooltip", "적 캐릭터에 마우스 올릴 시 적 정보 뜨는 툴팁")]
     public GameObject enemyTooltip;
@@ -31,11 +30,16 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     
     public void SetSkillToolTip(BaseSkill _skill, Vector3 position)
     {
-        skillTooltip.SetActive(true);
-        skillTooltip.transform.position = position;
-        skillNameTxt.text = _skill.Name;
+        skillDescriptionUI.Activate(_skill);
+        skillDescriptionUI.transform.position = position;
     }
 
+    public void SetCharmToolTip(BaseCharm _charm, Vector3 position)
+    {
+        skillDescriptionUI.Activate(_charm);
+        skillDescriptionUI.transform.position = position;
+    }
+    
     public void SetEnemyToolTip(BaseCharacter _character)
     {
         enemyTooltip.SetActive(true);
@@ -100,12 +104,7 @@ public class UIManager : SingletonMonobehaviour<UIManager>
         sorceryPointBackground.DOFillAmount(scale, 1f).SetEase(Ease.OutCubic);
     }
     
-    public void SetCharmToolTip(BaseCharm _charm, Vector3 position)
-    {
-        skillTooltip.SetActive(true);
-        skillTooltip.transform.position = position;
-        skillNameTxt.text = _charm.CharmName;
-    }
+
     
     #endregion MainCharacterUI
     

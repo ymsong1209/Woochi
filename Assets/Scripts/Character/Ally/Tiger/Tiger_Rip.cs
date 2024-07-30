@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Tiger_Rip : BaseSkill
 {
@@ -22,4 +23,9 @@ public class Tiger_Rip : BaseSkill
         if (isCrit) RandomStat = RandomStat * 2;
         return RandomStat;
     }
+    public override void SetSkillDescription(TextMeshProUGUI text)
+    {
+        text.text = "찢어발기기\n" + "대상에게 " + SkillSO.BaseMultiplier +"%의 피해를 주고 출혈 부여\n출혈 상태인 적에게 추가 피해";
+    }
+    
 }

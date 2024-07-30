@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using OneLine.Examples;
 using UnityEngine;
-
+using TMPro;
 public class FoxFire_BlueFire : BaseSkill
 {
     public override void ActivateSkill(BaseCharacter _opponent)
@@ -18,5 +18,9 @@ public class FoxFire_BlueFire : BaseSkill
         instantiatedBuffList.Add(dotCureGameObject);
       
         base.ActivateSkill(_opponent);
+    }
+    public override void SetSkillDescription(TextMeshProUGUI text)
+    {
+        text.text = "푸른 불꽃\n" + "아군의 체력을 턴 당 피해의 30%만큼 회복";
     }
 }

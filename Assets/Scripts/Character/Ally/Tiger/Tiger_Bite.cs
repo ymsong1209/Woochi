@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Tiger_Bite : BaseSkill
 {
@@ -18,4 +19,10 @@ public class Tiger_Bite : BaseSkill
         opponentHealth.ApplyDamage((int)Mathf.Round(Damage), isCrit);
         receiver.CheckDeadAndPlayAnim();
     }
+    
+    public override void SetSkillDescription(TextMeshProUGUI text)
+    {
+        text.text = "물어뜯기\n" + "대상에게 " + SkillSO.BaseMultiplier +"%의 피해를 주고 \n잃은 체력 비례 데미지, 피해 흡혈";
+    }
+    
 }

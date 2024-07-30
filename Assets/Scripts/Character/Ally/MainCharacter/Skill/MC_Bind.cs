@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MC_Bind : MainCharacterSkill
 {
@@ -24,5 +25,12 @@ public class MC_Bind : MainCharacterSkill
     public MC_Bind()
     {
         requiredSorceryPoints = 70;
+    }
+    
+    public override void SetSkillDescription(TextMeshProUGUI text)
+    {
+        text.text = "옭아매기\n" +
+                    "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
+                    "대상에게 " + SkillSO.BaseMultiplier +"%의 피해를 주고 뿌리 속박을 부여";
     }
 }

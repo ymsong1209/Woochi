@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Tiger_Roar : BaseSkill
 {
@@ -30,10 +31,8 @@ public class Tiger_Roar : BaseSkill
         SkillOwner.ApplyBuff(SkillOwner,SkillOwner,roarBuff);
     }
     
-    protected override void ApplyMultiple()
+    public override void SetSkillDescription(TextMeshProUGUI text)
     {
-        base.ApplyMultiple();
-       
+        text.text = "산군의 포효\n" + "대상 전체에게 " + SkillSO.BaseMultiplier +"%의 피해를 주고 \n 산군의 위엄 획득, 위축 부여";
     }
-    
 }

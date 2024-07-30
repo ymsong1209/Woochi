@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MC_Heal : MainCharacterSkill
 {
@@ -19,5 +20,11 @@ public class MC_Heal : MainCharacterSkill
     public MC_Heal()
     {
         requiredSorceryPoints = 100;
+    }
+    public override void SetSkillDescription(TextMeshProUGUI text)
+    {
+        text.text = "여우비\n" +
+                    "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
+                    "아군 전체의 체력을 " + healAmount + "회복";
     }
 }
