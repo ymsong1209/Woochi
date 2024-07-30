@@ -38,18 +38,22 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     public void DeleteData()
     {
         DataCloud.DeletePlayerData();
-
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        ExitGame();
     }
 
     public void ResetGame()
     {
         DataCloud.ResetPlayerData();
         LoadData();
+    }
+
+    public void ExitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 
     #region Getter Setter

@@ -5,18 +5,16 @@ public class TitleScene : MonoBehaviour
 {
     [SerializeField] private Button beginBtn;
     [SerializeField] private Button continueBtn;
+    [SerializeField] private Button exitBtn;
     [SerializeField] private Button deleteBtn;
-    [SerializeField] private Button testBtn;
-
-    [SerializeField] private GameObject testPanel;
 
     void Start()
     {
         #region Event
         beginBtn.onClick.AddListener(Begin);
         continueBtn.onClick.AddListener(Continue);
+        exitBtn.onClick.AddListener(() => GameManager.GetInstance.ExitGame());
         deleteBtn.onClick.AddListener(() => GameManager.GetInstance.DeleteData());
-        testBtn.onClick.AddListener(Test);
         #endregion
 
         continueBtn.interactable = DataCloud.playerData.hasSaveData;
@@ -43,8 +41,4 @@ public class TitleScene : MonoBehaviour
     /// </summary>
     private void Continue() => Departure(false);
 
-    private void Test()
-    {
-        testPanel.SetActive(true);
-    }
 }
