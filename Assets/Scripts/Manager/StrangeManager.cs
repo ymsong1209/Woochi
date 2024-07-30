@@ -10,7 +10,7 @@ using UnityEngine;
 public class StrangeManager : SingletonMonobehaviour<StrangeManager>
 {
     public GameObject StrangeParent;
-    
+    public GameObject StrangeBackground;
     private List<BaseStrange> luckyStranges = new List<BaseStrange>();
     private List<BaseStrange> unKnownStranges = new List<BaseStrange>();
     private List<BaseStrange> unLuckyStranges = new List<BaseStrange>();
@@ -18,7 +18,7 @@ public class StrangeManager : SingletonMonobehaviour<StrangeManager>
     // Start is called before the first frame update
     void Start()
     {
-        StrangeParent.SetActive(false);
+        StrangeBackground.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -49,14 +49,16 @@ public class StrangeManager : SingletonMonobehaviour<StrangeManager>
             }
         }
     }
-    public void ActivateStrange(StrangeType type)
+    public void ActivateStrange(StrangeType type, MapNode node)
     {
+        StrangeBackground.gameObject.SetActive(true);
         List<BaseStrange> selectedList = GetStrangeListByType(type);
 
         if (selectedList.Count > 0)
         {
             int randomIndex = Random.Range(0, selectedList.Count);
-            selectedList[randomIndex].Activate();
+            selectedList[randomIndex].Initialize();
+            selectedList[randomIndex].Activate(node);
         }
         else
         {

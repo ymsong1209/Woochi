@@ -115,3 +115,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: aa785178847391c4f9444b8963de63fc, type: 2}
     - {fileID: 11400000, guid: d013314fc1230a143b9396e0aae9ced4, type: 2}
     - {fileID: 11400000, guid: f479daa5b5f2a35479b54dbf153271b5, type: 2}
+  stranges:
+  - ID: 1000
+    value: {fileID: 8475585994675369947, guid: a64a5eb62eada2745954ee2331979291, type: 3}
+  - ID: 2000
+    value: {fileID: 4702027999250007440, guid: 2b70c618c56298c4f91f6a7fd4bc82ce, type: 3}
+  - ID: 3000
+    value: {fileID: 1286108000769628803, guid: e8c72f7b64e905d4993933e6d64ae9b1, type: 3}

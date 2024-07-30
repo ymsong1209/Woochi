@@ -26,6 +26,7 @@ public class BurnDebuff : BaseBuff
     public override void StackBuff(BaseBuff _buff)
     {
         base.buffDurationTurns += 3;
+        base.buffBattleDurationTurns += _buff.BuffBattleDurationTurns;
     }
     
     public override void SetBuffDescription(TextMeshProUGUI text)

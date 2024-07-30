@@ -23,7 +23,15 @@ public class StunDeBuff : BaseBuff
     }
     public override void SetBuffDescription(TextMeshProUGUI text)
     {
-        string description = "아무런 행동을 취할 수 없다";
+        string description;
+        if (buffDurationTurns > -1)
+        {
+            description = "아무런 행동을" + buffDurationTurns + "턴 만큼 취할 수 없다";
+        }
+        else
+        {
+            description = "아무런 행동을 취할 수 없다";
+        }
         text.text = description;
         SetBuffColor(text);
     }

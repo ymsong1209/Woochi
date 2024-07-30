@@ -21,6 +21,8 @@ public class BaseBuff : MonoBehaviour
     [SerializeField] protected int chanceToApplyBuff;
     [SerializeField] protected string buffName;
     [SerializeField] protected Color buffColor;
+    [SerializeField] protected bool isRemoveWhenBattleEnd = true;
+    [SerializeField] protected int buffBattleDurationTurns;//몇번의 전투동안 지속되어야할지
     
 
     /// <summary>
@@ -90,6 +92,8 @@ public class BaseBuff : MonoBehaviour
     /// </summary>
     public virtual int ApplyBattleEndBuff()
     {
+        --buffBattleDurationTurns;
+        if (buffBattleDurationTurns <= 0) isRemoveWhenBattleEnd = true;
         return 0;
     }
 
@@ -114,6 +118,7 @@ public class BaseBuff : MonoBehaviour
     public virtual void StackBuff(BaseBuff _buff)
     {
         buffDurationTurns += _buff.buffDurationTurns;
+        buffBattleDurationTurns += _buff.buffBattleDurationTurns;
     }
 
     public virtual void SetBuffDescription(TextMeshProUGUI text)
@@ -168,6 +173,18 @@ public class BaseBuff : MonoBehaviour
         set => buffName = value;
     }
 
+    public bool IsRemoveWhenBattleEnd
+    {
+        get => isRemoveWhenBattleEnd;
+        set => isRemoveWhenBattleEnd = value;
+    }
+    
+    public int BuffBattleDurationTurns
+    {
+        get => buffBattleDurationTurns;
+        set => buffBattleDurationTurns = value;
+    }
+    
     #endregion Getter Setter
 
     #region Validation

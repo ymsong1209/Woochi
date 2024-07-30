@@ -12,31 +12,24 @@ public class BaseStrange : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    public virtual void Activate()
+    public virtual void Activate(MapNode node)
     {
-        
+        gameObject.SetActive(true);
     }
     
     public virtual void Deactivate()
     {
-        
+        gameObject.SetActive(false);
+        StrangeManager.GetInstance.StrangeBackground.SetActive(false);
+        MapManager.GetInstance.CompleteNode();
     }
 
     public virtual void Initialize()
     {
-        
+        gameObject.SetActive(false);
     }
-
-    protected virtual void OnEnable()
-    {
-        throw new NotImplementedException();
-    }
+    
     
     #region Getter Setter
 

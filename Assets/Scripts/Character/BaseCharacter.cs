@@ -230,7 +230,7 @@ public class BaseCharacter : MonoBehaviour
         anim.PlayDeadAnimation();
     }
 
-    public void RemoveAllBuff()
+    public void RemoveAllBuff(bool battleEnd = false)
     {
         //모든 버프 순회
         for (int i = activeBuffs.Count - 1; i >= 0; i--)
@@ -238,6 +238,24 @@ public class BaseCharacter : MonoBehaviour
             BaseBuff buff = activeBuffs[i];
             activeBuffs.RemoveAt(i);
             buff.RemoveBuff();
+        }
+    }
+
+    public void RemoveAllBuffWhenBattleEnd()
+    {
+        //모든 버프 순회
+        for (int i = activeBuffs.Count - 1; i >= 0; i--)
+        {
+            BaseBuff buff = activeBuffs[i];
+            if (buff.IsRemoveWhenBattleEnd)
+            {
+                activeBuffs.RemoveAt(i);
+                buff.RemoveBuff();
+            }
+            else
+            {
+                buff.BuffDurationTurns--;
+            }
         }
     }
 

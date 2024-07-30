@@ -416,8 +416,17 @@ MonoBehaviour:
     maxHealth: 0
     curHealth: 0
     shield: 0
-  stat:
-    Exp: 0
+  baseStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
+  rewardStat:
     maxHealth: 0
     speed: 0
     defense: 0
@@ -1024,6 +1033,10 @@ PrefabInstance:
     - target: {fileID: 7997150688701690124, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159440712131805997, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

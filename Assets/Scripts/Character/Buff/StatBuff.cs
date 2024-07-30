@@ -34,7 +34,7 @@ public class StatBuff : BaseBuff
         //중첩시키려는 버프의 지속시간이 무한인경우 기존 버프 지속시간 무한으로 변경
         if(_buff.BuffDurationTurns == -1) base.buffDurationTurns = -1;
         else base.buffDurationTurns += _buff.BuffDurationTurns;
-        
+        base.buffBattleDurationTurns += _buff.BuffBattleDurationTurns;
         changeStat += statBuff.ChangeStat;
         buffOwner.CheckForStatChange();
     }

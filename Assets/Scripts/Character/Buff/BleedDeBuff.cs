@@ -28,6 +28,7 @@ public class BleedDeBuff : BaseBuff
     public override void StackBuff(BaseBuff _buff)
     {
         base.buffDurationTurns += _buff.BuffDurationTurns;
+        base.buffBattleDurationTurns += _buff.BuffBattleDurationTurns;
         BleedDeBuff bleedDeBuff = _buff as BleedDeBuff;
         bleedPercent += bleedDeBuff.BleedPercent;
     }

@@ -39,7 +39,7 @@ public class MapManager : SingletonMonobehaviour<MapManager>
         if (_mapNode.Node.nodeType == NodeType.Strange)
         {
             StrangeType type = config.GetStrangeType();
-            StrangeManager.GetInstance.ActivateStrange(type);
+            StrangeManager.GetInstance.ActivateStrange(type, _mapNode);
         }
         else
         {

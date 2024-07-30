@@ -21,6 +21,7 @@ public class ElementalStatDeBuff : BaseBuff
         if(inputBuff.BuffDurationTurns == -1) base.buffDurationTurns = -1;
         //아닐 경우 버프 지속시간은 갱신
         else base.buffDurationTurns = inputBuff.BuffDurationTurns;
+        base.buffBattleDurationTurns += inputBuff.BuffBattleDurationTurns;
         changeStat = elementalStatDeBuff.ChangeStat;
     }
     
