@@ -3,15 +3,15 @@ using System.Collections.Generic;
 [System.Serializable]
 public class BattleData
 {
-    public List<int> allies;    // ÇÃ·¹ÀÌ¾î(¿ìÄ¡)°¡ ¼ÒÀ¯ÇÏ°í ÀÖ´Â ¼ÒÈ¯¼ö(¿ìÄ¡ ÀÚ±âÀÚ½Åµµ Æ÷ÇÔ)
-    public int[] formation;     // ÀüÅõ¿¡ Âü¿©ÇÒ Æ÷¸ŞÀÌ¼Ç(-1Àº ºóÀÚ¸®)
+    public List<int> allies;    // í”Œë ˆì´ì–´(ìš°ì¹˜)ê°€ ì†Œìœ í•˜ê³  ìˆëŠ” ì†Œí™˜ìˆ˜(ìš°ì¹˜ ìê¸°ìì‹ ë„ í¬í•¨)
+    public int[] formation;     // ì „íˆ¬ì— ì°¸ì—¬í•  í¬ë©”ì´ì…˜(-1ì€ ë¹ˆìë¦¬)
 
     public List<CharacterInfoData> characterInfoList;
 
     public BattleData()
     {
         allies = new List<int>() { 0, 1, 2 };
-        formation = new int[] { 2, 0, 1, -1};   // È£¶ûÀÌ-¿ìÄ¡-»ï¹ÌÈ£ ¼ø(½Ã¿¬¹öÀü)
+        formation = new int[] { 2, 0, 1, -1};   // í˜¸ë‘ì´-ìš°ì¹˜-ì‚¼ë¯¸í˜¸ ìˆœ(ì‹œì—°ë²„ì „)
 
         characterInfoList = new List<CharacterInfoData>();
     }

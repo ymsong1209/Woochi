@@ -1,7 +1,7 @@
 public class PlayerData
 {
     // bool
-    public bool hasSaveData;    // 历厘等 单捞磐啊 乐绰瘤
+    public bool hasSaveData;    // 鞝�鞛ル悳 雿办澊韯瓣皜 鞛堧姅歆�
 
     // Battle
     public BattleData battleData;

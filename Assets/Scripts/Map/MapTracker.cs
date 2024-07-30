@@ -24,7 +24,7 @@ public class MapPlayerTracker : MonoBehaviour
 
         if (MapManager.GetInstance.CurrentMap.path.Count == 0)
         {
-            // Ã³À½ Map¿¡ µé¾î¿ÔÀ» ¶§´Â Ã¹ ¹øÂ° Layer¿¡ ÀÖ´Â ¸ğµç ³ëµå ¼±ÅÃ °¡´É
+            // ì²˜ìŒ Mapì— ë“¤ì–´ì™”ì„ ë•ŒëŠ” ì²« ë²ˆì§¸ Layerì— ìˆëŠ” ëª¨ë“  ë…¸ë“œ ì„ íƒ ê°€ëŠ¥
             if (mapNode.Node.point.y == 0)
                 SendPlayerToNode(mapNode);
             else

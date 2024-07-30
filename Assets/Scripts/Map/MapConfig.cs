@@ -10,22 +10,26 @@ public class MapConfig : ScriptableObject
 
     [SerializeField] private RandomList<NodeType> randomNodeTypes;
     [SerializeField] private RandomList<int> randomAbnormals;
-    [Tooltip("³ªÅ¸³¯ ÀûµéÀÇ ID·Î ÅÛÇÃ¸´À» ÀÔ·ÂÇØÁÖ¼¼¿ä(ex. 3 3 4 4)")]
+    [SerializeField] private RandomList<StrangeType> randomStrangeProbabilities;
+    [Tooltip("ë‚˜íƒ€ë‚  ê¸°ì—°ì˜ IDë¥¼ ì…ë ¥")]
     [OneLineWithHeader]
-    [SerializeField] private List<Template> normalTemplates;             // ÀÏ¹İ ÀûµéÀÌ µîÀåÇÏ´Â ÅÛÇÃ¸´
-    [SerializeField] private List<Template> eliteTemplates;              // Á¤¿¹ ÀûµéÀÌ µîÀåÇÏ´Â ÅÛÇÃ¸´
+    [SerializeField] private List<int> strangeTemplates;     
+    [Tooltip("ë‚˜íƒ€ë‚  ì ë“¤ì˜ IDë¡œ í…œí”Œë¦¿ì„ ì…ë ¥í•´ì£¼ì„¸ìš”(ex. 3 3 4 4)")]
+    [OneLineWithHeader]
+    [SerializeField] private List<Template> normalTemplates;             // ì¼ë°˜ ì ë“¤ì´ ë“±ì¥í•˜ëŠ” í…œí”Œë¦¿
+    [SerializeField] private List<Template> eliteTemplates;              // ì •ì˜ˆ ì ë“¤ì´ ë“±ì¥í•˜ëŠ” í…œí”Œë¦¿
 
-    // ¸ÊÀÇ Æø
+    // ë§µì˜ í­
     public int GridWidth => Mathf.Max(numOfPreBossNodes.max, numOfStartingNodes.max);
 
     [OneLineWithHeader]
-    public IntMinMax numOfPreBossNodes;     // º¸½º ³ëµå ÀÌÀü layer¿¡ ÀÖ´Â ³ëµåÀÇ °³¼ö(ÃÖ¼Ò, ÃÖ´ë)
+    public IntMinMax numOfPreBossNodes;     // ë³´ìŠ¤ ë…¸ë“œ ì´ì „ layerì— ìˆëŠ” ë…¸ë“œì˜ ê°œìˆ˜(ìµœì†Œ, ìµœëŒ€)
     [OneLineWithHeader]
-    public IntMinMax numOfStartingNodes;    // ½ÃÀÛ ³ëµå layer¿¡ ÀÖ´Â ³ëµåÀÇ °³¼ö(ÃÖ¼Ò, ÃÖ´ë)   
+    public IntMinMax numOfStartingNodes;    // ì‹œì‘ ë…¸ë“œ layerì— ìˆëŠ” ë…¸ë“œì˜ ê°œìˆ˜(ìµœì†Œ, ìµœëŒ€)   
 
-    [Tooltip("°æ·Î¸¦ ´õ Ãß°¡ÇÏ°í ½ÍÀº °æ¿ì ±âÀÔ")]
+    [Tooltip("ê²½ë¡œë¥¼ ë” ì¶”ê°€í•˜ê³  ì‹¶ì€ ê²½ìš° ê¸°ì…")]
     public int extraPaths;
-    public List<MapLayer> layers;           // Áö¿ªÀÇ layer Á¤º¸(layer¸¶´Ù ¹«½¼ ³ëµå°¡ ÀÖ´ÂÁö µî)
+    public List<MapLayer> layers;           // ì§€ì—­ì˜ layer ì •ë³´(layerë§ˆë‹¤ ë¬´ìŠ¨ ë…¸ë“œê°€ ìˆëŠ”ì§€ ë“±)
 
     public NodeType GetNodeType()
     {
@@ -44,9 +48,15 @@ public class MapConfig : ScriptableObject
 
     public int[] GetEliteEnemy()
     {
-        // Á¤¿¹ Àû ÅÛÇÃ¸´ ¾ø¾î¼­ ÀÓÀÇ Ã³¸®
+        // ì •ì˜ˆ ì  í…œí”Œë¦¿ ì—†ì–´ì„œ ì„ì˜ ì²˜ë¦¬
         return normalTemplates.Random().id;
     }
+    public StrangeType GetStrangeType()
+    {
+        return randomStrangeProbabilities.Get();
+    }
+
+    public List<int> StrangeTemplates => strangeTemplates;
 }
 
 [System.Serializable]
@@ -54,3 +64,4 @@ public class Template
 {
     public int[] id;
 }
+

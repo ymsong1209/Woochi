@@ -30,12 +30,21 @@ public class MapManager : SingletonMonobehaviour<MapManager>
     {
         Map map = MapGenerator.GetMap(config);
         CurrentMap = map;
+        StrangeManager.GetInstance.Initialize(config);
         view.ShowMap(map);
     }
 
     public void SelectNode(MapNode _mapNode)
     {
-        BattleManager.GetInstance.InitializeBattle(_mapNode.Node.enemyIDs, _mapNode.Node.abnormalID);
+        if (_mapNode.Node.nodeType == NodeType.Strange)
+        {
+            StrangeType type = config.GetStrangeType();
+            StrangeManager.GetInstance.ActivateStrange(type);
+        }
+        else
+        {
+            BattleManager.GetInstance.InitializeBattle(_mapNode.Node.enemyIDs, _mapNode.Node.abnormalID);
+        }
         view.FadeInOut(false);
     }
 

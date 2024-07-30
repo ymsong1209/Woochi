@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Abnormal", menuName = "Scriptable Objects/Map/Abnormal")]
 public class Abnormal : ScriptableObject
 {
-    [Tooltip("ID¸¸ Ã¤¿öÁÖ¸é ÀÚµ¿À¸·Î µ¥ÀÌÅÍ ÃÊ±âÈ­")]
+    [Tooltip("IDë§Œ ì±„ì›Œì£¼ë©´ ìë™ìœ¼ë¡œ ë°ì´í„° ì´ˆê¸°í™”")]
     public int ID;
     [ReadOnly(true)] public string Name;
     [ReadOnly(true)] public int cost;

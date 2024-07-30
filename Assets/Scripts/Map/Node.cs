@@ -6,15 +6,15 @@ using UnityEngine;
 
 public class Node
 {
-    public Vector2Int       point;                              // ³ëµåÀÇ À§Ä¡ Á¤º¸(½ÇÁ¦ positionÀÌ ¾Æ´Ô)
-    public List<Vector2Int> incoming = new List<Vector2Int>();  // ÀÌ ³ëµå·Î µé¾î¿À´Â ³ëµåµé
-    public List<Vector2Int> outgoing = new List<Vector2Int>();  // ÀÌ ³ëµå¿¡¼­ ³ª°¡´Â ³ëµåµé
+    public Vector2Int       point;                              // ë…¸ë“œì˜ ìœ„ì¹˜ ì •ë³´(ì‹¤ì œ positionì´ ì•„ë‹˜)
+    public List<Vector2Int> incoming = new List<Vector2Int>();  // ì´ ë…¸ë“œë¡œ ë“¤ì–´ì˜¤ëŠ” ë…¸ë“œë“¤
+    public List<Vector2Int> outgoing = new List<Vector2Int>();  // ì´ ë…¸ë“œì—ì„œ ë‚˜ê°€ëŠ” ë…¸ë“œë“¤
     [JsonConverter(typeof(StringEnumConverter))]
     public NodeType    nodeType;                                
-    public Vector2     position;                                // ³ëµå°¡ Canvas¿¡¼­ ¾îµğ¿¡ À§Ä¡ÇÏ´ÂÁö
+    public Vector2     position;                                // ë…¸ë“œê°€ Canvasì—ì„œ ì–´ë””ì— ìœ„ì¹˜í•˜ëŠ”ì§€
 
-    public int   abnormalID;                                    // ÀÌ ³ëµå¿¡¼­ ¹ß»ıÇÏ´Â ÀÌ»ó ID
-    public int[] enemyIDs;                                      // ÀÌ ³ëµå¿¡¼­ µîÀåÇÏ´Â ÀûµéÀÇ ID  
+    public int   abnormalID;                                    // ì´ ë…¸ë“œì—ì„œ ë°œìƒí•˜ëŠ” ì´ìƒ ID
+    public int[] enemyIDs;                                      // ì´ ë…¸ë“œì—ì„œ ë“±ì¥í•˜ëŠ” ì ë“¤ì˜ ID  
 
     public Node(NodeType _type, Vector2Int _point)
     {
@@ -49,7 +49,7 @@ public class Node
     }
 
     /// <summary>
-    /// ¿¬°áµÇÁö ¾ÊÀº ³ëµåÀÎÁö
+    /// ì—°ê²°ë˜ì§€ ì•Šì€ ë…¸ë“œì¸ì§€
     /// </summary>
     public bool HasNoConnections()
     {

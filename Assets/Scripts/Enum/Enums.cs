@@ -181,3 +181,11 @@ public enum StatType
     Damage,
     END
 }
+
+public enum StrangeType
+{
+    Lucky,
+    UnKnown,
+    UnLucky,
+    END
+}

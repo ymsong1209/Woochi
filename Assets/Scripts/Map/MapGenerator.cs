@@ -6,10 +6,10 @@ public static class MapGenerator
 {
     private static MapConfig config;
 
-    // ·¹ÀÌ¾î °£ yÃàÀ¸·Î ¾ó¸¶³ª ¶³¾îÁ® ÀÖ´ÂÁö
+    // ë ˆì´ì–´ ê°„ yì¶•ìœ¼ë¡œ ì–¼ë§ˆë‚˜ ë–¨ì–´ì ¸ ìˆëŠ”ì§€
     private static List<float> layerDistances;
 
-    // 1Â÷ÀûÀ¸·Î »ı¼ºÇÒ ¸ğµç ³ëµåµé(ÈÄ¿¡ Á¶°Ç¿¡ µû¶ó ÀÏºÎ ³ëµåµéÀ» Á¦°ÅÇÒ ¼ö ÀÖÀ½)
+    // 1ì°¨ì ìœ¼ë¡œ ìƒì„±í•  ëª¨ë“  ë…¸ë“œë“¤(í›„ì— ì¡°ê±´ì— ë”°ë¼ ì¼ë¶€ ë…¸ë“œë“¤ì„ ì œê±°í•  ìˆ˜ ìˆìŒ)
     private static readonly List<List<Node>> nodes = new List<List<Node>>();
 
     public static Map GetMap(MapConfig conf)
@@ -33,7 +33,7 @@ public static class MapGenerator
 
         RemoveCrossConnections();
 
-        // ¿¬°áÀÌ ÀÖ´Â ³ëµåµé¸¸ ³²±è
+        // ì—°ê²°ì´ ìˆëŠ” ë…¸ë“œë“¤ë§Œ ë‚¨ê¹€
         List<Node> nodesList = nodes.SelectMany(n => n).Where(n => n.incoming.Count > 0 || n.outgoing.Count > 0).ToList();
 
         return new Map(conf.name, nodesList, new List<Vector2Int>());
@@ -78,8 +78,8 @@ public static class MapGenerator
     }
     
     /// <summary>
-    /// ÇØ´ç ³ëµå¿¡ ³ªÅ¸³¯ ÀûÀÇ IDµéÀ» ¼³Á¤ÇÔ
-    /// °ÔÀÓ¿ÀºêÁ§Æ®¸¦ ¼³Á¤ÇÏ¸é Á÷·ÄÈ­°¡ ¾ÈµÇ¾î ÀúÀåÀÌ ¾ÈµÊ
+    /// í•´ë‹¹ ë…¸ë“œì— ë‚˜íƒ€ë‚  ì ì˜ IDë“¤ì„ ì„¤ì •í•¨
+    /// ê²Œì„ì˜¤ë¸Œì íŠ¸ë¥¼ ì„¤ì •í•˜ë©´ ì§ë ¬í™”ê°€ ì•ˆë˜ì–´ ì €ì¥ì´ ì•ˆë¨
     /// </summary>
     private static int[] GetEnemyID(NodeType _nodeType)
     {
@@ -89,8 +89,18 @@ public static class MapGenerator
                 return config.GetNormalEnemy();
             case NodeType.Elite:
                 return config.GetEliteEnemy();
-            case NodeType.Strange:
-                return config.GetNormalEnemy();
+            case NodeType.Strange: //ê¸°ì—° ë…¸ë“œì—ì„œëŠ” ì ì˜ IDë¥¼ ëœë¤í•˜ê²Œ ìƒì„±. SelectNodeì—ì„œ 
+            {
+                int random = Random.Range(0, 100);
+                if (random < 80) //80í¼ì„¼íŠ¸ í™•ë¥ ë¡œ ì¼ë°˜ ëª¬ìŠ¤í„° ìƒì„±
+                {
+                    return config.GetNormalEnemy();
+                }
+                else //20í¼ì„¼íŠ¸ í™•ë¥ ë¡œ ì—˜ë¦¬íŠ¸ ëª¬ìŠ¤í„° ìƒì„±
+                {
+                    return config.GetEliteEnemy();
+                }
+            }
             case NodeType.Boss:
                 break;
         }
@@ -199,13 +209,13 @@ public static class MapGenerator
     }
 
     /// <summary>
-    /// ¸ÊÀÇ ¸¶Áö¸· ³ëµå¸¦ ¹İÈ¯
+    /// ë§µì˜ ë§ˆì§€ë§‰ ë…¸ë“œë¥¼ ë°˜í™˜
     /// </summary>
     private static Vector2Int GetFinalNode()
     {
         int y = config.layers.Count - 1;
 
-        // GridWidth°¡ È¦¼öÀÏ ¶§´Â °¡¿îµ¥¿¡ ³ëµå°¡ ÀÖÀ½
+        // GridWidthê°€ í™€ìˆ˜ì¼ ë•ŒëŠ” ê°€ìš´ë°ì— ë…¸ë“œê°€ ìˆìŒ
         if (config.GridWidth % 2 == 1)
             return new Vector2Int(config.GridWidth / 2, y);
 

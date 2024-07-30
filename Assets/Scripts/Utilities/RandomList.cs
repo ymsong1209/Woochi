@@ -9,7 +9,7 @@ public class RandomList<T>
     public List<RandomObject<T>> list;
 
     /// <summary>
-    /// Á¤ÇØÁø È®·ü´ë·Î ¾ò¾î¿À´Â ÇÔ¼ö
+    /// ì •í•´ì§„ í™•ë¥ ëŒ€ë¡œ ì–»ì–´ì˜¤ëŠ” í•¨ìˆ˜
     /// </summary>
     public T Get()
     {

@@ -63,6 +63,24 @@ public class Library : ScriptableObject
     }
 
     #endregion
+    
+    #region Strange
+    
+    [OneLineWithHeader, SerializeField] private List<Entry<GameObject>> stranges;
+
+    public GameObject GetStrange(int id)
+    {
+        if (id < 0)
+        {
+            Debug.Log("Library: ID out of range");
+            return null;
+        }
+
+        return stranges.FirstOrDefault(entry => entry.ID == id)?.value;
+    }
+    #endregion
+    
+    
     /// <summary>
     /// 구글 스프레드 시트의 데이터를 가져와서 스크립터블 초기화 -> 딱 한번만
     /// </summary>
