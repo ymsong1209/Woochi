@@ -7,6 +7,7 @@ public class StatBuff : BaseBuff
     [SerializeField] protected Stat changeStat;
     public StatBuff()
     {
+        changeStat = new Stat();
         buffEffect = BuffEffect.StatStrengthen;
         buffType = BuffType.Positive;
     }

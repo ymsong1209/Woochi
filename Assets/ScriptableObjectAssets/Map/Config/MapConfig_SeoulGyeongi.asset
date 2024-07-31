@@ -38,11 +38,11 @@ MonoBehaviour:
   randomStrangeProbabilities:
     list:
     - value: 0
-      probability: 30
+      probability: 0.3
     - value: 1
-      probability: 40
+      probability: 0.4
     - value: 2
-      probability: 30
+      probability: 0.3
   strangeTemplates: e8030000d0070000b80b0000
   normalTemplates:
   - id: e8030000e8030000e9030000e9030000

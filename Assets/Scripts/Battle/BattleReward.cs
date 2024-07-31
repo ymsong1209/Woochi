@@ -21,7 +21,7 @@ public class BattleReward : MonoBehaviour
     [SerializeField] private TextMeshProUGUI rerollPriceTxt;
     [SerializeField] private int rerollPrice = 100;
 
-    private int grade = 0;      // ¿ª°æ ´Ü°è
+    private int grade = 0;      // ì—­ê²½ ë‹¨ê³„
 
     void Start()
     {
@@ -50,7 +50,7 @@ public class BattleReward : MonoBehaviour
     }
 
     /// <summary>
-    /// ¿ª°æ ¼öÄ¡¸¦ ¿ª°æ µî±ŞÀ¸·Î º¯È¯
+    /// ì—­ê²½ ìˆ˜ì¹˜ë¥¼ ì—­ê²½ ë“±ê¸‰ìœ¼ë¡œ ë³€í™˜
     /// </summary>
     private int CalculateGrade(int hardShip)
     {
@@ -59,7 +59,7 @@ public class BattleReward : MonoBehaviour
     }
 
     /// <summary>
-    /// ¿ª°æ µî±Ş¿¡ µû¸¥ È®·ü·Î Èñ±Íµµ ±¸ÇÏ±â
+    /// ì—­ê²½ ë“±ê¸‰ì— ë”°ë¥¸ í™•ë¥ ë¡œ í¬ê·€ë„ êµ¬í•˜ê¸°
     /// </summary>
     private RareType GetRarity(int grade)
     {
@@ -107,8 +107,8 @@ public class BattleReward : MonoBehaviour
     }
 
     /// <summary>
-    /// È­»ìÇ¥ ´­·¶À» ¶§ º¸»ó Ã¢ ´İ±â
-    /// º¸»ó ¹Ş¾ÒÀ¸¸é ÀúÀå
+    /// í™”ì‚´í‘œ ëˆŒë €ì„ ë•Œ ë³´ìƒ ì°½ ë‹«ê¸°
+    /// ë³´ìƒ ë°›ì•˜ìœ¼ë©´ ì €ì¥
     /// </summary>
     private void Next()
     {
@@ -118,12 +118,12 @@ public class BattleReward : MonoBehaviour
 
     private void SetGold()
     {
-        goldTxt.text = $"{DataCloud.playerData.gold}°³";
+        goldTxt.text = $"{DataCloud.playerData.gold}ê°œ";
     }
 
     /// <summary>
-    /// º¸»ó UI »óÈ£ÀÛ¿ë ¼³Á¤
-    /// active°¡ true¸é º¸»ó ¼±ÅÃ °¡´É, ´ÙÀ½ ¹öÆ° ¼±ÅÃ ºÒ°¡
+    /// ë³´ìƒ UI ìƒí˜¸ì‘ìš© ì„¤ì •
+    /// activeê°€ trueë©´ ë³´ìƒ ì„ íƒ ê°€ëŠ¥, ë‹¤ìŒ ë²„íŠ¼ ì„ íƒ ë¶ˆê°€
     /// </summary>
     /// <param name="active"></param>
     private void SetInteractable(bool active)
@@ -138,7 +138,7 @@ public class BattleReward : MonoBehaviour
     }
 
     /// <summary>
-    /// ¸®·Ñ ºñ¿ë + ¸®·Ñ ºñ¿ë ÅØ½ºÆ® ¼³Á¤
+    /// ë¦¬ë¡¤ ë¹„ìš© + ë¦¬ë¡¤ ë¹„ìš© í…ìŠ¤íŠ¸ ì„¤ì •
     /// </summary>
     private void SetReroll(int newPrice)
     {

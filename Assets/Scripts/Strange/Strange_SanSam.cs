@@ -40,6 +40,8 @@ public class Strange_SanSam : BaseStrange
         descriptionText.text = "내 도력이 상승하는 것 같다! 먹길 잘 했다!";
         buffdescriptionText.gameObject.SetActive(true);
         eatImage.gameObject.SetActive(true);
+        //todo : 우치의 도력 증가
+        
         ContinueEvent();
     }
 

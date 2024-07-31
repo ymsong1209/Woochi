@@ -1272,6 +1272,22 @@ PrefabInstance:
       propertyPath: allies.Array.data[1]
       value: 
       objectReference: {fileID: 1946550667272111963, guid: fb3bcba31bb16b54384116e3477e79ea, type: 3}
+    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
+      propertyPath: charmList.Array.data[0]
+      value: 
+      objectReference: {fileID: 8207826904893543196, guid: 52721394bc5a118459615907eaa455b0, type: 3}
+    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
+      propertyPath: charmList.Array.data[2]
+      value: 
+      objectReference: {fileID: 8207826904893543196, guid: ce07f3219301c6d46b3ef2ab04988814, type: 3}
+    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
+      propertyPath: charmList.Array.data[3]
+      value: 
+      objectReference: {fileID: 8207826904893543196, guid: 8f953c247893ac54196460aad14b28d3, type: 3}
+    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
+      propertyPath: charmList.Array.data[4]
+      value: 
+      objectReference: {fileID: 8207826904893543196, guid: f18140646f6858c49b4a7d292316af1e, type: 3}
     - target: {fileID: 5775089594791431015, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

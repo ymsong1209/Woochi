@@ -26,6 +26,7 @@ public class Strange_Battle : BaseStrange
     {
         base.Initialize();
         continueBtn.gameObject.SetActive(false);
+        battleReadyBtn.gameObject.SetActive(true);
         descriptionText.text = "갑자기 주변에서 사나운 요기가 느껴진다.\n 전투 준비를 하자.";
     }
 
@@ -52,7 +53,7 @@ public class Strange_Battle : BaseStrange
         {
             descriptionText.text = "조금 버거워보이는 적이다. 조심하자.";
         }
-        
+        battleReadyBtn.gameObject.SetActive(false);
         continueBtn.gameObject.SetActive(true);
     }
 }
