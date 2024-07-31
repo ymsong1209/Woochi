@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class StatBuff : BaseBuff
 {
-    
-    [SerializeField] protected Stat changeStat;
+    public Stat changeStat;
+
     public StatBuff()
     {
         buffEffect = BuffEffect.StatStrengthen;
@@ -35,7 +35,7 @@ public class StatBuff : BaseBuff
         if(_buff.BuffDurationTurns == -1) base.buffDurationTurns = -1;
         else base.buffDurationTurns += _buff.BuffDurationTurns;
         
-        changeStat += statBuff.ChangeStat;
+        changeStat += statBuff.changeStat;
         buffOwner.CheckForStatChange();
     }
 
@@ -111,13 +111,4 @@ public class StatBuff : BaseBuff
         text.text += description;
         SetBuffColor(text);
     }
-
-    #region 변화된 스탯들의 수치 Getter Setter
-    public Stat ChangeStat
-    {
-        get => changeStat;
-        set => changeStat = value;
-    }
-
-    #endregion 변화된 스탯들의 수치 Getter Setter
 }

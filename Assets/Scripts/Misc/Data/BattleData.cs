@@ -30,8 +30,8 @@ public class CharacterInfoData
     public CharacterInfoData()
     {
         ID = -1;
-        baseStat = null;
-        rewardStat = null;
+        baseStat = new Stat();
+        rewardStat = new Stat();
         health = null;
     }
 

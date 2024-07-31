@@ -4,7 +4,7 @@ using UnityEngine;
 public class StatDeBuff : BaseBuff
 {
     #region 변화된 스탯들의 수치
-    [SerializeField] protected Stat changeStat;
+    public Stat changeStat;
     #endregion 변화된 스탯들
     public StatDeBuff()
     {
@@ -35,7 +35,7 @@ public class StatDeBuff : BaseBuff
         if(_buff.BuffDurationTurns == -1) base.buffDurationTurns = -1;
         else base.buffDurationTurns += _buff.BuffDurationTurns;
         
-        changeStat += statDeBuff.ChangeStat;
+        changeStat += statDeBuff.changeStat;
         buffOwner.CheckForStatChange();
     }
 
@@ -114,11 +114,6 @@ public class StatDeBuff : BaseBuff
 
 
     #region 변화된 스탯들의 수치 Getter Setter
-    public Stat ChangeStat
-    {
-        get => changeStat;
-        set => changeStat = value;
-    }
 
     #endregion 변화된 스탯들의 수치 Getter Setter
 }

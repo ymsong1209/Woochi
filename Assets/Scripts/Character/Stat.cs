@@ -2,7 +2,7 @@ using DataTable;
 using UnityEngine;
 
 [System.Serializable]
-public class Stat
+public struct Stat
 {
     [ReadOnly(true)] public int maxHealth;
     [ReadOnly(true)] public int speed;
@@ -13,11 +13,6 @@ public class Stat
     [ReadOnly(true)] public float resist;
     [ReadOnly(true)] public float minStat;
     [ReadOnly(true)] public float maxStat;
-
-    public Stat()
-    {
-        maxHealth = 0; speed = 0; defense = 0; crit = 0; accuracy = 0; evasion = 0; resist = 0; minStat = 0; maxStat = 0;
-    }
 
     public Stat(CharacterData data)
     {
@@ -43,6 +38,19 @@ public class Stat
         resist = stat.resist;
         minStat = stat.minStat;
         maxStat = stat.maxStat;
+    }
+
+    public void Clamp()
+    {
+        maxHealth = Mathf.Clamp(maxHealth, 1, 999);
+        speed = Mathf.Clamp(speed, 0, 999);
+        defense = Mathf.Clamp(defense, 0, 999);
+        crit = Mathf.Clamp(crit, 0, 999);
+        accuracy = Mathf.Clamp(accuracy, 0, 999);
+        evasion = Mathf.Clamp(evasion, 0, 999);
+        resist = Mathf.Clamp(resist, 0, 999);
+        minStat = Mathf.Clamp(minStat, 0, 999);
+        maxStat = Mathf.Clamp(maxStat, 0, 999);
     }
 
     public static Stat operator+(Stat a, Stat b)

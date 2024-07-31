@@ -31,7 +31,7 @@ public class DotCureByDamageBuff : BaseBuff
     {
         base.AddBuff(caster, _buffOwner);
 
-        Stat stat = caster.Stat;
+        Stat stat = caster.FinalStat;
         minDamage = stat.minStat;
         maxDamage = stat.maxStat;
     }

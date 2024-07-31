@@ -295,7 +295,7 @@ public class BaseSkill : MonoBehaviour
     {
         if (isAlwaysHit) return true;
         int RandomValue = Random.Range(0, 100);
-        if (RandomValue < skillAccuracy + skillOwner.Stat.accuracy) return true;
+        if (RandomValue < skillAccuracy + skillOwner.FinalStat.accuracy) return true;
         else return false;
     }
 
@@ -307,7 +307,7 @@ public class BaseSkill : MonoBehaviour
     {
         if (isAlwaysHit) return true;
         int RandomValue = Random.Range(0, 100);
-        if (RandomValue > _opponent.Stat.evasion) return true;
+        if (RandomValue > _opponent.FinalStat.evasion) return true;
         return false;
     }
 
@@ -331,7 +331,7 @@ public class BaseSkill : MonoBehaviour
     {
         if (isAlwaysApplyBuff) return true;
         int RandomValue = Random.Range(0, 100);
-        if (RandomValue > _opponent.Stat.resist) return true;
+        if (RandomValue > _opponent.FinalStat.resist) return true;
         return false;
     }
 
@@ -341,7 +341,7 @@ public class BaseSkill : MonoBehaviour
     protected bool CheckCrit()
     {
         int RandomValue = Random.Range(0, 100);
-        if (RandomValue < skillOwner.Stat.crit) return true;
+        if (RandomValue < skillOwner.FinalStat.crit) return true;
         return false;
     }
     
@@ -376,9 +376,9 @@ public class BaseSkill : MonoBehaviour
     
     protected virtual float CalculateDamage(BaseCharacter receiver, bool isCrit)
     {
-        float RandomStat = Random.Range(skillOwner.Stat.minStat, skillOwner.Stat.maxStat);
+        float RandomStat = Random.Range(skillOwner.FinalStat.minStat, skillOwner.FinalStat.maxStat);
         RandomStat *= (multiplier / 100);
-        RandomStat = RandomStat * (1 - receiver.Stat.defense/(receiver.Stat.defense + 100));
+        RandomStat = RandomStat * (1 - receiver.FinalStat.defense/(receiver.FinalStat.defense + 100));
         if (isCrit) RandomStat = RandomStat * 2;
         return RandomStat;
     }
@@ -407,7 +407,7 @@ public class BaseSkill : MonoBehaviour
     }
     protected virtual float CalculateHeal(BaseCharacter receiver, bool isCrit)
     {
-        float RandomStat = Random.Range(skillOwner.Stat.minStat, skillOwner.Stat.maxStat);
+        float RandomStat = Random.Range(skillOwner.FinalStat.minStat, skillOwner.FinalStat.maxStat);
         RandomStat *= (multiplier / 100);
         if (isCrit) RandomStat = RandomStat * 2;
         return RandomStat;

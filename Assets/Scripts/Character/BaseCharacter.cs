@@ -25,6 +25,7 @@ public class BaseCharacter : MonoBehaviour
     [SerializeField]    private Health health = new Health();
     [SerializeField]    private Stat    baseStat;
     [SerializeField]    private Stat    rewardStat;
+    [SerializeField]    private Stat    buffStat;
     #endregion
    
     [SerializeField] bool isMainCharacter = false;
@@ -244,36 +245,21 @@ public class BaseCharacter : MonoBehaviour
     //stat buff가 적용되거나 사라지면 자신이 가진 모든 버프 순회해서 stat buff에 있는 스탯 적용
     public void CheckForStatChange()
     {
-        //기존 스탯 다시 초기화
-        baseStat = new Stat(characterStat.BaseStat);
+        buffStat = new Stat();
         
         foreach (BaseBuff buff in activeBuffs)
         {
             if (buff.BuffEffect == BuffEffect.StatStrengthen)
             {
                 StatBuff statBuff = buff as StatBuff;
-                baseStat += statBuff.ChangeStat;
+                buffStat += statBuff.changeStat;
             }
             else if (buff.BuffEffect == BuffEffect.StatWeaken)
             {
                 StatDeBuff debuff = buff as StatDeBuff;
-                baseStat += debuff.ChangeStat;
+                buffStat += debuff.changeStat;
             }
         }
-        ClampStat();
-    }
-    
-    private void ClampStat()
-    {
-        baseStat.maxHealth = Mathf.Clamp(baseStat.maxHealth, 0, 999);
-        baseStat.speed = Mathf.Clamp(baseStat.speed, 0, 999);
-        baseStat.defense = Mathf.Clamp(baseStat.defense, 0, 999);
-        baseStat.crit = Mathf.Clamp(baseStat.crit, 0, 999);
-        baseStat.accuracy = Mathf.Clamp(baseStat.accuracy, 0, 999);
-        baseStat.evasion = Mathf.Clamp(baseStat.evasion, 0, 999);
-        baseStat.resist = Mathf.Clamp(baseStat.resist, 0, 999);
-        baseStat.minStat = Mathf.Clamp(baseStat.minStat, 0, 999);
-        baseStat.maxStat = Mathf.Clamp(baseStat.maxStat, 0, 999);
     }
     
     /// <summary>
@@ -324,7 +310,8 @@ public class BaseCharacter : MonoBehaviour
     protected void InitializeStat()
     {
         baseStat = new Stat(characterStat.BaseStat);
-        rewardStat = new Stat();
+        rewardStat = new Stat(characterStat.RewardStat);
+        buffStat = new Stat();
     }
 
     protected void InitializeHealth()
@@ -409,9 +396,19 @@ public class BaseCharacter : MonoBehaviour
     public int Size => characterStat.size;
     public int Cost => characterStat.cost;
     public Health Health => health;
-    public Stat Stat => baseStat + rewardStat;
+    public Stat FinalStat
+    {
+        get
+        {
+            Stat stat = (baseStat + rewardStat + buffStat);
+            stat.Clamp();
+            return stat;
+        }
+    }
+
     public Stat BaseStat => baseStat;
     public Stat RewardStat => rewardStat;
+    public Stat BuffStat => buffStat;
 
     public BuffList BuffList => buffList;
 
@@ -444,16 +441,6 @@ public class BaseCharacter : MonoBehaviour
             anim.SetSortLayer(rowOrder);
         }
     }
-    #region 바뀐 스탯 
-    public float ChangedSpeed => baseStat.speed - characterStat.BaseStat.speed;
-    public float ChangedDefense => baseStat.defense - characterStat.BaseStat.defense;
-    public float ChangedCrit => baseStat.crit - characterStat.BaseStat.crit;
-    public float ChangedAccuracy => baseStat.accuracy - characterStat.BaseStat.accuracy;
-    public float ChangedEvasion => baseStat.evasion - characterStat.BaseStat.evasion;
-    public float ChangedResist => baseStat.resist - characterStat.BaseStat.resist;
-    public float ChangedMinStat => baseStat.minStat - characterStat.BaseStat.minStat;
-    public float ChangedMaxStat => baseStat.maxStat - characterStat.BaseStat.maxStat;
-    #endregion
 
     #endregion
 
