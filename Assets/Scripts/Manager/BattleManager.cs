@@ -269,7 +269,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             #endregion
             currentCharacter = combatQueue.Dequeue();
 
-            if (currentCharacter.IsDead || currentCharacter.IsTurnUsed)
+            //IsDead는 DeathAnimation이 끝나고 true로 변경되므로
+            //CurHealth가 0 이하인 경우도 체크
+            if (currentCharacter.IsDead || currentCharacter.IsTurnUsed || currentCharacter.Health.CurHealth <= 0)
             {
                 Debug.Log(currentCharacter.name + " is dead or turn is used.");
                 processedCharacters.Add(currentCharacter);

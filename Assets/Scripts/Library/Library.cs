@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Library_", menuName = "Scriptable Objects/Library")]
 public class Library : ScriptableObject
 {
-    // Warning!. ���� �̸� �����ϸ� ������ �� ����
+    // Warning!. 변수 이름 수정하면 데이터 싹 날라감
 
     #region Character Prefab
     [OneLineWithHeader, SerializeField] private List<Entry<GameObject>> characters;
@@ -100,7 +100,7 @@ public class Library : ScriptableObject
     #endregion
 
     /// <summary>
-    /// ���� �������� ��Ʈ�� �����͸� �����ͼ� ��ũ���ͺ� �ʱ�ȭ -> �� �ѹ���
+    /// 구글 스프레드 시트의 데이터를 가져와서 스크립터블 초기화 -> 딱 한번만
     /// </summary>
     public void Initialize()
     {
