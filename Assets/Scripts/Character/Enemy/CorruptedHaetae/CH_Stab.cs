@@ -8,20 +8,21 @@ public class CH_Stab : BaseSkill
         GameObject stunDebuffPrefab = BuffPrefabList[0];
         GameObject stunDebuffGameObject = Instantiate(stunDebuffPrefab, transform);
         StunDeBuff stunDebuff = stunDebuffGameObject.GetComponent<StunDeBuff>();
-        stunDebuff.BuffDurationTurns = 3;
+        stunDebuff.BuffDurationTurns = 1;
         stunDebuff.ChanceToApplyBuff = 40;
         instantiatedBuffList.Add(stunDebuffGameObject);
         
         base.ActivateSkill(_Opponent);
-        
-        float randomValue = Random.Range(0, 100);
-        //40%의 확률로 적을 강제 이동
-        if (randomValue < 40)
-        {
-            BattleManager.GetInstance.MoveCharacter(SkillResult.Opponent, -1);
-        }
-        
 
+        if (SkillResult.isHit)
+        {
+            float randomValue = Random.Range(0, 100);
+            //40%의 확률로 적을 강제 이동
+            if (randomValue < 40)
+            {
+                BattleManager.GetInstance.MoveCharacter(SkillResult.Opponent, -1);
+            }
+        }
     }
     protected override float CalculateDamage(BaseCharacter receiver, bool isCrit)
     {

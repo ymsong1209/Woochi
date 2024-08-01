@@ -28,7 +28,7 @@ public class CorruptedHaetae : BaseEnemy
                 ally = BattleUtils.FindRandomAlly(0, 1,2,3);
                 BattleManager.GetInstance.SkillSelected(activeSkills[3]);
             }
-            else //25% 확률로 부정한 율법
+            else //15% 확률로 부정한 율법
             {
                 ally = BattleUtils.FindRandomAlly(0, 1,2,3);
                 BattleManager.GetInstance.SkillSelected(activeSkills[0]);

@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 사나운 족자구 자신이 어디에 위치하든 아군 1, 2, 3, 4열 전체 대상에게 오싹한 짖기를 시전할 수 있다.
+/// 오싹한 짖기를 시전하면 사나운 족자구는 1턴 동안 회피가 5만큼 증가한다.
+/// 오싹한 짖기에 피격 당한 적은 1턴 동안 명중이 5 만큼 감소한다.
+/// </summary>
 public class E_ScrollDog_Bark : BaseSkill
 {
     [SerializeField] private GameObject evasionBuffGameObject;

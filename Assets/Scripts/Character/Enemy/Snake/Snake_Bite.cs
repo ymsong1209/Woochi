@@ -11,6 +11,11 @@ public class Snake_Bite : BaseSkill
     public override void ActivateSkill(BaseCharacter _Opponent)
     {
         base.ActivateSkill(_Opponent);
-        BattleManager.GetInstance.MoveCharacter(SkillOwner, 1);
+        //스킬이 명중하면 앞으로 1열 이동
+        if (SkillResult.isHit)
+        {
+            BattleManager.GetInstance.MoveCharacter(SkillOwner, 1);
+        }
+        
     }
 }

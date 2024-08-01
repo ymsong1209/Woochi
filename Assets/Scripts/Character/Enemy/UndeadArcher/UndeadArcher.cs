@@ -25,13 +25,19 @@ public class UndeadArcher : BaseEnemy
         
         BaseCharacter ally = null;
         
-        if (randomValue < 35) // 60% 확률로 2,3,4열 중 가장 낮은 체력의 아군 선택
+        if (randomValue < 65) // 60% 확률로 2,3,4열 중 가장 낮은 체력의 아군 선택
         {
             ally = BattleUtils.FindAllyWithLeastHP(1, 2, 3);
         }
         else // 40% 확률로 랜덤하게 선택
         {
             ally = BattleUtils.FindRandomAlly(1, 2, 3);
+        }
+
+        //아군 2,3,4열에 아군이 없을 경우 1열 아군 선택
+        if (!ally)
+        {
+            ally = BattleUtils.FindAllyFromIndex(0);
         }
       
         if (ally != null)

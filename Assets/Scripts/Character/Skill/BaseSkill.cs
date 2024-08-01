@@ -355,6 +355,7 @@ public class BaseSkill : MonoBehaviour
             case SkillType.Attack:
             {
                 float Damage = CalculateDamage(receiver, isCrit);
+                //원소 버프.디버프는 최종 대미지 계산 후 적용
                 Damage = Mathf.Clamp(CalculateElementalDamageBuff(Damage),0,9999);
                 opponentHealth.ApplyDamage((int)Mathf.Round(Damage), isCrit);
                 receiver.CheckDeadAndPlayAnim();

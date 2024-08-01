@@ -22,5 +22,5 @@ MonoBehaviour:
   skillElement: 0
   skillTargetCount: 1
   bufflist: []
-  baseMultiplier: 100
+  baseMultiplier: 70
   baseSkillAccuracy: 46
