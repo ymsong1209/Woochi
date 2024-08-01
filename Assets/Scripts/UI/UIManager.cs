@@ -74,10 +74,6 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     #endregion
 
     #region MainCharacterUI
-    public void ResetWoochiActionList()
-    {
-        woochiActionList.Reset();
-    }
 
     public void SetSorceryPointUI(int point)
     {

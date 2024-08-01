@@ -33,7 +33,7 @@ public class WoochiActionButton : MonoBehaviour
         icon.DOColor(Color.white, 0.5f);
     }
 
-    public void Interactable(bool isEnable)
+    public virtual void Interactable(bool isEnable)
     {
         icon.GetComponent<Button>().interactable = isEnable;
     }

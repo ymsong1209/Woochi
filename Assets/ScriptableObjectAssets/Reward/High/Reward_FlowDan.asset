@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af273ef6d03f6964d99b1c6294525504, type: 3}
   m_Name: Reward_FlowDan
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: f4a15ee8e6a517b43ad4b6427d373f04, type: 3}
+  sprite: {fileID: 21300000, guid: 573a8bad1097d354db78911522eff791, type: 3}
   rarity: 3
   rewardName: "\uD750\uB984\uC758 \uB2E8"
   description: "\uC7AC\uD654 +500"

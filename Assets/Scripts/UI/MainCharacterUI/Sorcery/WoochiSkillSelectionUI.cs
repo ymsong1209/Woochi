@@ -1,11 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
-using DG.Tweening;
-using TMPro;
 public class WoochiSkillSelectionUI : MonoBehaviour
 {
     public SkillEvent onSkillSelected;
