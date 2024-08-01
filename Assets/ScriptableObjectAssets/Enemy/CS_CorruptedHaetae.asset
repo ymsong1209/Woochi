@@ -12,13 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4bbbce2a03c2d4a95b7ced04f3ebb7, type: 3}
   m_Name: CS_CorruptedHaetae
   m_EditorClassIdentifier: 
-  ID: 3000
+  ID: 5000
   portrait: {fileID: 21300000, guid: b1736809d31f1184fa7a543126fe9e38, type: 3}
-  characterName: 
-  size: 0
-  cost: 0
+  characterName: "\uD0C0\uB77D\uD55C \uD574\uD0DC"
+  size: 2
+  cost: 4
   baseStat:
-    health: 0
+    maxHealth: 82
+    speed: 1
+    defense: 1
+    crit: 1
+    accuracy: 3
+    evasion: 1
+    resist: 2
+    minStat: 10
+    maxStat: 16
+  rewardStat:
+    maxHealth: 0
     speed: 0
     defense: 0
     crit: 0
@@ -27,6 +37,10 @@ MonoBehaviour:
     resist: 0
     minStat: 0
     maxStat: 0
+  baseHealth:
+    maxHealth: 82
+    curHealth: 82
+    shield: 0
   skills:
   - {fileID: 6851069812680505915, guid: fc14438550238034290114d4d6459d07, type: 3}
   - {fileID: -5680972432045208020, guid: 3427026eab286fb47a27272165cfd080, type: 3}
