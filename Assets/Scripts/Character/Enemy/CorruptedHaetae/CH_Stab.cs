@@ -26,7 +26,7 @@ public class CH_Stab : BaseSkill
     }
     protected override float CalculateDamage(BaseCharacter receiver, bool isCrit)
     {
-        float RandomStat = Random.Range(SkillOwner.Stat.minStat, SkillOwner.Stat.maxStat);
+        float RandomStat = Random.Range(SkillOwner.FinalStat.minStat, SkillOwner.FinalStat.maxStat);
         RandomStat *= (Multiplier / 100);
         //부정한 찌르기는 방어력을 무시하고 대미지를 준다.
         if (isCrit) RandomStat = RandomStat * 2;

@@ -8,8 +8,6 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     [HeaderTooltip("GAME STATE", "Game State는 Inspector에서 수정 불가")]
     [SerializeField,ReadOnly] private GameState gameState;
 
-    [SerializeField] private BaseCharm[] charmList = new BaseCharm[5];
-
     [Header("Library")]
     [SerializeField] private Library library;
 
@@ -20,18 +18,6 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
         if(DataCloud.playerData == null)
             LoadData();
-    }
-
-    public void RemoveCharm(BaseCharm charm)
-    {
-        for(int i = 0;i<charmList.Length;++i)
-        {
-            if(charmList[i] == charm)
-            {
-                charmList[i] = null;
-                break;
-            }
-        }
     }
 
     public void SaveData()
@@ -52,12 +38,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     public void DeleteData()
     {
         DataCloud.DeletePlayerData();
-
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        ExitGame();
     }
 
     public void ResetGame()
@@ -66,9 +47,16 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         LoadData();
     }
 
-    #region Getter Setter
-    public BaseCharm[] CharmList => charmList;
+    public void ExitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 
+    #region Getter Setter
     public Library Library => library;
     #endregion
 }

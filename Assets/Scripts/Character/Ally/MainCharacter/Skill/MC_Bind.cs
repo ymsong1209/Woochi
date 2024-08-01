@@ -14,9 +14,9 @@ public class MC_Bind : MainCharacterSkill
         statDeBuff.BuffName = "옭아매기";
         statDeBuff.BuffDurationTurns = 4;
         statDeBuff.ChanceToApplyBuff = 80;
-        statDeBuff.ChangeStat.speed = -2;
-        statDeBuff.ChangeStat.minStat = -2;
-        statDeBuff.ChangeStat.maxStat = -2;
+        statDeBuff.changeStat.speed = -2;
+        statDeBuff.changeStat.minStat = -2;
+        statDeBuff.changeStat.maxStat = -2;
         instantiatedBuffList.Add(statDebuffGameObject);
         
         base.ActivateSkill(_opponent);

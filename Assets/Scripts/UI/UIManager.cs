@@ -45,8 +45,8 @@ public class UIManager : SingletonMonobehaviour<UIManager>
         enemyTooltip.SetActive(true);
         enemyNameTxt.text = _character.Name;
         enemyHPTxt.text = $"체력 : {_character.Health.CurHealth} / {_character.Health.MaxHealth}";
-        enemyEvasionTxt.text = $"회피 : {_character.Stat.evasion}";
-        enemySpeedTxt.text = $"속도 : {_character.Stat.speed}";
+        enemyEvasionTxt.text = $"회피 : {_character.FinalStat.evasion}";
+        enemySpeedTxt.text = $"속도 : {_character.FinalStat.speed}";
     }
 
     public void OnCharacterDamaged(BaseCharacter _character)

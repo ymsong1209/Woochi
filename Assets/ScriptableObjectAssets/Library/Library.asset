@@ -87,7 +87,7 @@ MonoBehaviour:
   rewardLists:
   - rarity: 0
     rewards:
-    - {fileID: 11400000, guid: 59adbe4f50a6cfc448f10a2921e23c4c, type: 2}
+    - {fileID: 11400000, guid: 82e6b4f0ab93d6e47ae5d563a231acc5, type: 2}
     - {fileID: 11400000, guid: 3cea06ffdc780334a8a38e4dabe84ca9, type: 2}
     - {fileID: 11400000, guid: 7cec8b81ce231534eb3fd6dc9939c809, type: 2}
     - {fileID: 11400000, guid: de13fe7dab3229f4b9b2f90cd096d690, type: 2}
@@ -115,6 +115,23 @@ MonoBehaviour:
     - {fileID: 11400000, guid: aa785178847391c4f9444b8963de63fc, type: 2}
     - {fileID: 11400000, guid: d013314fc1230a143b9396e0aae9ced4, type: 2}
     - {fileID: 11400000, guid: f479daa5b5f2a35479b54dbf153271b5, type: 2}
+  charms:
+  - ID: 0
+    value: {fileID: 8207826904893543196, guid: 52721394bc5a118459615907eaa455b0, type: 3}
+  - ID: 1
+    value: {fileID: 8207826904893543196, guid: ce07f3219301c6d46b3ef2ab04988814, type: 3}
+  - ID: 2
+    value: {fileID: 8207826904893543196, guid: f18140646f6858c49b4a7d292316af1e, type: 3}
+  - ID: 3
+    value: {fileID: 8207826904893543196, guid: a7f2ff85543b2d2459a56cd14d25ff4d, type: 3}
+  - ID: 4
+    value: {fileID: 8207826904893543196, guid: 8f953c247893ac54196460aad14b28d3, type: 3}
+  - ID: 5
+    value: {fileID: 3145212337972435697, guid: 6cd8f98e015e25e41b5028fd99a2039e, type: 3}
+  - ID: 6
+    value: {fileID: 3145212337972435697, guid: 2bd4f9e6a867e5741b63ce43cbeafcef, type: 3}
+  - ID: 7
+    value: {fileID: 3145212337972435697, guid: 6fa22520f0b53a843b56d25f2a91e179, type: 3}
   stranges:
   - ID: 1000
     value: {fileID: 8475585994675369947, guid: a64a5eb62eada2745954ee2331979291, type: 3}

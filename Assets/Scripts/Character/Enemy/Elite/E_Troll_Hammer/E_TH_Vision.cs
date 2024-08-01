@@ -14,9 +14,9 @@ public class E_TH_Vision : BaseSkill
         statDebuff.BuffName = "강화 환상";
         statDebuff.BuffDurationTurns = 3;
         statDebuff.ChanceToApplyBuff = 100;
-        statDebuff.ChangeStat.accuracy = -4;
-        statDebuff.ChangeStat.minStat = -2;
-        statDebuff.ChangeStat.maxStat = -2;
+        statDebuff.changeStat.accuracy = -4;
+        statDebuff.changeStat.minStat = -2;
+        statDebuff.changeStat.maxStat = -2;
         instantiatedBuffList.Add(statDebuffGameObject);
         
         base.ActivateSkill(_Opponent);

@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Library_", menuName = "Scriptable Objects/Library")]
 public class Library : ScriptableObject
 {
-    // Warning!. º¯¼ö ÀÌ¸§ ¼öÁ¤ÇÏ¸é µ¥ÀÌÅÍ ½Ï ³¯¶ó°¨
+    // Warning!. ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     #region Character Prefab
     [OneLineWithHeader, SerializeField] private List<Entry<GameObject>> characters;
@@ -81,8 +81,26 @@ public class Library : ScriptableObject
     #endregion
     
     
+
+    #region Charm
+    [OneLineWithHeader, SerializeField] private List<Entry<BaseCharm>> charms;
+
+    public BaseCharm GetCharm(int id)
+    {
+        if (id < 0)
+        {
+            Debug.Log("Library: ID out of range");
+            return null;
+        }
+
+        return charms.FirstOrDefault(entry => entry.ID == id).value;
+    }
+
+    public int CharmCount => charms.Count;
+    #endregion
+
     /// <summary>
-    /// ±¸±Û ½ºÇÁ·¹µå ½ÃÆ®ÀÇ µ¥ÀÌÅÍ¸¦ °¡Á®¿Í¼­ ½ºÅ©¸³ÅÍºí ÃÊ±âÈ­ -> µü ÇÑ¹ø¸¸
+    /// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ï¿½Íºï¿½ ï¿½Ê±ï¿½È­ -> ï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½
     /// </summary>
     public void Initialize()
     {

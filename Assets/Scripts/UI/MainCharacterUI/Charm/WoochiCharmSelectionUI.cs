@@ -47,17 +47,16 @@ public class WoochiCharmSelectionUI : MonoBehaviour
     {
         //모든 부적 비활성화
         DisableCharms();
-        
-        BaseCharm[] charmList = GameManager.GetInstance.CharmList;
-        for (int i = 0; i < charmList.Length; ++i)
+
+        List<int> charmIDs = DataCloud.playerData.battleData.charms;
+
+        for(int i = 0; i < charmIDs.Count; ++i)
         {
-            if (charmList[i])
-            {
-                BaseCharm charm = charmList[i];
-                charmIcons[i].SetCharm(charm, IsCharmSetAvailable(charm));
-            }
+            BaseCharm charm = GameManager.GetInstance.Library.GetCharm(charmIDs[i]);
+            charmIcons[i].SetCharm(charm, IsCharmSetAvailable(charm));
         }
     }
+
     private bool IsCharmSetAvailable(BaseCharm charm)
     {
         if (!mainCharacter) return false;

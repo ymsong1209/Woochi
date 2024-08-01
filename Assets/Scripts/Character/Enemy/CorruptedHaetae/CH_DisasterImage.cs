@@ -12,11 +12,11 @@ public class CH_DisasterImage : BaseSkill
         statDebuff.BuffName = "재앙환영";
         statDebuff.BuffDurationTurns = 4;
         statDebuff.ChanceToApplyBuff = 100;
-        statDebuff.ChangeStat.accuracy = -2;
-        statDebuff.ChangeStat.evasion = -2;
-        statDebuff.ChangeStat.minStat = -2;
-        statDebuff.ChangeStat.maxStat = -2;
-        statDebuff.ChangeStat.speed = -2;
+        statDebuff.changeStat.accuracy = -2;
+        statDebuff.changeStat.evasion = -2;
+        statDebuff.changeStat.minStat = -2;
+        statDebuff.changeStat.maxStat = -2;
+        statDebuff.changeStat.speed = -2;
         instantiatedBuffList.Add(statDebuffGameObject);
         base.ActivateSkill(_Opponent);
     }

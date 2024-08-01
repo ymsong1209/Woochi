@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DataTable;
-using System.Linq;
 
 [CreateAssetMenu(fileName = "CS_", menuName = "Scriptable Objects/Character/CharacterStat")]
 public class CharacterStatSO : ScriptableObject
@@ -60,8 +59,6 @@ public class CharacterStatSO : ScriptableObject
             baseHealth = new Health(data);
         }
     }
-
-    public void UpdateBaseStat(Stat stat) { baseStat = new Stat(stat); }
 
     #region Getter Method
     public Stat BaseStat => baseStat;

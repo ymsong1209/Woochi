@@ -42,13 +42,13 @@ public class CH_MoveDebuff : BaseSkill
         StatBuff statBuff = instantiatedStat.GetComponent<StatBuff>();
         statBuff.BuffName = "부정한 율법";
         statBuff.BuffDurationTurns = -1;
-        statBuff.ChangeStat.accuracy = 1;
-        statBuff.ChangeStat.crit = 1;
-        statBuff.ChangeStat.evasion = 1;
-        statBuff.ChangeStat.minStat = 1;
-        statBuff.ChangeStat.maxStat = 1;
-        statBuff.ChangeStat.speed = 1;
-        statBuff.ChangeStat.defense = 1;
+        statBuff.changeStat.accuracy = 1;
+        statBuff.changeStat.crit = 1;
+        statBuff.changeStat.evasion = 1;
+        statBuff.changeStat.minStat = 1;
+        statBuff.changeStat.maxStat = 1;
+        statBuff.changeStat.speed = 1;
+        statBuff.changeStat.defense = 1;
         SkillOwner.ApplyBuff(SkillOwner,SkillOwner,statBuff);
         SkillOwner.CheckForStatChange();
     }

@@ -17,7 +17,7 @@ public class BuffCharm : BaseCharm
         StatBuff buff = GetComponent<StatBuff>();
         buff.BuffName = CharmName;
         buff.BuffDurationTurns = Turns;
-        buff.ChangeStat = changeStat;
+        buff.changeStat = changeStat;
         BaseCharacter caster = BattleManager.GetInstance.currentCharacter;
         if (caster.IsMainCharacter)
         {

@@ -15,9 +15,9 @@ public class Tiger_Roar : BaseSkill
         statDebuff.BuffName = "위축";
         statDebuff.BuffDurationTurns = 2;
         statDebuff.ChanceToApplyBuff = 100;
-        statDebuff.ChangeStat.accuracy = -5;
-        statDebuff.ChangeStat.minStat = -5;
-        statDebuff.ChangeStat.maxStat = -5;
+        statDebuff.changeStat.accuracy = -5;
+        statDebuff.changeStat.minStat = -5;
+        statDebuff.changeStat.maxStat = -5;
         instantiatedBuffList.Add(statDebuffGameObject);
         
         base.ActivateSkill(_Opponent);
@@ -27,7 +27,7 @@ public class Tiger_Roar : BaseSkill
         roarBuff.BuffName = "산군의포효";
         roarBuff.BuffDurationTurns = 4; //버프를 자신에게 걸고 이후 3턴동안 지속
         roarBuff.ChanceToApplyBuff = 100;
-        roarBuff.ChangeStat.defense = 5;
+        roarBuff.changeStat.defense = 5;
         SkillOwner.ApplyBuff(SkillOwner,SkillOwner,roarBuff);
     }
     

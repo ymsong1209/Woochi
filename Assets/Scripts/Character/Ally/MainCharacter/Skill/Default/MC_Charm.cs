@@ -11,7 +11,7 @@ public class MC_Charm : BaseSkill
    {
        ActivateCharm(opponent);
        PlayAnimation(opponent);
-       GameManager.GetInstance.RemoveCharm(charm);
+       RemoveCharm();
    }
 
    private void ActivateCharm(BaseCharacter opponent)
@@ -112,6 +112,20 @@ public class MC_Charm : BaseSkill
                }
            }
        }
+   }
+
+   private void RemoveCharm()
+   {
+        var list = DataCloud.playerData.battleData.charms;
+
+        for(int i = 0; i < list.Count; ++i)
+        {
+            BaseCharm charm = GameManager.GetInstance.Library.GetCharm(list[i]);
+            if(charm == this.charm)
+            {
+                list.RemoveAt(i);
+            }
+        }
    }
 
    public void SetSkillForCharm()
