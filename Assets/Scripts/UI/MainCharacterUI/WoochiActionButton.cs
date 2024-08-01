@@ -35,6 +35,6 @@ public class WoochiActionButton : MonoBehaviour
 
     public virtual void Interactable(bool isEnable)
     {
-        icon.GetComponent<Button>().interactable = isEnable;
+        icon.GetComponent<Toggle>().interactable = isEnable;
     }
 }
