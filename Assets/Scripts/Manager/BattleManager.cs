@@ -643,6 +643,19 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         return index;
     }
 
+    public BaseCharacter GetMainCharacter()
+    {
+        foreach (var baseCharacter in allies.formation)
+        {
+            if (baseCharacter.IsMainCharacter)
+            {
+                return baseCharacter;
+            }
+        }
+
+        return null;
+    }
+
     /// <summary>
     /// index 위치에 캐릭터가 있는지
     /// </summary>

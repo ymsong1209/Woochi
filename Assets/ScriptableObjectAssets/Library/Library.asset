@@ -115,6 +115,15 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 21ffee9d76dc09a47a69e2b6c0b5622f, type: 2}
     - {fileID: 11400000, guid: d013314fc1230a143b9396e0aae9ced4, type: 2}
     - {fileID: 11400000, guid: f479daa5b5f2a35479b54dbf153271b5, type: 2}
+  stranges:
+  - ID: 1000
+    value: {fileID: 8475585994675369947, guid: a64a5eb62eada2745954ee2331979291, type: 3}
+  - ID: 1001
+    value: {fileID: 4702027999250007440, guid: 2b70c618c56298c4f91f6a7fd4bc82ce, type: 3}
+  - ID: 2000
+    value: {fileID: 5456226783982550096, guid: 5fe6fbd817f48894a92d07a3ef62fbb1, type: 3}
+  - ID: 3000
+    value: {fileID: 1286108000769628803, guid: e8c72f7b64e905d4993933e6d64ae9b1, type: 3}
   charms:
   - ID: 0
     value: {fileID: 8207826904893543196, guid: 52721394bc5a118459615907eaa455b0, type: 3}
@@ -132,10 +141,3 @@ MonoBehaviour:
     value: {fileID: 3145212337972435697, guid: 2bd4f9e6a867e5741b63ce43cbeafcef, type: 3}
   - ID: 7
     value: {fileID: 3145212337972435697, guid: 6fa22520f0b53a843b56d25f2a91e179, type: 3}
-  stranges:
-  - ID: 1000
-    value: {fileID: 8475585994675369947, guid: a64a5eb62eada2745954ee2331979291, type: 3}
-  - ID: 2000
-    value: {fileID: 4702027999250007440, guid: 2b70c618c56298c4f91f6a7fd4bc82ce, type: 3}
-  - ID: 3000
-    value: {fileID: 1286108000769628803, guid: e8c72f7b64e905d4993933e6d64ae9b1, type: 3}

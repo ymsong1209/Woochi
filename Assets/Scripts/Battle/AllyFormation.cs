@@ -208,7 +208,7 @@ public class AllyFormation : Formation
         foreach(var character in allCharacter)
         {
             character.TriggerBuff(BuffTiming.BattleEnd);
-            character.RemoveAllBuff();
+            character.RemoveAllBuffWhenBattleEnd();
             character.SaveStat();
         }
 
