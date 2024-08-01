@@ -82,7 +82,7 @@ public class Strange_BuddahStatue : BaseStrange
                                    "당신에게 저주를 내립니다.";
             buffdescriptionText.gameObject.SetActive(true);
             buffdescriptionText.text = "다음 3번의 전투에서\n" +
-                                       "모든 아군 피해 -10 명중 -10.";
+                                       "모든 아군 피해 -3 명중 -10.";
             foreach(BaseCharacter character in BattleManager.GetInstance.Allies.AllCharacter)
             {
                 GameObject statGameObject = new GameObject("BuddahStatDeBuff");
@@ -91,8 +91,8 @@ public class Strange_BuddahStatue : BaseStrange
                 buff.BuffName = "귀불의 저주";
                 buff.BuffDurationTurns = -1;
                 buff.BuffBattleDurationTurns = 3;
-                buff.changeStat.minStat = -10;
-                buff.changeStat.maxStat = -10;
+                buff.changeStat.minStat = -3;
+                buff.changeStat.maxStat = -3;
                 buff.changeStat.evasion = -10;
                 buff.IsRemoveWhenBattleEnd = false;
                 character.ApplyBuff(character, character, buff); 
@@ -159,7 +159,7 @@ public class Strange_BuddahStatue : BaseStrange
 
     private void Ignore()
     {
-        destroyPositiveImage.gameObject.SetActive(true);
+        ignoreImage.gameObject.SetActive(true);
         descriptionText.text = "아무런 효과가 없습니다\n" +
                                "아직까지는요...";
         ContinueEvent();

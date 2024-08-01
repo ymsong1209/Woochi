@@ -32,6 +32,7 @@ public class WoochiSkillSelectionUI : MonoBehaviour
         }
         UIManager.GetInstance.SorceryPoint.fillAmount = (float)mainCharacter.SorceryPoints / (float)mainCharacter.MaxSorceryPoints;
         UIManager.GetInstance.SorceryPointBackground.fillAmount = (float)mainCharacter.SorceryPoints / (float)mainCharacter.MaxSorceryPoints;
+        UIManager.GetInstance.SetSorceryPointText();
     }
     
     public void Activate()
@@ -47,6 +48,7 @@ public class WoochiSkillSelectionUI : MonoBehaviour
         
         UIManager.GetInstance.SorceryPoint.fillAmount = (float)mainCharacter.SorceryPoints / (float)mainCharacter.MaxSorceryPoints;
         UIManager.GetInstance.SorceryPointBackground.fillAmount = (float)mainCharacter.SorceryPoints / (float)mainCharacter.MaxSorceryPoints;
+        UIManager.GetInstance.SetSorceryPointText();
         
         //우치 위치에 따른 스킬 체크
         mainCharacter.CheckSkillsOnTurnStart();

@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1871044877102082877, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2767518271787080996, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: size
       value: 2
@@ -128,6 +132,30 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 4528934844960718570, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4528934844960718570, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4528934844960718570, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4528934844960718570, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4528934844960718570, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4528934844960718570, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4716238156241379999, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Name
       value: Troll_Hammer
@@ -174,9 +202,32 @@ MonoBehaviour:
   anim: {fileID: 0}
   collider: {fileID: 0}
   characterStat: {fileID: 11400000, guid: f9fc6ffdc8aac1f4593163fc6ad936d5, type: 2}
-  health: {fileID: 0}
-  stat:
-    health: 0
+  health:
+    maxHealth: 0
+    curHealth: 0
+    shield: 0
+  baseStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
+  rewardStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
+  buffStat:
+    maxHealth: 0
     speed: 0
     defense: 0
     crit: 0
@@ -192,6 +243,5 @@ MonoBehaviour:
   activeSkillCheckBox: 0101
   isAlly: 0
   isDummy: 0
-  isStarting: 0
   isSummoned: 0
   rowOrder: 0

@@ -26,6 +26,7 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     [SerializeField] private WoochiActionList woochiActionList;
     [SerializeField] private Image sorceryPoint;
     [SerializeField] private Image sorceryPointBackground;
+    [SerializeField] private TextMeshProUGUI sorceryPointText;
     
     public void SetSkillToolTip(BaseSkill _skill, Vector3 position)
     {
@@ -98,7 +99,17 @@ public class UIManager : SingletonMonobehaviour<UIManager>
         float scale = (float)point / mainCharacter.MaxSorceryPoints;
         sorceryPointBackground.DOFillAmount(scale, 1f).SetEase(Ease.OutCubic);
     }
-    
+
+    public void SetSorceryPointText()
+    {
+        MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
+        if (!mainCharacter)
+        {
+            Debug.LogError("MainCharacter is null");
+            return;
+        }
+        sorceryPointText.text = $"{mainCharacter.SorceryPoints} / {mainCharacter.MaxSorceryPoints}";
+    }
 
     
     #endregion MainCharacterUI
