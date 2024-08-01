@@ -486,6 +486,13 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     #endregion
 
     #region 스킬 사용
+
+    public void RemoveSelectedSkill()
+    {
+        currentSelectedSkill = null;
+        isSkillSelected = false;
+    }
+    
     public void ExecuteSelectedSkill(BaseCharacter receiver)
     {
         // 스킬 대상으로 지정한 캐릭터와 스킬 대상 수가 일치할 때 스킬 실행

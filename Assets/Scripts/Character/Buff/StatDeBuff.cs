@@ -111,9 +111,4 @@ public class StatDeBuff : BaseBuff
         text.text += description;
         SetBuffColor(text);
     }
-
-
-    #region 변화된 스탯들의 수치 Getter Setter
-
-    #endregion 변화된 스탯들의 수치 Getter Setter
 }

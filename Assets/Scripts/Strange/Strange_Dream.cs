@@ -27,7 +27,7 @@ public class Strange_Dream : BaseStrange
                 buff.BuffName = "길몽";
                 buff.BuffDurationTurns = -1;
                 buff.BuffBattleDurationTurns = 3;
-                buff.ChangeStat.speed = 10;
+                buff.changeStat.speed = 10;
                 buff.IsRemoveWhenBattleEnd = false;
                 character.ApplyBuff(character, character, buff);
             }

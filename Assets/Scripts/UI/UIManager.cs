@@ -26,7 +26,6 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     [SerializeField] private WoochiActionList woochiActionList;
     [SerializeField] private Image sorceryPoint;
     [SerializeField] private Image sorceryPointBackground;
-    [SerializeField] private GameObject charmToolTip;
     
     public void SetSkillToolTip(BaseSkill _skill, Vector3 position)
     {
