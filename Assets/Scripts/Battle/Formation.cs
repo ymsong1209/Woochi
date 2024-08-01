@@ -176,4 +176,6 @@ public class Formation : MonoBehaviour
             i += formation[i].Size;
         }
     }
+    
+    public List<BaseCharacter> AllCharacter => allCharacter;
 }

@@ -8,7 +8,8 @@ public class StatDeBuff : BaseBuff
     #endregion 변화된 스탯들
     public StatDeBuff()
     {
-        buffEffect = BuffEffect.StatStrengthen;
+        changeStat = new Stat();
+        buffEffect = BuffEffect.StatWeaken;
         buffType = BuffType.Negative;
     }
     public override void AddBuff(BaseCharacter caster, BaseCharacter _buffOwner)

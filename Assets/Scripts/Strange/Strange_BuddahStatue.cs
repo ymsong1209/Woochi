@@ -61,7 +61,7 @@ public class Strange_BuddahStatue : BaseStrange
             buffdescriptionText.gameObject.SetActive(true);
             buffdescriptionText.text = "다음 3번의 전투에서\n" +
                                        "모든 아군 속도 +10 회피 +5.";
-            foreach(BaseCharacter character in BattleManager.GetInstance.Allies.formation)
+            foreach(BaseCharacter character in BattleManager.GetInstance.Allies.AllCharacter)
             {
                 GameObject statGameObject = new GameObject("BuddahStatBuff");
                 statGameObject.transform.SetParent(character.transform);
@@ -83,7 +83,7 @@ public class Strange_BuddahStatue : BaseStrange
             buffdescriptionText.gameObject.SetActive(true);
             buffdescriptionText.text = "다음 3번의 전투에서\n" +
                                        "모든 아군 피해 -10 명중 -10.";
-            foreach(BaseCharacter character in BattleManager.GetInstance.Allies.formation)
+            foreach(BaseCharacter character in BattleManager.GetInstance.Allies.AllCharacter)
             {
                 GameObject statGameObject = new GameObject("BuddahStatDeBuff");
                 statGameObject.transform.SetParent(character.transform);
@@ -112,7 +112,7 @@ public class Strange_BuddahStatue : BaseStrange
             buffdescriptionText.gameObject.SetActive(true);
             buffdescriptionText.text = "다음 3번의 전투에서\n" +
                                        "모든 아군의 스탯 +7.";
-            foreach(BaseCharacter character in BattleManager.GetInstance.Allies.formation)
+            foreach(BaseCharacter character in BattleManager.GetInstance.Allies.AllCharacter)
             {
                 GameObject statGameObject = new GameObject("BuddahStatBuff");
                 statGameObject.transform.SetParent(character.transform);
@@ -140,7 +140,7 @@ public class Strange_BuddahStatue : BaseStrange
             buffdescriptionText.gameObject.SetActive(true);
             buffdescriptionText.text = "다음 3번의 전투에서\n" +
                                        "모든 아군 속도 -10 회피 -10.";
-            foreach(BaseCharacter character in BattleManager.GetInstance.Allies.formation)
+            foreach(BaseCharacter character in BattleManager.GetInstance.Allies.AllCharacter)
             {
                 GameObject statGameObject = new GameObject("BuddahStatDeBuff");
                 statGameObject.transform.SetParent(character.transform);
