@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d1a78f3fb971f4cb69b1602682ff04, type: 3}
   m_Name: Reward_ChestExperience
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 5990b77ec0d48454eae0a02b02561a78, type: 3}
   rarity: 2
   rewardName: "\uACBD\uD5D8\uC758 \uD568"
   description: "\uBB34\uC791\uC704 \uC18C\uD658\uC218 \uACBD\uD5D8\uCE58 +100"

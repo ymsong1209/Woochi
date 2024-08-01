@@ -12,6 +12,7 @@ public class HealPack : Tool
         var allies = allyFormation.GetAllies();
         foreach(var ally in allies)
         {
+            if(ally.IsDead) continue;
             ally.Health.Heal(healAmount, false);
         }
 

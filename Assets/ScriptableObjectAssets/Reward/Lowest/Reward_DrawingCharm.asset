@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc1fe809b37cd6b4782abe9c8a1723b3, type: 3}
   m_Name: Reward_DrawingCharm
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: bc883bcd44839b74bae4a7fd131f9253, type: 3}
   rarity: 0
   rewardName: "\uBD80\uC801 \uADF8\uB9AC\uAE30"
   description: "\uBB34\uC791\uC704 \uBD80\uC801 \uD68D\uB4DD"

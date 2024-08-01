@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15d1a78f3fb971f4cb69b1602682ff04, type: 3}
-  m_Name: Reward_ShatteredIdol
+  m_Name: Reward_Sword
   m_EditorClassIdentifier: 
-  rarity: 0
-  rewardName: "\uD30C\uAD34\uB41C \uC6B0\uC0C1"
-  description: "\uB2E4\uC74C 3\uBC88 \uC804\uD22C\uB3D9\uC548 \uD589\uC6B4+1"
+  sprite: {fileID: 21300000, guid: b75a3c086d85d6d408089738585175d7, type: 3}
+  rarity: 1
+  rewardName: "\uC7A5\uB3C4"
+  description: "\uB2E4\uC74C 3\uBC88 \uC804\uD22C\uB3D9\uC548 \uD589\uC6B4+2"
