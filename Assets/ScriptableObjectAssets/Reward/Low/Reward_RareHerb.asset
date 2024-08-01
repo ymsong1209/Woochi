@@ -9,13 +9,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a8a3e235c946c04681ce255116e2daf, type: 3}
+  m_Script: {fileID: 11500000, guid: baffde48bb9965c4389bdef98115df99, type: 3}
   m_Name: Reward_RareHerb
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: f1bf3f9cccdd03342b4cfb962e87d389, type: 3}
   rarity: 1
   rewardName: "\uD76C\uADC0\uD55C \uC57D\uCD08"
   description: "\uC6B0\uCE58 \uCCB4\uB825 25 \uD68C\uBCF5"
+  heal: 1
   healAmount: 25
-  forWoochi: 1
-  forAllies: 0
+  sorceryHeal: 0
+  randomStatUp: 0
+  statUpAmount: 0
+  addStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0

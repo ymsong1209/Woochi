@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d1a78f3fb971f4cb69b1602682ff04, type: 3}
   m_Name: Reward_TotemPole
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 316a4a9c8f4b2234aa094bc2c92f283e, type: 3}
   rarity: 4
   rewardName: "\uC19F\uB300"
   description: "\uB2E4\uC74C 10\uBC88\uC758 \uC804\uD22C \uC2DC \uBAA8\uB4E0 \uC801

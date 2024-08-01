@@ -23,9 +23,9 @@ public class BaseCharacter : MonoBehaviour
     #endregion Header CHARACTER STATS
     #region Character Stats
     [SerializeField]    private Health health = new Health();
-    [SerializeField]    private Stat    baseStat;
-    [SerializeField]    private Stat    rewardStat;
-    [SerializeField]    private Stat    buffStat;
+    public Stat    baseStat;
+    public Stat    rewardStat;
+    public Stat    buffStat;
     #endregion
    
     [SerializeField] bool isMainCharacter = false;

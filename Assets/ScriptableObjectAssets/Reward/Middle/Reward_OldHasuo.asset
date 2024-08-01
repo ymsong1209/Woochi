@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: baffde48bb9965c4389bdef98115df99, type: 3}
-  m_Name: Reward_Hasuo
+  m_Name: Reward_OldHasuo
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: eb56ca48c09e3c642ae89feb32334f82, type: 3}
-  rarity: 1
-  rewardName: "\uD558\uC218\uC624"
-  description: "\uC6B0\uCE58\uC758 \uBAA8\uB4E0 \uB3C4\uB825 \uD68C\uBCF5, \uC6B0\uCE58\uC758
-    \uD53C\uD574 \uC601\uAD6C\uC801\uC73C\uB85C +2"
+  sprite: {fileID: 21300000, guid: fa2cb3b03e4d35640aac391adfff8aa8, type: 3}
+  rarity: 2
+  rewardName: "\uC624\uB798 \uBB35\uC740 \uD558\uC218\uC624"
+  description: "\uC6B0\uCE58\uC758 \uBB34\uC791\uC704 \uB2A5\uB825\uCE58 \uC601\uAD6C\uC801\uC73C\uB85C
+    +2"
   heal: 0
   healAmount: 0
-  sorceryHeal: 1
-  randomStatUp: 0
-  statUpAmount: 0
+  sorceryHeal: 0
+  randomStatUp: 1
+  statUpAmount: 2
   addStat:
     maxHealth: 0
     speed: 0
@@ -30,5 +30,5 @@ MonoBehaviour:
     accuracy: 0
     evasion: 0
     resist: 0
-    minStat: 2
-    maxStat: 2
+    minStat: 0
+    maxStat: 0

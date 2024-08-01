@@ -18,7 +18,7 @@ public class RewardUI : MonoBehaviour, IPointerEnterHandler
     {
         this.reward = reward;
 
-        // image.sprite = reward.sprite;
+        image.sprite = reward.sprite;
     }
 
     /// <summary>
