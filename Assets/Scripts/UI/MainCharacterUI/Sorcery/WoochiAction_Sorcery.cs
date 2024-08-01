@@ -8,6 +8,8 @@ public class WoochiAction_Sorcery : WoochiActionButton
 
    public override void Initialize(bool isEnable)
    {
+      if (DataCloud.isMaintenance) return;
+
       base.Initialize(isEnable);
       skilllist.Initialize(isEnable);
    }
@@ -19,7 +21,15 @@ public class WoochiAction_Sorcery : WoochiActionButton
 
    public override void Deactivate()
    {
+      if (DataCloud.isMaintenance) return;
+
       base.Deactivate();
       skilllist.Deactivate();
    }
+
+    public override void Interactable(bool isEnable)
+    {
+        if (DataCloud.isMaintenance) return;
+        base.Interactable(isEnable);
+    }
 }

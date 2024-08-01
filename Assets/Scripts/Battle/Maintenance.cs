@@ -16,11 +16,15 @@ public class Maintenance : MonoBehaviour
 
     public void StartMaintenance()
     {
+        DataCloud.isMaintenance = true;
         gameObject.SetActive(true);
+
+        BattleManager.GetInstance.InitializeMaintenance();
     }
 
     public void EndMaintenance()
     {
+        DataCloud.isMaintenance = false;
         gameObject.SetActive(false);
 
         BattleManager.GetInstance.Allies.BattleEnd();       // 아군 포메이션 변경 했을까봐 다시 저장

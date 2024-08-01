@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +20,8 @@ public class WoochiButtonList : MonoBehaviour
     
     public void InitializeAllButtons(bool isEnable)
     {
+        selectedBtn = null;
+
         foreach (var button in buttonList)
         {
             button.Initialize(isEnable);

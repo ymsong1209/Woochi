@@ -531,9 +531,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         OnFocusStart?.Invoke();
 
-        // 더미 캐릭터가 receiver인 경우 caster의 UI를 활성화
+        // 더미 캐릭터가 receiver인 경우 caster의 UI를 활성화 or 정비 중이면 caster의 UI를 활성화
         if (receiver.isDummy)
             OnCharacterAttacked?.Invoke(caster, false);
+        else if(DataCloud.isMaintenance)
+            OnCharacterAttacked?.Invoke(caster, true);
         else
             OnCharacterAttacked?.Invoke(receiver, false);
         
@@ -799,7 +801,42 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
     public void EnableDummy() => allies.EnableDummy();
     public void DisableDummy() => allies.DisableDummy();
-    
+
+    #endregion
+
+    #region 정비
+    public void InitializeMaintenance()
+    {
+        MainCharacter woochi = allies.GetWoochi();
+        currentCharacter = woochi;
+
+        OnCharacterTurnStart?.Invoke(woochi, true);
+
+        combatQueue.Enqueue(woochi);
+        StartCoroutine(Maintenance());
+    }
+
+    IEnumerator Maintenance()
+    {
+        while(combatQueue.Count > 0)
+        {
+            #region 변수 초기화
+            isSkillSelected = false;
+            isSkillExecuted = false;
+            currentSelectedSkill = null;
+            #endregion
+
+            while (!isSkillSelected || !isSkillExecuted)
+            {
+                yield return null;
+            }
+
+            allies.ReOrder();
+            yield return null;
+        }
+
+        yield return null;
+    }
     #endregion
     #region Getter Setter
 

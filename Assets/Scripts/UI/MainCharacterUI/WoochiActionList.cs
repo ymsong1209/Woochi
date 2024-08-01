@@ -9,7 +9,6 @@ public class WoochiActionList : MonoBehaviour
     [SerializeField] private WoochiSkillSelectionUI skillList;
 
     [SerializeField] private WoochiRecoveryUI recoveryUI;
-    // Start is called before the first frame update
 
     void Start()
     {
@@ -38,12 +37,5 @@ public class WoochiActionList : MonoBehaviour
         {
             buttonList.DeactivateAllButtons();
         }
-    }
-   
-    //우치가 스킬 사용한 후, Reset함수로 우치 UI 전체 비활성화
-    //이후, oncharacterattacked에서 isenable이 false로 들어옴.
-    public void Reset()
-    {
-        //buttonList.Deactivate();
     }
 }
