@@ -19,15 +19,19 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     [SerializeField] private TextMeshProUGUI enemyHPTxt;
     [SerializeField] private TextMeshProUGUI enemyEvasionTxt;
     [SerializeField] private TextMeshProUGUI enemySpeedTxt;
-
+    [Space]
     [SerializeField] private AllyCharacterUI allyCharacterUI;
     [SerializeField] private BuffPopupUI buffPopupUI;
-    
+
+    [HeaderTooltip("Woochi", "우치 전용 UI")]
     [SerializeField] private WoochiActionList woochiActionList;
     [SerializeField] private Image sorceryPoint;
     [SerializeField] private Image sorceryPointBackground;
     [SerializeField] private TextMeshProUGUI sorceryPointText;
-    
+
+    [HeaderTooltip("Popup", "팝업")]
+    public RewardToolPopup rewardToolPopup;
+
     public void SetSkillToolTip(BaseSkill _skill, Vector3 position)
     {
         skillDescriptionUI.Activate(_skill);

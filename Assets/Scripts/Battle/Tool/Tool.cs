@@ -3,12 +3,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Tool : MonoBehaviour, IPointerEnterHandler
+public class Tool : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Button btn;
     [SerializeField] private TextMeshProUGUI priceTxt;
 
-    [SerializeField] protected string toolName;
+    public string toolName;
     [SerializeField] protected string description;
     protected int price;
 
@@ -31,14 +31,19 @@ public class Tool : MonoBehaviour, IPointerEnterHandler
         }
     }
 
-    protected virtual string GetDescription()
+    public virtual string GetDescription()
     {
         return description;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log(GetDescription());
+        UIManager.GetInstance.rewardToolPopup.ShowToolPopup(this);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        UIManager.GetInstance.rewardToolPopup.HidePopup();
     }
 
     public int Price

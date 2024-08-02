@@ -58,7 +58,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8101efe21e8178d499873bbe2ccd544b, type: 2}
   - {fileID: 11400000, guid: 69079617bac4c494c86d8781aba2fdbf, type: 2}
   background: {fileID: 21300000, guid: afe5435874a31f44382ee1d97ed2e823, type: 3}
-  fadeImage: {fileID: 0}
   linePointsCount: 9
   offsetFromNodes: 20
   correction: {x: 0, y: -100}

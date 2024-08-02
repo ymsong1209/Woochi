@@ -19,7 +19,7 @@ public class HealPack : Tool
         healAmount += 10;
     }
 
-    protected override string GetDescription()
+    public override string GetDescription()
     {
         description = $"체력을 {healAmount}만큼 회복합니다";
         return base.GetDescription();   

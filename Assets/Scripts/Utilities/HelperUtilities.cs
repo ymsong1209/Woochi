@@ -167,14 +167,14 @@ public static class HelperUtilities
         var charmList = DataCloud.playerData.battleData.charms;
         if(charmList.Count >= 5)
         {
-            Debug.Log("부적은 5개까지만 가질 수 있습니다");
+            UIManager.GetInstance.rewardToolPopup.ShowText("부적은 5개까지만 가질 수 있습니다");
             return false;
         }
 
         int charmCount = GameManager.GetInstance.Library.CharmCount;
         int randomCharmID = UnityEngine.Random.Range(0, charmCount);
         charmList.Add(randomCharmID);
-        Debug.Log(GameManager.GetInstance.Library.GetCharm(randomCharmID).CharmName + "을 얻었습니다");
+        UIManager.GetInstance.rewardToolPopup.ShowText($"{GameManager.GetInstance.Library.GetCharm(randomCharmID).CharmName}을 얻었습니다");
         return true;
     }
 }

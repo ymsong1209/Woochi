@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class RewardUI : MonoBehaviour, IPointerEnterHandler
+public class RewardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private Reward reward;
 
@@ -34,9 +34,13 @@ public class RewardUI : MonoBehaviour, IPointerEnterHandler
         reward.ApplyReward();
         EventManager.GetInstance.onSelectReward?.Invoke(false);
     }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log(reward.rewardName);
+        UIManager.GetInstance.rewardToolPopup.ShowRewardPopup(reward);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        UIManager.GetInstance.rewardToolPopup.HidePopup();
     }
 }
