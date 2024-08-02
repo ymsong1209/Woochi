@@ -45,14 +45,14 @@ public class MapManager : SingletonMonobehaviour<MapManager>
         {
             BattleManager.GetInstance.InitializeBattle(_mapNode.Node.enemyIDs, _mapNode.Node.abnormalID);
         }
-        view.FadeInOut(false);
+        view.ActiveMap(false);
     }
 
     public void CompleteNode()
     {
         SaveMap();
         MapPlayerTracker.Instance.Locked = false;
-        view.FadeInOut(true);
+        view.ActiveMap(true);
     }
 
     private void SaveMap()

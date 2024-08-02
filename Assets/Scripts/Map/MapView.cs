@@ -17,7 +17,6 @@ public class MapView : MonoBehaviour
 
     [Header("Stage Settings")]
     public Sprite background;
-    public Image fadeImage;
 
     [Header("Line Settings")]
     [Tooltip("Line point count should be > 2 to get smooth color gradients")]
@@ -104,7 +103,7 @@ public class MapView : MonoBehaviour
         CreateMapBackground(m);
     }
 
-    public void FadeInOut(bool isActiveScroll)
+    public void ActiveMap(bool isActiveScroll)
     {
         mapObject.SetActive(isActiveScroll);
     }
