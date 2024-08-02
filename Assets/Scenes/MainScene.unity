@@ -1479,14 +1479,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
-      propertyPath: allies.Array.data[0]
-      value: 
-      objectReference: {fileID: 2536897304434713235, guid: 92aa63b8768f36d4cb5e10f0b8282920, type: 3}
-    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
-      propertyPath: allies.Array.data[1]
-      value: 
-      objectReference: {fileID: 1946550667272111963, guid: fb3bcba31bb16b54384116e3477e79ea, type: 3}
     - target: {fileID: 5775089594791431015, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2241,6 +2233,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6876720050814303009, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6900699451734429620, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2731,7 +2727,6 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1601493600723655619}
   - {fileID: 1534983419}
   - {fileID: 6980557996798469671}
   - {fileID: 1862218168098547949}
@@ -2740,3 +2735,4 @@ SceneRoots:
   - {fileID: 715012382}
   - {fileID: 868360531}
   - {fileID: 864826330}
+  - {fileID: 1601493600723655619}

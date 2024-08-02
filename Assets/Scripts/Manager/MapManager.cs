@@ -53,6 +53,8 @@ public class MapManager : SingletonMonobehaviour<MapManager>
         SaveMap();
         MapPlayerTracker.Instance.Locked = false;
         view.ActiveMap(true);
+
+        GameManager.GetInstance.soundBGM.ToggleBattleMap(false);
     }
 
     private void SaveMap()

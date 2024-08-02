@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -10,6 +9,9 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     [Header("Library")]
     [SerializeField] private Library library;
+
+    [Header("Sound")]
+    public SoundBGM soundBGM;
 
     protected override void Awake()
     {

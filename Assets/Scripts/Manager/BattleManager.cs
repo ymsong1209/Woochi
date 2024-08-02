@@ -89,6 +89,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             return; 
         }
 
+        GameManager.GetInstance.soundBGM.ToggleBattleMap(true);
         CurState = BattleState.Initialization;
 
         currentRound = 0;
