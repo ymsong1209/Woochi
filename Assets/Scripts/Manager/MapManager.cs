@@ -51,6 +51,7 @@ public class MapManager : SingletonMonobehaviour<MapManager>
     public void CompleteNode()
     {
         SaveMap();
+        MapPlayerTracker.Instance.Locked = false;
         view.FadeInOut(true);
     }
 
