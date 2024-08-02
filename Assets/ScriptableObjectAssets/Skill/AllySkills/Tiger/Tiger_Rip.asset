@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f970e1487b951641bb3562062edf1db, type: 3}
   m_Name: Tiger_Rip
   m_EditorClassIdentifier: 
+  skillIcon: {fileID: 0}
   skillName: "\uCC22\uC5B4\uBC1C\uAE30\uAE30"
   animType: 6
   skillAvailableRadius: 0101000000000000
   skillRadius: 0000000001010101
   skillType: 0
   skillTargetType: 1
-  bufflist: []
+  skillElement: 0
+  skillTargetCount: 1
+  bufflist:
+  - {fileID: 2569674945298275565, guid: d7bb49a2e6790ca4885ee21413a96b0b, type: 3}
   baseMultiplier: 80
   baseSkillAccuracy: 90
