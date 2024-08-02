@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using TMPro.EditorUtilities;
-using UnityEngine;
 using UnityEngine.UI;
 
 public class Strange_Battle : BaseStrange

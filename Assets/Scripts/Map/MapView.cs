@@ -61,7 +61,7 @@ public class MapView : MonoBehaviour
 
     private void Start()
     {
-        mapObject.SetActive(false);
+        // mapObject.SetActive(false);
     }
 
     protected void ClearMap()
