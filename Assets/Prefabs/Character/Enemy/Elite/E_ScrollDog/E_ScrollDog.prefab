@@ -246,9 +246,32 @@ MonoBehaviour:
   anim: {fileID: 0}
   collider: {fileID: 0}
   characterStat: {fileID: 11400000, guid: 0bba2a922ecf50c4db5e04efd234a53a, type: 2}
-  health: {fileID: 0}
-  stat:
-    health: 0
+  health:
+    maxHealth: 0
+    curHealth: 0
+    shield: 0
+  baseStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
+  rewardStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
+  buffStat:
+    maxHealth: 0
     speed: 0
     defense: 0
     crit: 0
@@ -264,7 +287,6 @@ MonoBehaviour:
   activeSkillCheckBox: 0101
   isAlly: 0
   isDummy: 0
-  isStarting: 0
   isSummoned: 0
   rowOrder: 0
   critBuff: {fileID: 7151548049011912280, guid: b5151d5b511dc914a808169d4d80acfd, type: 3}

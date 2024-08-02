@@ -92,6 +92,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4167321338948142213, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.59
+      objectReference: {fileID: 0}
     - target: {fileID: 4241449256750503135, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7
@@ -111,6 +115,10 @@ PrefabInstance:
     - target: {fileID: 4716238156241379999, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Name
       value: CorruptedHaetae
+      objectReference: {fileID: 0}
+    - target: {fileID: 6138628374481102021, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8508918373832428729, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Controller
@@ -146,9 +154,32 @@ MonoBehaviour:
   anim: {fileID: 0}
   collider: {fileID: 0}
   characterStat: {fileID: 11400000, guid: 73b945b10ddcfde46a0849c5565f43e8, type: 2}
-  health: {fileID: 0}
-  stat:
-    health: 0
+  health:
+    maxHealth: 0
+    curHealth: 0
+    shield: 0
+  baseStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
+  rewardStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
+  buffStat:
+    maxHealth: 0
     speed: 0
     defense: 0
     crit: 0
@@ -164,6 +195,5 @@ MonoBehaviour:
   activeSkillCheckBox: 01010101
   isAlly: 0
   isDummy: 0
-  isStarting: 0
   isSummoned: 0
   rowOrder: 0
