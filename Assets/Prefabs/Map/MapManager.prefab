@@ -173,6 +173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade5679c81ed8bf4ba86a5c7555fc76b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockAfterSelecting: 0
+  lockAfterSelecting: 1
   enterNodeDelay: 1
   view: {fileID: 8504344917464840877}

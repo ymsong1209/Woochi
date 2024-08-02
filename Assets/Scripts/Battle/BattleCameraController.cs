@@ -20,16 +20,23 @@ public class BattleCameraController : MonoBehaviour
     [Header("Focus")]
     List<BaseCharacter> foucsCharacters = new List<BaseCharacter>();
 
+    [Header("Object")]
+    [SerializeField] private GameObject battleBg;
+
     private void Start()
     {
         BattleManager.GetInstance.OnFocusStart += FocusIn;
         BattleManager.GetInstance.OnFocusEnd += FocusOut;
         BattleManager.GetInstance.OnFocusEnter += FocusEnter;
         BattleManager.GetInstance.OnShakeCamera += Shake;
+
+        battleBg.SetActive(false);
     }
 
     public void FocusIn()
     {
+        battleBg.SetActive(true);
+
         mainCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("HUD"));
         postProcessVolume.enabled = true;
 
@@ -38,6 +45,8 @@ public class BattleCameraController : MonoBehaviour
 
     public void FocusOut()
     {
+        battleBg.SetActive(false);
+
         mainCamera.cullingMask |= 1 << LayerMask.NameToLayer("HUD");
         postProcessVolume.enabled = false;
 

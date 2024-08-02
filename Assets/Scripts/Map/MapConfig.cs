@@ -17,6 +17,7 @@ public class MapConfig : ScriptableObject
     [Tooltip("나타날 적들의 ID로 템플릿을 입력해주세요(ex. 3 3 4 4)")]
     [OneLineWithHeader]
     [SerializeField] private List<Template> normalTemplates;             // 일반 적들이 등장하는 템플릿
+    [OneLineWithHeader]
     [SerializeField] private List<Template> eliteTemplates;              // 정예 적들이 등장하는 템플릿
 
     // 맵의 폭
@@ -48,9 +49,9 @@ public class MapConfig : ScriptableObject
 
     public int[] GetEliteEnemy()
     {
-        // 정예 적 템플릿 없어서 임의 처리
-        return normalTemplates.Random().id;
+        return eliteTemplates.Random().id;
     }
+
     public StrangeType GetStrangeType()
     {
         return randomStrangeProbabilities.Get();

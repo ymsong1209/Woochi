@@ -27,6 +27,10 @@ public class Maintenance : MonoBehaviour
     {
         gameObject.SetActive(false);
         blindObject.SetActive(false);
+
+        BattleManager.GetInstance.DisableColliderArrow();
+        BattleManager.GetInstance.DisableDummy();
+
         BattleManager.GetInstance.Allies.BattleEnd();       // 아군 포메이션 변경 했을까봐 다시 저장
         MapManager.GetInstance.CompleteNode();
     }

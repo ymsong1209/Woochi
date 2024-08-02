@@ -5,9 +5,12 @@ public class WoochiActionButton : MonoBehaviour
 {
     [SerializeField] protected Image icon;
     [SerializeField] protected Sprite[] onoffSprites;
+    [SerializeField] protected Toggle toggle;
 
     public virtual void Initialize(bool isEnable)
     {
+        toggle.interactable = isEnable;
+        Deactivate();
     }
     
     public virtual void Activate()

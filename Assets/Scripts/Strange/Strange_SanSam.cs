@@ -41,7 +41,7 @@ public class Strange_SanSam : BaseStrange
         buffdescriptionText.gameObject.SetActive(true);
         eatImage.gameObject.SetActive(true);
         //todo : 우치의 도력 증가
-        MainCharacter maincharacter = BattleManager.GetInstance.GetMainCharacter() as MainCharacter;
+        MainCharacter maincharacter = BattleManager.GetInstance.Allies.GetWoochi();
         if (maincharacter)
         {
             maincharacter.MaxSorceryPoints += 5;
