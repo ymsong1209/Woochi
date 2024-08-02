@@ -50,9 +50,9 @@ MonoBehaviour:
   charmRadius: 0101010100000000
   charmType: 0
   charmTargetType: 2
-  charmIcon: {fileID: 21300000, guid: edb376f01772c8c44b2d7a4985ec6627, type: 3}
+  charmIcon: {fileID: 21300000, guid: 58168e50c842f5647aac01c08002e1be, type: 3}
   changeStat:
-    health: 0
+    maxHealth: 0
     speed: 0
     defense: 0
     crit: 0
@@ -78,9 +78,12 @@ MonoBehaviour:
   buffEffect: 4
   buffType: 1
   chanceToApplyBuff: 0
-  StatBuffName: 
+  buffName: 
+  buffColor: {r: 0, g: 0, b: 0, a: 0}
+  isRemoveWhenBattleEnd: 1
+  buffBattleDurationTurns: 0
   changeStat:
-    health: 0
+    maxHealth: 0
     speed: 0
     defense: 0
     crit: 0
