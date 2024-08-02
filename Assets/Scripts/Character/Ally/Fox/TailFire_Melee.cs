@@ -14,7 +14,10 @@ public class TailFire_Melee : BaseSkill
     public override void ActivateSkill(BaseCharacter _Opponent)
     {
         base.ActivateSkill(_Opponent);
-        BattleManager.GetInstance.MoveCharacter(SkillOwner, -1);
+        if (SkillResult.isHit)
+        {
+            BattleManager.GetInstance.MoveCharacter(SkillOwner, -1);
+        }
     }
     
     public override void SetSkillDescription(TextMeshProUGUI text)

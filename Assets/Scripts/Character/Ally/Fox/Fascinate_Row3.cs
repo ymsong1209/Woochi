@@ -13,13 +13,12 @@ public class Fascinate_Row3 : BaseSkill
         statDebuff.BuffName = "홀리기";
         statDebuff.BuffDurationTurns = 2;
         statDebuff.ChanceToApplyBuff = 100;
-        statDebuff.changeStat.accuracy = -10;
-        statDebuff.changeStat.speed = -10;
+        statDebuff.changeStat.accuracy = -2;
+        statDebuff.changeStat.speed = -2;
         
         instantiatedBuffList.Add(statDebuffGameObject);
         
         base.ActivateSkill(_Opponent);
-        BattleManager.GetInstance.MoveCharacter(SkillOwner, -1);
     }
     public override void SetSkillDescription(TextMeshProUGUI text)
     {
