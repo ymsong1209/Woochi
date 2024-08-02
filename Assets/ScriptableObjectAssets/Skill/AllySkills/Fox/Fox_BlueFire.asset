@@ -17,7 +17,7 @@ MonoBehaviour:
   animType: 3
   skillAvailableRadius: 0000000100000000
   skillRadius: 0101010100000000
-  skillType: 1
+  skillType: 3
   skillTargetType: 0
   skillElement: 0
   skillTargetCount: 1
