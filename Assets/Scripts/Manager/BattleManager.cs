@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.Toolbars;
 using UnityEngine;
 
 public class BattleManager : SingletonMonobehaviour<BattleManager>
@@ -325,6 +326,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                         break;
                     }
                 }
+            }
+            else
+            {
+                allies.CheckDeathInFormation();
+                enemies.CheckDeathInFormation();
             }
 
             // 자신 차례가 지난 후 턴 사용 처리
