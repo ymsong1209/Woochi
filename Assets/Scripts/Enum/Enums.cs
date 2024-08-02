@@ -33,7 +33,8 @@ public enum SkillType
 {
     Attack,             // 공격 관련
     Heal,               // 힐 관련
-    Special,            // 특수기 대미지 표시가 안뜸.
+    Special,            // 특수기, 상대 피격 애니메이션
+    SpecialHeal,        // 특수기, 상대 힐 애니메이션
     END
 }
 public enum SkillElement

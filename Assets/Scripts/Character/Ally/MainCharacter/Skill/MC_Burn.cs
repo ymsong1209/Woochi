@@ -7,7 +7,7 @@ public class MC_Burn : MainCharacterSkill
 {
     public MC_Burn()
     {
-        requiredSorceryPoints = 70;
+        requiredSorceryPoints = 50;
     }
     public override void SetSkillDescription(TextMeshProUGUI text)
     {

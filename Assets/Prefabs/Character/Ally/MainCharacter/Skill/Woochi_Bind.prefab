@@ -48,3 +48,4 @@ MonoBehaviour:
   skillTargetCount: 1
   isAlwaysHit: 0
   isAlwaysApplyBuff: 0
+  requiredSorceryPoints: 50

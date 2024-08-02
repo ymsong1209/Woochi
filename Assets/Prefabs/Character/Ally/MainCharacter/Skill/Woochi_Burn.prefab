@@ -45,13 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillSO: {fileID: 11400000, guid: dacfe84ac0a351f4da6f1057dd9e9cb1, type: 2}
-  skillOwner: {fileID: 0}
-  skillName: 
-  skillAvailableRadius: 0000000000000000
-  skillRadius: 0000000000000000
-  skillTargetType: 0
-  skillType: 0
-  bufflist: []
-  multiplier: 0
-  skillAccuracy: 0
-  requiredSorceryPoints: 75
+  skillTargetCount: 1
+  isAlwaysHit: 0
+  isAlwaysApplyBuff: 0
+  requiredSorceryPoints: 50

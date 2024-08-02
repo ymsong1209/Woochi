@@ -119,6 +119,13 @@ public class BaseSkill : MonoBehaviour
 
         switch (skillType)
         {
+            case SkillType.Attack:
+            {
+                //공격 관련된건 치명타, 명중, 회피, 저항 판정 다함
+                _opponent.onPlayAnimation?.Invoke(AnimationType.Damaged);
+                if (AttackLogic(_opponent, ref isCrit) == false) return;
+            }
+                break;
             case SkillType.Heal:
             {
                 //힐 관련된건 치명타 판정만 함. 저항, 회피 판정 없이 바로 스탯 적용
@@ -132,8 +139,16 @@ public class BaseSkill : MonoBehaviour
                 ApplyStat(_opponent, isCrit);
             }
                 break;
-            default:
+            case SkillType.Special:
             {
+                //공격 관련된건 치명타, 명중, 회피, 저항 판정 다함
+                _opponent.onPlayAnimation?.Invoke(AnimationType.Damaged);
+                if (AttackLogic(_opponent, ref isCrit) == false) return;
+            }
+                break;
+            case SkillType.SpecialHeal:
+            {
+                _opponent.onPlayAnimation?.Invoke(AnimationType.Heal);
                 //공격 실패시 버프 적용 안함
                 if (AttackLogic(_opponent, ref isCrit) == false) return;
             }
@@ -235,7 +250,7 @@ public class BaseSkill : MonoBehaviour
     }
     bool AttackLogic(BaseCharacter _opponent, ref bool _iscrit)
     {
-        _opponent.onPlayAnimation?.Invoke(AnimationType.Damaged);
+        
 
         //치명타일 경우 명중, 회피, 저항 무시하고 바로 스킬 적용
         if (CheckCrit())
