@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WoochiAction_Summon : WoochiActionButton
@@ -14,6 +12,8 @@ public class WoochiAction_Summon : WoochiActionButton
     public override void Activate()
     {
         base.Activate();
+        icon.color = Color.white;
+
         allyUI.gameObject.SetActive(true);
         allyUI.SetInteractable(true);
         BattleManager.GetInstance.EnableDummy();
@@ -22,6 +22,8 @@ public class WoochiAction_Summon : WoochiActionButton
     public override void Deactivate()
     {
         base.Deactivate();
+        icon.color = Color.grey;
+
         allyUI.gameObject.SetActive(false);
         allyUI.SetInteractable(false);
         BattleManager.GetInstance.DisableDummy();

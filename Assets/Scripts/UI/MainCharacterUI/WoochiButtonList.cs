@@ -48,7 +48,6 @@ public class WoochiButtonList : MonoBehaviour
         BattleManager.GetInstance.DisableColliderArrow();
 
         ActivateButton(button);
-        HighlightButton(button);
     }
     
     public void ActivateButton(WoochiActionButton button)
@@ -62,24 +61,6 @@ public class WoochiButtonList : MonoBehaviour
             else
             {
                 buttonList[i].Deactivate();
-            }
-        }
-    }
-    
-    
-    public void HighlightButton(WoochiActionButton button)
-    {
-        for (int i = 0; i < buttonList.Count; i++)
-        {
-            buttonList[i].Interactable(true);
-
-            if (buttonList[i] == button)
-            {
-                buttonList[i].Highlight();
-            }
-            else
-            {
-                buttonList[i].DeHighlight();
             }
         }
     }

@@ -3,6 +3,7 @@ using UnityEngine;
 using DataTable;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Rendering.PostProcessing;
 
 public class BattleReward : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class BattleReward : MonoBehaviour
     [SerializeField] private Button rerollBtn;
     [SerializeField] private TextMeshProUGUI rerollPriceTxt;
     [SerializeField] private int rerollPrice = 100;
+
+    [Header("Directing")]
+    [SerializeField] private PostProcessVolume postProcessVolume;
 
     private int grade = 0;      // 역경 단계
 
@@ -43,6 +47,7 @@ public class BattleReward : MonoBehaviour
     private void Init()
     {
         rewardPanel.SetActive(true);
+        postProcessVolume.enabled = true;
         SetInteractable(true);
 
         SetReroll(100);
@@ -113,6 +118,8 @@ public class BattleReward : MonoBehaviour
     private void Next()
     {
         rewardPanel.SetActive(false);
+        postProcessVolume.enabled = false;
+
         GameManager.GetInstance.SaveData();
     }
 

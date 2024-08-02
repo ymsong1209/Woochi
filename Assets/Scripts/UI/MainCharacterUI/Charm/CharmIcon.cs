@@ -6,7 +6,6 @@ public class CharmIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 {
     public  Image       selected;
     public  Image       icon;
-    public  Sprite      defaultIconImage;
     public  Button      btn;
     public  Transform   tooltipPos;     // 툴팁 위치를 지정하기 위해
 
@@ -16,16 +15,14 @@ public class CharmIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (_charm != null)
         {
+            gameObject.SetActive(isEnable);
             icon.sprite = _charm.CharmIcon;
-            btn.interactable = isEnable;
             charm = _charm;
         }
         //_charm null일 경우 빈 charm icon으로 초기화
         else
         {
-            icon.sprite = defaultIconImage;
-            btn.interactable = false;
-            charm = null;
+            gameObject.SetActive(false);
         }
     }
 

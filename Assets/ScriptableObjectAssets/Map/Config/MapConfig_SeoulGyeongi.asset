@@ -56,7 +56,11 @@ MonoBehaviour:
   - id: ed030000e9030000e9030000
   - id: eb030000e9030000e9030000
   - id: eb030000eb030000e9030000e9030000
-  eliteTemplates: []
+  eliteTemplates:
+  - id: 88130000
+  - id: e80300008b130000eb030000
+  - id: 8c130000e9030000
+  - id: 8d130000eb030000
   numOfPreBossNodes:
     min: 3
     max: 4
@@ -74,12 +78,12 @@ MonoBehaviour:
     isRandomEnemy: 1
     enemyIDs: 
     randomizePosition: 0
-  - nodeType: 0
+  - nodeType: 2
     distanceFromPreviousLayer:
       min: 3
       max: 3
     nodesApartDistance: 3
-    isRandomNode: 1
+    isRandomNode: 0
     isRandomEnemy: 1
     enemyIDs: 
     randomizePosition: 0.587
@@ -88,16 +92,16 @@ MonoBehaviour:
       min: 3
       max: 3
     nodesApartDistance: 3
-    isRandomNode: 1
+    isRandomNode: 0
     isRandomEnemy: 1
     enemyIDs: 
     randomizePosition: 0.509
-  - nodeType: 0
+  - nodeType: 1
     distanceFromPreviousLayer:
       min: 3
       max: 3
     nodesApartDistance: 3
-    isRandomNode: 1
+    isRandomNode: 0
     isRandomEnemy: 1
     enemyIDs: 
     randomizePosition: 0.542

@@ -5,8 +5,6 @@ public static class DataCloud
 {
     public static bool dontSave = false;        // 저장하지 않을 때  
 
-    public static bool isMaintenance = false;   // 정비 중인지
-
     public static PlayerData playerData;        // 플레이어 데이터
     
     

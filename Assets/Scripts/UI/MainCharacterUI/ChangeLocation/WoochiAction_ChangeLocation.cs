@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WoochiAction_ChangeLocation : WoochiActionButton
@@ -7,12 +5,16 @@ public class WoochiAction_ChangeLocation : WoochiActionButton
     public override void Activate()
     {
         base.Activate();
+        icon.color = Color.white;
+
         SelectSkill();
     }
 
     public override void Deactivate() 
     { 
         base.Deactivate();
+        icon.color = Color.grey;
+
         BattleManager.GetInstance.InitSelect();
     }
 

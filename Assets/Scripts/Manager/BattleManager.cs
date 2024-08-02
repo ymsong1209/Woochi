@@ -534,8 +534,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         // 더미 캐릭터가 receiver인 경우 caster의 UI를 활성화 or 정비 중이면 caster의 UI를 활성화
         if (receiver.isDummy)
             OnCharacterAttacked?.Invoke(caster, false);
-        else if(DataCloud.isMaintenance)
-            OnCharacterAttacked?.Invoke(caster, true);
         else
             OnCharacterAttacked?.Invoke(receiver, false);
         
@@ -643,19 +641,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
 
         return index;
-    }
-
-    public BaseCharacter GetMainCharacter()
-    {
-        foreach (var baseCharacter in allies.formation)
-        {
-            if (baseCharacter.IsMainCharacter)
-            {
-                return baseCharacter;
-            }
-        }
-
-        return null;
     }
 
     /// <summary>
@@ -838,6 +823,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             isSkillExecuted = false;
             currentSelectedSkill = null;
             #endregion
+            OnCharacterTurnStart?.Invoke(currentCharacter, true);
 
             while (!isSkillSelected || !isSkillExecuted)
             {
