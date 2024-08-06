@@ -67,7 +67,18 @@ public class BuffPopupUI : MonoBehaviour
     {
         // 텍스트의 렌더링된 크기를 기준으로 패널의 크기를 조정
         var textSize = popupText.GetRenderedValues(false); // false는 렌더링된 너비와 높이를 가져오기 위함
-        PanelRt.sizeDelta = new Vector2(textSize.x + 20, textSize.y + 20); // 여백 추가
+        
+        // 텍스트의 extra margin 값을 가져옴
+        var margin = popupText.margin;
+        
+        // 여백을 포함한 텍스트 크기를 계산
+        var totalWidth = textSize.x + margin.x + margin.z; // left + right margin
+        var totalHeight = textSize.y + margin.y + margin.w; // top + bottom margin
+
+        // 패널 크기를 여백을 포함하여 조정
+        PanelRt.sizeDelta = new Vector2(totalWidth, totalHeight); // 추가 여백 포함
+        
+       // PanelRt.sizeDelta = new Vector2(textSize.x + 20, textSize.y + 20); // 여백 추가
     }
     
     public TextMeshProUGUI PopUpText => popupText;
