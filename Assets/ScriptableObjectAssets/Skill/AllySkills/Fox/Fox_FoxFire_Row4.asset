@@ -16,7 +16,7 @@ MonoBehaviour:
   skillName: "\uC5EC\uC6B0\uBD88"
   animType: 4
   skillAvailableRadius: 0000000100000000
-  skillRadius: 0101010101010101
+  skillRadius: 0000000001010101
   skillType: 0
   skillTargetType: 0
   skillElement: 0

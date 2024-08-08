@@ -266,6 +266,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             isSkillSelected = false;
             isSkillExecuted = false;
             currentSelectedSkill = null;
+            UIManager.GetInstance.skillDescriptionUI.Deactivate();
+            UIManager.GetInstance.DeactivateBuffPopUp();
             #endregion
             currentCharacter = combatQueue.Dequeue();
 
@@ -505,6 +507,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         // 스킬 대상으로 지정한 캐릭터와 스킬 대상 수가 일치할 때 스킬 실행
         if (selectedCharacters.Count != currentSelectedSkill.SkillTargetCount) return;
 
+       
         if (currentSelectedSkill.SkillOwner && receiver)
         {
             StartCoroutine(ExecuteSkill(currentSelectedSkill.SkillOwner,receiver));

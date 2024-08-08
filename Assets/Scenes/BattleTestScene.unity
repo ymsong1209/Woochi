@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &20496867 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1135875124048106902, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
+  m_PrefabInstance: {fileID: 6980557996798469671}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &79350496
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,17 +843,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63e04d4c8c6f8c14abae11ac66fd51cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1394169002 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4165369668092781848, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
-  m_PrefabInstance: {fileID: 6980557996798469671}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1401384350
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,7 +1191,7 @@ MonoBehaviour:
   woochiActionList: {fileID: 752764747}
   sorceryPoint: {fileID: 6980557996798469672}
   sorceryPointBackground: {fileID: 6980557996798469673}
-  sorceryPointText: {fileID: 1394169002}
+  sorceryPointText: {fileID: 20496867}
   rewardToolPopup: {fileID: 0}
 --- !u!4 &2071079211
 Transform:

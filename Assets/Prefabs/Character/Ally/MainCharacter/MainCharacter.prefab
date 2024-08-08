@@ -358,6 +358,16 @@ MonoBehaviour:
     resist: 0
     minStat: 0
     maxStat: 0
+  buffStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
   isMainCharacter: 1
   isDead: 0
   activeBuffs: []
@@ -368,7 +378,7 @@ MonoBehaviour:
   isSummoned: 0
   rowOrder: 0
   maxSorceryPoints: 200
-  sorceryPoints: 100
+  sorceryPoints: 200
   sorceryRecoveryPoints: 35
   recoverySkill: {fileID: 684809249461957264}
   summonSkill: {fileID: 2218565908217448176}
