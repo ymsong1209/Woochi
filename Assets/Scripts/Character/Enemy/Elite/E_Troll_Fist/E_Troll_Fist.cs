@@ -18,10 +18,10 @@ public class E_Troll_Fist : BaseElite
         
         if (result.isHit == false)
         {
+            ++skillUsageCount;
             return false;
         }
-
-        ++skillUsageCount;
+        
         return true;
     }
     public override void TriggerAI()

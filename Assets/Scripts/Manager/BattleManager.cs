@@ -713,6 +713,28 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         int from = GetCharacterIndex(character);
         int to = Mathf.Clamp(from - move, 0, 3);    // 이동하려는 위치
+        if (character.IsAlly && GetCharacterFromIndex(to) && GetCharacterFromIndex(to) == character) //size가 2인 아군 캐릭터 고려
+        {
+            if (move > 0)
+            {
+                to = Mathf.Clamp(to - 1, 0, 3);
+            }
+            else
+            {
+                to = Mathf.Clamp(to + 1, 0, 3);
+            }
+        }
+        else if (GetCharacterFromIndex(to + 4) && GetCharacterFromIndex(to + 4) == character) //size가 2인 적 캐릭터 고려
+        {
+            if (move > 0)
+            {
+                to = Mathf.Clamp(to - 1, 0, 3);
+            }
+            else
+            {
+                to = Mathf.Clamp(to + 1, 0, 3);
+            }
+        }
 
         // 이동한 곳에 캐릭터가 있으면 두 캐릭터의 RowOrder 값을 교환
         // 바뀐 RowOrder 값은 턴이 끝날 때 

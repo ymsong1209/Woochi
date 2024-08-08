@@ -18,10 +18,10 @@ public class Troll_Hammer : BaseEnemy
         
         if (result.isHit == false)
         {
+            ++skillUsageCount;
             return false;
         }
-
-        ++skillUsageCount;
+        
         return true;
     }
     public override void TriggerAI()
