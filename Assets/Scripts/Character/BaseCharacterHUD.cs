@@ -36,16 +36,20 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void SetDamageText(AttackResult _result, int damage = 0, bool isCrit = false)
     {
         damageHUD.SetActive(true);
+        float duration = 1f;
 
         if (isCrit)
         {
             damageTxt.color = Color.red;
-            damageTxt.fontSize = 15;
+            damageTxt.fontSize = 17;
+            damageTxt.fontStyle = FontStyles.Bold;
+            duration = 2f;
         }
         else
         {
             damageTxt.color = Color.white;
             damageTxt.fontSize = 10;
+            damageTxt.fontStyle = FontStyles.Normal;
         }
 
         switch (_result)
@@ -65,7 +69,7 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
                 break;
         }
 
-        Invoke("DeactiveDamage", 1f);
+        Invoke("DeactiveDamage", duration);
     }
 
     void DeactiveDamage() => damageHUD.SetActive(false);
