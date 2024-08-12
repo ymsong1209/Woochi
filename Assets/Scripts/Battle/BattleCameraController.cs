@@ -95,17 +95,18 @@ public class BattleCameraController : MonoBehaviour
 
     IEnumerator ShakeCamera(bool _isCrit)
     {
+        float newShakeAmount = shakeAmount;
         float elapsed = 0f;
 
         if(_isCrit)
         {
-            shakeAmount *= 2;
+            newShakeAmount *= 2;
         }
 
         while (elapsed < shakeDuration)
         {
-            float x = Random.Range(-1f, 1f) * shakeAmount;
-            float y = Random.Range(-1f, 1f) * shakeAmount;
+            float x = Random.Range(-1f, 1f) * newShakeAmount;
+            float y = Random.Range(-1f, 1f) * newShakeAmount;
 
             focusCamera.transform.localPosition = new Vector3(x, y, 0f);
 
