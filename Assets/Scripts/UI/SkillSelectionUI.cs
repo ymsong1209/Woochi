@@ -11,6 +11,7 @@ public class SkillSelectionUI : MonoBehaviour
     //Inspector에서 등록
     public SkillEvent onSkillSelected; // SkillEvent 타입의 public 이벤트
 
+    [SerializeField] private GameObject blindObject;    // 클릭 방지
     [SerializeField] private List<SkillIcon> skillIcons;
     private SkillIcon selectedIcon = null;
 
@@ -42,13 +43,17 @@ public class SkillSelectionUI : MonoBehaviour
             return;
         }
         else gameObject.SetActive(true);
-        
+
+        blindObject.SetActive(!isEnable);
+
         _character.CheckSkillsOnTurnStart();
 
         // 턴이 적 캐릭터라면 skillIcon Interactable을 false로 초기화
         if (!_character.IsAlly)
         {
-            if(selectedIcon != null)
+            blindObject.SetActive(true);
+
+            if (selectedIcon != null)
                 selectedIcon.SetMark(false);
 
             skillIcons.ForEach(icon => icon.btn.interactable = false);
