@@ -2,12 +2,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Á¤ºñ Å¬·¡½º
+/// ì •ë¹„ í´ë˜ìŠ¤
 /// </summary>
 public class Maintenance : MonoBehaviour
 {
-    [SerializeField] private Button openMapBtn;     // Áöµµ ¿­±â
-    [SerializeField] private GameObject blindObject;    // ¼·¼±, À§Ä¡ ÀÌµ¿¸¸ Å¬¸¯ °¡´ÉÇÏ°Ô
+    [SerializeField] private Button openMapBtn;     // ì§€ë„ ì—´ê¸°
+    [SerializeField] private GameObject blindObject;    // ì„­ì„ , ìœ„ì¹˜ ì´ë™ë§Œ í´ë¦­ ê°€ëŠ¥í•˜ê²Œ
 
     void Start()
     {
@@ -31,7 +31,7 @@ public class Maintenance : MonoBehaviour
         BattleManager.GetInstance.DisableColliderArrow();
         BattleManager.GetInstance.DisableDummy();
 
-        BattleManager.GetInstance.Allies.BattleEnd();       // ¾Æ±º Æ÷¸ŞÀÌ¼Ç º¯°æ ÇßÀ»±îºÁ ´Ù½Ã ÀúÀå
+        BattleManager.GetInstance.Allies.BattleEnd();       // ì•„êµ° í¬ë©”ì´ì…˜ ë³€ê²½ í–ˆì„ê¹Œë´ ë‹¤ì‹œ ì €ì¥
         MapManager.GetInstance.CompleteNode();
     }
 }

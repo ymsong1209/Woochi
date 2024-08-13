@@ -69,6 +69,15 @@ namespace DataTable
 		public System.Int32 speed;
 		public System.Int32 resist;
 		public System.Int32 cost;
+		public System.Int32 add_health;
+		public System.Int32 add_minStat;
+		public System.Int32 add_maxStat;
+		public System.Int32 add_crit;
+		public System.Int32 add_defense;
+		public System.Int32 add_accuracy;
+		public System.Int32 add_evasion;
+		public System.Int32 add_speed;
+		public System.Int32 add_resist;
   
 
 #region fuctions

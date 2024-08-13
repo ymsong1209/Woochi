@@ -14,17 +14,33 @@ public struct Stat
     [ReadOnly(true)] public float minStat;
     [ReadOnly(true)] public float maxStat;
 
-    public Stat(CharacterData data)
+    public Stat(CharacterData data, bool isLevelUp)
     {
-        maxHealth = Mathf.Clamp(data.health, 0, 999);
-        speed = Mathf.Clamp(data.speed, 0, 999);
-        defense = Mathf.Clamp(data.defense, 0, 999);
-        crit = Mathf.Clamp(data.crit, 0, 999);
-        accuracy = Mathf.Clamp(data.accuracy, 0, 999);
-        evasion = Mathf.Clamp(data.evasion, 0, 999);
-        resist = Mathf.Clamp(data.resist, 0, 999);
-        minStat = Mathf.Clamp(data.minStat, 0, 999);
-        maxStat = Mathf.Clamp(data.maxStat, 0, 999);
+        if (isLevelUp)
+        {
+            maxHealth = Mathf.Clamp(data.add_health, 0, 999);
+            speed = Mathf.Clamp(data.add_speed, 0, 999);
+            defense = Mathf.Clamp(data.add_defense, 0, 999);
+            crit = Mathf.Clamp(data.add_crit, 0, 999);
+            accuracy = Mathf.Clamp(data.add_accuracy, 0, 999);
+            evasion = Mathf.Clamp(data.add_evasion, 0, 999);
+            resist = Mathf.Clamp(data.add_resist, 0, 999);
+            minStat = Mathf.Clamp(data.add_minStat, 0, 999);
+            maxStat = Mathf.Clamp(data.add_maxStat, 0, 999);
+        }
+        else
+        {
+            maxHealth = Mathf.Clamp(data.health, 0, 999);
+            speed = Mathf.Clamp(data.speed, 0, 999);
+            defense = Mathf.Clamp(data.defense, 0, 999);
+            crit = Mathf.Clamp(data.crit, 0, 999);
+            accuracy = Mathf.Clamp(data.accuracy, 0, 999);
+            evasion = Mathf.Clamp(data.evasion, 0, 999);
+            resist = Mathf.Clamp(data.resist, 0, 999);
+            minStat = Mathf.Clamp(data.minStat, 0, 999);
+            maxStat = Mathf.Clamp(data.maxStat, 0, 999);
+        }
+       
     }
 
     public Stat(Stat stat)

@@ -24,6 +24,7 @@ public class CharacterInfoData
 {
     public int ID;
     public Stat baseStat;
+    public Stat levelUpStat;
     public Stat rewardStat;
     public Health health;
 
@@ -31,14 +32,16 @@ public class CharacterInfoData
     {
         ID = -1;
         baseStat = new Stat();
+        levelUpStat = new Stat();
         rewardStat = new Stat();
         health = null;
     }
 
-    public CharacterInfoData(int _ID, Stat _baseStat, Stat _rewardStat, Health _health)
+    public CharacterInfoData(int _ID, Stat _baseStat, Stat _levelUpStat, Stat _rewardStat, Health _health)
     {
         ID = _ID;
         baseStat = _baseStat;
+        levelUpStat = _levelUpStat;
         rewardStat = _rewardStat;
         health = _health;
     }

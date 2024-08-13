@@ -24,6 +24,7 @@ public class BaseCharacter : MonoBehaviour
     #region Character Stats
     [SerializeField]    private Health health = new Health();
     public Stat    baseStat;
+    public Stat    levelUpStat;
     public Stat    rewardStat;
     public Stat    buffStat;
     #endregion
@@ -108,7 +109,7 @@ public class BaseCharacter : MonoBehaviour
     /// </summary>
     public virtual void SaveStat()
     {
-        CharacterInfoData info = new CharacterInfoData(ID, baseStat, rewardStat, health);
+        CharacterInfoData info = new CharacterInfoData(ID, baseStat, levelUpStat, rewardStat, health);
         DataCloud.playerData.SaveInfo(info);
     }
 
@@ -328,6 +329,7 @@ public class BaseCharacter : MonoBehaviour
     protected void InitializeStat()
     {
         baseStat = new Stat(characterStat.BaseStat);
+        levelUpStat = new Stat(characterStat.LevelUpStat);
         rewardStat = new Stat(characterStat.RewardStat);
         buffStat = new Stat();
     }
