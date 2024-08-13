@@ -48,4 +48,5 @@ MonoBehaviour:
   skillTargetCount: 1
   isAlwaysHit: 0
   isAlwaysApplyBuff: 0
-  healAmount: 12
+  requiredSorceryPoints: 80
+  healAmount: 8

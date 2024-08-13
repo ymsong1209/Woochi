@@ -19,7 +19,7 @@ public class MC_Heal : MainCharacterSkill
 
     public MC_Heal()
     {
-        requiredSorceryPoints = 100;
+        requiredSorceryPoints = 80;
     }
     public override void SetSkillDescription(TextMeshProUGUI text)
     {

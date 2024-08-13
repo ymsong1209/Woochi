@@ -24,7 +24,7 @@ public class MC_Bind : MainCharacterSkill
     
     public MC_Bind()
     {
-        requiredSorceryPoints = 70;
+        requiredSorceryPoints = 40;
     }
     
     public override void SetSkillDescription(TextMeshProUGUI text)
