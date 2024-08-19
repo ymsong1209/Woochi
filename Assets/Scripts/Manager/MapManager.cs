@@ -50,14 +50,12 @@ public class MapManager : SingletonMonobehaviour<MapManager>
 
     public void CompleteNode()
     {
-        SaveMap();
         MapPlayerTracker.Instance.Locked = false;
         view.ActiveMap(true);
-
         GameManager.GetInstance.soundBGM.ToggleBattleMap(false);
     }
 
-    private void SaveMap()
+    public void SaveMap()
     {
         if (CurrentMap == null) return;
 
