@@ -18,7 +18,7 @@ public class WoochiReward : Reward
     [Header("Add Stat")]
     [SerializeField] private Stat addStat;          // √ﬂ∞°«“ Ω∫≈»   
 
-    public override void ApplyReward()
+    public override bool ApplyReward()
     {
         MainCharacter woochi = BattleManager.GetInstance.Allies.GetWoochi();
 
@@ -34,6 +34,8 @@ public class WoochiReward : Reward
         }
 
         StatUp(woochi);
+
+        return true;
     }
 
     private void StatUp(MainCharacter woochi)

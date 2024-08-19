@@ -9,9 +9,9 @@ public class Reward : ScriptableObject
     [TextArea(3, 10)]
     public string description;
 
-    public virtual void ApplyReward()
+    public virtual bool ApplyReward()
     {
-
+        return true;
     }
     
 }

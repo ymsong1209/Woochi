@@ -31,9 +31,10 @@ public class RewardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     private void Receive()
     {
-        reward.ApplyReward();
+        if (reward.ApplyReward() == false) return;
         EventManager.GetInstance.onSelectReward?.Invoke(false);
     }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         UIManager.GetInstance.rewardToolPopup.ShowRewardPopup(reward);

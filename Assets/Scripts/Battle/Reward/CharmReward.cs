@@ -2,11 +2,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Reward_", menuName = "Scriptable Objects/Reward/Charm")]
 public class CharmReward : Reward
 {
-    public override void ApplyReward()
+    public override bool ApplyReward()
     {
-        if(!HelperUtilities.CanGetCharm())
-        {
-            return;
-        }
+        return HelperUtilities.CanGetCharm();
     }
 }

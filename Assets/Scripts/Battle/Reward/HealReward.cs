@@ -8,7 +8,7 @@ public class HealReward : Reward
 {
     [SerializeField] private int healAmount;
 
-    public override void ApplyReward()
+    public override bool ApplyReward()
     {
         AllyFormation formation = BattleManager.GetInstance.Allies;
         var list = formation.GetAllies();
@@ -18,5 +18,7 @@ public class HealReward : Reward
             if (character.IsDead) continue;
             character.Health.Heal(healAmount, false);
         }
+
+        return true;
     }
 }
