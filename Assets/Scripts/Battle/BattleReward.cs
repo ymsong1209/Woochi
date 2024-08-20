@@ -4,6 +4,7 @@ using DataTable;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Rendering.PostProcessing;
+using System;
 
 public class BattleReward : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class BattleReward : MonoBehaviour
     [Header("Directing")]
     [SerializeField] private PostProcessVolume postProcessVolume;
 
+    [Header("Exp")]
+    [SerializeField] private int[] normalExps;
+    [SerializeField] private int[] eliteExps;
+
     private int grade = 0;      // 역경 단계
 
     void Start()
@@ -41,6 +46,7 @@ public class BattleReward : MonoBehaviour
     {
         Init();
         grade = CalculateGrade(hardShip);
+        GetExpReward();
         SetReward();
     }
 
@@ -77,6 +83,18 @@ public class BattleReward : MonoBehaviour
         }
 
         return rarityList.Get();
+    }
+
+    private void GetExpReward()
+    {
+        AllyFormation allyFormation = BattleManager.GetInstance.Allies;
+
+        foreach(var character in allyFormation.AllCharacter)
+        {
+            character.level.AddExp(normalExps[grade]);
+        }
+
+        GameManager.GetInstance.SaveData();
     }
 
     private void SetReward()

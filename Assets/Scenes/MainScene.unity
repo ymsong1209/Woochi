@@ -814,15 +814,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6552513602812633039, guid: 5f715f2c06945d944a9ed73c20a4cbeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -128.86426
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6552513602812633039, guid: 5f715f2c06945d944a9ed73c20a4cbeb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 116.65347
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6552513602812633039, guid: 5f715f2c06945d944a9ed73c20a4cbeb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4161.2954
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6552513602812633039, guid: 5f715f2c06945d944a9ed73c20a4cbeb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1413,15 +1413,15 @@ PrefabInstance:
       objectReference: {fileID: 494983099}
     - target: {fileID: 7905160983172997250, guid: 56a27495f0a512c408751da061e9230f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -987.6413
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7905160983172997250, guid: 56a27495f0a512c408751da061e9230f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -476.03317
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7905160983172997250, guid: 56a27495f0a512c408751da061e9230f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.185335
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7905160983172997250, guid: 56a27495f0a512c408751da061e9230f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1800,15 +1800,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4593504141628674079, guid: 3e7ee98b04582044a899dc46141aca01, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -987.6413
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4593504141628674079, guid: 3e7ee98b04582044a899dc46141aca01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -476.03317
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4593504141628674079, guid: 3e7ee98b04582044a899dc46141aca01, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.185335
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4593504141628674079, guid: 3e7ee98b04582044a899dc46141aca01, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1861,15 +1861,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5574682825155031609, guid: 267412fc6238ccd43b9142af5be5cb03, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -987.6413
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5574682825155031609, guid: 267412fc6238ccd43b9142af5be5cb03, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -476.03317
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5574682825155031609, guid: 267412fc6238ccd43b9142af5be5cb03, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.185335
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5574682825155031609, guid: 267412fc6238ccd43b9142af5be5cb03, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1907,18 +1907,6 @@ PrefabInstance:
       propertyPath: scrollRect
       value: 
       objectReference: {fileID: 228565245}
-    - target: {fileID: 8504344917464840877, guid: 267412fc6238ccd43b9142af5be5cb03, type: 3}
-      propertyPath: correction.x
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 8504344917464840877, guid: 267412fc6238ccd43b9142af5be5cb03, type: 3}
-      propertyPath: linePointsCount
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8504344917464840877, guid: 267412fc6238ccd43b9142af5be5cb03, type: 3}
-      propertyPath: offsetFromNodes
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

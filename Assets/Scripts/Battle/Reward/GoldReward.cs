@@ -5,8 +5,9 @@ public class GoldReward : Reward
 {
     [SerializeField] private int rewardGold;  
 
-    public override void ApplyReward()
+    public override bool ApplyReward()
     {
         HelperUtilities.AddGold(rewardGold);
+        return true;
     }
 }

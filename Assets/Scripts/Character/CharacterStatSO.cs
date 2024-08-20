@@ -29,6 +29,7 @@ public class CharacterStatSO : ScriptableObject
     [SerializeField] private Stat baseStat;         // 레벨에 따른 기본 스탯
     [SerializeField] private Stat levelUpStat;      // 레벨업시 증가하는 스탯;
     [SerializeField] private Stat rewardStat;       // 보상으로 얻은 스탯
+    [SerializeField] private Level level;
     [SerializeField] private Health baseHealth;
 
     #region Header CHARACTER SKILLS
@@ -52,6 +53,7 @@ public class CharacterStatSO : ScriptableObject
             baseStat = new Stat(info.baseStat);
             levelUpStat = new Stat(info.levelUpStat);
             rewardStat = new Stat(info.rewardStat);
+            level = new Level(info.level);
             baseHealth = new Health(info.health);
         }
         else
@@ -59,6 +61,7 @@ public class CharacterStatSO : ScriptableObject
             baseStat = new Stat(data, false);
             levelUpStat = new Stat(data, true);
             rewardStat = new Stat();
+            level.Initialize();
             baseHealth = new Health(data);
         }
     }
@@ -67,6 +70,7 @@ public class CharacterStatSO : ScriptableObject
     public Stat BaseStat => baseStat;
     public Stat LevelUpStat => levelUpStat;
     public Stat RewardStat => rewardStat;
+    public Level Level => level;
     public Health BaseHealth => baseHealth;
     public List<BaseSkill> Skills => skills;
     #endregion

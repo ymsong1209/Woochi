@@ -621,6 +621,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             //승리 화면 뜬 후 보상 정산
             HelperUtilities.AddGold(100);
             reward.ShowReward(hardShip);
+            MapManager.GetInstance.SaveMap();
         }
         else
         {

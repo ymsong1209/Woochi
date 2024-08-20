@@ -4230,7 +4230,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7286293044829307565}
+      - m_Target: {fileID: 1279050854988189177}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -10355,6 +10355,8 @@ MonoBehaviour:
   rerollPriceTxt: {fileID: 5356917986990094830}
   rerollPrice: 100
   postProcessVolume: {fileID: 0}
+  normalExps: 96000000a5000000b6000000c8000000dc000000f20000000a010000240100004201000062010000
+  eliteExps: 
 --- !u!1 &7287405042938009101
 GameObject:
   m_ObjectHideFlags: 0

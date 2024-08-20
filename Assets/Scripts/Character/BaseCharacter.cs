@@ -27,6 +27,7 @@ public class BaseCharacter : MonoBehaviour
     public Stat    levelUpStat;
     public Stat    rewardStat;
     public Stat    buffStat;
+    public Level   level;
     #endregion
    
     [SerializeField] bool isMainCharacter = false;
@@ -68,6 +69,7 @@ public class BaseCharacter : MonoBehaviour
     public Action onHealthChanged;
     public Action<AnimationType> onPlayAnimation;
     public Action<AttackResult, int, bool> onAttacked;
+    public Action onLevelUp;
     #endregion
 
     private void Awake()
@@ -76,6 +78,8 @@ public class BaseCharacter : MonoBehaviour
         anim = GetComponent<BaseCharacterAnimation>();
         collider = GetComponent<BaseCharacterCollider>();
         buffList = GetComponentInChildren<BuffList>();
+
+        onLevelUp += LevelUp;
     }
 
     public virtual void CheckSkillsOnTurnStart()
@@ -109,7 +113,7 @@ public class BaseCharacter : MonoBehaviour
     /// </summary>
     public virtual void SaveStat()
     {
-        CharacterInfoData info = new CharacterInfoData(ID, baseStat, levelUpStat, rewardStat, health);
+        CharacterInfoData info = new CharacterInfoData(ID, baseStat, levelUpStat, rewardStat, level, health);
         DataCloud.playerData.SaveInfo(info);
     }
 
@@ -313,7 +317,7 @@ public class BaseCharacter : MonoBehaviour
     #endregion
 
 
-    #region 기본 스탯 초기화
+    #region 기본 스탯 초기화, 레벨업
     public void InitializeStatSO() => characterStat.Initialize();
 
     /// <summary>
@@ -332,6 +336,8 @@ public class BaseCharacter : MonoBehaviour
         levelUpStat = new Stat(characterStat.LevelUpStat);
         rewardStat = new Stat(characterStat.RewardStat);
         buffStat = new Stat();
+        level = new Level(characterStat.Level);
+        level.owner = this;
     }
 
     protected void InitializeHealth()
@@ -373,6 +379,12 @@ public class BaseCharacter : MonoBehaviour
         BaseSkill newSkill = Instantiate(skill, this.transform);
         newSkill.Initialize(this);
         activeSkills.Add(newSkill);
+    }
+
+    protected void LevelUp()
+    {
+        baseStat += levelUpStat;
+        health.Heal(999, false);
     }
     #endregion 기본 스탯 초기화
 
