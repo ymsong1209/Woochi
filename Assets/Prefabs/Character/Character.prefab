@@ -426,6 +426,16 @@ MonoBehaviour:
     resist: 0
     minStat: 0
     maxStat: 0
+  levelUpStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
   rewardStat:
     maxHealth: 0
     speed: 0
@@ -436,6 +446,20 @@ MonoBehaviour:
     resist: 0
     minStat: 0
     maxStat: 0
+  buffStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
+  level:
+    owner: {fileID: 0}
+    rank: 0
+    exp: 0
   isMainCharacter: 0
   isDead: 0
   activeBuffs: []
@@ -990,9 +1014,61 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9196048527430195161}
     m_Modifications:
+    - target: {fileID: 1079398214499129847, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415588185086682962, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2719765012986195760, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2897358460506378115, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3468841886695592054, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773408651177598543, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873131068692913609, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6490454285901392249, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308027995105317635, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7404629194194308958, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7753021310662755342, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
       propertyPath: m_Name
       value: BuffList
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753021310662755342, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7765247193308721911, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7813607278084760025, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7997150688701690124, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1037,6 +1113,14 @@ PrefabInstance:
     - target: {fileID: 8159440712131805997, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8333565737953735894, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512227337647423841, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

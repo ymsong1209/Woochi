@@ -32,6 +32,11 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     [HeaderTooltip("Popup", "팝업")]
     public RewardToolPopup rewardToolPopup;
     
+    private void Start()
+    {
+        BattleManager.GetInstance.OnFocusStart += DeactivateBuffPopUp;
+    }
+
     public void SetSkillToolTip(BaseSkill _skill, Vector3 position)
     {
         skillDescriptionUI.Activate(_skill);

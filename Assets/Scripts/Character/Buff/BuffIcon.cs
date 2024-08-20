@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
@@ -12,8 +13,20 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] private BuffType bufftype;
     [SerializeField] private Animator animator;
    
+    private bool canInteract;
+    private void Start()
+    {
+        canInteract = true;
+        BattleManager.GetInstance.OnFocusStart += () => SetCanInteract(false);
+        BattleManager.GetInstance.OnFocusEnd += () => SetCanInteract(true);
+    }
 
-    // 버프가 활성화되면서 animation작동되어야함
+    private void SetCanInteract(bool value)
+    {
+        canInteract = value;
+    }
+    
+    
     public void Activate()
     {
         
@@ -27,6 +40,7 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (!canInteract) return;
         TextMeshProUGUI text = UIManager.GetInstance.BuffPopupUI.PopUpText;
         SetBuffDescription(text);
         UIManager.GetInstance.ActivateBuffPopUp(Input.mousePosition);

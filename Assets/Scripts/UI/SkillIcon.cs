@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -15,6 +16,19 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     protected BaseSkill skill;
 
+    private bool canInteract;
+
+    private void Start()
+    {
+        canInteract = true;
+        BattleManager.GetInstance.OnFocusStart += () => SetCanInteract(false);
+        BattleManager.GetInstance.OnFocusEnd += () => SetCanInteract(true);
+    }
+
+    private void SetCanInteract(bool value)
+    {
+        canInteract = value;
+    }
     public void SetSkill(BaseSkill _skill, bool isEnable = true)
     {
         if (_skill != null)
@@ -40,7 +54,7 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
-        if (skill == null)
+        if (skill == null || !canInteract)
             return;
 
         UIManager.GetInstance.SetSkillToolTip(skill, tooltipPos.position);
