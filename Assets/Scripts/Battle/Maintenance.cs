@@ -31,7 +31,8 @@ public class Maintenance : MonoBehaviour
         BattleManager.GetInstance.DisableColliderArrow();
         BattleManager.GetInstance.DisableDummy();
 
-        BattleManager.GetInstance.Allies.BattleEnd();       // 아군 포메이션 변경 했을까봐 다시 저장
+        BattleManager.GetInstance.Allies.SaveFormation();       // 아군 포메이션 변경 했을까봐 다시 저장
         MapManager.GetInstance.CompleteNode();
+        GameManager.GetInstance.soundBGM.ToggleBattleMap(false);
     }
 }

@@ -215,7 +215,7 @@ public class AllyFormation : Formation
         SaveFormation();
     }
 
-    private void SaveFormation()
+    public void SaveFormation()
     {
         int[] newFormation = new int[4] { -1, -1, -1, -1 };
         List<BaseCharacter> characters = GetBattleCharacter();

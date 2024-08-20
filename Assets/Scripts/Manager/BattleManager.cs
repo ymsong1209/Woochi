@@ -615,6 +615,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// </summary>
     void PostBattle(bool _victory)
     {
+        allies.BattleEnd(); enemies.BattleEnd();
+        
         //승리시
         if (_victory)
         {
@@ -628,7 +630,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             //패배 화면 뜨기
         }
 
-        allies.BattleEnd(); enemies.BattleEnd();
+        
     }
 
     /// <summary>
