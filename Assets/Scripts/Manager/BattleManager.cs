@@ -5,12 +5,9 @@ using UnityEngine;
 
 public class BattleManager : SingletonMonobehaviour<BattleManager>
 {
-   
-    private BattleState         CurState;
     public  BaseCharacter       currentCharacter;               //현재 누구 차례인지
     private BaseSkill           currentSelectedSkill;           //현재 선택된 스킬
     private int                 currentRound;                   //현재 몇 라운드인지
-    private int                 hardShip;                       // 역경 수치
 
     /// <summary>
     /// 아군이랑 적군의 싸움 순서
@@ -23,10 +20,13 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     [SerializeField] private AllyFormation allies;
     [SerializeField] private Formation enemies;
 
+    [Header("BattleResult")]
+    [SerializeField] private BattleResultUI resultUI;   // 전투 결과 UI
+    private BattleResult result;       // 전투 결과
+
     [Header("Object")]
     [SerializeField] private AllyCardList allyCards;
     [SerializeField] private Abnormal abnormal;     // 현재 노드의 이상(기본값 : None)
-    [SerializeField] private BattleReward reward;   // 전투 보상
 
     #region 이벤트
     /// <summary>
@@ -55,8 +55,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
     private void Start()
     {
-        CurState = BattleState.IDLE;
-
         InitializeAlly();
         #region 테스트할 수 있게
 #if UNITY_EDITOR
@@ -81,7 +79,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// <summary>
     /// DungeonInfoSO 정보를 받아와서 아군과 적군 위치값 설정
     /// </summary>
-    public void InitializeBattle(int[] enemyIDs, int abnormalID = 100)
+    public void InitializeBattle(int[] enemyIDs, int abnormalID = 100, bool isElite = false)
     {
         if (enemyIDs == null || enemyIDs.Length == 0) 
         { 
@@ -90,12 +88,10 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
 
         GameManager.GetInstance.soundBGM.ToggleBattleMap(true);
-        CurState = BattleState.Initialization;
 
         currentRound = 0;
         combatQueue.Clear();
         processedCharacters.Clear();
-        hardShip = 0;
         abnormal = GameManager.GetInstance.Library.GetAbnormal(abnormalID);
 
         var enemyList = GameManager.GetInstance.Library.GetCharacterList(enemyIDs);
@@ -113,12 +109,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
 
         InitializeAbnormal();
-        CalculateHardShip();
+        InitResult(isElite);
 
         #region PreRound 상태로 넘어감
         PreRound();
         #endregion
-
     }
 
     private void InitializeAbnormal()
@@ -130,7 +125,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
             if (buff.applyAlly)
             {
-                var allyList = allies.GetCharacters();
+                var allyList = allies.AllCharacter;
                 foreach (var ally in allyList)
                 {
                     GameObject buffObject = Instantiate(buffPrefab, ally.transform);
@@ -141,7 +136,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             
             if(buff.applyEnemy)
             {
-                var enemyList = enemies.GetCharacters();
+                var enemyList = enemies.AllCharacter;
                 foreach (var enemy in enemyList)
                 {
                     GameObject buffObject = Instantiate(buffPrefab, enemy.transform);
@@ -152,14 +147,19 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
     }
 
-    private void CalculateHardShip()
+    private void InitResult(bool isElite)
     {
-        hardShip = abnormal.cost;
-        var enemyList = enemies.GetCharacters();
+        #region 역경 계산
+        int hardShip = abnormal.cost;
+        var enemyList = enemies.AllCharacter;
         foreach (var enemy in enemyList)
         {
             hardShip += enemy.Cost;
         }
+
+        result.hardShipGrade = Mathf.Clamp(hardShip - 4, 0, 99);
+        #endregion
+        result.isElite = isElite;
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
@@ -168,17 +168,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// </summary>
     void PreRound()
     {
-        CurState = BattleState.PreRound;
         ++currentRound;
         CheckBuffs(BuffTiming.RoundStart);
         //버프로 인한 캐릭터 사망 확인
-        if (CheckVictory(combatQueue))
+        if (CheckVictory())
         {
-            PostBattle(true);
-        }
-        else if (CheckDefeat(combatQueue))
-        {
-            PostBattle(false);
+            PostBattle();
         }
         DetermineOrder();
     }
@@ -206,7 +201,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// </summary>
     void DetermineOrder()
     {
-        CurState = BattleState.DetermineOrder;
         //캐릭터를 속도순으로 정렬하면서 모두 전투에 참여할 수 있도록 변경
         ReorderCombatQueue(true);
         CharacterTurn();
@@ -252,7 +246,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// </summary>
     void CharacterTurn()
     {
-        CurState = BattleState.CharacterTurn;
         Debug.Log("CurState : CharacterTurn");
         //캐릭터별로 행동
         StartCoroutine(HandleCharacterTurns());
@@ -347,15 +340,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             processedCharacters.Add(currentCharacter);
 
             // 승리 조건 체크
-            if (CheckVictory(processedCharacters) && CheckVictory(combatQueue))
+            if (CheckVictory())
             {
-                PostBattle(true);
-                yield break;
-            }
-            //패배 조건 체크
-            else if (CheckDefeat(processedCharacters) && CheckDefeat(combatQueue))
-            {
-                PostBattle(false);
+                PostBattle();
                 yield break;
             }
 
@@ -564,17 +551,13 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// </summary>
     void PostRound()
     {
-        CurState = BattleState.PostRound;
         CheckBuffs(BuffTiming.RoundEnd);
         //적군이 모두 죽으면 PostBattle로 넘어감. 아닐시 다시 PreRound로 돌아감
-        if(CheckVictory(combatQueue))
+        if(CheckVictory())
         {
-            PostBattle(true);
+            PostBattle();
         }
-        else if (CheckDefeat(combatQueue))
-        {
-            PostBattle(false);
-        }
+        else
         {
             PreRound();
         }
@@ -583,50 +566,28 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// <summary>
     /// 적군이 모두 죽었는지 확인
     /// </summary>
-    bool CheckVictory(IEnumerable<BaseCharacter> characters)
+    bool CheckVictory()
     {
-        foreach (BaseCharacter character in characters)
+        var enemyList = enemies.AllCharacter;
+        for(int i = 0; i < enemyList.Count; i++)
         {
-            if (!character.IsAlly && !character.IsDead)
+            // 적군이 한명이라도 살아있으면 false
+            if (enemyList[i].IsDead == false)
             {
-                return false; // 살아있는 적군이 있으므로 승리하지 않음
+                return false;
             }
         }
+
         return true;
     }
 
     /// <summary>
-    /// 아군이 모두 죽었는지 확인
+    /// 전투 정산 후, 전투 종료
     /// </summary>
-    bool CheckDefeat(IEnumerable<BaseCharacter> characters)
+    void PostBattle()
     {
-        foreach (BaseCharacter character in characters)
-        {
-            if (character.IsAlly && !character.IsDead)
-            {
-                return false; // 살아있는 아군이 있으므로 패배하지 않음
-            }
-        }
-        return true;
-    }
-
-    /// <summary>
-    /// 보상 정산 후, 전투 종료
-    /// </summary>
-    void PostBattle(bool _victory)
-    {
-        //승리시
-        if (_victory)
-        {
-            //승리 화면 뜬 후 보상 정산
-            HelperUtilities.AddGold(100);
-            reward.ShowReward(hardShip);
-            MapManager.GetInstance.SaveMap();
-        }
-        else
-        {
-            //패배 화면 뜨기
-        }
+        //승리 화면 뜬 후 보상 정산
+        resultUI.Show(result);
 
         allies.BattleEnd(); enemies.BattleEnd();
     }
