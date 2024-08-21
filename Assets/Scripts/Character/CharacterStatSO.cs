@@ -61,7 +61,7 @@ public class CharacterStatSO : ScriptableObject
             baseStat = new Stat(data, false);
             levelUpStat = new Stat(data, true);
             rewardStat = new Stat();
-            level.Initialize();
+            level = new Level();
             baseHealth = new Health(data);
         }
     }
