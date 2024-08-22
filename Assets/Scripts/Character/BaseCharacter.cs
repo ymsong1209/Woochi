@@ -384,7 +384,7 @@ public class BaseCharacter : MonoBehaviour
     protected void LevelUp()
     {
         baseStat += levelUpStat;
-        health.Heal(999, false);
+        health.LevelUp();
     }
     #endregion 기본 스탯 초기화
 
