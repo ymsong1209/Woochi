@@ -31,6 +31,9 @@ public class UIManager : SingletonMonobehaviour<UIManager>
 
     [HeaderTooltip("Popup", "팝업")]
     public RewardToolPopup rewardToolPopup;
+
+    [HeaderTooltip("Battle Result", "전투 결과")]
+    public LevelUpUI levelUpUI;
     
     public void SetSkillToolTip(BaseSkill _skill, Vector3 position)
     {

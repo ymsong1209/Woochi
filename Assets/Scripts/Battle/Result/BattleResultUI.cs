@@ -25,14 +25,14 @@ public class BattleResultUI : MonoBehaviour
     void Start()
     {
         panel.SetActive(false);
-        rewardBtn.gameObject.SetActive(true);
-        finishBtn.gameObject.SetActive(false);
     }
 
     public void Show(BattleResult result)
     {
         panel.SetActive(true);
-        hardShipTxt.text = $"{result.hardShipGrade} 단계";
+        rewardBtn.gameObject.SetActive(true);
+        finishBtn.gameObject.SetActive(false);
+        hardShipTxt.text = $"{result.hardShipGrade + 1} 단계";
 
         reward.SetReward(result);
         SetEntry();

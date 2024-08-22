@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ResultEntry : MonoBehaviour
 {
@@ -7,6 +8,14 @@ public class ResultEntry : MonoBehaviour
     [SerializeField] private TextMeshProUGUI hpTxt;
     [SerializeField] private TextMeshProUGUI rankTxt;
     [SerializeField] private TextMeshProUGUI expTxt;
+    [SerializeField] private Button levelUp;
+
+    private BaseCharacter owner;
+
+    private void Start()
+    {
+        levelUp.onClick.AddListener(ShowLevelUp);
+    }
 
     public void Set(BaseCharacter character)
     {
@@ -16,19 +25,32 @@ public class ResultEntry : MonoBehaviour
             return;
         }
 
+        owner = character;
         gameObject.SetActive(true);
-        nameTxt.text = character.Name;
-        hpTxt.text = $"{character.Health.CurHealth}/{character.Health.MaxHealth}";
-        ChangeExp(character);
+        nameTxt.text = owner.Name;
+        ChangeExp();
+        hpTxt.text = $"{owner.Health.CurHealth}/{owner.Health.MaxHealth}";
     }
 
-    private void ChangeExp(BaseCharacter character)
+    private void ChangeExp()
     {
-        string[] rankNames = character.IsMainCharacter ? DataCloud.woochiRankNames : DataCloud.allyRankNames;
-        int plusExp = character.level.plusExp;
+        string[] rankNames = owner.IsMainCharacter ? DataCloud.woochiRankNames : DataCloud.allyRankNames;
+        int plusExp = owner.level.plusExp;
 
-        character.level.AddExp();
-        rankTxt.text = rankNames[character.level.rank - 1];
-        expTxt.text = $"{character.level.exp}/{character.level.GetRequireExp()}(+{plusExp})";
+        bool isLevelUp = owner.level.AddExp();
+        if(isLevelUp)
+            levelUp.gameObject.SetActive(true);
+        else
+            levelUp.gameObject.SetActive(false);
+
+        rankTxt.text = rankNames[owner.level.rank - 1];
+        expTxt.text = $"{owner.level.exp}/{owner.level.GetRequireExp()}(+{plusExp})";
+    }
+
+    private void ShowLevelUp()
+    {
+        if (owner == null) return;
+
+        UIManager.GetInstance.levelUpUI.Show(owner);
     }
 }
