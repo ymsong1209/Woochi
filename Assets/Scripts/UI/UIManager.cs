@@ -16,7 +16,6 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     [HeaderTooltip("Enemy Tooltip", "적 캐릭터에 마우스 올릴 시 적 정보 뜨는 툴팁")]
     public GameObject enemyTooltip;
     [SerializeField] private TextMeshProUGUI enemyNameTxt;
-    [SerializeField] private TextMeshProUGUI enemyHPTxt;
     [SerializeField] private TextMeshProUGUI enemyEvasionTxt;
     [SerializeField] private TextMeshProUGUI enemySpeedTxt;
     [Space]
@@ -51,7 +50,6 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     {
         enemyTooltip.SetActive(true);
         enemyNameTxt.text = _character.Name;
-        enemyHPTxt.text = $"체력 : {_character.Health.CurHealth} / {_character.Health.MaxHealth}";
         enemyEvasionTxt.text = $"회피 : {_character.FinalStat.evasion}";
         enemySpeedTxt.text = $"속도 : {_character.FinalStat.speed}";
     }

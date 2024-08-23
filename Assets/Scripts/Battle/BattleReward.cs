@@ -133,7 +133,7 @@ public class BattleReward : MonoBehaviour
 
     private void SetGold()
     {
-        goldTxt.text = $"{DataCloud.playerData.gold}개";
+        goldTxt.text = $"{DataCloud.playerData.gold} 개";
     }
 
     /// <summary>
