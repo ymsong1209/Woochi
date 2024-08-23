@@ -11,7 +11,8 @@ using UnityEngine;
 public class AllyCardList : MonoBehaviour
 {
     [SerializeField] List<AllyCard> cards;
-    
+    [SerializeField] Sprite[] cardSprites;
+
     private void Start()
     {
         BattleManager.GetInstance.OnCharacterTurnStart += ShowUI;
@@ -29,11 +30,11 @@ public class AllyCardList : MonoBehaviour
         {
             if(i < characters.Count)
             {
-                cards[i].Activate(characters[i]);
+                cards[i].Activate(characters[i], cardSprites[0]);
             }
             else
             {
-                cards[i].Deactivate();
+                cards[i].Deactivate(cardSprites[1]);
             }
         }
     }

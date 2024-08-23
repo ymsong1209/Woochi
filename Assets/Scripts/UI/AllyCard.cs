@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class AllyCard : MonoBehaviour
 {
     [SerializeField] BaseCharacter ally;
+    [SerializeField] Image image;
     [SerializeField] Image portrait;
     [SerializeField] Button btn;
     [SerializeField] TextMeshProUGUI healthTxt;
@@ -20,23 +21,26 @@ public class AllyCard : MonoBehaviour
         healthTxt.text = $"{currentHP}/{maxHP}";
     }
 
-    public void Activate(BaseCharacter _ally)
+    public void Activate(BaseCharacter _ally, Sprite front)
     {
         ally = _ally;
         ally.onHealthChanged += UpdateHP;
 
+        image.sprite = front;
         portrait.gameObject.SetActive(true);
         portrait.sprite = ally.Portrait;
 
-        gameObject.SetActive(true);
+        healthTxt.gameObject.SetActive(true);
     }
 
-    public void Deactivate() 
+    public void Deactivate(Sprite back) 
     {
         ally = null;
 
+        image.sprite = back;
         portrait.gameObject.SetActive(false);
-        gameObject.SetActive(false);
+        
+        healthTxt.gameObject.SetActive(false);
     }
 
     public void SetInteractable(bool _able)

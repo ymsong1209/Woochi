@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d1a78f3fb971f4cb69b1602682ff04, type: 3}
   m_Name: Reward_RustySword
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 3a4fd3835b0575e4388b390dae51f7f9, type: 3}
+  sprite: {fileID: 21300000, guid: e87a22760fbc45d4fa65d08ec37e5733, type: 3}
   rarity: 0
   rewardName: "\uB179\uC774 \uC2A8 \uC7A5\uB3C4"
   description: "\uB2E4\uC74C 3\uBC88 \uC804\uD22C\uB3D9\uC548 \uD589\uC6B4+1"

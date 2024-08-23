@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baffde48bb9965c4389bdef98115df99, type: 3}
   m_Name: Reward_AzureElixir
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 97b81129a19fb5941b6cff0ff29e4a05, type: 3}
+  sprite: {fileID: 21300000, guid: 774372fcd6e97de4d860819fd02a4750, type: 3}
   rarity: 4
   rewardName: "\uACF5\uCCAD\uC11D\uC720"
   description: "\uC6B0\uCE58\uC758 \uBAA8\uB4E0 \uB2A5\uB825\uCE58 \uC601\uAD6C\uC801\uC73C\uB85C

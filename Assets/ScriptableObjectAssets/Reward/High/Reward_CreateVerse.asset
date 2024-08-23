@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d1a78f3fb971f4cb69b1602682ff04, type: 3}
   m_Name: Reward_CreateVerse
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 25a1756e309fe7b4ab50449abfce8931, type: 3}
+  sprite: {fileID: 21300000, guid: 7d620224bf0007a42a0cec3a0c40cea2, type: 3}
   rarity: 3
   rewardName: "\uC2DC\uAD6C \uC9D3\uAE30"
   description: "\uBB34\uC791\uC704 \uAD6C\uACB0(\uAD6C\uACB0 \uBAA9\uB85D \uC911
