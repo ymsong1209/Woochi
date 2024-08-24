@@ -255,6 +255,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             {
                 allies.CheckDeathInFormation();
                 enemies.CheckDeathInFormation();
+                // 중간에 있는 애가 버프로 죽으면 바로 포메이션이 정렬돼서 여유를 둠
+                yield return new WaitForSeconds(1f);
             }
 
             turnManager.EndTurn(currentCharacter);
