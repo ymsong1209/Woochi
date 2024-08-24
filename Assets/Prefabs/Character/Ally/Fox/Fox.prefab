@@ -27,7 +27,7 @@ PrefabInstance:
     - target: {fileID: 2180620064527360784, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b26f23c996f1c324aa267d287d03162e, type: 3}
+      objectReference: {fileID: 21300000, guid: a2898ab6fe81c334f974489ec18a788f, type: 3}
     - target: {fileID: 2180620064527360784, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -171,7 +171,7 @@ PrefabInstance:
     - target: {fileID: 8002876329012777120, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ab4eaa45603d6ec46b659cc885fa5aa5, type: 3}
+      objectReference: {fileID: 21300000, guid: 9d7e69d233d127c46bf6027b4289a128, type: 3}
     - target: {fileID: 8002876329012777120, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -290,9 +290,12 @@ MonoBehaviour:
   anim: {fileID: 0}
   collider: {fileID: 0}
   characterStat: {fileID: 11400000, guid: c8762dd9f5c96da4287c1a1a55b72000, type: 2}
-  health: {fileID: 0}
-  stat:
-    health: 0
+  health:
+    maxHealth: 0
+    curHealth: 0
+    shield: 0
+  baseStat:
+    maxHealth: 0
     speed: 0
     defense: 0
     crit: 0
@@ -301,6 +304,41 @@ MonoBehaviour:
     resist: 0
     minStat: 0
     maxStat: 0
+  levelUpStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
+  rewardStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
+  buffStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
+  level:
+    owner: {fileID: 0}
+    rank: 1
+    exp: 0
+    plusExp: 0
   isMainCharacter: 0
   isDead: 0
   activeBuffs: []
@@ -308,7 +346,6 @@ MonoBehaviour:
   activeSkillCheckBox: 010001000100
   isAlly: 0
   isDummy: 0
-  isStarting: 1
   isSummoned: 0
   rowOrder: 0
 --- !u!1 &8620507179705111926 stripped

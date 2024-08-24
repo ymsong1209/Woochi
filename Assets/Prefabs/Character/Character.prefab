@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b26f23c996f1c324aa267d287d03162e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a2898ab6fe81c334f974489ec18a788f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -426,6 +426,16 @@ MonoBehaviour:
     resist: 0
     minStat: 0
     maxStat: 0
+  levelUpStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
   rewardStat:
     maxHealth: 0
     speed: 0
@@ -436,6 +446,21 @@ MonoBehaviour:
     resist: 0
     minStat: 0
     maxStat: 0
+  buffStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
+  level:
+    owner: {fileID: 0}
+    rank: 1
+    exp: 0
+    plusExp: 0
   isMainCharacter: 0
   isDead: 0
   activeBuffs: []
@@ -753,7 +778,7 @@ Transform:
   m_GameObject: {fileID: 4855892354983709580}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.027, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -800,7 +825,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: ab4eaa45603d6ec46b659cc885fa5aa5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9d7e69d233d127c46bf6027b4289a128, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
