@@ -491,11 +491,10 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     void PostBattle()
     {
         turnManager.BattleOver();
+        allies.BattleEnd(); enemies.BattleEnd();
 
         //승리 화면 뜬 후 보상 정산
         resultUI.Show(result);
-
-        allies.BattleEnd(); enemies.BattleEnd();
     }
 
     /// <summary>

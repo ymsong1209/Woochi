@@ -23,6 +23,7 @@ public class BaseStrange : MonoBehaviour
         gameObject.SetActive(false);
         StrangeManager.GetInstance.StrangeBackground.SetActive(false);
         MapManager.GetInstance.CompleteNode();
+        MapManager.GetInstance.SaveMap();
     }
 
     public virtual void Initialize()

@@ -5,8 +5,8 @@ public class SoundBGM : MonoBehaviour
 {
     AudioSource audioSource;
 
-    [SerializeField] AudioClip[]    bgmClips;   // ¾À¸¶´Ù ¹è°æÀ½¾Ç
-    [SerializeField] AudioClip      battleBGM;  // ÀüÅõ¶û Áöµµ¶û ¾ÀÀÌ °°¾Æ¼­ ±¸ºĞ
+    [SerializeField] AudioClip[]    bgmClips;   // ì”¬ë§ˆë‹¤ ë°°ê²½ìŒì•…
+    [SerializeField] AudioClip      battleBGM;  // ì „íˆ¬ë‘ ì§€ë„ë‘ ì”¬ì´ ê°™ì•„ì„œ êµ¬ë¶„
 
     private void Awake()
     {
