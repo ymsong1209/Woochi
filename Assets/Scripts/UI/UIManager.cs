@@ -1,12 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System;
-using DG.Tweening;
-using UnityEngine.TextCore.Text;
-using UnityEngine.UI;
-//using UnityEngine.UIElements;
 
 public class UIManager : SingletonMonobehaviour<UIManager>
 {

@@ -84,7 +84,7 @@ public class WoochiReward : Reward
             }
 
             result += $"이(가) {statUpAmount} 증가했습니다";
-            UIManager.GetInstance.rewardToolPopup.ShowText(result);
+            HelperUtilities.ShowRewardToolResult(result);
         }
 
         woochi.rewardStat += addStat;

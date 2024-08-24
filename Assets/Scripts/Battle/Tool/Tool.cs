@@ -43,7 +43,7 @@ public class Tool : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        UIManager.GetInstance.rewardToolPopup.HidePopup();
+        UIManager.GetInstance.rewardToolPopup.HideInfo();
     }
 
     public int Price

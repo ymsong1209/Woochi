@@ -42,6 +42,6 @@ public class RewardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        UIManager.GetInstance.rewardToolPopup.HidePopup();
+        UIManager.GetInstance.rewardToolPopup.HideInfo();
     }
 }

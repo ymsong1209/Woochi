@@ -3,18 +3,26 @@ using UnityEngine;
 
 public class RewardToolPopup : MonoBehaviour
 {
+    [Header("Info")]
+    [SerializeField] private GameObject infoPopup;
     [SerializeField] private TextMeshProUGUI nameTxt;
     [SerializeField] private TextMeshProUGUI descriptionTxt;
     [SerializeField] private TextMeshProUGUI gradeTxt;
 
+    [Header("Result")]
+    [SerializeField] private GameObject resultPopup;
+    [SerializeField] private TextMeshProUGUI resultDescTxt;
+
     void Start()
     {
-        gameObject.SetActive(false);
+        infoPopup.SetActive(false);
+        resultPopup.SetActive(false);
     }
 
     public void ShowRewardPopup(Reward reward)
     {
-        gameObject.SetActive(true);
+        infoPopup.SetActive(true);
+        SetTransform();
 
         nameTxt.text = reward.rewardName;
         descriptionTxt.text = reward.description;
@@ -41,21 +49,31 @@ public class RewardToolPopup : MonoBehaviour
     
     public void ShowToolPopup(Tool tool)
     {
-        gameObject.SetActive(true);
+        infoPopup.SetActive(true);
+        SetTransform();
 
         nameTxt.text = tool.toolName;
         descriptionTxt.text = tool.GetDescription();
         gradeTxt.text = "";
     }
 
-    public void ShowText(string text)
+    public void ShowResult(string text)
     {
-        nameTxt.text = "";  gradeTxt.text = "";
-        descriptionTxt.text = text;
+        infoPopup.SetActive(false);
+        resultPopup.SetActive(true);
+
+        resultDescTxt.text = text;
     }
 
-    public void HidePopup()
+    public void HideInfo()
     {
-        gameObject.SetActive(false);
+        infoPopup.SetActive(false);
+    }
+
+    private void SetTransform()
+    {
+        Vector2 pos = Input.mousePosition;
+        pos.y -= 100;
+        infoPopup.transform.position = pos;
     }
 }

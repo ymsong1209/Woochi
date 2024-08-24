@@ -180,6 +180,8 @@ public class TurnManager : MonoBehaviour
         {
             icon.SetEmpty(emptyIcon);
         }
+
+        roundTxt.text = "0";
     }
 
     public void SetRound(int round) => roundTxt.text = $"{round}";
