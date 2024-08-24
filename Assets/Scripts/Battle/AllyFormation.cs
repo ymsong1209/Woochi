@@ -29,6 +29,9 @@ public class AllyFormation : Formation
             allCharacter.Add(character);
         }
 
+        // 우치 도술 게이지 UI에 우치를 할당
+        UIManager.GetInstance.sorceryGuageUI.woochi = GetWoochi();
+
         // 포메이션에 등록한 소환수를 포메이션에 등록
         int[] battleFormation = DataCloud.playerData.battleData.formation;
         for(int i = 0; i < 4; i++)

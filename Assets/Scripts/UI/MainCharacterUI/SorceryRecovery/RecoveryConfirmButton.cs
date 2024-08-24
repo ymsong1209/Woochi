@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RecoveryConfirmButton : MonoBehaviour
 {
-    
-    
     public void RecoveryConfirm()
     { 
         MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;

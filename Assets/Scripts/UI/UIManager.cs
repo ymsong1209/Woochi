@@ -23,10 +23,8 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     [SerializeField] private BuffPopupUI buffPopupUI;
 
     [HeaderTooltip("Woochi", "우치 전용 UI")]
+    public SorceryGuageUI sorceryGuageUI;
     [SerializeField] private WoochiActionList woochiActionList;
-    [SerializeField] private Image sorceryPoint;
-    [SerializeField] private Image sorceryPointBackground;
-    [SerializeField] private TextMeshProUGUI sorceryPointText;
 
     [HeaderTooltip("Popup", "팝업")]
     public RewardToolPopup rewardToolPopup;
@@ -81,44 +79,7 @@ public class UIManager : SingletonMonobehaviour<UIManager>
 
     #region MainCharacterUI
 
-    public void SetSorceryPointUI(int point)
-    {
-        MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
-        if (!mainCharacter)
-        {
-            Debug.LogError("MainCharacter is null");
-            return;
-        }
-        float scale = (float)point / mainCharacter.MaxSorceryPoints;
-        sorceryPoint.DOFillAmount(scale, 1f).SetEase(Ease.OutCubic);
-    }
-    
-    public void SetSorceryPointBackgroundUI(int point)
-    {
-        MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
-        if (!mainCharacter)
-        {
-            Debug.LogError("MainCharacter is null");
-            return;
-        }
-        float scale = (float)point / mainCharacter.MaxSorceryPoints;
-        sorceryPointBackground.DOFillAmount(scale, 1f).SetEase(Ease.OutCubic);
-    }
-
-    public void SetSorceryPointText()
-    {
-        MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
-        if (!mainCharacter)
-        {
-            Debug.LogError("MainCharacter is null");
-            return;
-        }
-        sorceryPointText.text = $"{mainCharacter.SorceryPoints} / {mainCharacter.MaxSorceryPoints}";
-    }
 
     
     #endregion MainCharacterUI
-    
-    public Image SorceryPoint => sorceryPoint;
-    public Image SorceryPointBackground => sorceryPointBackground;
 }

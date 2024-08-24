@@ -410,21 +410,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         // 스킬 대상으로 지정한 캐릭터와 스킬 대상 수가 일치할 때 스킬 실행
         if (selectedCharacters.Count != currentSelectedSkill.SkillTargetCount) return;
 
-       
         if (currentSelectedSkill.SkillOwner && receiver)
         {
             StartCoroutine(ExecuteSkill(currentSelectedSkill.SkillOwner,receiver));
-        }
-        
-        //우치가 스킬을 사용한경우 도력감소
-        if (currentCharacter.IsMainCharacter)
-        {
-            MainCharacter mainCharacter = currentCharacter as MainCharacter;
-            MainCharacterSkill mainCharacterSkill = currentSelectedSkill as MainCharacterSkill;
-            if (!mainCharacter) return;
-            if (!mainCharacterSkill) return;
-            mainCharacter.SorceryPoints -= mainCharacterSkill.RequiredSorceryPoints;
-            Mathf.Clamp(mainCharacter.SorceryPoints, 0, mainCharacter.MaxSorceryPoints);
         }
     }
 

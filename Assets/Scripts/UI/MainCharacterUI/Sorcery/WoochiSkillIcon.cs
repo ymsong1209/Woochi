@@ -31,7 +31,7 @@ public class WoochiSkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExit
         }
     }
     public void OnPointerEnter(PointerEventData eventData)
-   {
+    {
        if (skill == null)
            return;
 
@@ -46,31 +46,31 @@ public class WoochiSkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExit
              Debug.LogError("우치 스킬이 아님");
              return;
          }
-         MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
-         if (!mainCharacter)
-         {
-             Debug.LogError("우치가 아님");
-             return;
-         }
-         UIManager.GetInstance.SetSorceryPointUI(mainCharacter.SorceryPoints - mainCharacterSkill.RequiredSorceryPoints);
-         UIManager.GetInstance.SetSorceryPointBackgroundUI(mainCharacter.SorceryPoints);
+
+         UIManager.GetInstance.sorceryGuageUI.ShowAnimation(mainCharacterSkill.RequiredSorceryPoints, true);
       }
-   }
+    }
     
     public void OnPointerExit(PointerEventData eventData)
     {
         UIManager.GetInstance.skillDescriptionUI.Deactivate();
+
+        BaseSkill selectedSkill = BattleManager.GetInstance.CurrentSelectedSkill;
         //우치 스킬이 선택되지 않았으면 도력 게이지 다시 원래대로 회복
-        if(!BattleManager.GetInstance.CurrentSelectedSkill)
+        if(!selectedSkill)
         {
-            MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
-            if (!mainCharacter)
+            UIManager.GetInstance.sorceryGuageUI.Restore();
+        }
+        else
+        {
+            MainCharacterSkill mainCharacterSkill = selectedSkill as MainCharacterSkill;
+            if (!mainCharacterSkill)
             {
-                Debug.LogError("우치가 아님");
+                Debug.LogError("우치 스킬이 아님");
                 return;
             }
-            UIManager.GetInstance.SetSorceryPointUI(mainCharacter.SorceryPoints);
-            UIManager.GetInstance.SetSorceryPointBackgroundUI(mainCharacter.SorceryPoints);
+
+            UIManager.GetInstance.sorceryGuageUI.ShowAnimation(mainCharacterSkill.RequiredSorceryPoints, true);
         }
     }
     
