@@ -15,6 +15,7 @@ public class CharacterStatSO : ScriptableObject
     [Tooltip("ID만 입력해주면 나머지는 자동으로 채워집니다.")]
     public int ID;              
     public Sprite portrait;
+    public Sprite icon;
 
     [ReadOnly] public string characterName;
     [ReadOnly] public int size;
@@ -61,7 +62,7 @@ public class CharacterStatSO : ScriptableObject
             baseStat = new Stat(data, false);
             levelUpStat = new Stat(data, true);
             rewardStat = new Stat();
-            level.Initialize();
+            level = new Level();
             baseHealth = new Health(data);
         }
     }

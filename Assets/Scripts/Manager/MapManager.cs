@@ -43,7 +43,7 @@ public class MapManager : SingletonMonobehaviour<MapManager>
         }
         else
         {
-            BattleManager.GetInstance.InitializeBattle(_mapNode.Node.enemyIDs, _mapNode.Node.abnormalID);
+            BattleManager.GetInstance.InitializeBattle(_mapNode.Node.enemyIDs, _mapNode.Node.abnormalID, _mapNode.Node.nodeType == NodeType.Elite);
         }
         view.ActiveMap(false);
     }

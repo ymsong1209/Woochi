@@ -50,7 +50,7 @@ MonoBehaviour:
   charmRadius: 0101010100000000
   charmType: 0
   charmTargetType: 2
-  charmIcon: {fileID: 21300000, guid: 58168e50c842f5647aac01c08002e1be, type: 3}
+  charmIcon: {fileID: 21300000, guid: f4580b1bc72d5514a96d6e7ce8037b5e, type: 3}
   changeStat:
     maxHealth: 0
     speed: 0

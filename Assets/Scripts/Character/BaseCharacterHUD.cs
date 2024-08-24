@@ -9,6 +9,7 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private BaseCharacter owner;
     [SerializeField] private SpriteRenderer hpBar;
     [SerializeField] private SpriteRenderer ground;
+    [SerializeField] private GameObject turnEffect;
 
     [Header("Damage HUD")]
     [SerializeField] private GameObject damageHUD;
@@ -73,6 +74,15 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
     }
 
     void DeactiveDamage() => damageHUD.SetActive(false);
+
+    public void ShowTurnEffect()
+    {
+        turnEffect.SetActive(true);
+
+        Invoke("DeactiveTurn", 1f);
+    }
+
+    void DeactiveTurn() => turnEffect.SetActive(false);
 
     public void ActivateArrow(bool isActive)
     {

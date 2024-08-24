@@ -79,6 +79,12 @@ public class Health
         }
     }
     
+    public void LevelUp()
+    {
+        maxHealth = owner.FinalStat.maxHealth;
+        Heal(maxHealth, false);
+    }
+
     public bool CheckHealthZero()
     {
         if (CurHealth <= 0)

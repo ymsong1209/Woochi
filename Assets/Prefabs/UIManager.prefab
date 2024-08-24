@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6827326818132283292
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4258283610719583338}
+  - component: {fileID: 6025553260394843139}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4258283610719583338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6827326818132283292}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -990.0794, y: -476.12982, z: 292.51865}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6025553260394843139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6827326818132283292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99ac08255eee11a4699e3300d8764f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillDescriptionUI: {fileID: 0}
+  enemyTooltip: {fileID: 0}
+  enemyNameTxt: {fileID: 0}
+  enemyHPTxt: {fileID: 0}
+  enemyEvasionTxt: {fileID: 0}
+  enemySpeedTxt: {fileID: 0}
+  allyCharacterUI: {fileID: 0}
+  buffPopupUI: {fileID: 0}
+  woochiActionList: {fileID: 0}
+  sorceryPoint: {fileID: 0}
+  sorceryPointBackground: {fileID: 0}
+  sorceryPointText: {fileID: 0}
+  rewardToolPopup: {fileID: 0}
+  levelUpUI: {fileID: 0}

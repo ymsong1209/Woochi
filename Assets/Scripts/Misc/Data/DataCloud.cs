@@ -7,6 +7,8 @@ public static class DataCloud
 
     public static PlayerData playerData;        // 플레이어 데이터
     
+    public static string[] allyRankNames = new string[] { "기", "귀", "혼", "령", "신"};
+    public static string[] woochiRankNames = new string[] { "일류", "절정", "삼화취정", "오기조원", "조화경"};
     
     public static void SavePlayerData()
     {

@@ -55,9 +55,9 @@ public class AllyCharacterUI : MonoBehaviour
         Stat stat = _character.FinalStat;
         hpText.text = $"{_character.Health.CurHealth} / {_character.Health.MaxHealth}";
         accuracy.SetText(stat.accuracy, _character.BuffStat.accuracy);
-        critical.SetText(stat.crit, _character.BuffStat.crit, true);
+        critical.SetText(stat.crit, _character.BuffStat.crit);
         damage.SetDamageText(stat.minStat, stat.maxStat);
-        depense.SetText(stat.defense, _character.BuffStat.defense, true);
+        depense.SetText(stat.defense, _character.BuffStat.defense);
         evasion.SetText(stat.evasion, _character.BuffStat.evasion);
         resist.SetText(stat.resist, _character.BuffStat.resist);
         speed.SetText(stat.speed, _character.BuffStat.speed);

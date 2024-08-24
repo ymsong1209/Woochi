@@ -5,28 +5,24 @@ using UnityEngine;
 
 public class BattleManager : SingletonMonobehaviour<BattleManager>
 {
-   
-    private BattleState         CurState;
     public  BaseCharacter       currentCharacter;               //현재 누구 차례인지
     private BaseSkill           currentSelectedSkill;           //현재 선택된 스킬
     private int                 currentRound;                   //현재 몇 라운드인지
-    private int                 hardShip;                       // 역경 수치
 
-    /// <summary>
-    /// 아군이랑 적군의 싸움 순서
-    /// </summary>
-    private Queue<BaseCharacter> combatQueue = new Queue<BaseCharacter>();
-    private List<BaseCharacter> processedCharacters = new List<BaseCharacter>();
     private HashSet<BaseCharacter> selectedCharacters = new HashSet<BaseCharacter>();   // 스킬 대상으로 선택된 캐릭터들
 
     [Header("Formation")]
     [SerializeField] private AllyFormation allies;
     [SerializeField] private Formation enemies;
 
+    [Header("BattleResult")]
+    [SerializeField] private BattleResultUI resultUI;   // 전투 결과 UI
+    private BattleResult result;       // 전투 결과
+
     [Header("Object")]
+    [SerializeField] private TurnManager turnManager;
     [SerializeField] private AllyCardList allyCards;
     [SerializeField] private Abnormal abnormal;     // 현재 노드의 이상(기본값 : None)
-    [SerializeField] private BattleReward reward;   // 전투 보상
 
     #region 이벤트
     /// <summary>
@@ -55,8 +51,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
     private void Start()
     {
-        CurState = BattleState.IDLE;
-
         InitializeAlly();
         #region 테스트할 수 있게
 #if UNITY_EDITOR
@@ -81,7 +75,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// <summary>
     /// DungeonInfoSO 정보를 받아와서 아군과 적군 위치값 설정
     /// </summary>
-    public void InitializeBattle(int[] enemyIDs, int abnormalID = 100)
+    public void InitializeBattle(int[] enemyIDs, int abnormalID = 100, bool isElite = false)
     {
         if (enemyIDs == null || enemyIDs.Length == 0) 
         { 
@@ -90,35 +84,23 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
 
         GameManager.GetInstance.soundBGM.ToggleBattleMap(true);
-        CurState = BattleState.Initialization;
 
         currentRound = 0;
-        combatQueue.Clear();
-        processedCharacters.Clear();
-        hardShip = 0;
         abnormal = GameManager.GetInstance.Library.GetAbnormal(abnormalID);
 
         var enemyList = GameManager.GetInstance.Library.GetCharacterList(enemyIDs);
         enemies.Initialize(enemyList);
         allyCards.UpdateList();
 
-        foreach(Formation form in new Formation[] { allies, enemies })
-        {
-            for (int index = 0; index < form.formation.Length;)
-            {
-                if (form.formation[index] == null) break;
-                combatQueue.Enqueue(form.formation[index]);
-                index += form.formation[index].Size;
-            }
-        }
+        // 턴 초기화
+        turnManager.Init(allies, enemies);
 
         InitializeAbnormal();
-        CalculateHardShip();
+        InitResult(isElite);
 
         #region PreRound 상태로 넘어감
         PreRound();
         #endregion
-
     }
 
     private void InitializeAbnormal()
@@ -130,7 +112,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
             if (buff.applyAlly)
             {
-                var allyList = allies.GetCharacters();
+                var allyList = allies.AllCharacter;
                 foreach (var ally in allyList)
                 {
                     GameObject buffObject = Instantiate(buffPrefab, ally.transform);
@@ -141,7 +123,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             
             if(buff.applyEnemy)
             {
-                var enemyList = enemies.GetCharacters();
+                var enemyList = enemies.AllCharacter;
                 foreach (var enemy in enemyList)
                 {
                     GameObject buffObject = Instantiate(buffPrefab, enemy.transform);
@@ -152,14 +134,19 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
     }
 
-    private void CalculateHardShip()
+    private void InitResult(bool isElite)
     {
-        hardShip = abnormal.cost;
-        var enemyList = enemies.GetCharacters();
+        #region 역경 계산
+        int hardShip = abnormal.cost;
+        var enemyList = enemies.AllCharacter;
         foreach (var enemy in enemyList)
         {
             hardShip += enemy.Cost;
         }
+
+        result.hardShipGrade = Mathf.Clamp(hardShip - 4, 0, 99);
+        #endregion
+        result.isElite = isElite;
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
@@ -168,37 +155,15 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// </summary>
     void PreRound()
     {
-        CurState = BattleState.PreRound;
         ++currentRound;
-        CheckBuffs(BuffTiming.RoundStart);
+        turnManager.SetRound(currentRound);
+        turnManager.CheckBuffs(BuffTiming.RoundStart);
         //버프로 인한 캐릭터 사망 확인
-        if (CheckVictory(combatQueue))
+        if (CheckVictory())
         {
-            PostBattle(true);
-        }
-        else if (CheckDefeat(combatQueue))
-        {
-            PostBattle(false);
+            PostBattle();
         }
         DetermineOrder();
-    }
-
-    /// <summary>
-    /// BuffTiming을 매개변수로 받아서 해당 시점에 버프를 적용
-    /// </summary>
-    void CheckBuffs(BuffTiming buffTiming)
-    {
-        int characterCount = combatQueue.Count;
-        for (int i = 0; i < characterCount; i++)
-        {
-            // Queue에서 항목을 제거
-            BaseCharacter character = combatQueue.Dequeue();
-
-            character.TriggerBuff(buffTiming);
-
-            // 수정된 character를 Queue의 뒤쪽에 다시 추가.
-            combatQueue.Enqueue(character);
-        }
     }
 
     /// <summary>
@@ -206,45 +171,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// </summary>
     void DetermineOrder()
     {
-        CurState = BattleState.DetermineOrder;
         //캐릭터를 속도순으로 정렬하면서 모두 전투에 참여할 수 있도록 변경
-        ReorderCombatQueue(true);
+        turnManager.ReorderCombatQueue(true);
         CharacterTurn();
-    }
-
-    /// <summary>
-    /// combatQueue를 다시 속도순으로 정렬, ResetTurnUsed를 true로 하면 모든 캐릭터가 턴을 다시 쓸 수 있음
-    /// </summary>
-    /// <param name="_resetTurnUsed">true로 설정 시 모든 캐릭터 다시 턴 사용가능</param>
-    /// <param name="processedCharacters"></param>
-    void ReorderCombatQueue(bool _resetTurnUsed = false)
-    {
-        List<BaseCharacter> allCharacters = new List<BaseCharacter>();
-        
-        if (_resetTurnUsed && processedCharacters != null)
-        {
-            allCharacters.AddRange(processedCharacters);
-        }
-
-        // combatQueue에 남아 있는 캐릭터를 모두 allCharacters 리스트에 추가
-        while (combatQueue.Count > 0)
-        {
-            allCharacters.Add(combatQueue.Dequeue());
-        }
-
-        // allCharacters 리스트를 속도에 따라 재정렬
-        allCharacters.Sort((character1, character2) => character2.FinalStat.speed.CompareTo(character1.FinalStat.speed));
-
-        // 재정렬된 리스트를 바탕으로 combatQueue 재구성
-        combatQueue.Clear();
-        foreach (BaseCharacter character in allCharacters)
-        {
-            if (_resetTurnUsed)
-            {
-                character.IsTurnUsed = false;
-            }
-            combatQueue.Enqueue(character);
-        }
     }
 
     /// <summary>
@@ -252,7 +181,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// </summary>
     void CharacterTurn()
     {
-        CurState = BattleState.CharacterTurn;
         Debug.Log("CurState : CharacterTurn");
         //캐릭터별로 행동
         StartCoroutine(HandleCharacterTurns());
@@ -260,7 +188,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
     IEnumerator HandleCharacterTurns()
     {
-        while (combatQueue.Count > 0)
+        while (turnManager.IsContinueTurn())
         {
             #region 이전 턴에 쓰인 변수 초기화
             isSkillSelected = false;
@@ -269,14 +197,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             UIManager.GetInstance.skillDescriptionUI.Deactivate();
             UIManager.GetInstance.DeactivateBuffPopUp();
             #endregion
-            currentCharacter = combatQueue.Dequeue();
 
-            //IsDead는 DeathAnimation이 끝나고 true로 변경되므로
-            //CurHealth가 0 이하인 경우도 체크
-            if (currentCharacter.IsDead || currentCharacter.IsTurnUsed || currentCharacter.Health.CurHealth <= 0)
+            if (turnManager.StartTurn() == false)
             {
-                Debug.Log(currentCharacter.name + " is dead or turn is used.");
-                processedCharacters.Add(currentCharacter);
                 continue;
             }
 
@@ -334,40 +257,20 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 enemies.CheckDeathInFormation();
             }
 
-            // 자신 차례가 지난 후 턴 사용 처리
-            currentCharacter.IsTurnUsed = true;
-            // 턴이 종료된 후 버프 적용
-            currentCharacter.TriggerBuff(BuffTiming.TurnEnd);
-            
+            turnManager.EndTurn(currentCharacter);
             allies.ReOrder(); enemies.ReOrder();
 
-            // 스킬 사용으로 인한 속도 변경 처리
-            ReorderCombatQueue(false);
-
-            processedCharacters.Add(currentCharacter);
-
             // 승리 조건 체크
-            if (CheckVictory(processedCharacters) && CheckVictory(combatQueue))
+            if (CheckVictory())
             {
-                PostBattle(true);
-                yield break;
-            }
-            //패배 조건 체크
-            else if (CheckDefeat(processedCharacters) && CheckDefeat(combatQueue))
-            {
-                PostBattle(false);
+                PostBattle();
                 yield break;
             }
 
             yield return null;
         }
-        //ProcessedCharacter에 있는 캐릭터들 다시 characterQueue에 삽입
-        foreach(BaseCharacter characters in processedCharacters)
-        {
-            combatQueue.Enqueue(characters);
-        }
 
-        processedCharacters.Clear();
+        turnManager.TurnOver();
 
         //모든 캐릭터의 턴이 끝났을 때 실행
         PostRound();
@@ -507,21 +410,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         // 스킬 대상으로 지정한 캐릭터와 스킬 대상 수가 일치할 때 스킬 실행
         if (selectedCharacters.Count != currentSelectedSkill.SkillTargetCount) return;
 
-       
         if (currentSelectedSkill.SkillOwner && receiver)
         {
             StartCoroutine(ExecuteSkill(currentSelectedSkill.SkillOwner,receiver));
-        }
-        
-        //우치가 스킬을 사용한경우 도력감소
-        if (currentCharacter.IsMainCharacter)
-        {
-            MainCharacter mainCharacter = currentCharacter as MainCharacter;
-            MainCharacterSkill mainCharacterSkill = currentSelectedSkill as MainCharacterSkill;
-            if (!mainCharacter) return;
-            if (!mainCharacterSkill) return;
-            mainCharacter.SorceryPoints -= mainCharacterSkill.RequiredSorceryPoints;
-            Mathf.Clamp(mainCharacter.SorceryPoints, 0, mainCharacter.MaxSorceryPoints);
         }
     }
 
@@ -564,17 +455,13 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// </summary>
     void PostRound()
     {
-        CurState = BattleState.PostRound;
-        CheckBuffs(BuffTiming.RoundEnd);
+        turnManager.CheckBuffs(BuffTiming.RoundEnd);
         //적군이 모두 죽으면 PostBattle로 넘어감. 아닐시 다시 PreRound로 돌아감
-        if(CheckVictory(combatQueue))
+        if(CheckVictory())
         {
-            PostBattle(true);
+            PostBattle();
         }
-        else if (CheckDefeat(combatQueue))
-        {
-            PostBattle(false);
-        }
+        else
         {
             PreRound();
         }
@@ -583,54 +470,31 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// <summary>
     /// 적군이 모두 죽었는지 확인
     /// </summary>
-    bool CheckVictory(IEnumerable<BaseCharacter> characters)
+    bool CheckVictory()
     {
-        foreach (BaseCharacter character in characters)
+        var enemyList = enemies.AllCharacter;
+        for(int i = 0; i < enemyList.Count; i++)
         {
-            if (!character.IsAlly && !character.IsDead)
+            // 적군이 한명이라도 살아있으면 false
+            if (enemyList[i].IsDead == false)
             {
-                return false; // 살아있는 적군이 있으므로 승리하지 않음
+                return false;
             }
         }
+
         return true;
     }
 
     /// <summary>
-    /// 아군이 모두 죽었는지 확인
+    /// 전투 정산 후, 전투 종료
     /// </summary>
-    bool CheckDefeat(IEnumerable<BaseCharacter> characters)
+    void PostBattle()
     {
-        foreach (BaseCharacter character in characters)
-        {
-            if (character.IsAlly && !character.IsDead)
-            {
-                return false; // 살아있는 아군이 있으므로 패배하지 않음
-            }
-        }
-        return true;
-    }
-
-    /// <summary>
-    /// 보상 정산 후, 전투 종료
-    /// </summary>
-    void PostBattle(bool _victory)
-    {
+        turnManager.BattleOver();
         allies.BattleEnd(); enemies.BattleEnd();
-        
-        //승리시
-        if (_victory)
-        {
-            //승리 화면 뜬 후 보상 정산
-            HelperUtilities.AddGold(100);
-            reward.ShowReward(hardShip);
-            MapManager.GetInstance.SaveMap();
-        }
-        else
-        {
-            //패배 화면 뜨기
-        }
 
-        
+        //승리 화면 뜬 후 보상 정산
+        resultUI.Show(result);
     }
 
     /// <summary>
@@ -785,7 +649,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         if (allies.Summon(_summon, index))
         {
-            processedCharacters.Add(_summon);
+            turnManager.Processed(_summon);
         }
     }
 
@@ -793,36 +657,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         DisableDummy();
 
-        // 턴 사용한 소환수 경우 -> 처리된 캐릭터 리스트에서 제거
-        if(_character.IsTurnUsed)
-        {
-            foreach(var character in processedCharacters)
-            {
-                if (character == null) continue;
-                if (character == _character)
-                {
-                    processedCharacters.Remove(character);
-                    break;
-                }
-            }
-        }
-        // 턴 사용하지 않은 소환수 경우 -> combatQueue에서 제거
-        else
-        {
-            Queue<BaseCharacter> tempQueue = new Queue<BaseCharacter>();
-
-            while(combatQueue.Count > 0)
-            {
-                BaseCharacter character = combatQueue.Dequeue();
-                if (character == _character)
-                {
-                    continue;
-                }
-                tempQueue.Enqueue(character);
-            }
-
-            combatQueue = tempQueue;
-        }
+        turnManager.UnSummon(_character);
 
         // 버프 제거
         _character.RemoveAllBuff();
@@ -843,13 +678,13 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         OnCharacterTurnStart?.Invoke(woochi, true);
 
-        combatQueue.Enqueue(woochi);
+        turnManager.OnlyWoochi(woochi);
         StartCoroutine(Maintenance());
     }
 
     IEnumerator Maintenance()
     {
-        while(combatQueue.Count > 0)
+        while(turnManager.IsContinueTurn())
         {
             #region 변수 초기화
             isSkillSelected = false;

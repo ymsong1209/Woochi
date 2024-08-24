@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baffde48bb9965c4389bdef98115df99, type: 3}
   m_Name: Reward_Potion
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 231fc24fb2fb40b4687a275263f23167, type: 3}
+  sprite: {fileID: 21300000, guid: e30f03efbce266c4b80805cc714922fd, type: 3}
   rarity: 2
   rewardName: "\uD658\uC57D"
   description: "\uC6B0\uCE58 \uCCB4\uB825 40 \uD68C\uBCF5"

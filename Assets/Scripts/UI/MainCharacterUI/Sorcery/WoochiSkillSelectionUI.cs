@@ -22,17 +22,9 @@ public class WoochiSkillSelectionUI : MonoBehaviour
         gameObject.SetActive(false);
         //다른 캐릭터가 우치를 공격해서 우치 ui가 활성화된 경우에는, 이후 코드 실행 안해도됨.
         if (!isEnable) return;
-        
-        //우치 차례 시작할때는 도력 초기화로직 추가.
-        MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
-        if (!mainCharacter)
-        {
-            Debug.LogError("우치가 아님");
-            return;
-        }
-        UIManager.GetInstance.SorceryPoint.fillAmount = (float)mainCharacter.SorceryPoints / (float)mainCharacter.MaxSorceryPoints;
-        UIManager.GetInstance.SorceryPointBackground.fillAmount = (float)mainCharacter.SorceryPoints / (float)mainCharacter.MaxSorceryPoints;
-        UIManager.GetInstance.SetSorceryPointText();
+
+        //우치 차례 시작할때는 도력 초기화로직 추가
+        UIManager.GetInstance.sorceryGuageUI.SetUI();
     }
     
     public void Activate()
@@ -46,9 +38,7 @@ public class WoochiSkillSelectionUI : MonoBehaviour
             return;
         }
         
-        UIManager.GetInstance.SorceryPoint.fillAmount = (float)mainCharacter.SorceryPoints / (float)mainCharacter.MaxSorceryPoints;
-        UIManager.GetInstance.SorceryPointBackground.fillAmount = (float)mainCharacter.SorceryPoints / (float)mainCharacter.MaxSorceryPoints;
-        UIManager.GetInstance.SetSorceryPointText();
+        UIManager.GetInstance.sorceryGuageUI.SetUI();
         
         //우치 위치에 따른 스킬 체크
         mainCharacter.CheckSkillsOnTurnStart();
@@ -93,6 +83,7 @@ public class WoochiSkillSelectionUI : MonoBehaviour
     public void Deactivate()
     {
         gameObject.SetActive(false);
+        UIManager.GetInstance.sorceryGuageUI.Restore();
     }
     
     /// <summary>

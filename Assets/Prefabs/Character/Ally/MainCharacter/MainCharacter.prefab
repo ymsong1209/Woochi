@@ -231,7 +231,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8480ae2c967fddf44aa1f382e4b9e3cf, type: 2}
     - target: {fileID: 6620385480260230078, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.027
       objectReference: {fileID: 0}
     - target: {fileID: 7088439537742152075, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_IsActive
@@ -348,6 +348,16 @@ MonoBehaviour:
     resist: 0
     minStat: 0
     maxStat: 0
+  levelUpStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
   rewardStat:
     maxHealth: 0
     speed: 0
@@ -368,6 +378,11 @@ MonoBehaviour:
     resist: 0
     minStat: 0
     maxStat: 0
+  level:
+    owner: {fileID: 0}
+    rank: 1
+    exp: 0
+    plusExp: 0
   isMainCharacter: 1
   isDead: 0
   activeBuffs: []

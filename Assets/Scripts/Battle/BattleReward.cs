@@ -3,8 +3,6 @@ using UnityEngine;
 using DataTable;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.Rendering.PostProcessing;
-using System;
 
 public class BattleReward : MonoBehaviour
 {
@@ -23,12 +21,12 @@ public class BattleReward : MonoBehaviour
     [SerializeField] private TextMeshProUGUI rerollPriceTxt;
     [SerializeField] private int rerollPrice = 100;
 
-    [Header("Directing")]
-    [SerializeField] private PostProcessVolume postProcessVolume;
-
     [Header("Exp")]
     [SerializeField] private int[] normalExps;
     [SerializeField] private int[] eliteExps;
+
+    [Header("Result")]
+    [SerializeField] private BattleResultUI resultUI;
 
     private int grade = 0;      // 역경 단계
 
@@ -42,31 +40,19 @@ public class BattleReward : MonoBehaviour
         rewardPanel.SetActive(false);
     }
 
-    public void ShowReward(int hardShip)
+    public void SetReward(BattleResult result)
     {
         Init();
-        grade = CalculateGrade(hardShip);
-        GetExpReward();
+        grade = result.hardShipGrade;
+        GetExpReward(result.isElite);
         SetReward();
     }
 
     private void Init()
     {
-        rewardPanel.SetActive(true);
-        postProcessVolume.enabled = true;
         SetInteractable(true);
-
         SetReroll(100);
         SetGold();
-    }
-
-    /// <summary>
-    /// 역경 수치를 역경 등급으로 변환
-    /// </summary>
-    private int CalculateGrade(int hardShip)
-    {
-        int grade = Mathf.Clamp(hardShip - 4, 0, 99);
-        return grade;
     }
 
     /// <summary>
@@ -85,13 +71,18 @@ public class BattleReward : MonoBehaviour
         return rarityList.Get();
     }
 
-    private void GetExpReward()
+    private void GetExpReward(bool isElite)
     {
         AllyFormation allyFormation = BattleManager.GetInstance.Allies;
 
-        foreach(var character in allyFormation.AllCharacter)
+        foreach (var character in allyFormation.AllCharacter)
         {
-            character.level.AddExp(normalExps[grade]);
+            if(character.IsDead) continue;
+
+            if(isElite)
+                character.level.plusExp += eliteExps[grade];
+            else
+                character.level.plusExp += normalExps[grade];
         }
 
         GameManager.GetInstance.SaveData();
@@ -136,14 +127,13 @@ public class BattleReward : MonoBehaviour
     private void Next()
     {
         rewardPanel.SetActive(false);
-        postProcessVolume.enabled = false;
-
+        resultUI.AfterGetReward();
         GameManager.GetInstance.SaveData();
     }
 
     private void SetGold()
     {
-        goldTxt.text = $"{DataCloud.playerData.gold}개";
+        goldTxt.text = $"{DataCloud.playerData.gold} 개";
     }
 
     /// <summary>

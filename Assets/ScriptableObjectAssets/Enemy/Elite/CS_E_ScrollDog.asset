@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 5003
   portrait: {fileID: 0}
+  icon: {fileID: 21300000, guid: 4ed8dfead8780f44d930c070d1af1d3e, type: 3}
   characterName: "\uC0AC\uB098\uC6B4 \uC871\uC790\uAD6C"
   size: 1
   cost: 4
   baseStat:
-    health: 28
+    maxHealth: 27
     speed: 12
     defense: 1
     crit: 5
@@ -27,6 +28,35 @@ MonoBehaviour:
     resist: 5
     minStat: 6
     maxStat: 11
+  levelUpStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
+  rewardStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
+  level:
+    owner: {fileID: 0}
+    rank: 1
+    exp: 0
+    plusExp: 0
+  baseHealth:
+    maxHealth: 27
+    curHealth: 27
+    shield: 0
   skills:
   - {fileID: -5034647490118650099, guid: 619e4b5d4257d1f489d6fdc8d63ed4af, type: 3}
   - {fileID: 6053676695746164403, guid: 6da877ddf8d5a964ba80db64ab080d7d, type: 3}

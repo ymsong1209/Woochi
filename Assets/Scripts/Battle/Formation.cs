@@ -142,8 +142,6 @@ public class Formation : MonoBehaviour
         return index;
     }
 
-    public List<BaseCharacter> GetCharacters() => allCharacter;
-
     private void CleanUp()
     {
         foreach(BaseCharacter character in formation)

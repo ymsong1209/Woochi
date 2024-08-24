@@ -1,12 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System;
-using DG.Tweening;
-using UnityEngine.TextCore.Text;
-using UnityEngine.UI;
-//using UnityEngine.UIElements;
 
 public class UIManager : SingletonMonobehaviour<UIManager>
 {
@@ -16,7 +9,6 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     [HeaderTooltip("Enemy Tooltip", "적 캐릭터에 마우스 올릴 시 적 정보 뜨는 툴팁")]
     public GameObject enemyTooltip;
     [SerializeField] private TextMeshProUGUI enemyNameTxt;
-    [SerializeField] private TextMeshProUGUI enemyHPTxt;
     [SerializeField] private TextMeshProUGUI enemyEvasionTxt;
     [SerializeField] private TextMeshProUGUI enemySpeedTxt;
     [Space]
@@ -24,13 +16,14 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     [SerializeField] private BuffPopupUI buffPopupUI;
 
     [HeaderTooltip("Woochi", "우치 전용 UI")]
+    public SorceryGuageUI sorceryGuageUI;
     [SerializeField] private WoochiActionList woochiActionList;
-    [SerializeField] private Image sorceryPoint;
-    [SerializeField] private Image sorceryPointBackground;
-    [SerializeField] private TextMeshProUGUI sorceryPointText;
 
     [HeaderTooltip("Popup", "팝업")]
     public RewardToolPopup rewardToolPopup;
+
+    [HeaderTooltip("Battle Result", "전투 결과")]
+    public LevelUpUI levelUpUI;
     
     private void Start()
     {
@@ -53,7 +46,6 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     {
         enemyTooltip.SetActive(true);
         enemyNameTxt.text = _character.Name;
-        enemyHPTxt.text = $"체력 : {_character.Health.CurHealth} / {_character.Health.MaxHealth}";
         enemyEvasionTxt.text = $"회피 : {_character.FinalStat.evasion}";
         enemySpeedTxt.text = $"속도 : {_character.FinalStat.speed}";
     }
@@ -85,44 +77,7 @@ public class UIManager : SingletonMonobehaviour<UIManager>
 
     #region MainCharacterUI
 
-    public void SetSorceryPointUI(int point)
-    {
-        MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
-        if (!mainCharacter)
-        {
-            Debug.LogError("MainCharacter is null");
-            return;
-        }
-        float scale = (float)point / mainCharacter.MaxSorceryPoints;
-        sorceryPoint.DOFillAmount(scale, 1f).SetEase(Ease.OutCubic);
-    }
-    
-    public void SetSorceryPointBackgroundUI(int point)
-    {
-        MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
-        if (!mainCharacter)
-        {
-            Debug.LogError("MainCharacter is null");
-            return;
-        }
-        float scale = (float)point / mainCharacter.MaxSorceryPoints;
-        sorceryPointBackground.DOFillAmount(scale, 1f).SetEase(Ease.OutCubic);
-    }
-
-    public void SetSorceryPointText()
-    {
-        MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
-        if (!mainCharacter)
-        {
-            Debug.LogError("MainCharacter is null");
-            return;
-        }
-        sorceryPointText.text = $"{mainCharacter.SorceryPoints} / {mainCharacter.MaxSorceryPoints}";
-    }
 
     
     #endregion MainCharacterUI
-    
-    public Image SorceryPoint => sorceryPoint;
-    public Image SorceryPointBackground => sorceryPointBackground;
 }

@@ -384,7 +384,7 @@ public class BaseCharacter : MonoBehaviour
     protected void LevelUp()
     {
         baseStat += levelUpStat;
-        health.Heal(999, false);
+        health.LevelUp();
     }
     #endregion 기본 스탯 초기화
 
@@ -424,6 +424,7 @@ public class BaseCharacter : MonoBehaviour
     #region Getter Setter
     public int ID => characterStat.ID;
     public Sprite Portrait => characterStat.portrait;
+    public Sprite Icon => characterStat.icon;
     public string Name => characterStat.characterName;
     public int Size => characterStat.size;
     public int Cost => characterStat.cost;
