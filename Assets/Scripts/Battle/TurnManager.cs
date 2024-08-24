@@ -100,6 +100,7 @@ public class TurnManager : MonoBehaviour
             return false;
         }
 
+        currentCharacter.HUD.ShowTurnEffect();
         BattleManager.GetInstance.currentCharacter = currentCharacter;
         return true;
     }
