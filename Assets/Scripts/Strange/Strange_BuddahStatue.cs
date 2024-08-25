@@ -24,7 +24,7 @@ public class Strange_BuddahStatue : BaseStrange
     {
         continueBtn.onClick.AddListener(() => Deactivate());
         investigateBtn.onClick.AddListener(() => Investigate());
-        destroyBtn.onClick.AddListener(() => Destroy());
+        destroyBtn.onClick.AddListener(() => DestroyStatue());
         ignoreBtn.onClick.AddListener(() => Ignore());
     }
 
@@ -101,7 +101,7 @@ public class Strange_BuddahStatue : BaseStrange
         ContinueEvent();
     }
 
-    private void Destroy()
+    private void DestroyStatue()
     {
         int random = Random.Range(0, 2);
         if (random == 0)
