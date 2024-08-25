@@ -22,6 +22,8 @@ public class TailFire_Melee : BaseSkill
     
     public override void SetSkillDescription(TextMeshProUGUI text)
     {
-        text.text = "꼬리불(근거리)\n" + "대상에게 " + SkillSO.BaseMultiplier +"%의 피해를 주고 \n 뒤로 한 칸 이동";
+        int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * SkillSO.BaseMultiplier / 100f);
+        int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
+        text.text = "꼬리불(근거리)\n" + "대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + "뒤로 한 칸 이동";
     }
 }

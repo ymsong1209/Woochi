@@ -37,7 +37,9 @@ public class Tiger_Rip : BaseSkill
     }
     public override void SetSkillDescription(TextMeshProUGUI text)
     {
-        text.text = "찢어발기기\n" + "대상에게 " + SkillSO.BaseMultiplier +"%의 피해를 주고 50%의 확률로 출혈 부여\n출혈 상태인 적에게 1.5배의 피해";
+        int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * SkillSO.BaseMultiplier / 100f);
+        int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
+        text.text = "찢어발기기\n" + "대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고 50%의 확률로 출혈 부여\n" + "출혈 상태인 적에게 1.5배의 피해";
     }
     
 }

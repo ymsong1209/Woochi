@@ -58,8 +58,8 @@ MonoBehaviour:
     curHealth: 22
     shield: 0
   skills:
-  - {fileID: 6999345981261538658, guid: 9afe653430a359243bdbee63e68e19ae, type: 3}
-  - {fileID: -2935646728771929781, guid: 44ab9a60293b0e840b8fdfd4e14b308e, type: 3}
+  - {fileID: -5643982786504562052, guid: c127ed199cecb14428b23e72d30f8e82, type: 3}
+  - {fileID: -696248697953917911, guid: 6d1d2c08657dbd940a71e3a6e69aabaa, type: 3}
   - {fileID: -1727875589185713224, guid: 91328cbc870d1b44c9cb022cb976ec75, type: 3}
   - {fileID: -4877563745760097264, guid: 1caa529344df84a4fb7a8bfea2dbb719, type: 3}
   - {fileID: -3036146973187550543, guid: 313aa051e004d384d89a3207a4b983db, type: 3}

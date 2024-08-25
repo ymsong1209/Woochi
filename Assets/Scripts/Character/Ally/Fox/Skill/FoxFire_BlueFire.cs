@@ -21,6 +21,8 @@ public class FoxFire_BlueFire : BaseSkill
     }
     public override void SetSkillDescription(TextMeshProUGUI text)
     {
-        text.text = "푸른 불꽃\n" + "아군의 체력을 턴 당 피해의 30%만큼 회복";
+        int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * 30f / 100f);
+        int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * 30f / 100f);
+        text.text = "푸른 불꽃\n" + "아군의 체력을 턴 당 " + minStat + " ~ " + maxStat + "만큼 회복";
     }
 }
