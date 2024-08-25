@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c4bbbce2a03c2d4a95b7ced04f3ebb7, type: 3}
-  m_Name: CS_Tiger
+  m_Name: CS_Haetae
   m_EditorClassIdentifier: 
-  ID: 2
+  ID: 3
   portrait: {fileID: 21300000, guid: b549cdcd96833fc4292c3ddad663c744, type: 3}
   icon: {fileID: 21300000, guid: f7195edb222a2ff41a544f147475b45c, type: 3}
   characterName: 

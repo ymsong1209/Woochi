@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class ThreeTailsFox : BaseCharacter
 {
+    protected override void InitializeSkill()
+    {
+        DestroyActiveSkills();
+        AddFoxSkill();
+    }
     public override void CheckSkillsOnTurnStart()
     {
         if(IsDead)
@@ -12,44 +17,65 @@ public class ThreeTailsFox : BaseCharacter
         }
 
         DestroyActiveSkills();
-        int characterIndex = BattleManager.GetInstance.GetCharacterIndex(this);
+        AddFoxSkill();
+    }
+
+    private void AddFoxSkill()
+    {
+        AddTailFire(level.rank);
+        AddFoxFire(level.rank);
+        AddFascinate(level.rank);
+        AddBlueFire(level.rank);
+    }
     
-        // 꼬리불 처리
+    private void AddTailFire(int rank)
+    {
+        int characterIndex = BattleManager.GetInstance.GetCharacterIndex(this);
         if (characterIndex == 0 || characterIndex == 1)
         {
-            InstantiateSkill(characterStat.Skills[1]);
+            InstantiateSkill(rank > 1 ? characterStat.ReinforcedSkills[1] : characterStat.Skills[1]);
         }
-        else if(characterIndex == 2 || characterIndex == 3)
+        else if (characterIndex == 2 || characterIndex == 3)
         {
-            InstantiateSkill(characterStat.Skills[0]);
+            InstantiateSkill(rank > 1 ? characterStat.ReinforcedSkills[0] : characterStat.Skills[0]);
         }
-
-        // 여우불
+    }
+    
+    private void AddFoxFire(int rank)
+    {
+        int characterIndex = BattleManager.GetInstance.GetCharacterIndex(this);
         if (characterIndex == 2)
         {
-            InstantiateSkill(characterStat.Skills[2]);
+            InstantiateSkill(rank > 2 ? characterStat.ReinforcedSkills[2] : characterStat.Skills[2]);
         }
-        else if(characterIndex == 3)
+        else if (characterIndex == 3)
         {
-            InstantiateSkill(characterStat.Skills[3]);
+            InstantiateSkill(rank > 2 ? characterStat.ReinforcedSkills[3] : characterStat.Skills[3]);
         }
-        // 3열과 4열중 어디에도 없을 경우 여우불 없음
+        // 3열과 4열 중 어디에도 없을 경우 여우불 없음
+    }
 
-        // 홀리기
+    private void AddFascinate(int rank)
+    {
+        int characterIndex = BattleManager.GetInstance.GetCharacterIndex(this);
         if (characterIndex == 2)
         {
-            InstantiateSkill(characterStat.Skills[5]);
+            InstantiateSkill(rank > 3 ? characterStat.ReinforcedSkills[5] : characterStat.Skills[5]);
         }
-        else if(characterIndex == 3)
+        else if (characterIndex == 3)
         {
-            InstantiateSkill(characterStat.Skills[4]);
+            InstantiateSkill(rank > 3 ? characterStat.ReinforcedSkills[4] : characterStat.Skills[4]);
         }
-        // 3열과 4열중 어디에도 없을 경우 홀리기 없음
-        
-        // 푸른불꽃
+        // 3열과 4열 중 어디에도 없을 경우 홀리기 없음
+    }
+
+    private void AddBlueFire(int rank)
+    {
+        int characterIndex = BattleManager.GetInstance.GetCharacterIndex(this);
         if (characterIndex == 3)
         {
-            InstantiateSkill(characterStat.Skills[6]);
+            InstantiateSkill(rank > 4 ? characterStat.ReinforcedSkills[6] : characterStat.Skills[6]);
         }
+        // 4열이 아니면 푸른불 없음
     }
 }

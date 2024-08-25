@@ -4,23 +4,23 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Reward_", menuName = "Scriptable Objects/Reward/Exp")]
 public class ExpReward : Reward
 {
-    [SerializeField] private int expAmount;      // °æÇèÄ¡ ¾ç
+    [SerializeField] private int expAmount;      // ê²½í—˜ì¹˜ ì–‘
 
     public override bool ApplyReward()
     {
         var allyList = BattleManager.GetInstance.Allies.GetAllies();
 
-        // ·£´ı ¼ÒÈ¯¼ö ¼±ÅÃ
+        // ëœë¤ ì†Œí™˜ìˆ˜ ì„ íƒ
         BaseCharacter ally = allyList.Random();
 
         if(ally.IsDead || ally.level.IsMaxRank())
         {
-            HelperUtilities.ShowRewardToolResult($"{ally.Name}Àº(´Â) ÇöÀç °æÇèÄ¡¸¦ ¾òÀ» ¼ö ¾ø½À´Ï´Ù");
+            HelperUtilities.ShowRewardToolResult($"{ally.Name}ì€(ëŠ”) í˜„ì¬ ê²½í—˜ì¹˜ë¥¼ ì–»ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤");
             return false;
         }
 
         ally.level.plusExp += expAmount;
-        HelperUtilities.ShowRewardToolResult($"{ally.Name}Àº(´Â) {expAmount}ÀÇ °æÇèÄ¡¸¦ È¹µæÇß½À´Ï´Ù");
+        HelperUtilities.ShowRewardToolResult($"{ally.Name}ì€(ëŠ”) {expAmount}ì˜ ê²½í—˜ì¹˜ë¥¼ íšë“í–ˆìŠµë‹ˆë‹¤");
         return true;
     }
 }

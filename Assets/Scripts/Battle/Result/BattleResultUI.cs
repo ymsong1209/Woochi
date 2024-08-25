@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public struct BattleResult
 {
-    public int hardShipGrade;   // ¿ª°æ ´Ü°è
-    public bool isElite;   // Á¤¿¹ ¿©ºÎ
+    public int hardShipGrade;   // ì—­ê²½ ë‹¨ê³„
+    public bool isElite;   // ì •ì˜ˆ ì—¬ë¶€
 }
 
 public class BattleResultUI : MonoBehaviour
@@ -20,7 +20,7 @@ public class BattleResultUI : MonoBehaviour
 
     [Header("Class")]
     [SerializeField] private List<ResultEntry> entries;
-    [SerializeField] private BattleReward reward;   // ÀüÅõ º¸»ó
+    [SerializeField] private BattleReward reward;   // ì „íˆ¬ ë³´ìƒ
 
     void Start()
     {
@@ -32,7 +32,7 @@ public class BattleResultUI : MonoBehaviour
         panel.SetActive(true);
         rewardBtn.gameObject.SetActive(true);
         finishBtn.gameObject.SetActive(false);
-        hardShipTxt.text = $"{result.hardShipGrade + 1} ´Ü°è";
+        hardShipTxt.text = $"{result.hardShipGrade + 1} ë‹¨ê³„";
 
         reward.SetReward(result);
         SetEntry();
@@ -42,7 +42,7 @@ public class BattleResultUI : MonoBehaviour
     }
 
     /// <summary>
-    /// º¸»óÀ» ¹ŞÀº ÈÄ ÇÑ¹ø ´õ Ä³¸¯ÅÍ Á¤º¸ °»½Å
+    /// ë³´ìƒì„ ë°›ì€ í›„ í•œë²ˆ ë” ìºë¦­í„° ì •ë³´ ê°±ì‹ 
     /// </summary>
     public void AfterGetReward()
     {
@@ -52,7 +52,7 @@ public class BattleResultUI : MonoBehaviour
     }
     
     /// <summary>
-    /// Ä³¸¯ÅÍ Á¤º¸ °»½Å
+    /// ìºë¦­í„° ì •ë³´ ê°±ì‹ 
     /// </summary>
     private void SetEntry()
     {

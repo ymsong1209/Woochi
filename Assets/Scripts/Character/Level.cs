@@ -5,9 +5,9 @@ using UnityEngine;
 public class Level
 {
     [JsonIgnore]    public BaseCharacter owner;
-    [ReadOnly]      public int  rank;    // ¸î ´Ü°èÀÎÁö
-    [ReadOnly]      public int  exp;     // ÇöÀç °æÇèÄ¡
-    [ReadOnly]      public int  plusExp; // Ãß°¡ °æÇèÄ¡
+    [ReadOnly]      public int  rank;    // ëª‡ ë‹¨ê³„ì¸ì§€
+    [ReadOnly]      public int  exp;     // í˜„ì¬ ê²½í—˜ì¹˜
+    [ReadOnly]      public int  plusExp; // ì¶”ê°€ ê²½í—˜ì¹˜
 
     private int maxRank;
 
@@ -29,7 +29,7 @@ public class Level
     }
 
     /// <summary>
-    /// °æÇèÄ¡ Ãß°¡
+    /// ê²½í—˜ì¹˜ ì¶”ê°€
     /// </summary>
     public bool AddExp()
     {

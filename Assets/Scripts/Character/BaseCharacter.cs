@@ -353,11 +353,21 @@ public class BaseCharacter : MonoBehaviour
     {
         DestroyActiveSkills();
         //activeSkills의 size만큼 CharacterStat의 skill을 앞에서부터 가져와서 세팅한다.
+        int levelcount = 1;
         for(int i = 0; i < activeSkillCheckBox.Count; ++i)
         {
             if (activeSkillCheckBox[i])
             {
-                InstantiateSkill(characterStat.Skills[i]);
+                //아군(소환수)만 레벨에 따라 강화 스킬 추가
+                if (isAlly && levelcount < level.rank)
+                {
+                    levelcount++;
+                    InstantiateSkill(characterStat.ReinforcedSkills[i]);
+                }
+                else
+                {
+                    InstantiateSkill(characterStat.Skills[i]);
+                }
             }
         }
     }

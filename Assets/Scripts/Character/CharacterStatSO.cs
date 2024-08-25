@@ -39,6 +39,7 @@ public class CharacterStatSO : ScriptableObject
     [Header("Character Skills")]
     #endregion Header CHARACTER SKILLS
     [SerializeField] private List<BaseSkill> skills;    // 캐릭터가 가지고 있는 스킬 리스트
+    [SerializeField] private List<BaseSkill> reinforcedSkills; //강화된 스킬 리스트
 
     public void Initialize()
     {
@@ -74,6 +75,9 @@ public class CharacterStatSO : ScriptableObject
     public Level Level => level;
     public Health BaseHealth => baseHealth;
     public List<BaseSkill> Skills => skills;
+
+    public List<BaseSkill> ReinforcedSkills => reinforcedSkills;
+
     #endregion
 
 }
