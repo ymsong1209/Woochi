@@ -182,7 +182,7 @@ public class BaseCharacter : MonoBehaviour
     /// buff gameobject는 instantiated되어서 opponent에 붙어있음.
     /// </summary>
     /// <returns></returns>
-    public virtual BaseBuff ApplyBuff(BaseCharacter caster, BaseCharacter receiver, BaseBuff _buff)
+    public BaseBuff ApplyBuff(BaseCharacter caster, BaseCharacter receiver, BaseBuff _buff)
     {
     
         //같은 종류가 있는 버프가 활성화되어있는지 먼저 확인
