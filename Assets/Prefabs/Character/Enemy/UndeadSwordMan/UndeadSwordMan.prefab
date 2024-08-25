@@ -63,7 +63,7 @@ PrefabInstance:
     - target: {fileID: 4947313877317803005, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ba705fed997d5dd4a9e20c30eb1e4902, type: 3}
+      objectReference: {fileID: 21300000, guid: 5149c0ba1e087e44d849b36d3adb2cbf, type: 3}
     - target: {fileID: 4947313877317803005, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -82,11 +82,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5237467849233833363, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5237467849233833363, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5237467849233833363, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -198,9 +198,12 @@ MonoBehaviour:
   anim: {fileID: 0}
   collider: {fileID: 0}
   characterStat: {fileID: 11400000, guid: 5039074f66f7854469316f6753b1eb31, type: 2}
-  health: {fileID: 0}
-  stat:
-    health: 0
+  health:
+    maxHealth: 0
+    curHealth: 0
+    shield: 0
+  baseStat:
+    maxHealth: 0
     speed: 0
     defense: 0
     crit: 0
@@ -209,6 +212,41 @@ MonoBehaviour:
     resist: 0
     minStat: 0
     maxStat: 0
+  levelUpStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
+  rewardStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
+  buffStat:
+    maxHealth: 0
+    speed: 0
+    defense: 0
+    crit: 0
+    accuracy: 0
+    evasion: 0
+    resist: 0
+    minStat: 0
+    maxStat: 0
+  level:
+    owner: {fileID: 0}
+    rank: 1
+    exp: 0
+    plusExp: 0
   isMainCharacter: 0
   isDead: 0
   activeBuffs: []
@@ -216,6 +254,5 @@ MonoBehaviour:
   activeSkillCheckBox: 01
   isAlly: 0
   isDummy: 0
-  isStarting: 0
   isSummoned: 0
   rowOrder: 0
