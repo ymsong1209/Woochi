@@ -11,8 +11,8 @@ public class BattleData
 
     public BattleData()
     {
-        allies = new List<int>() { 0, 1, 2 };
-        formation = new int[] { 2, 0, 1, -1};   // 호랑이-우치-삼미호 순(시연버전)
+        allies = new List<int>() { 0, 1, 3 };
+        formation = new int[] { 3, 0, 1, -1};   // 호랑이-우치-삼미호 순(시연버전)
         charms = new List<int>(5);
 
         characterInfoList = new List<CharacterInfoData>();

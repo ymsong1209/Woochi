@@ -20,7 +20,7 @@ MonoBehaviour:
   - ID: 2
     value: {fileID: 2536897304434713235, guid: 92aa63b8768f36d4cb5e10f0b8282920, type: 3}
   - ID: 3
-    value: {fileID: 0}
+    value: {fileID: 2536897304434713235, guid: 1c0bb07c437f1aa44ae80854b4393843, type: 3}
   - ID: 1000
     value: {fileID: 3657592949406269409, guid: ca42e7c8e1bb2fc499b9e67b93790fb5, type: 3}
   - ID: 1001
