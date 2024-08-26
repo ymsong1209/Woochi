@@ -9,7 +9,7 @@ public class CleanseSingleDebuffCharm : BaseCharm
     {
         foreach(BaseBuff buff in opponent.activeBuffs)
         {
-            if(buff.BuffType == BuffType.Negative)
+            if(buff.BuffType == BuffType.Negative && buff.IsRemovableDuringBattle)
             {
                 opponent.RemoveBuff(buff);
                 break;

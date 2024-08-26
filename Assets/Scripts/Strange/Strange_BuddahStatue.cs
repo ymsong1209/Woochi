@@ -70,7 +70,8 @@ public class Strange_BuddahStatue : BaseStrange
                 buff.BuffDurationTurns = -1;
                 buff.BuffBattleDurationTurns = 3;
                 buff.changeStat.speed = 10;
-                buff.changeStat.evasion =5;
+                buff.changeStat.evasion = 5;
+                buff.IsRemovableDuringBattle = false;
                 buff.IsRemoveWhenBattleEnd = false;
                 character.ApplyBuff(character, character, buff); 
             }
@@ -94,6 +95,7 @@ public class Strange_BuddahStatue : BaseStrange
                 buff.changeStat.minStat = -3;
                 buff.changeStat.maxStat = -3;
                 buff.changeStat.evasion = -10;
+                buff.IsRemovableDuringBattle = false;
                 buff.IsRemoveWhenBattleEnd = false;
                 character.ApplyBuff(character, character, buff); 
             }
@@ -128,6 +130,7 @@ public class Strange_BuddahStatue : BaseStrange
                 buff.changeStat.crit = 7;
                 buff.changeStat.resist = 7;
                 buff.changeStat.defense = 7;
+                buff.IsRemovableDuringBattle = false;
                 buff.IsRemoveWhenBattleEnd = false;
                 character.ApplyBuff(character, character, buff); 
             }
@@ -150,6 +153,7 @@ public class Strange_BuddahStatue : BaseStrange
                 buff.BuffBattleDurationTurns = 3;
                 buff.changeStat.evasion = -10;
                 buff.changeStat.speed = -10;
+                buff.IsRemovableDuringBattle = false;
                 buff.IsRemoveWhenBattleEnd = false;
                 character.ApplyBuff(character, character, buff); 
             }

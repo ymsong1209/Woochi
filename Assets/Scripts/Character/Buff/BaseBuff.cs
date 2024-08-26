@@ -18,7 +18,7 @@ public class BaseBuff : MonoBehaviour
     [SerializeField] protected Color buffColor;
     [SerializeField] protected bool isRemoveWhenBattleEnd = true;
     [SerializeField] protected int buffBattleDurationTurns;//몇번의 전투동안 지속되어야할지
-    
+    [SerializeField] protected bool isRemovableDuringBattle = true;
 
     /// <summary>
     /// 버프를 추가
@@ -172,6 +172,12 @@ public class BaseBuff : MonoBehaviour
     {
         get => isRemoveWhenBattleEnd;
         set => isRemoveWhenBattleEnd = value;
+    }
+    
+    public bool IsRemovableDuringBattle
+    {
+        get => isRemovableDuringBattle;
+        set => isRemovableDuringBattle = value;
     }
     
     public int BuffBattleDurationTurns

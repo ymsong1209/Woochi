@@ -50,6 +50,10 @@ MonoBehaviour:
   buffType: 2
   chanceToApplyBuff: 100
   buffName: "\uD3C9\uC57C"
+  buffColor: {r: 0, g: 0, b: 0, a: 0}
+  isRemoveWhenBattleEnd: 1
+  buffBattleDurationTurns: 0
+  isRemovableDuringBattle: 0
   changeStat:
     maxHealth: 0
     speed: 1

@@ -28,6 +28,7 @@ public class Strange_Dream : BaseStrange
                 buff.BuffDurationTurns = -1;
                 buff.BuffBattleDurationTurns = 3;
                 buff.changeStat.speed = 10;
+                buff.IsRemovableDuringBattle = false;
                 buff.IsRemoveWhenBattleEnd = false;
                 character.ApplyBuff(character, character, buff);
             }
