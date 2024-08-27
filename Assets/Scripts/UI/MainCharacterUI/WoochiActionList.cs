@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WoochiActionList : MonoBehaviour
@@ -32,7 +30,9 @@ public class WoochiActionList : MonoBehaviour
         // 우치가 아니고 아군의 차례가 시작 or 아군이 피격된 경우 우치 UI 전체 비활성화
         else if(!_character.IsMainCharacter && _character.IsAlly)
         {
-            buttonList.Deactivate();
+            buttonList.gameObject.SetActive(false);
+            skillList.gameObject.SetActive(false);
+            recoveryUI.gameObject.SetActive(false);
         }
         // 적군이 우치 공격한 경우에는 우치 기술 버튼만 비활성화
         else if(!_character.IsAlly)
