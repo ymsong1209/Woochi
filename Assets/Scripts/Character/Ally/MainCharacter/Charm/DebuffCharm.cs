@@ -12,15 +12,20 @@ public class DebuffCharm : BaseCharm
 
     public override void Activate(BaseCharacter opponent)
     {
-        StatDeBuff buff = GetComponent<StatDeBuff>();
+        if(opponent == null) return;
+        GameObject buffGameObject = new GameObject("DeBuffObject");
+        buffGameObject.AddComponent(typeof(StatDeBuff));
+        StatDeBuff buff = buffGameObject.GetComponent<StatDeBuff>();
         buff.BuffName = CharmName;
         buff.BuffDurationTurns = Turns;
         buff.changeStat = changeStat;
-        BaseCharacter caster = BattleManager.GetInstance.currentCharacter;
-        if (caster.IsMainCharacter)
+        BaseCharacter caster = BattleManager.GetInstance.Allies.GetWoochi();
+        if (caster == opponent)
         {
-            opponent.ApplyBuff(caster, opponent, buff);
+            buff.BuffDurationTurns++;
         }
+        
+        opponent.ApplyBuff( caster,opponent, buff);
     }
 
         public override void SetCharmDescription(TextMeshProUGUI text)

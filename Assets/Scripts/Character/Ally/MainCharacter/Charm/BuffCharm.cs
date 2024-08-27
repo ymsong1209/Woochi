@@ -14,15 +14,19 @@ public class BuffCharm : BaseCharm
 
     public override void Activate(BaseCharacter opponent)
     {
-        StatBuff buff = GetComponent<StatBuff>();
+        if(opponent == null) return;
+        GameObject buffGameObject = new GameObject("BuffObject");
+        buffGameObject.AddComponent(typeof(StatBuff));
+        StatBuff buff = buffGameObject.GetComponent<StatBuff>();
         buff.BuffName = CharmName;
         buff.BuffDurationTurns = Turns;
         buff.changeStat = changeStat;
         BaseCharacter caster = BattleManager.GetInstance.Allies.GetWoochi();
-        if (caster.IsMainCharacter)
+        if (caster == opponent)
         {
             buff.BuffDurationTurns++;
         }
+        
         opponent.ApplyBuff( caster,opponent, buff);
         
     }

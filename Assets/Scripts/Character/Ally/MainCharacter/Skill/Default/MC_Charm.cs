@@ -1,5 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MC_Charm : BaseSkill
@@ -9,6 +9,7 @@ public class MC_Charm : BaseSkill
 
    public override void ActivateSkill(BaseCharacter opponent)
    {
+       if (opponent == null) return;
        ActivateCharm(opponent);
        PlayAnimation(opponent);
        RemoveCharm();
@@ -17,49 +18,91 @@ public class MC_Charm : BaseSkill
    private void ActivateCharm(BaseCharacter opponent)
    {
        BaseCharacter mainCharacter = BattleManager.GetInstance.currentCharacter;
-       BaseCharm InstantiatedCharm = Instantiate(charm, mainCharacter.transform);
-    
-       if (InstantiatedCharm.CharmTargetType == CharmTargetType.Singular)
+
+       if (!charm)
        {
-           InstantiatedCharm.Activate(opponent);
+           Debug.LogError("No Charm Selected");
+           return;
        }
-       else if (InstantiatedCharm.CharmTargetType == CharmTargetType.SingularWithSelf)
+
+       if (!opponent)
        {
-           InstantiatedCharm.Activate(opponent);
+           Debug.LogError("No Opponent");
+           return;
+       }
+       SkillRadius = charm.CharmRadius;
+       if (charm.CharmTargetType == CharmTargetType.Singular)
+       {
+           charm.Activate(opponent);
+       }
+       else if (charm.CharmTargetType == CharmTargetType.SingularWithSelf)
+       {
+           charm.Activate(opponent);
            if (opponent != mainCharacter)
            {
-               BaseCharm newCharmInstance = Instantiate(charm, mainCharacter.transform);
-               newCharmInstance.Activate(mainCharacter);
+               charm.Activate(mainCharacter);
            }
        }
-       else if (InstantiatedCharm.CharmTargetType == CharmTargetType.Multiple)
+       else if (charm.CharmTargetType == CharmTargetType.Multiple)
        {
-           for (int i = 0; i < InstantiatedCharm.CharmRadius.Length; ++i)
+           ApplyMultiple();
+       }
+   }
+
+   protected override void ApplyMultiple()
+   {
+       Formation allies = BattleManager.GetInstance.Allies;
+       Formation enemies = BattleManager.GetInstance.Enemies;
+        
+       List<BaseCharacter> receivers = new List<BaseCharacter>();
+       for (int i = 0; i < charm.CharmRadius.Length; ++i)
+       {
+           if (i<4 && charm.CharmRadius[i])
            {
-               if (InstantiatedCharm.CharmRadius[i])
+               BaseCharacter ally = allies.formation[i];
+               if (!ally) continue;
+                
+               //아군의 Size가 2인 경우
+               if (ally.Size == 2)
                {
-                   BaseCharacter receiver = BattleManager.GetInstance.GetCharacterFromIndex(i);
-                   BaseCharm newCharmInstance = Instantiate(charm, receiver.transform);
-                   newCharmInstance.Activate(receiver);
+                   // 이미 Receivers 리스트에 동일한 GameObject를 참조하는 BaseCharacter가 없는 경우에만 추가
+                   if (!receivers.Any(e => e.gameObject == ally.gameObject))
+                   {
+                       receivers.Add(ally);
+                   }
+               }
+               else
+               {
+                   // Size가 1인 Ally은 그냥 추가
+                   receivers.Add(ally);
                }
            }
+           else if (i is >= 4 and < 8 && charm.CharmRadius[i])
+           {
+               BaseCharacter enemy = enemies.formation[i - 4];
+               if(!enemy) continue;
+
+               //적의 Size가 2인 경우
+               if(enemy.Size == 2)
+               {
+                   // 이미 Receivers 리스트에 동일한 GameObject를 참조하는 BaseCharacter가 없는 경우에만 추가
+                   if (!receivers.Any(e => e.gameObject == enemy.gameObject))
+                   {
+                       receivers.Add(enemy);
+                   }
+               }
+               else
+               {
+                   // Size가 1인 적은 그냥 추가
+                   receivers.Add(enemy);
+               }
+
+           }
        }
-       // else if (InstantiatedCharm.CharmTargetType == CharmTargetType.MultipleWithSelf)
-       // {
-       //     InstantiatedCharm.Activate(mainCharacter);
-       //     for (int i = 0; i < InstantiatedCharm.CharmRadius.Length; ++i)
-       //     {
-       //         if (InstantiatedCharm.CharmRadius[i])
-       //         {
-       //             BaseCharacter receiver = BattleManager.GetInstance.GetCharacterFromIndex(i);
-       //             if (receiver != mainCharacter)
-       //             {
-       //                 BaseCharm newCharmInstance = Instantiate(charm, receiver.transform);
-       //                 newCharmInstance.Activate(receiver);
-       //             }
-       //         }
-       //     }
-       // }
+       foreach (BaseCharacter opponent in receivers)
+       {
+           charm.Activate(opponent);
+       }
    }
 
    
@@ -94,21 +137,70 @@ public class MC_Charm : BaseSkill
        }
        else if (charm.CharmTargetType == CharmTargetType.Multiple)
        {
-           for (int i = 0; i < charm.CharmRadius.Length; ++i)
+           PlayMultipleOpponentAnimation();
+       }
+   }
+
+   private void PlayMultipleOpponentAnimation()
+   {
+       Formation allies = BattleManager.GetInstance.Allies;
+       Formation enemies = BattleManager.GetInstance.Enemies;
+        
+       List<BaseCharacter> receivers = new List<BaseCharacter>();
+       for (int i = 0; i < charm.CharmRadius.Length; ++i)
+       {
+           if (i<4 && charm.CharmRadius[i])
            {
-               if (charm.CharmRadius[i])
+               BaseCharacter ally = allies.formation[i];
+               if (!ally) continue;
+                
+               //아군의 Size가 2인 경우
+               if (ally.Size == 2)
                {
-                   BaseCharacter receiver = BattleManager.GetInstance.GetCharacterFromIndex(i);
-                   if (charm.CharmType == CharmType.Buff)
+                   // 이미 Receivers 리스트에 동일한 GameObject를 참조하는 BaseCharacter가 없는 경우에만 추가
+                   if (!receivers.Any(e => e.gameObject == ally.gameObject))
                    {
-                       //TODO : 상대방 버프 받는 애니메이션 재생
-                       receiver.onPlayAnimation?.Invoke(AnimationType.Idle);
-                   }
-                   else if (charm.CharmType == CharmType.DeBuff|| charm.CharmType == CharmType.CleanseSingleDebuff)
-                   { 
-                       receiver.onPlayAnimation?.Invoke(AnimationType.Damaged);
+                       receivers.Add(ally);
                    }
                }
+               else
+               {
+                   // Size가 1인 Ally은 그냥 추가
+                   receivers.Add(ally);
+               }
+           }
+           else if (i is >= 4 and < 8 && charm.CharmRadius[i])
+           {
+               BaseCharacter enemy = enemies.formation[i - 4];
+               if(!enemy) continue;
+
+               //적의 Size가 2인 경우
+               if(enemy.Size == 2)
+               {
+                   // 이미 Receivers 리스트에 동일한 GameObject를 참조하는 BaseCharacter가 없는 경우에만 추가
+                   if (!receivers.Any(e => e.gameObject == enemy.gameObject))
+                   {
+                       receivers.Add(enemy);
+                   }
+               }
+               else
+               {
+                   // Size가 1인 적은 그냥 추가
+                   receivers.Add(enemy);
+               }
+
+           }
+       }
+       foreach (BaseCharacter opponent in receivers)
+       {
+           if (charm.CharmType == CharmType.Buff || charm.CharmType == CharmType.CleanseSingleDebuff)
+           {
+               //TODO : 상대방 버프 받는 애니메이션 재생
+               opponent.onPlayAnimation?.Invoke(AnimationType.Idle);
+           }
+           else if (charm.CharmType == CharmType.DeBuff)
+           { 
+               opponent.onPlayAnimation?.Invoke(AnimationType.Damaged);
            }
        }
    }
