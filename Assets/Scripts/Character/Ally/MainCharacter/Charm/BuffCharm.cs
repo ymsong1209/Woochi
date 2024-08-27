@@ -18,11 +18,12 @@ public class BuffCharm : BaseCharm
         buff.BuffName = CharmName;
         buff.BuffDurationTurns = Turns;
         buff.changeStat = changeStat;
-        BaseCharacter caster = BattleManager.GetInstance.currentCharacter;
+        BaseCharacter caster = BattleManager.GetInstance.Allies.GetWoochi();
         if (caster.IsMainCharacter)
         {
-            opponent.ApplyBuff( caster,opponent, buff);
+            buff.BuffDurationTurns++;
         }
+        opponent.ApplyBuff( caster,opponent, buff);
         
     }
 

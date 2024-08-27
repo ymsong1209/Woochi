@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections.Generic;
 
 [DisallowMultipleComponent]
 public class GameManager : SingletonMonobehaviour<GameManager>
@@ -12,6 +14,10 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     [Header("Sound")]
     public SoundBGM soundBGM;
+
+    [SerializeField] private bool useDebugCharms = false;
+    [SerializeField] private List<int> charmIDs = new List<int>(5);
+    
 
     protected override void Awake()
     {
@@ -60,5 +66,8 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     #region Getter Setter
     public Library Library => library;
+    public bool UseDebugCharms => useDebugCharms;
+    public List<int> Charms => charmIDs;
+
     #endregion
 }

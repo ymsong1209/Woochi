@@ -44,22 +44,22 @@ public class MC_Charm : BaseSkill
                }
            }
        }
-       else if (InstantiatedCharm.CharmTargetType == CharmTargetType.MultipleWithSelf)
-       {
-           InstantiatedCharm.Activate(mainCharacter);
-           for (int i = 0; i < InstantiatedCharm.CharmRadius.Length; ++i)
-           {
-               if (InstantiatedCharm.CharmRadius[i])
-               {
-                   BaseCharacter receiver = BattleManager.GetInstance.GetCharacterFromIndex(i);
-                   if (receiver != mainCharacter)
-                   {
-                       BaseCharm newCharmInstance = Instantiate(charm, receiver.transform);
-                       newCharmInstance.Activate(receiver);
-                   }
-               }
-           }
-       }
+       // else if (InstantiatedCharm.CharmTargetType == CharmTargetType.MultipleWithSelf)
+       // {
+       //     InstantiatedCharm.Activate(mainCharacter);
+       //     for (int i = 0; i < InstantiatedCharm.CharmRadius.Length; ++i)
+       //     {
+       //         if (InstantiatedCharm.CharmRadius[i])
+       //         {
+       //             BaseCharacter receiver = BattleManager.GetInstance.GetCharacterFromIndex(i);
+       //             if (receiver != mainCharacter)
+       //             {
+       //                 BaseCharm newCharmInstance = Instantiate(charm, receiver.transform);
+       //                 newCharmInstance.Activate(receiver);
+       //             }
+       //         }
+       //     }
+       // }
    }
 
    
@@ -92,8 +92,7 @@ public class MC_Charm : BaseSkill
                opponent?.onPlayAnimation?.Invoke(AnimationType.Damaged);
            }
        }
-       else if (charm.CharmTargetType == CharmTargetType.Multiple ||
-                charm.CharmTargetType == CharmTargetType.MultipleWithSelf)
+       else if (charm.CharmTargetType == CharmTargetType.Multiple)
        {
            for (int i = 0; i < charm.CharmRadius.Length; ++i)
            {

@@ -52,10 +52,10 @@ public class BaseCharm : MonoBehaviour
         {
             description += GetCharmRadiusDescription(true);
         }
-        else if (charmTargetType == CharmTargetType.MultipleWithSelf)
-        {
-            description += GetCharmRadiusDescription(true);
-        }
+        // else if (charmTargetType == CharmTargetType.MultipleWithSelf)
+        // {
+        //     description += GetCharmRadiusDescription(true);
+        // }
 
         text.text = description;
     }

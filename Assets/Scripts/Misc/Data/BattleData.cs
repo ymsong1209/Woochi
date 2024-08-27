@@ -5,7 +5,7 @@ public class BattleData
 {
     public List<int> allies;    // 플레이어(우치)가 소유하고 있는 소환수(우치 자기자신도 포함)
     public int[] formation;     // 전투에 참여할 포메이션(-1은 빈자리)
-    public List<int> charms;        // ��ġ�� �����ϰ� �ִ� ����(5��)
+    public List<int> charms;   // 우치가 소유하고 있는 부적(5개)
 
     public List<CharacterInfoData> characterInfoList;
 
@@ -15,6 +15,10 @@ public class BattleData
         formation = new int[] { 3, 0, 1, -1};   // 호랑이-우치-삼미호 순(시연버전)
         charms = new List<int>(5);
 
+        if (GameManager.GetInstance.UseDebugCharms)
+        {
+            charms = GameManager.GetInstance.Charms;
+        }
         characterInfoList = new List<CharacterInfoData>();
     }
 }

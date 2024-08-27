@@ -5,7 +5,7 @@ using System.Collections;
 public static class HelperUtilities
 {
     ///<summary>
-    ///StringÀÌ ºñ¾îÀÖ´ÂÁö È®ÀÎ
+    ///Stringì´ ë¹„ì–´ìˆëŠ”ì§€ í™•ì¸
     ///</summary>
     public static bool ValidateCheckEmptyString(UnityEngine.Object thisObject, string fieldName, string stringToCheck)
     {
@@ -69,7 +69,7 @@ public static class HelperUtilities
 
 
     /// <summary>
-    /// ÀÔ·ÂÀ¸·Î µé¾î¿Â ¼ö°¡ 100 ÀÌÇÏÀÎÁö È®ÀÎ
+    /// ì…ë ¥ìœ¼ë¡œ ë“¤ì–´ì˜¨ ìˆ˜ê°€ 100 ì´í•˜ì¸ì§€ í™•ì¸
     /// </summary>
     public static bool ValidateCheckOverHundred<T>(UnityEngine.Object thisObject, string fieldName, T value) where T : IComparable
     {
@@ -84,7 +84,7 @@ public static class HelperUtilities
     }
 
     /// <summary>
-    /// ÀÔ·ÂÀ¸·Î µé¾î¿Â ¼ö°¡ 0 ¹Ì¸¸ÀÎÁö È®ÀÎ
+    /// ì…ë ¥ìœ¼ë¡œ ë“¤ì–´ì˜¨ ìˆ˜ê°€ 0 ë¯¸ë§Œì¸ì§€ í™•ì¸
     /// </summary>
     public static bool ValidateCheckUnderZero<T>(UnityEngine.Object thisObject, string fieldName, T value) where T : IComparable
     {
@@ -99,7 +99,7 @@ public static class HelperUtilities
     }
 
     /// <summary>
-    /// ÀÔ·ÂÀ¸·Î µé¾î¿Â ¼ö°¡ 1 ÀÌ»óÀÎÁö È®ÀÎ
+    /// ì…ë ¥ìœ¼ë¡œ ë“¤ì–´ì˜¨ ìˆ˜ê°€ 1 ì´ìƒì¸ì§€ í™•ì¸
     /// </summary>
     public static bool ValidateCheckOverOne<T>(UnityEngine.Object thisObject, string fieldName, T value) where T : IComparable
     {
@@ -114,7 +114,7 @@ public static class HelperUtilities
     }
 
     /// <summary>
-    /// ÀÔ·ÂÀ¸·Î µé¾î¿Â ¼ö°¡ 0~100 »çÀÌÀÎÁö È®ÀÎ
+    /// ì…ë ¥ìœ¼ë¡œ ë“¤ì–´ì˜¨ ìˆ˜ê°€ 0~100 ì‚¬ì´ì¸ì§€ í™•ì¸
     /// </summary>
     public static bool ValidateRange0To100<T>(UnityEngine.Object thisObject, string fieldName, T value) where T : IComparable
     {
@@ -130,9 +130,9 @@ public static class HelperUtilities
     }
 
     /// <summary>
-    /// ¾À ÀÌµ¿ : ·Îµù ¾À ¸ÕÀú ÀÌµ¿ ÈÄ ´Ù¸¥ ¾ÀÀ¸·Î ÀÌµ¿ÇÑ´Ù
+    /// ì”¬ ì´ë™ : ë¡œë”© ì”¬ ë¨¼ì € ì´ë™ í›„ ë‹¤ë¥¸ ì”¬ìœ¼ë¡œ ì´ë™í•œë‹¤
     /// </summary>
-    /// <param name="sceneType">Build Setting¿¡ µî·ÏµÇ¾î ÀÖ´Â ¾À ¼ø¼­´ë·Î µ¿ÀÛ</param>
+    /// <param name="sceneType">Build Settingì— ë“±ë¡ë˜ì–´ ìˆëŠ” ì”¬ ìˆœì„œëŒ€ë¡œ ë™ì‘</param>
     public static void MoveScene(SceneType sceneType)
     {
         LoadingScene.LoadScene(sceneType);
@@ -159,22 +159,22 @@ public static class HelperUtilities
     }
 
     /// <summary>
-    /// ºÎÀûÀ» ¾òÀ» ¼ö ÀÖ´ÂÁö
-    /// ¾òÀ» ¼ö ÀÖ´Ù¸é ·£´ıÀ¸·Î ÇÏ³ª ÁÖ°í ¸ø ¾òÀ¸¸é false ¹İÈ¯
+    /// ë¶€ì ì„ ì–»ì„ ìˆ˜ ìˆëŠ”ì§€
+    /// ì–»ì„ ìˆ˜ ìˆë‹¤ë©´ ëœë¤ìœ¼ë¡œ í•˜ë‚˜ ì£¼ê³  ëª» ì–»ìœ¼ë©´ false ë°˜í™˜
     /// </summary>
     public static bool CanGetCharm()
     {
         var charmList = DataCloud.playerData.battleData.charms;
         if(charmList.Count >= 5)
         {
-            ShowRewardToolResult("ºÎÀûÀº 5°³±îÁö¸¸ °¡Áú ¼ö ÀÖ½À´Ï´Ù");
+            ShowRewardToolResult("ë¶€ì ì€ 5ê°œê¹Œì§€ë§Œ ê°€ì§ˆ ìˆ˜ ìˆìŠµë‹ˆë‹¤");
             return false;
         }
 
         int charmCount = GameManager.GetInstance.Library.CharmCount;
         int randomCharmID = UnityEngine.Random.Range(0, charmCount);
         charmList.Add(randomCharmID);
-        ShowRewardToolResult($"{GameManager.GetInstance.Library.GetCharm(randomCharmID).CharmName}À» ¾ò¾ú½À´Ï´Ù");
+        ShowRewardToolResult($"{GameManager.GetInstance.Library.GetCharm(randomCharmID).CharmName}ì„ ì–»ì—ˆìŠµë‹ˆë‹¤");
         return true;
     }
 

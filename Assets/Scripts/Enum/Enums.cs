@@ -61,7 +61,7 @@ public enum CharmTargetType
     Singular,
     Multiple,
     SingularWithSelf,
-    MultipleWithSelf,
+    //MultipleWithSelf,
     End
 }
 
