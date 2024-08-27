@@ -24,13 +24,13 @@ public class MapManager : SingletonMonobehaviour<MapManager>
         {
             GenerateNewMap();
         }
+        StrangeManager.GetInstance.Initialize(config);
     }
     
     private void GenerateNewMap()
     {
         Map map = MapGenerator.GetMap(config);
         CurrentMap = map;
-        StrangeManager.GetInstance.Initialize(config);
         view.ShowMap(map);
     }
 

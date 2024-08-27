@@ -85,7 +85,8 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     BaseBuff ReturnChildBuffExceptStatandCureBuff()
     {
-        if(buffEffect == BuffEffect.StatStrengthen || buffEffect == BuffEffect.StatWeaken || buffEffect == BuffEffect.DotCureByDamage)
+        if(buffEffect == BuffEffect.StatStrengthen || buffEffect == BuffEffect.StatWeaken || buffEffect == BuffEffect.DotCureByDamage ||
+           buffEffect == BuffEffect.ElementalStatStrengthen || buffEffect == BuffEffect.ElementalStatWeaken)
         {
             return null;
         }
