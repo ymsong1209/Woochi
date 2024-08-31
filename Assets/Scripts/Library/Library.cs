@@ -1,7 +1,9 @@
+using System;
 using OneLine;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [CreateAssetMenu(fileName = "Library_", menuName = "Scriptable Objects/Library")]
 public class Library : ScriptableObject
@@ -79,9 +81,35 @@ public class Library : ScriptableObject
         return stranges.FirstOrDefault(entry => entry.ID == id)?.value;
     }
     #endregion
-    
-    
 
+    #region WoochiSkill
+    [SerializeField] private List<WoochiSkillList> woochiSkills;
+
+    public BaseSkill GetSkill(int id)
+    {
+        // id를 통해 skill을 찾아서 반환
+        foreach (var skillEntry in woochiSkills)
+        {
+            foreach (var skillData in skillEntry.SkillDatas)
+            {
+                if (skillData.ID_Basic == id)
+                {
+                    return skillData.skill; // ID_Basic과 일치하는 skill 반환
+                }
+                else if (skillData.ID_Reinforced == id)
+                {
+                    return skillData.reinforcedSkill; // ID_Reinforced와 일치하는 reinforcedSkill 반환
+                }
+            }
+        }
+        
+        Debug.LogWarning($"Skill not found for ID: {id}");
+        return null;
+    }
+    
+    
+    #endregion WoochiSkill
+    
     #region Charm
     [OneLineWithHeader, SerializeField] private List<Entry<BaseCharm>> charms;
 
@@ -131,4 +159,21 @@ public class RewardList
 {
     public RareType rarity;
     public List<Reward> rewards;
+}
+
+[System.Serializable]
+public class WoochiSkillList
+{
+    public SkillElement element;
+    public List<SkillData> SkillDatas;
+}
+
+
+[System.Serializable]
+public class SkillData
+{
+    public int ID_Basic;
+    public BaseSkill skill;
+    public int ID_Reinforced;
+    public BaseSkill reinforcedSkill;
 }

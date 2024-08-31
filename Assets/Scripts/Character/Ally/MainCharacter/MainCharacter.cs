@@ -32,24 +32,35 @@ public class MainCharacter : BaseCharacter
     {
         DeleteCharacterSkill();
         
-        //activeSkills의 size만큼 CharacterStat의 skill을 앞에서부터 가져와서 세팅한다.
-        for(int i = 0; i < activeSkillCheckBox.Count; ++i)
+        for (int i = 0; i < 5; ++i)
         {
-            //먼저 동일한 skillElement가 있는지 확인한다.
-            BaseSkill statskill = characterStat.Skills[i];
-            if(mainCharacterSkills[(int)statskill.SkillSO.SkillElement]){
-               Debug.LogError("동일한 SkillElement가 존재합니다.");
-               continue;
-            }
+            int skillId = DataCloud.playerData.currentskillIDs[i];
+            if (skillId == 0) continue;
             
-            //새로운 스킬 생성후, 초기화
-            BaseSkill newSkill = Instantiate(characterStat.Skills[i], this.transform);
+            BaseSkill skill = GameManager.GetInstance.Library.GetSkill(skillId);
+            BaseSkill newSkill = Instantiate(skill, this.transform);
             newSkill.Initialize(this);
-            if (activeSkillCheckBox[i])
-            {
-                mainCharacterSkills[(int)statskill.SkillSO.SkillElement] = newSkill;
-            }
+            mainCharacterSkills[(int)skill.SkillSO.SkillElement] = newSkill;
         }
+        
+        // //activeSkills의 size만큼 CharacterStat의 skill을 앞에서부터 가져와서 세팅한다.
+        // for(int i = 0; i < activeSkillCheckBox.Count; ++i)
+        // {
+        //     //먼저 동일한 skillElement가 있는지 확인한다.
+        //     BaseSkill statskill = characterStat.Skills[i];
+        //     if(mainCharacterSkills[(int)statskill.SkillSO.SkillElement]){
+        //        Debug.LogError("동일한 SkillElement가 존재합니다.");
+        //        continue;
+        //     }
+        //     
+        //     //새로운 스킬 생성후, 초기화
+        //     BaseSkill newSkill = Instantiate(characterStat.Skills[i], this.transform);
+        //     newSkill.Initialize(this);
+        //     if (activeSkillCheckBox[i])
+        //     {
+        //         mainCharacterSkills[(int)statskill.SkillSO.SkillElement] = newSkill;
+        //     }
+        // }
     }
 
     private void DeleteCharacterSkill()

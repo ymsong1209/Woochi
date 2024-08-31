@@ -15,29 +15,29 @@ MonoBehaviour:
   ID: 0
   portrait: {fileID: 0}
   icon: {fileID: 21300000, guid: 6cfe59e9e5fc33648a564a4c4b4abed6, type: 3}
-  characterName: "\uC804\uC6B0\uCE58"
-  size: 0
+  characterName: "\uC6B0\uCE58"
+  size: 1
   cost: 0
   baseStat:
-    maxHealth: 0
-    speed: 0
-    defense: 0
-    crit: 0
+    maxHealth: 36
+    speed: 8
+    defense: 1
+    crit: 5
     accuracy: 0
-    evasion: 0
-    resist: 0
-    minStat: 0
-    maxStat: 0
+    evasion: 5
+    resist: 20
+    minStat: 8
+    maxStat: 13
   levelUpStat:
-    maxHealth: 0
-    speed: 0
-    defense: 0
-    crit: 0
-    accuracy: 0
-    evasion: 0
-    resist: 0
-    minStat: 0
-    maxStat: 0
+    maxHealth: 12
+    speed: 2
+    defense: 1
+    crit: 1
+    accuracy: 2
+    evasion: 1
+    resist: 2
+    minStat: 3
+    maxStat: 3
   rewardStat:
     maxHealth: 0
     speed: 0
@@ -54,10 +54,8 @@ MonoBehaviour:
     exp: 0
     plusExp: 0
   baseHealth:
-    maxHealth: 0
-    curHealth: 0
+    maxHealth: 36
+    curHealth: 36
     shield: 0
-  skills:
-  - {fileID: -4761694706262891841, guid: d9b0f46b49e2f654b9cf06b29cc77d63, type: 3}
-  - {fileID: -8388043650331442943, guid: 7fa68b21b7f21e2468e10172c5a1f9e1, type: 3}
-  - {fileID: 8772081501130508669, guid: 7a076853c85b2314f875853a36ecad84, type: 3}
+  skills: []
+  reinforcedSkills: []

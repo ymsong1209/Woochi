@@ -30,19 +30,19 @@ public class RewardToolPopup : MonoBehaviour
         switch(reward.rarity)
         {
             case RareType.Lowest:
-                gradeTxt.text = "ÃÖÇÏ";
+                gradeTxt.text = "ìµœí•˜";
                 break;
             case RareType.Low:
-                gradeTxt.text = "ÇÏ";
+                gradeTxt.text = "í•˜";
                 break;
             case RareType.Middle:
-                gradeTxt.text = "Áß";
+                gradeTxt.text = "ì¤‘";
                 break;
             case RareType.High:
-                gradeTxt.text = "»ó";
+                gradeTxt.text = "ìƒ";
                 break;
             case RareType.Highest:
-                gradeTxt.text = "ÃÖ»ó";
+                gradeTxt.text = "ìµœìƒ";
                 break;
         }
     }   

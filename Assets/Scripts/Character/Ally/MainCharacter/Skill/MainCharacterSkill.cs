@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,24 +6,18 @@ using UnityEngine;
 public class MainCharacterSkill : BaseSkill
 {
     [SerializeField] protected int requiredSorceryPoints;
+    [SerializeField] protected int rarity;
     
-    public int RequiredSorceryPoints
-    {
-        get
-        {
-            return requiredSorceryPoints;
-        }
-    }
 
     public override void ActivateSkill(BaseCharacter _Opponent)
     {
         base.ActivateSkill(_Opponent);
 
-        // µµ¼ú °¨¼Ò Ã³¸®
+        // ë„ìˆ  ê°ì†Œ ì²˜ë¦¬
         MainCharacter woochi = SkillOwner as MainCharacter;
         if(woochi == null)
         {
-            Debug.LogError("¿ìÄ¡°¡ ¾Æ´Ô");
+            Debug.LogError("ìš°ì¹˜ê°€ ì•„ë‹˜");
             return;
         }
 
@@ -33,4 +28,8 @@ public class MainCharacterSkill : BaseSkill
         var animation = SkillOwner.anim as MainCharacterAnimation;
         animation.ShowElement(SkillSO.SkillElement);
     }
+
+    public int RequiredSorceryPoints => requiredSorceryPoints;
+    public int Rarity => rarity;
+
 }
