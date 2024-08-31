@@ -14,20 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1002
   portrait: {fileID: 0}
-  icon: {fileID: 21300000, guid: 8ebeabbedcae9af448b9fbfdee47a27c, type: 3}
-  characterName: 
-  size: 0
-  cost: 0
+  icons:
+  - {fileID: 21300000, guid: 160c60a0dce785d4cabddc40b0d46bd1, type: 3}
+  - {fileID: 21300000, guid: 100c65ba8bec87042841c3ee5342bd32, type: 3}
+  - {fileID: 21300000, guid: e3bc270b3fb56a14db6cf62e0ae442bc, type: 3}
+  characterName: "\uBD88\uC0AC\uBCD1"
+  size: 1
+  cost: 1
   baseStat:
-    maxHealth: 0
-    speed: 0
-    defense: 0
-    crit: 0
-    accuracy: 0
-    evasion: 0
-    resist: 0
-    minStat: 0
-    maxStat: 0
+    maxHealth: 18
+    speed: 3
+    defense: 1
+    crit: 3
+    accuracy: 1
+    evasion: 2
+    resist: 10
+    minStat: 2
+    maxStat: 7
   levelUpStat:
     maxHealth: 0
     speed: 0
@@ -54,8 +57,9 @@ MonoBehaviour:
     exp: 0
     plusExp: 0
   baseHealth:
-    maxHealth: 0
-    curHealth: 0
+    maxHealth: 18
+    curHealth: 18
     shield: 0
   skills:
   - {fileID: -2337395321961348506, guid: f1d348812eea17e44ab0b95df51ba5e6, type: 3}
+  reinforcedSkills: []

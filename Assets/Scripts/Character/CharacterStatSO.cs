@@ -15,7 +15,7 @@ public class CharacterStatSO : ScriptableObject
     [Tooltip("ID만 입력해주면 나머지는 자동으로 채워집니다.")]
     public int ID;              
     public Sprite portrait;
-    public Sprite icon;
+    public Sprite[] icons = new Sprite[3];
 
     [ReadOnly] public string characterName;
     [ReadOnly] public int size;

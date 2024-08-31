@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 2
   portrait: {fileID: 21300000, guid: b549cdcd96833fc4292c3ddad663c744, type: 3}
-  icon: {fileID: 21300000, guid: f7195edb222a2ff41a544f147475b45c, type: 3}
+  icons:
+  - {fileID: 21300000, guid: f7195edb222a2ff41a544f147475b45c, type: 3}
+  - {fileID: 21300000, guid: 38067ff8fa1c93e4583b89c52052095d, type: 3}
+  - {fileID: 21300000, guid: aca8e74914f0a2a4ba54ea3b43d8073b, type: 3}
   characterName: 
   size: 0
   cost: 0

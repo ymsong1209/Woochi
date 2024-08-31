@@ -434,7 +434,7 @@ public class BaseCharacter : MonoBehaviour
     #region Getter Setter
     public int ID => characterStat.ID;
     public Sprite Portrait => characterStat.portrait;
-    public Sprite Icon => characterStat.icon;
+    public Sprite[] Icons => characterStat.icons;
     public string Name => characterStat.characterName;
     public int Size => characterStat.size;
     public int Cost => characterStat.cost;

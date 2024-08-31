@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 5004
   portrait: {fileID: 21300000, guid: dbaf8ce0fbf07d143807a4b5701e050c, type: 3}
-  icon: {fileID: 21300000, guid: a638c094881dc0e44a9ef323aa18b4bc, type: 3}
+  icons:
+  - {fileID: 21300000, guid: 11432abe064a17f4b9ed5bbc92aac349, type: 3}
+  - {fileID: 21300000, guid: 9c7b4ae398f35ba4c91f522e5401ca0e, type: 3}
+  - {fileID: 21300000, guid: dfdd4233d3abcaa4ea939b6b9cf585aa, type: 3}
   characterName: "\uD130\uC90F\uB300\uAC10"
   size: 2
   cost: 4
@@ -61,3 +64,4 @@ MonoBehaviour:
   - {fileID: 8493001182509114943, guid: efad3fef19a760c47b5af52a104f9fe0, type: 3}
   - {fileID: 8029080948700395841, guid: 44c3cdcefe9ca214da95f760128ecc19, type: 3}
   - {fileID: 2880402362071563839, guid: 90c62b36de5dff343846a6b766a61ab1, type: 3}
+  reinforcedSkills: []
