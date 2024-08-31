@@ -60,10 +60,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3401791839515459526, guid: d65a7aefa191b904c8dded1547849368, type: 3}
-      propertyPath: arrow
-      value: 
-      objectReference: {fileID: 8620507179705111926}
     - target: {fileID: 3671869874223877086, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -90,11 +86,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4635307683478757605, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_Size.x
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4635307683478757605, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_Size.y
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4651224405074788822, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalScale.x
@@ -352,8 +348,3 @@ MonoBehaviour:
   isDummy: 0
   isSummoned: 0
   rowOrder: 0
---- !u!1 &8620507179705111926 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6890884974774991358, guid: d65a7aefa191b904c8dded1547849368, type: 3}
-  m_PrefabInstance: {fileID: 2883261415803399304}
-  m_PrefabAsset: {fileID: 0}

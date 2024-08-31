@@ -17,6 +17,28 @@ public class BaseCharacterAnimation : MonoBehaviour
         owner.onPlayAnimation += Play;
     }
 
+    public void ActivateOutline()
+    {
+        body.material.SetFloat("_IsShow", 1);
+    }    
+
+    public void DeactivateOutline()
+    {
+        body.material.SetFloat("_IsShow", 0);
+    }
+
+    public void OnSelected(bool isSelected)
+    {
+        if(isSelected)
+        {
+            body.material.SetFloat("_IsSelected", 1);
+        }
+        else
+        {
+            body.material.SetFloat("_IsSelected", 0);   
+        }
+    }
+    
     public virtual void Play(AnimationType _type)
     {
         if(!owner.IsIdle)
