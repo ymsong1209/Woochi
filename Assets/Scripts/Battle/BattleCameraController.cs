@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering;
 
 public class BattleCameraController : MonoBehaviour
 {
@@ -11,7 +11,7 @@ public class BattleCameraController : MonoBehaviour
     [SerializeField] private Camera focusCamera;
 
     [Header("Post Process")]
-    [SerializeField] private PostProcessVolume postProcessVolume;
+    [SerializeField] private Volume volume;
 
     [Header("Impulse")]
     [SerializeField] private float shakeDuration = 0.5f;
@@ -38,7 +38,7 @@ public class BattleCameraController : MonoBehaviour
         battleBg.SetActive(true);
 
         mainCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("HUD"));
-        postProcessVolume.enabled = true;
+        volume.enabled = true;
 
         Place();
     }
@@ -48,7 +48,7 @@ public class BattleCameraController : MonoBehaviour
         battleBg.SetActive(false);
 
         mainCamera.cullingMask |= 1 << LayerMask.NameToLayer("HUD");
-        postProcessVolume.enabled = false;
+        volume.enabled = false;
 
         foucsCharacters.Clear();
     }
