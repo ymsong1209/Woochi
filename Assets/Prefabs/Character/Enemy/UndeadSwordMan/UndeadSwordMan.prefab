@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 317045070324450805, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 39287bbef3caae34ba9d5cf74d33abcf, type: 2}
+      objectReference: {fileID: 9100000, guid: a38072cf6bcf4174c99baf2ef6085818, type: 2}
     - target: {fileID: 1817454482497125149, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 3675200626947582931, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_Name
       value: UndeadSwordMan
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635307683478757605, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: m_Size.x
+      value: 6.2
       objectReference: {fileID: 0}
     - target: {fileID: 4651224405074788822, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalScale.x
@@ -256,3 +260,5 @@ MonoBehaviour:
   isDummy: 0
   isSummoned: 0
   rowOrder: 0
+  controller1: {fileID: 9100000, guid: 39287bbef3caae34ba9d5cf74d33abcf, type: 2}
+  controller2: {fileID: 9100000, guid: a38072cf6bcf4174c99baf2ef6085818, type: 2}
