@@ -98,14 +98,14 @@ public class BaseCharacter : MonoBehaviour
     public void OnSelected()
     {
         isSelected = !isSelected;
-        HUD.Selected(isSelected);
+        anim.OnSelected(isSelected);
         BattleManager.GetInstance.CharacterSelected(this);
     }
 
     public void InitSelect()
     {
         isSelected = false;
-        HUD.Selected(isSelected);
+        anim.OnSelected(isSelected);
     }
 
     /// <summary>

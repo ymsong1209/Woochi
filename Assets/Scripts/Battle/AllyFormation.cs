@@ -160,7 +160,6 @@ public class AllyFormation : Formation
             if (formation[i] && formation[i].isDummy)
             {
                 formation[i] = null;
-                dummyCharacter.HUD.ActivateArrow(false);
                 dummyCharacter.gameObject.SetActive(false);
             }
         }

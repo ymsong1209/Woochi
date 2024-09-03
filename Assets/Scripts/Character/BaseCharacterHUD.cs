@@ -15,10 +15,6 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
     [SerializeField] private GameObject damageHUD;
     [SerializeField] private TextMeshPro damageTxt;
 
-    [Header("Arrow")]
-    [SerializeField] private GameObject arrow;
-    [SerializeField] private GameObject selectedArrow;
-
     private void Awake()
     {
         owner = GetComponent<BaseCharacter>();
@@ -83,17 +79,6 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
     }
 
     void DeactiveTurn() => turnEffect.SetActive(false);
-
-    public void ActivateArrow(bool isActive)
-    {
-        arrow.SetActive(isActive);
-        selectedArrow.SetActive(false);
-    }
-
-    public void Selected(bool _isSelected)
-    {
-        selectedArrow.SetActive(_isSelected);
-    }
 
     #region 마우스 이벤트
     public void OnPointerEnter(PointerEventData eventData)

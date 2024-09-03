@@ -355,7 +355,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             if(skillRadius[i] && IsCharacterThere(i))
             {
                 BaseCharacter character = GetCharacterFromIndex(i);
-                character.HUD.ActivateArrow(true);
+                character.anim.ActivateOutline();
             }
         }
     }
@@ -392,7 +392,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             {
                 if (character)
                 {
-                    character.HUD.ActivateArrow(false);
+                    character.anim.DeactivateOutline();
                 }
             }
         }
