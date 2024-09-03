@@ -8,6 +8,10 @@ public class PlayerData
 
     // Map Data
     public Map currentMap;
+    
+    // Skill Data
+    public int[] currentskillIDs;
+    public int[,] totalSkillIDs;
 
     // Default
     public int gold = 0;
@@ -23,6 +27,15 @@ public class PlayerData
 
         battleData = new BattleData();
         currentMap = null;
+        currentskillIDs = new int[5];
+        currentskillIDs[0] = 1001;
+        currentskillIDs[1] = 2001;
+        currentskillIDs[2] = 3001;
+        
+        totalSkillIDs = new int[5, 5];
+        totalSkillIDs[0, 0] = 1001;
+        totalSkillIDs[1, 0] = 2001;
+        totalSkillIDs[2, 0] = 3001;
 
         gold = 0;
     }
