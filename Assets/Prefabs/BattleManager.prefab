@@ -48,9 +48,10 @@ MonoBehaviour:
   currentCharacter: {fileID: 0}
   allies: {fileID: 0}
   enemies: {fileID: 0}
+  resultUI: {fileID: 0}
+  turnManager: {fileID: 0}
   allyCards: {fileID: 0}
   abnormal: {fileID: 11400000, guid: 551b024820da5b944a960bd8ff04ccb5, type: 2}
-  reward: {fileID: 0}
   isTest: 0
   testEnemy: 00000000000000000000000000000000
 --- !u!114 &8540004010816379627
@@ -67,6 +68,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
   focusCamera: {fileID: 0}
-  postProcessVolume: {fileID: 0}
+  volume: {fileID: 0}
   shakeDuration: 0.5
   shakeAmount: 0.1
+  battleBg: {fileID: 0}

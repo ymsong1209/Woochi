@@ -61,6 +61,7 @@ public class PlayerData
             {
                 info.baseStat = new Stat(newCharacterInfo.baseStat);
                 info.health = newCharacterInfo.health;
+                info.level = newCharacterInfo.level;
                 return;
             }
         }
