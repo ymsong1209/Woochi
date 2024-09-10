@@ -12,7 +12,6 @@ public class WoochiAction_Summon : WoochiActionButton
     public override void Activate()
     {
         base.Activate();
-        icon.color = Color.white;
 
         allyUI.gameObject.SetActive(true);
         allyUI.SetInteractable(true);
@@ -22,7 +21,6 @@ public class WoochiAction_Summon : WoochiActionButton
     public override void Deactivate()
     {
         base.Deactivate();
-        icon.color = Color.grey;
 
         allyUI.gameObject.SetActive(false);
         allyUI.SetInteractable(false);

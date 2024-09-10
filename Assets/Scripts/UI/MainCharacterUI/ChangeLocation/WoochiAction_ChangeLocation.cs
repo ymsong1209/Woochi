@@ -5,7 +5,6 @@ public class WoochiAction_ChangeLocation : WoochiActionButton
     public override void Activate()
     {
         base.Activate();
-        icon.color = Color.white;
 
         SelectSkill();
     }
@@ -13,7 +12,6 @@ public class WoochiAction_ChangeLocation : WoochiActionButton
     public override void Deactivate() 
     { 
         base.Deactivate();
-        icon.color = Color.grey;
 
         BattleManager.GetInstance.InitSelect();
     }
