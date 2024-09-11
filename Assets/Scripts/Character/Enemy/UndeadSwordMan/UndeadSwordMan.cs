@@ -1,13 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
+
 
 public class UndeadSwordMan : BaseEnemy
 {
-    public AnimatorController controller1;
-    public AnimatorController controller2;
+    public RuntimeAnimatorController  controller1;
+    public RuntimeAnimatorController  controller2;
 
     private void Start()
     {
