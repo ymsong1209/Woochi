@@ -52,7 +52,7 @@ public class BaseSkill : MonoBehaviour
     /// <summary>
     /// 자신이 가지고 있는 SkillSO 정보를 이용해 BaseSkill을 초기화
     /// </summary>
-    public void Initialize(BaseCharacter owner)
+    public virtual void Initialize(BaseCharacter owner)
     {
         skillOwner = owner;
         skillName = skillSO.SkillName;
@@ -74,6 +74,11 @@ public class BaseSkill : MonoBehaviour
     public virtual void CheckTurnStart()
     {
 
+    }
+    
+    public virtual void SetSkillDescription(TextMeshProUGUI text)
+    {
+        
     }
 
     public virtual void ActivateSkill(BaseCharacter _Opponent)
@@ -102,6 +107,10 @@ public class BaseSkill : MonoBehaviour
         else if (skillTargetType == SkillTargetType.Multiple)
         { 
             ApplyMultiple();
+        }
+        else if (skillTargetType == SkillTargetType.SingularWithoutSelf)
+        {
+            ApplySkillSingleWithoutSelf(skillResult.Opponent);
         }
         
         foreach(var obj in instantiatedBuffList)
@@ -139,14 +148,14 @@ public class BaseSkill : MonoBehaviour
                 ApplyStat(_opponent, isCrit);
             }
                 break;
-            case SkillType.Special:
+            case SkillType.SpecialNegative:
             {
                 //공격 관련된건 치명타, 명중, 회피, 저항 판정 다함
                 _opponent.onPlayAnimation?.Invoke(AnimationType.Damaged);
                 if (AttackLogic(_opponent, ref isCrit) == false) return;
             }
                 break;
-            case SkillType.SpecialHeal:
+            case SkillType.SpecialPositive:
             {
                 _opponent.onPlayAnimation?.Invoke(AnimationType.Heal);
                 //공격 실패시 버프 적용 안함
@@ -185,11 +194,6 @@ public class BaseSkill : MonoBehaviour
                 Destroy(clonedbuff);
             }
         }
-    }
-
-    public virtual void SetSkillDescription(TextMeshProUGUI text)
-    {
-        
     }
 
     //SkillRadius에 있는 적들 전체에게 스킬 적용
@@ -248,6 +252,15 @@ public class BaseSkill : MonoBehaviour
             ApplySkill(opponent);
         }
     }
+
+    //SkillRadius에 있는 적 중 자신을 제외한 적에게 스킬 적용
+    //자기 자신을 포함하고 싶으면, 재정의해야함.
+    protected virtual void ApplySkillSingleWithoutSelf(BaseCharacter _opponent)
+    {
+        ApplySkill(_opponent);
+    }
+    
+    
     bool AttackLogic(BaseCharacter _opponent, ref bool _iscrit)
     {
         
@@ -382,7 +395,7 @@ public class BaseSkill : MonoBehaviour
                 opponentHealth.Heal((int)Mathf.Round(HealAmount));
             }
             break;
-            case SkillType.Special:
+            default:
             {
                 //특수 스킬은 HP에 영향을 안 미침.
             }

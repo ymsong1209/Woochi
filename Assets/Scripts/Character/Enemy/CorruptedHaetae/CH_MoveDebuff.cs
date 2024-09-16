@@ -27,7 +27,7 @@ public class CH_MoveDebuff : BaseSkill
                     BaseBuff buff = targetBuffIcon.transform.GetChild(j).GetComponent<BaseBuff>();
                     if (buff.BuffType == BuffType.Negative)
                     {
-                        opponent.ApplyBuff(buff.Caster, opponent, buff);
+                        opponent.ApplyBuff(SkillOwner, opponent, buff);
                         SkillOwner.activeBuffs.Remove(buff);
                         negativeBuffFound = true;
                     }

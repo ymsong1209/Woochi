@@ -335,6 +335,13 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         bool[] skillRadius = currentSelectedSkill.SkillRadius;
         for (int i = 0; i < skillRadius.Length; i++)
         {
+            //SingularWithoutSelf는 skill범위에서 자기 자신을 선택 못하게 해야함.
+            if(currentSelectedSkill.SkillTargetType == SkillTargetType.SingularWithoutSelf 
+               && i == GetCharacterIndex(currentSelectedSkill.SkillOwner))
+            {
+                continue;
+            }
+            
             //현재 살아있는 적/아군에게서만 collider활성화
             if(skillRadius[i] && IsCharacterThere(i))
             {
@@ -351,6 +358,13 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         bool[] skillRadius = currentSelectedSkill.SkillRadius;
         for (int i = 0; i < skillRadius.Length; i++)
         {
+            //SingularWithoutSelf는 skill범위에서 자기 자신을 선택 못하게 해야함.
+            if(currentSelectedSkill.SkillTargetType == SkillTargetType.SingularWithoutSelf 
+               && i == GetCharacterIndex(currentSelectedSkill.SkillOwner))
+            {
+                continue;
+            }
+            
             //현재 살아있는 적/아군에게서만 화살표 활성화
             if(skillRadius[i] && IsCharacterThere(i))
             {

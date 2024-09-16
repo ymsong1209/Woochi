@@ -24,7 +24,7 @@ public class Tiger_Roar_P : BaseSkill
         GameObject instantiatedRoarbuff = Instantiate(roarBuffGameObject, transform);
         StatBuff roarBuff = instantiatedRoarbuff.GetComponent<StatBuff>();
         roarBuff.BuffName = "산군의 위엄+";
-        roarBuff.BuffDurationTurns = 4; //버프를 자신에게 걸고 이후 3턴동안 지속
+        roarBuff.BuffDurationTurns = 3;
         roarBuff.ChanceToApplyBuff = 100;
         roarBuff.changeStat.defense = 5;
         SkillOwner.ApplyBuff(SkillOwner,SkillOwner,roarBuff);

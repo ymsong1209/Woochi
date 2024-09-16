@@ -35,7 +35,7 @@ public class Haetae_MoveDebuff : BaseSkill
                     BaseBuff buff = targetBuffIcon.transform.GetChild(j).GetComponent<BaseBuff>();
                     if (buff.BuffType == BuffType.Negative && buff.IsRemovableDuringBattle)
                     {
-                        opponent.ApplyBuff(buff.Caster, opponent, buff);
+                        opponent.ApplyBuff(SkillOwner, opponent, buff);
                         SkillOwner.activeBuffs.Remove(buff);
                         negativeBuffFound = true;
                     }

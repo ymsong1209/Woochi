@@ -25,7 +25,7 @@ public class E_TH_BodySlam : BaseSkill
             GameObject instantiatedStatbuff = Instantiate(statBuffGameObject, transform);
             StatBuff buff = instantiatedStatbuff.GetComponent<StatBuff>();
             buff.BuffName = "예리한 감각";
-            buff.BuffDurationTurns = 3; //2턴동안 지속
+            buff.BuffDurationTurns = 2;
             buff.changeStat.accuracy = 1;
             SkillOwner.ApplyBuff(SkillOwner,SkillOwner,buff);
         }

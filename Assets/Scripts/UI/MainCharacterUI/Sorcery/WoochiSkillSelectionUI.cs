@@ -119,6 +119,11 @@ public class WoochiSkillSelectionUI : MonoBehaviour
     {
         for(int i = 0; i < _skill.SkillRadius.Length; ++i)
         {
+            //SingleWithoutSelf일 경우 자신을 제외한 대상이 존재하는지 확인
+            if(_skill.SkillTargetType == SkillTargetType.SingularWithoutSelf && 
+               i == BattleManager.GetInstance.GetCharacterIndex(_skill.SkillOwner))
+                continue;
+            
             if (_skill.SkillRadius[i] && BattleManager.GetInstance.IsCharacterThere(i))
                 return true;
         }

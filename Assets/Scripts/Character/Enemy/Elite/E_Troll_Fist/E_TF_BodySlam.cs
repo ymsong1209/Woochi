@@ -25,7 +25,7 @@ public class E_TF_BodySlam : BaseSkill
             GameObject instantiatedGritbuff = Instantiate(gritBuffGameObject, transform);
             StatBuff gritbuff = instantiatedGritbuff.GetComponent<StatBuff>();
             gritbuff.BuffName = "씨름꾼의 끈기";
-            gritbuff.BuffDurationTurns = 3; //2턴동안 지속
+            gritbuff.BuffDurationTurns = 2;
             gritbuff.changeStat.defense = 2;
             SkillOwner.ApplyBuff(SkillOwner,SkillOwner,gritbuff);
         }

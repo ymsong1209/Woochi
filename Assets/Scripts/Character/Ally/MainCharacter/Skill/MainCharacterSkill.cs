@@ -5,9 +5,15 @@ using UnityEngine;
 
 public class MainCharacterSkill : BaseSkill
 {
-    [SerializeField] protected int requiredSorceryPoints;
-    [SerializeField] protected int rarity;
-    
+    protected int requiredSorceryPoints;
+    protected int rarity;
+    public override void Initialize(BaseCharacter owner)
+    {
+        base.Initialize(owner);
+        MainCharacterSkillSO mainCharacterSkillSO = SkillSO as MainCharacterSkillSO;
+        requiredSorceryPoints = mainCharacterSkillSO.RequiredSorceryPoints;
+        rarity = mainCharacterSkillSO.Rarity;
+    }
 
     public override void ActivateSkill(BaseCharacter _Opponent)
     {

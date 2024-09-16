@@ -26,6 +26,7 @@ public enum SkillTargetType
 {
     Singular,   //Singular일 경우 skillRadius에 체크된 범위중 하나만 선택 가능
     Multiple,   //Multiple일 경우 skillRadius에 체크된 범위만큼 전체 스킬 적용
+    SingularWithoutSelf, //스킬 범위 내에서 자기 자신 제외하고 고를 수 있음.
     END
 }
 
@@ -33,8 +34,8 @@ public enum SkillType
 {
     Attack,             // 공격 관련
     Heal,               // 힐 관련
-    Special,            // 특수기, 상대 피격 애니메이션
-    SpecialHeal,        // 특수기, 상대 힐 애니메이션
+    SpecialNegative,    // 특수기, 상대 피격 애니메이션
+    SpecialPositive,    // 특수기, 상대 힐 애니메이션
     END
 }
 public enum SkillElement

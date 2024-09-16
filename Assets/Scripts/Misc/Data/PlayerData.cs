@@ -31,11 +31,15 @@ public class PlayerData
         currentskillIDs[0] = 1001;
         currentskillIDs[1] = 2001;
         currentskillIDs[2] = 3001;
+        currentskillIDs[3] = 4001;
+        currentskillIDs[4] = 5001;
         
         totalSkillIDs = new int[5, 5];
         totalSkillIDs[0, 0] = 1001;
         totalSkillIDs[1, 0] = 2001;
         totalSkillIDs[2, 0] = 3001;
+        totalSkillIDs[3, 0] = 4001;
+        totalSkillIDs[4, 0] = 5001;
 
         gold = 0;
     }

@@ -184,7 +184,16 @@ public class BaseCharacter : MonoBehaviour
     /// <returns></returns>
     public BaseBuff ApplyBuff(BaseCharacter caster, BaseCharacter receiver, BaseBuff _buff)
     {
-    
+
+        //자신의 차례일때 자기 자신에게 버프를 적용할 경우 지속시간+1을 줘야함.
+        //자기 자신에게 버프를 주고 턴이 지나가기 때문.
+        if (caster && receiver && caster == receiver && BattleManager.GetInstance.currentCharacter == caster)
+        {
+            if(_buff.BuffDurationTurns != -1)
+            {
+                _buff.BuffDurationTurns++;
+            }
+        }
         //같은 종류가 있는 버프가 활성화되어있는지 먼저 확인
         BaseBuff activeBuff = receiver.FindMatchingBuff(_buff);
 
