@@ -7,7 +7,9 @@ public class BaseCharacterAnimation : MonoBehaviour
 {
     protected BaseCharacter owner;
     protected Animator animator;
-    [SerializeField] protected  SpriteRenderer body;
+    [SerializeField] protected SpriteRenderer body;
+    [SerializeField] protected SpriteRenderer shadow;
+    [SerializeField] protected Sprite[] shadowSprites;      // 0 : Selectable, 1 : Selected
 
     private void Awake()
     {
@@ -19,23 +21,29 @@ public class BaseCharacterAnimation : MonoBehaviour
 
     public void ActivateOutline()
     {
-        body.material.SetFloat("_IsShow", 1);
+        animator.Play("Idle", -1, 0f);
+        animator.speed = 0f;
+
+        shadow.gameObject.SetActive(true);
+        shadow.sprite = shadowSprites[0];
     }    
 
     public void DeactivateOutline()
     {
-        body.material.SetFloat("_IsShow", 0);
+        animator.speed = 1f;
+
+        shadow.gameObject.SetActive(false);
     }
 
     public void OnSelected(bool isSelected)
     {
         if(isSelected)
         {
-            body.material.SetFloat("_IsSelected", 1);
+            shadow.sprite = shadowSprites[1];
         }
         else
         {
-            body.material.SetFloat("_IsSelected", 0);   
+            shadow.sprite = shadowSprites[0];
         }
     }
     

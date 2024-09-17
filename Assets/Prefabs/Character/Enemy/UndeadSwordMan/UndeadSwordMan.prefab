@@ -112,6 +112,18 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.8444493
       objectReference: {fileID: 0}
+    - target: {fileID: 5365637576824019810, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: shadowSprites.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5365637576824019810, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: shadowSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: d0a76138b02965f499e091ac68a9ead2, type: 3}
+    - target: {fileID: 5365637576824019810, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: shadowSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: fc4e503efc75c404494157c600c91894, type: 3}
     - target: {fileID: 5451275638499511753, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.5
