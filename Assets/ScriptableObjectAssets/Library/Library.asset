@@ -126,15 +126,35 @@ MonoBehaviour:
     value: {fileID: 1286108000769628803, guid: e8c72f7b64e905d4993933e6d64ae9b1, type: 3}
   woochiSkills:
   - element: 1
-    SkillDatas: []
+    SkillDatas:
+    - ID_Basic: 1001
+      skill: {fileID: -1268118343889958764, guid: 6e6fdaa97be150743b4b605328423aa9, type: 3}
+      ID_Reinforced: 10001
+      reinforcedSkill: {fileID: -1268118343889958764, guid: acf17f7b036922046a45fa809d68ccca, type: 3}
   - element: 2
-    SkillDatas: []
+    SkillDatas:
+    - ID_Basic: 2001
+      skill: {fileID: 1953586991669575614, guid: fd6cc3e5f7fae554389ff126f4680d8c, type: 3}
+      ID_Reinforced: 20001
+      reinforcedSkill: {fileID: 7089091221124801068, guid: aa96004cb8412794782ad4f3fe3b2cd0, type: 3}
   - element: 3
-    SkillDatas: []
+    SkillDatas:
+    - ID_Basic: 3001
+      skill: {fileID: -2463346941618493175, guid: ba8692c15359e2c4d842acd80f653317, type: 3}
+      ID_Reinforced: 30001
+      reinforcedSkill: {fileID: -986799973224880081, guid: 9e190dd0e251bd649b4de150022862d9, type: 3}
   - element: 4
-    SkillDatas: []
+    SkillDatas:
+    - ID_Basic: 4001
+      skill: {fileID: -2100040010300064849, guid: cece51613b5fd914ba0ac125aa2bc02c, type: 3}
+      ID_Reinforced: 40001
+      reinforcedSkill: {fileID: 5281778700119296059, guid: 3254f9510b9ab524fb79a88d2c1b2c8e, type: 3}
   - element: 5
-    SkillDatas: []
+    SkillDatas:
+    - ID_Basic: 5001
+      skill: {fileID: -3570405001188983029, guid: a4894d88e82225b41933432ed4f4c4d1, type: 3}
+      ID_Reinforced: 50001
+      reinforcedSkill: {fileID: 813391496201783841, guid: 33e6281adfdef6340bf75ecf2b621886, type: 3}
   charms:
   - ID: 0
     value: {fileID: 8207826904893543196, guid: 52721394bc5a118459615907eaa455b0, type: 3}
