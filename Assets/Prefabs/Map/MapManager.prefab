@@ -58,21 +58,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8101efe21e8178d499873bbe2ccd544b, type: 2}
   - {fileID: 11400000, guid: 69079617bac4c494c86d8781aba2fdbf, type: 2}
   background: {fileID: 21300000, guid: afe5435874a31f44382ee1d97ed2e823, type: 3}
-  linePointsCount: 10
-  offsetFromNodes: 0
+  offsetFromNodes: 10
+  lineSpacing: 15
   correction: {x: 50, y: -100}
   visitedColor:
     serializedVersion: 2
     rgba: 4294967295
   lockedColor:
     serializedVersion: 2
-    rgba: 4282795590
+    rgba: 3657433087
   lineVisitedColor:
     serializedVersion: 2
     rgba: 4294967295
   lineLockedColor:
     serializedVersion: 2
-    rgba: 4281216558
+    rgba: 3657433087
   mapObject: {fileID: 0}
   scrollRect: {fileID: 0}
   unitsToPixelsMultiplier: 60

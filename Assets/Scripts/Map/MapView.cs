@@ -19,11 +19,11 @@ public class MapView : MonoBehaviour
     public Sprite background;
 
     [Header("Line Settings")]
-    [Tooltip("Line point count should be > 2 to get smooth color gradients")]
-    [Range(3, 10)]
-    public int linePointsCount = 10;
     [Tooltip("Distance from the node till the line starting point")]
     public float offsetFromNodes = 1f;
+    public float lineSpacing = 10f;
+
+    [Space]
     [Tooltip("보정값")]
     public Vector2 correction = Vector2.zero;
 
@@ -58,11 +58,6 @@ public class MapView : MonoBehaviour
     protected List<LineConnection> lineConnections = new List<LineConnection>();
 
     public Map Map { get; protected set; }
-
-    private void Start()
-    {
-        // mapObject.SetActive(false);
-    }
 
     protected void ClearMap()
     {
@@ -282,7 +277,7 @@ public class MapView : MonoBehaviour
     protected void AddLineConnection(MapNode from, MapNode to)
     {
         if (uiLinePrefab == null) return;
-        UILineRenderer lineRenderer = Instantiate(uiLinePrefab, mapParent.transform, true);
+        UILineRenderer lineRenderer = Instantiate(uiLinePrefab, mapParent.transform, false);
         lineRenderer.transform.SetAsFirstSibling();
         RectTransform fromRT = from.transform as RectTransform;
         RectTransform toRT = to.transform as RectTransform;
@@ -299,11 +294,12 @@ public class MapView : MonoBehaviour
 
         // line renderer with 2 points only does not handle transparency properly:
         List<Vector2> list = new List<Vector2>();
-        for (int i = 0; i < linePointsCount; i++)
+        Vector2 currentPoint = Vector2.zero;
+
+        while (Vector2.Distance(currentPoint, toPoint - fromPoint) > lineSpacing)
         {
-            list.Add(Vector3.Lerp(Vector3.zero, toPoint - fromPoint +
-                                                2 * (fromRT.anchoredPosition - toRT.anchoredPosition).normalized *
-                                                offsetFromNodes, (float)i / (linePointsCount - 1)));
+            currentPoint = Vector2.MoveTowards(currentPoint, toPoint - fromPoint, lineSpacing);
+            list.Add(currentPoint);
         }
 
         lineRenderer.Points = list.ToArray();
