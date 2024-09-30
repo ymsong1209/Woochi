@@ -12,7 +12,7 @@ public class CH_UnholyWater : BaseSkill
         ElementalStatDeBuff elementalDebuff = elementalDebuffGameObject.GetComponent<ElementalStatDeBuff>();
         elementalDebuff.BuffName = "부정한 물";
         elementalDebuff.BuffDurationTurns = 5;
-        elementalDebuff.ChanceToApplyBuff = 100;
+        elementalDebuff.IsAlwaysApplyBuff = true;
         elementalDebuff.Element = SkillElement.Fire;
         elementalDebuff.ChangeStat = -6;
         instantiatedBuffList.Add(elementalDebuffGameObject);

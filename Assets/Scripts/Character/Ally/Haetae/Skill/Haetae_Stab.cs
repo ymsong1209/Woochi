@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// 1,2열중 단일 대상으로 타격
+/// </summary>
 public class Haetae_Stab : BaseSkill
 {
     public override void ActivateSkill(BaseCharacter _Opponent)

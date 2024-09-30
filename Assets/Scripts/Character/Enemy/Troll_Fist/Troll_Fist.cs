@@ -10,13 +10,13 @@ public class Troll_Fist : BaseEnemy
     public override bool CheckTurnEndFromSkillResult(SkillResult result)
     {
         //스킬을 이미 한번 사용했거나 스킬이 성공적으로 적중했을 경우
-        if (skillUsageCount == 1 || result.isHit)
+        if (skillUsageCount == 1 || result.IsAnyHit())
         {
             skillUsageCount = 0;
             return true;
         }
         
-        if (result.isHit == false)
+        if (result.IsAnyHit() == false)
         {
             ++skillUsageCount;
             return false;

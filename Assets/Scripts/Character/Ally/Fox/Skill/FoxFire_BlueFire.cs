@@ -12,7 +12,7 @@ public class FoxFire_BlueFire : BaseSkill
         DotCureByDamageBuff dotCureBuff = dotCureGameObject.GetComponent<DotCureByDamageBuff>();
         dotCureBuff.BuffName = "푸른 불꽃";
         dotCureBuff.BuffDurationTurns = 3;
-        dotCureBuff.ChanceToApplyBuff = 100;
+        dotCureBuff.IsAlwaysApplyBuff = true;
         dotCureBuff.DotCureAmount = 30;
         
         instantiatedBuffList.Add(dotCureGameObject);

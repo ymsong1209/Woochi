@@ -12,7 +12,7 @@ public class Haetae_DisasterImage : BaseSkill
         StatDeBuff statDebuff = statDebuffGameObject.GetComponent<StatDeBuff>();
         statDebuff.BuffName = "죄악환영";
         statDebuff.BuffDurationTurns = 3;
-        statDebuff.ChanceToApplyBuff = 100;
+        statDebuff.IsAlwaysApplyBuff = true;
         statDebuff.changeStat.accuracy = -2;
         statDebuff.changeStat.evasion = -2;
         statDebuff.changeStat.minStat = -2;

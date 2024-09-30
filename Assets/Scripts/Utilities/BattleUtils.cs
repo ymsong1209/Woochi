@@ -113,6 +113,21 @@ public class BattleUtils
         return FindRandomCharacter(enemies, indices);
     }
 
+    public static BaseCharacter FindRandomEnemy(BaseSkill skill)
+    {
+        List<int> checkedIndices = new List<int>();
+        // skillRadius에서 체크된 인덱스만 리스트에 추가
+        for (int i = 4; i < skill.SkillRadius.Length; i++)
+        {
+            if (skill.SkillRadius[i])
+            {
+                checkedIndices.Add(i-4);
+            }
+        }
+
+        return BattleUtils.FindRandomEnemy(checkedIndices.ToArray());
+    }
+
     /// <summary>
     /// 주어진 인덱스에 해당하는 아군 반환
     /// </summary>

@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// 1,2,3,4열중 단일 대상에게 디버프 이동하면서 능력치 상승
+/// </summary>
 public class Haetae_MoveDebuff : BaseSkill
 {
     [SerializeField] private GameObject StatBuffGameObject;
     public override void ActivateSkill(BaseCharacter _Opponent)
     {
         base.ActivateSkill(_Opponent);
-        if (SkillResult.isHit)
+        if (SkillResult.IsAnyHit())
         {
-            TransferBuff(SkillResult.Opponent);
+            TransferBuff(SkillResult.Opponent[0]);
         }
     }
     

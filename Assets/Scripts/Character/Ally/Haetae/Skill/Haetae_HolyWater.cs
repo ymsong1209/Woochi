@@ -13,7 +13,7 @@ public class Haetae_HolyWater : BaseSkill
         ElementalStatDeBuff elementalDebuff = elementalDebuffGameObject.GetComponent<ElementalStatDeBuff>();
         elementalDebuff.BuffName = "억제의 물";
         elementalDebuff.BuffDurationTurns = 2;
-        elementalDebuff.ChanceToApplyBuff = 100;
+        elementalDebuff.IsAlwaysApplyBuff = true;
         elementalDebuff.Element = SkillElement.Fire;
         elementalDebuff.ChangeStat = -3;
         instantiatedBuffList.Add(elementalDebuffGameObject);

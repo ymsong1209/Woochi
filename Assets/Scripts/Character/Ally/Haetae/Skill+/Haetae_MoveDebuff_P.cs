@@ -9,9 +9,9 @@ public class Haetae_MoveDebuff_P : BaseSkill
     public override void ActivateSkill(BaseCharacter _Opponent)
     {
         base.ActivateSkill(_Opponent);
-        if (SkillResult.isHit)
+        if (SkillResult.IsHit(0))
         {
-            TransferBuff(SkillResult.Opponent);
+            TransferBuff(SkillResult.Opponent[0]);
         }
     }
     

@@ -20,14 +20,17 @@ public class Tiger_Roar : BaseSkill
         instantiatedBuffList.Add(statDebuffGameObject);
         
         base.ActivateSkill(_Opponent);
-        
-        GameObject instantiatedRoarbuff = Instantiate(roarBuffGameObject, transform);
-        StatBuff roarBuff = instantiatedRoarbuff.GetComponent<StatBuff>();
-        roarBuff.BuffName = "산군의 위엄";
-        roarBuff.BuffDurationTurns = 3;
-        roarBuff.ChanceToApplyBuff = 100;
-        roarBuff.changeStat.defense = 2;
-        SkillOwner.ApplyBuff(SkillOwner,SkillOwner,roarBuff);
+
+        if (SkillResult.IsAnyHit())
+        {
+            GameObject instantiatedRoarbuff = Instantiate(roarBuffGameObject, transform);
+            StatBuff roarBuff = instantiatedRoarbuff.GetComponent<StatBuff>();
+            roarBuff.BuffName = "산군의 위엄";
+            roarBuff.BuffDurationTurns = 3;
+            roarBuff.IsAlwaysApplyBuff = true;
+            roarBuff.changeStat.defense = 2;
+            SkillOwner.ApplyBuff(SkillOwner,SkillOwner,roarBuff);
+        }
     }
     
     public override void SetSkillDescription(TextMeshProUGUI text)

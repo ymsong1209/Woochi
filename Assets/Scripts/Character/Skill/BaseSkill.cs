@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,18 +12,44 @@ using UnityEngine;
 public class SkillResult
 {
     public BaseCharacter Caster; //스킬을 사용한 캐릭터
-    public BaseCharacter Opponent; //스킬을 적용할 대상
+    public List<BaseCharacter> Opponent = new List<BaseCharacter>(); //스킬을 적용할 대상
     public SkillType type;
-    public bool isHit = false;
-    public bool isCrit = false;
+    public List<bool> isHit = new List<bool>();
+    public List<bool> isCrit = new List<bool>();
 
     public void Init()
     {
-        isHit = false;
-        isCrit = false;
         type = SkillType.Attack;
         Caster = null;
-        Opponent = null;
+        Opponent.Clear();
+        isHit.Clear();
+        isCrit.Clear();
+    }
+
+    public bool IsAnyHit()
+    {
+        foreach (bool hit in isHit)
+        {
+            if (hit) return true;
+        }
+
+        return false;
+    }
+    public bool IsHit(BaseCharacter character)
+    {
+        return isHit[Opponent.IndexOf(character)];
+    }
+    public bool IsHit(int index)
+    {
+        return isHit[index];
+    }
+    public bool IsCrit(BaseCharacter character)
+    {
+        return isCrit[Opponent.IndexOf(character)];
+    }
+    public bool IsCrit(int index)
+    {
+        return isCrit[index];
     }
 }
 
@@ -48,7 +75,7 @@ public class BaseSkill : MonoBehaviour
     private float multiplier;    // 피해량 계수
     private float skillAccuracy; // 스킬 명중 수치
     [SerializeField] private bool isAlwaysHit = false;     // 회피, 명중 무시하고 무조건 명중
-    [SerializeField] private bool isAlwaysApplyBuff = false;// 버프를 걸 확률, 저항 판정 무시하고 무조건 적용
+    
     private SkillResult skillResult = new SkillResult();
 
     /// <summary>
@@ -89,11 +116,14 @@ public class BaseSkill : MonoBehaviour
         skillResult.Caster = skillOwner;
         //아군 보호 스킬등으로 보호 할 수 있음
         //최종적으로 공격해야하는 적 판정
-        skillResult.Opponent = CheckOpponentValid(_Opponent);
-
-        if(skillResult.Opponent == null)
+        BaseCharacter opponent = CheckOpponentValid(_Opponent);
+        
+        if(opponent == null)
         {
             Debug.LogError("opponent is null");
+            skillResult.Opponent.Add(opponent);
+            skillResult.isHit.Add(false);
+            skillResult.isCrit.Add(false);
             return;
         }
 
@@ -102,7 +132,7 @@ public class BaseSkill : MonoBehaviour
         //단일공격인 경우 _opponent한테만 공격 로직 적용
         if (skillTargetType == SkillTargetType.Singular)
         {
-           ApplySkill(skillResult.Opponent);
+            ApplySkill(opponent);
         }
         //전체 공격인 경우 skillradius내부의 모든 인물에게 skill 적용
         //만일 skillradius 내부의 특정 인물에게만 로직 적용시키고 싶으면 ApplyMultiple재정의하기
@@ -112,7 +142,7 @@ public class BaseSkill : MonoBehaviour
         }
         else if (skillTargetType == SkillTargetType.SingularWithoutSelf)
         {
-            ApplySkillSingleWithoutSelf(skillResult.Opponent);
+            ApplySkillSingleWithoutSelf(opponent);
         }
         
         foreach(var obj in instantiatedBuffList)
@@ -121,11 +151,28 @@ public class BaseSkill : MonoBehaviour
         }
         instantiatedBuffList.Clear();
 
-        BattleManager.GetInstance.OnShakeCamera?.Invoke(skillResult.isHit, skillResult.isCrit);
+        bool isHit = false;
+        bool isCrit = false;
+        foreach(bool hit in skillResult.isHit)
+        {
+            if(hit)
+            {
+                isHit = true;
+            }
+        }
+        foreach(bool crit in skillResult.isCrit)
+        {
+            if(crit)
+            {
+                isCrit = true;
+            }
+        }
+        BattleManager.GetInstance.OnShakeCamera?.Invoke(isHit, isCrit);
     }
     
     protected virtual void ApplySkill(BaseCharacter _opponent)
     {
+        skillResult.Opponent.Add(_opponent);
         bool isCrit = false;
 
         switch (skillType)
@@ -143,9 +190,14 @@ public class BaseSkill : MonoBehaviour
                 if (CheckCrit())
                 {
                     isCrit = true;
-                    skillResult.isCrit = true;
+                    skillResult.isCrit.Add(true);
                 }
-                skillResult.isHit = true;
+                else
+                {
+                    skillResult.isCrit.Add(false);
+                }
+
+                skillResult.isHit.Add(true);
                 _opponent.onPlayAnimation?.Invoke(AnimationType.Heal);
                 ApplyStat(_opponent, isCrit);
             }
@@ -187,7 +239,7 @@ public class BaseSkill : MonoBehaviour
             }
 
             // 치명타 여부에 따라 저항 무시 또는 저항 수치 판단
-            if (isCrit || CheckResist(_opponent))
+            if (isCrit || buffToApply.IsAlwaysApplyBuff || CheckResist(_opponent))
             {
                 _opponent.ApplyBuff(skillOwner, _opponent, buffToApply);
             }
@@ -272,8 +324,8 @@ public class BaseSkill : MonoBehaviour
         {
             Debug.Log(skillOwner.ToString() + "uses Crit Skill on "+ skillName + "to "+ _opponent.name.ToString());
             _iscrit = true;
-            skillResult.isHit = true;
-            skillResult.isCrit = true;
+            skillResult.isHit.Add(true);
+            skillResult.isCrit.Add(true);
             ApplyStat(_opponent, true);
             return true;
         }
@@ -282,6 +334,8 @@ public class BaseSkill : MonoBehaviour
         if (CheckAccuracy() == false)
         {
             Debug.Log("Accuracy Failed on" + _opponent.name.ToString());
+            skillResult.isHit.Add(false);
+            skillResult.isCrit.Add(false);
             _opponent.onAttacked(AttackResult.Miss, 0, false);
             return false;
         }
@@ -289,11 +343,14 @@ public class BaseSkill : MonoBehaviour
         if (CheckEvasion(_opponent) == false)
         {
             Debug.Log(_opponent.name.ToString() + "Evaded skill" + skillName);
+            skillResult.isHit.Add(false);
+            skillResult.isCrit.Add(false);
             _opponent.onAttacked(AttackResult.Evasion, 0, false);
             return false;
         }
         
-        skillResult.isHit = true;
+        skillResult.isHit.Add(true);
+        skillResult.isCrit.Add(false);
         Debug.Log( skillOwner.ToString() + "uses Non Crit Skill on " + skillName + "to " + _opponent.name.ToString());
         ApplyStat(_opponent, false);
 
@@ -348,7 +405,7 @@ public class BaseSkill : MonoBehaviour
     /// </summary>
     protected bool CheckApplyBuff(BaseBuff _buff)
     {
-        if (isAlwaysApplyBuff) return true;
+        if (_buff.IsAlwaysApplyBuff) return true;
         int RandomValue = Random.Range(0, 100);
         if (RandomValue <= _buff.ChanceToApplyBuff) return true;
         Debug.Log(_buff.name + "버프 확률 굴림 실패 on" + skillName + "with RandomValue" + RandomValue + ", ChanceToApplyBuff" + _buff.ChanceToApplyBuff);
@@ -361,7 +418,6 @@ public class BaseSkill : MonoBehaviour
     /// </summary>
     protected bool CheckResist(BaseCharacter _opponent)
     {
-        if (isAlwaysApplyBuff) return true;
         int RandomValue = Random.Range(0, 100);
         if (RandomValue > _opponent.FinalStat.resist) return true;
         Debug.Log(_opponent.name + "Resisted skill " + skillName + "with resist" + _opponent.FinalStat.resist + ", RandomValue" + RandomValue);

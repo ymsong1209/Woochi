@@ -5,20 +5,45 @@ using UnityEngine;
 
 public class PoisonBuff : BaseBuff
 {
+    [SerializeField] private int tempPoisonStack = 0;
     [SerializeField] private int poisonStack;
     
     public override int ApplyPostHitBuff(BaseSkill skill)
     {
-        if (skill.SkillSO.SkillType == SkillType.Attack && skill.SkillResult.isHit)
+        int damage = 0;
+        if (!isBuffAppliedThisTurn && skill.SkillSO.SkillType == SkillType.Attack && skill.SkillResult.IsHit(buffOwner))
         {
-            buffOwner.Health.ApplyDamage(poisonStack);
-            buffDurationTurns = 0;
+            damage = poisonStack;
+            buffOwner.Health.ApplyDamage(damage);
+            poisonStack = 0;
+            if (tempPoisonStack == 0)
+            {
+                buffDurationTurns = 0;
+            }
             //버프 제거를 removebuff로 호출하면 TriggerBuffs에서 index오류가 난다.
             //buffOwner.RemoveBuff(this);
         }
 
-       
-        return poisonStack;
+        if (isBuffAppliedThisTurn)
+        {
+            isBuffAppliedThisTurn = false;
+        }
+        if (tempPoisonStack > 0)
+        {
+            poisonStack += tempPoisonStack;
+            tempPoisonStack = 0;
+        }
+        return damage;
+    }
+    
+    public override int ApplyTurnEndBuff()
+    {
+        if (tempPoisonStack > 0)
+        {
+            poisonStack += tempPoisonStack;
+            tempPoisonStack = 0;
+        }
+        return 0;
     }
 
     //화상 스택이 쌓일 경우 지속 시간이 3턴만큼 늘어난다.
@@ -28,7 +53,7 @@ public class PoisonBuff : BaseBuff
         base.buffDurationTurns = -1;
         if (buff)
         {
-            poisonStack += buff.poisonStack;
+            tempPoisonStack += buff.poisonStack;
         }
     }
     

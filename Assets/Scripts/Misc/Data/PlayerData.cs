@@ -30,14 +30,14 @@ public class PlayerData
         currentskillIDs = new int[5];
         currentskillIDs[0] = 1001;
         currentskillIDs[1] = 2002;
-        currentskillIDs[2] = 3001;
+        currentskillIDs[2] = 3002;
         currentskillIDs[3] = 4001;
         currentskillIDs[4] = 5001;
         
         totalSkillIDs = new int[5, 5];
         totalSkillIDs[0, 0] = 1001;
         totalSkillIDs[1, 0] = 2002;
-        totalSkillIDs[2, 0] = 3001;
+        totalSkillIDs[2, 0] = 3002;
         totalSkillIDs[3, 0] = 4001;
         totalSkillIDs[4, 0] = 5001;
 
