@@ -26,6 +26,8 @@ public class Haetae_DisasterImage_P : BaseSkill
     {
         int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
-        text.text = "죄악의 형상+\n" + "대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + "죄악환영+ 부여";
+        text.text = "죄악의 형상+\n" + 
+                    "대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + 
+                    "3턴동안 속도, 회피, 최소, 최대스탯, 속도 -4만큼 부여";
     }
 }

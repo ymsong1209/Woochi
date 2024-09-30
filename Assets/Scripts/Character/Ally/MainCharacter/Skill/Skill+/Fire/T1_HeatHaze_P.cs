@@ -26,6 +26,6 @@ public class T1_HeatHaze_P : MainCharacterSkill
         int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
         text.text = "아지랑이+\n" +
                     "도력 " + requiredSorceryPoints + "을 소모하여\n" +
-                    "우치 자신에게 회피를 6만큼 부여합니다";
+                    "우치 자신에게 회피를 이번 전투동안 6만큼 부여";
     }
 }

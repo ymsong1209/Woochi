@@ -25,6 +25,8 @@ public class Haetae_HolyWater : BaseSkill
     {
         int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
-        text.text = "역치\n" + "대상 전체에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + "억제의 물 부여";
+        text.text = "역치\n" + 
+                    "대상 전체에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + 
+                    "2턴동안 불속성 공격력 -2만큼 부여";
     }
 }

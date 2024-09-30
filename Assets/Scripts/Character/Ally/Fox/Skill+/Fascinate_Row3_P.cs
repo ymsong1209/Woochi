@@ -11,11 +11,11 @@ public class Fascinate_Row3_P : BaseSkill
         GameObject statDebuffPrefab = BuffPrefabList[0];
         GameObject statDebuffGameObject = Instantiate(statDebuffPrefab, transform);
         StatDeBuff statDebuff = statDebuffGameObject.GetComponent<StatDeBuff>();
-        statDebuff.BuffName = "홀리기";
+        statDebuff.BuffName = "홀리기+";
         statDebuff.BuffDurationTurns = 2;
         statDebuff.ChanceToApplyBuff = 100;
-        statDebuff.changeStat.accuracy = -2;
-        statDebuff.changeStat.speed = -2;
+        statDebuff.changeStat.accuracy = -3;
+        statDebuff.changeStat.speed = -3;
         
         instantiatedBuffList.Add(statDebuffGameObject);
         
@@ -25,6 +25,8 @@ public class Fascinate_Row3_P : BaseSkill
     {
         int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
-        text.text = "홀리기(광역)+\n" + "대상 전체에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + "홀림 부여";
+        text.text = "홀리기(광역)+\n" + 
+                    "대상 전체에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + 
+                    "2턴동안 명중, 속도 -3만큼 부여";
     }
 }

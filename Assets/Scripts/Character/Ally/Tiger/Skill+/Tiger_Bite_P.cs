@@ -24,7 +24,10 @@ public class Tiger_Bite_P : BaseSkill
     {
         int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
-        text.text = "물어뜯기+\n" + "대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + "잃은 체력 비례 25%의 추가 데미지\n" + "피해의 50%만큼 회복";
+        text.text = "물어뜯기+\n" + 
+                    "대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + 
+                    "잃은 체력 비례 25%의 추가 데미지\n" + 
+                    "피해의 50%만큼 회복";
     }
     
 }

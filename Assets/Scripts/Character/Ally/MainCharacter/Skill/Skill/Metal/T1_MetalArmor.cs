@@ -32,6 +32,6 @@ public class T1_MetalArmor : MainCharacterSkill
         int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
         text.text = "철갑\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "단일 대상과 우치에게 철갑 버프 부여";
+                    "단일 대상과 우치에게 3턴동안 방어력 2만큼 부여";
     }
 }

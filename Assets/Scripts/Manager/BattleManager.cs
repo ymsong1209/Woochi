@@ -456,17 +456,28 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         yield return new WaitUntil(() => caster.IsIdle);
         
         OnFocusEnd?.Invoke();
-        //적이 살아있으면
-        if (!(receiver.Health.CheckHealthZero() || receiver.IsDead))
+        bool isAnyDead = false;
+        foreach (BaseCharacter skillreceiver in currentSelectedSkill.SkillResult.Opponent)
         {
-            //버프 적용후 사망하면 대기
-            if (!receiver.TriggerBuff(BuffTiming.PostHit,currentSelectedSkill))
+            //적이 살아있으면
+            if (skillreceiver && !(skillreceiver.Health.CheckHealthZero() || skillreceiver.IsDead))
             {
-                yield return new WaitForSeconds(1f);
+                //버프 적용후 사망하면 대기
+                if (!skillreceiver.TriggerBuff(BuffTiming.PostHit,currentSelectedSkill))
+                {
+                    isAnyDead = true;
+                }
+                
             }
+        }
+
+        if (isAnyDead)
+        {
+            yield return new WaitForSeconds(1f);
             allies.CheckDeathInFormation();
             enemies.CheckDeathInFormation();
         }
+        
         OnSkillExecuteFinished?.Invoke();
         isSkillExecuted = true;
     }

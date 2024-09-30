@@ -13,7 +13,7 @@ public class T1_Sharpen_P : MainCharacterSkill
         StatBuff statBuff = statbuffGameObject.GetComponent<StatBuff>();
         statBuff.BuffName = "연마+";
         statBuff.BuffDurationTurns = 1;
-        statBuff.ChanceToApplyBuff = 100;
+        statBuff.IsAlwaysApplyBuff = true;
         statBuff.changeStat.accuracy = 10;
         statBuff.changeStat.crit = 10;
         instantiatedBuffList.Add(statbuffGameObject);
@@ -27,6 +27,6 @@ public class T1_Sharpen_P : MainCharacterSkill
         int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
         text.text = "연마+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "단일 아군 대상에게 연마+ 버프 부여";
+                    "단일 아군 대상에게 1턴동안 명중,치명 10만큼 부여";
     }
 }

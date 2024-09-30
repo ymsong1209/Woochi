@@ -28,6 +28,6 @@ public class T1_MudFloor : MainCharacterSkill
         int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
         text.text = "감탕밭\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "랜덤한 단일 대상에게 진흙투성이 디버프 부여";
+                    "랜덤한 단일 대상에게 2턴동안 속도 -2 부여";
     }
 }

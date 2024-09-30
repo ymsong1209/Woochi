@@ -13,7 +13,7 @@ public class T1_HeatHaze : MainCharacterSkill
         StatBuff statBuff = statBuffGameObject.GetComponent<StatBuff>();
         statBuff.BuffName = "아지랑이";
         statBuff.BuffDurationTurns = -1;
-        statBuff.ChanceToApplyBuff = 100;
+        statBuff.IsAlwaysApplyBuff = true;
         statBuff.changeStat.evasion = 4;
         instantiatedBuffList.Add(statBuffGameObject);
         
@@ -26,6 +26,6 @@ public class T1_HeatHaze : MainCharacterSkill
         int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
         text.text = "아지랑이\n" +
                     "도력 " + requiredSorceryPoints + "을 소모하여\n" +
-                    "우치 자신에게 회피를 4만큼 부여합니다";
+                    "우치 자신에게 회피를 이번 전투동안 4만큼 부여";
     }
 }
