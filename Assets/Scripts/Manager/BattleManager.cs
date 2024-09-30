@@ -34,6 +34,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     public Action OnFocusEnd;
     public Action<BaseCharacter> OnFocusEnter;
     public Action<bool, bool> OnShakeCamera;
+    public Action OnSkillExecuteFinished;
     #endregion
 
     #region 부울 변수
@@ -453,7 +454,20 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             OnCharacterAttacked?.Invoke(receiver, false);
         
         yield return new WaitUntil(() => caster.IsIdle);
+        
         OnFocusEnd?.Invoke();
+        //적이 살아있으면
+        if (!(receiver.Health.CheckHealthZero() || receiver.IsDead))
+        {
+            //버프 적용후 사망하면 대기
+            if (!receiver.TriggerBuff(BuffTiming.PostHit,currentSelectedSkill))
+            {
+                yield return new WaitForSeconds(1f);
+            }
+            allies.CheckDeathInFormation();
+            enemies.CheckDeathInFormation();
+        }
+        OnSkillExecuteFinished?.Invoke();
         isSkillExecuted = true;
     }
     

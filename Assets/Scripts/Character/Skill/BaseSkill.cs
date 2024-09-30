@@ -12,6 +12,7 @@ public class SkillResult
 {
     public BaseCharacter Caster; //스킬을 사용한 캐릭터
     public BaseCharacter Opponent; //스킬을 적용할 대상
+    public SkillType type;
     public bool isHit = false;
     public bool isCrit = false;
 
@@ -19,6 +20,7 @@ public class SkillResult
     {
         isHit = false;
         isCrit = false;
+        type = SkillType.Attack;
         Caster = null;
         Opponent = null;
     }
@@ -336,6 +338,7 @@ public class BaseSkill : MonoBehaviour
         if (isAlwaysHit) return true;
         int RandomValue = Random.Range(0, 100);
         if (RandomValue > _opponent.FinalStat.evasion) return true;
+        Debug.Log(_opponent.name + "Evaded skill " + skillName + "with evasion" + _opponent.FinalStat.evasion + ", RandomValue" + RandomValue);
         return false;
     }
 
@@ -348,6 +351,7 @@ public class BaseSkill : MonoBehaviour
         if (isAlwaysApplyBuff) return true;
         int RandomValue = Random.Range(0, 100);
         if (RandomValue <= _buff.ChanceToApplyBuff) return true;
+        Debug.Log(_buff.name + "버프 확률 굴림 실패 on" + skillName + "with RandomValue" + RandomValue + ", ChanceToApplyBuff" + _buff.ChanceToApplyBuff);
         return false;
     }
 
@@ -360,6 +364,7 @@ public class BaseSkill : MonoBehaviour
         if (isAlwaysApplyBuff) return true;
         int RandomValue = Random.Range(0, 100);
         if (RandomValue > _opponent.FinalStat.resist) return true;
+        Debug.Log(_opponent.name + "Resisted skill " + skillName + "with resist" + _opponent.FinalStat.resist + ", RandomValue" + RandomValue);
         return false;
     }
 

@@ -69,6 +69,17 @@ public class BaseBuff : MonoBehaviour
     {
         return 0;
     }
+    
+    /// <summary>
+    /// 자신이 한대 맞고 나면 적용되는 버프
+    /// hit 애니메이션이 적용된 후에 작동됨.
+    /// 중독 버프 등에 작동
+    /// </summary>
+    /// <returns></returns>
+    public virtual int ApplyPostHitBuff(BaseSkill skill)
+    {
+        return 0;
+    }
 
     /// <summary>
     /// 라운드가 끝날때 적용되는 버프

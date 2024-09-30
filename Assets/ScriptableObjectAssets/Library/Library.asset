@@ -137,6 +137,10 @@ MonoBehaviour:
       skill: {fileID: 1953586991669575614, guid: fd6cc3e5f7fae554389ff126f4680d8c, type: 3}
       ID_Reinforced: 20001
       reinforcedSkill: {fileID: 7089091221124801068, guid: aa96004cb8412794782ad4f3fe3b2cd0, type: 3}
+    - ID_Basic: 2002
+      skill: {fileID: 1178370060157434325, guid: 3cc7b1bdfda7b574e88471d848c58dc2, type: 3}
+      ID_Reinforced: 20002
+      reinforcedSkill: {fileID: 7089091221124801068, guid: aa96004cb8412794782ad4f3fe3b2cd0, type: 3}
   - element: 3
     SkillDatas:
     - ID_Basic: 3001

@@ -241,7 +241,7 @@ public class RewardList
 public class WoochiSkillList
 {
     public SkillElement element;
-    public List<SkillData> SkillDatas;
+    [OneLineWithHeader] public List<SkillData> SkillDatas;
 }
 
 
