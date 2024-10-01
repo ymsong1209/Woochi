@@ -33,6 +33,7 @@ public class SkillSO : ScriptableObject
     [SerializeField] private SkillTargetType    skillTargetType;
     [SerializeField] private SkillElement       skillElement;
     [SerializeField] private int                skillTargetCount = 1;
+    [SerializeField] private int                skillRandomCount = 0;
     /// <summary>
     /// 스킬 적중시 적용시킬 버프 리스트
     /// </summary>
@@ -58,6 +59,7 @@ public class SkillSO : ScriptableObject
     public SkillTargetType SkillTargetType => skillTargetType;
     public SkillElement SkillElement => skillElement;
     public int SkillTargetCount => skillTargetCount;
+    public int SkillRandomCount => skillRandomCount;
     public float BaseMultiplier => baseMultiplier;
 
     public float BaseSkillAccuracy => baseSkillAccuracy;

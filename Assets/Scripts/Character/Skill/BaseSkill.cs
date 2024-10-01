@@ -66,6 +66,7 @@ public class BaseSkill : MonoBehaviour
     private SkillType skillType;
     [SerializeField] private int skillTargetCount = 1;
     private List<GameObject> buffPrefabList = new List<GameObject>();
+    private int skillRandomCount = 0;
     
     /// <summary>
     /// 스킬 적중시 적용시킬 버프 리스트
@@ -89,6 +90,7 @@ public class BaseSkill : MonoBehaviour
         skillRadius = skillSO.SkillRadius;
         skillType = skillSO.SkillType;
         skillTargetCount = skillSO.SkillTargetCount;
+        skillRandomCount = skillSO.SkillRandomCount;
         skillTargetType = skillSO.SkillTargetType;
         multiplier = skillSO.BaseMultiplier;
         skillAccuracy = skillSO.BaseSkillAccuracy;
@@ -143,6 +145,10 @@ public class BaseSkill : MonoBehaviour
         else if (skillTargetType == SkillTargetType.SingularWithoutSelf)
         {
             ApplySkillSingleWithoutSelf(opponent);
+        }
+        else if(skillTargetType == SkillTargetType.Random)
+        {
+            ApplyRandom();
         }
         
         foreach(var obj in instantiatedBuffList)
@@ -313,8 +319,73 @@ public class BaseSkill : MonoBehaviour
     {
         ApplySkill(_opponent);
     }
+
+    //SkillRadius에 있는 적 중 skillRandomCount만큼 랜덤한 적에게 스킬 적용
+    protected virtual void ApplyRandom()
+    {
+        Formation allies = BattleManager.GetInstance.Allies;
+        Formation enemies = BattleManager.GetInstance.Enemies;
+        
+        List<BaseCharacter> receivers = new List<BaseCharacter>();
+        for (int i = 0; i < skillRadius.Length; ++i)
+        {
+            if (i < 4 && skillRadius[i])
+            {
+                BaseCharacter ally = allies.formation[i];
+                if (!ally) continue;
+
+                if (ally.Size == 2)
+                {
+                    if (!receivers.Any(e => e.gameObject == ally.gameObject))
+                    {
+                        receivers.Add(ally);
+                    }
+                }
+                else
+                {
+                    receivers.Add(ally);
+                }
+            }
+            else if (i is >= 4 and < 8 && skillRadius[i])
+            {
+                BaseCharacter enemy = enemies.formation[i - 4];
+                if (!enemy) continue;
+
+                if (enemy.Size == 2)
+                {
+                    if (!receivers.Any(e => e.gameObject == enemy.gameObject))
+                    {
+                        receivers.Add(enemy);
+                    }
+                }
+                else
+                {
+                    receivers.Add(enemy);
+                }
+            }
+        }
+        // 수집된 대상에서 skillRandomCount만큼 랜덤한 대상을 선택
+        int randomCount = Mathf.Min(skillRandomCount, receivers.Count);
     
+        List<BaseCharacter> randomTargets = new List<BaseCharacter>();
+        while (randomTargets.Count < randomCount)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, receivers.Count);
+            BaseCharacter selected = receivers[randomIndex];
+
+            // 이미 선택된 대상은 제외하고, 새로운 대상을 추가
+            if (!randomTargets.Contains(selected))
+            {
+                randomTargets.Add(selected);
+            }
+        }
     
+        // 선택된 대상들에게 스킬 적용
+        foreach (BaseCharacter target in randomTargets)
+        {
+            ApplySkill(target);
+        }
+    }
     bool AttackLogic(BaseCharacter _opponent, ref bool _iscrit)
     {
         
@@ -530,6 +601,7 @@ public class BaseSkill : MonoBehaviour
         get => skillOwner;
         set => skillOwner = value;
     }
+    public int SkillRandomCount => skillRandomCount;
 
     #endregion Getter Setter
 
