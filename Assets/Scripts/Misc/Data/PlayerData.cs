@@ -28,18 +28,18 @@ public class PlayerData
         battleData = new BattleData();
         currentMap = null;
         currentskillIDs = new int[5];
-        currentskillIDs[0] = 1001;
-        currentskillIDs[1] = 2002;
-        currentskillIDs[2] = 3002;
-        currentskillIDs[3] = 4001;
-        currentskillIDs[4] = 5001;
+        currentskillIDs[0] = 11102;
+        currentskillIDs[1] = 11203;
+        currentskillIDs[2] = 1302;
+        currentskillIDs[3] = 11403;
+        currentskillIDs[4] = 1502;
         
         totalSkillIDs = new int[5, 5];
-        totalSkillIDs[0, 0] = 1001;
-        totalSkillIDs[1, 0] = 2002;
-        totalSkillIDs[2, 0] = 3002;
-        totalSkillIDs[3, 0] = 4001;
-        totalSkillIDs[4, 0] = 5001;
+        totalSkillIDs[0, 0] = 11102;
+        totalSkillIDs[1, 0] = 11203;
+        totalSkillIDs[2, 0] = 1302;
+        totalSkillIDs[3, 0] = 11403;
+        totalSkillIDs[4, 0] = 1502;
 
         gold = 0;
     }

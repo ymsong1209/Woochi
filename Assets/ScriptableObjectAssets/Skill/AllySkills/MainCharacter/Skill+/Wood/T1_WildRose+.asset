@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed8a3ff459c3db04db52ae01995cbe12, type: 3}
-  m_Name: T1_WildRose
+  m_Name: T1_WildRose+
   m_EditorClassIdentifier: 
   skillIcon: {fileID: 0}
-  skillName: "\uCC14\uB808\uAF43"
+  skillName: "\uCC14\uB808\uAF43+"
   animType: 3
   skillAvailableRadius: 0101010100000000
   skillRadius: 0000000001010101
@@ -23,7 +23,7 @@ MonoBehaviour:
   skillTargetCount: 1
   bufflist:
   - {fileID: 2569674945298275565, guid: 36461d30c5282b14f984655313365a61, type: 3}
-  baseMultiplier: 40
-  baseSkillAccuracy: 70
+  baseMultiplier: 50
+  baseSkillAccuracy: 80
   requiredSorceryPoints: 40
   rarity: 1

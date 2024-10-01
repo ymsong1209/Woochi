@@ -110,7 +110,7 @@ public class Library : ScriptableObject
     public int GetRandomSkillID()
     {
         int CurRank = BattleManager.GetInstance.Allies.GetWoochi().level.rank;
-        WoochiSkillData data = WoochiSkillData.GetDictionary()[CurRank];
+        WoochiSkillPropabilityData data = WoochiSkillPropabilityData.GetDictionary()[CurRank];
         // 확률에 따른 누적 값 계산
         float totalProbability = data.Lowest + data.Lower + data.Middle + data.Higher + data.Highest;
         // 랜덤 값을 생성 (0부터 totalProbability 사이)

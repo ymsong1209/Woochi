@@ -343,6 +343,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 continue;
             }
             
+            //Self는 skill범위에서 자기 자신만 선택 가능
+            if(currentSelectedSkill.SkillTargetType == SkillTargetType.Self 
+               && i != GetCharacterIndex(currentSelectedSkill.SkillOwner))
+            {
+                continue;
+            }
             //현재 살아있는 적/아군에게서만 collider활성화
             if(skillRadius[i] && IsCharacterThere(i))
             {
@@ -362,6 +368,13 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             //SingularWithoutSelf는 skill범위에서 자기 자신을 선택 못하게 해야함.
             if(currentSelectedSkill.SkillTargetType == SkillTargetType.SingularWithoutSelf 
                && i == GetCharacterIndex(currentSelectedSkill.SkillOwner))
+            {
+                continue;
+            }
+            
+            //Self는 skill범위에서 자기 자신만 선택 가능
+            if(currentSelectedSkill.SkillTargetType == SkillTargetType.Self 
+               && i != GetCharacterIndex(currentSelectedSkill.SkillOwner))
             {
                 continue;
             }
