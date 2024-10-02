@@ -28,18 +28,26 @@ public class PlayerData
         battleData = new BattleData();
         currentMap = null;
         currentskillIDs = new int[5];
-        currentskillIDs[0] = 11102;
-        currentskillIDs[1] = 11203;
-        currentskillIDs[2] = 1302;
-        currentskillIDs[3] = 11403;
-        currentskillIDs[4] = 1502;
+        if(GameManager.GetInstance.UseDebugSkills)
+        {
+            currentskillIDs = GameManager.GetInstance.Skills;
+        }
+        else
+        {
+            currentskillIDs[0] = 1101;
+            currentskillIDs[1] = 1202;
+            currentskillIDs[2] = 1301;
+            currentskillIDs[3] = 1401;
+            currentskillIDs[4] = 1501;
+        }
         
+        //TODO : 도술 두루마리 세팅
         totalSkillIDs = new int[5, 5];
-        totalSkillIDs[0, 0] = 11102;
-        totalSkillIDs[1, 0] = 11203;
-        totalSkillIDs[2, 0] = 1302;
-        totalSkillIDs[3, 0] = 11403;
-        totalSkillIDs[4, 0] = 1502;
+        // totalSkillIDs[0, 0] = 11102;
+        // totalSkillIDs[1, 0] = 11203;
+        // totalSkillIDs[2, 0] = 1302;
+        // totalSkillIDs[3, 0] = 11403;
+        // totalSkillIDs[4, 0] = 1502;
 
         gold = 0;
     }

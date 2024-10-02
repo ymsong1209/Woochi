@@ -147,6 +147,10 @@ MonoBehaviour:
       skill: {fileID: -7934252375739550977, guid: a51d36600dab56b4598c0621be3b348c, type: 3}
       ID_Reinforced: 12102
       reinforcedSkill: {fileID: 8577234607722557872, guid: 31bf110386bfcf2408358e42aefe4085, type: 3}
+    - ID_Basic: 3101
+      skill: {fileID: 6523777183927934604, guid: c59ebc91fdfb69249a8ecbfee706f627, type: 3}
+      ID_Reinforced: 13101
+      reinforcedSkill: {fileID: -6665641920178341981, guid: c409df6fdc0b5774bbb63d1fe38cf5ab, type: 3}
   - element: 2
     SkillDatas:
     - ID_Basic: 1201
@@ -165,6 +169,14 @@ MonoBehaviour:
       skill: {fileID: -8732754991505660111, guid: 3e1af883ec65dc7458915d277c3aa8c2, type: 3}
       ID_Reinforced: 12201
       reinforcedSkill: {fileID: 2335301575685293132, guid: 1935d1ca1fcb6f14f8986981ccfb3819, type: 3}
+    - ID_Basic: 3201
+      skill: {fileID: -3384474412448125564, guid: 4192982b1e0ddbd4b84ff190920cf57d, type: 3}
+      ID_Reinforced: 13201
+      reinforcedSkill: {fileID: -2059129675571520677, guid: 131c199d09bf30245a9066f8db09c619, type: 3}
+    - ID_Basic: 3202
+      skill: {fileID: -175087905521543905, guid: cbee3c32cd652e34bb24d470d9810ba2, type: 3}
+      ID_Reinforced: 13202
+      reinforcedSkill: {fileID: -8307859791143494137, guid: 6ef052090c126d6408213b1dfdfc2889, type: 3}
   - element: 3
     SkillDatas:
     - ID_Basic: 1301

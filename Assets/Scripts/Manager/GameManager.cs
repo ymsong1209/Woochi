@@ -17,7 +17,8 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     [SerializeField] private bool useDebugCharms = false;
     [SerializeField] private List<int> charmIDs = new List<int>(5);
-    
+    [SerializeField] private bool useDebugSkills = false;
+    [SerializeField] private int[] skillIDs = new int[5];
 
     protected override void Awake()
     {
@@ -68,6 +69,8 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     public Library Library => library;
     public bool UseDebugCharms => useDebugCharms;
     public List<int> Charms => charmIDs;
+    public bool UseDebugSkills => useDebugSkills;
+    public int[] Skills => skillIDs;
 
     #endregion
 }
