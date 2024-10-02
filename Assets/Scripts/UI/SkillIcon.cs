@@ -23,7 +23,7 @@ public class SkillIcon : MonoBehaviour, ITooltipiable
     {
         canInteract = true;
         BattleManager.GetInstance.OnFocusStart += () => SetCanInteract(false);
-        BattleManager.GetInstance.OnFocusEnd += () => SetCanInteract(true);
+        BattleManager.GetInstance.OnSkillExecuteFinished += () => SetCanInteract(true);
     }
 
     private void SetCanInteract(bool value)

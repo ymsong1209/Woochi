@@ -10,11 +10,10 @@ using TMPro;
 /// </summary>
 public class TailFire_Melee_P : BaseSkill
 {
-    // ReSharper disable Unity.PerformanceAnalysis
     public override void ActivateSkill(BaseCharacter _Opponent)
     {
         base.ActivateSkill(_Opponent);
-        if (SkillResult.isHit)
+        if (SkillResult.IsAnyHit())
         {
             BattleManager.GetInstance.MoveCharacter(SkillOwner, -1);
         }

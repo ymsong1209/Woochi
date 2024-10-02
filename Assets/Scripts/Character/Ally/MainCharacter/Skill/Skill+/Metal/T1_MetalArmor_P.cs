@@ -13,7 +13,7 @@ public class T1_MetalArmor_P : MainCharacterSkill
         StatBuff statBuff = statbuffGameObject.GetComponent<StatBuff>();
         statBuff.BuffName = "철갑+";
         statBuff.BuffDurationTurns = 3;
-        statBuff.ChanceToApplyBuff = 100;
+        statBuff.IsAlwaysApplyBuff = true;
         statBuff.changeStat.defense = 8;
         instantiatedBuffList.Add(statbuffGameObject);
         
@@ -32,6 +32,6 @@ public class T1_MetalArmor_P : MainCharacterSkill
         int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
         text.text = "철갑+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "단일 대상과 우치에게 철갑+ 버프 부여";
+                    "단일 대상과 우치에게 3턴동안 방어 8만큼 부여";
     }
 }

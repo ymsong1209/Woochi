@@ -25,6 +25,7 @@ public class StatBuff : BaseBuff
     public override int ApplyTurnEndBuff()
     {
         if(buffDurationTurns > 0) --buffDurationTurns;
+        isBuffAppliedThisTurn = false;
         return 0;
     }
     

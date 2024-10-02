@@ -29,6 +29,6 @@ public class T1_TreeBind : MainCharacterSkill
         text.text = "옭아매기\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "80%의 확률로 뿌리 속박 디버프 부여";
+                    "80%의 확률로 3턴동안 속도, 최소, 최대스탯 -2 부여";
     }
 }

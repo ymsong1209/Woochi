@@ -9,9 +9,9 @@ public class Haetae_MoveDebuff_P : BaseSkill
     public override void ActivateSkill(BaseCharacter _Opponent)
     {
         base.ActivateSkill(_Opponent);
-        if (SkillResult.isHit)
+        if (SkillResult.IsHit(0))
         {
-            TransferBuff(SkillResult.Opponent);
+            TransferBuff(SkillResult.Opponent[0]);
         }
     }
     
@@ -19,7 +19,9 @@ public class Haetae_MoveDebuff_P : BaseSkill
     {
         int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
-        text.text = "수신의 율법+\n" + "해태에게 부여된 모든 디버프를 이전하고\n" + "이전된 디버프의 수 만큼 모든 스탯을 2씩 상승";
+        text.text = "수신의 율법+\n" + 
+                    "해태에게 부여된 모든 디버프를 이전하고\n" + 
+                    "이전된 디버프의 수 만큼 모든 스탯을 2씩 상승";
     }
 
     private void TransferBuff(BaseCharacter opponent)

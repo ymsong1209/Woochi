@@ -24,6 +24,8 @@ public class Fascinate_Row3 : BaseSkill
     {
         int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
-        text.text = "홀리기(광역)\n" + "대상 전체에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + "홀림 부여";
+        text.text = "홀리기(광역)\n" + 
+                    "대상 전체에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + 
+                    "2턴동안 명중, 속도 -2만큼 부여";
     }
 }

@@ -123,7 +123,7 @@ public class BaseCharacter : MonoBehaviour
     /// 버프 효과 사용 후 캐릭터가 살아있으면 true반환
     /// 죽었을 경우엔 캐릭터가 가지고 있는 모든 버프 제거 후 사망 처리
     /// </summary>
-    public bool TriggerBuff(BuffTiming timing)
+    public bool TriggerBuff(BuffTiming timing, BaseSkill skill = null)
     {
         switch (timing)
         {
@@ -137,6 +137,8 @@ public class BaseCharacter : MonoBehaviour
                 return TriggerBuffs(buff => buff.ApplyTurnStartBuff());
             case BuffTiming.TurnEnd:
                 return TriggerBuffs(buff => buff.ApplyTurnEndBuff());
+            case BuffTiming.PostHit:
+                return TriggerBuffs(buff => buff.ApplyPostHitBuff(skill));
             case BuffTiming.BattleEnd:
                 return TriggerBuffs(buff => buff.ApplyBattleEndBuff());
             default:
@@ -243,6 +245,7 @@ public class BaseCharacter : MonoBehaviour
     {
         RemoveAllBuff();
         anim.PlayDeadAnimation();
+        isDead = true;
     }
 
     public void RemoveAllBuff(bool battleEnd = false)

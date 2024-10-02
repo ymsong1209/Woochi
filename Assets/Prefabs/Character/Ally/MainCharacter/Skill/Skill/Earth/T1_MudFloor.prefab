@@ -47,4 +47,3 @@ MonoBehaviour:
   skillSO: {fileID: 11400000, guid: 2e566fd3a00e50745b745efbdf2c7d33, type: 2}
   skillTargetCount: 1
   isAlwaysHit: 0
-  isAlwaysApplyBuff: 0

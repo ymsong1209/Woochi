@@ -19,6 +19,8 @@ public class BaseBuff : MonoBehaviour
     [SerializeField] protected bool isRemoveWhenBattleEnd = true;
     [SerializeField] protected int buffBattleDurationTurns;//몇번의 전투동안 지속되어야할지
     [SerializeField] protected bool isRemovableDuringBattle = true;
+    [SerializeField] protected bool isBuffAppliedThisTurn = true; 
+    [SerializeField] private bool isAlwaysApplyBuff = false;// 버프를 걸 확률, 저항 판정 무시하고 무조건 적용
 
     /// <summary>
     /// 버프를 추가
@@ -67,6 +69,19 @@ public class BaseBuff : MonoBehaviour
     /// </summary>
     public virtual int ApplyTurnEndBuff()
     {
+        isBuffAppliedThisTurn = false;
+        return 0;
+    }
+    
+    /// <summary>
+    /// 자신이 한대 맞고 나면 적용되는 버프
+    /// hit 애니메이션이 적용된 후에 작동됨.
+    /// 중독 버프 등에 작동
+    /// </summary>
+    /// <returns></returns>
+    public virtual int ApplyPostHitBuff(BaseSkill skill)
+    {
+        isBuffAppliedThisTurn = false;
         return 0;
     }
 
@@ -184,6 +199,17 @@ public class BaseBuff : MonoBehaviour
     {
         get => buffBattleDurationTurns;
         set => buffBattleDurationTurns = value;
+    }
+    
+    public bool IsBuffAppliedThisTurn
+    {
+        get => isBuffAppliedThisTurn;
+        set => isBuffAppliedThisTurn = value;
+    }
+    public bool IsAlwaysApplyBuff
+    {
+        get => isAlwaysApplyBuff;
+        set => isAlwaysApplyBuff = value;
     }
     
     #endregion Getter Setter

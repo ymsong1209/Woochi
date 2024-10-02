@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 아군 1열을 대상으로 몸통박치기
+/// </summary>
 public class TF_BodySlam : BaseSkill
 {
     [SerializeField] private GameObject gritBuffGameObject;//씨름꾼의 끈기 버프.
@@ -19,13 +22,14 @@ public class TF_BodySlam : BaseSkill
         base.ActivateSkill(_Opponent);
 
         //스킬 적중시 씨름꾼의 끈기 버프 부여
-        if (SkillResult.isHit)
+        if (SkillResult.IsAnyHit())
         {
             //씨름꾼의 끈기 버프 중첩시 지속 시간과 수치 중첩
             GameObject instantiatedGritbuff = Instantiate(gritBuffGameObject, transform);
             StatBuff gritbuff = instantiatedGritbuff.GetComponent<StatBuff>();
             gritbuff.BuffName = "씨름꾼의 끈기";
             gritbuff.BuffDurationTurns = 2;
+            gritbuff.IsAlwaysApplyBuff = true;
             gritbuff.changeStat.defense = 2;
             SkillOwner.ApplyBuff(SkillOwner,SkillOwner,gritbuff);
         }

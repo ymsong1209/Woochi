@@ -34,6 +34,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     public Action OnFocusEnd;
     public Action<BaseCharacter> OnFocusEnter;
     public Action<bool, bool> OnShakeCamera;
+    public Action OnSkillExecuteFinished;
     #endregion
 
     #region 부울 변수
@@ -341,6 +342,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 continue;
             }
             
+            //Self는 skill범위에서 자기 자신만 선택 가능
+            if(currentSelectedSkill.SkillTargetType == SkillTargetType.Self 
+               && i != GetCharacterIndex(currentSelectedSkill.SkillOwner))
+            {
+                continue;
+            }
             //현재 살아있는 적/아군에게서만 collider활성화
             if(skillRadius[i] && IsCharacterThere(i))
             {
@@ -360,6 +367,13 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             //SingularWithoutSelf는 skill범위에서 자기 자신을 선택 못하게 해야함.
             if(currentSelectedSkill.SkillTargetType == SkillTargetType.SingularWithoutSelf 
                && i == GetCharacterIndex(currentSelectedSkill.SkillOwner))
+            {
+                continue;
+            }
+            
+            //Self는 skill범위에서 자기 자신만 선택 가능
+            if(currentSelectedSkill.SkillTargetType == SkillTargetType.Self 
+               && i != GetCharacterIndex(currentSelectedSkill.SkillOwner))
             {
                 continue;
             }
@@ -452,7 +466,31 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             OnCharacterAttacked?.Invoke(receiver, false);
         
         yield return new WaitUntil(() => caster.IsIdle);
+        
         OnFocusEnd?.Invoke();
+        bool isAnyDead = false;
+        foreach (BaseCharacter skillreceiver in currentSelectedSkill.SkillResult.Opponent)
+        {
+            //적이 살아있으면
+            if (skillreceiver && !(skillreceiver.Health.CheckHealthZero() || skillreceiver.IsDead))
+            {
+                //버프 적용후 사망하면 대기
+                if (!skillreceiver.TriggerBuff(BuffTiming.PostHit,currentSelectedSkill))
+                {
+                    isAnyDead = true;
+                }
+                
+            }
+        }
+
+        if (isAnyDead)
+        {
+            yield return new WaitForSeconds(1f);
+            allies.CheckDeathInFormation();
+            enemies.CheckDeathInFormation();
+        }
+        
+        OnSkillExecuteFinished?.Invoke();
         isSkillExecuted = true;
     }
     

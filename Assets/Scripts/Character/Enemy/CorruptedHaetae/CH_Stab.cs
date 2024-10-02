@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// 1,2열 대상으로 단일 찌르기
+/// </summary>
 public class CH_Stab : BaseSkill
 {
     public override void ActivateSkill(BaseCharacter _Opponent)
@@ -14,13 +17,13 @@ public class CH_Stab : BaseSkill
         
         base.ActivateSkill(_Opponent);
 
-        if (SkillResult.isHit)
+        if (SkillResult.IsHit(0))
         {
             float randomValue = Random.Range(0, 100);
             //40%의 확률로 적을 강제 이동
             if (randomValue < 40)
             {
-                BattleManager.GetInstance.MoveCharacter(SkillResult.Opponent, -1);
+                BattleManager.GetInstance.MoveCharacter(SkillResult.Opponent[0], -1);
             }
         }
     }

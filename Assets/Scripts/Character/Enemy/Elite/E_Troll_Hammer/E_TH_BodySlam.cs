@@ -19,7 +19,7 @@ public class E_TH_BodySlam : BaseSkill
         base.ActivateSkill(_Opponent);
 
         //스킬 적중시 예리한 감각 버프 부여
-        if (SkillResult.isHit)
+        if (SkillResult.IsAnyHit())
         {
             //씨름꾼의 끈기 버프 중첩시 지속 시간과 수치 중첩
             GameObject instantiatedStatbuff = Instantiate(statBuffGameObject, transform);

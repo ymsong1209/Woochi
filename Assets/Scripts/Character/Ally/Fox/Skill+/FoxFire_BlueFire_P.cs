@@ -10,9 +10,9 @@ public class FoxFire_BlueFire_P : BaseSkill
         GameObject dotCurebyDamagePrefab = BuffPrefabList[0];
         GameObject dotCureGameObject = Instantiate(dotCurebyDamagePrefab, transform);
         DotCureByDamageBuff dotCureBuff = dotCureGameObject.GetComponent<DotCureByDamageBuff>();
-        dotCureBuff.BuffName = "푸른 불꽃";
+        dotCureBuff.BuffName = "푸른 불꽃+";
         dotCureBuff.BuffDurationTurns = 3;
-        dotCureBuff.ChanceToApplyBuff = 100;
+        dotCureBuff.IsAlwaysApplyBuff = true;
         dotCureBuff.DotCureAmount = 40;
         
         instantiatedBuffList.Add(dotCureGameObject);
@@ -23,6 +23,7 @@ public class FoxFire_BlueFire_P : BaseSkill
     {
         int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * 40f / 100f);
         int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * 40f / 100f);
-        text.text = "푸른 불꽃+\n" + "아군의 체력을 턴 시작당 " + minStat + " ~ " + maxStat + "만큼 회복";
+        text.text = "푸른 불꽃+\n" + 
+                    "3턴동안 아군의 체력을 턴 시작당 " + minStat + " ~ " + maxStat + "만큼 회복";
     }
 }

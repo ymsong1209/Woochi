@@ -20,6 +20,7 @@ public class ScrollDogIncreaseCritBuff : BaseBuff
     
     public override int ApplyTurnEndBuff()
     {
+        base.ApplyTurnEndBuff();
         //치명 스택이 10번 이하이면, 회피 버프 추가.
         if (critStack < 10)
         {

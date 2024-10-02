@@ -27,6 +27,8 @@ public enum SkillTargetType
     Singular,   //Singular일 경우 skillRadius에 체크된 범위중 하나만 선택 가능
     Multiple,   //Multiple일 경우 skillRadius에 체크된 범위만큼 전체 스킬 적용
     SingularWithoutSelf, //스킬 범위 내에서 자기 자신 제외하고 고를 수 있음.
+    Self,       //자기 자신만 선택 가능
+    Random, //스킬 범위 내에서 랜덤으로 선택
     END
 }
 
@@ -83,7 +85,8 @@ public enum BuffEffect
     ElementalStatStrengthen,    //속성별 스탯 강화
     ElementalStatWeaken,
     IncreaseCritOvertime,       //족자구 회피 증가 버프
-    Troll,                      
+    Troll,
+    Poison,
     END
 }
 
@@ -102,6 +105,7 @@ public enum BuffTiming
     RoundEnd,
     TurnStart,
     TurnEnd,
+    PostHit,
     BattleEnd,
     END
 }

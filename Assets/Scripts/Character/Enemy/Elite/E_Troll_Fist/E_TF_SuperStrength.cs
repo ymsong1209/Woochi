@@ -7,7 +7,7 @@ public class E_TF_SuperStrength : BaseSkill
     public override void ActivateSkill(BaseCharacter _Opponent)
     {
         base.ActivateSkill(_Opponent);
-        if (SkillResult.isHit)
+        if (SkillResult.IsHit(0))
         {
             System.Random random = new System.Random();
             int randomValue = random.Next(0, 100); // 0에서 99까지의 값을 랜덤으로 생성

@@ -24,6 +24,8 @@ public class FoxFire_Row4_P : BaseSkill
    {
       int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * SkillSO.BaseMultiplier / 100f);
       int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
-      text.text = "여우불(단일)+\n" + "대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + "화상 부여";
+      text.text = "여우불(단일)+\n" + 
+                  "대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + 
+                  "100%의 확률로 화상 부여";
    }
 }

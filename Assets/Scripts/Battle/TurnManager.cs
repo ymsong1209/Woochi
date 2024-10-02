@@ -4,12 +4,12 @@ using TMPro;
 using UnityEngine;
 
 /// <summary>
-/// ÅÏ°ú °ü·ÃµÈ Å¬·¡½º
+/// í„´ê³¼ ê´€ë ¨ëœ í´ë˜ìŠ¤
 /// </summary>
 public class TurnManager : MonoBehaviour
 {
     /// <summary>
-    /// ¾Æ±ºÀÌ¶û Àû±ºÀÇ ½Î¿ò ¼ø¼­
+    /// ì•„êµ°ì´ë‘ ì êµ°ì˜ ì‹¸ì›€ ìˆœì„œ
     /// </summary>
     private Queue<BaseCharacter> combatQueue = new Queue<BaseCharacter>();
     private List<BaseCharacter> processedCharacters = new List<BaseCharacter>();
@@ -35,7 +35,7 @@ public class TurnManager : MonoBehaviour
     }
 
     /// <summary>
-    /// BuffTimingÀ» ¸Å°³º¯¼ö·Î ¹Ş¾Æ¼­ ÇØ´ç ½ÃÁ¡¿¡ ¹öÇÁ¸¦ Àû¿ë
+    /// BuffTimingì„ ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ì•„ì„œ í•´ë‹¹ ì‹œì ì— ë²„í”„ë¥¼ ì ìš©
     /// </summary>
     public void CheckBuffs(BuffTiming buffTiming)
     {
@@ -46,9 +46,9 @@ public class TurnManager : MonoBehaviour
     }
 
     /// <summary>
-    /// combatQueue¸¦ ´Ù½Ã ¼Óµµ¼øÀ¸·Î Á¤·Ä, ResetTurnUsed¸¦ true·Î ÇÏ¸é ¸ğµç Ä³¸¯ÅÍ°¡ ÅÏÀ» ´Ù½Ã ¾µ ¼ö ÀÖÀ½
+    /// combatQueueë¥¼ ë‹¤ì‹œ ì†ë„ìˆœìœ¼ë¡œ ì •ë ¬, ResetTurnUsedë¥¼ trueë¡œ í•˜ë©´ ëª¨ë“  ìºë¦­í„°ê°€ í„´ì„ ë‹¤ì‹œ ì“¸ ìˆ˜ ìˆìŒ
     /// </summary>
-    /// <param name="_resetTurnUsed">true·Î ¼³Á¤ ½Ã ¸ğµç Ä³¸¯ÅÍ ´Ù½Ã ÅÏ »ç¿ë°¡´É</param>
+    /// <param name="_resetTurnUsed">trueë¡œ ì„¤ì • ì‹œ ëª¨ë“  ìºë¦­í„° ë‹¤ì‹œ í„´ ì‚¬ìš©ê°€ëŠ¥</param>
     /// <param name="processedCharacters"></param>
     public void ReorderCombatQueue(bool _resetTurnUsed = false)
     {
@@ -59,16 +59,16 @@ public class TurnManager : MonoBehaviour
             allCharacters.AddRange(processedCharacters);
         }
 
-        // combatQueue¿¡ ³²¾Æ ÀÖ´Â Ä³¸¯ÅÍ¸¦ ¸ğµÎ allCharacters ¸®½ºÆ®¿¡ Ãß°¡
+        // combatQueueì— ë‚¨ì•„ ìˆëŠ” ìºë¦­í„°ë¥¼ ëª¨ë‘ allCharacters ë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€
         while (combatQueue.Count > 0)
         {
             allCharacters.Add(combatQueue.Dequeue());
         }
 
-        // allCharacters ¸®½ºÆ®¸¦ ¼Óµµ¿¡ µû¶ó ÀçÁ¤·Ä
+        // allCharacters ë¦¬ìŠ¤íŠ¸ë¥¼ ì†ë„ì— ë”°ë¼ ì¬ì •ë ¬
         allCharacters.Sort((character1, character2) => character2.FinalStat.speed.CompareTo(character1.FinalStat.speed));
 
-        // ÀçÁ¤·ÄµÈ ¸®½ºÆ®¸¦ ¹ÙÅÁÀ¸·Î combatQueue Àç±¸¼º
+        // ì¬ì •ë ¬ëœ ë¦¬ìŠ¤íŠ¸ë¥¼ ë°”íƒ•ìœ¼ë¡œ combatQueue ì¬êµ¬ì„±
         combatQueue.Clear();
         foreach (BaseCharacter character in allCharacters)
         {
@@ -85,28 +85,27 @@ public class TurnManager : MonoBehaviour
     public void Processed(BaseCharacter character) => processedCharacters.Add(character);
 
     /// <summary>
-    /// ´ÙÀ½ ÅÏ ½ÃÀÛµÇ´Â Ä³¸¯ÅÍ¿¡°Ô ÇØ¾ßÇÒ Ã³¸®¸¦ ÇÏ°í ÅÏÀ» ½ÃÀÛÇÏ´Â Ä³¸¯ÅÍ ¼³Á¤
-    /// ÅÏÀ» ÁøÇàÇÒ ¼ö ¾ø´Â Ä³¸¯ÅÍ¶ó¸é false ¹İÈ¯
+    /// ë‹¤ìŒ í„´ ì‹œì‘ë˜ëŠ” ìºë¦­í„°ì—ê²Œ í•´ì•¼í•  ì²˜ë¦¬ë¥¼ í•˜ê³  í„´ì„ ì‹œì‘í•˜ëŠ” ìºë¦­í„° ì„¤ì •
+    /// í„´ì„ ì§„í–‰í•  ìˆ˜ ì—†ëŠ” ìºë¦­í„°ë¼ë©´ false ë°˜í™˜
     /// </summary>
     public bool StartTurn()
     {
         UpdateUI();
         BaseCharacter currentCharacter = combatQueue.Dequeue();
 
-        if (currentCharacter.IsDead || currentCharacter.IsTurnUsed || currentCharacter.Health.CheckHealthZero())
+        if (currentCharacter.IsDead || currentCharacter.Health.CheckHealthZero())
         {
-            Debug.Log($"{currentCharacter.Name}Àº(´Â) Á×°Å³ª ÅÏÀ» ÁøÇàÇÒ ¼ö ¾ø½À´Ï´Ù");
+            Debug.Log($"{currentCharacter.Name}ì€(ëŠ”) ì£½ê±°ë‚˜ í„´ì„ ì§„í–‰í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤");
             processedCharacters.Add(currentCharacter);
             return false;
         }
 
-        currentCharacter.HUD.ShowTurnEffect();
         BattleManager.GetInstance.currentCharacter = currentCharacter;
         return true;
     }
 
     /// <summary>
-    /// Ä³¸¯ÅÍÀÇ ÅÏÀÌ ³¡³µÀ» ¶§ ÇØ´ç Ä³¸¯ÅÍ¿¡°Ô Ã³¸®
+    /// ìºë¦­í„°ì˜ í„´ì´ ëë‚¬ì„ ë•Œ í•´ë‹¹ ìºë¦­í„°ì—ê²Œ ì²˜ë¦¬
     /// </summary>
     /// <param name="currentCharacter"></param>
     public void EndTurn(BaseCharacter currentCharacter)
@@ -118,7 +117,7 @@ public class TurnManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ÅÏÀÌ ¿ÏÀüÈ÷ ³¡³µÀ» ¶§(ÅÏÀ» ÁøÇàÇÒ Ä³¸¯ÅÍ°¡ ¾øÀ½)
+    /// í„´ì´ ì™„ì „íˆ ëë‚¬ì„ ë•Œ(í„´ì„ ì§„í–‰í•  ìºë¦­í„°ê°€ ì—†ìŒ)
     /// </summary>
     public void TurnOver()
     {
@@ -131,7 +130,7 @@ public class TurnManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Á¤ºñ ½Ã »ç¿ë -> ¿ìÄ¡¸¸ ÀüÅõ Å¥¿¡ Ãß°¡
+    /// ì •ë¹„ ì‹œ ì‚¬ìš© -> ìš°ì¹˜ë§Œ ì „íˆ¬ íì— ì¶”ê°€
     /// </summary>
     public void OnlyWoochi(BaseCharacter woochi)
     {
@@ -141,7 +140,7 @@ public class TurnManager : MonoBehaviour
 
     public void UnSummon(BaseCharacter target)
     {
-        // ÅÏ »ç¿ëÇÑ ¼ÒÈ¯¼ö °æ¿ì -> Ã³¸®µÈ Ä³¸¯ÅÍ ¸®½ºÆ®¿¡¼­ Á¦°Å
+        // í„´ ì‚¬ìš©í•œ ì†Œí™˜ìˆ˜ ê²½ìš° -> ì²˜ë¦¬ëœ ìºë¦­í„° ë¦¬ìŠ¤íŠ¸ì—ì„œ ì œê±°
         if (target.IsTurnUsed)
         {
             foreach(var character in processedCharacters)
@@ -153,7 +152,7 @@ public class TurnManager : MonoBehaviour
                 }
             }
         }
-        // ÅÏ »ç¿ëÇÏÁö ¾ÊÀº ¼ÒÈ¯¼ö °æ¿ì -> combatQueue¿¡¼­ Á¦°Å
+        // í„´ ì‚¬ìš©í•˜ì§€ ì•Šì€ ì†Œí™˜ìˆ˜ ê²½ìš° -> combatQueueì—ì„œ ì œê±°
         else
         {
             Queue<BaseCharacter> tempQueue = new Queue<BaseCharacter>();
@@ -173,7 +172,7 @@ public class TurnManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ÀüÅõ°¡ ³¡³­ ÈÄ ÅÏ UI ÃÊ±âÈ­
+    /// ì „íˆ¬ê°€ ëë‚œ í›„ í„´ UI ì´ˆê¸°í™”
     /// </summary>
     public void BattleOver()
     {
@@ -181,8 +180,6 @@ public class TurnManager : MonoBehaviour
         {
             icon.SetEmpty(emptyIcon);
         }
-
-        roundTxt.text = "0";
     }
 
     public void SetRound(int round) => roundTxt.text = $"{round}";
