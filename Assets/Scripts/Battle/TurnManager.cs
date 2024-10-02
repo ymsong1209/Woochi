@@ -93,7 +93,7 @@ public class TurnManager : MonoBehaviour
         UpdateUI();
         BaseCharacter currentCharacter = combatQueue.Dequeue();
 
-        if (currentCharacter.IsDead || currentCharacter.IsDead || currentCharacter.Health.CheckHealthZero())
+        if (currentCharacter.IsDead || currentCharacter.IsTurnUsed || currentCharacter.Health.CheckHealthZero())
         {
             Debug.Log($"{currentCharacter.Name}은(는) 죽거나 턴을 진행할 수 없습니다");
             processedCharacters.Add(currentCharacter);

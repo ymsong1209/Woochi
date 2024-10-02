@@ -17,6 +17,8 @@ MonoBehaviour:
   rewardName: "\uACF5\uCCAD\uC11D\uC720"
   description: "\uC6B0\uCE58\uC758 \uBAA8\uB4E0 \uB2A5\uB825\uCE58 \uC601\uAD6C\uC801\uC73C\uB85C
     +5"
+  resultTxt: "\uC6B0\uCE58\uC758 \uBAA8\uB4E0 \uB2A5\uB825\uCE58\uAC00 \uC601\uAD6C\uC801\uC73C\uB85C
+    5 \uC99D\uAC00\uD569\uB2C8\uB2E4"
   heal: 0
   healAmount: 0
   sorceryHeal: 0

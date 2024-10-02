@@ -40,51 +40,49 @@ public class WoochiReward : Reward
 
     private void StatUp(MainCharacter woochi)
     {
-        string result = string.Empty;
-
         if(randomStatUp)
         {
             StatType type = (StatType)Random.Range(0, (int)StatType.END);
 
+            resultTxt += "우치의 ";
             switch(type)
             {
                 case StatType.Health:
-                    result += "체력";
+                    resultTxt += "체력";
                     addStat.maxHealth = statUpAmount;
                 break;
                 case StatType.Speed:
-                    result += "속도";
+                    resultTxt += "속도";
                     addStat.speed = statUpAmount;
                 break;
                 case StatType.Defense:
-                    result += "방어";
+                    resultTxt += "방어";
                     addStat.defense = statUpAmount;
                 break;
                 case StatType.Crit:
-                    result += "치명";
+                    resultTxt += "치명";
                     addStat.crit = statUpAmount;
                 break;
                 case StatType.Accuracy: 
-                    result += "명중";
+                    resultTxt += "명중";
                     addStat.accuracy = statUpAmount;
                 break;
                 case StatType.Evasion:
-                    result += "회피";
+                    resultTxt += "회피";
                     addStat.evasion = statUpAmount;
                 break;
                 case StatType.Resist:
-                    result += "저항";
+                    resultTxt += "저항";
                     addStat.resist = statUpAmount;
                 break;
                 case StatType.Damage:
-                    result += "피해";
+                    resultTxt += "피해";
                     addStat.minStat = statUpAmount;
                     addStat.maxStat = statUpAmount;
                 break;
             }
 
-            result += $"이(가) {statUpAmount} 증가했습니다";
-            HelperUtilities.ShowRewardToolResult(result);
+            resultTxt += $"이(가) {statUpAmount} 증가했습니다";
         }
 
         woochi.rewardStat += addStat;

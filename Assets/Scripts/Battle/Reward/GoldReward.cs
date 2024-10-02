@@ -10,4 +10,10 @@ public class GoldReward : Reward
         HelperUtilities.AddGold(rewardGold);
         return true;
     }
+
+    public override string GetResult()
+    {
+        resultTxt = $"{rewardGold} »Â∏ß¿ª »πµÊ«ﬂΩ¿¥œ¥Ÿ";
+        return base.GetResult();
+    }
 }

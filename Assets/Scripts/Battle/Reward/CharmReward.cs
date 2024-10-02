@@ -4,6 +4,6 @@ public class CharmReward : Reward
 {
     public override bool ApplyReward()
     {
-        return HelperUtilities.CanGetCharm();
+        return HelperUtilities.CanGetCharm(out resultTxt);
     }
 }

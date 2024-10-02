@@ -9,9 +9,15 @@ public class Reward : ScriptableObject
     [TextArea(3, 10)]
     public string description;
 
+    [SerializeField] protected string resultTxt;
+
     public virtual bool ApplyReward()
     {
         return true;
     }
     
+    public virtual string GetResult()
+    {
+        return resultTxt;
+    }
 }

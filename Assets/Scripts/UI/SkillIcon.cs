@@ -1,18 +1,19 @@
 using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /// <summary>
 /// UI에서 스킬 아이콘을 나타냄
 /// </summary>
 [DisallowMultipleComponent]
-public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class SkillIcon : MonoBehaviour, ITooltipiable
 {
     public  Image       selected;
     public  Image       icon;
     public  Button      btn;
-    public  Transform   tooltipPos;     // 툴팁 위치를 지정하기 위해
+
+    public Action<BaseSkill, Transform> OnShowTooltip;
+    public Action OnHideTooltip;
 
     protected BaseSkill skill;
 
@@ -29,6 +30,7 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         canInteract = value;
     }
+
     public void SetSkill(BaseSkill _skill, bool isEnable = true)
     {
         if (_skill != null)
@@ -52,17 +54,17 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         selected.gameObject.SetActive(_isActive);
     }
 
-    public virtual void OnPointerEnter(PointerEventData eventData)
+    public void ShowTooltip()
     {
         if (skill == null || !canInteract)
             return;
 
-        UIManager.GetInstance.SetSkillToolTip(skill, tooltipPos.position);
+        OnShowTooltip?.Invoke(skill, transform);
     }
 
-    public virtual void OnPointerExit(PointerEventData eventData)
+    public void HideTooltip()
     {
-        UIManager.GetInstance.skillDescriptionUI.Deactivate();
+        OnHideTooltip?.Invoke();
     }
 
     #region Getter, Setter

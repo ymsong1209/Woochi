@@ -2,7 +2,7 @@ public class DrawCharm : Tool
 {
     public override void Use()
     {
-        if(!HelperUtilities.CanGetCharm())
+        if(!HelperUtilities.CanGetCharm(out resultTxt))
         {
             return;
         }

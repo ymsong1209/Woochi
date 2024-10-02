@@ -1,15 +1,20 @@
+using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Tool : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class Tool : MonoBehaviour, ITooltipiable, IPopupable
 {
+    public Action<Tool> OnShowTooltip;
+    public Action OnHideTooltip;
+    public Action<Tool> OnShowPopup;
+
     [SerializeField] private Button btn;
     [SerializeField] private TextMeshProUGUI priceTxt;
 
     public string toolName;
     [SerializeField] protected string description;
+    [SerializeField] protected string resultTxt;
     protected int price;
 
     private void Start()
@@ -24,6 +29,7 @@ public class Tool : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             Debug.Log($"{toolName}을 {price}만큼 지불해 사용합니다");
             Price *= 2;
+            ShowPopup();
         }
         else
         {
@@ -36,14 +42,24 @@ public class Tool : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         return description;
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public virtual string GetResult()
     {
-        UIManager.GetInstance.rewardToolPopup.ShowToolPopup(this);
+        return resultTxt;
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public void ShowTooltip()
     {
-        UIManager.GetInstance.rewardToolPopup.HideInfo();
+        OnShowTooltip.Invoke(this);
+    }
+
+    public void HideTooltip()
+    {
+        OnHideTooltip.Invoke();
+    }
+
+    public void ShowPopup()
+    {
+        OnShowPopup.Invoke(this);
     }
 
     public int Price

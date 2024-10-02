@@ -194,7 +194,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             isSkillSelected = false;
             isSkillExecuted = false;
             currentSelectedSkill = null;
-            UIManager.GetInstance.skillDescriptionUI.Deactivate();
             UIManager.GetInstance.DeactivateBuffPopUp();
             #endregion
 

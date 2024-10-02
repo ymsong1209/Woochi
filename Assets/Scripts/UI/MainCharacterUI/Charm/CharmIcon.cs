@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CharmIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class CharmIcon : MonoBehaviour, ITooltipiable
 {
+    public Action<BaseCharm, Transform> OnShowTooltip;
+    public Action OnHideTooltip;
+
     public  Image       selected;
     public  Image       icon;
     public  Button      btn;
@@ -31,20 +34,18 @@ public class CharmIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         selected.gameObject.SetActive(_isActive);
     }
 
-    public virtual void OnPointerEnter(PointerEventData eventData)
+    public void ShowTooltip()
     {
         if (charm == null)
             return;
 
-        UIManager.GetInstance.SetCharmToolTip(charm, tooltipPos.position);
+        OnShowTooltip.Invoke(charm, transform);
     }
 
-    public virtual void OnPointerExit(PointerEventData eventData)
+    public void HideTooltip()
     {
-        UIManager.GetInstance.skillDescriptionUI.Deactivate();
+        OnHideTooltip.Invoke();
     }
-    
-    
 
     #region Getter, Setter
     public BaseCharm Charm => charm;
