@@ -116,6 +116,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4651224405074788822}
   - component: {fileID: 2180620064527360784}
+  - component: {fileID: 2725123337154968091}
+  - component: {fileID: 938759978197036495}
+  - component: {fileID: 1778805928387534594}
   m_Layer: 9
   m_Name: Hp
   m_TagString: Untagged
@@ -191,6 +194,76 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2725123337154968091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2743258831509838503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee05a8b94acb3a4192ac424d55fecb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guage: {fileID: 8002876329012777120}
+--- !u!114 &938759978197036495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2743258831509838503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ae917a7d858c940a919766a4b8e36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &1778805928387534594
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2743258831509838503}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.035, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0.5}
+    oldSize: {x: 2.07, y: 0.15}
+    newSize: {x: 2, y: 0.09}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.07, y: 0.15}
+  m_EdgeRadius: 0
 --- !u!1 &2829200758362975625
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,7 +697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f817015d343764493f3f880a9a8aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpBar: {fileID: 8002876329012777120}
+  hpBar: {fileID: 2725123337154968091}
   ground: {fileID: 3292113513406932792}
   turnEffect: {fileID: 1588304107282965582}
   damageHUD: {fileID: 2829200758362975625}
@@ -870,7 +943,7 @@ GameObject:
   - component: {fileID: 6620385480260230078}
   - component: {fileID: 8002876329012777120}
   m_Layer: 9
-  m_Name: Bar
+  m_Name: Guage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

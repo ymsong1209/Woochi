@@ -40,6 +40,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 1.1026983
       objectReference: {fileID: 0}
+    - target: {fileID: 5365637576824019810, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: shadowSprites.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6060628860442793064, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: isDummy
       value: 1
