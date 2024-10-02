@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private BaseCharacter owner;
-    [SerializeField] private SpriteRenderer hpBar;
+    [SerializeField] private HPBar hpBar;
     [SerializeField] private SpriteRenderer ground;
     [SerializeField] private GameObject turnEffect;
 
@@ -24,10 +24,7 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void UpdateHPBar()
     {
-        float curHealth = owner.Health.CurHealth;
-        float maxHealth = owner.Health.MaxHealth;
-        float nextScale = curHealth / maxHealth;
-        hpBar.transform.DOScaleX(nextScale, 1f).SetEase(Ease.OutCubic);
+        hpBar.SetHPBar(owner.Health);
     }
 
     public void SetDamageText(AttackResult _result, int damage = 0, bool isCrit = false)

@@ -19,11 +19,12 @@ public class RewardToolPopup : MonoBehaviour
         resultPopup.SetActive(false);
     }
 
-    public void ShowRewardPopup(Reward reward)
+    public void ShowTooltip(RewardUI rewardUI)
     {
         infoPopup.SetActive(true);
-        SetTransform();
+        SetTransform(rewardUI.transform.position);
 
+        Reward reward = rewardUI.GetReward();
         nameTxt.text = reward.rewardName;
         descriptionTxt.text = reward.description;
         
@@ -47,10 +48,10 @@ public class RewardToolPopup : MonoBehaviour
         }
     }   
     
-    public void ShowToolPopup(Tool tool)
+    public void ShowTooltip(Tool tool)
     {
         infoPopup.SetActive(true);
-        SetTransform();
+        SetTransform(tool.transform.position);
 
         nameTxt.text = tool.toolName;
         descriptionTxt.text = tool.GetDescription();
@@ -70,10 +71,8 @@ public class RewardToolPopup : MonoBehaviour
         infoPopup.SetActive(false);
     }
 
-    private void SetTransform()
+    private void SetTransform(Vector3 pos)
     {
-        Vector2 pos = Input.mousePosition;
-        pos.y -= 100;
-        infoPopup.transform.position = pos;
+        infoPopup.transform.position = pos + new Vector3(0, -50, 0);
     }
 }

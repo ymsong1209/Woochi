@@ -162,24 +162,19 @@ public static class HelperUtilities
     /// 부적을 얻을 수 있는지
     /// 얻을 수 있다면 랜덤으로 하나 주고 못 얻으면 false 반환
     /// </summary>
-    public static bool CanGetCharm()
+    public static bool CanGetCharm(out string text)
     {
         var charmList = DataCloud.playerData.battleData.charms;
         if(charmList.Count >= 5)
         {
-            ShowRewardToolResult("부적은 5개까지만 가질 수 있습니다");
+            text = "부적은 5개까지만 가질 수 있습니다";
             return false;
         }
 
         int charmCount = GameManager.GetInstance.Library.CharmCount;
         int randomCharmID = UnityEngine.Random.Range(0, charmCount);
         charmList.Add(randomCharmID);
-        ShowRewardToolResult($"{GameManager.GetInstance.Library.GetCharm(randomCharmID).CharmName}을 얻었습니다");
+        text = $"{GameManager.GetInstance.Library.GetCharm(randomCharmID).CharmName}을 얻었습니다";
         return true;
-    }
-
-    public static void ShowRewardToolResult(string text)
-    {
-        UIManager.GetInstance.rewardToolPopup.ShowResult(text);
     }
 }

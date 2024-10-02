@@ -1,11 +1,11 @@
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System;
 
 public class WoochiCharmSelectionUI : MonoBehaviour
 {
-   
+    [SerializeField] private SkillDescriptionUI skillDescriptionUI;
     [SerializeField] private List<CharmIcon> charmIcons = new List<CharmIcon>(5);
     private MainCharacter mainCharacter;
 
@@ -16,6 +16,8 @@ public class WoochiCharmSelectionUI : MonoBehaviour
             int index = i;
             Button btn = charmIcons[i].btn;
             btn.onClick.AddListener(() => CharmButtonClicked(charmIcons[index].Charm));
+            charmIcons[i].OnShowTooltip += SetCharmTooltip;
+            charmIcons[i].OnHideTooltip += () => skillDescriptionUI.gameObject.SetActive(false);
         }
     }
 
@@ -92,5 +94,11 @@ public class WoochiCharmSelectionUI : MonoBehaviour
         mainCharacter.CharmSkill.Charm = _charm;
         mainCharacter.CharmSkill.SetSkillForCharm();
         BattleManager.GetInstance.SkillSelected(mainCharacter.CharmSkill);
+    }
+
+    private void SetCharmTooltip(BaseCharm charm, Transform transform)
+    {
+        skillDescriptionUI.Activate(charm);
+        skillDescriptionUI.transform.position = transform.position + new Vector3(0, 100, 0);
     }
 }

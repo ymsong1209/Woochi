@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
+
 public class WoochiSkillSelectionUI : MonoBehaviour
 {
     public SkillEvent onSkillSelected;
     [SerializeField] WoochiSkillIcon[] skillIcons = new WoochiSkillIcon[(int)SkillElement.END];
-    
+
+    [SerializeField] private SkillDescriptionUI skillDescriptionUI;
+
     public void Start()
     {
         for (int i = 0; i < skillIcons.Length; i++)
@@ -14,8 +17,12 @@ public class WoochiSkillSelectionUI : MonoBehaviour
             if (!skillIcons[i]) continue;
             Button btn = skillIcons[i].Btn;
             btn.onClick.AddListener(() => SkillButtonClicked(skillIcons[index].Skill));
+
+            skillIcons[i].OnShowTooltip += SetSkillTooltip;
+            skillIcons[i].OnHideTooltip += () => skillDescriptionUI.gameObject.SetActive(false);
         }
     }
+
 
     public void Initialize(bool isEnable)
     {
@@ -151,6 +158,13 @@ public class WoochiSkillSelectionUI : MonoBehaviour
         // SkillTriggerSelector의 Activate 메서드 호출
         onSkillSelected.Invoke(_skill);
     }
-    
+
+
+    private void SetSkillTooltip(BaseSkill skill, Transform transform)
+    {
+        skillDescriptionUI.Activate(skill);
+        skillDescriptionUI.transform.position = transform.position + new Vector3(30, 75, 0);
+    }
+
     public SkillEvent OnSkillSelected => onSkillSelected;
 }

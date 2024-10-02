@@ -24,4 +24,10 @@ public class HealPack : Tool
         description = $"체력을 {healAmount}만큼 회복합니다";
         return base.GetDescription();   
     }
+
+    public override string GetResult()
+    {
+        resultTxt = $"모든 소환수의 체력을 {healAmount}만큼 회복합니다";
+        return base.GetResult();
+    }
 }

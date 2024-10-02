@@ -10,6 +10,9 @@ public class BattleReward : MonoBehaviour
     [SerializeField] private Button nextBtn;
     [SerializeField] private TextMeshProUGUI goldTxt;
 
+    [Header("Tool")]
+    [SerializeField] private List<Tool> toolList;
+
     [Header("Reward")]
     [SerializeField, ReadOnly(true)] private RandomList<RareType> rarityList;
     private HashSet<Reward> rewardSet = new HashSet<Reward>();
@@ -28,6 +31,9 @@ public class BattleReward : MonoBehaviour
     [Header("Result")]
     [SerializeField] private BattleResultUI resultUI;
 
+    [Header("Object")]
+    [SerializeField] private RewardToolPopup rewardToolPopup;
+
     private int grade = 0;      // 역경 단계
 
     void Start()
@@ -36,6 +42,20 @@ public class BattleReward : MonoBehaviour
         rerollBtn.onClick.AddListener(ReRoll);
         EventManager.GetInstance.onChangedGold += SetGold;
         EventManager.GetInstance.onSelectReward += SetInteractable;
+
+        for(int i = 0; i < toolList.Count; i++)
+        {
+            toolList[i].OnShowTooltip += ShowTooltip;
+            toolList[i].OnShowPopup += ShowPopup;
+            toolList[i].OnHideTooltip += HideTooltip;
+        }
+
+        for(int i = 0; i < rewardsList.Count; i++)
+        {
+            rewardsList[i].OnShowTooltip += ShowTooltip;
+            rewardsList[i].OnShowPopup += ShowPopup;
+            rewardsList[i].OnHideTooltip += HideTooltip;
+        }
 
         rewardPanel.SetActive(false);
     }
@@ -159,5 +179,32 @@ public class BattleReward : MonoBehaviour
     {
         rerollPrice = newPrice;
         rerollPriceTxt.text = rerollPrice.ToString();
+    }
+
+    private void ShowTooltip(Tool tool)
+    {
+        rewardToolPopup.ShowTooltip(tool);
+    }
+
+    private void ShowTooltip(RewardUI rewardUI)
+    {
+        rewardToolPopup.ShowTooltip(rewardUI);
+    }
+
+    private void HideTooltip()
+    {
+        rewardToolPopup.HideInfo();
+    }
+
+    private void ShowPopup(Reward reward)
+    {
+        string text = reward.GetResult();
+        rewardToolPopup.ShowResult(text);
+    }
+
+    private void ShowPopup(Tool tool)
+    {
+        string text = tool.GetResult();
+        rewardToolPopup.ShowResult(text);
     }
 }

@@ -1,15 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class WoochiSkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class WoochiSkillIcon : MonoBehaviour, ITooltipiable
 {
+    public Action<BaseSkill, Transform> OnShowTooltip;
+    public Action OnHideTooltip;
+
     [SerializeField] private  Image       enabledIcon;
     [SerializeField] private  Image       disabledIcon;
     [SerializeField] private  Button      btn;
-    [SerializeField] private  Transform   tooltipPos;     // 툴팁 위치를 지정하기 위해
 
     protected BaseSkill skill;
     [SerializeField] private SkillElement skillElement;
@@ -30,34 +30,35 @@ public class WoochiSkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExit
             skill = null;
         }
     }
-    public void OnPointerEnter(PointerEventData eventData)
+
+    public void ShowTooltip()
     {
-       if (skill == null)
-           return;
+        if (skill == null)
+            return;
 
-       UIManager.GetInstance.SetSkillToolTip(skill, tooltipPos.position);
-       
-      //스킬이 설정되어있고, 버튼이 활성화상태이면 도력 게이지 감소수치 미리 보여줌
-      if (skill && btn.interactable)
-      {
-         MainCharacterSkill mainCharacterSkill = skill as MainCharacterSkill;
-         if (!mainCharacterSkill)
-         {
-             Debug.LogError("우치 스킬이 아님");
-             return;
-         }
+        OnShowTooltip.Invoke(skill, transform);
 
-         UIManager.GetInstance.sorceryGuageUI.ShowAnimation(mainCharacterSkill.RequiredSorceryPoints, true);
-      }
+        //스킬이 설정되어있고, 버튼이 활성화상태이면 도력 게이지 감소수치 미리 보여줌
+        if (skill && btn.interactable)
+        {
+            MainCharacterSkill mainCharacterSkill = skill as MainCharacterSkill;
+            if (!mainCharacterSkill)
+            {
+                Debug.LogError("우치 스킬이 아님");
+                return;
+            }
+
+            UIManager.GetInstance.sorceryGuageUI.ShowAnimation(mainCharacterSkill.RequiredSorceryPoints, true);
+        }
     }
-    
-    public void OnPointerExit(PointerEventData eventData)
+
+    public void HideTooltip()
     {
-        UIManager.GetInstance.skillDescriptionUI.Deactivate();
+        OnHideTooltip.Invoke();
 
         BaseSkill selectedSkill = BattleManager.GetInstance.CurrentSelectedSkill;
         //우치 스킬이 선택되지 않았으면 도력 게이지 다시 원래대로 회복
-        if(!selectedSkill)
+        if (!selectedSkill)
         {
             UIManager.GetInstance.sorceryGuageUI.Restore();
         }
@@ -73,7 +74,7 @@ public class WoochiSkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExit
             UIManager.GetInstance.sorceryGuageUI.ShowAnimation(mainCharacterSkill.RequiredSorceryPoints, true);
         }
     }
-    
+
     #region Getter Setter
     public SkillElement SkillElement => skillElement;
     public BaseSkill Skill => skill;

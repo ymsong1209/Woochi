@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class RewardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class RewardUI : MonoBehaviour, ITooltipiable, IPopupable
 {
+    public Action<RewardUI> OnShowTooltip;
+    public Action OnHideTooltip;
+    public Action<Reward> OnShowPopup;
     private Reward reward;
 
     [SerializeField] private Image image;
@@ -33,15 +36,23 @@ public class RewardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         if (reward.ApplyReward() == false) return;
         EventManager.GetInstance.onSelectReward?.Invoke(false);
+        ShowPopup();
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void ShowTooltip()
     {
-        UIManager.GetInstance.rewardToolPopup.ShowRewardPopup(reward);
+        OnShowTooltip.Invoke(this);
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public void HideTooltip()
     {
-        UIManager.GetInstance.rewardToolPopup.HideInfo();
+        OnHideTooltip.Invoke();
+    }
+
+    public Reward GetReward() => reward;
+
+    public void ShowPopup()
+    {
+        OnShowPopup.Invoke(reward);
     }
 }

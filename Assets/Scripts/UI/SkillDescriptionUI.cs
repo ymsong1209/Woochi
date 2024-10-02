@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class SkillDescriptionUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI skillTxt; // 팝업 텍스트
-    [SerializeField] private Canvas mainCanvas;
     [SerializeField] private RectTransform panelRt;
 
     [SerializeField] private RectTransform skillSideBarLeft;
@@ -48,7 +45,6 @@ public class SkillDescriptionUI : MonoBehaviour
         gameObject.SetActive(false);
     }
     
-    
     private void UpdatePanelSize()
     {
         // 텍스트의 렌더링된 크기를 기준으로 패널의 크기를 조정
@@ -74,7 +70,4 @@ public class SkillDescriptionUI : MonoBehaviour
         rightSidebarPosition = new Vector3(panelPosition.x + panelRt.sizeDelta.x / 2, rightSidebarPosition.y, rightSidebarPosition.z);
         skillSideBarRight.transform.position = rightSidebarPosition;
     }
-
-    
-    public TextMeshProUGUI SkillText => skillTxt;
 }

@@ -3,8 +3,9 @@ using TMPro;
 
 public class UIManager : SingletonMonobehaviour<UIManager>
 {
-    [HeaderTooltip("Skill Tooltip","스킬 아이콘에 마우스 올릴 시 뜨는 툴팁")]
-    public SkillDescriptionUI skillDescriptionUI;
+    [HeaderTooltip("HP tooltip", "체력바 툴팁")]
+    [SerializeField] GameObject hpTooltip;
+    [SerializeField] TextMeshProUGUI hpTooltipText;
 
     [HeaderTooltip("Enemy Tooltip", "적 캐릭터에 마우스 올릴 시 적 정보 뜨는 툴팁")]
     public GameObject enemyTooltip;
@@ -19,9 +20,6 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     public SorceryGuageUI sorceryGuageUI;
     [SerializeField] private WoochiActionList woochiActionList;
 
-    [HeaderTooltip("Popup", "팝업")]
-    public RewardToolPopup rewardToolPopup;
-
     [HeaderTooltip("Battle Result", "전투 결과")]
     public LevelUpUI levelUpUI;
     
@@ -29,19 +27,18 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     {
         BattleManager.GetInstance.OnFocusStart += DeactivateBuffPopUp;
     }
-
-    public void SetSkillToolTip(BaseSkill _skill, Vector3 position)
-    {
-        skillDescriptionUI.Activate(_skill);
-        skillDescriptionUI.transform.position = position;
-    }
-
-    public void SetCharmToolTip(BaseCharm _charm, Vector3 position)
-    {
-        skillDescriptionUI.Activate(_charm);
-        skillDescriptionUI.transform.position = position;
-    }
     
+    public void SetHPTooltip(bool isActivate, HPBar hpBar = null)
+    {
+        hpTooltip.SetActive(isActivate);
+
+        if(hpBar)
+        {
+            hpTooltip.transform.position = hpBar.GetPosition();
+            hpTooltipText.text = hpBar.GetTooltipText();
+        }
+    }
+
     public void SetEnemyToolTip(BaseCharacter _character)
     {
         enemyTooltip.SetActive(true);

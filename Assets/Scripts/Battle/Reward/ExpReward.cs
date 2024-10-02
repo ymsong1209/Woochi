@@ -15,12 +15,12 @@ public class ExpReward : Reward
 
         if(ally.IsDead || ally.level.IsMaxRank())
         {
-            HelperUtilities.ShowRewardToolResult($"{ally.Name}은(는) 현재 경험치를 얻을 수 없습니다");
+            resultTxt = $"{ally.Name}은(는) 현재 경험치를 얻을 수 없습니다";
             return false;
         }
 
         ally.level.plusExp += expAmount;
-        HelperUtilities.ShowRewardToolResult($"{ally.Name}은(는) {expAmount}의 경험치를 획득했습니다");
+        resultTxt = $"{ally.Name}은(는) {expAmount}의 경험치를 획득했습니다";
         return true;
     }
 }
