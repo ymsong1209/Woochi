@@ -12,7 +12,7 @@ public class SkillSelectionUI : MonoBehaviour
     public SkillEvent onSkillSelected; // SkillEvent 타입의 public 이벤트
 
     [SerializeField] protected SkillDescriptionUI skillDescriptionUI;
-
+    [SerializeField] protected BuffDescriptionUI buffDescriptionUI;
     [SerializeField] private GameObject blindObject;    // 클릭 방지
     [SerializeField] private List<SkillIcon> skillIcons;
     private SkillIcon selectedIcon = null;
@@ -31,6 +31,7 @@ public class SkillSelectionUI : MonoBehaviour
 
             skillIcons[i].OnShowTooltip += SetSkillTooltip;
             skillIcons[i].OnHideTooltip += () => skillDescriptionUI.gameObject.SetActive(false);
+            skillIcons[i].OnHideTooltip += () => buffDescriptionUI.gameObject.SetActive(false);
         }
     }
 
@@ -160,5 +161,7 @@ public class SkillSelectionUI : MonoBehaviour
     {
         skillDescriptionUI.Activate(skill);
         skillDescriptionUI.transform.position = transform.position + new Vector3(0, 100, 0);
+        buffDescriptionUI.Activate(skill);
+        buffDescriptionUI.SkillDescriptionUI = skillDescriptionUI;
     }
 }

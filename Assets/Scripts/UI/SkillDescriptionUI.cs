@@ -70,4 +70,6 @@ public class SkillDescriptionUI : MonoBehaviour
         rightSidebarPosition = new Vector3(panelPosition.x + panelRt.sizeDelta.x / 2, rightSidebarPosition.y, rightSidebarPosition.z);
         skillSideBarRight.transform.position = rightSidebarPosition;
     }
+    
+    public RectTransform PanelRt => panelRt;
 }

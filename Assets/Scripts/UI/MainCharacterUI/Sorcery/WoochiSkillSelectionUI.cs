@@ -7,6 +7,7 @@ public class WoochiSkillSelectionUI : MonoBehaviour
     [SerializeField] WoochiSkillIcon[] skillIcons = new WoochiSkillIcon[(int)SkillElement.END];
 
     [SerializeField] private SkillDescriptionUI skillDescriptionUI;
+    [SerializeField] private BuffDescriptionUI buffDescriptionUI;
 
     public void Start()
     {
@@ -20,6 +21,7 @@ public class WoochiSkillSelectionUI : MonoBehaviour
 
             skillIcons[i].OnShowTooltip += SetSkillTooltip;
             skillIcons[i].OnHideTooltip += () => skillDescriptionUI.gameObject.SetActive(false);
+            skillIcons[i].OnHideTooltip += () => buffDescriptionUI.gameObject.SetActive(false);
         }
     }
 
@@ -163,7 +165,9 @@ public class WoochiSkillSelectionUI : MonoBehaviour
     private void SetSkillTooltip(BaseSkill skill, Transform transform)
     {
         skillDescriptionUI.Activate(skill);
-        skillDescriptionUI.transform.position = transform.position + new Vector3(30, 75, 0);
+        skillDescriptionUI.transform.position = transform.position + new Vector3(0, 100, 0);
+        buffDescriptionUI.Activate(skill);
+        buffDescriptionUI.SkillDescriptionUI = skillDescriptionUI;
     }
 
     public SkillEvent OnSkillSelected => onSkillSelected;
