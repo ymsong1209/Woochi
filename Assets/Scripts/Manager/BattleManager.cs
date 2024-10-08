@@ -97,7 +97,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         turnManager.Init(allies, enemies);
 
         InitializeAbnormal();
-        InitResult(isElite);
+        result.isElite = isElite;
 
         #region PreRound 상태로 넘어감
         PreRound();
@@ -135,7 +135,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
     }
 
-    private void InitResult(bool isElite)
+    private void InitResult()
     {
         #region 역경 계산
         int hardShip = abnormal.cost;
@@ -145,13 +145,10 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             hardShip += enemy.Cost;
         }
 
-        result.hardShipGrade = Mathf.Clamp(hardShip - 4, 0, 99);
+        result.hardShipGrade = Mathf.Clamp(hardShip - 4 + DataCloud.playerData.CalculateLuck(), 0, 9);
         #endregion
-        result.isElite = isElite;
     }
 
-    // ReSharper disable Unity.PerformanceAnalysis
-    /// <summary>
     /// 캐릭터들의 버프 정리
     /// </summary>
     void PreRound()
@@ -166,6 +163,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
         DetermineOrder();
     }
+
+    // ReSharper disable Unity.PerformanceAnalysis
+    /// <summary>
 
     /// <summary>
     /// 캐릭터들을 속도순으로 정렬
@@ -544,6 +544,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     void PostBattle()
     {
         turnManager.BattleOver();
+        InitResult();
         allies.BattleEnd(); enemies.BattleEnd();
 
         //승리 화면 뜬 후 보상 정산
