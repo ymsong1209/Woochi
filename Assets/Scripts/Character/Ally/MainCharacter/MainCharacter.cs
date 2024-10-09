@@ -18,6 +18,10 @@ public class MainCharacter : BaseCharacter
     public override void Initialize()
     {
         base.Initialize();
+
+        maxSorceryPoints = DataCloud.playerData.maxSorceryPoints;
+        sorceryPoints = DataCloud.playerData.sorceryPoints;
+
         recoverySkill.SkillOwner = this;
         summonSkill.SkillOwner = this;
         charmSkill.SkillOwner = this;
@@ -42,6 +46,14 @@ public class MainCharacter : BaseCharacter
             newSkill.Initialize(this);
             mainCharacterSkills[(int)skill.SkillSO.SkillElement] = newSkill;
         }
+    }
+
+    public override void SaveStat()
+    {
+        base.SaveStat();
+
+        DataCloud.playerData.maxSorceryPoints = maxSorceryPoints;
+        DataCloud.playerData.sorceryPoints = sorceryPoints;
     }
 
     private void DeleteCharacterSkill()

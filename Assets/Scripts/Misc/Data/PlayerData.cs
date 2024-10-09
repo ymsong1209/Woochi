@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class PlayerData
 {
     // bool
@@ -8,7 +10,12 @@ public class PlayerData
 
     // Map Data
     public Map currentMap;
-    
+
+    // Woochi
+    public int maxSorceryPoints;    // 최대 도술 포인트
+    public int sorceryPoints;       // 현재 도술 포인트 
+    public List<Luck> luckList;     // 행운
+
     // Skill Data
     public int[] currentskillIDs;
     public int[,] totalSkillIDs;
@@ -27,6 +34,11 @@ public class PlayerData
 
         battleData = new BattleData();
         currentMap = null;
+
+        maxSorceryPoints = 200;
+        sorceryPoints = 200;
+        luckList = new List<Luck>();
+
         currentskillIDs = new int[5];
         if(GameManager.GetInstance.UseDebugSkills)
         {
@@ -79,5 +91,37 @@ public class PlayerData
         }
 
         battleData.characterInfoList.Add(newCharacterInfo);
+    }
+
+    public int CalculateLuck()
+    {
+        if(luckList == null || luckList.Count == 0)
+        {
+            return 0;
+        }
+
+        int luck = 0;
+
+        for(int i = 0; i < luckList.Count; i++)
+        {
+            if (luckList[i].turn > 0)
+            {
+                luck += luckList[i].value;
+            }
+        }
+
+        Luck firstLuck = luckList[0];
+        firstLuck.turn--;
+
+        if(firstLuck.turn <= 0)
+        {
+            luckList.RemoveAt(0);
+        }
+        else
+        {
+            luckList[0] = firstLuck;
+        }
+
+        return luck;
     }
 }

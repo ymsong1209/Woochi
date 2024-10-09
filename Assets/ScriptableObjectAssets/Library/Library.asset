@@ -91,10 +91,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 3cea06ffdc780334a8a38e4dabe84ca9, type: 2}
     - {fileID: 11400000, guid: 7cec8b81ce231534eb3fd6dc9939c809, type: 2}
     - {fileID: 11400000, guid: 131ff5c3c3ae05148b256a3500c8664a, type: 2}
-    - {fileID: 11400000, guid: c3f296c3e0d5d92488625661e16d48ed, type: 2}
+    - {fileID: 11400000, guid: b106f4c457cb80b44bdede50381ceef8, type: 2}
   - rarity: 1
     rewards:
-    - {fileID: 11400000, guid: fa483710039d7734f983f47d4d793ee8, type: 2}
+    - {fileID: 11400000, guid: e1c3d94d5cb6b5344a2e2d5ca40b3f8a, type: 2}
     - {fileID: 11400000, guid: 38dcfea0a623e8c4caf07f5b1f4290d5, type: 2}
     - {fileID: 11400000, guid: 10b732fe9611e764db0ed977e5b09762, type: 2}
     - {fileID: 11400000, guid: dffd53b290d823c42982693013eb82e2, type: 2}
