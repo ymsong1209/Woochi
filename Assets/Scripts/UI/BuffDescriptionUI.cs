@@ -1,21 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
+using OneLine;
 using UnityEngine;
 
 public class BuffDescriptionUI : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> buffDescriptions;
+    [SerializeField,OneLineWithHeader] private List<BuffKeyValue> buffDescriptions = new List<BuffKeyValue>();
+    private Dictionary<BuffEffect, GameObject> buffDictionary = new Dictionary<BuffEffect, GameObject>();
     [SerializeField] private SkillDescriptionUI skillDescriptionUI;
 
     public void Activate(BaseSkill skill)
     {
         gameObject.SetActive(true);
+        foreach(KeyValuePair<BuffEffect,GameObject> pair in buffDictionary)
+        {
+            pair.Value.SetActive(false);
+        }
+        foreach(GameObject buffobject in skill.BuffPrefabList)
+        {
+            BuffEffect effect = buffobject.GetComponent<BaseBuff>().BuffEffect;
+            if (buffDictionary.ContainsKey(effect))
+            {
+                buffDictionary[effect].SetActive(true);
+            }
+        }
+    }
+
+    void Awake()
+    {
+        // List를 Dictionary로 변환
+        foreach (BuffKeyValue kv in buffDescriptions)
+        {
+            if (!buffDictionary.ContainsKey(kv.key))
+            {
+                buffDictionary.Add(kv.key, kv.value);
+            }
+        }
     }
     void Start()
     {
-        foreach(GameObject buffDescription in buffDescriptions)
+        foreach(KeyValuePair<BuffEffect, GameObject> buffDescription in buffDictionary)
         {
-            buffDescription.SetActive(false);
+            buffDescription.Value.SetActive(false);
         }
     }
 
@@ -41,4 +67,12 @@ public class BuffDescriptionUI : MonoBehaviour
     {
         set => skillDescriptionUI = value;
     }
+}
+
+
+[System.Serializable]
+public class BuffKeyValue
+{
+    public BuffEffect key;
+    public GameObject value;
 }

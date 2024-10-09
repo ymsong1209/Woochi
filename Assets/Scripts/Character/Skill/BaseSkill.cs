@@ -67,6 +67,7 @@ public class BaseSkill : MonoBehaviour
     [SerializeField] private int skillTargetCount = 1;
     private List<GameObject> buffPrefabList = new List<GameObject>();
     private int skillRandomCount = 0;
+    protected List<BuffEffect> buffDescriptionList = new List<BuffEffect>();//스킬에 포함된 버프 설명 무엇 넣을것인지.
     
     /// <summary>
     /// 스킬 적중시 적용시킬 버프 리스트
@@ -602,6 +603,8 @@ public class BaseSkill : MonoBehaviour
         set => skillOwner = value;
     }
     public int SkillRandomCount => skillRandomCount;
+    
+    public List<BuffEffect> BuffDescriptionList => buffDescriptionList;
 
     #endregion Getter Setter
 

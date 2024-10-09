@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6389375370151066245}
   - component: {fileID: 8742635585079224474}
   - component: {fileID: 8917233453386504692}
+  - component: {fileID: 5137994462366975752}
   m_Layer: 5
   m_Name: SkillMiddle
   m_TagString: Untagged
@@ -95,6 +96,18 @@ MonoBehaviour:
   panelRt: {fileID: 7809873091406955346}
   skillSideBarLeft: {fileID: 5763732424408290791}
   skillSideBarRight: {fileID: 7535147366620070308}
+--- !u!225 &5137994462366975752
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801643223388997250}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 1
 --- !u!1 &2826286509299139466
 GameObject:
   m_ObjectHideFlags: 0
