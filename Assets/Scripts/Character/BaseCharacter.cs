@@ -117,6 +117,14 @@ public class BaseCharacter : MonoBehaviour
         DataCloud.playerData.SaveInfo(info);
     }
 
+    public void OnMove()
+    {
+        if(isDead)
+        {
+            health.TurnToResurrect = Mathf.Clamp(health.TurnToResurrect - 1, 0, DataCloud.countForRessurection);
+        }
+    }
+
     #region 버프 처리
     /// <summary>
     /// 버프 적용 시점에 따라 적절한 버프 처리 함수 호출
@@ -354,9 +362,7 @@ public class BaseCharacter : MonoBehaviour
 
     protected void InitializeHealth()
     {
-        health.SetOwner(this);
-        health.MaxHealth = characterStat.BaseHealth.MaxHealth;
-        health.CurHealth = characterStat.BaseHealth.CurHealth;
+        health.Initialize(this, characterStat.BaseHealth);
 
         isDead = (health.CurHealth <= 0);
     }
@@ -429,8 +435,18 @@ public class BaseCharacter : MonoBehaviour
     /// </summary>
     public virtual void SetDead()
     {
-        isDead = true;
+        health.TurnToResurrect = DataCloud.countForRessurection;
+        isSummoned = false;
         gameObject.SetActive(false);
+    }
+
+    public void Resurrect()
+    {
+        if (health.TurnToResurrect == 0)
+        {
+            health.Resurrect();
+            isDead = false;
+        }
     }
 
     //캐릭터 완전 삭제

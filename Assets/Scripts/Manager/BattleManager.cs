@@ -73,9 +73,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         allyCards.Initialize(allies);
     }
 
-    /// <summary>
-    /// DungeonInfoSO 정보를 받아와서 아군과 적군 위치값 설정
-    /// </summary>
     public void InitializeBattle(int[] enemyIDs, int abnormalID = 100, bool isElite = false)
     {
         if (enemyIDs == null || enemyIDs.Length == 0) 
@@ -91,7 +88,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         var enemyList = GameManager.GetInstance.Library.GetCharacterList(enemyIDs);
         enemies.Initialize(enemyList);
-        allyCards.UpdateList();
 
         // 턴 초기화
         turnManager.Init(allies, enemies);

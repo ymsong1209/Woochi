@@ -95,7 +95,7 @@ public class BattleReward : MonoBehaviour
     {
         AllyFormation allyFormation = BattleManager.GetInstance.Allies;
 
-        foreach (var character in allyFormation.AllCharacter)
+        foreach (var character in allyFormation.GetBattleCharacter())
         {
             if(character.IsDead) continue;
 

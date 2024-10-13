@@ -10,6 +10,8 @@ public static class DataCloud
     public static string[] allyRankNames = new string[] { "기", "귀", "혼", "령", "신"};
     public static string[] woochiRankNames = new string[] { "일류", "절정", "삼화취정", "오기조원", "조화경"};
     
+    public static int countForRessurection = 4;      // 부활하려면 방문해야 하는 지점 수
+
     public static void SavePlayerData()
     {
         string json = JsonConvert.SerializeObject(playerData, Formatting.Indented,
