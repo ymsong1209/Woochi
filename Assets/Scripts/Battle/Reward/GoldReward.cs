@@ -7,13 +7,8 @@ public class GoldReward : Reward
 
     public override bool ApplyReward()
     {
+        resultTxt = $"{rewardGold} »Â∏ß¿ª »πµÊ«ﬂΩ¿¥œ¥Ÿ";
         HelperUtilities.AddGold(rewardGold);
         return true;
-    }
-
-    public override string GetResult()
-    {
-        resultTxt = $"{rewardGold} »Â∏ß¿ª »πµÊ«ﬂΩ¿¥œ¥Ÿ";
-        return base.GetResult();
     }
 }

@@ -10,6 +10,7 @@ public class Reward : ScriptableObject
     public string description;
 
     [SerializeField] protected string resultTxt;
+    [SerializeField] protected string errorTxt;
 
     public virtual bool ApplyReward()
     {
@@ -19,5 +20,10 @@ public class Reward : ScriptableObject
     public virtual string GetResult()
     {
         return resultTxt;
+    }
+
+    public virtual string GetError()
+    {
+        return errorTxt;
     }
 }

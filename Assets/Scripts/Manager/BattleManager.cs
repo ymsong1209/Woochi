@@ -141,6 +141,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             hardShip += enemy.Cost;
         }
 
+        result.enemyCount = enemyList.Count;
         result.hardShipGrade = Mathf.Clamp(hardShip - 4 + DataCloud.playerData.CalculateLuck(), 0, 9);
         #endregion
     }

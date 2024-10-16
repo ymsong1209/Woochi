@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class RewardToolPopup : MonoBehaviour
+public class RewardPopup : MonoBehaviour
 {
     [Header("Info")]
     [SerializeField] private GameObject infoPopup;
@@ -22,41 +22,38 @@ public class RewardToolPopup : MonoBehaviour
     public void ShowTooltip(RewardUI rewardUI)
     {
         infoPopup.SetActive(true);
-        SetTransform(rewardUI.transform.position);
+        SetTransform(rewardUI.transform);
 
         Reward reward = rewardUI.GetReward();
         nameTxt.text = reward.rewardName;
         descriptionTxt.text = reward.description;
-        
-        switch(reward.rarity)
+
+        if (rewardUI is ToolUI)
         {
-            case RareType.Lowest:
-                gradeTxt.text = "최하";
-                break;
-            case RareType.Low:
-                gradeTxt.text = "하";
-                break;
-            case RareType.Middle:
-                gradeTxt.text = "중";
-                break;
-            case RareType.High:
-                gradeTxt.text = "상";
-                break;
-            case RareType.Highest:
-                gradeTxt.text = "최상";
-                break;
+            gradeTxt.text = "";
+        }
+        else
+        {
+            switch (reward.rarity)
+            {
+                case RareType.Lowest:
+                    gradeTxt.text = "최하";
+                    break;
+                case RareType.Low:
+                    gradeTxt.text = "하";
+                    break;
+                case RareType.Middle:
+                    gradeTxt.text = "중";
+                    break;
+                case RareType.High:
+                    gradeTxt.text = "상";
+                    break;
+                case RareType.Highest:
+                    gradeTxt.text = "최상";
+                    break;
+            }
         }
     }   
-    
-    public void ShowTooltip(Tool tool)
-    {
-        infoPopup.SetActive(true);
-        SetTransform(tool.transform.position);
-
-        nameTxt.text = tool.toolName;
-        descriptionTxt.text = tool.GetDescription();
-        gradeTxt.text = "";
-    }
 
     public void ShowResult(string text)
     {
@@ -71,8 +68,9 @@ public class RewardToolPopup : MonoBehaviour
         infoPopup.SetActive(false);
     }
 
-    private void SetTransform(Vector3 pos)
+    private void SetTransform(Transform transform)
     {
-        infoPopup.transform.position = pos + new Vector3(0, -50, 0);
+        Vector3 pos = transform.position;
+        infoPopup.transform.position = pos + new Vector3(0, -150, 0);
     }
 }

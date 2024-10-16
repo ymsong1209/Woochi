@@ -1,5 +1,5 @@
 
 public interface IPopupable
 {
-    void ShowPopup();
+    void ShowPopup(string text);
 }

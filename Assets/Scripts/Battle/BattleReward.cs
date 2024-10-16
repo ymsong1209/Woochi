@@ -11,13 +11,12 @@ public class BattleReward : MonoBehaviour
     [SerializeField] private TextMeshProUGUI goldTxt;
 
     [Header("Tool")]
-    [SerializeField] private List<Tool> toolList;
+    [SerializeField] private List<RewardUI> toolList;
 
     [Header("Reward")]
     [SerializeField, ReadOnly(true)] private RandomList<RareType> rarityList;
     private HashSet<Reward> rewardSet = new HashSet<Reward>();
     [SerializeField] private List<RewardUI> rewardsList;
-    [SerializeField] private int rewardCount = 5;
 
     [Header("Reroll")]
     [SerializeField] private Button rerollBtn;
@@ -32,12 +31,13 @@ public class BattleReward : MonoBehaviour
     [SerializeField] private BattleResultUI resultUI;
 
     [Header("Object")]
-    [SerializeField] private RewardToolPopup rewardToolPopup;
+    [SerializeField] private RewardPopup rewardPopup;
 
     private int grade = 0;      // 역경 단계
 
     void Start()
     {
+        #region Event Register
         nextBtn.onClick.AddListener(Next);
         rerollBtn.onClick.AddListener(ReRoll);
         EventManager.GetInstance.onChangedGold += SetGold;
@@ -56,7 +56,7 @@ public class BattleReward : MonoBehaviour
             rewardsList[i].OnShowPopup += ShowPopup;
             rewardsList[i].OnHideTooltip += HideTooltip;
         }
-
+        #endregion
         rewardPanel.SetActive(false);
     }
 
@@ -73,6 +73,7 @@ public class BattleReward : MonoBehaviour
         SetInteractable(true);
         SetReroll(100);
         SetGold();
+        SetTool();
     }
 
     /// <summary>
@@ -112,6 +113,7 @@ public class BattleReward : MonoBehaviour
     {
         rewardSet.Clear();
 
+        int rewardCount = rewardsList.Count;
         while(rewardSet.Count < rewardCount)
         {
             RareType rarity = GetRarity(grade);
@@ -156,6 +158,14 @@ public class BattleReward : MonoBehaviour
         goldTxt.text = $"{DataCloud.playerData.gold} 개";
     }
 
+    private void SetTool()
+    {
+        foreach(var toolUI in toolList)
+        {
+            toolUI.Initialize();
+        }
+    }
+
     /// <summary>
     /// 보상 UI 상호작용 설정
     /// active가 true면 보상 선택 가능, 다음 버튼 선택 불가
@@ -181,30 +191,18 @@ public class BattleReward : MonoBehaviour
         rerollPriceTxt.text = rerollPrice.ToString();
     }
 
-    private void ShowTooltip(Tool tool)
-    {
-        rewardToolPopup.ShowTooltip(tool);
-    }
-
     private void ShowTooltip(RewardUI rewardUI)
     {
-        rewardToolPopup.ShowTooltip(rewardUI);
+        rewardPopup.ShowTooltip(rewardUI);
     }
 
     private void HideTooltip()
     {
-        rewardToolPopup.HideInfo();
+        rewardPopup.HideInfo();
     }
 
-    private void ShowPopup(Reward reward)
+    protected void ShowPopup(string text)
     {
-        string text = reward.GetResult();
-        rewardToolPopup.ShowResult(text);
-    }
-
-    private void ShowPopup(Tool tool)
-    {
-        string text = tool.GetResult();
-        rewardToolPopup.ShowResult(text);
+        rewardPopup.ShowResult(text);
     }
 }

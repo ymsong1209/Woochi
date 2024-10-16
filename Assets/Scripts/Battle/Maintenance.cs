@@ -32,6 +32,8 @@ public class Maintenance : MonoBehaviour
         BattleManager.GetInstance.DisableDummy();
 
         BattleManager.GetInstance.Allies.SaveFormation();       // 아군 포메이션 변경 했을까봐 다시 저장
+        GameManager.GetInstance.SaveData();
+
         MapManager.GetInstance.CompleteNode();
         GameManager.GetInstance.soundBGM.ToggleBattleMap(false);
     }
