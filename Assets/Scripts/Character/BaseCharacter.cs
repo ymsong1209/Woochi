@@ -363,6 +363,7 @@ public class BaseCharacter : MonoBehaviour
     protected void InitializeHealth()
     {
         health.Initialize(this, characterStat.BaseHealth);
+        onHealthChanged?.Invoke();
 
         isDead = (health.CurHealth <= 0);
     }
@@ -440,9 +441,9 @@ public class BaseCharacter : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void Resurrect()
+    public void Resurrect(bool isTool = false)
     {
-        if (health.TurnToResurrect == 0)
+        if (health.TurnToResurrect == 0 || isTool)
         {
             health.Resurrect();
             isDead = false;
