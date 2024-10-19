@@ -43,7 +43,9 @@ public static class DataCloud
 
     public static void DeletePlayerData()
     {
-        PlayerPrefs.DeleteKey("PlayerData");
+        if(PlayerPrefs.HasKey("PlayerData"))
+            PlayerPrefs.DeleteKey("PlayerData");
+
         playerData = null;
     }
 }
