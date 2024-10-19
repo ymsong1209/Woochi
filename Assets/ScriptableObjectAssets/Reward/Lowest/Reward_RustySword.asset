@@ -17,6 +17,7 @@ MonoBehaviour:
   rewardName: "\uB179\uC774 \uC2A8 \uC7A5\uB3C4"
   description: "\uB2E4\uC74C 3\uBC88 \uC804\uD22C\uB3D9\uC548 \uD589\uC6B4+1"
   resultTxt: 
+  errorTxt: 
   luck:
     turn: 3
     value: 1

@@ -36,6 +36,9 @@ public class MapManager : SingletonMonobehaviour<MapManager>
 
     public void SelectNode(MapNode _mapNode)
     {
+        AllyFormation allies = BattleManager.GetInstance.Allies;
+        allies.MoveNode();
+
         if (_mapNode.Node.nodeType == NodeType.Strange)
         {
             StrangeType type = config.GetStrangeType();

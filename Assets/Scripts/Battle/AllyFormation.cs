@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class AllyFormation : Formation
@@ -56,6 +57,14 @@ public class AllyFormation : Formation
         #endregion
 
         Positioning();
+    }
+
+    public void MoveNode()
+    {
+        foreach(var character in allCharacter)
+        {
+            character.OnMove();
+        }
     }
 
     public override void ReOrder()
@@ -214,7 +223,27 @@ public class AllyFormation : Formation
             character.SaveStat();
         }
 
+        SetSize();
+        Resurrect();
         SaveFormation();
+    }
+
+    public void Resurrect(bool isRandom = false)
+    {
+        List<BaseCharacter> deadCharacters = allCharacter.Where(c => c.IsDead).ToList();
+
+        if(isRandom)
+        {
+            int randIndex = Random.Range(0, deadCharacters.Count);
+            deadCharacters[randIndex].Resurrect();
+        }
+        else
+        {
+            foreach(var character in deadCharacters)
+            {
+                character.Resurrect();
+            }
+        }
     }
 
     public void SaveFormation()
@@ -233,5 +262,18 @@ public class AllyFormation : Formation
     {
         _character.isSummoned = isSummoned;
         _character.RowOrder = rowOrder;
+    }
+
+    private void SetSize()
+    {
+        totalSize = 0;
+
+        for(int i = 0; i < 4; )
+        {
+            if (formation[i] == null) break;
+
+            totalSize += formation[i].Size;
+            i += formation[i].Size;
+        }
     }
 }

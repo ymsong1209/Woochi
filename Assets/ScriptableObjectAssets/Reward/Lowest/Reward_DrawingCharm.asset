@@ -16,3 +16,5 @@ MonoBehaviour:
   rarity: 0
   rewardName: "\uBD80\uC801 \uADF8\uB9AC\uAE30"
   description: "\uBB34\uC791\uC704 \uBD80\uC801 \uD68D\uB4DD"
+  resultTxt: 
+  errorTxt: "\uBD80\uC801\uC740 5\uAC1C\uAE4C\uC9C0\uB9CC \uAC00\uC9C8 \uC218 \uC788\uC2B5\uB2C8\uB2E4"

@@ -16,6 +16,8 @@ MonoBehaviour:
   rarity: 1
   rewardName: "\uD76C\uADC0\uD55C \uC57D\uCD08"
   description: "\uC6B0\uCE58 \uCCB4\uB825 25 \uD68C\uBCF5"
+  resultTxt: "\uC6B0\uCE58\uAC00 \uCCB4\uB825\uC744 25\uB9CC\uD07C \uD68C\uBCF5\uD588\uC2B5\uB2C8\uB2E4"
+  errorTxt: 
   heal: 1
   healAmount: 25
   sorceryHeal: 0

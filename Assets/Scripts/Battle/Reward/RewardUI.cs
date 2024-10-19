@@ -6,22 +6,26 @@ public class RewardUI : MonoBehaviour, ITooltipiable, IPopupable
 {
     public Action<RewardUI> OnShowTooltip;
     public Action OnHideTooltip;
-    public Action<Reward> OnShowPopup;
-    private Reward reward;
+    public Action<string> OnShowPopup;
 
-    [SerializeField] private Image image;
-    [SerializeField] private Button btn;
+    [SerializeField] protected Image image;
+    [SerializeField] protected Button btn;
+
+    [Header("Reward")]
+    [SerializeField] protected Reward reward;
 
     private void Start()
     {
         btn.onClick.AddListener(Receive);
     }
 
-    public void Initialize(Reward reward)
+    public virtual void Initialize(Reward reward = null)
     {
-        this.reward = reward;
-
-        image.sprite = reward.sprite;
+        if (reward != null)
+        {
+            this.reward = reward;
+            image.sprite = reward.sprite;
+        }
     }
 
     /// <summary>
@@ -32,11 +36,17 @@ public class RewardUI : MonoBehaviour, ITooltipiable, IPopupable
         btn.interactable = active;
     }
 
-    private void Receive()
+    protected virtual void Receive()
     {
-        if (reward.ApplyReward() == false) return;
-        EventManager.GetInstance.onSelectReward?.Invoke(false);
-        ShowPopup();
+        if (reward.ApplyReward())
+        {
+            EventManager.GetInstance.onSelectReward?.Invoke(false);
+            ShowPopup(reward.GetResult());
+        }
+        else
+        {
+            ShowPopup(reward.GetError());
+        }
     }
 
     public void ShowTooltip()
@@ -51,8 +61,8 @@ public class RewardUI : MonoBehaviour, ITooltipiable, IPopupable
 
     public Reward GetReward() => reward;
 
-    public void ShowPopup()
+    public void ShowPopup(string text)
     {
-        OnShowPopup.Invoke(reward);
+        OnShowPopup.Invoke(text);
     }
 }

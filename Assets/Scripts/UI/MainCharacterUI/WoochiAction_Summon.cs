@@ -14,7 +14,7 @@ public class WoochiAction_Summon : WoochiActionButton
         base.Activate();
 
         allyUI.gameObject.SetActive(true);
-        allyUI.SetInteractable(true);
+        allyUI.canSummon = true;
         BattleManager.GetInstance.EnableDummy();
     }
 
@@ -23,7 +23,7 @@ public class WoochiAction_Summon : WoochiActionButton
         base.Deactivate();
 
         allyUI.gameObject.SetActive(false);
-        allyUI.SetInteractable(false);
+        allyUI.canSummon = false;
         BattleManager.GetInstance.DisableDummy();
     }
 

@@ -69,7 +69,11 @@ public class BaseCharacterAnimation : MonoBehaviour
         animator.Play("Idle");
     }
 
-    public void PlayDeadAnimation() => animator.Play("Dead");
+    public void PlayDeadAnimation()
+    {
+        animator.Play("Dead");
+        Invoke("FocusOut", 1f);
+    }
 
     /// <summary>
     /// rowOrder 값으로 후열에 있는 캐릭터가 앞에 보이도록
