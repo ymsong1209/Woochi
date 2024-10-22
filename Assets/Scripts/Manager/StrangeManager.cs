@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// 모든 기연의 Id, gameobject를 library에다가 입력후,
@@ -9,79 +9,99 @@ using UnityEngine;
 /// </summary>
 public class StrangeManager : SingletonMonobehaviour<StrangeManager>
 {
-    public GameObject StrangeParent;
-    public GameObject StrangeBackground;
-    private List<BaseStrange> luckyStranges = new List<BaseStrange>();
-    private List<BaseStrange> unKnownStranges = new List<BaseStrange>();
-    private List<BaseStrange> unLuckyStranges = new List<BaseStrange>();
-    
-    // Start is called before the first frame update
+    public GameObject strangeObject;
+
+    private Strange currentStrange;         // 현재 발생한 기연
+
+    [Header("UI")]
+    [SerializeField] private Image image;
+    [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private GameObject choicePanel;
+    [SerializeField] private Button[] choiceButtons;
+    [SerializeField] private TextMeshProUGUI[] choiceTexts;
+    [SerializeField] private TextMeshProUGUI effectText;
+    [SerializeField] private Button nextBtn;
+
+    [Header("Status")]
+    [HideInInspector] public bool isBattleStrange;        // 전투 기연인가?
+
     void Start()
     {
-        StrangeBackground.gameObject.SetActive(false);
-    }
+        strangeObject.gameObject.SetActive(false);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void Initialize(MapConfig config)
-    {
-        foreach(int strangeID in config.StrangeTemplates)
+        #region Event
+        for(int i = 0; i < choiceButtons.Length; i++)
         {
-            GameObject strangeObject = Instantiate(GameManager.GetInstance.Library.GetStrange(strangeID),StrangeParent.transform);
-            BaseStrange strange = strangeObject.GetComponent<BaseStrange>();
-            strange.Initialize();
-            
-            if(strange.StrangeType == StrangeType.Lucky)
+            int index = i;
+            choiceButtons[i].onClick.AddListener(() =>
             {
-                luckyStranges.Add(strange);
-            }
-            else if(strange.StrangeType == StrangeType.UnKnown)
-            {
-                unKnownStranges.Add(strange);
-            }
-            else if(strange.StrangeType == StrangeType.UnLucky)
-            {
-                unLuckyStranges.Add(strange);
-            }
+                ShowResult(currentStrange.Select(index));
+            });
         }
-    }
-    public void ActivateStrange(StrangeType type, MapNode node)
-    {
-        StrangeBackground.gameObject.SetActive(true);
-        List<BaseStrange> selectedList = GetStrangeListByType(type);
-
-        if (selectedList.Count > 0)
-        {
-            int randomIndex = Random.Range(0, selectedList.Count);
-            selectedList[randomIndex].Initialize();
-            selectedList[randomIndex].Activate(node);
-        }
-        else
-        {
-            Debug.LogWarning("No stranges of type " + type + " found to activate.");
-        }
+        nextBtn.onClick.AddListener(Next);
+        #endregion
     }
 
-    private List<BaseStrange> GetStrangeListByType(StrangeType type)
+    public void InitializeStrange(int strangeID)
     {
-        switch (type)
-        {
-            case StrangeType.Lucky:
-                return luckyStranges;
-            case StrangeType.UnKnown:
-                return unKnownStranges;
-            case StrangeType.UnLucky:
-                return unLuckyStranges;
-            default:
-                return new List<BaseStrange>();
-        }
+        isBattleStrange = false;
+
+        Strange strange = GameManager.GetInstance.Library.GetStrange(strangeID);
+        currentStrange = strange;
+
+        SetUI();
     }
     
+    private void SetUI()
+    {
+        image.sprite = currentStrange.situationSprite;
+        text.text = currentStrange.situationText;
+
+        strangeObject.SetActive(true);
+        choicePanel.SetActive(true);
+        effectText.gameObject.SetActive(false);
+        nextBtn.gameObject.SetActive(false);
+
+        for(int i = 0; i < choiceButtons.Length; i++)
+        {
+            if(i < currentStrange.choices.Length)
+            {
+                choiceButtons[i].gameObject.SetActive(true);
+                choiceTexts[i].text = currentStrange.choices[i].text;
+            }
+            else
+            {
+                choiceButtons[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void ShowResult(StrangeResult result)
+    {
+        if (result == null) return;
+
+        choicePanel.SetActive(false);
+
+        effectText.gameObject.SetActive(true);
+        effectText.text = result.effect;
+
+        image.sprite = result.sprite;
+        text.text = result.text;
+
+        nextBtn.gameObject.SetActive(true);
+    }
+
+    private void Next()
+    {
+        strangeObject.SetActive(false);
+
+        if (isBattleStrange) return;
+
+        MapManager.GetInstance.CompleteNode();
+        MapManager.GetInstance.SaveMap();
+    }
+
     #region Getter Setter
-    
+
     #endregion Getter Setter
 }

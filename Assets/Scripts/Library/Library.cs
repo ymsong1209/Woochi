@@ -68,9 +68,9 @@ public class Library : ScriptableObject
     
     #region Strange
     
-    [OneLineWithHeader, SerializeField] private List<Entry<GameObject>> stranges;
+    [OneLineWithHeader, SerializeField] private List<Entry<Strange>> stranges;
 
-    public GameObject GetStrange(int id)
+    public Strange GetStrange(int id)
     {
         if (id < 0)
         {

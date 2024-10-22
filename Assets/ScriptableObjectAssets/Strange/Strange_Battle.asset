@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff990185a3556ba4ca3a1b76ab4cb6de, type: 3}
+  m_Name: Strange_Battle
+  m_EditorClassIdentifier: 
+  situationSprite: {fileID: 21300000, guid: d33b8f5d50ab9944797509583d5bdda7, type: 3}
+  situationText: "\uAC11\uC790\uAE30 \uC8FC\uC704\uC5D0\uC11C \uC0AC\uB098\uC6B4
+    \uC694\uAE30\uAC00 \uB290\uAEF4\uC9C4\uB2E4\n\uC804\uD22C\uB97C \uC900\uBE44\uD558\uC790"
+  choices:
+  - text: "\uC804\uD22C\uB97C \uC900\uBE44\uD55C\uB2E4"
+    results:
+      list:
+      - value: {fileID: 11400000, guid: 9d8382fda73833847b53b64bec717ea7, type: 2}
+        probability: 0.8
+      - value: {fileID: 11400000, guid: 859fe957f8b95f04b8bfe8693089f4ae, type: 2}
+        probability: 0.2

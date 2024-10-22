@@ -15,6 +15,7 @@ public class Node
 
     public int   abnormalID;                                    // 이 노드에서 발생하는 이상 ID
     public int[] enemyIDs;                                      // 이 노드에서 등장하는 적들의 ID  
+    public int  strangeID;                                     // 이 노드에서 등장하는 기연 ID
 
     public Node(NodeType _type, Vector2Int _point)
     {

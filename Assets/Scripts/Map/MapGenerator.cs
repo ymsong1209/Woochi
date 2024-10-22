@@ -67,8 +67,9 @@ public static class MapGenerator
             Node node = new Node(nodeType, new Vector2Int(i, layerIndex))
             {
                 position = new Vector2(-offset + i * layer.nodesApartDistance, GetDistanceToLayer(layerIndex)),
-                abnormalID = nodeType == NodeType.Strange ? 100 : config.GetAbnormal(),
-                enemyIDs = layer.isRandomEnemy ? GetEnemyID(nodeType) : layer.enemyIDs
+                abnormalID = config.GetAbnormal(),
+                enemyIDs = layer.isRandomEnemy ? GetEnemyID(nodeType) : layer.enemyIDs,
+                strangeID = nodeType == NodeType.Strange ? config.GetStrangeID() : -1
             };
 
             nodesOnThisLayer.Add(node);

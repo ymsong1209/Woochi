@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce57f68c996913049b1f123e4e6c434c, type: 3}
+  m_Name: Strange_SweetDream
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: b392368681b2ead4ba24a8ce2d2eb7c4, type: 3}
+  text: "\uC88B\uC740 \uAFC8\uC744 \uAFE8\uB2E4\n\uC660\uC9C0 \uBAB8\uC774 \uAC00\uBCBC\uC6CC\uC9C4\uB2E4"
+  effect: "\uB2E4\uC74C 3\uBC88\uC758 \uC804\uD22C\uC5D0\uC11C\n\uC6B0\uCE58\uC758
+    \uC18D\uB3C4 +10"
+  buffObject: {fileID: 7794445417410818205, guid: 7f58e95231476ce4ab4504bd4aeee6aa, type: 3}
+  onlyWoochi: 1
