@@ -73,8 +73,14 @@ public class MainCharacter : BaseCharacter
         }
         mainCharacterSkills[index] = null;
     }
-    
-    
+
+    public override void SetDead()
+    {
+        GameManager.GetInstance.ResetGame();
+
+        HelperUtilities.MoveScene(SceneType.Title);
+    }
+
     public BaseSkill[] MainCharacterSkills => mainCharacterSkills;
     
     public int SorceryPoints

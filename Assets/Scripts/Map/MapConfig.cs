@@ -12,8 +12,7 @@ public class MapConfig : ScriptableObject
     [SerializeField] private RandomList<int> randomAbnormals;
     [SerializeField] private RandomList<StrangeType> randomStrangeProbabilities;
     [Tooltip("나타날 기연의 ID를 입력")]
-    [OneLineWithHeader]
-    [SerializeField] private List<int> strangeTemplates;     
+    [SerializeField] private List<StrangeTemplate> strangeTemplates;     
     [Tooltip("나타날 적들의 ID로 템플릿을 입력해주세요(ex. 3 3 4 4)")]
     [OneLineWithHeader]
     [SerializeField] private List<Template> normalTemplates;             // 일반 적들이 등장하는 템플릿
@@ -57,12 +56,34 @@ public class MapConfig : ScriptableObject
         return randomStrangeProbabilities.Get();
     }
 
-    public List<int> StrangeTemplates => strangeTemplates;
+    public int GetStrangeID()
+    {
+        StrangeType type = randomStrangeProbabilities.Get();
+
+        for(int i = 0; i < strangeTemplates.Count; i++)
+        {
+            if (strangeTemplates[i].type == type)
+            {
+                return strangeTemplates[i].id.Random();
+            }
+        }
+
+        return 1000;
+    }
+
+    public List<StrangeTemplate> StrangeTemplates => strangeTemplates;
 }
 
 [System.Serializable]
-public class Template
+public struct Template
 {
+    public int[] id;
+}
+
+[System.Serializable]
+public struct StrangeTemplate
+{
+    public StrangeType type;
     public int[] id;
 }
 

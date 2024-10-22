@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff990185a3556ba4ca3a1b76ab4cb6de, type: 3}
+  m_Name: Strange_Hasuo
+  m_EditorClassIdentifier: 
+  situationSprite: {fileID: 21300000, guid: 6c9873dabd1f5a14b9c9e837f0a8a73d, type: 3}
+  situationText: "\uC5F0\uBABB \uC8FC\uBCC0\uC5D0\uC11C \n\uC6B4\uC88B\uAC8C \uC624\uB798
+    \uBB35\uC740 \uD558\uC218\uC624\uB97C \uBC1C\uACAC\uD588\uB2E4!\n\uBA39\uC73C\uBA74
+    \uB3C4\uC6C0\uC774 \uB418\uC9C0 \uC54A\uC744\uAE4C?"
+  choices:
+  - text: "\uD558\uC218\uC624\uB97C \uCE94\uB2E4"
+    results:
+      list:
+      - value: {fileID: 11400000, guid: bfcd4dc986c94ef42a5cfb1e7adc48e1, type: 2}
+        probability: 1
+  - text: "\uBB34\uC2DC\uD55C\uB2E4"
+    results:
+      list:
+      - value: {fileID: 11400000, guid: e368849ff67bf3c42897a69d7039b178, type: 2}
+        probability: 1

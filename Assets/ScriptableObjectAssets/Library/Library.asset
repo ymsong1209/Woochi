@@ -117,13 +117,13 @@ MonoBehaviour:
     - {fileID: 11400000, guid: f479daa5b5f2a35479b54dbf153271b5, type: 2}
   stranges:
   - ID: 1000
-    value: {fileID: 8475585994675369947, guid: a64a5eb62eada2745954ee2331979291, type: 3}
+    value: {fileID: 11400000, guid: 0eb08e8cad379834ab8b194f3e1a62fc, type: 2}
   - ID: 1001
-    value: {fileID: 4702027999250007440, guid: 2b70c618c56298c4f91f6a7fd4bc82ce, type: 3}
+    value: {fileID: 11400000, guid: 44c6ee27d274e91439842078f3adb716, type: 2}
   - ID: 2000
-    value: {fileID: 5456226783982550096, guid: 5fe6fbd817f48894a92d07a3ef62fbb1, type: 3}
+    value: {fileID: 11400000, guid: 2545767d68ea05a44a1bd32ec856ffc3, type: 2}
   - ID: 3000
-    value: {fileID: 1286108000769628803, guid: e8c72f7b64e905d4993933e6d64ae9b1, type: 3}
+    value: {fileID: 11400000, guid: af095efb462409b49aeeefe3f869934d, type: 2}
   woochiSkills:
   - element: 1
     SkillDatas:

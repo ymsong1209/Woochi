@@ -1,11 +1,9 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections.Generic;
 
 [DisallowMultipleComponent]
 public class GameManager : SingletonMonobehaviour<GameManager>
 {
-    
     [HeaderTooltip("GAME STATE", "Game State는 Inspector에서 수정 불가")]
     [SerializeField,ReadOnly] private GameState gameState;
 
@@ -15,6 +13,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     [Header("Sound")]
     public SoundBGM soundBGM;
 
+    [Header("Debug")]
     [SerializeField] private bool useDebugCharms = false;
     [SerializeField] private List<int> charmIDs = new List<int>(5);
     [SerializeField] private bool useDebugSkills = false;
