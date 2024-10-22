@@ -19,6 +19,12 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI roundTxt;
     [SerializeField] private Sprite emptyIcon;
 
+    private void Start()
+    {
+        BattleManager.GetInstance.OnFocusStart += () => gameObject.SetActive(false);
+        BattleManager.GetInstance.OnFocusEnd += () => gameObject.SetActive(true);
+    }
+
     public void Init(Formation allies, Formation enemies)
     {
         combatQueue.Clear();    processedCharacters.Clear();
