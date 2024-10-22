@@ -12,7 +12,7 @@ public class AllyCard : MonoBehaviour
 
     private bool isDead = false;
 
-    private void Start()
+    private void Awake()
     {
         SetActivate(false);
     }
