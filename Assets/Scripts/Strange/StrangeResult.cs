@@ -3,11 +3,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Strange_", menuName = "Scriptable Objects/StrangeResult/None")]
 public class StrangeResult : ScriptableObject
 {
-    public Sprite sprite;   // °á°ú ÀÌ¹ÌÁö
+    public Sprite sprite;   // ê²°ê³¼ ì´ë¯¸ì§€
     [TextArea(3, 10)]
-    public string text;     // °á°ú ÅØ½ºÆ®
+    public string text;     // ê²°ê³¼ í…ìŠ¤íŠ¸
     [TextArea(3, 10)]
-    public string effect;   // °á°ú È¿°ú
+    public string effect;   // ê²°ê³¼ íš¨ê³¼
 
     public virtual void ApplyEffect()
     {

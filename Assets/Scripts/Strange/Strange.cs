@@ -4,12 +4,12 @@ using UnityEngine;
 public class Strange : ScriptableObject
 {
     [Header("Situation")]
-    public Sprite situationSprite;     // »óÈ² ¼³¸í ÀÌ¹ÌÁö
+    public Sprite situationSprite;     // ìƒí™© ì„¤ëª… ì´ë¯¸ì§€
     [TextArea(3, 10)]
-    public string situationText;       // »óÈ² ¼³¸í ÅØ½ºÆ®
+    public string situationText;       // ìƒí™© ì„¤ëª… í…ìŠ¤íŠ¸
 
     [Header("Choice")]
-    public Choice[] choices;  // ÇöÀç ±â¿¬¿¡¼­ ¼±ÅÃÇÒ ¼ö ÀÖ´Â ¼±ÅÃÁöµé
+    public Choice[] choices;  // í˜„ì¬ ê¸°ì—°ì—ì„œ ì„ íƒí•  ìˆ˜ ìˆëŠ” ì„ íƒì§€ë“¤
 
     public StrangeResult Select(int choiceIndex)
     {
@@ -30,6 +30,6 @@ public class Strange : ScriptableObject
 [System.Serializable]
 public class Choice
 {
-    public string text;     // ¼±ÅÃÁö ÅØ½ºÆ®
-    public RandomList<StrangeResult> results;   // ¼±ÅÃÁö °á°úµé
+    public string text;    // ì„ íƒì§€ í…ìŠ¤íŠ¸
+    public RandomList<StrangeResult> results;   // ì„ íƒì§€ ê²°ê³¼ë“¤
 }

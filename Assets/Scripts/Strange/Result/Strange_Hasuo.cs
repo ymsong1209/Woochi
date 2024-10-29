@@ -3,8 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Strange_", menuName = "Scriptable Objects/StrangeResult/Hasuo")]
 public class Strange_Hasuo : StrangeResult
 {
-    [SerializeField] private int sorceryPoints;     // Áõ°¡ µµ·Â
-    [SerializeField] private int stat;           // Áõ°¡ ÇÇÇØ
+    [SerializeField] private int sorceryPoints;     // ì¦ê°€ ë„ë ¥
+    [SerializeField] private int stat;          // ì¦ê°€ í”¼í•´
 
     public override void ApplyEffect()
     {
