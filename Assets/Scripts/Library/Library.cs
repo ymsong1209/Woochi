@@ -107,7 +107,8 @@ public class Library : ScriptableObject
         return null;
     }
 
-    public int GetRandomSkillID()
+    //우치의 경지(레벨)에 따라서 랜덤한 스킬 ID를 반환
+    public int GetRandomSkillIDByRank()
     {
         int CurRank = BattleManager.GetInstance.Allies.GetWoochi().level.rank;
         WoochiSkillPropabilityData data = WoochiSkillPropabilityData.GetDictionary()[CurRank];
