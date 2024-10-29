@@ -5,35 +5,43 @@ using TMPro;
 
 public class SkillScrollIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    [SerializeField] private GameObject selected;
+    
+    
+    [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private Sprite defaultIcon;
-    [SerializeField] private Sprite icon;
-    [SerializeField] private int skillID;
+    [SerializeField] private Image icon;
+    private int skillID;
 
+    public void Init(int skillid)
+    {
+        selected.SetActive(false);
+        SetSkillInfo(skillid);
+    }
     public void SetSkillInfo(int id)
     {
         skillID = id;
         BaseSkill skill = GameManager.GetInstance.Library.GetSkill(id);
-        if (skill == null)
+        if (id == 0 || skill == null)
         {
-            icon = defaultIcon;
+            icon.sprite = defaultIcon;
+            canvasGroup.interactable = false;
         }
         else
         {
-            icon = skill.SkillSO.skillIcon;
+            icon.sprite = skill.SkillSO.skillIcon;
+            canvasGroup.interactable = true;
         }
     }
     
     
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
-        // if (skill == null || !canInteract)
-        //     return;
-        //
-        // UIManager.GetInstance.SetSkillToolTip(skill, tooltipPos.position);
+        if (skillID == 0 || canvasGroup.interactable == false) return;
     }
 
     public virtual void OnPointerExit(PointerEventData eventData)
     {
-        //UIManager.GetInstance.skillDescriptionUI.Deactivate();
+        if(skillID == 0 || canvasGroup.interactable == false) return;
     }
 }

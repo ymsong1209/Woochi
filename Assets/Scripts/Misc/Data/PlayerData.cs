@@ -47,7 +47,7 @@ public class PlayerData
         else
         {
             currentskillIDs[0] = 1101;
-            currentskillIDs[1] = 1202;
+            currentskillIDs[1] = 1201;
             currentskillIDs[2] = 1301;
             currentskillIDs[3] = 1401;
             currentskillIDs[4] = 1501;
@@ -55,11 +55,11 @@ public class PlayerData
         
         //TODO : 도술 두루마리 세팅
         totalSkillIDs = new int[5, 5];
-        // totalSkillIDs[0, 0] = 11102;
-        // totalSkillIDs[1, 0] = 11203;
-        // totalSkillIDs[2, 0] = 1302;
-        // totalSkillIDs[3, 0] = 11403;
-        // totalSkillIDs[4, 0] = 1502;
+        totalSkillIDs[0, 0] = 1101;
+        totalSkillIDs[1, 0] = 1201;
+        totalSkillIDs[2, 0] = 1301;
+        totalSkillIDs[3, 0] = 1401;
+        totalSkillIDs[4, 0] = 1501;
 
         gold = 0;
     }

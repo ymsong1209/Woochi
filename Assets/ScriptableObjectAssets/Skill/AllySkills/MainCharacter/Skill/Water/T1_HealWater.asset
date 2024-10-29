@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8a3ff459c3db04db52ae01995cbe12, type: 3}
   m_Name: T1_HealWater
   m_EditorClassIdentifier: 
-  skillIcon: {fileID: 0}
+  skillIcon: {fileID: 21300000, guid: 8fbe3b2668350e84c92870112395d687, type: 3}
   skillName: "\uC57D\uC218"
   animType: 3
   skillAvailableRadius: 0101010100000000
@@ -21,6 +21,7 @@ MonoBehaviour:
   skillTargetType: 0
   skillElement: 2
   skillTargetCount: 1
+  skillRandomCount: 0
   bufflist: []
   baseMultiplier: 100
   baseSkillAccuracy: 100
