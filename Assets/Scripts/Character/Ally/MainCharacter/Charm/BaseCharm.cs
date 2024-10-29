@@ -29,6 +29,12 @@ public class BaseCharm : MonoBehaviour
             text.text = description;
             return;
         }
+        else if (charmType == CharmType.Heal)
+        {
+            description += "아군 전체의 체력을 10만큼 회복";
+            text.text = description;
+            return;
+        }
 
         description += turns + "턴 동안 ";
         if (charmType == CharmType.Buff)

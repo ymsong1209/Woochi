@@ -24,7 +24,7 @@ namespace DataTable
 
         static bool isLoaded = false;
         static string spreadSheetID = "1rPi9VXSVtBWKZ3HgJj3M1M_aj6aUQog6OZPt7fIUCUs"; // it is file id
-        static string sheetID = "473359053"; // it is sheet id
+        static string sheetID = "1361349298"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
 /* Your Loaded Data Storage. */
@@ -56,12 +56,10 @@ namespace DataTable
 
 /* Fields. */
 
-		public System.Int32 ID;
-		public System.Single Lowest;
-		public System.Single Lower;
-		public System.Single Middle;
-		public System.Single Higher;
-		public System.Single Highest;
+		public System.Int32 ID_Basic;
+		public System.String SkillName;
+		public System.Int32 ID_Reinforced;
+		public System.String ReinforcedSkillName;
   
 
 #region fuctions
@@ -179,7 +177,7 @@ namespace DataTable
                               
                             }
                             List.Add(instance); 
-                            Map.Add(instance.ID, instance);
+                            Map.Add(instance.ID_Basic, instance);
                         }
                         if(isLoaded == false || forceReload)
                         { 
