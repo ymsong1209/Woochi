@@ -4,6 +4,7 @@ using System.Linq;
 using DataTable;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Windows.WebCam;
 
 [CreateAssetMenu(fileName = "Library_", menuName = "Scriptable Objects/Library")]
 public class Library : ScriptableObject
@@ -107,7 +108,10 @@ public class Library : ScriptableObject
         return null;
     }
 
-    //우치의 경지(레벨)에 따라서 랜덤한 스킬 ID를 반환
+    /// <summary>
+    /// 우치의 경지(레벨)에 따라서 드롭 확률을 정하고, 스킬을 랜덤으로 반환하는 함수
+    /// </summary>
+    /// <returns>Library에 도술이 안 등록되어있으면, -1을 반환</returns>
     public int GetRandomSkillIDByRank()
     {
         int CurRank = BattleManager.GetInstance.Allies.GetWoochi().level.rank;
@@ -140,13 +144,19 @@ public class Library : ScriptableObject
         }
     }
     
+    /// <summary>
+    /// 기본 스킬 ID를 받아서 강화된 스킬 ID를 반환하는 함수
+    /// 강화된 스킬을 넣으면 자기 자신을 반환
+    /// </summary>
+    /// <param name="basicSkillID">기본 스킬 id를 입력</param>
+    /// <returns>유효하지 않는 스킬을 넣으면 -1반환</returns>
     public int GetEnhancedSkillID(int basicSkillID)
     {
         foreach (var skillEntry in woochiSkills)
         {
             foreach (var skillData in skillEntry.SkillDatas)
             {
-                if (skillData.ID_Basic == basicSkillID)
+                if (skillData.ID_Basic == basicSkillID || skillData.ID_Reinforced == basicSkillID)
                 {
                     return skillData.ID_Reinforced;
                 }
@@ -182,6 +192,59 @@ public class Library : ScriptableObject
 
         // 만약 해당 rarity에 해당하는 스킬이 없다면 -1 반환 (혹은 다른 기본값)
         return -1;
+    }
+
+
+    public struct SkillSetResult
+    {
+        public int skillID;
+        public int enhancedSkillID;
+        
+        public bool isSuccess; //기본 도술 세팅 성공
+        
+        //---Success--//
+        public bool isEnhanced; //도술을 넣어서 강화가 되었는지
+        
+        //--Fail--//
+        public bool isScrollFull; //도술 두루마리가 꽉 찼는지
+        public bool isSameSkill; //같은 도술이 이미 있는지
+    }
+    /// <summary>
+    /// 신규로 뽑은 도술을 도술두루마리에 추가하는 함수
+    /// </summary>
+    /// <param name="skillid"></param>
+    /// <returns>도술 두루마리에 신규로 추가할 수 있거나, 같은 기본 </returns>
+    private SkillSetResult SetSkillOnScroll(int skillid)
+    {
+        SkillSetResult result = new SkillSetResult();
+        result.skillID = skillid;
+        result.enhancedSkillID = 0;
+        result.isSuccess = false;
+        result.isEnhanced = false;
+        int[,] totalskillIDs = DataCloud.playerData.totalSkillIDs;
+        
+        BaseSkill skill = GetSkill(skillid);
+        
+        // 도술 두루마리의 같은 속성에 가서 같은 기본 도술,혹은 강화도술이 있는지 확인
+        // 기본 도술이랑 강화 도술이 같이 있는 경우는 없음.
+        SkillElement element = skill.SkillSO.SkillElement;
+        int samebasicskillidx = -1;
+        for (int i = 0; i < 5; ++i)
+        {
+            //SkillElement의 0번은 Default값이므로, 1부터 시작
+            if(totalskillIDs[(int)element-1,i] == skillid)
+            {
+                samebasicskillidx = i;
+                break;
+            }
+        }
+        //같은 도술이 있는 경우, 
+        if (samebasicskillidx != -1)
+        {
+            
+        }
+
+        return result;
     }
     
     

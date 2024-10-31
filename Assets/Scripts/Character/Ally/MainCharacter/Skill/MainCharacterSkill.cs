@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MainCharacterSkill : BaseSkill
@@ -33,6 +34,10 @@ public class MainCharacterSkill : BaseSkill
 
         var animation = SkillOwner.anim as MainCharacterAnimation;
         animation.ShowElement(SkillSO.SkillElement);
+    }
+
+    public virtual void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
     }
 
     public int RequiredSorceryPoints => requiredSorceryPoints;

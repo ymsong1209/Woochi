@@ -11,30 +11,42 @@ using UnityEngine.UI;
 public class SkillScrollDescription : MonoBehaviour
 {
     private int curSkillID;
+    private BaseSkill curSkill;
+    [SerializeField] private SkillScroll skillScroll;
     
     [SerializeField] private TextMeshProUGUI enhanceCount; //강화 남은 횟수
     [SerializeField] private Button enhanceButton; //강화 버튼
     
     [SerializeField] private Image elementImage; //스킬 속성 이미지
-    [SerializeField] private Image[] elementImages; //스킬 속성 이름
+    [SerializeField] private Sprite[] elementImages;
+    [SerializeField] private SkillScrollEnhanceBanner enhanceBanner; //강화된 스킬 아이콘
+    [SerializeField] private Sprite[] enhanceBannerImages;
     
     [SerializeField] private TextMeshProUGUI skillName; //스킬 이름
     [SerializeField] private TextMeshProUGUI skillDescription; //스킬 설명
   
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        gameObject.SetActive(false);
+        skillScroll.OnIconHovered += SetSkill;
+        skillScroll.OnSkillSelected += SetSkill;
+    }
+    
     void SetSkill(int skillid)
     {
-        BaseSkill skill = GameManager.GetInstance.Library.GetSkill(skillid);
-        skill.SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
-        if (skill == null)
+        curSkill = GameManager.GetInstance.Library.GetSkill(skillid);
+        if (curSkill == null)
         {
             Debug.Log("SkillScrollDescription : 스킬이 없습니다.");
             return;
         }
 
         curSkillID = skillid;
-        elementImage = elementImages[(int)skill.SkillSO.SkillElement];
-        skillName.SetText(skill.SkillSO.SkillName);
-        
+        elementImage.sprite = elementImages[(int)curSkill.SkillSO.SkillElement];
+        skillName.SetText(curSkill.SkillSO.SkillName);
+        curSkill.SetSkillDescription(skillDescription);
         //스킬 id가 만 이하면 기본 스킬
         if (skillid < 10000)
         {
@@ -42,16 +54,17 @@ public class SkillScrollDescription : MonoBehaviour
         }
         else
         {
+            //강화 버튼 비활성화
             enhanceButton.gameObject.SetActive(false);
+            //강화된 스킬 아이콘 보여주기
+            enhanceBanner.gameObject.SetActive(true);
+            enhanceBanner.BannerImg.sprite = enhanceBannerImages[(int)curSkill.SkillSO.SkillElement];
+            enhanceBanner.IsAlphaBlending = false;
         }
         
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        gameObject.SetActive(false);
-    }
+
 
     // Update is called once per frame
     void Update()
