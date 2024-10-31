@@ -30,7 +30,7 @@ public class WoochiActionList : MonoBehaviour
         // 우치가 아니고 아군의 차례가 시작 or 아군이 피격된 경우 우치 UI 전체 비활성화
         else if(!_character.IsMainCharacter && _character.IsAlly)
         {
-            buttonList.gameObject.SetActive(false);
+            buttonList.Deactivate();
             skillList.gameObject.SetActive(false);
             recoveryUI.gameObject.SetActive(false);
         }
