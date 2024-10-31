@@ -96,9 +96,9 @@ MonoBehaviour:
     rewards:
     - {fileID: 11400000, guid: e1c3d94d5cb6b5344a2e2d5ca40b3f8a, type: 2}
     - {fileID: 11400000, guid: 38dcfea0a623e8c4caf07f5b1f4290d5, type: 2}
-    - {fileID: 11400000, guid: 10b732fe9611e764db0ed977e5b09762, type: 2}
     - {fileID: 11400000, guid: dffd53b290d823c42982693013eb82e2, type: 2}
     - {fileID: 11400000, guid: 6a8ecf63d91543247b3ca1945b5604fb, type: 2}
+    - {fileID: 11400000, guid: 26760234036ac18439e2599a8e0d26bb, type: 2}
   - rarity: 2
     rewards:
     - {fileID: 11400000, guid: c9ec6e787cd21664580a2bea0dd65e34, type: 2}
@@ -107,7 +107,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 169a47cbbc089c24697640df81cad91b, type: 2}
   - rarity: 3
     rewards:
-    - {fileID: 11400000, guid: 6d7f5bf3f77b9d24583987989dd6114d, type: 2}
     - {fileID: 11400000, guid: 8af0629b8c058494e9dd092deefef816, type: 2}
     - {fileID: 11400000, guid: 7b23636fe1c9fad4e9c8508949113b4e, type: 2}
   - rarity: 4
