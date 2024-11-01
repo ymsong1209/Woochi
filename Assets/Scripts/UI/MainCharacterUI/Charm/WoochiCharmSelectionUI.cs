@@ -47,15 +47,19 @@ public class WoochiCharmSelectionUI : MonoBehaviour
 
     private void SetCharmOnButton()
     {
-        //모든 부적 비활성화
-        DisableCharms();
-
         List<int> charmIDs = DataCloud.playerData.battleData.charms;
 
-        for(int i = 0; i < charmIDs.Count; ++i)
+        for (int i = 0; i < charmIcons.Count; ++i)
         {
-            BaseCharm charm = GameManager.GetInstance.Library.GetCharm(charmIDs[i]);
-            charmIcons[i].SetCharm(charm, IsCharmSetAvailable(charm));
+            if(i < charmIDs.Count)
+            {
+                BaseCharm charm = GameManager.GetInstance.Library.GetCharm(charmIDs[i]);
+                charmIcons[i].SetCharm(charm, IsCharmSetAvailable(charm));
+            }
+            else
+            {
+                charmIcons[i].SetCharm(null);
+            }
         }
     }
 
@@ -66,9 +70,9 @@ public class WoochiCharmSelectionUI : MonoBehaviour
         return true;
     }
 
-    bool IsCharmReceiverAvailable(BaseCharm charm)
+    private bool IsCharmReceiverAvailable(BaseCharm charm)
     {
-        for(int i = 0;i<charm.CharmRadius.Length;++i)
+        for(int i = 0; i <charm.CharmRadius.Length; ++i)
         {
             if(charm.CharmRadius[i] && BattleManager.GetInstance.IsCharacterThere(i))
             {
@@ -78,21 +82,12 @@ public class WoochiCharmSelectionUI : MonoBehaviour
         return false;
     }
     
-    private void DisableCharms()
+    private void CharmButtonClicked(BaseCharm selectedCharm)
     {
-        foreach (CharmIcon icon in charmIcons)
-        {
-            icon.SetCharm(null);
-        }
-    }
-    
-    public void CharmButtonClicked(BaseCharm _charm)
-    {
-        if (_charm == null)
+        if (selectedCharm == null)
             return;
         
-        mainCharacter.CharmSkill.Charm = _charm;
-        mainCharacter.CharmSkill.SetSkillForCharm();
+        mainCharacter.CharmSkill.SetSkillForCharm(selectedCharm);
         BattleManager.GetInstance.SkillSelected(mainCharacter.CharmSkill);
     }
 

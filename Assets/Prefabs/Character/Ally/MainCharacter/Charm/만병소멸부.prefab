@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f235f5ee9e92f234b8b07d47bc86763c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 8
   turns: 0
   charmName: "\uB9CC\uBCD1\uC18C\uBA78\uBD80"
   charmRadius: 0101010100000000

@@ -211,23 +211,18 @@ public class MC_Charm : BaseSkill
 
         for(int i = 0; i < list.Count; ++i)
         {
-            BaseCharm charm = GameManager.GetInstance.Library.GetCharm(list[i]);
-            if(charm == this.charm)
+            if (list[i] == charm.ID)
             {
                 list.RemoveAt(i);
+                break;
             }
         }
    }
 
-   public void SetSkillForCharm()
+   public void SetSkillForCharm(BaseCharm selectedCharm)
    {
-       if (!charm) return;
+       if (!selectedCharm) return;
+       this.charm = selectedCharm;
        SkillRadius = charm.CharmRadius;
-   }
-   
-   public BaseCharm Charm
-   {
-      get => charm;
-      set => charm = value;
    }
 }

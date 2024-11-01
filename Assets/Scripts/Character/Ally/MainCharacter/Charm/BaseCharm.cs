@@ -5,21 +5,25 @@ using UnityEngine;
 
 public class BaseCharm : MonoBehaviour
 {
-   [SerializeField] private int turns;
-   [SerializeField] private string charmName;
-   ///0~4 : 아군 5~8 : 적군
-   [SerializeField] private bool[] charmRadius = new bool[8];
-
-   [SerializeField] private CharmType charmType;
-   [SerializeField] private CharmTargetType charmTargetType;
-   [SerializeField] private Sprite charmIcon;
+    [Header("ID")]
+    [SerializeField] public int ID;
+    
+    [Header("Info")]
+    [SerializeField] private int turns;
+    [SerializeField] private string charmName;
+    ///0~4 : 아군 5~8 : 적군
+    [SerializeField] private bool[] charmRadius = new bool[8];
+ 
+    [SerializeField] private CharmType charmType;
+    [SerializeField] private CharmTargetType charmTargetType;
+    [SerializeField] private Sprite charmIcon;
    
-   public virtual void Activate(BaseCharacter opponent)
-   {
-     
-   }
+    public virtual void Activate(BaseCharacter opponent)
+    {
+      
+    }
 
-   public virtual void SetCharmDescription(TextMeshProUGUI text)
+    public virtual void SetCharmDescription(TextMeshProUGUI text)
     {
         string description = charmName + "\n";
 
@@ -93,12 +97,10 @@ public class BaseCharm : MonoBehaviour
                 radiusDescription += " 및 자신의\n";
             }
         }
-        return radiusDescription;
+        return radiusDescription; 
     }
-   
-   
-   
-   #region Getter Setter
+
+    #region Getter Setter
 
    public int Turns => turns;
    public string CharmName => charmName;

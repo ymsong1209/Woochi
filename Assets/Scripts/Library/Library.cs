@@ -322,7 +322,6 @@ public class Library : ScriptableObject
     {
         if (id < 0)
         {
-            Debug.Log("Library: ID out of range");
             return null;
         }
 

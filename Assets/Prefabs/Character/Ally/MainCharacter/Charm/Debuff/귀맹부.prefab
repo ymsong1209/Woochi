@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19aed0dda258314c96777cffed3c6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 5
   turns: 3
   charmName: "\uADC0\uB9F9\uBD80"
   charmRadius: 0000000001010101
@@ -82,6 +83,9 @@ MonoBehaviour:
   buffColor: {r: 0, g: 0, b: 0, a: 0}
   isRemoveWhenBattleEnd: 1
   buffBattleDurationTurns: 0
+  isRemovableDuringBattle: 1
+  isBuffAppliedThisTurn: 1
+  isAlwaysApplyBuff: 0
   changeStat:
     maxHealth: 0
     speed: 0
