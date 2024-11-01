@@ -212,41 +212,106 @@ public class Library : ScriptableObject
     /// <summary>
     /// 신규로 뽑은 도술을 도술두루마리에 추가하는 함수
     /// </summary>
-    /// <param name="skillid"></param>
+    /// <param name="baseskillid">인자로 일반 스킬 id만 들어와야함.</param>
     /// <returns>도술 두루마리에 신규로 추가할 수 있거나, 같은 기본 </returns>
-    private SkillSetResult SetSkillOnScroll(int skillid)
+    private SkillSetResult SetSkillOnScroll(int baseskillid)
     {
         SkillSetResult result = new SkillSetResult();
-        result.skillID = skillid;
-        result.enhancedSkillID = 0;
-        result.isSuccess = false;
-        result.isEnhanced = false;
+        result.skillID = baseskillid;
         int[,] totalskillIDs = DataCloud.playerData.totalSkillIDs;
         
-        BaseSkill skill = GetSkill(skillid);
+        BaseSkill skill = GetSkill(baseskillid);
+        SkillElement element = skill.SkillSO.SkillElement;
+
+        int enhancedSkillID = GetEnhancedSkillID(baseskillid);
         
         // 도술 두루마리의 같은 속성에 가서 같은 기본 도술,혹은 강화도술이 있는지 확인
         // 기본 도술이랑 강화 도술이 같이 있는 경우는 없음.
-        SkillElement element = skill.SkillSO.SkillElement;
-        int samebasicskillidx = -1;
+
+        bool hasSpace = false;
+        int spaceIndex = -1;
         for (int i = 0; i < 5; ++i)
         {
-            //SkillElement의 0번은 Default값이므로, 1부터 시작
-            if(totalskillIDs[(int)element-1,i] == skillid)
+            //스킬을 세팅할 자리가 있는 경우
+            if(!hasSpace && totalskillIDs[(int)element-1,i] == 0)
             {
-                samebasicskillidx = i;
-                break;
+                hasSpace = true;
+                spaceIndex = i;
+            }
+            //만약 동일한 일반 스킬이 있는 경우, 강화
+            if(totalskillIDs[(int)element-1,i] == baseskillid)
+            {
+                totalskillIDs[(int)element-1,i] = enhancedSkillID;
+                result.enhancedSkillID = enhancedSkillID;
+                result.isEnhanced = true;
+                result.isSuccess = true;
+                DataCloud.playerData.totalSkillIDs = totalskillIDs;
+                
+                //강화시키려는 스킬을 우치가 장착하고 있는 경우, 강화된 스킬로 바꿔줌
+                for (int j = 0; j < 5; ++j)
+                {
+                    if(DataCloud.playerData.currentskillIDs[j] == baseskillid)
+                    {
+                        DataCloud.playerData.currentskillIDs[j] = enhancedSkillID;
+                    }
+                }
+                return result;
+            }
+            //강화된 버전의 스킬을 이미 가지고 있는 경우 실패
+            else if(totalskillIDs[(int)element-1,i] == enhancedSkillID)
+            {
+                result.isSuccess = false;
+                result.enhancedSkillID = enhancedSkillID;
+                result.isSameSkill = true;
+                DataCloud.playerData.totalSkillIDs = totalskillIDs;
+                return result;
             }
         }
-        //같은 도술이 있는 경우, 
-        if (samebasicskillidx != -1)
+        //스킬을 세팅할 수 있으면, 가장 빠른 빈 자리에 넣어줌
+        if (hasSpace && spaceIndex != -1)
         {
-            
+            totalskillIDs[(int)element-1,spaceIndex] = baseskillid;
+            DataCloud.playerData.totalSkillIDs = totalskillIDs;
+            result.isSuccess = true;
+            result.isEnhanced = false;
+        }
+        //스킬을 세팅할 수 없는 경우 : 도술 두루마리가 꽉 찼을 때
+        else
+        {
+            result.isSuccess = false;
+            result.isScrollFull = true;
         }
 
         return result;
     }
     
+    /// <summary>
+    /// 인자로 넣은 skillid랑 동일한 속성을 가진 도술들의 ID를 반환하는 함수
+    /// </summary>
+    /// <returns></returns>
+    int[] GetSkillIDsByElement(int skillID)
+    {
+        BaseSkill skill = GetSkill(skillID);
+        SkillElement element = skill.SkillSO.SkillElement;
+        int[,] totalskillIDs = DataCloud.playerData.totalSkillIDs;
+        int[] skillIDs = new int[5];
+        for (int i = 0; i < 5; ++i)
+        {
+            skillIDs[i] = totalskillIDs[(int)element-1,i];
+        }
+
+        return skillIDs;
+    }
+    
+    void SetSkillIDByElement(SkillElement element, int[] skillIDs)
+    {
+        int[,] totalskillIDs = DataCloud.playerData.totalSkillIDs;
+        for (int i = 0; i < 5; ++i)
+        {
+            totalskillIDs[(int)element-1,i] = skillIDs[i];
+        }
+        DataCloud.playerData.totalSkillIDs = totalskillIDs;
+    }
     
     #endregion WoochiSkill
     
