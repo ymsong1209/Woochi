@@ -176,8 +176,9 @@ public class Library : ScriptableObject
             foreach (var skillData in skillEntry.SkillDatas)
             {
                 MainCharacterSkill skill = skillData.skill as MainCharacterSkill;
+                MainCharacterSkillSO skillSO = skill.SkillSO as MainCharacterSkillSO;
                 // rarity가 주어진 값과 일치하는 경우
-                if (skill.Rarity == rarity)
+                if (skillSO.Rarity == rarity)
                 {
                     skillList.Add(skillData.ID_Basic);
                 }
@@ -195,26 +196,12 @@ public class Library : ScriptableObject
     }
 
 
-    public struct SkillSetResult
-    {
-        public int skillID;
-        public int enhancedSkillID;
-        
-        public bool isSuccess; //기본 도술 세팅 성공
-        
-        //---Success--//
-        public bool isEnhanced; //도술을 넣어서 강화가 되었는지
-        
-        //--Fail--//
-        public bool isScrollFull; //도술 두루마리가 꽉 찼는지
-        public bool isSameSkill; //같은 도술이 이미 있는지
-    }
     /// <summary>
     /// 신규로 뽑은 도술을 도술두루마리에 추가하는 함수
     /// </summary>
     /// <param name="baseskillid">인자로 일반 스킬 id만 들어와야함.</param>
     /// <returns>도술 두루마리에 신규로 추가할 수 있거나, 같은 기본 </returns>
-    private SkillSetResult SetSkillOnScroll(int baseskillid)
+    public SkillSetResult SetSkillOnScroll(int baseskillid)
     {
         SkillSetResult result = new SkillSetResult();
         result.skillID = baseskillid;
@@ -222,8 +209,11 @@ public class Library : ScriptableObject
         
         BaseSkill skill = GetSkill(baseskillid);
         SkillElement element = skill.SkillSO.SkillElement;
-
+        result.skillName = skill.SkillSO.SkillName;
+        
         int enhancedSkillID = GetEnhancedSkillID(baseskillid);
+        BaseSkill enhancedSkill = GetSkill(enhancedSkillID);
+        result.enhancedSkillName = enhancedSkill.SkillSO.SkillName;
         
         // 도술 두루마리의 같은 속성에 가서 같은 기본 도술,혹은 강화도술이 있는지 확인
         // 기본 도술이랑 강화 도술이 같이 있는 경우는 없음.
@@ -380,4 +370,22 @@ public class SkillData
     public BaseSkill skill;
     public int ID_Reinforced;
     public BaseSkill reinforcedSkill;
+}
+
+
+public struct SkillSetResult
+{
+    public int skillID;
+    public int enhancedSkillID;
+    public string skillName;
+    public string enhancedSkillName;
+        
+    public bool isSuccess; //기본 도술 세팅 성공
+        
+    //---Success--//
+    public bool isEnhanced; //도술을 넣어서 강화가 되었는지
+        
+    //--Fail--//
+    public bool isScrollFull; //도술 두루마리가 꽉 찼는지
+    public bool isSameSkill; //같은 도술이 이미 있는지
 }
