@@ -13,7 +13,7 @@ public class FoxFire_BlueFire : BaseSkill
         dotCureBuff.BuffName = "푸른 불꽃";
         dotCureBuff.BuffDurationTurns = 3;
         dotCureBuff.IsAlwaysApplyBuff = true;
-        dotCureBuff.DotCureAmount = 30;
+        dotCureBuff.DotCureAmount = 50;
         
         instantiatedBuffList.Add(dotCureGameObject);
       
@@ -21,8 +21,8 @@ public class FoxFire_BlueFire : BaseSkill
     }
     public override void SetSkillDescription(TextMeshProUGUI text)
     {
-        int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * 30f / 100f);
-        int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * 30f / 100f);
+        int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * 50f / 100f);
+        int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * 50f / 100f);
         text.text = "푸른 불꽃\n" + 
                     "3턴 동안 아군의 체력을 턴 시작당 " + minStat + " ~ " + maxStat + "만큼 회복";
     }

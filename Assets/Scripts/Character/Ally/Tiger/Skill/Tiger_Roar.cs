@@ -28,7 +28,7 @@ public class Tiger_Roar : BaseSkill
             roarBuff.BuffName = "산군의 위엄";
             roarBuff.BuffDurationTurns = 3;
             roarBuff.IsAlwaysApplyBuff = true;
-            roarBuff.changeStat.defense = 2;
+            roarBuff.changeStat.defense = 10;
             SkillOwner.ApplyBuff(SkillOwner,SkillOwner,roarBuff);
         }
     }
@@ -40,6 +40,6 @@ public class Tiger_Roar : BaseSkill
         text.text = "산군의 포효\n" 
                     + "대상 전체에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n"
                     + "100% 확률로 명중, 속도 -2만큼 부여\n" 
-                    + "자신에게 3턴동안 방어 +2만큼 부여";
+                    + "자신에게 3턴동안 방어 +10만큼 부여";
     }
 }

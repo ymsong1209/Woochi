@@ -5,7 +5,7 @@ using TMPro;
 
 public class T3_FoxRain_P : MainCharacterSkill
 {
-    private int healamount = 10;
+    private int healamount = 12;
     
     protected override float CalculateHeal(BaseCharacter receiver, bool isCrit)
     {

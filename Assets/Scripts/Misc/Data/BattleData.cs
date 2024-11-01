@@ -14,7 +14,10 @@ public class BattleData
         allies = new List<int>() { 0, 1, 2 };
         formation = new int[] { 2, 0, 1, -1};   // 호랑이-우치-삼미호 순(시연버전)
         charms = new List<int>(5);
-
+        //원기회복부(힐부적) 3장 들고 시작
+        charms.Insert(0, 9);
+        charms.Insert(1, 9);
+        charms.Insert(2, 9);
         if (GameManager.GetInstance.UseDebugCharms)
         {
             charms = GameManager.GetInstance.Charms;
