@@ -5,6 +5,7 @@ using TMPro;
 
 public class T1_MudFloor : MainCharacterSkill
 {
+    GameObject statDebuffPrefab;
     public override void ActivateSkill(BaseCharacter _opponent)
     {
         
@@ -28,6 +29,31 @@ public class T1_MudFloor : MainCharacterSkill
         int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
         text.text = "감탕밭\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "랜덤한 단일 대상에게 2턴동안 속도 -2 부여";
+                    "랜덤한 단일 대상에게 70%의 확률로 2턴동안 속도 -2 부여";
+    }
+    
+    public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        skillDescription.text = "도력 " + requiredSorceryPoints + "을 소모하여\n" +
+                                "랜덤한 단일 대상에게 70%의 확률로\n" +
+                                "2턴동안 속도 -2 부여";
+    }
+    
+    public override void SetEnhancedSkillScrollDescription(int curskillid, TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        int enhancedSkillID = GameManager.GetInstance.Library.GetEnhancedSkillID(curskillid);
+        MainCharacterSkill enhancedSkill = GameManager.GetInstance.Library.GetSkill(enhancedSkillID) as MainCharacterSkill;
+
+        skillDescription.text = "도력 <color=#FFFF00>" + enhancedSkill.RequiredSorceryPoints + "</color>을 소모하여\n" +
+                                "랜덤한 단일 대상에게 <color=#FFFF00>90%</color>의 확률로\n" +
+                                "2턴동안 속도 <color=#FFFF00>-4</color> 부여";
     }
 }

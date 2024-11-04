@@ -28,6 +28,8 @@ public class SkillScroll : MonoBehaviour
     void Start()
     {
         Activate();
+        OnIconHovered += Highlight;
+        OnIconHoverExit += HighlightExit;
         OnSkillSelected += RemoveSelectedImg;
     }
 
@@ -70,6 +72,39 @@ public class SkillScroll : MonoBehaviour
         }
     }
 
+
+    public void Highlight(int skillid)
+    {
+        if(iconSelected) return;
+        foreach(SkillScrollIcon icon in skillScrollIcons)
+        {
+            if(icon.SkillID == skillid)
+            {
+                icon.HighLight();
+            }
+            else
+            {
+                icon.RemoveHighLight();
+            }
+        }
+        skillScrollDescription.Reset();
+        skillScrollDescription.SetSkill(skillid);
+    }
+    
+    public void HighlightExit(int skillid)
+    {
+        if(iconSelected) return;
+        foreach(SkillScrollIcon icon in skillScrollIcons)
+        {
+            if(icon.SkillID == skillid)
+            {
+                icon.RemoveHighLight();
+            }
+        }
+        skillScrollDescription.Reset();
+    }
+    
+    
     private void RemoveSelectedImg(int skillid)
     {
         for (int i = 0; i < 5; ++i)

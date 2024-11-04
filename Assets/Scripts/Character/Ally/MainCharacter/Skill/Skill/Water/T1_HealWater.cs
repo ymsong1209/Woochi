@@ -22,4 +22,27 @@ public class T1_HealWater : MainCharacterSkill
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "단일 대상을 " + healamount +  "만큼 회복";
     }
+    
+    public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        skillDescription.text = "도력 " + requiredSorceryPoints + "을 소모하여\n" +
+                                "단일 대상을 " + healamount +  "만큼 회복";
+    }
+    
+    public override void SetEnhancedSkillScrollDescription(int curskillid, TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        int enhancedSkillID = GameManager.GetInstance.Library.GetEnhancedSkillID(curskillid);
+        T1_HealWater_P enhancedSkill = GameManager.GetInstance.Library.GetSkill(enhancedSkillID) as T1_HealWater_P;
+
+        skillDescription.text = "도력 <color=#FFFF00>" + enhancedSkill.RequiredSorceryPoints + "</color>을 소모하여\n" +
+                                "단일 대상을 <color=#FFFF00>" +  enhancedSkill.HealAmount + "</color>만큼 회복";
+    }
 }

@@ -11,11 +11,11 @@ using UnityEngine.UI;
 public class SkillScrollDescription : MonoBehaviour
 {
     private int curSkillID;
-    private BaseSkill curSkill;
+    private MainCharacterSkill curSkill;
     [SerializeField] private SkillScroll skillScroll;
     
     [SerializeField] private TextMeshProUGUI enhanceCount; //강화 남은 횟수
-    [SerializeField] private Button enhanceButton; //강화 버튼
+  
     
     [SerializeField] private Image elementImage; //스킬 속성 이미지
     [SerializeField] private Sprite[] elementImages;
@@ -24,19 +24,21 @@ public class SkillScrollDescription : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI skillName; //스킬 이름
     [SerializeField] private TextMeshProUGUI skillDescription; //스킬 설명
+    [SerializeField] private TextMeshProUGUI enhancedSkillDescription; //강화된 스킬 설명
+    
+    [SerializeField] private Button enhanceButton; //강화 버튼
+    [SerializeField] private Button removeButton; //스킬 제거 버튼
   
 
     // Start is called before the first frame update
     void Start()
     {
         gameObject.SetActive(false);
-        skillScroll.OnIconHovered += SetSkill;
-        skillScroll.OnSkillSelected += SetSkill;
     }
     
-    void SetSkill(int skillid)
+    public void SetSkill(int skillid)
     {
-        curSkill = GameManager.GetInstance.Library.GetSkill(skillid);
+        curSkill = GameManager.GetInstance.Library.GetSkill(skillid) as MainCharacterSkill;
         if (curSkill == null)
         {
             Debug.Log("SkillScrollDescription : 스킬이 없습니다.");
@@ -46,7 +48,7 @@ public class SkillScrollDescription : MonoBehaviour
         curSkillID = skillid;
         elementImage.sprite = elementImages[(int)curSkill.SkillSO.SkillElement];
         skillName.SetText(curSkill.SkillSO.SkillName);
-        curSkill.SetSkillDescription(skillDescription);
+        curSkill.SetSkillScrollDescription(skillDescription);
         //스킬 id가 만 이하면 기본 스킬
         if (skillid < 10000)
         {
@@ -54,26 +56,33 @@ public class SkillScrollDescription : MonoBehaviour
         }
         else
         {
-            //강화 버튼 비활성화
-            enhanceButton.gameObject.SetActive(false);
             //강화된 스킬 아이콘 보여주기
             enhanceBanner.gameObject.SetActive(true);
             enhanceBanner.BannerImg.sprite = enhanceBannerImages[(int)curSkill.SkillSO.SkillElement];
             enhanceBanner.IsAlphaBlending = false;
         }
+    }
+
+    public void Reset()
+    {
+        curSkillID = 0;
+        curSkill = null;
         
+        elementImage.sprite = null;
+        enhanceBanner.gameObject.SetActive(false);
+        
+        skillName.SetText("");
+        enhancedSkillDescription.gameObject.SetActive(false);
+        enhanceCount.text = "";
+        
+        enhanceButton.gameObject.SetActive(false);
+        removeButton.gameObject.SetActive(false);
     }
 
 
 
     // Update is called once per frame
     void Update()
-    {
-        
-    }
-
-    //강화 아이콘에 마우스를 올리면 강화 설명을 보여줌
-    void SetEnhancedSkillDescription()
     {
         
     }

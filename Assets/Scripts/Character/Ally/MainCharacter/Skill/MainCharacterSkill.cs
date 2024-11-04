@@ -39,6 +39,9 @@ public class MainCharacterSkill : BaseSkill
     public virtual void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
     {
     }
+    public virtual void SetEnhancedSkillScrollDescription(int curskillid, TextMeshProUGUI skillDescription)
+    {
+    }
 
     public int RequiredSorceryPoints => requiredSorceryPoints;
     public int Rarity => rarity;

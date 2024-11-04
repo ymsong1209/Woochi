@@ -22,4 +22,9 @@ public class T1_HealWater_P : MainCharacterSkill
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "단일 대상을 " + healamount +  "만큼 회복";
     }
+    
+    public int HealAmount
+    {
+        get => healamount;
+    }
 }
