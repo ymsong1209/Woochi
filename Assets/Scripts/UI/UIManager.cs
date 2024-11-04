@@ -71,10 +71,4 @@ public class UIManager : SingletonMonobehaviour<UIManager>
         buffPopupUI.Deactivate();
     }
     #endregion
-
-    #region MainCharacterUI
-
-
-    
-    #endregion MainCharacterUI
 }

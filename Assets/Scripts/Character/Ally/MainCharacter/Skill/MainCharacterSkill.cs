@@ -27,10 +27,8 @@ public class MainCharacterSkill : BaseSkill
             Debug.LogError("우치가 아님");
             return;
         }
-
-        woochi.SorceryPoints -= RequiredSorceryPoints;
-        Mathf.Clamp(woochi.SorceryPoints, 0, woochi.MaxSorceryPoints);
-        UIManager.GetInstance.sorceryGuageUI.SetUI();
+        
+        woochi.UpdateSorceryPoints(requiredSorceryPoints, false);
 
         var animation = SkillOwner.anim as MainCharacterAnimation;
         animation.ShowElement(SkillSO.SkillElement);

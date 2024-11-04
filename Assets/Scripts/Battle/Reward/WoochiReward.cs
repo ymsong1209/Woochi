@@ -1,22 +1,22 @@
 using UnityEngine;
 
 /// <summary>
-/// ¿ìÄ¡ Àü¿ë º¸»ó
+/// ìš°ì¹˜ ì „ìš© ë³´ìƒ
 /// </summary>
 [CreateAssetMenu(fileName = "Reward_", menuName = "Scriptable Objects/Reward/Woochi")]
 public class WoochiReward : Reward
 {
     [Header("Heal")]
-    [SerializeField] private bool heal;             // Ã¼·Â È¸º¹ ¿©ºÎ
-    [SerializeField] private int healAmount;      // Ã¼·Â È¸º¹ ¼öÄ¡
-    [SerializeField] private bool sorceryHeal;      // µµ·Â È¸º¹ ¿©ºÎ
+    [SerializeField] private bool heal;             // ì²´ë ¥ íšŒë³µ ì—¬ë¶€
+    [SerializeField] private int healAmount;        // ì²´ë ¥ íšŒë³µ ìˆ˜ì¹˜
+    [SerializeField] private bool sorceryHeal;      // ë„ë ¥ íšŒë³µ ì—¬ë¶€
 
     [Header("Random Stat Up")]
-    [SerializeField] private bool randomStatUp;     // ·£´ı ½ºÅÈ »ó½Â ¿©ºÎ
-    [SerializeField] private int statUpAmount;      // Áõ°¡½ÃÅ³ ½ºÅÈ ¾ç
+    [SerializeField] private bool randomStatUp;     // ëœë¤ ìŠ¤íƒ¯ ìƒìŠ¹ ì—¬ë¶€
+    [SerializeField] private int statUpAmount;      // ì¦ê°€ì‹œí‚¬ ìŠ¤íƒ¯ ì–‘
 
     [Header("Add Stat")]
-    [SerializeField] private Stat addStat;          // Ãß°¡ÇÒ ½ºÅÈ   
+    [SerializeField] private Stat addStat;          // ì¶”ê°€í•  ìŠ¤íƒ¯   
 
     public override bool ApplyReward()
     {
@@ -27,10 +27,9 @@ public class WoochiReward : Reward
             woochi.Health.Heal(healAmount, false);
         }
 
-        // µµ·Â È¸º¹
         if (sorceryHeal)
         {
-            woochi.SorceryPoints = woochi.MaxSorceryPoints;
+            woochi.UpdateSorceryPoints(999, true);
         }
 
         StatUp(woochi);
@@ -44,45 +43,45 @@ public class WoochiReward : Reward
         {
             StatType type = (StatType)Random.Range(0, (int)StatType.END);
 
-            resultTxt += "¿ìÄ¡ÀÇ ";
+            resultTxt += "ìš°ì¹˜ì˜ ";
             switch(type)
             {
                 case StatType.Health:
-                    resultTxt += "Ã¼·Â";
+                    resultTxt += "ì²´ë ¥";
                     addStat.maxHealth = statUpAmount;
                 break;
                 case StatType.Speed:
-                    resultTxt += "¼Óµµ";
+                    resultTxt += "ì†ë„";
                     addStat.speed = statUpAmount;
                 break;
                 case StatType.Defense:
-                    resultTxt += "¹æ¾î";
+                    resultTxt += "ë°©ì–´";
                     addStat.defense = statUpAmount;
                 break;
                 case StatType.Crit:
-                    resultTxt += "Ä¡¸í";
+                    resultTxt += "ì¹˜ëª…";
                     addStat.crit = statUpAmount;
                 break;
                 case StatType.Accuracy: 
-                    resultTxt += "¸íÁß";
+                    resultTxt += "ëª…ì¤‘";
                     addStat.accuracy = statUpAmount;
                 break;
                 case StatType.Evasion:
-                    resultTxt += "È¸ÇÇ";
+                    resultTxt += "íšŒí”¼";
                     addStat.evasion = statUpAmount;
                 break;
                 case StatType.Resist:
-                    resultTxt += "ÀúÇ×";
+                    resultTxt += "ì €í•­";
                     addStat.resist = statUpAmount;
                 break;
                 case StatType.Damage:
-                    resultTxt += "ÇÇÇØ";
+                    resultTxt += "í”¼í•´";
                     addStat.minStat = statUpAmount;
                     addStat.maxStat = statUpAmount;
                 break;
             }
 
-            resultTxt += $"ÀÌ(°¡) {statUpAmount} Áõ°¡Çß½À´Ï´Ù";
+            resultTxt += $"ì´(ê°€) {statUpAmount} ì¦ê°€í–ˆìŠµë‹ˆë‹¤";
         }
 
         woochi.rewardStat += addStat;
