@@ -29,7 +29,8 @@ public class T1_HealWater : MainCharacterSkill
         {
             SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
         }
-        skillDescription.text = "도력 " + requiredSorceryPoints + "을 소모하여\n" +
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모하여\n" +
                                 "단일 대상을 " + healamount +  "만큼 회복";
     }
     
@@ -41,8 +42,9 @@ public class T1_HealWater : MainCharacterSkill
         }
         int enhancedSkillID = GameManager.GetInstance.Library.GetEnhancedSkillID(curskillid);
         T1_HealWater_P enhancedSkill = GameManager.GetInstance.Library.GetSkill(enhancedSkillID) as T1_HealWater_P;
-
-        skillDescription.text = "도력 <color=#FFFF00>" + enhancedSkill.RequiredSorceryPoints + "</color>을 소모하여\n" +
+        MainCharacterSkillSO mainCharacterSkillSo = enhancedSkill.SkillSO as MainCharacterSkillSO;
+        
+        skillDescription.text = "도력 <color=#FFFF00>" + mainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모하여\n" +
                                 "단일 대상을 <color=#FFFF00>" +  enhancedSkill.HealAmount + "</color>만큼 회복";
     }
 }

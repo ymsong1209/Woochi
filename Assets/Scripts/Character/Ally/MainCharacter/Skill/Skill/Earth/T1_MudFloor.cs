@@ -38,7 +38,8 @@ public class T1_MudFloor : MainCharacterSkill
         {
             SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
         }
-        skillDescription.text = "도력 " + requiredSorceryPoints + "을 소모하여\n" +
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모하여\n" +
                                 "랜덤한 단일 대상에게 70%의 확률로\n" +
                                 "2턴동안 속도 -2 부여";
     }
@@ -51,8 +52,8 @@ public class T1_MudFloor : MainCharacterSkill
         }
         int enhancedSkillID = GameManager.GetInstance.Library.GetEnhancedSkillID(curskillid);
         MainCharacterSkill enhancedSkill = GameManager.GetInstance.Library.GetSkill(enhancedSkillID) as MainCharacterSkill;
-
-        skillDescription.text = "도력 <color=#FFFF00>" + enhancedSkill.RequiredSorceryPoints + "</color>을 소모하여\n" +
+        MainCharacterSkillSO mainCharacterSkillSo = enhancedSkill.SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 <color=#FFFF00>" + mainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모하여\n" +
                                 "랜덤한 단일 대상에게 <color=#FFFF00>90%</color>의 확률로\n" +
                                 "2턴동안 속도 <color=#FFFF00>-4</color> 부여";
     }

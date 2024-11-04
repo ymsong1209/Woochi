@@ -38,7 +38,8 @@ public class T1_TreeBind : MainCharacterSkill
         {
             SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
         }
-        skillDescription.text = "도력 " + requiredSorceryPoints + "을 소모하여\n" +
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모하여\n" +
                                 "단일 대상에게 " + SkillSO.BaseMultiplier + "%피해를 주고\n" +
                                 "80%의 확률로 3턴동안\n" +
                                 "속도, 최소, 최대스탯 -2 부여";
@@ -52,9 +53,10 @@ public class T1_TreeBind : MainCharacterSkill
         }
         int enhancedSkillID = GameManager.GetInstance.Library.GetEnhancedSkillID(curskillid);
         MainCharacterSkill enhancedSkill = GameManager.GetInstance.Library.GetSkill(enhancedSkillID) as MainCharacterSkill;
-
-        skillDescription.text = "도력 " + enhancedSkill.RequiredSorceryPoints + "을 소모하여\n" +
-                                "단일 대상에게 <color=#FFFF00>" + SkillSO.BaseMultiplier + "</color>%피해를 주고\n" +
+        MainCharacterSkillSO mainCharacterSkillSo = enhancedSkill.SkillSO as MainCharacterSkillSO;
+        
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모하여\n" +
+                                "단일 대상에게 <color=#FFFF00>" + mainCharacterSkillSo.BaseMultiplier + "</color>%피해를 주고\n" +
                                 "<color=#FFFF00>100%</color>의 확률로 <color=#FFFF00>4턴</color>동안\n" +
                                 "속도, 최소, 최대스탯 -2 부여";
     }

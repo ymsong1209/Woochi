@@ -38,14 +38,14 @@ public class SkillScrollDescription : MonoBehaviour
     
     public void SetSkill(int skillid)
     {
-        curSkill = GameManager.GetInstance.Library.GetSkill(skillid) as MainCharacterSkill;
-        if (curSkill == null)
-        {
-            Debug.Log("SkillScrollDescription : 스킬이 없습니다.");
-            return;
-        }
+        if (skillid == 0 ||
+            (curSkill = GameManager.GetInstance.Library.GetSkill(skillid) as MainCharacterSkill) == null) return;
+        
+        gameObject.SetActive(true);
+        
 
         curSkillID = skillid;
+        elementImage.gameObject.SetActive(true);
         elementImage.sprite = elementImages[(int)curSkill.SkillSO.SkillElement];
         skillName.SetText(curSkill.SkillSO.SkillName);
         curSkill.SetSkillScrollDescription(skillDescription);
@@ -67,11 +67,13 @@ public class SkillScrollDescription : MonoBehaviour
     {
         curSkillID = 0;
         curSkill = null;
-        
+
+        elementImage.gameObject.SetActive(false);
         elementImage.sprite = null;
         enhanceBanner.gameObject.SetActive(false);
         
         skillName.SetText("");
+        skillDescription.SetText("");
         enhancedSkillDescription.gameObject.SetActive(false);
         enhanceCount.text = "";
         

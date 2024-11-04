@@ -16,7 +16,8 @@ public class SkillScroll : MonoBehaviour
     
     //도술 두루마리에 있는 아이콘들
     [SerializeField] private SkillScrollIcon[] skillScrollIcons = new SkillScrollIcon[25];
-    [SerializeField] private bool iconSelected;
+    [SerializeField] private bool isIconSelected;
+    private int selectedSkillID;
     
     //도술 설명
     [SerializeField] private SkillScrollDescription skillScrollDescription;
@@ -28,15 +29,15 @@ public class SkillScroll : MonoBehaviour
     void Start()
     {
         Activate();
-        OnIconHovered += Highlight;
-        OnIconHoverExit += HighlightExit;
-        OnSkillSelected += RemoveSelectedImg;
+        OnIconHovered += HoverEnter;
+        OnIconHoverExit += HoverExit;
+        OnSkillSelected += SkillIconClicked;
     }
 
     public void Activate()
     {
         gameObject.SetActive(true);
-        iconSelected = false;
+        isIconSelected = false;
         //우치가 선택한 도술 세팅
         for (int i = 0; i < DataCloud.playerData.currentskillIDs.Length; i++)
         {
@@ -73,40 +74,30 @@ public class SkillScroll : MonoBehaviour
     }
 
 
-    public void Highlight(int skillid)
+    private void HoverEnter(int skillid)
     {
-        if(iconSelected) return;
-        foreach(SkillScrollIcon icon in skillScrollIcons)
-        {
-            if(icon.SkillID == skillid)
-            {
-                icon.HighLight();
-            }
-            else
-            {
-                icon.RemoveHighLight();
-            }
-        }
+        if (skillid == 0) return;
         skillScrollDescription.Reset();
         skillScrollDescription.SetSkill(skillid);
     }
     
-    public void HighlightExit(int skillid)
+    public void HoverExit(int skillid)
     {
-        if(iconSelected) return;
-        foreach(SkillScrollIcon icon in skillScrollIcons)
-        {
-            if(icon.SkillID == skillid)
-            {
-                icon.RemoveHighLight();
-            }
-        }
+        if (skillid == 0) return;
         skillScrollDescription.Reset();
+        if (isIconSelected && selectedSkillID!=0)
+        {
+            skillScrollDescription.SetSkill(selectedSkillID);
+        }
     }
-    
-    
-    private void RemoveSelectedImg(int skillid)
+
+    private void SkillIconClicked(int skillid)
     {
+        if (skillid == 0) return;
+        isIconSelected = true;
+        selectedSkillID = skillid;
+        
+        //selected 이미지 설정
         for (int i = 0; i < 5; ++i)
         {
             for (int j = 0; j < 5; ++j)
@@ -118,6 +109,10 @@ public class SkillScroll : MonoBehaviour
                 }
             }
         }
+        
+        skillScrollDescription.Reset();
+        skillScrollDescription.SetSkill(skillid);
+        
     }
     
     
@@ -128,9 +123,9 @@ public class SkillScroll : MonoBehaviour
     {
         
     }
-    public bool IconSelected
+    public bool IsIconSelected
     {
-        get => iconSelected;
-        set => iconSelected = value;
+        get => isIconSelected;
+        set => isIconSelected = value;
     }
 }

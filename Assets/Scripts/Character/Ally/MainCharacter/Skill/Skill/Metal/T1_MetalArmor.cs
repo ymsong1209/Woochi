@@ -40,7 +40,8 @@ public class T1_MetalArmor : MainCharacterSkill
         {
             SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
         }
-        skillDescription.text = "도력 " + requiredSorceryPoints + "을 소모하여\n" +
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모하여\n" +
                                 "단일 대상과 우치에게\n" +
                                 "3턴동안 방어력 5만큼 부여";
     }
@@ -53,8 +54,9 @@ public class T1_MetalArmor : MainCharacterSkill
         }
         int enhancedSkillID = GameManager.GetInstance.Library.GetEnhancedSkillID(curskillid);
         MainCharacterSkill enhancedSkill = GameManager.GetInstance.Library.GetSkill(enhancedSkillID) as MainCharacterSkill;
-
-        skillDescription.text = "도력 <color=#FFFF00>" + enhancedSkill.RequiredSorceryPoints + "</color>을 소모하여\n" +
+        MainCharacterSkillSO mainCharacterSkillSo = enhancedSkill.SkillSO as MainCharacterSkillSO;
+        
+        skillDescription.text = "도력 <color=#FFFF00>" + mainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모하여\n" +
                                 "단일 대상과 우치에게\n" +
                                 "3턴동안 방어력 <color=#FFFF00>10</color>만큼 부여";
     }

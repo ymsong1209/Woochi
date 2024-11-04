@@ -8,10 +8,21 @@ public class Maintenance : MonoBehaviour
 {
     [SerializeField] private Button openMapBtn;     // 지도 열기
     [SerializeField] private GameObject blindObject;    // 섭선, 위치 이동만 클릭 가능하게
+    [SerializeField] private Button skillScrollBtn;
+    [SerializeField] private Button skillScrollBlind;
+    [SerializeField] private GameObject skillScroll; //도술두루마리
 
     void Start()
     {
         openMapBtn.onClick.AddListener(EndMaintenance);
+        
+        skillScrollBtn.onClick.AddListener(()=>skillScrollBlind.gameObject.SetActive(true));
+        skillScrollBtn.onClick.AddListener(() => skillScroll.SetActive(true));
+        
+        skillScrollBlind.onClick.AddListener(()=>skillScrollBlind.gameObject.SetActive(false));
+        skillScrollBlind.onClick.AddListener(()=>skillScroll.gameObject.SetActive(false));
+        skillScroll.SetActive(false);
+        skillScrollBlind.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
 
@@ -19,7 +30,9 @@ public class Maintenance : MonoBehaviour
     {
         gameObject.SetActive(true);
         blindObject.SetActive(true);
-
+        skillScrollBlind.gameObject.SetActive(false);
+        skillScroll.SetActive(false);
+        
         BattleManager.GetInstance.InitializeMaintenance();
     }
 
@@ -27,6 +40,8 @@ public class Maintenance : MonoBehaviour
     {
         gameObject.SetActive(false);
         blindObject.SetActive(false);
+        skillScrollBlind.gameObject.SetActive(false);
+        skillScroll.SetActive(false);
 
         BattleManager.GetInstance.DisableColliderArrow();
         BattleManager.GetInstance.DisableDummy();
