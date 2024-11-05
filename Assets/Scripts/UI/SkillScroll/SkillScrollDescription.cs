@@ -26,14 +26,23 @@ public class SkillScrollDescription : MonoBehaviour
     [SerializeField] private TextMeshProUGUI skillDescription; //스킬 설명
     [SerializeField] private TextMeshProUGUI enhancedSkillDescription; //강화된 스킬 설명
     
-    [SerializeField] private Button enhanceButton; //강화 버튼
+    [SerializeField] private SkillScrollEnhanceBtn enhanceButton; //강화 버튼
     [SerializeField] private Button removeButton; //스킬 제거 버튼
+    [SerializeField] private Button equipButton; //스킬 장착 버튼
   
 
     // Start is called before the first frame update
     void Start()
     {
         gameObject.SetActive(false);
+        equipButton.onClick.AddListener(()=>
+        {
+            Debug.Log("Equip Skill : " + curSkillID);
+            BaseSkill skill = GameManager.GetInstance.Library.GetSkill(curSkillID);
+            GameManager.GetInstance.Library.EquipSkill(curSkillID,(int)skill.SkillSO.SkillElement - 1);
+            skillScroll.Reset();
+            skillScroll.Activate();
+        });
     }
     
     public void SetSkill(int skillid)
@@ -42,7 +51,7 @@ public class SkillScrollDescription : MonoBehaviour
             (curSkill = GameManager.GetInstance.Library.GetSkill(skillid) as MainCharacterSkill) == null) return;
         
         gameObject.SetActive(true);
-        
+        equipButton.gameObject.SetActive(true);
 
         curSkillID = skillid;
         elementImage.gameObject.SetActive(true);
@@ -53,6 +62,7 @@ public class SkillScrollDescription : MonoBehaviour
         if (skillid < 10000)
         {
             enhanceButton.gameObject.SetActive(true);
+            enhanceButton.SetSkill(skillid);
         }
         else
         {
@@ -78,9 +88,21 @@ public class SkillScrollDescription : MonoBehaviour
         enhanceCount.text = "";
         
         enhanceButton.gameObject.SetActive(false);
+        equipButton.gameObject.SetActive(false);
         removeButton.gameObject.SetActive(false);
     }
 
+    
+    public void SetEnhancedSkillDescription()
+    {
+        enhancedSkillDescription.gameObject.SetActive(true);
+        curSkill.SetEnhancedSkillScrollDescription(curSkillID,enhancedSkillDescription);
+    }
+
+    public void ResetEnhancedSkillDescription()
+    {
+        enhancedSkillDescription.gameObject.SetActive(false);
+    }
 
 
     // Update is called once per frame

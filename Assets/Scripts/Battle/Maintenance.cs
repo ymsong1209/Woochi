@@ -21,6 +21,7 @@ public class Maintenance : MonoBehaviour
         
         skillScrollBlind.onClick.AddListener(()=>skillScrollBlind.gameObject.SetActive(false));
         skillScrollBlind.onClick.AddListener(()=>skillScroll.gameObject.SetActive(false));
+        skillScrollBlind.onClick.AddListener(()=>skillScroll.GetComponent<SkillScroll>().Reset());
         skillScroll.SetActive(false);
         skillScrollBlind.gameObject.SetActive(false);
         gameObject.SetActive(false);

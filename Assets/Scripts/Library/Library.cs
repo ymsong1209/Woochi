@@ -302,6 +302,13 @@ public class Library : ScriptableObject
         }
         DataCloud.playerData.totalSkillIDs = totalskillIDs;
     }
+
+    public void EquipSkill(int skillid, int position)
+    {
+        int[] currentskillIDs = DataCloud.playerData.currentskillIDs;
+        currentskillIDs[position] = skillid;
+        DataCloud.playerData.currentskillIDs = currentskillIDs;
+    }
     
     #endregion WoochiSkill
     

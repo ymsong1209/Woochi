@@ -47,7 +47,15 @@ public class SkillScrollIcon : MonoBehaviour, IPointerEnterHandler, IPointerExit
         }
         else
         {
-            icon.sprite = skill.SkillSO.skillIcon;
+            if (skill.SkillSO.skillIcon)
+            {
+                icon.sprite = skill.SkillSO.skillIcon;
+            }
+            else
+            {
+                icon.sprite = skillScroll.NoiconImg;
+            }
+            
             canvasGroup.interactable = true;
             button.interactable = true;
             

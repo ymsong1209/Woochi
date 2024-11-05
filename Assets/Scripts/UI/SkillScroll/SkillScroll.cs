@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class SkillScroll : MonoBehaviour
 {
-    [SerializeField] private Sprite noiconImg;
+    [SerializeField] public Sprite NoiconImg;
     
     //우치가 선택한 스킬들
     [SerializeField] private Sprite selectedIconDefault;
@@ -17,6 +17,7 @@ public class SkillScroll : MonoBehaviour
     //도술 두루마리에 있는 아이콘들
     [SerializeField] private SkillScrollIcon[] skillScrollIcons = new SkillScrollIcon[25];
     [SerializeField] private bool isIconSelected;
+    [SerializeField] private Button skillScrollBackground;
     private int selectedSkillID;
     
     //도술 설명
@@ -32,6 +33,7 @@ public class SkillScroll : MonoBehaviour
         OnIconHovered += HoverEnter;
         OnIconHoverExit += HoverExit;
         OnSkillSelected += SkillIconClicked;
+        skillScrollBackground.onClick.AddListener(()=>Reset());
     }
 
     public void Activate()
@@ -42,6 +44,7 @@ public class SkillScroll : MonoBehaviour
         for (int i = 0; i < DataCloud.playerData.currentskillIDs.Length; i++)
         {
             int skillID = DataCloud.playerData.currentskillIDs[i];
+            //한 속성에 도술이 없는 경우
             if (skillID == 0)
             {
                 selectedIcons[i].sprite = selectedIconDefault;
@@ -55,7 +58,7 @@ public class SkillScroll : MonoBehaviour
                 }
                 else
                 {
-                    selectedIcons[i].sprite = noiconImg;
+                    selectedIcons[i].sprite = NoiconImg;
                 }
                 
             }
@@ -67,8 +70,9 @@ public class SkillScroll : MonoBehaviour
             for (int j = 0; j < DataCloud.playerData.totalSkillIDs.GetLength(1); j++)
             {
                 int skillID = DataCloud.playerData.totalSkillIDs[i, j];
-                skillScrollIcons[i*5 + j].Init(skillID);
                 skillScrollIcons[i*5 + j].SkillScroll = this;
+                skillScrollIcons[i*5 + j].Init(skillID);
+                
             }
         }
     }
@@ -94,6 +98,15 @@ public class SkillScroll : MonoBehaviour
     private void SkillIconClicked(int skillid)
     {
         if (skillid == 0) return;
+        
+        //동일한 스킬 아이콘 눌렀을 경우 선택 해제
+        if(isIconSelected && selectedSkillID == skillid)
+        {
+            Reset();
+            return;
+        }
+        
+        
         isIconSelected = true;
         selectedSkillID = skillid;
         
@@ -109,20 +122,27 @@ public class SkillScroll : MonoBehaviour
                 }
             }
         }
+      
         
         skillScrollDescription.Reset();
         skillScrollDescription.SetSkill(skillid);
         
     }
-    
-    
 
-
-    // Update is called once per frame
-    void Update()
+    public void Reset()
     {
-        
+        isIconSelected = false;
+        selectedSkillID = 0;
+        for (int i = 0; i < 5; ++i)
+        {
+            for (int j = 0; j < 5; ++j)
+            {
+                skillScrollIcons[i * 5 + j].Selected.SetActive(false);
+            }
+        }
+        skillScrollDescription.Reset();
     }
+    
     public bool IsIconSelected
     {
         get => isIconSelected;

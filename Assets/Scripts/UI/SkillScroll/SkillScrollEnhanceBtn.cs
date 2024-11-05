@@ -10,15 +10,19 @@ public class SkillScrollEnhanceBtn : MonoBehaviour, IPointerEnterHandler, IPoint
     [SerializeField] private SkillScrollDescription skillScrollDescription;
     [SerializeField] private int SkillID;
     private bool isEnabled;
-    
+
+    public void SetSkill(int skillid)
+    {
+        SkillID = skillid;
+    }
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
-        isEnabled = true;
+        skillScrollDescription.SetEnhancedSkillDescription();
     }
 
     public virtual void OnPointerExit(PointerEventData eventData)
     {
-        isEnabled = false;
+        skillScrollDescription.ResetEnhancedSkillDescription();
     }
     
     // Start is called before the first frame update
