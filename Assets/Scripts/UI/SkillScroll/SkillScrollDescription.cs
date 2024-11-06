@@ -27,7 +27,6 @@ public class SkillScrollDescription : MonoBehaviour
     [SerializeField] private TextMeshProUGUI enhancedSkillDescription; //강화된 스킬 설명
     
     [SerializeField] private SkillScrollEnhanceBtn enhanceButton; //강화 버튼
-    [SerializeField] private Button removeButton; //스킬 제거 버튼
     [SerializeField] private Button equipButton; //스킬 장착 버튼
   
 
@@ -88,9 +87,7 @@ public class SkillScrollDescription : MonoBehaviour
         enhanceCount.text = "";
         
         enhanceButton.gameObject.SetActive(false);
-        equipButton.gameObject.SetActive(false);
-        removeButton.gameObject.SetActive(false);
-    }
+        equipButton.gameObject.SetActive(false); }
 
     
     public void SetEnhancedSkillDescription()
