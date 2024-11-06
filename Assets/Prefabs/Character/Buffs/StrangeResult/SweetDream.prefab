@@ -40,6 +40,10 @@ PrefabInstance:
       propertyPath: isRemovableDuringBattle
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: changeStat.list.Array.data[1].value
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8403137143158999209, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

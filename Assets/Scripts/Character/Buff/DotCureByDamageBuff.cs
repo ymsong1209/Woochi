@@ -32,8 +32,8 @@ public class DotCureByDamageBuff : BaseBuff
         base.AddBuff(caster, _buffOwner);
 
         Stat stat = caster.FinalStat;
-        minDamage = stat.minStat;
-        maxDamage = stat.maxStat;
+        minDamage = stat.GetValue(StatType.MinDamage);
+        maxDamage = stat.GetValue(StatType.MaxDamage);
     }
     
     public override void StackBuff(BaseBuff _buff)

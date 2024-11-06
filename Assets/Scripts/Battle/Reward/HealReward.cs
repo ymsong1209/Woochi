@@ -1,12 +1,9 @@
 using UnityEngine;
 
-/// <summary>
-/// ¼ÒÈ¯¼ö È¸º¹ °ü·Ã
-/// </summary>
 [CreateAssetMenu(fileName = "Reward_", menuName = "Scriptable Objects/Reward/Heal")]
 public class HealReward : Reward
 {
-    [SerializeField] private int healAmount;
+    [Space, SerializeField] private int healAmount;
 
     public override bool ApplyReward()
     {
@@ -19,7 +16,7 @@ public class HealReward : Reward
             character.Health.Heal(healAmount, false);
         }
 
-        resultTxt = $"¸ğµç ¼ÒÈ¯¼öÀÇ Ã¼·ÂÀ» {healAmount}¸¸Å­ È¸º¹Çß½À´Ï´Ù";
+        resultTxt = $"ëª¨ë“  ì†Œí™˜ìˆ˜ì˜ ì²´ë ¥ì„ {healAmount}ë§Œí¼ íšŒë³µí–ˆìŠµë‹ˆë‹¤";
         return true;
     }
 }

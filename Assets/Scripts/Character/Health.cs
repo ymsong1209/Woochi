@@ -89,7 +89,7 @@ public class Health
     
     public void LevelUp()
     {
-        maxHealth = owner.FinalStat.maxHealth;
+        maxHealth = (int)owner.FinalStat.GetValue(StatType.Health);
         Heal(maxHealth, false);
     }
 

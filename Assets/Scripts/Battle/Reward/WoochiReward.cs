@@ -1,4 +1,7 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// 우치 전용 보상
@@ -11,17 +14,18 @@ public class WoochiReward : Reward
     [SerializeField] private int healAmount;        // 체력 회복 수치
     [SerializeField] private bool sorceryHeal;      // 도력 회복 여부
 
-    [Header("Random Stat Up")]
+    [Header("Stat Up")]
+    [SerializeField] private bool fixedStatUp;      // 고정 스탯 상승 여부
+    [SerializeField] private StatType fixType;         // 상승시킬 스탯
     [SerializeField] private bool randomStatUp;     // 랜덤 스탯 상승 여부
+    [SerializeField] private bool allStatUp;        // 모든 스탯 상승 여부
     [SerializeField] private int statUpAmount;      // 증가시킬 스탯 양
-
-    [Header("Add Stat")]
-    [SerializeField] private Stat addStat;          // 추가할 스탯   
 
     public override bool ApplyReward()
     {
         MainCharacter woochi = BattleManager.GetInstance.Allies.GetWoochi();
 
+        resultTxt = "";
         if(heal)
         {
             woochi.Health.Heal(healAmount, false);
@@ -31,59 +35,76 @@ public class WoochiReward : Reward
         {
             woochi.UpdateSorceryPoints(999, true);
         }
-
-        StatUp(woochi);
+        
+        if(fixedStatUp || randomStatUp || allStatUp)
+        {
+            StatUp(woochi);
+        }
 
         return true;
     }
 
     private void StatUp(MainCharacter woochi)
     {
+        Stat stat = new Stat();
+
         if(randomStatUp)
         {
             StatType type = (StatType)Random.Range(0, (int)StatType.END);
-
-            resultTxt += "우치의 ";
-            switch(type)
+            if (type == StatType.MinDamage || type == StatType.MaxDamage)
             {
-                case StatType.Health:
-                    resultTxt += "체력";
-                    addStat.maxHealth = statUpAmount;
-                break;
-                case StatType.Speed:
-                    resultTxt += "속도";
-                    addStat.speed = statUpAmount;
-                break;
-                case StatType.Defense:
-                    resultTxt += "방어";
-                    addStat.defense = statUpAmount;
-                break;
-                case StatType.Crit:
-                    resultTxt += "치명";
-                    addStat.crit = statUpAmount;
-                break;
-                case StatType.Accuracy: 
-                    resultTxt += "명중";
-                    addStat.accuracy = statUpAmount;
-                break;
-                case StatType.Evasion:
-                    resultTxt += "회피";
-                    addStat.evasion = statUpAmount;
-                break;
-                case StatType.Resist:
-                    resultTxt += "저항";
-                    addStat.resist = statUpAmount;
-                break;
-                case StatType.Damage:
-                    resultTxt += "피해";
-                    addStat.minStat = statUpAmount;
-                    addStat.maxStat = statUpAmount;
-                break;
+                stat.SetValue(StatType.MinDamage, statUpAmount);
+                stat.SetValue(StatType.MaxDamage, statUpAmount);
             }
-
-            resultTxt += $"이(가) {statUpAmount} 증가했습니다";
+            else
+            {
+                stat.SetValue(type, statUpAmount);
+            }
+            
+            resultTxt += $"우치의 {type.GetDisplayName()}이(가) {statUpAmount} 증가했습니다";
         }
+        else if (allStatUp)
+        {
+            for (int i = 0; i < (int)StatType.END; i++)
+            {
+                stat.SetValue((StatType)i, statUpAmount);
+            }
+            
+            resultTxt = $"우치의 모든 스탯이 {statUpAmount} 증가했습니다";
+        }
+        else if (fixedStatUp)
+        {
+            if(fixType == StatType.MinDamage || fixType == StatType.MaxDamage)
+            {
+                stat.SetValue(StatType.MinDamage, statUpAmount);
+                stat.SetValue(StatType.MaxDamage, statUpAmount);
+            }
+            else
+            {
+                stat.SetValue(fixType, statUpAmount);
+            }
+            
+            resultTxt += $"우치의 {fixType.GetDisplayName()}이(가) {statUpAmount} 증가했습니다";
+        }
+        woochi.rewardStat += stat;
+    }
 
-        woochi.rewardStat += addStat;
+    private void OnValidate()
+    {
+        if(fixedStatUp)
+        {
+            randomStatUp = false;
+            allStatUp = false;
+        }
+        else if (randomStatUp)
+        {
+            fixedStatUp = false;
+            allStatUp = false;
+        }
+        else if (allStatUp)
+        {
+            fixedStatUp = false;
+            randomStatUp = false;
+        }
     }
 }

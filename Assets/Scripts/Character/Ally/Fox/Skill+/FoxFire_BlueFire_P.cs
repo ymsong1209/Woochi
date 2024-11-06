@@ -21,8 +21,9 @@ public class FoxFire_BlueFire_P : BaseSkill
     }
     public override void SetSkillDescription(TextMeshProUGUI text)
     {
-        int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * 70f / 100f);
-        int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * 70f / 100f);
+        Stat finalStat = SkillOwner.FinalStat;
+        int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * 70f / 100f);
+        int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * 70f / 100f);
         text.text = "푸른 불꽃+\n" + 
                     "3턴동안 아군의 체력을 턴 시작당 " + minStat + " ~ " + maxStat + "만큼 회복";
     }

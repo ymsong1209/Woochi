@@ -43,8 +43,10 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     {
         enemyTooltip.SetActive(true);
         enemyNameTxt.text = _character.Name;
-        enemyEvasionTxt.text = $"회피 : {_character.FinalStat.evasion}";
-        enemySpeedTxt.text = $"속도 : {_character.FinalStat.speed}";
+        
+        Stat finalStat = _character.FinalStat;
+        enemyEvasionTxt.text = $"회피 : {finalStat.GetValue(StatType.Evasion)}";
+        enemySpeedTxt.text = $"속도 : {finalStat.GetValue(StatType.Speed)}";
     }
 
     public void OnCharacterDamaged(BaseCharacter _character)

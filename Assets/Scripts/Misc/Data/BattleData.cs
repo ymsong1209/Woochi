@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 public class BattleData
@@ -8,7 +9,7 @@ public class BattleData
     public List<int> charms;   // 우치가 소유하고 있는 부적(5개)
 
     public List<CharacterInfoData> characterInfoList;
-
+    
     public BattleData()
     {
         allies = new List<int>() { 0, 1, 2 };
@@ -46,13 +47,13 @@ public class CharacterInfoData
         health = null;
     }
 
-    public CharacterInfoData(int _ID, Stat _baseStat, Stat _levelUpStat, Stat _rewardStat, Level _level, Health _health)
+    public CharacterInfoData(int ID, Stat baseStat, Stat levelUpStat, Stat rewardStat, Level level, Health health)
     {
-        ID = _ID;
-        baseStat = _baseStat;
-        levelUpStat = _levelUpStat;
-        rewardStat = _rewardStat;
-        level = _level;
-        health = _health;
+        this.ID = ID;
+        this.baseStat = new Stat(baseStat);
+        this.levelUpStat = new Stat(levelUpStat);
+        this.rewardStat = new Stat(rewardStat);
+        this.level = new Level(level);
+        this.health = new Health(health);
     }
 }

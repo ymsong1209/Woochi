@@ -83,7 +83,9 @@ public class PlayerData
         {
             if (info.ID == newCharacterInfo.ID)
             {
-                info.baseStat = new Stat(newCharacterInfo.baseStat);
+                info.baseStat = newCharacterInfo.baseStat;
+                info.levelUpStat = newCharacterInfo.levelUpStat;
+                info.rewardStat = newCharacterInfo.rewardStat;
                 info.health = newCharacterInfo.health;
                 info.level = newCharacterInfo.level;
                 return;

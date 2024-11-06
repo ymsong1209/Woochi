@@ -14,8 +14,8 @@ public class T1_Sharpen : MainCharacterSkill
         statBuff.BuffName = "연마";
         statBuff.BuffDurationTurns = 1;
         statBuff.IsAlwaysApplyBuff = true;
-        statBuff.changeStat.accuracy = 5;
-        statBuff.changeStat.crit = 5;
+        statBuff.changeStat.SetValue(StatType.Accuracy, 5);
+        statBuff.changeStat.SetValue(StatType.Crit, 5);
         instantiatedBuffList.Add(statbuffGameObject);
         
         base.ActivateSkill(_opponent);
@@ -23,8 +23,9 @@ public class T1_Sharpen : MainCharacterSkill
     
     public override void SetSkillDescription(TextMeshProUGUI text)
     {
-        int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * SkillSO.BaseMultiplier / 100f);
-        int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
+        Stat finalStat = SkillOwner.FinalStat;
+        int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
+        int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "연마\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "단일 아군 대상에게 1턴동안 명중,치명 5만큼 부여";

@@ -20,8 +20,9 @@ public class Haetae_MoveDebuff : BaseSkill
     
     public override void SetSkillDescription(TextMeshProUGUI text)
     {
-        int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * SkillSO.BaseMultiplier / 100f);
-        int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
+        Stat finalStat = SkillOwner.FinalStat;
+        int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
+        int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "수신의 율법\n" + 
                     "해태에게 부여된 모든 디버프를 이전하고\n" + 
                     "이전된 디버프의 수 만큼 모든 능력치를 1씩 상승";
@@ -57,14 +58,14 @@ public class Haetae_MoveDebuff : BaseSkill
         StatBuff statBuff = instantiatedStat.GetComponent<StatBuff>();
         statBuff.BuffName = "저주 흡수";
         statBuff.BuffDurationTurns = -1;
-        statBuff.changeStat.speed = 1;
-        statBuff.changeStat.defense = 1;
-        statBuff.changeStat.crit = 1;
-        statBuff.changeStat.accuracy = 1;
-        statBuff.changeStat.evasion = 1;
-        statBuff.changeStat.resist = 1;
-        statBuff.changeStat.minStat = 1;
-        statBuff.changeStat.maxStat = 1;
+        statBuff.changeStat.SetValue(StatType.Speed, 1);
+        statBuff.changeStat.SetValue(StatType.Defense, 1);
+        statBuff.changeStat.SetValue(StatType.Crit, 1);
+        statBuff.changeStat.SetValue(StatType.Accuracy, 1);
+        statBuff.changeStat.SetValue(StatType.Evasion, 1);
+        statBuff.changeStat.SetValue(StatType.Resist, 1);
+        statBuff.changeStat.SetValue(StatType.MinDamage, 1);
+        statBuff.changeStat.SetValue(StatType.MaxDamage, 1);
         SkillOwner.ApplyBuff(SkillOwner,SkillOwner,statBuff);
         SkillOwner.CheckForStatChange();
     }

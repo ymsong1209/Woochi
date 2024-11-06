@@ -20,8 +20,8 @@ public class T2_FloralAroma : MainCharacterSkill
         statDeBuff.BuffName = "향긋한 꽃내음";
         statDeBuff.BuffDurationTurns = 2;
         statDeBuff.ChanceToApplyBuff = 70;
-        statDeBuff.changeStat.minStat = -2;
-        statDeBuff.changeStat.maxStat = -2;
+        statDeBuff.changeStat.SetValue(StatType.MinDamage, -2);
+        statDeBuff.changeStat.SetValue(StatType.MaxDamage, -2);
         instantiatedBuffList.Add(statDebuffGameObject);
         
         base.ActivateSkill(_opponent);
@@ -29,8 +29,9 @@ public class T2_FloralAroma : MainCharacterSkill
     
     public override void SetSkillDescription(TextMeshProUGUI text)
     {
-        int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * SkillSO.BaseMultiplier / 100f);
-        int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
+        Stat finalStat = SkillOwner.FinalStat;
+        int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
+        int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "향긋한 꽃내음\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "70%의 확률로 중독 2, 2턴동안 최소,최대스탯 -2만큼 부여";
