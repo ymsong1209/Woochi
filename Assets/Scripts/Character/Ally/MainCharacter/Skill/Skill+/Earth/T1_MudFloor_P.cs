@@ -30,6 +30,6 @@ public class T1_MudFloor_P : MainCharacterSkill
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "감탕밭+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "랜덤한 단일 대상에게 2턴동안 속도 -4만큼 부여";
+                    "랜덤한 단일 대상에게 90%의 확률로 2턴동안 속도 -4만큼 부여";
     }
 }

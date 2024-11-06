@@ -30,6 +30,6 @@ public class T1_TreeBind_P : MainCharacterSkill
         text.text = "옭아매기+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "100%의 확률로 속도,최소,최대스탯 -2만큼 부여";
+                    "100%의 확률로 4턴 동안 속도,최소,최대스탯 -2만큼 부여";
     }
 }
