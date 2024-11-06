@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(BaseCharacterHUD))]
 [RequireComponent(typeof(BaseCharacterCollider))]
@@ -23,10 +24,10 @@ public class BaseCharacter : MonoBehaviour
     #endregion Header CHARACTER STATS
     #region Character Stats
     [SerializeField]    private Health health = new Health();
-    public Stat    baseStat;
-    public Stat    levelUpStat;
-    public Stat    rewardStat;
-    public Stat    buffStat;
+    public Stat baseStat;
+    public Stat levelUpStat;
+    public Stat rewardStat;
+    public Stat buffStat;
     public Level   level;
     #endregion
    
@@ -356,6 +357,7 @@ public class BaseCharacter : MonoBehaviour
         levelUpStat = new Stat(characterStat.LevelUpStat);
         rewardStat = new Stat(characterStat.RewardStat);
         buffStat = new Stat();
+        
         level = new Level(characterStat.Level);
         level.owner = this;
     }
@@ -513,39 +515,6 @@ public class BaseCharacter : MonoBehaviour
             anim.SetSortLayer(rowOrder);
         }
     }
-
-    #endregion
-
-    #region Validation
-    // private void OnValidate()
-    // {
-    //     #region activeSkillCheckBox Size Check
-    //
-    //     //activeSkillCheckBox 크기랑 CharacterStat의 Skill개수랑 동일해야함
-    //     if (activeSkillCheckBox.Count != characterStat.Skills.Count)
-    //     {
-    //         Debug.Log(nameof(activeSkillCheckBox) + "랑" + nameof(characterStat.Skills) + "의 사이즈가 "
-    //                         + this.name.ToString() + "에서 동일하지 않습니다.");
-    //     }
-    //     #endregion activeSkillCheckBox Size Check
-    //
-    //     #region activeSkillCheckBox Count Check
-    //     //activeSkillCheckBox true로 된게 5개가 넘어가면 안됨
-    //     int activeSkillsCount = 0;
-    //     for(int i = 0; i < activeSkillCheckBox.Count; i++)
-    //     {
-    //         if (activeSkillCheckBox[i])
-    //         {
-    //             ++activeSkillsCount;
-    //         }
-    //     }
-    //     if (activeSkillsCount > 5)
-    //     {
-    //         Debug.Log(this.name.ToString() + "에서의 " + nameof(activeSkillCheckBox) +
-    //                 "에서 활성화된 스킬 개수가 5개가 넘습니다.");
-    //     }
-    //     # endregion activeSkillCheckBox Count Check
-    // }
 
     #endregion
 }

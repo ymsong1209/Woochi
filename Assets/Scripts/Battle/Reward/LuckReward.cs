@@ -17,7 +17,7 @@ public class LuckReward : Reward
     public override bool ApplyReward()
     {
         DataCloud.playerData.luckList.Add(luck);
-        resultTxt = $"´ÙÀ½ {luck.turn}¹øÀÇ ÀüÅõµ¿¾È {luck.value}¸¸Å­ Çà¿îÀÌ Áõ°¡ÇÕ´Ï´Ù";
+        resultTxt = $"ë‹¤ìŒ {luck.turn}ë²ˆì˜ ì „íˆ¬ë™ì•ˆ {luck.value}ë§Œí¼ í–‰ìš´ì´ ì¦ê°€í•©ë‹ˆë‹¤ï¿½";
         return true;
     }
 }

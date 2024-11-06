@@ -3,11 +3,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Reward_", menuName = "Scriptable Objects/Reward/Gold")]
 public class GoldReward : Reward
 {
-    [SerializeField] private int rewardGold;  
+    [Space, SerializeField] private int rewardGold;  
 
     public override bool ApplyReward()
     {
-        resultTxt = $"{rewardGold} Èå¸§À» È¹µæÇß½À´Ï´Ù";
+        resultTxt = $"{rewardGold} íë¦„ì„ íšë“í–ˆìŠµë‹ˆë‹¤";
         HelperUtilities.AddGold(rewardGold);
         return true;
     }

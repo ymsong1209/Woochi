@@ -8,10 +8,11 @@ public class Reward : ScriptableObject
     public string rewardName;
     [TextArea(3, 10)]
     public string description;
-
+    
+    [Header("Popup Text")]
     [SerializeField] protected string resultTxt;
     [SerializeField] protected string errorTxt;
-
+    
     public virtual bool ApplyReward()
     {
         return true;

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 
 /// <summary>
-/// ¾Æ±º ½ºÅÈÀ» Ç¥½ÃÇÏ´Â ÅØ½ºÆ®¸¦ ´ã´Â Å¬·¡½º
+/// ì•„êµ° ìŠ¤íƒ¯ì„ í‘œì‹œí•˜ëŠ” í…ìŠ¤íŠ¸ë¥¼ ë‹´ëŠ” í´ë˜ìŠ¤
 /// </summary>
 public class AllyStat : MonoBehaviour
 {
@@ -18,13 +18,12 @@ public class AllyStat : MonoBehaviour
     }
 
     /// <summary>
-    /// ½ºÅÈÀ» UI¿¡ ¹İ¿µÇÑ´Ù
+    /// ìŠ¤íƒ¯ì„ UIì— ë°˜ì˜í•œë‹¤
     /// </summary>
     /// <param name="value"></param>
-    /// <param name="isPercent">ÆÛ¼¾Æ® Ç¥½Ã ½ºÅÈÀÌ¸é true·Î ¼³Á¤</param>
     public void SetText(float value, float changeValue)
     {
-        #region Áõ°¨ ¼öÄ¡¿¡ µû¸¥ ÅØ½ºÆ® »ö»ó º¯°æ
+        #region ì¦ê° ìˆ˜ì¹˜ì— ë”°ë¥¸ í…ìŠ¤íŠ¸ ìƒ‰ìƒ ë³€ê²½
         if (changeValue > 0)
         {
             labelTxt.color = Color.yellow;

@@ -15,8 +15,8 @@ public class Tiger_Roar : BaseSkill
         statDebuff.BuffName = "위축";
         statDebuff.BuffDurationTurns = 2;
         statDebuff.ChanceToApplyBuff = 100;
-        statDebuff.changeStat.accuracy = -2;
-        statDebuff.changeStat.speed = -2;
+        statDebuff.changeStat.SetValue(StatType.Accuracy, -2);
+        statDebuff.changeStat.SetValue(StatType.Speed, -2);
         instantiatedBuffList.Add(statDebuffGameObject);
         
         base.ActivateSkill(_Opponent);
@@ -28,15 +28,16 @@ public class Tiger_Roar : BaseSkill
             roarBuff.BuffName = "산군의 위엄";
             roarBuff.BuffDurationTurns = 3;
             roarBuff.IsAlwaysApplyBuff = true;
-            roarBuff.changeStat.defense = 10;
+            roarBuff.changeStat.SetValue(StatType.Defense, 10);
             SkillOwner.ApplyBuff(SkillOwner,SkillOwner,roarBuff);
         }
     }
     
     public override void SetSkillDescription(TextMeshProUGUI text)
     {
-        int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * SkillSO.BaseMultiplier / 100f);
-        int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
+        Stat finalStat = SkillOwner.FinalStat;
+        int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
+        int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "산군의 포효\n" 
                     + "대상 전체에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n"
                     + "100% 확률로 명중, 속도 -2만큼 부여\n" 

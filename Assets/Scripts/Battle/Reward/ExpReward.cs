@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Reward_", menuName = "Scriptable Objects/Reward/Exp")]
 public class ExpReward : Reward
 {
-    [SerializeField] private int expAmount;      // 경험치 양
+    [Space, SerializeField] private int expAmount;      // 경험치 양
 
     public override bool ApplyReward()
     {

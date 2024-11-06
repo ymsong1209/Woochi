@@ -7,14 +7,13 @@ public class T1_JadeWall_P : MainCharacterSkill
 {
     public override void ActivateSkill(BaseCharacter _opponent)
     {
-        
         GameObject statbuffPrefab = BuffPrefabList[0];
         GameObject statbuffGameObject = Instantiate(statbuffPrefab, transform);
         StatBuff statBuff = statbuffGameObject.GetComponent<StatBuff>();
         statBuff.BuffName = "옥벽+";
         statBuff.BuffDurationTurns = 2;
         statBuff.IsAlwaysApplyBuff = true;
-        statBuff.changeStat.defense = 15;
+        statBuff.changeStat.SetValue(StatType.Defense, 15);
         instantiatedBuffList.Add(statbuffGameObject);
         
         base.ActivateSkill(_opponent);
@@ -22,8 +21,9 @@ public class T1_JadeWall_P : MainCharacterSkill
     
     public override void SetSkillDescription(TextMeshProUGUI text)
     {
-        int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * SkillSO.BaseMultiplier / 100f);
-        int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
+        Stat finalStat = SkillOwner.FinalStat;
+        int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
+        int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "옥벽+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "우치 자신에게 2턴동안 방어력 15만큼 부여";

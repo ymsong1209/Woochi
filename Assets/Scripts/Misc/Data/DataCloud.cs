@@ -1,3 +1,4 @@
+using System.IO;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -16,7 +17,6 @@ public static class DataCloud
     {
         string json = JsonConvert.SerializeObject(playerData, Formatting.Indented,
                 new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
-
         PlayerPrefs.SetString("PlayerData", json);
         PlayerPrefs.Save();
     }

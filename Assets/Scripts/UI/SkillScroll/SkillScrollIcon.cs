@@ -26,6 +26,15 @@ public class SkillScrollIcon : MonoBehaviour, IPointerEnterHandler, IPointerExit
         selected.SetActive(false);
         SetSkillInfo(skillid);
     }
+
+    public void HighLight()
+    {
+        selected.SetActive(true);
+    }
+    public void RemoveHighLight()
+    {
+        selected.SetActive(false);
+    }
     public void SetSkillInfo(int id)
     {
         skillID = id;
@@ -38,7 +47,15 @@ public class SkillScrollIcon : MonoBehaviour, IPointerEnterHandler, IPointerExit
         }
         else
         {
-            icon.sprite = skill.SkillSO.skillIcon;
+            if (skill.SkillSO.skillIcon)
+            {
+                icon.sprite = skill.SkillSO.skillIcon;
+            }
+            else
+            {
+                icon.sprite = skillScroll.NoiconImg;
+            }
+            
             canvasGroup.interactable = true;
             button.interactable = true;
             
@@ -49,13 +66,15 @@ public class SkillScrollIcon : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
         if (skillID == 0 || canvasGroup.interactable == false) return;
-        skillScroll.OnIconHovered.Invoke(skillID);
+
+        skillScroll.OnIconHovered?.Invoke(skillID);
+        
     }
 
     public virtual void OnPointerExit(PointerEventData eventData)
     {
         if(skillID == 0 || canvasGroup.interactable == false) return;
-        skillScroll.OnIconHoverExit.Invoke(skillID);
+        skillScroll.OnIconHoverExit?.Invoke(skillID);
     }
 
     public SkillScroll SkillScroll

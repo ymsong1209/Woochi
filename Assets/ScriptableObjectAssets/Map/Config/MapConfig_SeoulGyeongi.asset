@@ -47,9 +47,9 @@ MonoBehaviour:
   - type: 0
     id: e8030000e9030000
   - type: 1
-    id: d0070000
+    id: d0070000d1070000
   - type: 2
-    id: b80b0000
+    id: b80b0000b90b0000
   normalTemplates:
   - id: e8030000e8030000e9030000e9030000
   - id: ea030000eb030000e9030000e9030000
@@ -81,8 +81,8 @@ MonoBehaviour:
       max: 0
     nodesApartDistance: 3
     isRandomNode: 0
-    isRandomEnemy: 1
-    enemyIDs: 
+    isRandomEnemy: 0
+    enemyIDs: e8030000
     randomizePosition: 0
   - nodeType: 2
     distanceFromPreviousLayer:

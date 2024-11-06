@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99410d2539652e4fba406800fa6c095, type: 3}
+  m_Name: Strange_Ghost_Repel
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
+  text: "\uB3C4\uB825\uC744 \uC18C\uBAA8\uD558\uC5EC \n\uC548\uC758 \uADC0\uC2E0\uC744
+    \uC81C\uB839\uD588\uC2B5\uB2C8\uB2E4 "
+  effect: "\uC6B0\uCE58\uC758 \uCD5C\uB300 \uB3C4\uB825\uC758 5% \uC18C\uBAA8"
+  percent: 0.05
