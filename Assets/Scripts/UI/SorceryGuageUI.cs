@@ -15,6 +15,8 @@ public class SorceryGuageUI : MonoBehaviour
     {
         woochi = BattleManager.GetInstance.Allies.GetWoochi();
         woochi.OnSorceryPointsChanged += SetUI;
+
+        SetUI();
     }
 
     public void SetUI()
