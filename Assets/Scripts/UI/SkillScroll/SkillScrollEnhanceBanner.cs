@@ -23,6 +23,11 @@ public class SkillScrollEnhanceBanner : MonoBehaviour
         //     //
         // }
     }
+
+    public void Reset()
+    {
+        
+    }
     
     public Image BannerImg
     {
