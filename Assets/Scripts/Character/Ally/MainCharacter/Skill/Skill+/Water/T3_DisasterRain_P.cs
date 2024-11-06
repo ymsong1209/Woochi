@@ -20,8 +20,9 @@ public class T3_DisasterRain_P : MainCharacterSkill
         statDeBuff.BuffName = "약화+";
         statDeBuff.BuffDurationTurns = 3;
         statDeBuff.ChanceToApplyBuff = 90;
-        statDeBuff.changeStat.minStat = -3;
-        statDeBuff.changeStat.maxStat = -3;
+        statDeBuff.changeStat.SetValue(StatType.MinDamage, -3);
+        statDeBuff.changeStat.SetValue(StatType.MaxDamage, -3);
+        
         instantiatedBuffList.Add(statDebuffGameObject);
         
         base.ActivateSkill(_opponent);
@@ -29,8 +30,9 @@ public class T3_DisasterRain_P : MainCharacterSkill
     
     public override void SetSkillDescription(TextMeshProUGUI text)
     {
-        int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * SkillSO.BaseMultiplier / 100f);
-        int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
+        Stat finalStat = SkillOwner.FinalStat;
+        int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
+        int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "삼재의 비+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" +
                     "1,2,3열의 적에게\n" +

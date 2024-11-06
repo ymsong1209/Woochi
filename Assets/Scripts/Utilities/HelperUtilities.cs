@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using System.Reflection;
 
 public static class HelperUtilities
 {
@@ -176,5 +177,14 @@ public static class HelperUtilities
         charmList.Add(randomCharmID);
         text = $"{GameManager.GetInstance.Library.GetCharm(randomCharmID).CharmName}을 얻었습니다";
         return true;
+    }
+
+    public static string GetDisplayName(this Enum enumValue)
+    {
+        FieldInfo field = enumValue.GetType().GetField(enumValue.ToString());
+        
+        DisplayAttribute attribute = field.GetCustomAttribute<DisplayAttribute>();
+        
+        return attribute != null ? attribute.DisplayName : enumValue.ToString();
     }
 }

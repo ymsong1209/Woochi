@@ -19,18 +19,12 @@ MonoBehaviour:
     +5"
   resultTxt: "\uC6B0\uCE58\uC758 \uBAA8\uB4E0 \uB2A5\uB825\uCE58\uAC00 \uC601\uAD6C\uC801\uC73C\uB85C
     5 \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  errorTxt: 
   heal: 0
   healAmount: 0
   sorceryHeal: 0
+  fixedStatUp: 0
+  fixType: 0
   randomStatUp: 0
-  statUpAmount: 0
-  addStat:
-    maxHealth: 5
-    speed: 5
-    defense: 5
-    crit: 5
-    accuracy: 5
-    evasion: 5
-    resist: 5
-    minStat: 5
-    maxStat: 5
+  allStatUp: 1
+  statUpAmount: 5

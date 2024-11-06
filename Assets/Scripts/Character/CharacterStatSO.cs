@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DataTable;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "CS_", menuName = "Scriptable Objects/Character/CharacterStat")]
 public class CharacterStatSO : ScriptableObject
@@ -23,13 +24,14 @@ public class CharacterStatSO : ScriptableObject
 
     #region Header CHARACTER STATS
 
+    [FormerlySerializedAs("baseStatClass")]
     [Space(10)]
     [Header("Character Stats")]
 
-    #endregion Header CHARACTER STATS
-    [SerializeField] private Stat baseStat;         // 레벨에 따른 기본 스탯
-    [SerializeField] private Stat levelUpStat;      // 레벨업시 증가하는 스탯;
-    [SerializeField] private Stat rewardStat;       // 보상으로 얻은 스탯
+    #endregion Header CHARACTER STATS    // 보상으로 얻은 스탯
+    [SerializeField] private Stat baseStat;
+    [SerializeField] private Stat levelUpStat;
+    [SerializeField] private Stat rewardStat;
     [SerializeField] private Level level;
     [SerializeField] private Health baseHealth;
 
@@ -63,6 +65,7 @@ public class CharacterStatSO : ScriptableObject
             baseStat = new Stat(data, false);
             levelUpStat = new Stat(data, true);
             rewardStat = new Stat();
+            baseStat = new Stat(data, false);
             level = new Level();
             baseHealth = new Health(data);
         }

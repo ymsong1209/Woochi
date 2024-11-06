@@ -44,13 +44,13 @@ public class CH_MoveDebuff : BaseSkill
         StatBuff statBuff = instantiatedStat.GetComponent<StatBuff>();
         statBuff.BuffName = "저주 흡수";
         statBuff.BuffDurationTurns = -1;
-        statBuff.changeStat.accuracy = 1;
-        statBuff.changeStat.crit = 1;
-        statBuff.changeStat.evasion = 1;
-        statBuff.changeStat.minStat = 1;
-        statBuff.changeStat.maxStat = 1;
-        statBuff.changeStat.speed = 1;
-        statBuff.changeStat.defense = 1;
+        statBuff.changeStat.SetValue(StatType.Accuracy, 1);
+        statBuff.changeStat.SetValue(StatType.Crit, 1);
+        statBuff.changeStat.SetValue(StatType.Evasion, 1);
+        statBuff.changeStat.SetValue(StatType.MinDamage, 1);
+        statBuff.changeStat.SetValue(StatType.MaxDamage, 1);
+        statBuff.changeStat.SetValue(StatType.Speed, 1);
+        statBuff.changeStat.SetValue(StatType.Defense, 1);
         SkillOwner.ApplyBuff(SkillOwner,SkillOwner,statBuff);
         SkillOwner.CheckForStatChange();
     }

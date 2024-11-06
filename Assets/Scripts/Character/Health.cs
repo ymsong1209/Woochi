@@ -54,7 +54,6 @@ public class Health
         if (_penetrate == false)
         {
             CurHealth = Mathf.Clamp(CurHealth - _damage, 0, maxHealth);
-            Debug.Log("Curhealth : " + curHealth);
         }
         //비관통형 대미지인경우 쉴드 먼저 까임
         else
@@ -90,7 +89,7 @@ public class Health
     
     public void LevelUp()
     {
-        maxHealth = owner.FinalStat.maxHealth;
+        maxHealth = (int)owner.FinalStat.GetValue(StatType.Health);
         Heal(maxHealth, false);
     }
 

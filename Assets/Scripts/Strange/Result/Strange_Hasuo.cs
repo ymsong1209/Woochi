@@ -14,8 +14,8 @@ public class Strange_Hasuo : StrangeResult
         {
             mainCharacter.MaxSorceryPoints += sorceryPoints;
             mainCharacter.SorceryPoints += sorceryPoints;
-            mainCharacter.rewardStat.minStat += stat;
-            mainCharacter.rewardStat.maxStat += stat;
+            mainCharacter.rewardStat.AddValue(StatType.MinDamage, stat);
+            mainCharacter.rewardStat.AddValue(StatType.MaxDamage, stat);
         }
     }
 }

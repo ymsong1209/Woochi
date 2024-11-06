@@ -343,6 +343,7 @@ MonoBehaviour:
     maxHealth: 0
     curHealth: 0
     shield: 0
+    countToResurrect: 0
   baseStat:
     maxHealth: 0
     speed: 0
@@ -399,7 +400,7 @@ MonoBehaviour:
   rowOrder: 0
   maxSorceryPoints: 200
   sorceryPoints: 200
-  sorceryRecoveryPoints: 35
+  sorceryRecoveryPoints: 0.35
   recoverySkill: {fileID: 684809249461957264}
   summonSkill: {fileID: 2218565908217448176}
   charmSkill: {fileID: 3788208753956407155}

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff990185a3556ba4ca3a1b76ab4cb6de, type: 3}
+  m_Name: Strange_GhostChest
+  m_EditorClassIdentifier: 
+  situationSprite: {fileID: 0}
+  situationText: "\uB545\uC5D0 \uBB3B\uD600 \uC788\uB358 \uBD09\uADC0\uD568\uC744
+    \uBC1C\uACAC\uD588\uB2E4\n\uD568\uC774 \uBBF8\uCE5C \uB4EF\uC774 \uB5A8\uB9AC\uACE0
+    \uC788\uB2E4!"
+  choices:
+  - text: "\uC81C\uB839\uD55C\uB2E4"
+    results:
+      list:
+      - value: {fileID: 11400000, guid: 996401cf18f66b848ae638e09d21d471, type: 2}
+        probability: 1
+  - text: "\uBB34\uC2DC\uD55C\uB2E4"
+    results:
+      list:
+      - value: {fileID: 11400000, guid: 2ab545000531acd43b5e9acced0196ff, type: 2}
+        probability: 0.5
+      - value: {fileID: 11400000, guid: 6f260092db5a7314997355e83d5fe2cf, type: 2}
+        probability: 0.5
