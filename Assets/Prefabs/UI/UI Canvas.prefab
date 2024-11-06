@@ -1698,8 +1698,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 727, y: 151}
-  m_SizeDelta: {x: 300, y: 300}
+  m_AnchoredPosition: {x: 795, y: 222}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9126370578136876531
 MonoBehaviour:
@@ -1773,7 +1773,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d3173db3df7e4ce4b959c81e2327db1b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a38d4d86c987f014fb283f8db84a7847, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6598,7 +6598,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8312817832833309553
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14821,7 +14821,7 @@ MonoBehaviour:
   skillDescription: {fileID: 8016485085260696353}
   enhancedSkillDescription: {fileID: 4720117954114405535}
   enhanceButton: {fileID: 7388376828469012277}
-  equipButton: {fileID: 0}
+  equipButton: {fileID: 4524646402491167015}
 --- !u!1 &4133168763126173548
 GameObject:
   m_ObjectHideFlags: 0
@@ -15444,7 +15444,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2288439995690706838
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16841,13 +16841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: {fileID: 8861074596131425435}
   hpText: {fileID: 3782173488953715095}
-  accuracy: {fileID: 3139835202911498583}
-  evasion: {fileID: 1075021906185881884}
-  critical: {fileID: 7542139971558203890}
-  damage: {fileID: 4776144072635830635}
-  speed: {fileID: 13854916946695224}
-  depense: {fileID: 3576297219132072789}
-  resist: {fileID: 7184365367331440922}
+  stats: []
 --- !u!1 &4541721105129077818
 GameObject:
   m_ObjectHideFlags: 0
@@ -20612,9 +20606,9 @@ RectTransform:
   m_Children:
   - {fileID: 52483730386828974}
   - {fileID: 6004961034114112600}
-  - {fileID: 5157747141027138246}
   - {fileID: 4288819941067111286}
   - {fileID: 1646703867491676651}
+  - {fileID: 5157747141027138246}
   - {fileID: 1251632338378543881}
   - {fileID: 469136992267945201}
   - {fileID: 8336193336084338165}
@@ -20889,7 +20883,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 4533240246056410885}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -25993,7 +25987,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2764f1af3f1c8854788a1fb8ff8c2014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woochi: {fileID: 0}
   sorceryGuage: {fileID: 9155614600852632365}
   sorceryGuageBackground: {fileID: 6251429454328825601}
   sorceryGuageText: {fileID: 9061700646931451280}
@@ -28088,7 +28081,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 478857661249809357}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
