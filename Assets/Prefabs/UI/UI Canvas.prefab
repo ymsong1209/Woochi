@@ -16841,7 +16841,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: {fileID: 8861074596131425435}
   hpText: {fileID: 3782173488953715095}
-  stats: []
+  stats:
+  - {fileID: 0}
+  - {fileID: 13854916946695224}
+  - {fileID: 3576297219132072789}
+  - {fileID: 7542139971558203890}
+  - {fileID: 3139835202911498583}
+  - {fileID: 1075021906185881884}
+  - {fileID: 7184365367331440922}
+  - {fileID: 4776144072635830635}
 --- !u!1 &4541721105129077818
 GameObject:
   m_ObjectHideFlags: 0
