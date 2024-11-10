@@ -55,7 +55,6 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     #region BuffDescription
     private void SetBuffDescription(TextMeshProUGUI text)
     {
-        text.text = "No Child Buffs";
         BaseBuff childBuff = ReturnChildBuffExceptStatandCureBuff();
         
         if (childBuff)
@@ -86,7 +85,8 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     BaseBuff ReturnChildBuffExceptStatandCureBuff()
     {
         if(buffEffect == BuffEffect.StatStrengthen || buffEffect == BuffEffect.StatWeaken || buffEffect == BuffEffect.DotCureByDamage ||
-           buffEffect == BuffEffect.ElementalStatStrengthen || buffEffect == BuffEffect.ElementalStatWeaken)
+           buffEffect == BuffEffect.ElementalStatStrengthen || buffEffect == BuffEffect.ElementalStatWeaken ||
+           buffEffect == BuffEffect.Special)
         {
             return null;
         }

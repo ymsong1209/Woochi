@@ -16,12 +16,15 @@ public class BaseBuff : MonoBehaviour
     [SerializeField] protected int chanceToApplyBuff;
     [SerializeField] protected string buffName;
     [SerializeField] protected Color buffColor;
-    [SerializeField] protected bool isRemoveWhenBattleEnd = true;
     [SerializeField] protected int buffBattleDurationTurns;//몇번의 전투동안 지속되어야할지
+    [Header("Boolean")]
+    [SerializeField] protected bool isRemoveWhenBattleEnd = true;
     [SerializeField] protected bool isRemovableDuringBattle = true;
     [SerializeField] protected bool isBuffAppliedThisTurn = true; 
-    [SerializeField] private bool isAlwaysApplyBuff = false;// 버프를 걸 확률, 저항 판정 무시하고 무조건 적용
-
+    [SerializeField] protected bool isAlwaysApplyBuff = false;// 버프를 걸 확률, 저항 판정 무시하고 무조건 적용
+    [SerializeField] protected bool isSaveBuff = false; // 저장되어야 하는 버프인지
+    [SerializeField] protected bool isSpecialBuff = false;  // 기연 버프 or 아이템 버프
+    
     /// <summary>
     /// 버프를 추가
     /// </summary>
@@ -211,6 +214,8 @@ public class BaseBuff : MonoBehaviour
         get => isAlwaysApplyBuff;
         set => isAlwaysApplyBuff = value;
     }
+
+    public bool IsSpecialBuff => isSpecialBuff;
     
     #endregion Getter Setter
 

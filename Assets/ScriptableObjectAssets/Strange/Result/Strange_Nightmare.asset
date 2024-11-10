@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 978aa68ea941d50489ea4a574bb56f53, type: 3}
+  m_Script: {fileID: 11500000, guid: 107669d3d3a0c5343ad0475cc9804833, type: 3}
   m_Name: Strange_Nightmare
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
   text: "\uC77C\uC5B4\uB098\uB2E4 \uC5B4\uB518\uAC00 \uC090\uB057\uD588\uB2E4!"
   effect: "\uB2E4\uC74C 3\uBC88\uC758 \uC804\uD22C\uC5D0\uC11C \uC6B0\uCE58\uC758
     \n\uBB34\uC791\uC704 \uB2A5\uB825\uCE58 \uD558\uB098 -5"
-  decreaseStat: 5
+  buffObject: {fileID: 9077167037718295004, guid: b59c7f72dfe8e5b4993b2af0abcb5ac5, type: 3}

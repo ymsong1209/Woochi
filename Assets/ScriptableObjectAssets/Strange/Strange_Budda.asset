@@ -12,23 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff990185a3556ba4ca3a1b76ab4cb6de, type: 3}
   m_Name: Strange_Budda
   m_EditorClassIdentifier: 
-  situationSprite: {fileID: 21300000, guid: 325e3bdaeb9826a48b5b249f7354f868, type: 3}
+  situationSprite: {fileID: 21300000, guid: 192f5cfc2ce9eb0498901287cdb49670, type: 3}
   situationText: "\uC678\uC9C4\uACF3\uC758 \uBD88\uC0C1\uC744 \uBCF4\uC558\uB2E4\n\uAD00\uB9AC\uAC00
     \uB418\uC9C0 \uC54A\uC544 \uC9C0\uC800\uBD84\uD558\uB2E4\n\uB098\uB294.."
   choices:
   - text: "\uBD88\uC0C1\uC744 \uC0B4\uD540\uB2E4"
     results:
       list:
-      - value: {fileID: 11400000, guid: 1bdbbcabff26fda4580188776a765c10, type: 2}
+      - value: {fileID: 11400000, guid: 4c61e519fba9a514f9f1f18fb7deb243, type: 2}
         probability: 0.5
-      - value: {fileID: 11400000, guid: bf0b6b90b93a1eb4998222e05cde8521, type: 2}
+      - value: {fileID: 11400000, guid: 80871c060f58d7e43afc17c28f46f127, type: 2}
         probability: 0.5
   - text: "\uBD88\uC0C1\uC744 \uD30C\uAD34\uD55C\uB2E4"
     results:
       list:
-      - value: {fileID: 11400000, guid: 65758b0199f3d104aa938b68b5078c3c, type: 2}
+      - value: {fileID: 11400000, guid: 957c67625313a6f42827b7b3ac1e269d, type: 2}
         probability: 0.5
-      - value: {fileID: 11400000, guid: 1d356cc49150af74b8a218c56217fdee, type: 2}
+      - value: {fileID: 11400000, guid: c64f0fafef7613c42b795e7a138907eb, type: 2}
         probability: 0.5
   - text: "\uBB34\uC2DC\uD55C\uB2E4"
     results:

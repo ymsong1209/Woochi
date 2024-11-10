@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: Strange_Nightmare
   m_EditorClassIdentifier: 
   situationSprite: {fileID: 0}
-  situationText: "\uC7A0\uC2DC \uC26C\uB2E4 \uC878\uC544\uBC84\uB838\uB2E4. \uAFC8\uC744
-    \uAFB8\uC5C8\uB294\uB370 \uD749\uBABD\uC774\uB2E4\n\uC77C\uC5B4\uB098\uB2C8 \uBAB8\uC774
-    \uC5B4\uB518\uAC00 \uC774\uC0C1\uD558\uB2E4"
+  situationText: "\uC7A0\uC2DC \uC26C\uB2E4 \uC878\uC544\uBC84\uB838\uB2E4\n\uB098\uC05C
+    \uAFC8\uC744 \uAFE8\uB2E4"
   choices:
   - text: "\uC77C\uC5B4\uB09C\uB2E4"
     results:
       list:
-      - value: {fileID: 11400000, guid: e4c9f87b7a9eeea42801aa89f1d4d217, type: 2}
+      - value: {fileID: 11400000, guid: 65682a495e85f5240a5c4f59b14efa8b, type: 2}
         probability: 1

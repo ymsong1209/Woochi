@@ -39,7 +39,6 @@ public class AllyFormation : Formation
             BaseCharacter character = allCharacter.FirstOrDefault(c => c.ID == battleFormation[i]);
             SetProperty(character, true, i);
             character.gameObject.SetActive(true);
-            character.TriggerBuff(BuffTiming.BattleStart);
             for(int s = 0; s < character.Size; s++)
             {
                 formation[totalSize++] = character;
