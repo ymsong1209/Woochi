@@ -1,0 +1,177 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1261625828962496497
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2569674945298275565, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: m_Name
+      value: BuddaDestroy_Lucky
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: buffName
+      value: "\uC694\uAE30 \uC800\uD558"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: buffType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: changeStat.crit
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: changeStat.speed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: buffDurationTurns
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: changeStat.resist
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: changeStat.defense
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: changeStat.evasion
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: changeStat.maxStat
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: changeStat.minStat
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: changeStat.accuracy
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: isRemoveWhenBattleEnd
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: buffBattleDurationTurns
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: isRemovableDuringBattle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: changeStat.list.Array.data[1].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: changeStat.list.Array.data[5].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403137143158999209, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403137143158999209, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403137143158999209, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403137143158999209, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403137143158999209, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403137143158999209, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403137143158999209, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403137143158999209, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403137143158999209, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403137143158999209, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2569674945298275565, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2188929107527700125}
+  m_SourcePrefab: {fileID: 100100000, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+--- !u!1 &3615092796550935324 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2569674945298275565, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+  m_PrefabInstance: {fileID: 1261625828962496497}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-2188929107527700125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3615092796550935324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c732f99673ec4774dbdfbd1fa9369a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buffOwner: {fileID: 0}
+  buffDurationTurns: -1
+  buffEffect: 3
+  buffType: 2
+  chanceToApplyBuff: 0
+  buffName: "\uC694\uAE30 \uC800\uD558"
+  buffColor: {r: 0, g: 0, b: 0, a: 0}
+  isRemoveWhenBattleEnd: 1
+  buffBattleDurationTurns: 0
+  isRemovableDuringBattle: 0
+  isBuffAppliedThisTurn: 1
+  isAlwaysApplyBuff: 0
+  isSaveBuff: 0
+  changeStat:
+    list:
+    - type: 0
+      value: 0
+    - type: 1
+      value: -7
+    - type: 2
+      value: -7
+    - type: 3
+      value: -7
+    - type: 4
+      value: -7
+    - type: 5
+      value: -7
+    - type: 6
+      value: -7
+    - type: 7
+      value: -7
+    - type: 8
+      value: -7

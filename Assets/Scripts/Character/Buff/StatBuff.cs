@@ -71,54 +71,6 @@ public class StatBuff : BaseBuff
             }
         }
         
-        // if (!Mathf.Approximately(changeStat.GetValue(StatType.Defense), 0))
-        // {
-        //     if (statCount > 0 && statCount % 2 == 0) description += "\n";
-        //     description += "방어력 : " + changeStat.GetValue(StatType.Defense) + " ";
-        //     statCount++;
-        // }
-        // if (!Mathf.Approximately(changeStat.GetValue(StatType.Crit), 0))
-        // {
-        //     if (statCount > 0 && statCount % 2 == 0) description += "\n";
-        //     description += "치명타 : " + changeStat.GetValue(StatType.Crit) + " ";
-        //     statCount++;
-        // }
-        // if (!Mathf.Approximately(changeStat.GetValue(StatType.Accuracy), 0))
-        // {
-        //     if (statCount > 0 && statCount % 2 == 0) description += "\n";
-        //     description += "명중 : " + changeStat.GetValue(StatType.Accuracy) + " ";
-        //     statCount++;
-        // }
-        // if (!Mathf.Approximately(changeStat.GetValue(StatType.Evasion), 0))
-        // {
-        //     if (statCount > 0 && statCount % 2 == 0) description += "\n";
-        //     description += "회피 : " + changeStat.GetValue(StatType.Evasion) + " ";
-        //     statCount++;
-        // }
-        // if (!Mathf.Approximately(changeStat.GetValue(StatType.Resist), 0))
-        // {
-        //     if (statCount > 0 && statCount % 2 == 0) description += "\n";
-        //     description += "저항 : " + changeStat.GetValue(StatType.Resist) + " ";
-        //     statCount++;
-        // }
-        // if (!Mathf.Approximately(changeStat.GetValue(StatType.MinDamage), 0))
-        // {
-        //     if (statCount > 0 && statCount % 2 == 0) description += "\n";
-        //     description += "최소 스탯 : " + changeStat.GetValue(StatType.MinDamage) + " ";
-        //     statCount++;
-        // }
-        // if (!Mathf.Approximately(changeStat.GetValue(StatType.MaxDamage), 0))
-        // {
-        //     if (statCount > 0 && statCount % 2 == 0) description += "\n";
-        //     description += "최대 스탯 : " + changeStat.GetValue(StatType.MaxDamage) + " ";
-        //     statCount++;
-        // }
-        // if (!Mathf.Approximately(changeStat.GetValue(StatType.Speed), 0))
-        // {
-        //     if (statCount > 0 && statCount % 2 == 0) description += "\n";
-        //     description += "속도 : " + changeStat.GetValue(StatType.Speed) + " ";
-        //     statCount++;
-        // }
         description += "\n";
         text.text += description;
         SetBuffColor(text);

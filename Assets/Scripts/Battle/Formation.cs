@@ -41,7 +41,6 @@ public class Formation : MonoBehaviour
             character.IsAlly = isAllyFormation;
             character.RowOrder = order++;
             character.Initialize();
-            character.TriggerBuff(BuffTiming.BattleStart);
             allCharacter.Add(character);
 
             for (int i = 0; i < character.Size; i++)

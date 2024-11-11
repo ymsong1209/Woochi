@@ -193,31 +193,30 @@ public class BaseCharacter : MonoBehaviour
     /// buff gameobject는 instantiated되어서 opponent에 붙어있음.
     /// </summary>
     /// <returns></returns>
-    public BaseBuff ApplyBuff(BaseCharacter caster, BaseCharacter receiver, BaseBuff _buff)
+    public BaseBuff ApplyBuff(BaseCharacter caster, BaseCharacter receiver, BaseBuff buff)
     {
-
         //자신의 차례일때 자기 자신에게 버프를 적용할 경우 지속시간+1을 줘야함.
         //자기 자신에게 버프를 주고 턴이 지나가기 때문.
         if (caster && receiver && caster == receiver && BattleManager.GetInstance.currentCharacter == caster)
         {
-            if(_buff.BuffDurationTurns != -1)
+            if(buff.BuffDurationTurns != -1)
             {
-                _buff.BuffDurationTurns++;
+                buff.BuffDurationTurns++;
             }
         }
         //같은 종류가 있는 버프가 활성화되어있는지 먼저 확인
-        BaseBuff activeBuff = receiver.FindMatchingBuff(_buff);
+        BaseBuff activeBuff = receiver.FindMatchingBuff(buff);
 
         //같은 종류의 버프가 이미 존재할경우
         if (activeBuff)
         {
             // 기존 버프와 중첩
-            activeBuff.StackBuff(_buff);
+            activeBuff.StackBuff(buff);
             return activeBuff;
         }
 
         // 새 버프 추가
-        BaseBuff new_buff = buffList.TransferBuffAtIcon(receiver, _buff);
+        BaseBuff new_buff = buffList.TransferBuffAtIcon(receiver, buff);
         new_buff.AddBuff(caster, receiver);
         return new_buff;
     }
@@ -293,6 +292,8 @@ public class BaseCharacter : MonoBehaviour
         
         foreach (BaseBuff buff in activeBuffs)
         {
+            if (buff.IsSpecialBuff) continue;
+            
             if (buff.BuffEffect == BuffEffect.StatStrengthen)
             {
                 StatBuff statBuff = buff as StatBuff;
@@ -313,13 +314,14 @@ public class BaseCharacter : MonoBehaviour
     {
         foreach (BaseBuff activeBuff in activeBuffs)
         {
-            if (activeBuff == null || activeBuff.BuffEffect != _buff.BuffEffect) continue;
+            if (activeBuff.BuffEffect != _buff.BuffEffect) continue;
 
             if (_buff.BuffEffect == BuffEffect.StatStrengthen ||
                 _buff.BuffEffect == BuffEffect.StatWeaken || 
                 _buff.BuffEffect == BuffEffect.DotCureByDamage ||
                 _buff.BuffEffect == BuffEffect.ElementalStatStrengthen ||
-                _buff.BuffEffect == BuffEffect.ElementalStatWeaken )
+                _buff.BuffEffect == BuffEffect.ElementalStatWeaken ||
+                _buff.BuffEffect == BuffEffect.Special)
             {
                 if (activeBuff.BuffName == _buff.BuffName)
                 {

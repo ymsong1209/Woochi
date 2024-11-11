@@ -38,6 +38,8 @@ public class TurnManager : MonoBehaviour
                 index += form.formation[index].Size;
             }
         }
+        
+        CheckBuffs(BuffTiming.BattleStart);
     }
 
     /// <summary>

@@ -113,7 +113,7 @@ MonoBehaviour:
     rewards:
     - {fileID: 11400000, guid: 21ffee9d76dc09a47a69e2b6c0b5622f, type: 2}
     - {fileID: 11400000, guid: d013314fc1230a143b9396e0aae9ced4, type: 2}
-    - {fileID: 11400000, guid: f479daa5b5f2a35479b54dbf153271b5, type: 2}
+    - {fileID: 11400000, guid: 903a69bf4d4d8774f9bde2205f1a9266, type: 2}
   stranges:
   - ID: 1000
     value: {fileID: 11400000, guid: 0eb08e8cad379834ab8b194f3e1a62fc, type: 2}
