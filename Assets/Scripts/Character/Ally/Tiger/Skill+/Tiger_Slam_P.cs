@@ -10,6 +10,7 @@ public class Tiger_Slam_P : BaseSkill
         GameObject stunDebuffGameObject = Instantiate(stunDebuffPrefab, transform);
         StunDeBuff stunDebuff = stunDebuffGameObject.GetComponent<StunDeBuff>();
         stunDebuff.BuffDurationTurns = 1;
+        
         stunDebuff.ChanceToApplyBuff = 30;
         instantiatedBuffList.Add(stunDebuffGameObject);
         
