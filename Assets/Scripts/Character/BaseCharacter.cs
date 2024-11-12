@@ -372,7 +372,7 @@ public class BaseCharacter : MonoBehaviour
         isDead = (health.CurHealth <= 0);
     }
 
-    protected virtual void InitializeSkill()
+    public virtual void InitializeSkill()
     {
         DestroyActiveSkills();
         //activeSkills의 size만큼 CharacterStat의 skill을 앞에서부터 가져와서 세팅한다.

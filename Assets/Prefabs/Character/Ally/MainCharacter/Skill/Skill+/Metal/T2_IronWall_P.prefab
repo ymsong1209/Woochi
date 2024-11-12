@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillSO: {fileID: 11400000, guid: 111fe65e246ddc345b4b5561c5f9e1cd, type: 2}
   skillTargetCount: 1
-  isAlwaysHit: 0
+  isAlwaysHit: 1

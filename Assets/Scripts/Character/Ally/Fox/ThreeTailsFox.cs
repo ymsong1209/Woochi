@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ThreeTailsFox : BaseCharacter
 {
-    protected override void InitializeSkill()
+    public override void InitializeSkill()
     {
         DestroyActiveSkills();
         AddFoxSkill();

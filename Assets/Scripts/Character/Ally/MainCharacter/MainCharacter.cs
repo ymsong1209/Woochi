@@ -32,7 +32,7 @@ public class MainCharacter : BaseCharacter
 
     }
 
-    protected override void InitializeSkill()
+    public override void InitializeSkill()
     {
         DeleteCharacterSkill();
         
