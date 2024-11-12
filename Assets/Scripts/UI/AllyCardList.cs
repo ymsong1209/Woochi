@@ -9,7 +9,7 @@ public class AllyCardList : MonoBehaviour
 
     private void Start()
     {
-        BattleManager.GetInstance.OnCharacterTurnStart += ShowUI;
+        BattleManager.GetInstance.ShowCharacterUI += ShowUI;
     }
 
     /// <summary>

@@ -25,7 +25,6 @@ public class WoochiReward : Reward
     {
         MainCharacter woochi = BattleManager.GetInstance.Allies.GetWoochi();
 
-        resultTxt = "";
         if(heal)
         {
             woochi.Health.Heal(healAmount, false);

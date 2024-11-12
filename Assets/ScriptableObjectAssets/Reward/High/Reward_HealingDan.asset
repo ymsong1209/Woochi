@@ -17,19 +17,14 @@ MonoBehaviour:
   rewardName: "\uC601\uBB3C\uC758 \uB0B4\uB2E8"
   description: "\uC6B0\uCE58\uC758 \uCCB4\uB825 \uBC0F \uB3C4\uB825\uC744 \uCD5C\uB300\uAE4C\uC9C0
     \uD68C\uBCF5"
-  resultTxt: "\uC6B0\uCE58\uAC00 \uCCB4\uB825, \uB3C4\uB825\uC744 \uBAA8\uB450 \uD68C\uBCF5\uD569\uB2C8\uB2E4"
+  resultTxt: "\uC6B0\uCE58\uC758 \uCCB4\uB825\uACFC \uB3C4\uB825\uC744 \uBAA8\uB450
+    \uD68C\uBCF5\uD569\uB2C8\uB2E4"
+  errorTxt: 
   heal: 1
   healAmount: 999
   sorceryHeal: 1
+  fixedStatUp: 0
+  fixType: 0
   randomStatUp: 0
+  allStatUp: 0
   statUpAmount: 0
-  addStat:
-    maxHealth: 0
-    speed: 0
-    defense: 0
-    crit: 0
-    accuracy: 0
-    evasion: 0
-    resist: 0
-    minStat: 0
-    maxStat: 0

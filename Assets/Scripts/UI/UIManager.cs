@@ -60,6 +60,12 @@ public class UIManager : SingletonMonobehaviour<UIManager>
             SetEnemyToolTip(_character);
         }
     }
+
+    public void DeactivePopup()
+    {
+        enemyTooltip.SetActive(false);
+        buffPopupUI.Deactivate();
+    }
     
     #region BuffPopupUI
     public BuffPopupUI BuffPopupUI => buffPopupUI;

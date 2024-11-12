@@ -29,7 +29,7 @@ public class ScrollDogIncreaseCritBuff : BaseBuff
             critBuff.BuffName = "맹공";
             critBuff.BuffDurationTurns = -1;
             critBuff.ChanceToApplyBuff = 100;
-            critBuff.changeStat.SetValue(StatType.Evasion, 2);
+            critBuff.changeStat.SetValue(StatType.Crit, 2);
             buffOwner.ApplyBuff(buffOwner,buffOwner,critBuff);
             critStack++;
         }

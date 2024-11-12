@@ -17,8 +17,7 @@ public class AllyCharacterUI : MonoBehaviour
     void Start()
     {
         #region 이벤트 등록
-        BattleManager.GetInstance.OnCharacterTurnStart += ShowCharacterUI;
-        BattleManager.GetInstance.OnCharacterAttacked += ShowCharacterUI;
+        BattleManager.GetInstance.ShowCharacterUI += ShowCharacterUI;
         #endregion
     }
 

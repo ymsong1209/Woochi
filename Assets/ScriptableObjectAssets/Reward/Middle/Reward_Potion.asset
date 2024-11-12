@@ -16,19 +16,13 @@ MonoBehaviour:
   rarity: 2
   rewardName: "\uD658\uC57D"
   description: "\uC6B0\uCE58 \uCCB4\uB825 40 \uD68C\uBCF5"
-  resultTxt: "\uC6B0\uCE58\uC758 \uCCB4\uB825\uC744 40 \uD68C\uBCF5\uD569\uB2C8\uB2E4"
+  resultTxt: "\uC6B0\uCE58\uC758 \uCCB4\uB825\uC774 40 \uD68C\uBCF5\uB418\uC5C8\uC2B5\uB2C8\uB2E4"
+  errorTxt: 
   heal: 1
   healAmount: 40
   sorceryHeal: 0
+  fixedStatUp: 0
+  fixType: 0
   randomStatUp: 0
+  allStatUp: 0
   statUpAmount: 0
-  addStat:
-    maxHealth: 0
-    speed: 0
-    defense: 0
-    crit: 0
-    accuracy: 0
-    evasion: 0
-    resist: 0
-    minStat: 0
-    maxStat: 0
