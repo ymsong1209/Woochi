@@ -53,13 +53,11 @@ public class SkillSelectionUI : MonoBehaviour
         
         if (character.IsAlly)
         {
-            Debug.Log(character.name + isTurn);
             character.CheckSkillsOnTurnStart();
             SetIcon(character, isTurn);
         }
         else
         {
-            Debug.Log(character.name + "비활성화");
             skillIcons.ForEach(icon => icon.btn.interactable = false);
         }
     }

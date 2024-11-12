@@ -96,6 +96,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         result.isElite = isElite;
 
         #region PreRound 상태로 넘어감
+        StopAllCoroutines();
         PreRound();
         #endregion
     }
