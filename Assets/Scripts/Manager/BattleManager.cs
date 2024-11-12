@@ -81,6 +81,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             return; 
         }
 
+        allies.AllCharacter.ForEach(c => c.InitializeSkill());
         GameManager.GetInstance.soundBGM.ToggleBattleMap(true);
 
         currentRound = 0;

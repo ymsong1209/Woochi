@@ -372,7 +372,7 @@ public class BaseCharacter : MonoBehaviour
         isDead = (health.CurHealth <= 0);
     }
 
-    protected virtual void InitializeSkill()
+    public virtual void InitializeSkill()
     {
         DestroyActiveSkills();
         //activeSkills의 size만큼 CharacterStat의 skill을 앞에서부터 가져와서 세팅한다.
@@ -418,7 +418,6 @@ public class BaseCharacter : MonoBehaviour
     {
         baseStat += levelUpStat;
         health.LevelUp();
-        InitializeSkill(); //레벨업한 레벨에 맞게 강화된 스킬 다시 추가
     }
     #endregion 기본 스탯 초기화
 
