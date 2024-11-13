@@ -91,7 +91,7 @@ PrefabInstance:
     - target: {fileID: 3953031413515326129, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: dbaf8ce0fbf07d143807a4b5701e050c, type: 3}
+      objectReference: {fileID: 21300000, guid: 7a3f60f4fcf314342b9d718d85293f35, type: 3}
     - target: {fileID: 3953031413515326129, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -103,11 +103,11 @@ PrefabInstance:
     - target: {fileID: 4036645906777149998, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: shadowSprites.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: 1369863ced5209c47a64496489dc5992, type: 3}
+      objectReference: {fileID: 21300000, guid: cda23fc2d52b1254db58cbad325e7e04, type: 3}
     - target: {fileID: 4036645906777149998, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: shadowSprites.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: fa7c33819fff05842b3913d79c789c03, type: 3}
+      objectReference: {fileID: 21300000, guid: 6de6afe88b1f33348a175123fa875360, type: 3}
     - target: {fileID: 4040513414615381807, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Size.x
       value: 5.2559195
@@ -226,6 +226,7 @@ MonoBehaviour:
     maxHealth: 0
     curHealth: 0
     shield: 0
+    countToResurrect: 0
   baseStat:
     maxHealth: 0
     speed: 0

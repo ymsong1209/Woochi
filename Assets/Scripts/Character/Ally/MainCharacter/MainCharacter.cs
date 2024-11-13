@@ -1,13 +1,13 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MainCharacter : BaseCharacter
 {
+    public Action OnSorceryPointsChanged;
+    
     [SerializeField] private int maxSorceryPoints = 200;
     [SerializeField] private int sorceryPoints = 200;
-    [SerializeField] private float sorceryRecoveryPoints = 35f;
+    [SerializeField] private float sorceryRecoveryPoints = .35f;
 
     [SerializeField] private MC_SorceryRecovery recoverySkill;
     [SerializeField] private MC_Summon summonSkill;
@@ -18,6 +18,10 @@ public class MainCharacter : BaseCharacter
     public override void Initialize()
     {
         base.Initialize();
+
+        maxSorceryPoints = DataCloud.playerData.maxSorceryPoints;
+        sorceryPoints = DataCloud.playerData.sorceryPoints;
+
         recoverySkill.SkillOwner = this;
         summonSkill.SkillOwner = this;
         charmSkill.SkillOwner = this;
@@ -28,7 +32,7 @@ public class MainCharacter : BaseCharacter
 
     }
 
-    protected override void InitializeSkill()
+    public override void InitializeSkill()
     {
         DeleteCharacterSkill();
         
@@ -44,9 +48,17 @@ public class MainCharacter : BaseCharacter
         }
     }
 
+    public override void SaveStat()
+    {
+        base.SaveStat();
+
+        DataCloud.playerData.maxSorceryPoints = maxSorceryPoints;
+        DataCloud.playerData.sorceryPoints = sorceryPoints;
+    }
+
     private void DeleteCharacterSkill()
     {
-        for(int i = 0;i<mainCharacterSkills.Length;i++)
+        for(int i = 0; i < mainCharacterSkills.Length; i++)
         {
             DeleteCharacterSkillFromIndex(i);
         }
@@ -61,14 +73,38 @@ public class MainCharacter : BaseCharacter
         }
         mainCharacterSkills[index] = null;
     }
+
+    public override void SetDead()
+    {
+        GameManager.GetInstance.ResetGame();
+
+        HelperUtilities.MoveScene(SceneType.Title);
+    }
     
+    public void UpdateSorceryPoints(int value, bool isAdd)
+    {
+        if(isAdd == false)
+            value *= -1;
+        
+        sorceryPoints = Mathf.Clamp(sorceryPoints + value, 0, maxSorceryPoints);
+    }
+    
+    public void UpdateSorceryPoints(float percent, bool isAdd)
+    {
+        int value = Mathf.CeilToInt(maxSorceryPoints * percent);
+        UpdateSorceryPoints(value, isAdd);
+    }
     
     public BaseSkill[] MainCharacterSkills => mainCharacterSkills;
     
     public int SorceryPoints
     {
         get => sorceryPoints;
-        set => sorceryPoints = value;
+        set
+        {
+            sorceryPoints = value;
+            OnSorceryPointsChanged?.Invoke();
+        }
     }
 
     public int MaxSorceryPoints

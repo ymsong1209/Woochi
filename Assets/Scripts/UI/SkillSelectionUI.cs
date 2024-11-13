@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -12,16 +13,14 @@ public class SkillSelectionUI : MonoBehaviour
     public SkillEvent onSkillSelected; // SkillEvent 타입의 public 이벤트
 
     [SerializeField] protected SkillDescriptionUI skillDescriptionUI;
-
-    [SerializeField] private GameObject blindObject;    // 클릭 방지
+    [SerializeField] protected BuffDescriptionUI buffDescriptionUI;
     [SerializeField] private List<SkillIcon> skillIcons;
     private SkillIcon selectedIcon = null;
 
     private void Start()
     {
         #region 이벤트 등록
-        BattleManager.GetInstance.OnCharacterTurnStart += ShowForCharacter;
-        BattleManager.GetInstance.OnCharacterAttacked += ShowForCharacter;
+        BattleManager.GetInstance.ShowCharacterUI += ShowForCharacter;
         #endregion
         for (int i = 0; i < skillIcons.Count; i++)
         {
@@ -31,59 +30,56 @@ public class SkillSelectionUI : MonoBehaviour
 
             skillIcons[i].OnShowTooltip += SetSkillTooltip;
             skillIcons[i].OnHideTooltip += () => skillDescriptionUI.gameObject.SetActive(false);
+            skillIcons[i].OnHideTooltip += () => buffDescriptionUI.gameObject.SetActive(false);
         }
     }
 
     /// <summary>
     /// 캐릭터에 맞는 스킬 아이콘 활성화시키는 메서드
     /// </summary>
-    /// <param name="_character"></param>
-    /// <param name="isEnable">스킬 활성화 시킬지 말지</param>
-    public void ShowForCharacter(BaseCharacter _character, bool isEnable = true)
+    /// <param name="character"></param>
+    /// <param name="isTurn">캐릭터 턴일때 호출됐는지</param>
+    public void ShowForCharacter(BaseCharacter character, bool isTurn = true)
     {
-        // 현재 캐릭터의 턴이 전우치라면 UI 비활성화
-        if (_character.IsMainCharacter)
+        // 캐릭터가 전우치일 경우는 그냥 비활성화
+        if (character.IsMainCharacter)
         {
             gameObject.SetActive(false);
             return;
         }
         else gameObject.SetActive(true);
-
-        blindObject.SetActive(!isEnable);
-
-        _character.CheckSkillsOnTurnStart();
-
-        // 턴이 적 캐릭터라면 skillIcon Interactable을 false로 초기화
-        if (!_character.IsAlly)
+        
+        selectedIcon?.SetMark(false);
+        
+        if (character.IsAlly)
         {
-            blindObject.SetActive(true);
-
-            if (selectedIcon != null)
-                selectedIcon.SetMark(false);
-
-            skillIcons.ForEach(icon => icon.btn.interactable = false);
-            return;
+            character.CheckSkillsOnTurnStart();
+            SetIcon(character, isTurn);
         }
+        else
+        {
+            skillIcons.ForEach(icon => icon.btn.interactable = false);
+        }
+    }
 
+    void SetIcon(BaseCharacter character, bool isTurn)
+    {
         DisableSkills();
-
-        #region 스킬 아이콘 Enable, Disable 설정
-        int activeSkillsCount = _character.activeSkills.Count;
+        
+        int activeSkillsCount = character.activeSkills.Count;
 
         // 각 캐릭터의 스킬 개수만큼 버튼 오브젝트 활성화
         for (int i = 0; i < skillIcons.Count; i++)
         {
             if(i < activeSkillsCount)
             { 
-                BaseSkill skill = _character.activeSkills[i];
+                BaseSkill skill = character.activeSkills[i];
                 // 스킬 아이콘에 스킬 정보 할당
-                skillIcons[i].SetSkill(skill, (isEnable && IsSkillSetAvailable(skill)));
+                skillIcons[i].SetSkill(skill, (isTurn && IsSkillSetAvailable(skill)));
             }
         }
-        
-        #endregion
     }
-
+    
     /// <summary>
     /// 스킬 슬롯에 스킬 버튼이 활성화가 되는지 확인
     /// </summary>
@@ -128,10 +124,7 @@ public class SkillSelectionUI : MonoBehaviour
     public void SkillButtonClicked(SkillIcon _skillIcon)
     {
         // 이전에 선택한 스킬 아이콘이 있다면 그 아이콘 선택 해제
-        if (selectedIcon != null)
-        {
-            selectedIcon.SetMark(false);
-        }
+        selectedIcon?.SetMark(false);
         selectedIcon = _skillIcon;
         selectedIcon.SetMark(true);
 
@@ -145,8 +138,7 @@ public class SkillSelectionUI : MonoBehaviour
     /// </summary>
     private void DisableSkills()
     {
-        if(selectedIcon != null)
-            selectedIcon.SetMark(false);
+        selectedIcon?.SetMark(false);
 
         selectedIcon = null;
 
@@ -160,5 +152,7 @@ public class SkillSelectionUI : MonoBehaviour
     {
         skillDescriptionUI.Activate(skill);
         skillDescriptionUI.transform.position = transform.position + new Vector3(0, 100, 0);
+        buffDescriptionUI.Activate(skill);
+        buffDescriptionUI.SkillDescriptionUI = skillDescriptionUI;
     }
 }

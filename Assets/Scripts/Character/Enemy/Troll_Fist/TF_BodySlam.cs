@@ -30,7 +30,7 @@ public class TF_BodySlam : BaseSkill
             gritbuff.BuffName = "씨름꾼의 끈기";
             gritbuff.BuffDurationTurns = 2;
             gritbuff.IsAlwaysApplyBuff = true;
-            gritbuff.changeStat.defense = 2;
+            gritbuff.changeStat.SetValue(StatType.Defense, 5);
             SkillOwner.ApplyBuff(SkillOwner,SkillOwner,gritbuff);
         }
     }

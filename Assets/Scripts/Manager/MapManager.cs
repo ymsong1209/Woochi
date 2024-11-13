@@ -2,6 +2,7 @@ using System.Linq;
 
 public class MapManager : SingletonMonobehaviour<MapManager>
 {
+    public MapConfig[] mapConfigs;
     public MapConfig config;
     public MapView view;
 
@@ -12,6 +13,7 @@ public class MapManager : SingletonMonobehaviour<MapManager>
         if(DataCloud.playerData.currentMap != null)
         {
             CurrentMap = DataCloud.playerData.currentMap;
+            config = mapConfigs.FirstOrDefault(c => c.name.Equals(CurrentMap.configName));
             view.ShowMap(CurrentMap);
 
             // 보스까지 깬 맵이라면
@@ -24,11 +26,11 @@ public class MapManager : SingletonMonobehaviour<MapManager>
         {
             GenerateNewMap();
         }
-        StrangeManager.GetInstance.Initialize(config);
     }
     
     private void GenerateNewMap()
     {
+        config = mapConfigs[0];
         Map map = MapGenerator.GetMap(config);
         CurrentMap = map;
         view.ShowMap(map);
@@ -36,10 +38,12 @@ public class MapManager : SingletonMonobehaviour<MapManager>
 
     public void SelectNode(MapNode _mapNode)
     {
+        AllyFormation allies = BattleManager.GetInstance.Allies;
+        allies.MoveNode();
+
         if (_mapNode.Node.nodeType == NodeType.Strange)
         {
-            StrangeType type = config.GetStrangeType();
-            StrangeManager.GetInstance.ActivateStrange(type, _mapNode);
+            StrangeManager.GetInstance.InitializeStrange(_mapNode.Node.strangeID);
         }
         else
         {

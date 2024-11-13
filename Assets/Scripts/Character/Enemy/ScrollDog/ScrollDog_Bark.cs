@@ -12,7 +12,7 @@ public class ScrollDog_Bark : BaseSkill
         statDebuff.BuffName = "오싹한 짖기";
         statDebuff.BuffDurationTurns = 1;
         statDebuff.ChanceToApplyBuff = 100;
-        statDebuff.changeStat.accuracy = -5;
+        statDebuff.changeStat.SetValue(StatType.Accuracy, -5);
         instantiatedBuffList.Add(statDebuffGameObject);
         
         base.ActivateSkill(_Opponent);

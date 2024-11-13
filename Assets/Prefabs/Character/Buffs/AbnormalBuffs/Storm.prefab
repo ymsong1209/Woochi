@@ -54,15 +54,27 @@ MonoBehaviour:
   isRemoveWhenBattleEnd: 1
   buffBattleDurationTurns: 0
   isRemovableDuringBattle: 0
+  isBuffAppliedThisTurn: 1
+  isAlwaysApplyBuff: 0
   changeStat:
-    maxHealth: 0
-    speed: 0
-    defense: 0
-    crit: -3
-    accuracy: 0
-    evasion: 0
-    resist: 0
-    minStat: -3
-    maxStat: -3
+    list:
+    - type: 0
+      value: 0
+    - type: 1
+      value: 0
+    - type: 2
+      value: 0
+    - type: 3
+      value: -3
+    - type: 4
+      value: 0
+    - type: 5
+      value: 0
+    - type: 6
+      value: 0
+    - type: 7
+      value: -3
+    - type: 8
+      value: -3
   applyAlly: 1
   applyEnemy: 0

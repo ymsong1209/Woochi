@@ -44,5 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f085934aa33f246983018dea968900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StrangeParent: {fileID: 0}
-  StrangeBackground: {fileID: 0}
+  strangeObject: {fileID: 0}
+  image: {fileID: 0}
+  text: {fileID: 0}
+  choicePanel: {fileID: 0}
+  choiceButtons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  choiceTexts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  effectText: {fileID: 0}
+  nextBtn: {fileID: 0}
+  isBattleStrange: 0

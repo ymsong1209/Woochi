@@ -5,27 +5,37 @@ using UnityEngine;
 
 public class BaseCharm : MonoBehaviour
 {
-   [SerializeField] private int turns;
-   [SerializeField] private string charmName;
-   ///0~4 : 아군 5~8 : 적군
-   [SerializeField] private bool[] charmRadius = new bool[8];
-
-   [SerializeField] private CharmType charmType;
-   [SerializeField] private CharmTargetType charmTargetType;
-   [SerializeField] private Sprite charmIcon;
+    [Header("ID")]
+    [SerializeField] public int ID;
+    
+    [Header("Info")]
+    [SerializeField] private int turns;
+    [SerializeField] private string charmName;
+    ///0~4 : 아군 5~8 : 적군
+    [SerializeField] private bool[] charmRadius = new bool[8];
+ 
+    [SerializeField] private CharmType charmType;
+    [SerializeField] private CharmTargetType charmTargetType;
+    [SerializeField] private Sprite charmIcon;
    
-   public virtual void Activate(BaseCharacter opponent)
-   {
-     
-   }
+    public virtual void Activate(BaseCharacter opponent)
+    {
+      
+    }
 
-   public virtual void SetCharmDescription(TextMeshProUGUI text)
+    public virtual void SetCharmDescription(TextMeshProUGUI text)
     {
         string description = charmName + "\n";
 
         if (charmType == CharmType.CleanseSingleDebuff)
         {
             description += "자신 및 아군에게 걸린 디버프 중 하나를 랜덤하게 제거";
+            text.text = description;
+            return;
+        }
+        else if (charmType == CharmType.Heal)
+        {
+            description += "아군 전체의 체력을 10만큼 회복";
             text.text = description;
             return;
         }
@@ -87,12 +97,10 @@ public class BaseCharm : MonoBehaviour
                 radiusDescription += " 및 자신의\n";
             }
         }
-        return radiusDescription;
+        return radiusDescription; 
     }
-   
-   
-   
-   #region Getter Setter
+
+    #region Getter Setter
 
    public int Turns => turns;
    public string CharmName => charmName;

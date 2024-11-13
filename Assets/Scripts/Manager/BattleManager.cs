@@ -28,8 +28,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// <summary>
     /// 캐릭터 턴이 시작될 때 호출되는 이벤트(UI 업데이트 등)
     /// </summary>
-    public Action<BaseCharacter, bool> OnCharacterTurnStart;
-    public Action<BaseCharacter, bool> OnCharacterAttacked;
+    public Action<BaseCharacter, bool> ShowCharacterUI;
     public Action OnFocusStart;
     public Action OnFocusEnd;
     public Action<BaseCharacter> OnFocusEnter;
@@ -73,9 +72,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         allyCards.Initialize(allies);
     }
 
-    /// <summary>
-    /// DungeonInfoSO 정보를 받아와서 아군과 적군 위치값 설정
-    /// </summary>
     public void InitializeBattle(int[] enemyIDs, int abnormalID = 100, bool isElite = false)
     {
         if (enemyIDs == null || enemyIDs.Length == 0) 
@@ -84,6 +80,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             return; 
         }
 
+        allies.AllCharacter.ForEach(c => c.InitializeSkill());
         GameManager.GetInstance.soundBGM.ToggleBattleMap(true);
 
         currentRound = 0;
@@ -91,15 +88,15 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         var enemyList = GameManager.GetInstance.Library.GetCharacterList(enemyIDs);
         enemies.Initialize(enemyList);
-        allyCards.UpdateList();
 
         // 턴 초기화
         turnManager.Init(allies, enemies);
 
         InitializeAbnormal();
-        InitResult(isElite);
+        result.isElite = isElite;
 
         #region PreRound 상태로 넘어감
+        StopAllCoroutines();
         PreRound();
         #endregion
     }
@@ -135,7 +132,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
     }
 
-    private void InitResult(bool isElite)
+    private void InitResult()
     {
         #region 역경 계산
         int hardShip = abnormal.cost;
@@ -145,13 +142,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             hardShip += enemy.Cost;
         }
 
-        result.hardShipGrade = Mathf.Clamp(hardShip - 4, 0, 99);
+        result.enemyCount = enemyList.Count;
+        result.hardShipGrade = Mathf.Clamp(hardShip - 4 + DataCloud.playerData.CalculateLuck(), 0, 9);
         #endregion
-        result.isElite = isElite;
     }
 
-    // ReSharper disable Unity.PerformanceAnalysis
-    /// <summary>
+
     /// 캐릭터들의 버프 정리
     /// </summary>
     void PreRound()
@@ -166,6 +162,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
         DetermineOrder();
     }
+    // ReSharper disable Unity.PerformanceAnalysis
+    /// <summary>
 
     /// <summary>
     /// 캐릭터들을 속도순으로 정렬
@@ -182,7 +180,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// </summary>
     void CharacterTurn()
     {
-        Debug.Log("CurState : CharacterTurn");
         //캐릭터별로 행동
         StartCoroutine(HandleCharacterTurns());
     }
@@ -195,7 +192,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             isSkillSelected = false;
             isSkillExecuted = false;
             currentSelectedSkill = null;
-            UIManager.GetInstance.DeactivateBuffPopUp();
             #endregion
 
             if (turnManager.StartTurn() == false)
@@ -208,7 +204,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             {
                 // 현재 턴의 캐릭터에 맞는 UI 업데이트
                 if(currentCharacter.IsAlly)
-                    OnCharacterTurnStart?.Invoke(currentCharacter, true);
+                    ShowCharacterUI?.Invoke(currentCharacter, true);
                 
                 //적군의 경우 AI 작동
                 if (!currentCharacter.IsAlly)
@@ -236,7 +232,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
                         if (currentCharacter.IsAlly)
                         {
-                            OnCharacterTurnStart?.Invoke(currentCharacter, true);
+                            ShowCharacterUI?.Invoke(currentCharacter, true);
                         }
                         else
                         {
@@ -448,6 +444,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     // 스킬 실행 로직 구현
     IEnumerator ExecuteSkill(BaseCharacter caster, BaseCharacter receiver)
     {
+        UIManager.GetInstance.DeactivePopup();
+
         Debug.Log(currentSelectedSkill.Name + " is executed by " + caster.name + " on " + receiver.name);
         DisableColliderArrow();
 
@@ -461,9 +459,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         // 더미 캐릭터가 receiver인 경우 caster의 UI를 활성화 or 정비 중이면 caster의 UI를 활성화
         if (receiver.isDummy)
-            OnCharacterAttacked?.Invoke(caster, false);
+            ShowCharacterUI?.Invoke(caster, false);
         else
-            OnCharacterAttacked?.Invoke(receiver, false);
+            ShowCharacterUI?.Invoke(receiver, false);
         
         yield return new WaitUntil(() => caster.IsIdle);
         
@@ -544,6 +542,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     void PostBattle()
     {
         turnManager.BattleOver();
+        InitResult();
         allies.BattleEnd(); enemies.BattleEnd();
 
         //승리 화면 뜬 후 보상 정산
@@ -729,7 +728,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         MainCharacter woochi = allies.GetWoochi();
         currentCharacter = woochi;
 
-        OnCharacterTurnStart?.Invoke(woochi, true);
+        ShowCharacterUI?.Invoke(woochi, true);
 
         turnManager.OnlyWoochi(woochi);
         StartCoroutine(Maintenance());
@@ -744,7 +743,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             isSkillExecuted = false;
             currentSelectedSkill = null;
             #endregion
-            OnCharacterTurnStart?.Invoke(currentCharacter, true);
+            ShowCharacterUI?.Invoke(currentCharacter, true);
 
             while (!isSkillSelected || !isSkillExecuted)
             {

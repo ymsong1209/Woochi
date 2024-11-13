@@ -10,6 +10,9 @@ public class Health
     [SerializeField, ReadOnly] private int curHealth;
     [SerializeField, ReadOnly] private int shield;
 
+    // Resurrection
+    [SerializeField] private int countToResurrect;
+
     public Health()
     {
         owner = null;
@@ -20,6 +23,7 @@ public class Health
         maxHealth = health.maxHealth;
         curHealth = health.curHealth;
         shield = health.shield;
+        countToResurrect = health.countToResurrect;
     }
 
     public Health(CharacterData characterData)
@@ -27,11 +31,16 @@ public class Health
         maxHealth = characterData.health;
         curHealth = maxHealth;
         shield = 0;
+        countToResurrect = -1;
     }
 
-    public void SetOwner(BaseCharacter owner)
+    public void Initialize(BaseCharacter owner, Health health)
     {
         this.owner = owner;
+        maxHealth = health.maxHealth;
+        curHealth = health.curHealth;
+        shield = health.shield;
+        countToResurrect = health.countToResurrect;
     }
 
     /// <summary>
@@ -45,7 +54,6 @@ public class Health
         if (_penetrate == false)
         {
             CurHealth = Mathf.Clamp(CurHealth - _damage, 0, maxHealth);
-            Debug.Log("Curhealth : " + curHealth);
         }
         //비관통형 대미지인경우 쉴드 먼저 까임
         else
@@ -81,7 +89,7 @@ public class Health
     
     public void LevelUp()
     {
-        maxHealth = owner.FinalStat.maxHealth;
+        maxHealth = (int)owner.FinalStat.GetValue(StatType.Health);
         Heal(maxHealth, false);
     }
 
@@ -96,7 +104,11 @@ public class Health
         else return false;
     }
 
-
+    public void Resurrect()
+    {
+        CurHealth = maxHealth / 2;
+        countToResurrect = -1;
+    }
 
     #region Getter Setter
 
@@ -117,10 +129,16 @@ public class Health
         set 
         { 
             curHealth = value;
-            
+
             if(owner != null)
                 owner.onHealthChanged?.Invoke();
         }
+    }
+
+    public int TurnToResurrect
+    {
+        get { return countToResurrect; }
+        set { countToResurrect = value; }
     }
 
     #endregion

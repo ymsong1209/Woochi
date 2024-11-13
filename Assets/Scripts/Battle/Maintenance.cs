@@ -8,10 +8,22 @@ public class Maintenance : MonoBehaviour
 {
     [SerializeField] private Button openMapBtn;     // 지도 열기
     [SerializeField] private GameObject blindObject;    // 섭선, 위치 이동만 클릭 가능하게
+    [SerializeField] private Button skillScrollBtn;
+    [SerializeField] private Button skillScrollBlind;
+    [SerializeField] private SkillScroll skillScroll; //도술두루마리
 
     void Start()
     {
         openMapBtn.onClick.AddListener(EndMaintenance);
+        
+        skillScrollBtn.onClick.AddListener(()=>skillScrollBlind.gameObject.SetActive(true));
+        skillScrollBtn.onClick.AddListener(() => skillScroll.Activate());
+        
+        skillScrollBlind.onClick.AddListener(()=>skillScrollBlind.gameObject.SetActive(false));
+        skillScrollBlind.onClick.AddListener(()=>skillScroll.gameObject.SetActive(false));
+        skillScrollBlind.onClick.AddListener(()=>skillScroll.GetComponent<SkillScroll>().Reset());
+        skillScroll.gameObject.SetActive(false);
+        skillScrollBlind.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
 
@@ -19,7 +31,9 @@ public class Maintenance : MonoBehaviour
     {
         gameObject.SetActive(true);
         blindObject.SetActive(true);
-
+        skillScrollBlind.gameObject.SetActive(false);
+        skillScroll.gameObject.SetActive(false);
+        
         BattleManager.GetInstance.InitializeMaintenance();
     }
 
@@ -27,11 +41,15 @@ public class Maintenance : MonoBehaviour
     {
         gameObject.SetActive(false);
         blindObject.SetActive(false);
+        skillScrollBlind.gameObject.SetActive(false);
+        skillScroll.gameObject.SetActive(false);
 
         BattleManager.GetInstance.DisableColliderArrow();
         BattleManager.GetInstance.DisableDummy();
 
         BattleManager.GetInstance.Allies.SaveFormation();       // 아군 포메이션 변경 했을까봐 다시 저장
+        GameManager.GetInstance.SaveData();
+
         MapManager.GetInstance.CompleteNode();
         GameManager.GetInstance.soundBGM.ToggleBattleMap(false);
     }

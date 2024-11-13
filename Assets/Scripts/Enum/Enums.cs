@@ -56,6 +56,7 @@ public enum CharmType
     Buff,
     DeBuff,
     CleanseSingleDebuff,
+    Heal,
     END
 }
 
@@ -87,6 +88,7 @@ public enum BuffEffect
     IncreaseCritOvertime,       //족자구 회피 증가 버프
     Troll,
     Poison,
+    Special,
     END
 }
 
@@ -178,14 +180,15 @@ public enum RareType
 
 public enum StatType
 {
-    Health,
-    Speed,
-    Defense,
-    Crit,
-    Accuracy,
-    Evasion,
-    Resist,
-    Damage,
+    [Display("체력")] Health,
+    [Display("속도")] Speed,
+    [Display("방어")] Defense,
+    [Display("치명")] Crit,
+    [Display("명중")] Accuracy,
+    [Display("회피")] Evasion,
+    [Display("저항")] Resist,
+    [Display("피해")] MinDamage,
+    [Display("피해")] MaxDamage,
     END
 }
 

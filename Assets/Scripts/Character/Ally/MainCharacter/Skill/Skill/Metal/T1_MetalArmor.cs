@@ -14,7 +14,7 @@ public class T1_MetalArmor : MainCharacterSkill
         statBuff.BuffName = "철갑";
         statBuff.BuffDurationTurns = 3;
         statBuff.ChanceToApplyBuff = 100;
-        statBuff.changeStat.defense = 2;
+        statBuff.changeStat.SetValue(StatType.Defense, 5);
         instantiatedBuffList.Add(statbuffGameObject);
         
         base.ActivateSkill(_opponent);
@@ -28,10 +28,37 @@ public class T1_MetalArmor : MainCharacterSkill
     
     public override void SetSkillDescription(TextMeshProUGUI text)
     {
-        int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * SkillSO.BaseMultiplier / 100f);
-        int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
+        Stat finalStat = SkillOwner.FinalStat;
+        int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
+        int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "철갑\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "단일 대상과 우치에게 3턴동안 방어력 2만큼 부여";
+                    "단일 대상과 우치에게 3턴동안 방어력 5만큼 부여";
+    }
+    public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모하여\n" +
+                                "단일 대상과 우치에게\n" +
+                                "3턴동안 방어력 5만큼 부여";
+    }
+    
+    public override void SetEnhancedSkillScrollDescription(int curskillid, TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        int enhancedSkillID = GameManager.GetInstance.Library.GetEnhancedSkillID(curskillid);
+        MainCharacterSkill enhancedSkill = GameManager.GetInstance.Library.GetSkill(enhancedSkillID) as MainCharacterSkill;
+        MainCharacterSkillSO mainCharacterSkillSo = enhancedSkill.SkillSO as MainCharacterSkillSO;
+        
+        skillDescription.text = "도력 <color=#FFFF00>" + mainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모하여\n" +
+                                "단일 대상과 우치에게\n" +
+                                "3턴동안 방어력 <color=#FFFF00>10</color>만큼 부여";
     }
 }

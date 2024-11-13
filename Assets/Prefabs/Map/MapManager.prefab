@@ -126,7 +126,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e62830f47c4e3747961fa246d79d34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 6b32a00d5f0294e408f0d14b1b379a66, type: 2}
+  mapConfigs:
+  - {fileID: 11400000, guid: 6b32a00d5f0294e408f0d14b1b379a66, type: 2}
+  - {fileID: 11400000, guid: f2423a1c07d3b224588df628f2d57141, type: 2}
+  - {fileID: 11400000, guid: ef63e9f5042bd8742a3b2bcc827234f2, type: 2}
+  - {fileID: 11400000, guid: c20be526314fdcf4d9ff6ec8491498b7, type: 2}
+  - {fileID: 11400000, guid: ec0e1f60b5f76a745ba84953e89ecb15, type: 2}
+  - {fileID: 11400000, guid: 3937799fa63fc8b46b557cb6d94ebebb, type: 2}
+  config: {fileID: 0}
   view: {fileID: 8504344917464840877}
 --- !u!1 &8304254755609287740
 GameObject:

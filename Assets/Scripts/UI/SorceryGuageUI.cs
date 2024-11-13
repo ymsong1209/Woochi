@@ -5,11 +5,19 @@ using UnityEngine.UI;
 
 public class SorceryGuageUI : MonoBehaviour
 {
-    [HideInInspector] public MainCharacter woochi;
+    private MainCharacter woochi;
 
     [SerializeField] private Image sorceryGuage;
     [SerializeField] private Image sorceryGuageBackground;
     [SerializeField] private TextMeshProUGUI sorceryGuageText;
+
+    private void Start()
+    {
+        woochi = BattleManager.GetInstance.Allies.GetWoochi();
+        woochi.OnSorceryPointsChanged += SetUI;
+
+        SetUI();
+    }
 
     public void SetUI()
     {

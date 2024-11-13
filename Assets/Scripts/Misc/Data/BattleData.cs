@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 public class BattleData
@@ -8,13 +9,16 @@ public class BattleData
     public List<int> charms;   // 우치가 소유하고 있는 부적(5개)
 
     public List<CharacterInfoData> characterInfoList;
-
+    
     public BattleData()
     {
         allies = new List<int>() { 0, 1, 2 };
         formation = new int[] { 2, 0, 1, -1};   // 호랑이-우치-삼미호 순(시연버전)
         charms = new List<int>(5);
-
+        //원기회복부(힐부적) 3장 들고 시작
+        charms.Insert(0, 9);
+        charms.Insert(1, 9);
+        charms.Insert(2, 9);
         if (GameManager.GetInstance.UseDebugCharms)
         {
             charms = GameManager.GetInstance.Charms;
@@ -43,13 +47,13 @@ public class CharacterInfoData
         health = null;
     }
 
-    public CharacterInfoData(int _ID, Stat _baseStat, Stat _levelUpStat, Stat _rewardStat, Level _level, Health _health)
+    public CharacterInfoData(int ID, Stat baseStat, Stat levelUpStat, Stat rewardStat, Level level, Health health)
     {
-        ID = _ID;
-        baseStat = _baseStat;
-        levelUpStat = _levelUpStat;
-        rewardStat = _rewardStat;
-        level = _level;
-        health = _health;
+        this.ID = ID;
+        this.baseStat = new Stat(baseStat);
+        this.levelUpStat = new Stat(levelUpStat);
+        this.rewardStat = new Stat(rewardStat);
+        this.level = new Level(level);
+        this.health = new Health(health);
     }
 }

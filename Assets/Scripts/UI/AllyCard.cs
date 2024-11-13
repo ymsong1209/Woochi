@@ -4,62 +4,57 @@ using UnityEngine.UI;
 
 public class AllyCard : MonoBehaviour
 {
-    [SerializeField] BaseCharacter ally;
-    [SerializeField] Image image;
+    BaseCharacter ally = null;
+    [SerializeField] GameObject front;
+    [SerializeField] GameObject back;
     [SerializeField] Image portrait;
-    [SerializeField] Button btn;
     [SerializeField] TextMeshProUGUI healthTxt;
+
+    private bool isDead = false;
+
+    private void Awake()
+    {
+        SetActivate(false);
+    }
 
     public void UpdateHP()
     {
         float currentHP = ally.Health.CurHealth;
         float maxHP = ally.Health.MaxHealth;
 
-        if (currentHP <= 0) healthTxt.color = Color.gray;
-        else healthTxt.color = Color.white;
+        if (currentHP <= 0) Dead();
+        else if(isDead && currentHP > 0)
+        {
+            SetActivate(true);
+            isDead = false;
+        }
 
         healthTxt.text = $"{currentHP}/{maxHP}";
     }
 
-    public void Activate(BaseCharacter _ally, Sprite front)
+    public void Show(BaseCharacter _ally)
     {
         ally = _ally;
         ally.onHealthChanged += UpdateHP;
-
-        image.sprite = front;
-        portrait.gameObject.SetActive(true);
+        SetActivate(true);
         portrait.sprite = ally.Portrait;
 
-        healthTxt.gameObject.SetActive(true);
+        UpdateHP();
     }
 
-    public void Deactivate(Sprite back) 
+    private void SetActivate(bool isActive)
     {
-        ally = null;
-
-        image.sprite = back;
-        portrait.gameObject.SetActive(false);
-        
-        healthTxt.gameObject.SetActive(false);
+        front.SetActive(isActive);
+        portrait.gameObject.SetActive(isActive);
+        back.SetActive(!isActive);
     }
 
-    public void SetInteractable(bool _able)
+    private void Dead()
     {
-        if (ally == null || ally.IsDead)
-        {
-            btn.interactable = false; 
-            return;
-        }
-
-        btn.interactable = _able;
+        SetActivate(false);
+        isDead = true;
     }
 
-    public void UpdateCard()
-    {
-        if (ally == null) return;
-
-        ally.onHealthChanged?.Invoke();
-    }
     #region Getter
     public BaseCharacter Ally => ally;
     #endregion

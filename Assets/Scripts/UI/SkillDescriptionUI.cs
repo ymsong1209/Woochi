@@ -61,13 +61,15 @@ public class SkillDescriptionUI : MonoBehaviour
         skillSideBarRight.sizeDelta = new Vector2(skillSideBarRight.sizeDelta.x, newPanelHeight);
 
         // Left Sidebar
-        var leftSidebarPosition = skillSideBarLeft.transform.position;
-        leftSidebarPosition = new Vector3(panelPosition.x - panelRt.sizeDelta.x / 2, leftSidebarPosition.y, leftSidebarPosition.z);
-        skillSideBarLeft.transform.position = leftSidebarPosition;
+        var leftSidebarPosition = skillSideBarLeft.anchoredPosition;
+        leftSidebarPosition.x = -panelRt.sizeDelta.x / 2;
+        skillSideBarLeft.anchoredPosition = leftSidebarPosition;
 
         // Right Sidebar
-        var rightSidebarPosition = skillSideBarRight.transform.position;
-        rightSidebarPosition = new Vector3(panelPosition.x + panelRt.sizeDelta.x / 2, rightSidebarPosition.y, rightSidebarPosition.z);
-        skillSideBarRight.transform.position = rightSidebarPosition;
+        var rightSidebarPosition = skillSideBarRight.anchoredPosition;
+        rightSidebarPosition.x = panelRt.sizeDelta.x / 2;
+        skillSideBarRight.anchoredPosition = rightSidebarPosition;
     }
+    
+    public RectTransform PanelRt => panelRt;
 }

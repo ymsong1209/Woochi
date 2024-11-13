@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 335c1caa65a28704889988083dc5cc41, type: 3}
+  m_Name: Reward_GetSorcery
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 7460560267dd89a4192d7dc7c34bd75f, type: 3}
+  rarity: 1
+  rewardName: "\uB3C4\uC220 \uD0D0\uAD6C"
+  description: "\uBB34\uC791\uC704 \uB3C4\uC220\uC744 \uD68D\uB4DD\uD55C\uB2E4"
+  resultTxt: 
+  errorTxt: "\uD604\uC7AC \uB3C4\uC220\uC744 \uD68D\uB4DD\uD560 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4"

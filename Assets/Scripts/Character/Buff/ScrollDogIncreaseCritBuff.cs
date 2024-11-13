@@ -21,7 +21,7 @@ public class ScrollDogIncreaseCritBuff : BaseBuff
     public override int ApplyTurnEndBuff()
     {
         base.ApplyTurnEndBuff();
-        //치명 스택이 10번 이하이면, 회피 버프 추가.
+        //치명 스택이 10번 이하이면, 치명 버프 추가.
         if (critStack < 10)
         {
             GameObject instantiatedcritbuff = Instantiate(statBuffGameObject, transform);
@@ -29,7 +29,7 @@ public class ScrollDogIncreaseCritBuff : BaseBuff
             critBuff.BuffName = "맹공";
             critBuff.BuffDurationTurns = -1;
             critBuff.ChanceToApplyBuff = 100;
-            critBuff.changeStat.evasion = 2;
+            critBuff.changeStat.SetValue(StatType.Crit, 2);
             buffOwner.ApplyBuff(buffOwner,buffOwner,critBuff);
             critStack++;
         }

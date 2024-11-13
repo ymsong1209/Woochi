@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public struct BattleResult
 {
+    public int enemyCount;   // 적군 수
     public int hardShipGrade;   // 역경 단계
     public bool isElite;   // 정예 여부
 }
@@ -36,7 +37,7 @@ public class BattleResultUI : MonoBehaviour
 
         reward.SetReward(result);
         SetEntry();
-        SetGold();
+        SetGold(result);
 
         MapManager.GetInstance.SaveMap();
     }
@@ -69,9 +70,9 @@ public class BattleResultUI : MonoBehaviour
         }
     }
 
-    private void SetGold()
+    private void SetGold(BattleResult result)
     {
-        int gold = 100;
+        int gold = (result.hardShipGrade + 1) * result.enemyCount * 10;
         HelperUtilities.AddGold(gold);
         goldTxt.text = $"+ {gold}";
     }

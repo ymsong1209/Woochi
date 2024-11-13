@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MainCharacterSkill : BaseSkill
@@ -26,13 +27,18 @@ public class MainCharacterSkill : BaseSkill
             Debug.LogError("우치가 아님");
             return;
         }
-
-        woochi.SorceryPoints -= RequiredSorceryPoints;
-        Mathf.Clamp(woochi.SorceryPoints, 0, woochi.MaxSorceryPoints);
-        UIManager.GetInstance.sorceryGuageUI.SetUI();
+        
+        woochi.UpdateSorceryPoints(requiredSorceryPoints, false);
 
         var animation = SkillOwner.anim as MainCharacterAnimation;
         animation.ShowElement(SkillSO.SkillElement);
+    }
+
+    public virtual void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+    }
+    public virtual void SetEnhancedSkillScrollDescription(int curskillid, TextMeshProUGUI skillDescription)
+    {
     }
 
     public int RequiredSorceryPoints => requiredSorceryPoints;

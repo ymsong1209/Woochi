@@ -21,7 +21,8 @@ public class Haetae_Stab : BaseSkill
     }
     protected override float CalculateDamage(BaseCharacter receiver, bool isCrit)
     {
-        float RandomStat = Random.Range(SkillOwner.FinalStat.minStat, SkillOwner.FinalStat.maxStat);
+        Stat finalStat = SkillOwner.FinalStat;
+        float RandomStat = Random.Range(finalStat.GetValue(StatType.MinDamage), finalStat.GetValue(StatType.MaxDamage));
         RandomStat *= (Multiplier / 100);
         //심판의 뿔은 방어력을 무시하고 대미지를 준다.
         if (isCrit) RandomStat = RandomStat * 2;
@@ -29,8 +30,9 @@ public class Haetae_Stab : BaseSkill
     }
     public override void SetSkillDescription(TextMeshProUGUI text)
     {
-        int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * SkillSO.BaseMultiplier / 100f);
-        int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
+        Stat finalStat = SkillOwner.FinalStat;
+        int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
+        int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "심판의 뿔\n" + 
                     "대상의 방어력을 무시하고 " + minStat + " ~ " + maxStat + "의 피해를 줌\n" + 
                     "40%의 확률로 기절 부여";

@@ -19,6 +19,12 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI roundTxt;
     [SerializeField] private Sprite emptyIcon;
 
+    private void Start()
+    {
+        BattleManager.GetInstance.OnFocusStart += () => gameObject.SetActive(false);
+        BattleManager.GetInstance.OnFocusEnd += () => gameObject.SetActive(true);
+    }
+
     public void Init(Formation allies, Formation enemies)
     {
         combatQueue.Clear();    processedCharacters.Clear();
@@ -32,6 +38,8 @@ public class TurnManager : MonoBehaviour
                 index += form.formation[index].Size;
             }
         }
+        
+        CheckBuffs(BuffTiming.BattleStart);
     }
 
     /// <summary>
@@ -66,7 +74,7 @@ public class TurnManager : MonoBehaviour
         }
 
         // allCharacters 리스트를 속도에 따라 재정렬
-        allCharacters.Sort((character1, character2) => character2.FinalStat.speed.CompareTo(character1.FinalStat.speed));
+        allCharacters.Sort((character1, character2) => character2.FinalStat.GetValue(StatType.Speed).CompareTo(character1.FinalStat.GetValue(StatType.Speed)));
 
         // 재정렬된 리스트를 바탕으로 combatQueue 재구성
         combatQueue.Clear();
@@ -99,7 +107,8 @@ public class TurnManager : MonoBehaviour
             processedCharacters.Add(currentCharacter);
             return false;
         }
-
+    
+        currentCharacter.HUD.ShowTurnEffect();
         BattleManager.GetInstance.currentCharacter = currentCharacter;
         return true;
     }

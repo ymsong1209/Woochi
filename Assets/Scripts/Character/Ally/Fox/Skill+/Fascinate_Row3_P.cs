@@ -14,8 +14,8 @@ public class Fascinate_Row3_P : BaseSkill
         statDebuff.BuffName = "홀리기+";
         statDebuff.BuffDurationTurns = 2;
         statDebuff.ChanceToApplyBuff = 100;
-        statDebuff.changeStat.accuracy = -3;
-        statDebuff.changeStat.speed = -3;
+        statDebuff.changeStat.SetValue(StatType.Accuracy, -3);
+        statDebuff.changeStat.SetValue(StatType.Speed, -3);
         
         instantiatedBuffList.Add(statDebuffGameObject);
         
@@ -23,8 +23,9 @@ public class Fascinate_Row3_P : BaseSkill
     }
     public override void SetSkillDescription(TextMeshProUGUI text)
     {
-        int minStat = (int)Mathf.Round(SkillOwner.FinalStat.minStat * SkillSO.BaseMultiplier / 100f);
-        int maxStat = (int)Mathf.Round(SkillOwner.FinalStat.maxStat * SkillSO.BaseMultiplier / 100f);
+        Stat finalStat = SkillOwner.FinalStat;
+        int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
+        int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "홀리기(광역)+\n" + 
                     "대상 전체에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + 
                     "2턴동안 명중, 속도 -3만큼 부여";

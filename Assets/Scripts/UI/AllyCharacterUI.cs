@@ -12,19 +12,12 @@ public class AllyCharacterUI : MonoBehaviour
 
     [Header("Stat")]
     [SerializeField] private TextMeshProUGUI hpText;
-    [SerializeField] private AllyStat accuracy;
-    [SerializeField] private AllyStat evasion;
-    [SerializeField] private AllyStat critical;
-    [SerializeField] private AllyStat damage;
-    [SerializeField] private AllyStat speed;
-    [SerializeField] private AllyStat depense;
-    [SerializeField] private AllyStat resist;
-
+    [SerializeField] private AllyStat[] stats;
+    
     void Start()
     {
         #region 이벤트 등록
-        BattleManager.GetInstance.OnCharacterTurnStart += ShowCharacterUI;
-        BattleManager.GetInstance.OnCharacterAttacked += ShowCharacterUI;
+        BattleManager.GetInstance.ShowCharacterUI += ShowCharacterUI;
         #endregion
     }
 
@@ -53,14 +46,24 @@ public class AllyCharacterUI : MonoBehaviour
     private void ShowCharacterStat(BaseCharacter _character)
     {
         Stat stat = _character.FinalStat;
+        Stat buffStat = _character.BuffStat;
         hpText.text = $"{_character.Health.CurHealth} / {_character.Health.MaxHealth}";
-        accuracy.SetText(stat.accuracy, _character.BuffStat.accuracy);
-        critical.SetText(stat.crit, _character.BuffStat.crit);
-        damage.SetDamageText(stat.minStat, stat.maxStat);
-        depense.SetText(stat.defense, _character.BuffStat.defense);
-        evasion.SetText(stat.evasion, _character.BuffStat.evasion);
-        resist.SetText(stat.resist, _character.BuffStat.resist);
-        speed.SetText(stat.speed, _character.BuffStat.speed);
+        
+        for(int i = 1; i < stats.Length; i++)
+        {
+            if ((StatType)i == StatType.MinDamage)
+            {
+                float min = stat.GetValue(StatType.MinDamage);
+                float max = stat.GetValue(StatType.MaxDamage);
+                stats[i].SetDamageText(min, max);
+            }
+            else
+            {
+                float value = stat.GetValue((StatType)i);
+                float changeValue = buffStat.GetValue((StatType)i);
+                stats[i].SetText(value, changeValue);
+            }
+        }
     }
 
 }

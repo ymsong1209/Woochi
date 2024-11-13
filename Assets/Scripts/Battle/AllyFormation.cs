@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class AllyFormation : Formation
@@ -29,9 +30,6 @@ public class AllyFormation : Formation
             allCharacter.Add(character);
         }
 
-        // 우치 도술 게이지 UI에 우치를 할당
-        UIManager.GetInstance.sorceryGuageUI.woochi = GetWoochi();
-
         // 포메이션에 등록한 소환수를 포메이션에 등록
         int[] battleFormation = DataCloud.playerData.battleData.formation;
         for(int i = 0; i < 4; i++)
@@ -41,7 +39,6 @@ public class AllyFormation : Formation
             BaseCharacter character = allCharacter.FirstOrDefault(c => c.ID == battleFormation[i]);
             SetProperty(character, true, i);
             character.gameObject.SetActive(true);
-            character.TriggerBuff(BuffTiming.BattleStart);
             for(int s = 0; s < character.Size; s++)
             {
                 formation[totalSize++] = character;
@@ -56,6 +53,14 @@ public class AllyFormation : Formation
         #endregion
 
         Positioning();
+    }
+
+    public void MoveNode()
+    {
+        foreach(var character in allCharacter)
+        {
+            character.OnMove();
+        }
     }
 
     public override void ReOrder()
@@ -214,7 +219,27 @@ public class AllyFormation : Formation
             character.SaveStat();
         }
 
+        SetSize();
+        Resurrect();
         SaveFormation();
+    }
+
+    public void Resurrect(bool isRandom = false)
+    {
+        List<BaseCharacter> deadCharacters = allCharacter.Where(c => c.IsDead).ToList();
+
+        if(isRandom)
+        {
+            int randIndex = Random.Range(0, deadCharacters.Count);
+            deadCharacters[randIndex].Resurrect();
+        }
+        else
+        {
+            foreach(var character in deadCharacters)
+            {
+                character.Resurrect();
+            }
+        }
     }
 
     public void SaveFormation()
@@ -233,5 +258,18 @@ public class AllyFormation : Formation
     {
         _character.isSummoned = isSummoned;
         _character.RowOrder = rowOrder;
+    }
+
+    private void SetSize()
+    {
+        totalSize = 0;
+
+        for(int i = 0; i < 4; )
+        {
+            if (formation[i] == null) break;
+
+            totalSize += formation[i].Size;
+            i += formation[i].Size;
+        }
     }
 }

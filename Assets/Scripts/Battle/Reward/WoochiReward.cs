@@ -1,22 +1,25 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 /// <summary>
-/// ¿ìÄ¡ Àü¿ë º¸»ó
+/// ìš°ì¹˜ ì „ìš© ë³´ìƒ
 /// </summary>
 [CreateAssetMenu(fileName = "Reward_", menuName = "Scriptable Objects/Reward/Woochi")]
 public class WoochiReward : Reward
 {
     [Header("Heal")]
-    [SerializeField] private bool heal;             // Ã¼·Â È¸º¹ ¿©ºÎ
-    [SerializeField] private int healAmount;      // Ã¼·Â È¸º¹ ¼öÄ¡
-    [SerializeField] private bool sorceryHeal;      // µµ·Â È¸º¹ ¿©ºÎ
+    [SerializeField] private bool heal;             // ì²´ë ¥ íšŒë³µ ì—¬ë¶€
+    [SerializeField] private int healAmount;        // ì²´ë ¥ íšŒë³µ ìˆ˜ì¹˜
+    [SerializeField] private bool sorceryHeal;      // ë„ë ¥ íšŒë³µ ì—¬ë¶€
 
-    [Header("Random Stat Up")]
-    [SerializeField] private bool randomStatUp;     // ·£´ı ½ºÅÈ »ó½Â ¿©ºÎ
-    [SerializeField] private int statUpAmount;      // Áõ°¡½ÃÅ³ ½ºÅÈ ¾ç
-
-    [Header("Add Stat")]
-    [SerializeField] private Stat addStat;          // Ãß°¡ÇÒ ½ºÅÈ   
+    [Header("Stat Up")]
+    [SerializeField] private bool fixedStatUp;      // ê³ ì • ìŠ¤íƒ¯ ìƒìŠ¹ ì—¬ë¶€
+    [SerializeField] private StatType fixType;         // ìƒìŠ¹ì‹œí‚¬ ìŠ¤íƒ¯
+    [SerializeField] private bool randomStatUp;     // ëœë¤ ìŠ¤íƒ¯ ìƒìŠ¹ ì—¬ë¶€
+    [SerializeField] private bool allStatUp;        // ëª¨ë“  ìŠ¤íƒ¯ ìƒìŠ¹ ì—¬ë¶€
+    [SerializeField] private int statUpAmount;      // ì¦ê°€ì‹œí‚¬ ìŠ¤íƒ¯ ì–‘
 
     public override bool ApplyReward()
     {
@@ -27,64 +30,80 @@ public class WoochiReward : Reward
             woochi.Health.Heal(healAmount, false);
         }
 
-        // µµ·Â È¸º¹
         if (sorceryHeal)
         {
-            woochi.SorceryPoints = woochi.MaxSorceryPoints;
+            woochi.UpdateSorceryPoints(999, true);
         }
-
-        StatUp(woochi);
+        
+        if(fixedStatUp || randomStatUp || allStatUp)
+        {
+            StatUp(woochi);
+        }
 
         return true;
     }
 
     private void StatUp(MainCharacter woochi)
     {
+        Stat stat = new Stat();
+
         if(randomStatUp)
         {
             StatType type = (StatType)Random.Range(0, (int)StatType.END);
-
-            resultTxt += "¿ìÄ¡ÀÇ ";
-            switch(type)
+            if (type == StatType.MinDamage || type == StatType.MaxDamage)
             {
-                case StatType.Health:
-                    resultTxt += "Ã¼·Â";
-                    addStat.maxHealth = statUpAmount;
-                break;
-                case StatType.Speed:
-                    resultTxt += "¼Óµµ";
-                    addStat.speed = statUpAmount;
-                break;
-                case StatType.Defense:
-                    resultTxt += "¹æ¾î";
-                    addStat.defense = statUpAmount;
-                break;
-                case StatType.Crit:
-                    resultTxt += "Ä¡¸í";
-                    addStat.crit = statUpAmount;
-                break;
-                case StatType.Accuracy: 
-                    resultTxt += "¸íÁß";
-                    addStat.accuracy = statUpAmount;
-                break;
-                case StatType.Evasion:
-                    resultTxt += "È¸ÇÇ";
-                    addStat.evasion = statUpAmount;
-                break;
-                case StatType.Resist:
-                    resultTxt += "ÀúÇ×";
-                    addStat.resist = statUpAmount;
-                break;
-                case StatType.Damage:
-                    resultTxt += "ÇÇÇØ";
-                    addStat.minStat = statUpAmount;
-                    addStat.maxStat = statUpAmount;
-                break;
+                stat.SetValue(StatType.MinDamage, statUpAmount);
+                stat.SetValue(StatType.MaxDamage, statUpAmount);
             }
-
-            resultTxt += $"ÀÌ(°¡) {statUpAmount} Áõ°¡Çß½À´Ï´Ù";
+            else
+            {
+                stat.SetValue(type, statUpAmount);
+            }
+            
+            resultTxt += $"ìš°ì¹˜ì˜ {type.GetDisplayName()}ì´(ê°€) {statUpAmount} ì¦ê°€í–ˆìŠµë‹ˆë‹¤";
         }
+        else if (allStatUp)
+        {
+            for (int i = 0; i < (int)StatType.END; i++)
+            {
+                stat.SetValue((StatType)i, statUpAmount);
+            }
+            
+            resultTxt = $"ìš°ì¹˜ì˜ ëª¨ë“  ìŠ¤íƒ¯ì´ {statUpAmount} ì¦ê°€í–ˆìŠµë‹ˆë‹¤";
+        }
+        else if (fixedStatUp)
+        {
+            if(fixType == StatType.MinDamage || fixType == StatType.MaxDamage)
+            {
+                stat.SetValue(StatType.MinDamage, statUpAmount);
+                stat.SetValue(StatType.MaxDamage, statUpAmount);
+            }
+            else
+            {
+                stat.SetValue(fixType, statUpAmount);
+            }
+            
+            resultTxt += $"ìš°ì¹˜ì˜ {fixType.GetDisplayName()}ì´(ê°€) {statUpAmount} ì¦ê°€í–ˆìŠµë‹ˆë‹¤";
+        }
+        woochi.rewardStat += stat;
+    }
 
-        woochi.rewardStat += addStat;
+    private void OnValidate()
+    {
+        if(fixedStatUp)
+        {
+            randomStatUp = false;
+            allStatUp = false;
+        }
+        else if (randomStatUp)
+        {
+            fixedStatUp = false;
+            allStatUp = false;
+        }
+        else if (allStatUp)
+        {
+            fixedStatUp = false;
+            randomStatUp = false;
+        }
     }
 }

@@ -21,7 +21,8 @@ MonoBehaviour:
   skillTargetType: 0
   skillElement: 0
   skillTargetCount: 1
+  skillRandomCount: 0
   bufflist:
   - {fileID: 2569674945298275565, guid: 6c7ad47b10204044b84e8f76de3989c9, type: 3}
-  baseMultiplier: 70
+  baseMultiplier: 80
   baseSkillAccuracy: 80

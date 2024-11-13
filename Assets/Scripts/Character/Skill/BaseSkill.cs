@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -67,6 +65,7 @@ public class BaseSkill : MonoBehaviour
     [SerializeField] private int skillTargetCount = 1;
     private List<GameObject> buffPrefabList = new List<GameObject>();
     private int skillRandomCount = 0;
+    protected List<BuffEffect> buffDescriptionList = new List<BuffEffect>();//스킬에 포함된 버프 설명 무엇 넣을것인지.
     
     /// <summary>
     /// 스킬 적중시 적용시킬 버프 리스트
@@ -388,8 +387,6 @@ public class BaseSkill : MonoBehaviour
     }
     bool AttackLogic(BaseCharacter _opponent, ref bool _iscrit)
     {
-        
-
         //치명타일 경우 명중, 회피, 저항 무시하고 바로 스킬 적용
         if (CheckCrit())
         {
@@ -453,7 +450,7 @@ public class BaseSkill : MonoBehaviour
     {
         if (isAlwaysHit) return true;
         int RandomValue = Random.Range(0, 100);
-        if (RandomValue < skillAccuracy + skillOwner.FinalStat.accuracy) return true;
+        if (RandomValue < skillAccuracy + skillOwner.FinalStat.GetValue(StatType.Accuracy)) return true;
         else return false;
     }
 
@@ -465,8 +462,8 @@ public class BaseSkill : MonoBehaviour
     {
         if (isAlwaysHit) return true;
         int RandomValue = Random.Range(0, 100);
-        if (RandomValue > _opponent.FinalStat.evasion) return true;
-        Debug.Log(_opponent.name + "Evaded skill " + skillName + "with evasion" + _opponent.FinalStat.evasion + ", RandomValue" + RandomValue);
+        if (RandomValue > _opponent.FinalStat.GetValue(StatType.Accuracy)) return true;
+        Debug.Log(_opponent.name + "Evaded skill " + skillName + "with evasion" + _opponent.FinalStat.GetValue(StatType.Evasion) + ", RandomValue" + RandomValue);
         return false;
     }
 
@@ -490,8 +487,8 @@ public class BaseSkill : MonoBehaviour
     protected bool CheckResist(BaseCharacter _opponent)
     {
         int RandomValue = Random.Range(0, 100);
-        if (RandomValue > _opponent.FinalStat.resist) return true;
-        Debug.Log(_opponent.name + "Resisted skill " + skillName + "with resist" + _opponent.FinalStat.resist + ", RandomValue" + RandomValue);
+        if (RandomValue > _opponent.FinalStat.GetValue(StatType.Resist)) return true;
+        Debug.Log(_opponent.name + "Resisted skill " + skillName + "with resist" + _opponent.FinalStat.GetValue(StatType.Resist) + ", RandomValue" + RandomValue);
         return false;
     }
 
@@ -501,7 +498,7 @@ public class BaseSkill : MonoBehaviour
     protected bool CheckCrit()
     {
         int RandomValue = Random.Range(0, 100);
-        if (RandomValue < skillOwner.FinalStat.crit) return true;
+        if (RandomValue < skillOwner.FinalStat.GetValue(StatType.Crit)) return true;
         return false;
     }
     
@@ -537,11 +534,13 @@ public class BaseSkill : MonoBehaviour
     
     protected virtual float CalculateDamage(BaseCharacter receiver, bool isCrit)
     {
-        float RandomStat = Random.Range(skillOwner.FinalStat.minStat, skillOwner.FinalStat.maxStat);
-        RandomStat *= (multiplier / 100);
-        RandomStat = RandomStat * (1 - receiver.FinalStat.defense/(receiver.FinalStat.defense + 100));
-        if (isCrit) RandomStat = RandomStat * 2;
-        return RandomStat;
+        Stat finalStat = skillOwner.FinalStat;
+        float randomStat = Random.Range(finalStat.GetValue(StatType.MinDamage), finalStat.GetValue(StatType.MaxDamage));
+        randomStat *= (multiplier / 100);
+        float depense = receiver.FinalStat.GetValue(StatType.Defense);
+        randomStat = randomStat * (1 - depense / (depense + 100));
+        if (isCrit) randomStat = randomStat * 2;
+        return randomStat;
     }
     
     protected float CalculateElementalDamageBuff(float damage)
@@ -568,7 +567,8 @@ public class BaseSkill : MonoBehaviour
     }
     protected virtual float CalculateHeal(BaseCharacter receiver, bool isCrit)
     {
-        float RandomStat = Random.Range(skillOwner.FinalStat.minStat, skillOwner.FinalStat.maxStat);
+        Stat finalStat = skillOwner.FinalStat;
+        float RandomStat = Random.Range(finalStat.GetValue(StatType.MinDamage), finalStat.GetValue(StatType.MaxDamage));
         RandomStat *= (multiplier / 100);
         if (isCrit) RandomStat = RandomStat * 2;
         return RandomStat;
@@ -602,6 +602,8 @@ public class BaseSkill : MonoBehaviour
         set => skillOwner = value;
     }
     public int SkillRandomCount => skillRandomCount;
+    
+    public List<BuffEffect> BuffDescriptionList => buffDescriptionList;
 
     #endregion Getter Setter
 

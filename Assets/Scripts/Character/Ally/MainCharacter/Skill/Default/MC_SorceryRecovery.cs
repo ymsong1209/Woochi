@@ -11,12 +11,7 @@ public class MC_SorceryRecovery : BaseSkill
             return;
         }
 
-        int finalpoint = mainCharacter.SorceryPoints +
-                         (int)(mainCharacter.SorceryRecoveryPoints * mainCharacter.MaxSorceryPoints / 100.0f);
-        float result = Mathf.Clamp(finalpoint, 0, mainCharacter.MaxSorceryPoints);
-        mainCharacter.SorceryPoints = (int)result;
-        UIManager.GetInstance.sorceryGuageUI.SetUI();
-
+        mainCharacter.UpdateSorceryPoints(mainCharacter.SorceryRecoveryPoints, true);
         SkillOwner.onPlayAnimation?.Invoke(AnimationType.Skill3);
     }
 }

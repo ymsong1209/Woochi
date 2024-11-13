@@ -91,14 +91,14 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 3cea06ffdc780334a8a38e4dabe84ca9, type: 2}
     - {fileID: 11400000, guid: 7cec8b81ce231534eb3fd6dc9939c809, type: 2}
     - {fileID: 11400000, guid: 131ff5c3c3ae05148b256a3500c8664a, type: 2}
-    - {fileID: 11400000, guid: c3f296c3e0d5d92488625661e16d48ed, type: 2}
+    - {fileID: 11400000, guid: b106f4c457cb80b44bdede50381ceef8, type: 2}
   - rarity: 1
     rewards:
-    - {fileID: 11400000, guid: fa483710039d7734f983f47d4d793ee8, type: 2}
+    - {fileID: 11400000, guid: e1c3d94d5cb6b5344a2e2d5ca40b3f8a, type: 2}
     - {fileID: 11400000, guid: 38dcfea0a623e8c4caf07f5b1f4290d5, type: 2}
-    - {fileID: 11400000, guid: 10b732fe9611e764db0ed977e5b09762, type: 2}
     - {fileID: 11400000, guid: dffd53b290d823c42982693013eb82e2, type: 2}
     - {fileID: 11400000, guid: 6a8ecf63d91543247b3ca1945b5604fb, type: 2}
+    - {fileID: 11400000, guid: 26760234036ac18439e2599a8e0d26bb, type: 2}
   - rarity: 2
     rewards:
     - {fileID: 11400000, guid: c9ec6e787cd21664580a2bea0dd65e34, type: 2}
@@ -107,23 +107,26 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 169a47cbbc089c24697640df81cad91b, type: 2}
   - rarity: 3
     rewards:
-    - {fileID: 11400000, guid: 6d7f5bf3f77b9d24583987989dd6114d, type: 2}
     - {fileID: 11400000, guid: 8af0629b8c058494e9dd092deefef816, type: 2}
     - {fileID: 11400000, guid: 7b23636fe1c9fad4e9c8508949113b4e, type: 2}
   - rarity: 4
     rewards:
     - {fileID: 11400000, guid: 21ffee9d76dc09a47a69e2b6c0b5622f, type: 2}
     - {fileID: 11400000, guid: d013314fc1230a143b9396e0aae9ced4, type: 2}
-    - {fileID: 11400000, guid: f479daa5b5f2a35479b54dbf153271b5, type: 2}
+    - {fileID: 11400000, guid: 903a69bf4d4d8774f9bde2205f1a9266, type: 2}
   stranges:
   - ID: 1000
-    value: {fileID: 8475585994675369947, guid: a64a5eb62eada2745954ee2331979291, type: 3}
+    value: {fileID: 11400000, guid: 0eb08e8cad379834ab8b194f3e1a62fc, type: 2}
   - ID: 1001
-    value: {fileID: 4702027999250007440, guid: 2b70c618c56298c4f91f6a7fd4bc82ce, type: 3}
+    value: {fileID: 11400000, guid: 44c6ee27d274e91439842078f3adb716, type: 2}
   - ID: 2000
-    value: {fileID: 5456226783982550096, guid: 5fe6fbd817f48894a92d07a3ef62fbb1, type: 3}
+    value: {fileID: 11400000, guid: 2545767d68ea05a44a1bd32ec856ffc3, type: 2}
+  - ID: 2001
+    value: {fileID: 11400000, guid: bb3e1116f0a102f47a07717d186fa670, type: 2}
   - ID: 3000
-    value: {fileID: 1286108000769628803, guid: e8c72f7b64e905d4993933e6d64ae9b1, type: 3}
+    value: {fileID: 11400000, guid: af095efb462409b49aeeefe3f869934d, type: 2}
+  - ID: 3001
+    value: {fileID: 11400000, guid: 0e4876dc8c1547247856b795a7519f39, type: 2}
   woochiSkills:
   - element: 1
     SkillDatas:
@@ -254,3 +257,5 @@ MonoBehaviour:
     value: {fileID: 3145212337972435697, guid: 6fa22520f0b53a843b56d25f2a91e179, type: 3}
   - ID: 8
     value: {fileID: -4831398473671491347, guid: d62c684cf4e85df41ac74545da90f05c, type: 3}
+  - ID: 9
+    value: {fileID: 803773050140297357, guid: 3c357a465bbb044498f664ab6ec32ff3, type: 3}

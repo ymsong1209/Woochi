@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(BaseCharacterHUD))]
 [RequireComponent(typeof(BaseCharacterCollider))]
@@ -23,10 +24,10 @@ public class BaseCharacter : MonoBehaviour
     #endregion Header CHARACTER STATS
     #region Character Stats
     [SerializeField]    private Health health = new Health();
-    public Stat    baseStat;
-    public Stat    levelUpStat;
-    public Stat    rewardStat;
-    public Stat    buffStat;
+    public Stat baseStat;
+    public Stat levelUpStat;
+    public Stat rewardStat;
+    public Stat buffStat;
     public Level   level;
     #endregion
    
@@ -117,6 +118,14 @@ public class BaseCharacter : MonoBehaviour
         DataCloud.playerData.SaveInfo(info);
     }
 
+    public void OnMove()
+    {
+        if(isDead)
+        {
+            health.TurnToResurrect = Mathf.Clamp(health.TurnToResurrect - 1, 0, DataCloud.countForRessurection);
+        }
+    }
+
     #region 버프 처리
     /// <summary>
     /// 버프 적용 시점에 따라 적절한 버프 처리 함수 호출
@@ -184,31 +193,30 @@ public class BaseCharacter : MonoBehaviour
     /// buff gameobject는 instantiated되어서 opponent에 붙어있음.
     /// </summary>
     /// <returns></returns>
-    public BaseBuff ApplyBuff(BaseCharacter caster, BaseCharacter receiver, BaseBuff _buff)
+    public BaseBuff ApplyBuff(BaseCharacter caster, BaseCharacter receiver, BaseBuff buff)
     {
-
         //자신의 차례일때 자기 자신에게 버프를 적용할 경우 지속시간+1을 줘야함.
         //자기 자신에게 버프를 주고 턴이 지나가기 때문.
         if (caster && receiver && caster == receiver && BattleManager.GetInstance.currentCharacter == caster)
         {
-            if(_buff.BuffDurationTurns != -1)
+            if(buff.BuffDurationTurns != -1)
             {
-                _buff.BuffDurationTurns++;
+                buff.BuffDurationTurns++;
             }
         }
         //같은 종류가 있는 버프가 활성화되어있는지 먼저 확인
-        BaseBuff activeBuff = receiver.FindMatchingBuff(_buff);
+        BaseBuff activeBuff = receiver.FindMatchingBuff(buff);
 
         //같은 종류의 버프가 이미 존재할경우
         if (activeBuff)
         {
             // 기존 버프와 중첩
-            activeBuff.StackBuff(_buff);
+            activeBuff.StackBuff(buff);
             return activeBuff;
         }
 
         // 새 버프 추가
-        BaseBuff new_buff = buffList.TransferBuffAtIcon(receiver, _buff);
+        BaseBuff new_buff = buffList.TransferBuffAtIcon(receiver, buff);
         new_buff.AddBuff(caster, receiver);
         return new_buff;
     }
@@ -284,6 +292,8 @@ public class BaseCharacter : MonoBehaviour
         
         foreach (BaseBuff buff in activeBuffs)
         {
+            if (buff.IsSpecialBuff) continue;
+            
             if (buff.BuffEffect == BuffEffect.StatStrengthen)
             {
                 StatBuff statBuff = buff as StatBuff;
@@ -304,13 +314,14 @@ public class BaseCharacter : MonoBehaviour
     {
         foreach (BaseBuff activeBuff in activeBuffs)
         {
-            if (activeBuff == null || activeBuff.BuffEffect != _buff.BuffEffect) continue;
+            if (activeBuff.BuffEffect != _buff.BuffEffect) continue;
 
             if (_buff.BuffEffect == BuffEffect.StatStrengthen ||
                 _buff.BuffEffect == BuffEffect.StatWeaken || 
                 _buff.BuffEffect == BuffEffect.DotCureByDamage ||
                 _buff.BuffEffect == BuffEffect.ElementalStatStrengthen ||
-                _buff.BuffEffect == BuffEffect.ElementalStatWeaken )
+                _buff.BuffEffect == BuffEffect.ElementalStatWeaken ||
+                _buff.BuffEffect == BuffEffect.Special)
             {
                 if (activeBuff.BuffName == _buff.BuffName)
                 {
@@ -348,20 +359,20 @@ public class BaseCharacter : MonoBehaviour
         levelUpStat = new Stat(characterStat.LevelUpStat);
         rewardStat = new Stat(characterStat.RewardStat);
         buffStat = new Stat();
+        
         level = new Level(characterStat.Level);
         level.owner = this;
     }
 
     protected void InitializeHealth()
     {
-        health.SetOwner(this);
-        health.MaxHealth = characterStat.BaseHealth.MaxHealth;
-        health.CurHealth = characterStat.BaseHealth.CurHealth;
+        health.Initialize(this, characterStat.BaseHealth);
+        onHealthChanged?.Invoke();
 
         isDead = (health.CurHealth <= 0);
     }
 
-    protected virtual void InitializeSkill()
+    public virtual void InitializeSkill()
     {
         DestroyActiveSkills();
         //activeSkills의 size만큼 CharacterStat의 skill을 앞에서부터 가져와서 세팅한다.
@@ -429,8 +440,18 @@ public class BaseCharacter : MonoBehaviour
     /// </summary>
     public virtual void SetDead()
     {
-        isDead = true;
+        health.TurnToResurrect = DataCloud.countForRessurection;
+        isSummoned = false;
         gameObject.SetActive(false);
+    }
+
+    public void Resurrect(bool isTool = false)
+    {
+        if (health.TurnToResurrect == 0 || isTool)
+        {
+            health.Resurrect();
+            isDead = false;
+        }
     }
 
     //캐릭터 완전 삭제
@@ -496,39 +517,6 @@ public class BaseCharacter : MonoBehaviour
             anim.SetSortLayer(rowOrder);
         }
     }
-
-    #endregion
-
-    #region Validation
-    // private void OnValidate()
-    // {
-    //     #region activeSkillCheckBox Size Check
-    //
-    //     //activeSkillCheckBox 크기랑 CharacterStat의 Skill개수랑 동일해야함
-    //     if (activeSkillCheckBox.Count != characterStat.Skills.Count)
-    //     {
-    //         Debug.Log(nameof(activeSkillCheckBox) + "랑" + nameof(characterStat.Skills) + "의 사이즈가 "
-    //                         + this.name.ToString() + "에서 동일하지 않습니다.");
-    //     }
-    //     #endregion activeSkillCheckBox Size Check
-    //
-    //     #region activeSkillCheckBox Count Check
-    //     //activeSkillCheckBox true로 된게 5개가 넘어가면 안됨
-    //     int activeSkillsCount = 0;
-    //     for(int i = 0; i < activeSkillCheckBox.Count; i++)
-    //     {
-    //         if (activeSkillCheckBox[i])
-    //         {
-    //             ++activeSkillsCount;
-    //         }
-    //     }
-    //     if (activeSkillsCount > 5)
-    //     {
-    //         Debug.Log(this.name.ToString() + "에서의 " + nameof(activeSkillCheckBox) +
-    //                 "에서 활성화된 스킬 개수가 5개가 넘습니다.");
-    //     }
-    //     # endregion activeSkillCheckBox Count Check
-    // }
 
     #endregion
 }
