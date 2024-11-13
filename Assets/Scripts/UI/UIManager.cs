@@ -23,6 +23,8 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     [HeaderTooltip("Battle Result", "전투 결과")]
     public LevelUpUI levelUpUI;
     
+    public RecruitUI recruitUI; 
+    
     private void Start()
     {
         BattleManager.GetInstance.OnFocusStart += DeactivateBuffPopUp;

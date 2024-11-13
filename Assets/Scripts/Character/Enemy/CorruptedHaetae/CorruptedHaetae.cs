@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -70,5 +71,22 @@ public class CorruptedHaetae : BaseEnemy
 
         if (debuffnum >= 2) return true;
         return false;
+    }
+
+    private void OnEnable()
+    {
+        // 이 몬스터가 죽으면 전투 종료시에 recruitUI를 띄우게 하고 싶음
+        BattleManager.GetInstance.OnBattleEnd += OnBattleEndHandler;
+    }
+
+    private void OnDestroy()
+    {
+        // 전투가 끝나면 다음 전투를 위해 이벤트 제거
+        BattleManager.GetInstance.OnBattleEnd -= OnBattleEndHandler;
+    }
+
+    private void OnBattleEndHandler(Action onComplete)
+    {
+        UIManager.GetInstance.recruitUI.Recruit(3, onComplete);
     }
 }

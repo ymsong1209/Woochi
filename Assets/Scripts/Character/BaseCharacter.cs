@@ -362,6 +362,7 @@ public class BaseCharacter : MonoBehaviour
         
         level = new Level(characterStat.Level);
         level.owner = this;
+        InitializeStatSO();
     }
 
     protected void InitializeHealth()
