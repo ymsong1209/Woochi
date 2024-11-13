@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" SchemaVersion="119">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Main_Title" ID="{DA9EB300-CB4D-40B1-8908-B005C2DC5B16}"/>
+				<Event Name="Map_Click" ID="{FB9DCDE8-7D6E-4137-B544-C6DBCEF08465}"/>
+				<Event Name="Map_Mouse" ID="{7E910020-9FD2-4AFD-8267-0D715008B757}"/>
+				<Event Name="Movement_Mouse" ID="{4C38972B-72C4-4D9D-A9AE-718BF4425D75}"/>
+				<Event Name="Skill_Mouse" ID="{B2B1655B-2A86-422D-937F-3D612FA93E31}"/>
+				<Event Name="Movement_Click" ID="{F6C44E59-D402-4D37-9D7D-0390E50F8D09}"/>
+				<Event Name="Title_Click" ID="{285DD759-BE62-458B-9D04-3C3FCEB5EE6A}"/>
+				<Event Name="Title_Mouse" ID="{9CD0FF9B-4474-423C-962F-D64926AA553E}"/>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>
