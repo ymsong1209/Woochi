@@ -29,7 +29,11 @@ public class RecruitUI : MonoBehaviour
     public void Recruit(int allyid, Action onComplete)
     {
         //allies에 allyid가 없을 경우 추가
-        if(DataCloud.playerData.battleData.allies.Contains(allyid)) return;
+        if (DataCloud.playerData.battleData.allies.Contains(allyid))
+        {
+            onComplete?.Invoke();
+            return;
+        }
         
         DataCloud.playerData.battleData.allies.Add(allyid);
         BattleManager.GetInstance.InitializeAlly();
