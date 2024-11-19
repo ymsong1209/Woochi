@@ -60,7 +60,7 @@ public class WoochiReward : Reward
                 stat.SetValue(type, statUpAmount);
             }
             
-            resultTxt += $"우치의 {type.GetDisplayName()}이(가) {statUpAmount} 증가했습니다";
+            resultTxt = $"우치의 {type.GetDisplayName()}이(가) {statUpAmount} 증가했습니다";
         }
         else if (allStatUp)
         {
@@ -83,7 +83,7 @@ public class WoochiReward : Reward
                 stat.SetValue(fixType, statUpAmount);
             }
             
-            resultTxt += $"우치의 {fixType.GetDisplayName()}이(가) {statUpAmount} 증가했습니다";
+            resultTxt = $"우치의 {fixType.GetDisplayName()}이(가) {statUpAmount} 증가했습니다";
         }
         woochi.rewardStat += stat;
     }

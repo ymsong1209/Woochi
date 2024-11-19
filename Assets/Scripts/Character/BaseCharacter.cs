@@ -442,6 +442,8 @@ public class BaseCharacter : MonoBehaviour
     {
         health.TurnToResurrect = DataCloud.countForRessurection;
         isSummoned = false;
+        isIdle = true;
+        anim.ResetAnim();
         gameObject.SetActive(false);
     }
 

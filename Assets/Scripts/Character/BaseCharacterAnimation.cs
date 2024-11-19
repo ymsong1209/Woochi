@@ -81,8 +81,13 @@ public class BaseCharacterAnimation : MonoBehaviour
     public void SetSortLayer(int _rowOrder)
     {
         body.sortingOrder = _rowOrder;
-    }    
+    }
 
+    public void ResetAnim()
+    {
+        body.color = Color.white;
+    }
+    
     void FocusIn()
     {
         body.gameObject.layer = LayerMask.NameToLayer("Focus");
