@@ -3,14 +3,94 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="Main_Title" ID="{DA9EB300-CB4D-40B1-8908-B005C2DC5B16}"/>
-				<Event Name="Map_Click" ID="{FB9DCDE8-7D6E-4137-B544-C6DBCEF08465}"/>
-				<Event Name="Map_Mouse" ID="{7E910020-9FD2-4AFD-8267-0D715008B757}"/>
-				<Event Name="Movement_Mouse" ID="{4C38972B-72C4-4D9D-A9AE-718BF4425D75}"/>
-				<Event Name="Skill_Mouse" ID="{B2B1655B-2A86-422D-937F-3D612FA93E31}"/>
-				<Event Name="Movement_Click" ID="{F6C44E59-D402-4D37-9D7D-0390E50F8D09}"/>
-				<Event Name="Title_Click" ID="{285DD759-BE62-458B-9D04-3C3FCEB5EE6A}"/>
-				<Event Name="Title_Mouse" ID="{9CD0FF9B-4474-423C-962F-D64926AA553E}"/>
+				<Event Name="Main_Title" ID="{DA9EB300-CB4D-40B1-8908-B005C2DC5B16}">
+					<ChildrenList>
+						<Action Name="" ID="{A4C49E3A-CF30-4A52-AACC-FB06670DDBDC}" ShortID="888501841">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Main_Title" ID="{A5394807-601F-4F4A-A931-78F677256041}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Map_Click" ID="{FB9DCDE8-7D6E-4137-B544-C6DBCEF08465}">
+					<ChildrenList>
+						<Action Name="" ID="{41042E2C-DB31-44B6-853B-CCFB047E9108}" ShortID="36456047">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Map_Click" ID="{A1C4C7D4-CB4A-4926-BB9D-166E11522E19}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Map_Mouse" ID="{7E910020-9FD2-4AFD-8267-0D715008B757}">
+					<ChildrenList>
+						<Action Name="" ID="{18EA3541-8BF9-488D-9D8D-A660A2635BF3}" ShortID="70948788">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Map_Mouse" ID="{A7CF92D6-6C59-4E86-B391-B64E9677EF85}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Movement_Mouse" ID="{4C38972B-72C4-4D9D-A9AE-718BF4425D75}">
+					<ChildrenList>
+						<Action Name="" ID="{BB7CC97C-7457-440C-A7EF-1728BAF156F7}" ShortID="79115437">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Movement_Mouse" ID="{38B3041F-9BFC-4193-B893-D611C6AF1C1A}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Skill_Mouse" ID="{B2B1655B-2A86-422D-937F-3D612FA93E31}">
+					<ChildrenList>
+						<Action Name="" ID="{DA02B728-78D4-493D-8726-BF2119FD46E9}" ShortID="827596619">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Skill_Mouse" ID="{C420F9DB-F915-4890-A201-81BFF0DDD26C}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Movement_Click" ID="{F6C44E59-D402-4D37-9D7D-0390E50F8D09}">
+					<ChildrenList>
+						<Action Name="" ID="{B55E6195-B96D-4DCA-8B2D-76C4C7E16DED}" ShortID="988715878">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Movement_Click" ID="{F9AA6251-B56F-4764-8AD2-97D5E941112D}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Title_Click" ID="{285DD759-BE62-458B-9D04-3C3FCEB5EE6A}">
+					<ChildrenList>
+						<Action Name="" ID="{B21B17F6-72FA-4820-9195-E4C07C795A15}" ShortID="991992800">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Title_Click" ID="{90C422BF-7EC0-4EB1-BC1F-2D0C3FFF39A3}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Title_Mouse" ID="{9CD0FF9B-4474-423C-962F-D64926AA553E}">
+					<ChildrenList>
+						<Action Name="" ID="{486192CA-FFF0-4BDB-A9D4-387786E95FC8}" ShortID="768843628">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Title_Mouse" ID="{5FC614E8-AF37-438D-AD18-6780B059368A}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

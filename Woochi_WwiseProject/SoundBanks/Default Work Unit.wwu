@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{EC3736DF-7CA9-4842-9D12-E64954F82175}" SchemaVersion="119">
 	<SoundBanks>
-		<WorkUnit Name="Default Work Unit" ID="{EC3736DF-7CA9-4842-9D12-E64954F82175}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{EC3736DF-7CA9-4842-9D12-E64954F82175}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Main" ID="{8CC95A92-3B55-4D1E-8E0A-7E1A1BA3C54A}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Main_Title" ID="{DA9EB300-CB4D-40B1-8908-B005C2DC5B16}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Map_Click" ID="{FB9DCDE8-7D6E-4137-B544-C6DBCEF08465}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Skill_Mouse" ID="{B2B1655B-2A86-422D-937F-3D612FA93E31}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Title_Mouse" ID="{9CD0FF9B-4474-423C-962F-D64926AA553E}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Title_Click" ID="{285DD759-BE62-458B-9D04-3C3FCEB5EE6A}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Map_Mouse" ID="{7E910020-9FD2-4AFD-8267-0D715008B757}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Movement_Click" ID="{F6C44E59-D402-4D37-9D7D-0390E50F8D09}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Movement_Mouse" ID="{4C38972B-72C4-4D9D-A9AE-718BF4425D75}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundBanks>
 </WwiseDocument>
