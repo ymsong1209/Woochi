@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Serialization;
 
 [DisallowMultipleComponent]
 public class GameManager : SingletonMonobehaviour<GameManager>
@@ -11,7 +12,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     [SerializeField] private Library library;
 
     [Header("Sound")]
-    public SoundBGM soundBGM;
+    public SoundManager soundManager;
 
     [Header("Debug")]
     [SerializeField] private bool useDebugCharms = false;

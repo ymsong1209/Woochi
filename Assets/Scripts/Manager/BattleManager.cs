@@ -81,7 +81,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
 
         allies.AllCharacter.ForEach(c => c.InitializeSkill());
-        GameManager.GetInstance.soundBGM.ToggleBattleMap(true);
 
         currentRound = 0;
         abnormal = GameManager.GetInstance.Library.GetAbnormal(abnormalID);
