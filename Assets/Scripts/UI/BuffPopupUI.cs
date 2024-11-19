@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.EventSystems;
 
 public class BuffPopupUI : MonoBehaviour
 {
@@ -25,8 +21,7 @@ public class BuffPopupUI : MonoBehaviour
     {
         gameObject.SetActive(true);
         UpdatePanelSize();
-        PanelRt.anchoredPosition = ConvertScreenToCanvasPosition(mouseposition); // 팝업 위치를 마우스 위치로 설정
-        //PanelRt.localPosition = ConvertScreenToCanvasPosition(mouseposition); // 팝업 위치를 마우스 위치로 설정
+        PanelRt.anchoredPosition = ClampToScreen(ConvertScreenToCanvasPosition(mouseposition)); // 팝업 위치를 마우스 위치로 설정
     }
 
     public void Deactivate()
@@ -38,10 +33,6 @@ public class BuffPopupUI : MonoBehaviour
     
     private Vector3 ConvertScreenToCanvasPosition(Vector3 screenPosition)
     {
-        // RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasRt, Input.mousePosition, mainCanvas.worldCamera,
-        //     out Vector2 localPoint);
-        // return new Vector3(localPoint.x, localPoint.y, 0);
-        
         if (mainCanvas.renderMode == RenderMode.ScreenSpaceOverlay)
         {
             // Screen Space - Overlay 모드
@@ -77,8 +68,24 @@ public class BuffPopupUI : MonoBehaviour
 
         // 패널 크기를 여백을 포함하여 조정
         PanelRt.sizeDelta = new Vector2(totalWidth, totalHeight); // 추가 여백 포함
-        
-       // PanelRt.sizeDelta = new Vector2(textSize.x + 20, textSize.y + 20); // 여백 추가
+    }
+    
+    private Vector3 ClampToScreen(Vector3 position)
+    {
+        // 캔버스 크기를 기준으로 제한
+        float halfWidth = PanelRt.sizeDelta.x / 2f;
+        float halfHeight = PanelRt.sizeDelta.y / 2f;
+
+        float minX = -CanvasRt.sizeDelta.x / 2f + halfWidth;
+        float maxX = CanvasRt.sizeDelta.x / 2f - halfWidth;
+        float minY = -CanvasRt.sizeDelta.y / 2f + halfHeight;
+        float maxY = CanvasRt.sizeDelta.y / 2f - halfHeight;
+
+        // 제한된 위치 반환
+        position.x = Mathf.Clamp(position.x, minX, maxX);
+        position.y = Mathf.Clamp(position.y, minY, maxY);
+
+        return position;
     }
     
     public TextMeshProUGUI PopUpText => popupText;

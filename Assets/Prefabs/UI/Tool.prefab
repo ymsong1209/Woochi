@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 1475307117001514101}
   - component: {fileID: 3137699059947640487}
   - component: {fileID: 4819737934205621813}
-  - component: {fileID: 2644049042312732219}
+  - component: {fileID: 410661471161694072}
   m_Layer: 5
   m_Name: Tool
   m_TagString: Untagged
@@ -341,13 +341,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525c004e8a4817d4eb6e2b292927cc35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reward: {fileID: 0}
   image: {fileID: 40242782909567205}
   btn: {fileID: 217625320826455127}
+  reward: {fileID: 0}
   priceTxt: {fileID: 4134627577109870694}
   priceMultiplier: 1
   basePrice: 100
---- !u!114 &2644049042312732219
+--- !u!114 &410661471161694072
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -356,6 +356,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5774966510398239480}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7ae917a7d858c940a919766a4b8e36d, type: 3}
+  m_Script: {fileID: 11500000, guid: 565da76fc3606864aa71c3ffeff32531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

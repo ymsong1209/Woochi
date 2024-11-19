@@ -295,6 +295,7 @@ GameObject:
   - component: {fileID: 1800274598900129685}
   - component: {fileID: 8712797058851190676}
   - component: {fileID: 97583875720212396}
+  - component: {fileID: 5440933862857581388}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -345,10 +346,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227e074a6d7b448419cf4f1a0bbc8e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  front: {fileID: 7921714652178455769}
+  front: {fileID: 3701196851075513288}
   back: {fileID: 2093931566170168335}
   portrait: {fileID: 919301731814334062}
   healthTxt: {fileID: 263482697464545248}
+--- !u!114 &5440933862857581388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6347718317516234810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 565da76fc3606864aa71c3ffeff32531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7921714652178455769
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,16 +481,4 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1943526169350117772}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AllyCardList, Assembly-CSharp
-        m_MethodName: SelectCard
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 97583875720212396}
-          m_ObjectArgumentAssemblyTypeName: AllyCard, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []

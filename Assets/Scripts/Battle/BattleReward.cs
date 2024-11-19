@@ -6,17 +6,13 @@ using TMPro;
 
 public class BattleReward : MonoBehaviour
 {
-    [SerializeField] private GameObject rewardPanel;
-    [SerializeField] private Button nextBtn;
-    [SerializeField] private TextMeshProUGUI goldTxt;
-
     [Header("Tool")]
     [SerializeField] private List<RewardUI> toolList;
 
     [Header("Reward")]
     [SerializeField, ReadOnly(true)] private RandomList<RareType> rarityList;
-    private HashSet<Reward> rewardSet = new HashSet<Reward>();
     [SerializeField] private List<RewardUI> rewardsList;
+    private HashSet<Reward> rewardSet = new HashSet<Reward>();
 
     [Header("Reroll")]
     [SerializeField] private Button rerollBtn;
@@ -31,6 +27,9 @@ public class BattleReward : MonoBehaviour
     [SerializeField] private BattleResultUI resultUI;
 
     [Header("Object")]
+    [SerializeField] private GameObject rewardPanel;
+    [SerializeField] private Button nextBtn;
+    [SerializeField] private TextMeshProUGUI goldTxt;
     [SerializeField] private RewardPopup rewardPopup;
 
     private int grade = 0;      // 역경 단계
@@ -45,16 +44,12 @@ public class BattleReward : MonoBehaviour
 
         for(int i = 0; i < toolList.Count; i++)
         {
-            toolList[i].OnShowTooltip += ShowTooltip;
-            toolList[i].OnShowPopup += ShowPopup;
-            toolList[i].OnHideTooltip += HideTooltip;
+            toolList[i].OnUIEvent += ProcessUIEvent;
         }
 
         for(int i = 0; i < rewardsList.Count; i++)
         {
-            rewardsList[i].OnShowTooltip += ShowTooltip;
-            rewardsList[i].OnShowPopup += ShowPopup;
-            rewardsList[i].OnHideTooltip += HideTooltip;
+            rewardsList[i].OnUIEvent += ProcessUIEvent;
         }
         #endregion
         rewardPanel.SetActive(false);
@@ -190,19 +185,20 @@ public class BattleReward : MonoBehaviour
         rerollPrice = newPrice;
         rerollPriceTxt.text = rerollPrice.ToString();
     }
-
-    private void ShowTooltip(RewardUI rewardUI)
+    
+    private void ProcessUIEvent(RewardUI rewardUI, UIEvent uiEvent)
     {
-        rewardPopup.ShowTooltip(rewardUI);
-    }
-
-    private void HideTooltip()
-    {
-        rewardPopup.HideInfo();
-    }
-
-    protected void ShowPopup(string text)
-    {
-        rewardPopup.ShowResult(text);
+        switch(uiEvent)
+        {
+            case UIEvent.MouseEnter:
+                rewardPopup.ShowTooltip(rewardUI);
+                break;
+            case UIEvent.MouseExit:
+                rewardPopup.HideInfo();
+                break;
+            case UIEvent.MouseClick:
+                rewardPopup.ShowResult(rewardUI.GetPopupText());
+                break;
+        }
     }
 }

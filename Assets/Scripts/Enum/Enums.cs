@@ -199,3 +199,11 @@ public enum StrangeType
     UnLucky,
     END
 }
+
+public enum UIEvent
+{
+    MouseEnter,
+    MouseExit,
+    MouseClick,
+    END
+}

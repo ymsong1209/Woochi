@@ -51,6 +51,5 @@ public class Maintenance : MonoBehaviour
         GameManager.GetInstance.SaveData();
 
         MapManager.GetInstance.CompleteNode();
-        GameManager.GetInstance.soundBGM.ToggleBattleMap(false);
     }
 }

@@ -25,25 +25,26 @@ public class ToolUI : RewardUI
 
     protected override void Receive()
     {
-        // ±¸¸ÅÇÒ ¼ö ÀÖ´ÂÁö È®ÀÎ ÈÄ º¸»ó ¼ö·É
+        // êµ¬ë§¤í•  ìˆ˜ ìˆëŠ”ì§€ í™•ì¸ í›„ ë³´ìƒ ìˆ˜ë ¹
         if (HelperUtilities.Buy(price))
         {
             if(reward.ApplyReward())
             {
                 SetPrice(Mathf.RoundToInt(price * priceMultiplier));
-                ShowPopup(reward.GetResult());
+                popupText = reward.GetResult();
             }
             else
             {
                 HelperUtilities.AddGold(price);
-                ShowPopup(reward.GetError());
+                popupText = reward.GetError();
             }
         }
         else
         {
-            string text = "Èå¸§ÀÌ ºÎÁ·ÇÕ´Ï´Ù";
-            ShowPopup(text);
+            popupText = "íë¦„ì´ ë¶€ì¡±í•©ë‹ˆë‹¤";
         }
+        
+        OnUIEvent?.Invoke(this, UIEvent.MouseClick);
     }
 
     protected void SetPrice(int newPrice)

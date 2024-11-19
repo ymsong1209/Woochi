@@ -10,7 +10,6 @@ public class CharmIcon : MonoBehaviour, ITooltipiable
     public  Image       selected;
     public  Image       icon;
     public  Button      btn;
-    public  Transform   tooltipPos;     // 툴팁 위치를 지정하기 위해
 
     protected BaseCharm charm;
 
