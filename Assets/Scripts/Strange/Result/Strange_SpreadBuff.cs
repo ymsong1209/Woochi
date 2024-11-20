@@ -9,6 +9,8 @@ public class Strange_SpreadBuff : StrangeResult
 
     public override void ApplyEffect()
     {
+        base.ApplyEffect();
+        
         MainCharacter mainCharacter = BattleManager.GetInstance.Allies.GetWoochi();
         if(mainCharacter)
         {

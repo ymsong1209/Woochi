@@ -98,10 +98,5 @@ public class StrangeManager : SingletonMonobehaviour<StrangeManager>
         if (isBattleStrange) return;
 
         MapManager.GetInstance.CompleteNode();
-        MapManager.GetInstance.SaveMap();
     }
-
-    #region Getter Setter
-
-    #endregion Getter Setter
 }

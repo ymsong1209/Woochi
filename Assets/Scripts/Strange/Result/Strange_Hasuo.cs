@@ -8,6 +8,8 @@ public class Strange_Hasuo : StrangeResult
 
     public override void ApplyEffect()
     {
+        base.ApplyEffect();
+        
         MainCharacter mainCharacter = BattleManager.GetInstance.Allies.GetWoochi();
 
         if(mainCharacter)

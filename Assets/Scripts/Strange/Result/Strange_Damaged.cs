@@ -9,6 +9,8 @@ public class Strange_Damaged : StrangeResult
     
     public override void ApplyEffect()
     {
+        base.ApplyEffect();
+        
         if (onlyWoochi)
         {
             MainCharacter woochi = BattleManager.GetInstance.Allies.GetWoochi();

@@ -7,6 +7,8 @@ public class Strange_RepelGhost : StrangeResult
     
     public override void ApplyEffect()
     {
+        base.ApplyEffect();
+        
         MainCharacter woochi = BattleManager.GetInstance.Allies.GetWoochi();
         
         woochi.UpdateSorceryPoints(percent, false);
