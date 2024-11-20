@@ -69,9 +69,9 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     
     #region BuffPopupUI
     public BuffPopupUI BuffPopupUI => buffPopupUI;
-    public void ActivateBuffPopUp(Vector3 Mouseposition)
+    public void ActivateBuffPopUp(BuffIcon icon)
     {
-        buffPopupUI.Activate(Mouseposition);
+        buffPopupUI.Activate(icon);
     }
     
     public void DeactivateBuffPopUp()

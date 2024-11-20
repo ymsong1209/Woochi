@@ -20,7 +20,7 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         BattleManager.GetInstance.OnFocusStart += () => SetCanInteract(false);
         BattleManager.GetInstance.OnSkillExecuteFinished += () => SetCanInteract(true);
     }
-
+    
     private void SetCanInteract(bool value)
     {
         canInteract = value;
@@ -43,7 +43,7 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         if (!canInteract) return;
         TextMeshProUGUI text = UIManager.GetInstance.BuffPopupUI.PopUpText;
         SetBuffDescription(text);
-        UIManager.GetInstance.ActivateBuffPopUp(Input.mousePosition);
+        UIManager.GetInstance.ActivateBuffPopUp(this);
     }
 
     public void OnPointerExit(PointerEventData eventData)
