@@ -50,7 +50,7 @@ public class WoochiSkillSelectionUI : MonoBehaviour
         UIManager.GetInstance.sorceryGuageUI.SetUI();
         
         //우치 위치에 따른 스킬 체크
-        mainCharacter.CheckSkillsOnTurnStart();
+        // mainCharacter.CheckSkillsOnTurnStart();
         //모든 스킬 비활성화
         DisableSkills();
 
@@ -103,41 +103,9 @@ public class WoochiSkillSelectionUI : MonoBehaviour
         MainCharacter mainCharacter = skill.SkillOwner as MainCharacter;
         MainCharacterSkill mainCharacterSkill = skill as MainCharacterSkill;
         if(mainCharacter == null || mainCharacterSkill == null) return false;
-        if (!IsSkillAbleForFormation(mainCharacterSkill))   return false;
-        if (!IsSkillReceiverAble(mainCharacterSkill))   return false;
-        if(mainCharacter.SorceryPoints < mainCharacterSkill.RequiredSorceryPoints) return false;
-        return true;
-    }
-    
-    /// <summary>
-    /// 현재 스킬의 owner가 스킬을 시전할 수 있는 열에 있는지 확인
-    /// </summary>
-    bool IsSkillAbleForFormation(BaseSkill _skill)
-    {
-        bool isSkillSetAble;
-
-        int skillOwnerIndex = BattleManager.GetInstance.GetCharacterIndex(_skill.SkillOwner);
-        isSkillSetAble = _skill.IsSkillAvailable(skillOwnerIndex);
-        return isSkillSetAble;
-    }
-
-    /// <summary>
-    /// 스킬의 적용 대상이 존재하는지 확인
-    /// </summary>
-    bool IsSkillReceiverAble(BaseSkill _skill)
-    {
-        for(int i = 0; i < _skill.SkillRadius.Length; ++i)
-        {
-            //SingleWithoutSelf일 경우 자신을 제외한 대상이 존재하는지 확인
-            if(_skill.SkillTargetType == SkillTargetType.SingularWithoutSelf && 
-               i == BattleManager.GetInstance.GetCharacterIndex(_skill.SkillOwner))
-                continue;
-            
-            if (_skill.SkillRadius[i] && BattleManager.GetInstance.IsCharacterThere(i))
-                return true;
-        }
-
-        return false;
+        
+        return mainCharacter.IsSkillAvailable(mainCharacterSkill) &&
+               mainCharacter.SorceryPoints >= mainCharacterSkill.RequiredSorceryPoints;
     }
     
     private void DisableSkills()

@@ -70,6 +70,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         allies.Initialize(allyList);
         allyCards.Initialize(allies);
+        
     }
 
     public void InitializeBattle(int[] enemyIDs, int abnormalID = 100, bool isElite = false)
@@ -93,6 +94,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         InitializeAbnormal();
         result.isElite = isElite;
+        
+        ShowCharacterUI?.Invoke(allies.GetWoochi(), false);
 
         #region PreRound 상태로 넘어감
         StopAllCoroutines();
@@ -185,6 +188,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
     IEnumerator HandleCharacterTurns()
     {
+        WaitForSeconds delay = new WaitForSeconds(1.5f);
+        
         while (turnManager.IsContinueTurn())
         {
             #region 이전 턴에 쓰인 변수 초기화
@@ -201,18 +206,16 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             // 자신의 차례가 됐을 때 버프 적용후, 살아있으면 턴 시작
             if (currentCharacter.TriggerBuff(BuffTiming.TurnStart))
             {
-                // 현재 턴의 캐릭터에 맞는 UI 업데이트
-                if(currentCharacter.IsAlly)
-                    ShowCharacterUI?.Invoke(currentCharacter, true);
+                ShowCharacterUI?.Invoke(currentCharacter, true);
                 
                 //적군의 경우 AI 작동
                 if (!currentCharacter.IsAlly)
                 {
-                    yield return new WaitForSeconds(1.5f);
+                    yield return delay;
                     EnemyAction(currentCharacter);
                 }
                 
-                while (true)
+                while (currentCharacter.CheckUsableSkill())
                 {
                     // 스킬이 선택되고 실행될 때까지 대기
                     while (!isSkillSelected || !isSkillExecuted)
@@ -235,7 +238,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                         }
                         else
                         {
-                            yield return new WaitForSeconds(1.5f);
+                            yield return delay;
                             EnemyAction(currentCharacter);
                         }
                     }
@@ -251,7 +254,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 allies.CheckDeathInFormation();
                 enemies.CheckDeathInFormation();
                 // 중간에 있는 애가 버프로 죽으면 바로 포메이션이 정렬돼서 여유를 둠
-                yield return new WaitForSeconds(1f);
+                yield return delay;
             }
 
             turnManager.EndTurn(currentCharacter);
@@ -445,7 +448,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         UIManager.GetInstance.DeactivePopup();
 
-        Debug.Log(currentSelectedSkill.Name + " is executed by " + caster.name + " on " + receiver.name);
         DisableColliderArrow();
 
         currentSelectedSkill.ActivateSkill(receiver);
@@ -495,7 +497,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         BaseEnemy enemy = enemycharacter as BaseEnemy;
         enemy.TriggerAI();
-        Debug.Log(enemy.name + "가 행동합니다");
     }
 
     #endregion

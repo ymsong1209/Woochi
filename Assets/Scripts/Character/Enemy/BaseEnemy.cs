@@ -10,4 +10,6 @@ public class BaseEnemy : BaseCharacter
     public virtual void TriggerAI()
     {
     }
+
+    public override bool CheckUsableSkill() => true;
 }

@@ -52,7 +52,7 @@ public class SkillSelectionUI : MonoBehaviour
         selectedIcon?.SetMark(false);
         
         if (character.IsAlly)
-        {
+        { 
             character.CheckSkillsOnTurnStart();
             SetIcon(character, isTurn);
         }
@@ -75,51 +75,11 @@ public class SkillSelectionUI : MonoBehaviour
             { 
                 BaseSkill skill = character.activeSkills[i];
                 // 스킬 아이콘에 스킬 정보 할당
-                skillIcons[i].SetSkill(skill, (isTurn && IsSkillSetAvailable(skill)));
+                skillIcons[i].SetSkill(skill, (isTurn && character.IsSkillAvailable(skill)));
             }
         }
     }
     
-    /// <summary>
-    /// 스킬 슬롯에 스킬 버튼이 활성화가 되는지 확인
-    /// </summary>
-    bool IsSkillSetAvailable(BaseSkill _skill)
-    {
-        if (IsSkillAbleForFormation(_skill) == false)   return false;
-        if (IsSkillReceiverAble(_skill) == false)   return false;
-        return true;
-    }
-    /// <summary>
-    /// 현재 스킬의 owner가 스킬을 시전할 수 있는 열에 있는지 확인
-    /// </summary>
-    bool IsSkillAbleForFormation(BaseSkill _skill)
-    {
-        bool isSkillSetAble;
-
-        int skillOwnerIndex = BattleManager.GetInstance.GetCharacterIndex(_skill.SkillOwner);
-        isSkillSetAble = _skill.IsSkillAvailable(skillOwnerIndex);
-        return isSkillSetAble;
-    }
-
-    /// <summary>
-    /// 스킬의 적용 대상이 존재하는지 확인
-    /// </summary>
-    bool IsSkillReceiverAble(BaseSkill _skill)
-    {
-        for(int i = 0; i < _skill.SkillRadius.Length; ++i)
-        {
-            //SingleWithoutSelf일 경우 자신을 제외한 대상이 존재하는지 확인
-            if(_skill.SkillTargetType == SkillTargetType.SingularWithoutSelf && 
-               i == BattleManager.GetInstance.GetCharacterIndex(_skill.SkillOwner))
-                continue;
-            
-            if (_skill.SkillRadius[i] && BattleManager.GetInstance.IsCharacterThere(i))
-                return true;
-        }
-
-        return false;
-    }
-
     // 스킬 선택 버튼이 클릭됐을 때 호출될 메서드
     public void SkillButtonClicked(SkillIcon _skillIcon)
     {
