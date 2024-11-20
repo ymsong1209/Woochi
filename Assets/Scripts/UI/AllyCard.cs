@@ -36,6 +36,7 @@ public class AllyCard : MonoBehaviour, ITooltipiable
         else if(isDead && currentHP > 0)
         {
             SetActivate(true);
+            healthTxt.color = Color.white;
             isDead = false;
         }
 
@@ -73,7 +74,7 @@ public class AllyCard : MonoBehaviour, ITooltipiable
 
     private void Dead()
     {
-        SetActivate(false);
+        healthTxt.color = Color.gray;
         isDead = true;
     }
 
