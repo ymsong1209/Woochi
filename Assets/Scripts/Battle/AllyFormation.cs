@@ -14,8 +14,13 @@ public class AllyFormation : Formation
         {
             formation[i] = null;
         }
-
+        
+        allCharacter.Clear();
         totalSize = 0;
+        foreach(Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
 
         // 플레이어가 소유한 소환수를 일단 모두 생성(우치 포함)
         foreach (GameObject prefab in prefabs)
