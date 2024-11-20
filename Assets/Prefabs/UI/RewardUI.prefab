@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2483449516885575722}
   - component: {fileID: 7505038127435045135}
   - component: {fileID: 909418617762191395}
-  - component: {fileID: 8891875513578659794}
+  - component: {fileID: 8769988576974720352}
   m_Layer: 5
   m_Name: RewardUI
   m_TagString: Untagged
@@ -60,9 +60,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741524cf68357c04bbdbb0a078c51f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reward: {fileID: 0}
   image: {fileID: 7505038127435045135}
   btn: {fileID: 909418617762191395}
+  reward: {fileID: 0}
 --- !u!114 &7505038127435045135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,11 +133,11 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 7505038127435045135}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8891875513578659794
+--- !u!114 &8769988576974720352
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,6 +146,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5952466832917199966}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7ae917a7d858c940a919766a4b8e36d, type: 3}
+  m_Script: {fileID: 11500000, guid: 565da76fc3606864aa71c3ffeff32531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

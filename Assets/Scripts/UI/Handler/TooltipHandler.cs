@@ -1,28 +1,22 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UIInputHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class TooltipHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private ITooltipiable tooltipable;
 
-    void Awake()
+    private void Awake()
     {
         tooltipable = GetComponent<ITooltipiable>();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (tooltipable != null)
-        { 
-            tooltipable.ShowTooltip();
-        }
+        tooltipable?.ShowTooltip();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (tooltipable != null)
-        {
-            tooltipable.HideTooltip();
-        }
+        tooltipable?.HideTooltip();
     }
 }

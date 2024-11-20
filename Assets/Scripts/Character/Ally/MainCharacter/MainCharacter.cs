@@ -48,6 +48,11 @@ public class MainCharacter : BaseCharacter
         }
     }
 
+    public override bool CheckUsableSkill()
+    {
+        return true;
+    }
+    
     public override void SaveStat()
     {
         base.SaveStat();

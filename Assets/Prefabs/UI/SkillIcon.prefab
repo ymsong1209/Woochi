@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 8977273633421105788}
   - component: {fileID: 5964019674214868232}
   - component: {fileID: 7813606811748994218}
-  - component: {fileID: 6926531994679811610}
+  - component: {fileID: 3257900631174704782}
   m_Layer: 5
   m_Name: SkillIcon
   m_TagString: Untagged
@@ -334,7 +334,7 @@ MonoBehaviour:
   selected: {fileID: 8722389439561608924}
   icon: {fileID: 1117084979412815166}
   btn: {fileID: 5772209459664597655}
---- !u!114 &6926531994679811610
+--- !u!114 &3257900631174704782
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -343,6 +343,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7754435962377294401}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7ae917a7d858c940a919766a4b8e36d, type: 3}
+  m_Script: {fileID: 11500000, guid: 565da76fc3606864aa71c3ffeff32531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

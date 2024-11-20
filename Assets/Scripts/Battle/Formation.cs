@@ -86,7 +86,7 @@ public class Formation : MonoBehaviour
 
             return character1.RowOrder.CompareTo(character2.RowOrder);
         });
-
+        
         SetRowOrder();
         Positioning();
     }
@@ -168,7 +168,8 @@ public class Formation : MonoBehaviour
         for(int i = 0; i < formation.Length;)
         {
             if (formation[i] == null) break;
-
+            
+            formation[i].CheckSkillsOnTurnStart();
             formation[i].RowOrder = i;
             i += formation[i].Size;
         }

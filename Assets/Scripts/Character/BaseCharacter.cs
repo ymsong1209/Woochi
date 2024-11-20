@@ -12,8 +12,8 @@ public class BaseCharacter : MonoBehaviour
     [HideInInspector] public BaseCharacterHUD HUD;
     [HideInInspector] public BaseCharacterAnimation anim;
     [HideInInspector] public BaseCharacterCollider collider;
-    
-    [SerializeField]  protected CharacterStatSO characterStat;
+
+    [SerializeField] protected CharacterStatSO characterStat;
     private BuffList buffList;
 
     #region Header CHARACTER STATS
@@ -22,55 +22,68 @@ public class BaseCharacter : MonoBehaviour
     [Header("Character Stats")]
 
     #endregion Header CHARACTER STATS
+
     #region Character Stats
-    [SerializeField]    private Health health = new Health();
+
+    [SerializeField]
+    private Health health = new Health();
+
     public Stat baseStat;
     public Stat levelUpStat;
     public Stat rewardStat;
     public Stat buffStat;
-    public Level   level;
+    public Level level;
+
     #endregion
-   
+
     [SerializeField] bool isMainCharacter = false;
-    
+
     #region Header BATTLE STATS
 
     [Space(10)]
     [Header("Battle Stats")]
 
     #endregion Header BATTLE STATS
+
     #region BATTLE STATS
-    [SerializeField, ReadOnly] private bool      isDead;
+
+    [SerializeField, ReadOnly]
+    private bool isDead;
+
     /// <summary>
     /// 나에게 적용된 버프
     /// </summary>
-    public   List<BaseBuff>   activeBuffs = new List<BaseBuff>();
-    public   List<BaseSkill>  activeSkills = new List<BaseSkill>();
-   
+    public List<BaseBuff> activeBuffs = new List<BaseBuff>();
+
+    public List<BaseSkill> activeSkills = new List<BaseSkill>();
+
     /// <summary>
     /// chatacterStat에 있는 skillSO중 어떤걸 BaseSkill로 넣을 건지 정하는 bool
     /// 크기는 characterStat 내부의 skills의 길이랑 동일해야함.
     /// </summary>
-    [SerializeField] protected  List<bool> activeSkillCheckBox = new List<bool>();
+    [SerializeField] protected List<bool> activeSkillCheckBox = new List<bool>();
 
-    [SerializeField,ReadOnly] protected bool isAlly;
+    [SerializeField, ReadOnly] protected bool isAlly;
     protected bool isTurnUsed = false; //한 라운드 내에서 자신의 턴을 사용했을 경우
     protected bool isIdle = true;
 
-    public bool isDummy = false;      // 우치 소환전용 더미 캐릭터인지
-    [HideInInspector] public bool isSummoned = false;     // 캐릭터가 소환되었는지
+    public bool isDummy = false; // 우치 소환전용 더미 캐릭터인지
+    [HideInInspector] public bool isSummoned = false; // 캐릭터가 소환되었는지
 
     // 캐릭터가 앞 열에서부터 몇 번째 순서인지
     [SerializeField, ReadOnly] private int rowOrder;
 
-    private bool isSelected = false;     // 배틀 중 스킬 대상으로 선택된 캐릭터인지
+    private bool isSelected = false; // 배틀 중 스킬 대상으로 선택된 캐릭터인지
+
     #endregion BATTLE STATS
 
     #region Event
+
     public Action onHealthChanged;
     public Action<AnimationType> onPlayAnimation;
     public Action<AttackResult, int, bool> onAttacked;
     public Action onLevelUp;
+
     #endregion
 
     private void Awake()
@@ -84,7 +97,7 @@ public class BaseCharacter : MonoBehaviour
     }
 
     public virtual void CheckSkillsOnTurnStart()
-    { 
+    {
     }
 
     /// <summary>
@@ -120,12 +133,61 @@ public class BaseCharacter : MonoBehaviour
 
     public void OnMove()
     {
-        if(isDead)
+        if (isDead)
         {
             health.TurnToResurrect = Mathf.Clamp(health.TurnToResurrect - 1, 0, DataCloud.countForRessurection);
         }
     }
 
+    #region Skill Check
+
+    public virtual bool CheckUsableSkill()
+    {
+        for (int i = 0; i < activeSkills.Count; i++)
+        {
+            BaseSkill skill = activeSkills[i];
+            if (IsSkillAvailable(skill))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public bool IsSkillAvailable(BaseSkill skill)
+    {
+        return (IsSkillAbleForFormation(skill) && IsSkillReceiverAble(skill));
+    }
+    
+    /// <summary>
+    /// 현재 스킬의 owner가 스킬을 시전할 수 있는 열에 있는지 확인
+    /// </summary>
+    bool IsSkillAbleForFormation(BaseSkill skill)
+    {
+        int index = BattleManager.GetInstance.GetCharacterIndex(this);
+        return skill.IsSkillAvailable(index);;
+    }
+
+    /// <summary>
+    /// 스킬의 적용 대상이 존재하는지 확인
+    /// </summary>
+    bool IsSkillReceiverAble(BaseSkill skill)
+    {
+        for(int i = 0; i < skill.SkillRadius.Length; ++i)
+        {
+            //SingleWithoutSelf일 경우 자신을 제외한 대상이 존재하는지 확인
+            if(skill.SkillTargetType == SkillTargetType.SingularWithoutSelf && 
+               i == BattleManager.GetInstance.GetCharacterIndex(this))
+                continue;
+            
+            if (skill.SkillRadius[i] && BattleManager.GetInstance.IsCharacterThere(i))
+                return true;
+        }
+
+        return false;
+    }
+    #endregion
     #region 버프 처리
     /// <summary>
     /// 버프 적용 시점에 따라 적절한 버프 처리 함수 호출
@@ -442,6 +504,8 @@ public class BaseCharacter : MonoBehaviour
     {
         health.TurnToResurrect = DataCloud.countForRessurection;
         isSummoned = false;
+        isIdle = true;
+        anim.ResetAnim();
         gameObject.SetActive(false);
     }
 

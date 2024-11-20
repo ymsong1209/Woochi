@@ -1,18 +1,18 @@
 using System;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RewardUI : MonoBehaviour, ITooltipiable, IPopupable
+public class RewardUI : MonoBehaviour, ITooltipiable
 {
-    public Action<RewardUI> OnShowTooltip;
-    public Action OnHideTooltip;
-    public Action<string> OnShowPopup;
+    public Action<RewardUI, UIEvent> OnUIEvent;
 
     [SerializeField] protected Image image;
     [SerializeField] protected Button btn;
 
     [Header("Reward")]
     [SerializeField] protected Reward reward;
+    protected string popupText;
 
     private void Start()
     {
@@ -29,7 +29,7 @@ public class RewardUI : MonoBehaviour, ITooltipiable, IPopupable
     }
 
     /// <summary>
-    /// º¸»óÀ» ¼±ÅÃ °¡´ÉÇÏ°Ô ¸¸µé°Å³ª ºÒ°¡´ÉÇÏ°Ô ÇÏ°Å³ª
+    /// ë³´ìƒì„ ì„ íƒ ê°€ëŠ¥í•˜ê²Œ ë§Œë“¤ê±°ë‚˜ ë¶ˆê°€ëŠ¥í•˜ê²Œ í•˜ê±°ë‚˜
     /// </summary>
     public void SetInteractable(bool active)
     {
@@ -41,28 +41,26 @@ public class RewardUI : MonoBehaviour, ITooltipiable, IPopupable
         if (reward.ApplyReward())
         {
             EventManager.GetInstance.onSelectReward?.Invoke(false);
-            ShowPopup(reward.GetResult());
+            popupText = reward.GetResult();
         }
         else
         {
-            ShowPopup(reward.GetError());
+            popupText = reward.GetError();
         }
+        
+        OnUIEvent?.Invoke(this, UIEvent.MouseClick);
     }
 
     public void ShowTooltip()
     {
-        OnShowTooltip.Invoke(this);
+        OnUIEvent?.Invoke(this, UIEvent.MouseEnter);
     }
 
     public void HideTooltip()
     {
-        OnHideTooltip.Invoke();
+        OnUIEvent?.Invoke(this, UIEvent.MouseExit);
     }
 
     public Reward GetReward() => reward;
-
-    public void ShowPopup(string text)
-    {
-        OnShowPopup.Invoke(text);
-    }
+    public string GetPopupText() => popupText;
 }

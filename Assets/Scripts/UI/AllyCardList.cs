@@ -4,20 +4,35 @@ using UnityEngine;
 public class AllyCardList : MonoBehaviour
 {
     [SerializeField] List<AllyCard> cards;
-
+    [SerializeField] AllyCardUI allyCardUI;
+    
     [HideInInspector] public bool canSummon = false;
-
+    
     private void Start()
     {
         BattleManager.GetInstance.ShowCharacterUI += ShowUI;
+
+        #region Event Register
+        for(int i = 0; i < cards.Count; i++)
+        {
+            cards[i].OnUIEvent += ProcessUIEvent;
+        }
+        
+        allyCardUI.OnSummon += SummonCard;
+        #endregion
+    }
+
+    private void OnDisable()
+    {
+        allyCardUI.HideTooltip();
     }
 
     /// <summary>
     /// 소환수 목록을 받아 소환수 카드를 초기화
     /// </summary>
-    public void Initialize(AllyFormation _allies)
+    public void Initialize(AllyFormation allies)
     {
-        List<BaseCharacter> characters = _allies.GetAllies();
+        List<BaseCharacter> characters = allies.GetAllies();
 
         for(int i = 0; i < cards.Count; i++)
         {
@@ -28,29 +43,55 @@ public class AllyCardList : MonoBehaviour
         }
     }
     
-    public void ShowUI(BaseCharacter _character, bool isEnable = true)
+    public void ShowUI(BaseCharacter character, bool isEnable = true)
     {
-        if (_character.IsMainCharacter) gameObject.SetActive(false);
+        if (character.IsMainCharacter) gameObject.SetActive(false);
         else gameObject.SetActive(true);
     }
 
-    public void SelectCard(AllyCard _card)
+    public void SelectCard(AllyCard card)
     {
         if(!canSummon) return;
-
+        
+        allyCardUI.ShowPopup(card);
+    }
+    
+    public void SummonCard(AllyCard card)
+    {
+        if(card == null) return;
+        
         MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
         MC_Summon summon = mainCharacter.SummonSkill;
         BattleManager.GetInstance.SkillSelected(summon);
 
-        if (_card.Ally.isSummoned)
+        if (card.Ally.isSummoned)
         {
             summon.isSummon = false;
-            BattleManager.GetInstance.UnSummon(_card.Ally);
+            BattleManager.GetInstance.UnSummon(card.Ally);
         }
         else
         {
             summon.isSummon = true;
-            summon.willSummon = _card.Ally;
+            summon.willSummon = card.Ally;
+        }
+    }
+    private void ProcessUIEvent(AllyCard allyCard, UIEvent uiEvent)
+    {
+        if (allyCard.Ally == null) return;
+        
+        switch (uiEvent)
+        {
+            case UIEvent.MouseEnter:
+                allyCard.ShowAnimation(true);
+                allyCardUI.ShowTooltip(allyCard);
+                break;
+            case UIEvent.MouseExit:
+                allyCard.ShowAnimation(false);
+                allyCardUI.HideTooltip();
+                break;
+            case UIEvent.MouseClick:
+                SelectCard(allyCard);
+                break;
         }
     }
 }

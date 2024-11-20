@@ -9,6 +9,8 @@ public class BuffDescriptionUI : MonoBehaviour
     private Dictionary<BuffEffect, GameObject> buffDictionary = new Dictionary<BuffEffect, GameObject>();
     [SerializeField] private SkillDescriptionUI skillDescriptionUI;
 
+    private RectTransform buffPanelRt;
+    
     public void Activate(BaseSkill skill)
     {
         gameObject.SetActive(true);
@@ -36,7 +38,10 @@ public class BuffDescriptionUI : MonoBehaviour
                 buffDictionary.Add(kv.key, kv.value);
             }
         }
+        
+        buffPanelRt = GetComponent<RectTransform>();
     }
+    
     void Start()
     {
         foreach(KeyValuePair<BuffEffect, GameObject> buffDescription in buffDictionary)
@@ -53,7 +58,6 @@ public class BuffDescriptionUI : MonoBehaviour
         RectTransform skillPanelRt = skillDescriptionUI.PanelRt;
         Vector2 skillPanelSize = skillPanelRt.sizeDelta;
         
-        RectTransform buffPanelRt = GetComponent<RectTransform>();
         float horizontalOffset = 30f;
         Vector3 buffUIPosition = new Vector3(
             skillPanelRt.transform.position.x + skillPanelSize.x / 2 + buffPanelRt.sizeDelta.x / 2 + horizontalOffset,

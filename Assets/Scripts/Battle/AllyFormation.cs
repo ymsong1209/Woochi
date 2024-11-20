@@ -223,7 +223,9 @@ public class AllyFormation : Formation
         Resurrect();
         SaveFormation();
     }
-
+    
+    public bool CanSummon(BaseCharacter character) => totalSize + character.Size <= 4;
+    
     public void Resurrect(bool isRandom = false)
     {
         List<BaseCharacter> deadCharacters = allCharacter.Where(c => c.IsDead).ToList();

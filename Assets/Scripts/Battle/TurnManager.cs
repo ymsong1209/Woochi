@@ -103,12 +103,12 @@ public class TurnManager : MonoBehaviour
 
         if (currentCharacter.IsDead || currentCharacter.Health.CheckHealthZero())
         {
-            Debug.Log($"{currentCharacter.Name}은(는) 죽거나 턴을 진행할 수 없습니다");
             processedCharacters.Add(currentCharacter);
             return false;
         }
-    
+        
         currentCharacter.HUD.ShowTurnEffect();
+        currentCharacter.CheckSkillsOnTurnStart();
         BattleManager.GetInstance.currentCharacter = currentCharacter;
         return true;
     }
