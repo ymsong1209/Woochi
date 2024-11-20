@@ -350,6 +350,7 @@ MonoBehaviour:
   back: {fileID: 2093931566170168335}
   portrait: {fileID: 919301731814334062}
   healthTxt: {fileID: 263482697464545248}
+  tr: {fileID: 1800274598900129685}
 --- !u!114 &5440933862857581388
 MonoBehaviour:
   m_ObjectHideFlags: 0

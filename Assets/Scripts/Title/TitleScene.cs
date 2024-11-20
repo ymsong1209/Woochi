@@ -18,11 +18,11 @@ public class TitleScene : MonoBehaviour
         #endregion
 
         continueBtn.interactable = DataCloud.playerData.hasSaveData;
+        AkSoundEngine.PostEvent("Main_Title", gameObject);
     }
 
     public void Departure(bool isBegin)
     {
-        // ÁøÇàÁßÀÌ´ø °ÔÀÓ Á¤º¸ »èÁ¦
         if (isBegin)
         {
             GameManager.GetInstance.ResetGame();
@@ -32,12 +32,12 @@ public class TitleScene : MonoBehaviour
     }
 
     /// <summary>
-    /// Ã³À½ºÎÅÍ ´­·¶À» ½Ã
+    /// Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     /// </summary>
     private void Begin() => Departure(true);
 
     /// <summary>
-    /// °è¼ÓÇÏ±â ´­·¶À» ½Ã
+    /// ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     /// </summary>
     private void Continue() => Departure(false);
 

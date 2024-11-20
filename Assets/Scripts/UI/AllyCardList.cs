@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,12 @@ public class AllyCardList : MonoBehaviour
     [SerializeField] AllyCardUI allyCardUI;
     
     [HideInInspector] public bool canSummon = false;
-    
+
+    private void Awake()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void Start()
     {
         BattleManager.GetInstance.ShowCharacterUI += ShowUI;

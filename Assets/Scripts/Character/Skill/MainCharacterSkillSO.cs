@@ -9,4 +9,23 @@ public class MainCharacterSkillSO : SkillSO
 
     public int RequiredSorceryPoints => requiredSorceryPoints;
     public int Rarity => rarity;
+
+    public override string GetSkillSound()
+    {
+        switch (SkillElement)
+        {
+            case SkillElement.Fire:
+                return "Fire_Skill";
+            case SkillElement.Water:
+                return "Water_Skill";
+            case SkillElement.Wood:
+                return "Tree_Skill";
+            case SkillElement.Metal:
+                return "Metal_Skill";
+            case SkillElement.Earth:
+                return "Ground_Skill";
+        }
+
+        return string.Empty;
+    }
 }

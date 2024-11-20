@@ -49,7 +49,8 @@ public class MapPlayerTracker : MonoBehaviour
         view.SetAttainableNodes();
         view.SetLineColors();
         mapNode.ShowVisitAnimation();
-
+        
+        AkSoundEngine.PostEvent("Map_Click", gameObject);
         DOTween.Sequence().AppendInterval(enterNodeDelay).OnComplete(() => EnterNode(mapNode));
     }
 
