@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff990185a3556ba4ca3a1b76ab4cb6de, type: 3}
   m_Name: Strange_Hasuo
   m_EditorClassIdentifier: 
-  situationSprite: {fileID: 21300000, guid: 6c9873dabd1f5a14b9c9e837f0a8a73d, type: 3}
+  situationSprite: {fileID: 21300000, guid: db7c6cf239ce7554791a4cf97d0cc405, type: 3}
   situationText: "\uC5F0\uBABB \uC8FC\uBCC0\uC5D0\uC11C \n\uC6B4\uC88B\uAC8C \uC624\uB798
     \uBB35\uC740 \uD558\uC218\uC624\uB97C \uBC1C\uACAC\uD588\uB2E4!\n\uBA39\uC73C\uBA74
     \uB3C4\uC6C0\uC774 \uB418\uC9C0 \uC54A\uC744\uAE4C?"
