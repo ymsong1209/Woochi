@@ -63,7 +63,7 @@ public class PlayerData
         totalSkillIDs[3, 0] = 1401;
         totalSkillIDs[4, 0] = 1501;
 
-        realization = 0;
+        realization = 4;
         
         gold = 10000;
     }
