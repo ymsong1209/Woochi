@@ -24,7 +24,6 @@ public class SkillScrollDescription : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI skillName; //스킬 이름
     [SerializeField] private TextMeshProUGUI skillDescription; //스킬 설명
-    [SerializeField] private TextMeshProUGUI enhancedSkillDescription; //강화된 스킬 설명
     
     [SerializeField] private SkillScrollEnhanceBtn enhanceButton; //강화 버튼
     [SerializeField] private SkillScrollEquipButton equipButton; //스킬 장착 버튼
@@ -84,7 +83,6 @@ public class SkillScrollDescription : MonoBehaviour
         
         skillName.SetText("");
         skillDescription.SetText("");
-        enhancedSkillDescription.gameObject.SetActive(false);
         enhanceCount.text = DataCloud.playerData.realization.ToString();
         
         enhanceButton.Reset();
@@ -95,13 +93,12 @@ public class SkillScrollDescription : MonoBehaviour
     
     public void SetEnhancedSkillDescription()
     {
-        enhancedSkillDescription.gameObject.SetActive(true);
-        curSkill.SetEnhancedSkillScrollDescription(curSkillID,enhancedSkillDescription);
+        curSkill.SetEnhancedSkillScrollDescription(curSkillID, skillDescription);
     }
 
     public void ResetEnhancedSkillDescription()
     {
-        enhancedSkillDescription.gameObject.SetActive(false);
+        curSkill.SetSkillScrollDescription(skillDescription);
     }
 
 
