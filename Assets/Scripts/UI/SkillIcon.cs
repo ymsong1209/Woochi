@@ -17,18 +17,15 @@ public class SkillIcon : MonoBehaviour, ITooltipiable
 
     protected BaseSkill skill;
 
-    private bool canInteract;
-
     private void Start()
     {
-        canInteract = true;
         BattleManager.GetInstance.OnFocusStart += () => SetCanInteract(false);
         BattleManager.GetInstance.OnSkillExecuteFinished += () => SetCanInteract(true);
     }
 
     private void SetCanInteract(bool value)
     {
-        canInteract = value;
+        btn.interactable = value;
     }
 
     public void SetSkill(BaseSkill _skill, bool isEnable = true)
@@ -56,10 +53,11 @@ public class SkillIcon : MonoBehaviour, ITooltipiable
 
     public void ShowTooltip()
     {
-        if (skill == null || !canInteract)
-            return;
-
-        OnShowTooltip?.Invoke(skill, transform);
+        if (btn.interactable)
+        {
+            AkSoundEngine.PostEvent("Movement_Mouse", gameObject);
+            OnShowTooltip?.Invoke(skill, transform);
+        }
     }
 
     public void HideTooltip()

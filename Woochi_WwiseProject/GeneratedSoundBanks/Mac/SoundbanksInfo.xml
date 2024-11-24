@@ -104,97 +104,97 @@
 				</File>
 			</Media>
 			<Events>
-				<Event Id="4057793579" Name="Fire_Skill">
+				<Event Id="4057793579" Name="Fire_Skill" DurationType="OneShot" DurationMin="3" DurationMax="3">
 					<MediaRefs>
 						<MediaRef Id="726742060"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="115002250" Name="Ground_Skill">
+				<Event Id="115002250" Name="Ground_Skill" DurationType="OneShot" DurationMin="3" DurationMax="3">
 					<MediaRefs>
 						<MediaRef Id="691791290"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="654742305" Name="Main_Title">
+				<Event Id="654742305" Name="Main_Title" DurationType="OneShot" DurationMin="2.75" DurationMax="2.75">
 					<MediaRefs>
 						<MediaRef Id="926927899"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2480411368" Name="Map_Click">
+				<Event Id="2480411368" Name="Map_Click" DurationType="OneShot" DurationMin="0.625" DurationMax="0.625">
 					<MediaRefs>
 						<MediaRef Id="165554327"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2130970777" Name="Map_Mouse">
+				<Event Id="2130970777" Name="Map_Mouse" DurationType="OneShot" DurationMin="0.625" DurationMax="0.625">
 					<MediaRefs>
 						<MediaRef Id="609286879"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1614233980" Name="Metal_Skill">
+				<Event Id="1614233980" Name="Metal_Skill" DurationType="OneShot" DurationMin="3" DurationMax="3">
 					<MediaRefs>
 						<MediaRef Id="578610578"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3036007183" Name="Movement_Click">
+				<Event Id="3036007183" Name="Movement_Click" DurationType="OneShot" DurationMin="0.625" DurationMax="0.625">
 					<MediaRefs>
 						<MediaRef Id="479722376"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3680301402" Name="Movement_Mouse">
+				<Event Id="3680301402" Name="Movement_Mouse" DurationType="OneShot" DurationMin="0.28125" DurationMax="0.28125">
 					<MediaRefs>
 						<MediaRef Id="777192762"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2455846824" Name="Power_Up">
+				<Event Id="2455846824" Name="Power_Up" DurationType="OneShot" DurationMin="1" DurationMax="1">
 					<MediaRefs>
 						<MediaRef Id="533650088"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3302781919" Name="Reward_Arrow_Click">
+				<Event Id="3302781919" Name="Reward_Arrow_Click" DurationType="OneShot" DurationMin="1" DurationMax="1">
 					<MediaRefs>
 						<MediaRef Id="324781318"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3415311978" Name="Reward_Arrow_Mouse">
+				<Event Id="3415311978" Name="Reward_Arrow_Mouse" DurationType="OneShot" DurationMin="1" DurationMax="1">
 					<MediaRefs>
 						<MediaRef Id="551719493"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1667288597" Name="Reward_Click">
+				<Event Id="1667288597" Name="Reward_Click" DurationType="OneShot" DurationMin="1" DurationMax="1">
 					<MediaRefs>
 						<MediaRef Id="609249654"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="4232491148" Name="Reward_Mouse">
+				<Event Id="4232491148" Name="Reward_Mouse" DurationType="OneShot" DurationMin="1" DurationMax="1">
 					<MediaRefs>
 						<MediaRef Id="798960966"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="117036824" Name="Skill_Mouse">
+				<Event Id="117036824" Name="Skill_Mouse" DurationType="OneShot" DurationMin="0.28125" DurationMax="0.28125">
 					<MediaRefs>
 						<MediaRef Id="319263385"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="286100424" Name="Swap">
+				<Event Id="286100424" Name="Swap" DurationType="OneShot" DurationMin="1" DurationMax="1">
 					<MediaRefs>
 						<MediaRef Id="447256061"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="4199180592" Name="Title_Click">
+				<Event Id="4199180592" Name="Title_Click" DurationType="OneShot" DurationMin="0.28125" DurationMax="0.28125">
 					<MediaRefs>
 						<MediaRef Id="790595291"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="410006513" Name="Title_Mouse">
+				<Event Id="410006513" Name="Title_Mouse" DurationType="OneShot" DurationMin="0.28125" DurationMax="0.28125">
 					<MediaRefs>
 						<MediaRef Id="275618036"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1471171747" Name="Tree_Skill">
+				<Event Id="1471171747" Name="Tree_Skill" DurationType="OneShot" DurationMin="3" DurationMax="3">
 					<MediaRefs>
 						<MediaRef Id="62276585"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1362914800" Name="Water_Skill">
+				<Event Id="1362914800" Name="Water_Skill" DurationType="OneShot" DurationMin="3" DurationMax="3">
 					<MediaRefs>
 						<MediaRef Id="55501940"/>
 					</MediaRefs>
@@ -202,5 +202,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{1B0552E0-A033-3FBA-E5F7-CF28229F48A2}</FileHash>
+	<FileHash>{10E214F3-8CCE-6CF9-0B02-B2F501E9F215}</FileHash>
 </SoundBanksInfo>

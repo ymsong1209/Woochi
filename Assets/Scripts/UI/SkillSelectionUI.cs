@@ -87,10 +87,11 @@ public class SkillSelectionUI : MonoBehaviour
         selectedIcon?.SetMark(false);
         selectedIcon = _skillIcon;
         selectedIcon.SetMark(true);
-
+        
         // BattleManager의 SkillSelected 호출
         // SkillTriggerSelector의 Activate 메서드 호출
         onSkillSelected.Invoke(selectedIcon.Skill);
+        AkSoundEngine.PostEvent("Movement_Click", gameObject);
     }
 
     /// <summary>

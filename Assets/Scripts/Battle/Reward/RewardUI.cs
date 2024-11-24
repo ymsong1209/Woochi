@@ -48,11 +48,13 @@ public class RewardUI : MonoBehaviour, ITooltipiable
             popupText = reward.GetError();
         }
         
+        AkSoundEngine.PostEvent("Reward_Click", gameObject);
         OnUIEvent?.Invoke(this, UIEvent.MouseClick);
     }
 
     public void ShowTooltip()
     {
+        AkSoundEngine.PostEvent("Reward_Mouse", gameObject);
         OnUIEvent?.Invoke(this, UIEvent.MouseEnter);
     }
 
