@@ -19,6 +19,7 @@ public class PlayerData
     // Skill Data
     public int[] currentskillIDs;
     public int[,] totalSkillIDs;
+    public int realization;     // 깨달음
 
     // Default
     public int gold = 0;
@@ -62,6 +63,8 @@ public class PlayerData
         totalSkillIDs[3, 0] = 1401;
         totalSkillIDs[4, 0] = 1501;
 
+        realization = 0;
+        
         gold = 10000;
     }
 

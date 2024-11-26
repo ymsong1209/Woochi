@@ -48,6 +48,8 @@ public class SkillSO : ScriptableObject
     [SerializeField] private float baseMultiplier;        // 피해량 계수
     [SerializeField] private float baseSkillAccuracy;     // 스킬 명중 수치
 
+    [SerializeField] private string skillSound;
+    
     #region Getter Setter
     public string SkillName => skillName;
     public AnimationType AnimType => animType;
@@ -63,6 +65,11 @@ public class SkillSO : ScriptableObject
     public float BaseMultiplier => baseMultiplier;
 
     public float BaseSkillAccuracy => baseSkillAccuracy;
+
+    public virtual string GetSkillSound()
+    {
+        return skillSound;
+    }
     #endregion
 
 }

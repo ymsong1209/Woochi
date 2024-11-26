@@ -44,6 +44,7 @@ public class ToolUI : RewardUI
             popupText = "흐름이 부족합니다";
         }
         
+        AkSoundEngine.PostEvent("Reward_Click", gameObject);
         OnUIEvent?.Invoke(this, UIEvent.MouseClick);
     }
 

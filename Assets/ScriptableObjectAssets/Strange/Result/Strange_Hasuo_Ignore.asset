@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e92f9f98faf89a6429009cd87dbc6226, type: 3}
   m_Name: Strange_Hasuo_Ignore
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 41ed26e7766b5d445908cf341b1d1db2, type: 3}
+  sprite: {fileID: 21300000, guid: b99379c9c5e3de047abade7a80ddeec9, type: 3}
   text: "\uADC0\uCC2E\uC544\uC11C \uBB34\uC2DC\uD588\uB2E4\n\uBB54\uAC00 \uD6C4\uD68C\uB41C\uB2E4"
   effect: 

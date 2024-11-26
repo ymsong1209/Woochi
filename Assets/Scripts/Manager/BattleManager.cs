@@ -34,6 +34,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     public Action<BaseCharacter> OnFocusEnter;
     public Action<bool, bool> OnShakeCamera;
     public Action OnSkillExecuteFinished;
+    public Action<Action> OnBattleEnd;
     #endregion
 
     #region 부울 변수
@@ -63,7 +64,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         #endregion
     }
 
-    private void InitializeAlly()
+    public void InitializeAlly()
     {
         var allyIDs = DataCloud.playerData.battleData.allies.ToArray();
         var allyList = GameManager.GetInstance.Library.GetCharacterList(allyIDs);
@@ -543,8 +544,38 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         turnManager.BattleOver();
         InitResult();
-        allies.BattleEnd(); enemies.BattleEnd();
+        if (OnBattleEnd != null)
+        {
+            StartCoroutine(WaitForOnBattleEnd());
+        }
+        else
+        {
+            FinishBattle();
+        }
+    }
+    private IEnumerator WaitForOnBattleEnd()
+    {
+        allies.BattleEnd(); //아군 정보 저장 먼저.
+        
+        bool isEnd = false;
+        
+        // OnBattleEnd에 대기 완료 콜백 전달
+        OnBattleEnd.Invoke(() => isEnd = true);
 
+        // OnBattleEnd 완료까지 대기
+        while (!isEnd)
+        {
+            yield return null; // 매 프레임마다 대기
+        }
+
+        // 모든 대기가 끝난 후 후속 작업 진행
+        FinishBattle();
+    }
+
+    private void FinishBattle()
+    {
+        allies.BattleEnd();
+        enemies.BattleEnd();
         //승리 화면 뜬 후 보상 정산
         resultUI.Show(result);
     }

@@ -82,7 +82,7 @@ MonoBehaviour:
     nodesApartDistance: 3
     isRandomNode: 0
     isRandomEnemy: 0
-    enemyIDs: e9030000
+    enemyIDs: 88130000
     randomizePosition: 0
   - nodeType: 2
     distanceFromPreviousLayer:

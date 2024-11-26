@@ -1321,6 +1321,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9196048527430195161}
     m_Modifications:
+    - target: {fileID: 5935696424797850593, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.12
+      objectReference: {fileID: 0}
     - target: {fileID: 7753021310662755342, guid: bae60a47aa0b4ae43a585a05efc145df, type: 3}
       propertyPath: m_Name
       value: BuffList

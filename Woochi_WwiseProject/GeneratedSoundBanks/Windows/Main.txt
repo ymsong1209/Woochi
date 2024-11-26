@@ -1,0 +1,42 @@
+Event	ID	Name			Wwise Object Path	Notes
+	115002250	Ground_Skill			\Default Work Unit\Ground_Skill	
+	117036824	Skill_Mouse			\Default Work Unit\Skill_Mouse	
+	286100424	Swap			\Default Work Unit\Swap	
+	410006513	Title_Mouse			\Default Work Unit\Title_Mouse	
+	654742305	Main_Title			\Default Work Unit\Main_Title	
+	1362914800	Water_Skill			\Default Work Unit\Water_Skill	
+	1471171747	Tree_Skill			\Default Work Unit\Tree_Skill	
+	1614233980	Metal_Skill			\Default Work Unit\Metal_Skill	
+	1667288597	Reward_Click			\Default Work Unit\Reward_Click	
+	2130970777	Map_Mouse			\Default Work Unit\Map_Mouse	
+	2455846824	Power_Up			\Default Work Unit\Power_Up	
+	2480411368	Map_Click			\Default Work Unit\Map_Click	
+	3036007183	Movement_Click			\Default Work Unit\Movement_Click	
+	3302781919	Reward_Arrow_Click			\Default Work Unit\Reward_Arrow_Click	
+	3415311978	Reward_Arrow_Mouse			\Default Work Unit\Reward_Arrow_Mouse	
+	3680301402	Movement_Mouse			\Default Work Unit\Movement_Mouse	
+	4057793579	Fire_Skill			\Default Work Unit\Fire_Skill	
+	4199180592	Title_Click			\Default Work Unit\Title_Click	
+	4232491148	Reward_Mouse			\Default Work Unit\Reward_Mouse	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	55501940	Water_Skill	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Windows\SFX\Water_Skill_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Water_Skill		576096
+	62276585	Tree_Skill	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Windows\SFX\Tree_Skill_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tree_Skill		576096
+	165554327	Map_Click	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Windows\SFX\Map_Click_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Map_Click		120096
+	275618036	Title_Mouse	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Windows\SFX\Title_Mouse_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Title_Mouse		54096
+	319263385	Skill_Mouse	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Windows\SFX\Skill_Mouse_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Skill_Mouse		54096
+	324781318	Reward_Arrow_Click	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Windows\SFX\Reward_Arrow_Click_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Reward_Arrow_Click		192096
+	447256061	Swap	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Windows\SFX\Swap_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Swap		192096
+	479722376	Movement_Click	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Windows\SFX\Movement_Click_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Movement_Click		120096
+	533650088	Power_Up	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Windows\SFX\Power_Up_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Power_Up		192096
+	551719493	Reward_Arrow_Mouse	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Windows\SFX\Reward_Arrow_Mouse_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Reward_Arrow_Mouse		192096
+	578610578	Metal_Skill	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Windows\SFX\Metal_Skill_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Metal_Skill		576096
+	609249654	Reward_Click	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Windows\SFX\Reward_Click_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Reward_Click		192096
+	609286879	Map_Mouse	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Windows\SFX\Map_Mouse_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Map_Mouse		120096
+	691791290	Ground_Skill	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Windows\SFX\Ground_Skill_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ground_Skill		576096
+	726742060	Fire_Skill	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Windows\SFX\Fire_Skill_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Fire_Skill		576096
+	777192762	Movement_Mouse	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Windows\SFX\Movement_Mouse_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Movement_Mouse		54096
+	790595291	Title_Click	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Windows\SFX\Title_Click_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Title_Click		54096
+	798960966	Reward_Mouse	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Windows\SFX\Reward_Mouse_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Reward_Mouse		192096
+	926927899	Main_Title	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Windows\SFX\Main_Title_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Main_Title		528096
+

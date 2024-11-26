@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff990185a3556ba4ca3a1b76ab4cb6de, type: 3}
   m_Name: Strange_SweetDream
   m_EditorClassIdentifier: 
-  situationSprite: {fileID: 21300000, guid: b392368681b2ead4ba24a8ce2d2eb7c4, type: 3}
+  situationSprite: {fileID: 21300000, guid: 805b21babef8c3d4ab3253eaf01dc706, type: 3}
   situationText: "\uC7A0\uC2DC \uC878\uBA74\uC11C \uC88B\uC740 \uAFC8\uC744 \uAFE8\uB2E4"
   choices:
   - text: "\uC77C\uC5B4\uB09C\uB2E4"

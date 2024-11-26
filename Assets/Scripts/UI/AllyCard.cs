@@ -19,11 +19,11 @@ public class AllyCard : MonoBehaviour, ITooltipiable
     private void Awake()
     {
         SetActivate(false);
+        originPos = transform.localPosition;
     }
 
     private void Start()
     {
-        originPos = transform.localPosition;
         front.onClick.AddListener(() => OnUIEvent?.Invoke(this, UIEvent.MouseClick));
     }
 

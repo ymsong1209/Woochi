@@ -13,5 +13,6 @@ public class MC_SorceryRecovery : BaseSkill
 
         mainCharacter.UpdateSorceryPoints(mainCharacter.SorceryRecoveryPoints, true);
         SkillOwner.onPlayAnimation?.Invoke(AnimationType.Skill3);
+        AkSoundEngine.PostEvent("Power_Up", gameObject);
     }
 }

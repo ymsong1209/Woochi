@@ -113,6 +113,12 @@ public class BaseSkill : MonoBehaviour
 
     public virtual void ActivateSkill(BaseCharacter _Opponent)
     {
+        string skillSound = skillSO.GetSkillSound();
+        if (!string.IsNullOrEmpty(skillSound))
+        {
+            AkSoundEngine.PostEvent(skillSound, gameObject);
+        }
+        
         skillResult.Init();
         skillResult.Caster = skillOwner;
         //아군 보호 스킬등으로 보호 할 수 있음

@@ -11,6 +11,7 @@ public class StrangeResult : ScriptableObject
 
     public virtual void ApplyEffect()
     {
-
+        // 안 좋은 기연이 걸리면 새로고침하는 것을 막기 위함 -> 전투는 맵 저장 X
+        MapManager.GetInstance.SaveMap();
     }
 }
