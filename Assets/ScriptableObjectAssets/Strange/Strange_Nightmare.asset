@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff990185a3556ba4ca3a1b76ab4cb6de, type: 3}
   m_Name: Strange_Nightmare
   m_EditorClassIdentifier: 
-  situationSprite: {fileID: 21300000, guid: 0d8509fe3b847b14f988456a5df887ce, type: 3}
+  situationSprite: {fileID: 21300000, guid: 41be2daa962828042b02d9c35683c992, type: 3}
   situationText: "\uC7A0\uC2DC \uC26C\uB2E4 \uC878\uC544\uBC84\uB838\uB2E4\n\uB098\uC05C
     \uAFC8\uC744 \uAFE8\uB2E4"
   choices:
