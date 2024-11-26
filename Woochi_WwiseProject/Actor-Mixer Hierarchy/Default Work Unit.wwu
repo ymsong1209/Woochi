@@ -421,6 +421,116 @@
 						<ActiveSource Name="Water_Skill" ID="{A12216CB-01B1-4222-A7B2-EDC5F0DD15CE}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="Announce_Down" ID="{0A961179-4357-4492-931E-3CA5A364E13C}" ShortID="467903865">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Announce_Down" ID="{29F1605D-7DFD-49FE-8BC7-96487C727487}">
+							<Language>SFX</Language>
+							<AudioFile>Announce_Down.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="975968143"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Announce_Down" ID="{29F1605D-7DFD-49FE-8BC7-96487C727487}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Fox_Join" ID="{FBA2EF93-FCD0-459A-B03F-134BE8D87372}" ShortID="474205756">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Fox_Join" ID="{F4187EFF-3816-4817-8E5C-2CAC47D7D60D}">
+							<Language>SFX</Language>
+							<AudioFile>Fox_Join.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="465945705"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Fox_Join" ID="{F4187EFF-3816-4817-8E5C-2CAC47D7D60D}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Haetae_Join" ID="{915E9E07-BAF3-4F75-8D53-A236EF96C06F}" ShortID="124144146">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Haetae_Join" ID="{42472732-E81D-4388-AD93-E913B277800A}">
+							<Language>SFX</Language>
+							<AudioFile>Haetae_Join.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="378946344"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Haetae_Join" ID="{42472732-E81D-4388-AD93-E913B277800A}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Pet_Return" ID="{F3D20137-9B1E-474E-82C8-1CE567A135DF}" ShortID="590303335">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Pet_Return" ID="{938D8624-3DAA-4757-B405-E8144BF88784}">
+							<Language>SFX</Language>
+							<AudioFile>Pet_Return.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="820875912"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Pet_Return" ID="{938D8624-3DAA-4757-B405-E8144BF88784}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Tiger_Join" ID="{272EDEF6-A2FA-4BAB-A748-7EE50A441267}" ShortID="929275170">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Tiger_Join" ID="{F720D3CB-FCA4-4677-9BBB-C28A2289C3A0}">
+							<Language>SFX</Language>
+							<AudioFile>Tiger_Join.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="666968424"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Tiger_Join" ID="{F720D3CB-FCA4-4677-9BBB-C28A2289C3A0}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
