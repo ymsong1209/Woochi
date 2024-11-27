@@ -124,44 +124,32 @@
 				</File>
 			</Media>
 			<Events>
-<<<<<<< HEAD
-				<Event Id="1946638119" Name="Announce_Down">
+				<Event Id="1946638119" Name="Announce_Down" DurationType="OneShot" DurationMin="1.75" DurationMax="1.75">
 					<MediaRefs>
 						<MediaRef Id="975968143"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="4057793579" Name="Fire_Skill">
-=======
 				<Event Id="4057793579" Name="Fire_Skill" DurationType="OneShot" DurationMin="3" DurationMax="3">
->>>>>>> 566fb1deac032d2c1658233b8cc09fbcd5d86ab1
 					<MediaRefs>
 						<MediaRef Id="726742060"/>
 					</MediaRefs>
 				</Event>
-<<<<<<< HEAD
-				<Event Id="1785041727" Name="Fox_Join">
+				<Event Id="1785041727" Name="Fox_Join" DurationType="OneShot" DurationMin="1.75" DurationMax="1.75">
 					<MediaRefs>
 						<MediaRef Id="465945705"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="115002250" Name="Ground_Skill">
-=======
 				<Event Id="115002250" Name="Ground_Skill" DurationType="OneShot" DurationMin="3" DurationMax="3">
->>>>>>> 566fb1deac032d2c1658233b8cc09fbcd5d86ab1
 					<MediaRefs>
 						<MediaRef Id="691791290"/>
 					</MediaRefs>
 				</Event>
-<<<<<<< HEAD
-				<Event Id="777931932" Name="Haetae_Join">
+				<Event Id="777931932" Name="Haetae_Join" DurationType="OneShot" DurationMin="1.75" DurationMax="1.75">
 					<MediaRefs>
 						<MediaRef Id="378946344"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="654742305" Name="Main_Title">
-=======
 				<Event Id="654742305" Name="Main_Title" DurationType="OneShot" DurationMin="2.75" DurationMax="2.75">
->>>>>>> 566fb1deac032d2c1658233b8cc09fbcd5d86ab1
 					<MediaRefs>
 						<MediaRef Id="926927899"/>
 					</MediaRefs>
@@ -191,16 +179,12 @@
 						<MediaRef Id="777192762"/>
 					</MediaRefs>
 				</Event>
-<<<<<<< HEAD
-				<Event Id="2349436841" Name="Pet_Return">
+				<Event Id="2349436841" Name="Pet_Return" DurationType="OneShot" DurationMin="1.75" DurationMax="1.75">
 					<MediaRefs>
 						<MediaRef Id="820875912"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2455846824" Name="Power_Up">
-=======
 				<Event Id="2455846824" Name="Power_Up" DurationType="OneShot" DurationMin="1" DurationMax="1">
->>>>>>> 566fb1deac032d2c1658233b8cc09fbcd5d86ab1
 					<MediaRefs>
 						<MediaRef Id="533650088"/>
 					</MediaRefs>
@@ -235,16 +219,12 @@
 						<MediaRef Id="447256061"/>
 					</MediaRefs>
 				</Event>
-<<<<<<< HEAD
-				<Event Id="1971761969" Name="Tiger_Join">
+				<Event Id="1971761969" Name="Tiger_Join" DurationType="OneShot" DurationMin="1.75" DurationMax="1.75">
 					<MediaRefs>
 						<MediaRef Id="666968424"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="4199180592" Name="Title_Click">
-=======
 				<Event Id="4199180592" Name="Title_Click" DurationType="OneShot" DurationMin="0.28125" DurationMax="0.28125">
->>>>>>> 566fb1deac032d2c1658233b8cc09fbcd5d86ab1
 					<MediaRefs>
 						<MediaRef Id="790595291"/>
 					</MediaRefs>
@@ -267,9 +247,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-<<<<<<< HEAD
-	<FileHash>{B626CEDE-C738-270A-8DEC-4D67AC68F575}</FileHash>
-=======
-	<FileHash>{10E214F3-8CCE-6CF9-0B02-B2F501E9F215}</FileHash>
->>>>>>> 566fb1deac032d2c1658233b8cc09fbcd5d86ab1
+	<FileHash>{E2AA2B5C-9E40-EBC6-CEC2-6FAC832710ED}</FileHash>
 </SoundBanksInfo>

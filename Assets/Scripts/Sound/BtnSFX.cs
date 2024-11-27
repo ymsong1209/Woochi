@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,7 +12,14 @@ public class BtnSFX : MonoBehaviour, IPointerEnterHandler
     void Awake()
     {
         btn = GetComponent<Button>();
-        btn.onClick.AddListener(OnClick);
+        btn?.onClick.AddListener(OnClick);
+
+        AkSoundEngine.RegisterGameObj(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        AkSoundEngine.UnregisterGameObj(gameObject);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

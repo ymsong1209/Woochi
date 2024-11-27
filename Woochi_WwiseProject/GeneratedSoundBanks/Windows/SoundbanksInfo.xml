@@ -22,7 +22,7 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{60DBF955-0A5C-BE68-646D-2FD541D32A68}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{93E3ED20-FC89-9882-AE54-E5CF1602A30E}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -50,9 +50,17 @@
 					<ShortName>Reward_Arrow_Click.wav</ShortName>
 					<CachePath>SFX/Reward_Arrow_Click_818F3B66.wem</CachePath>
 				</File>
+				<File Id="378946344" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Haetae_Join.wav</ShortName>
+					<CachePath>SFX/Haetae_Join_818F3B66.wem</CachePath>
+				</File>
 				<File Id="447256061" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Swap.wav</ShortName>
 					<CachePath>SFX/Swap_818F3B66.wem</CachePath>
+				</File>
+				<File Id="465945705" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Fox_Join.wav</ShortName>
+					<CachePath>SFX/Fox_Join_818F3B66.wem</CachePath>
 				</File>
 				<File Id="479722376" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Movement_Click.wav</ShortName>
@@ -78,6 +86,10 @@
 					<ShortName>Map_Mouse.wav</ShortName>
 					<CachePath>SFX/Map_Mouse_818F3B66.wem</CachePath>
 				</File>
+				<File Id="666968424" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Tiger_Join.wav</ShortName>
+					<CachePath>SFX/Tiger_Join_818F3B66.wem</CachePath>
+				</File>
 				<File Id="691791290" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Ground_Skill.wav</ShortName>
 					<CachePath>SFX/Ground_Skill_818F3B66.wem</CachePath>
@@ -98,20 +110,43 @@
 					<ShortName>Reward_Mouse.wav</ShortName>
 					<CachePath>SFX/Reward_Mouse_818F3B66.wem</CachePath>
 				</File>
+				<File Id="820875912" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Pet_Return.wav</ShortName>
+					<CachePath>SFX/Pet_Return_818F3B66.wem</CachePath>
+				</File>
 				<File Id="926927899" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Main_Title.wav</ShortName>
 					<CachePath>SFX/Main_Title_818F3B66.wem</CachePath>
 				</File>
+				<File Id="975968143" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Announce_Down.wav</ShortName>
+					<CachePath>SFX/Announce_Down_818F3B66.wem</CachePath>
+				</File>
 			</Media>
 			<Events>
+				<Event Id="1946638119" Name="Announce_Down" DurationType="OneShot" DurationMin="1.75" DurationMax="1.75">
+					<MediaRefs>
+						<MediaRef Id="975968143"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="4057793579" Name="Fire_Skill" DurationType="OneShot" DurationMin="3" DurationMax="3">
 					<MediaRefs>
 						<MediaRef Id="726742060"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="1785041727" Name="Fox_Join" DurationType="OneShot" DurationMin="1.75" DurationMax="1.75">
+					<MediaRefs>
+						<MediaRef Id="465945705"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="115002250" Name="Ground_Skill" DurationType="OneShot" DurationMin="3" DurationMax="3">
 					<MediaRefs>
 						<MediaRef Id="691791290"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="777931932" Name="Haetae_Join" DurationType="OneShot" DurationMin="1.75" DurationMax="1.75">
+					<MediaRefs>
+						<MediaRef Id="378946344"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="654742305" Name="Main_Title" DurationType="OneShot" DurationMin="2.75" DurationMax="2.75">
@@ -142,6 +177,11 @@
 				<Event Id="3680301402" Name="Movement_Mouse" DurationType="OneShot" DurationMin="0.28125" DurationMax="0.28125">
 					<MediaRefs>
 						<MediaRef Id="777192762"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2349436841" Name="Pet_Return" DurationType="OneShot" DurationMin="1.75" DurationMax="1.75">
+					<MediaRefs>
+						<MediaRef Id="820875912"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="2455846824" Name="Power_Up" DurationType="OneShot" DurationMin="1" DurationMax="1">
@@ -179,6 +219,11 @@
 						<MediaRef Id="447256061"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="1971761969" Name="Tiger_Join" DurationType="OneShot" DurationMin="1.75" DurationMax="1.75">
+					<MediaRefs>
+						<MediaRef Id="666968424"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="4199180592" Name="Title_Click" DurationType="OneShot" DurationMin="0.28125" DurationMax="0.28125">
 					<MediaRefs>
 						<MediaRef Id="790595291"/>
@@ -202,5 +247,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{C2EBF47D-87E8-6714-BA45-2638787D9A3B}</FileHash>
+	<FileHash>{A0E0692A-AC3F-C34E-FE8B-E98F2B687D93}</FileHash>
 </SoundBanksInfo>

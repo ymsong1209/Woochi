@@ -14,6 +14,7 @@ public class AllyCard : MonoBehaviour, ITooltipiable
 
     public Action<AllyCard, UIEvent> OnUIEvent;
     private bool isDead = false;
+    
     private Vector3 originPos;
     
     private void Awake()
@@ -57,11 +58,11 @@ public class AllyCard : MonoBehaviour, ITooltipiable
     {
         if (cursorOn)
         {
-            transform.DOLocalMoveY(originPos.y + 5, 0.1f).SetEase(Ease.OutQuad);
+            transform.DOLocalMoveY(originPos.y + 5f, 0.5f).SetEase(Ease.OutCubic);
         }
         else
         {
-            transform.DOLocalMoveY(originPos.y, 0.1f).SetEase(Ease.OutQuad);
+            transform.DOLocalMoveY(originPos.y, 0.5f).SetEase(Ease.OutCubic);
         }
     }
     

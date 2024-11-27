@@ -106,6 +106,21 @@ public class AllyFormation : Formation
             return false;
         }
 
+        #region 소환수 효과음(임시)
+        if (_character.ID == 1)
+        {
+            AkSoundEngine.PostEvent("Fox_Join", gameObject);
+        }
+        else if (_character.ID == 2)
+        {
+            AkSoundEngine.PostEvent("Tiger_Join", gameObject);
+        }
+        else if (_character.ID == 3)
+        {
+            AkSoundEngine.PostEvent("Haetae_Join", gameObject);
+        }
+        #endregion
+        
         int rowOrder = _index;
         for(int i = _index; i < formation.Length; i++)
         {
@@ -132,6 +147,8 @@ public class AllyFormation : Formation
 
     public void UnSummon(BaseCharacter _character)
     {
+        AkSoundEngine.PostEvent("Pet_Return", gameObject);
+        
         for(int i = 0; i < 4; i++)
         {
             if (formation[i] == _character)
@@ -143,7 +160,7 @@ public class AllyFormation : Formation
                 break;
             }
         }
-
+        
         totalSize -= _character.Size;
         SetProperty(_character, false, -1);
     }
