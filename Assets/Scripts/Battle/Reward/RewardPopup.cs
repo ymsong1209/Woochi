@@ -70,7 +70,8 @@ public class RewardPopup : MonoBehaviour
 
     private void SetTransform(Transform transform)
     {
-        Vector3 pos = transform.position;
-        infoPopup.transform.position = pos + new Vector3(0, -175, 0);
+        RectTransform rt = transform as RectTransform;
+        RectTransform rtInfo = infoPopup.transform as RectTransform;
+        rtInfo.position = rt.position - new Vector3(0, rt.rect.height, 0);
     }
 }
