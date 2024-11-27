@@ -44,7 +44,7 @@ public class T1_MetalArmor : MainCharacterSkill
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 대상과 우치에게\n" +
-                                "3턴동안 방어력 5만큼 부여";
+                                "3턴동안 방어 5 부여";
     }
     
     public override void SetEnhancedSkillScrollDescription(int curskillid, TextMeshProUGUI skillDescription)
@@ -64,6 +64,6 @@ public class T1_MetalArmor : MainCharacterSkill
                                 "-\n"+
                                 "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
                                 "단일 대상과 우치에게\n" +
-                                "3턴동안 방어력 <color=#FFFF00>10</color>만큼 부여";
+                                "3턴동안 방어 <color=#FFFF00>10</color> 부여";
     }
 }

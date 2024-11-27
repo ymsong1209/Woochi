@@ -28,4 +28,17 @@ public class T1_WildRose_P : MainCharacterSkill
                     "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
                     "70%의 확률로 단일 대상에게 중독 디버프 3만큼 부여";
     }
+    
+    public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "단일 대상에게 " + SkillSO.BaseMultiplier + "%피해\n" +
+                                "70%의 확률로 단일 대상에게\n" +
+                                "중독 3 부여";
+    }
 }

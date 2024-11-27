@@ -36,4 +36,39 @@ public class T2_FloralAroma : MainCharacterSkill
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "70%의 확률로 중독 2, 2턴동안 최소,최대스탯 -2만큼 부여";
     }
+    
+    public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "단일 대상에게 2턴동안\n"+
+                                "최소,최대스탯 -2만큼 부여\n" +
+                                "70%의 확률로 중독 2 부여";
+    }
+    
+    public override void SetEnhancedSkillScrollDescription(int curskillid, TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        int enhancedSkillID = GameManager.GetInstance.Library.GetEnhancedSkillID(curskillid);
+        MainCharacterSkill enhancedSkill = GameManager.GetInstance.Library.GetSkill(enhancedSkillID) as MainCharacterSkill;
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        MainCharacterSkillSO enhancedMainCharacterSkillSo = enhancedSkill.SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "단일 대상에게 2턴동안\n"+
+                                "최소,최대스탯 -2만큼 부여\n" +
+                                "70%의 확률로 중독 2\n" + 
+                                "-\n" +
+                                "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
+                                "단일 대상에게 2턴동안\n"+
+                                "최소,최대스탯 -<color=#FFFF00>4</color>만큼 부여\n" +
+                                "<color=#FFFF00>90</color>%의 확률로 중독 <color=#FFFF00>3</color>부여";
+        
+    }
 }

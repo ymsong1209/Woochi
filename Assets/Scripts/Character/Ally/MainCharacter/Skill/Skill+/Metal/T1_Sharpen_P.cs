@@ -30,4 +30,16 @@ public class T1_Sharpen_P : MainCharacterSkill
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "단일 아군 대상에게 1턴동안 명중,치명 10만큼 부여";
     }
+    
+    public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "단일 아군에게 1턴 동안\n" +
+                                "명중, 치명 10 부여";
+    }
 }

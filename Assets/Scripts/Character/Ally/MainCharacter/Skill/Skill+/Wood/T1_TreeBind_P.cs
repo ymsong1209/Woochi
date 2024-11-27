@@ -32,4 +32,17 @@ public class T1_TreeBind_P : MainCharacterSkill
                     "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
                     "100%의 확률로 4턴 동안 속도,최소,최대스탯 -2만큼 부여";
     }
+    
+    public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "단일 대상에게 " + SkillSO.BaseMultiplier + "%피해\n" +
+                                "100%의 확률로 4턴동안\n" +
+                                "속도, 최소, 최대스탯 -2 부여";
+    }
 }

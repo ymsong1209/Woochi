@@ -28,4 +28,16 @@ public class T1_FireSpark_P : MainCharacterSkill
                     "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
                     "50%의 확률로 화상 디버프 부여";
     }
+    
+    public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "단일 대상에게 " + SkillSO.BaseMultiplier + "%피해\n" +
+                                "50%의 확률로 화상 부여";
+    }
 }

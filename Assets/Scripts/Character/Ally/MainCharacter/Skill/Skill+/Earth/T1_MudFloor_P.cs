@@ -32,4 +32,17 @@ public class T1_MudFloor_P : MainCharacterSkill
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "랜덤한 단일 대상에게 90%의 확률로 2턴동안 속도 -4만큼 부여";
     }
+    
+    public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "랜덤한 단일 대상에게\n"+
+                                "90%의 확률로\n" +
+                                "2턴동안 속도 -4 부여";
+    }
 }

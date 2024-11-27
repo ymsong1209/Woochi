@@ -24,6 +24,17 @@ public class T1_HealWater_P : MainCharacterSkill
                     "단일 대상을 " + healamount +  "만큼 회복";
     }
     
+    public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "단일 대상을 " + healamount +  "만큼 회복";
+    }
+    
     public int HealAmount
     {
         get => healamount;

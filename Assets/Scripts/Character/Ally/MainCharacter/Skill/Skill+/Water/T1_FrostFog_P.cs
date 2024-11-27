@@ -32,4 +32,16 @@ public class T1_FrostFog_P : MainCharacterSkill
                     "랜덤한 단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
                     "80%의 확률로 3턴동안 명중 -2만큼 부여";
     }
+    
+    public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "랜덤한 단일 대상에게 " + SkillSO.BaseMultiplier + "%피해\n" + 
+                                "80%의 확률로 3턴동안 명중 -2 부여";
+    }
 }

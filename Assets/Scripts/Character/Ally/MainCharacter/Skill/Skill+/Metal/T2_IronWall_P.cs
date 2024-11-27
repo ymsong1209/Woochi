@@ -28,4 +28,16 @@ public class T2_IronWall_P : MainCharacterSkill
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "아군 전체에게 2턴동안 방어 12만큼 부여";
     }
+    
+    public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "아군 전체에게 2턴동안\n"+
+                                "방어 12 부여";
+    }
 }

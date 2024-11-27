@@ -23,4 +23,20 @@ public class T3_FoxRain_P : MainCharacterSkill
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "아군 전체의 체력을 " + healamount +  "만큼 회복";
     }
+    
+    public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "아군 전체의 체력을 " + healamount +  "만큼 회복";
+    }
+    
+    public int HealAmount
+    {
+        get { return healamount; }
+    }
 }

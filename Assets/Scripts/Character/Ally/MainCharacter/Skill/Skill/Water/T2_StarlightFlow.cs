@@ -29,4 +29,35 @@ public class T2_StarlightFlow : MainCharacterSkill
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "아군 전체에게 3턴동안 회피 5, 속도 3만큼 부여";
     }
+    
+    public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "아군 전체에게 3턴동안\n" +
+                                "회피 5, 속도 3만큼 부여";
+    }
+    
+    public override void SetEnhancedSkillScrollDescription(int curskillid, TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        int enhancedSkillID = GameManager.GetInstance.Library.GetEnhancedSkillID(curskillid);
+        MainCharacterSkill enhancedSkill = GameManager.GetInstance.Library.GetSkill(enhancedSkillID) as MainCharacterSkill;
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        MainCharacterSkillSO enhancedMainCharacterSkillSo = enhancedSkill.SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "아군 전체에게 3턴동안\n" +
+                                "회피 5, 속도 3만큼 부여\n" + 
+                                "-\n" +
+                                "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
+                                "아군 전체에게 3턴동안\n" +
+                                "회피 <color=#FFFF00>10</color>, 속도 <color=#FFFF00>6</color>만큼 부여";
+    }
 }
