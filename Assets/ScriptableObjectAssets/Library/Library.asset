@@ -110,6 +110,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 8af0629b8c058494e9dd092deefef816, type: 2}
     - {fileID: 11400000, guid: 7b23636fe1c9fad4e9c8508949113b4e, type: 2}
     - {fileID: 11400000, guid: 6635536e62b9ec04587d54a62ad7c2f2, type: 2}
+    - {fileID: 11400000, guid: ced21c69e818f824cbb5c4941dd73bfa, type: 2}
   - rarity: 4
     rewards:
     - {fileID: 11400000, guid: 21ffee9d76dc09a47a69e2b6c0b5622f, type: 2}
