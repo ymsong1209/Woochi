@@ -94,6 +94,9 @@ public class WoochiCharmSelectionUI : MonoBehaviour
     private void SetCharmTooltip(BaseCharm charm, Transform transform)
     {
         skillDescriptionUI.Activate(charm);
-        skillDescriptionUI.transform.position = transform.position + new Vector3(0, 100, 0);
+        
+        RectTransform rt = transform as RectTransform;
+        RectTransform targetRt = skillDescriptionUI.transform as RectTransform;
+        targetRt.position = rt.position + new Vector3(0, rt.rect.height, 0);
     }
 }

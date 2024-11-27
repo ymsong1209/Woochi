@@ -29,10 +29,10 @@ public class HPBar : MonoBehaviour, ITooltipiable
 
     public Vector3 GetPosition()
     {
-        Vector3 center = bar.bounds.center;
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(center);
-        Vector3 offset = new Vector3(0, -50, 0);
-        return screenPos + offset;
+        float height = bar.bounds.size.y;
+        Vector3 worldPos = bar.bounds.center - height * Vector3.up;
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
+        return screenPos;
     }
 
     public void ShowTooltip()

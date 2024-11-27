@@ -109,11 +109,14 @@ public class SkillSelectionUI : MonoBehaviour
         }
     }
     
-    public void SetSkillTooltip(BaseSkill skill, Transform transform)
+    public void SetSkillTooltip(BaseSkill skill, Transform tr)
     {
         skillDescriptionUI.Activate(skill);
-        skillDescriptionUI.transform.position = transform.position + new Vector3(0, 100, 0);
+        RectTransform rt = tr as RectTransform;
+        RectTransform targetRt = skillDescriptionUI.transform as RectTransform;
+        targetRt.position = rt.position + new Vector3(0, rt.rect.height * 2f, 0);
         buffDescriptionUI.Activate(skill);
         buffDescriptionUI.SkillDescriptionUI = skillDescriptionUI;
+        
     }
 }

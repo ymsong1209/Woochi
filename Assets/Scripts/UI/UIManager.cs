@@ -36,7 +36,8 @@ public class UIManager : SingletonMonobehaviour<UIManager>
 
         if(hpBar)
         {
-            hpTooltip.transform.position = hpBar.GetPosition();
+            RectTransform rt = hpTooltip.GetComponent<RectTransform>();
+            rt.position = hpBar.GetPosition();
             hpTooltipText.text = hpBar.GetTooltipText();
         }
     }
