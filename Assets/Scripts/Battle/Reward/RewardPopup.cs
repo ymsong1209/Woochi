@@ -70,8 +70,11 @@ public class RewardPopup : MonoBehaviour
 
     private void SetTransform(Transform transform)
     {
-        RectTransform rt = transform as RectTransform;
-        RectTransform rtInfo = infoPopup.transform as RectTransform;
-        rtInfo.position = rt.position - new Vector3(0, rt.rect.height, 0);
+        RectTransform targetRt = transform as RectTransform;
+        RectTransform tooltipRt = infoPopup.transform as RectTransform;
+        
+        Vector2 offset = new Vector2(0, -targetRt.rect.height);
+        UIManager.GetInstance.SetTooltipPosition(targetRt, tooltipRt, offset);
     }
+    
 }

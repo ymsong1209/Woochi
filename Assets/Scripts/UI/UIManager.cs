@@ -3,6 +3,10 @@ using TMPro;
 
 public class UIManager : SingletonMonobehaviour<UIManager>
 {
+    [HeaderTooltip("Canvas", "UI Canvas")] 
+    [SerializeField] private Canvas canvas;
+    private RectTransform canvasRt;
+    
     [HeaderTooltip("HP tooltip", "체력바 툴팁")]
     [SerializeField] GameObject hpTooltip;
     [SerializeField] TextMeshProUGUI hpTooltipText;
@@ -28,6 +32,7 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     private void Start()
     {
         BattleManager.GetInstance.OnFocusStart += DeactivateBuffPopUp;
+        canvasRt = canvas.GetComponent<RectTransform>();
     }
     
     public void SetHPTooltip(bool isActivate, HPBar hpBar = null)
@@ -52,16 +57,16 @@ public class UIManager : SingletonMonobehaviour<UIManager>
         enemySpeedTxt.text = $"속도 : {finalStat.GetValue(StatType.Speed)}";
     }
 
-    public void OnCharacterDamaged(BaseCharacter _character)
+    public void SetTooltipPosition(RectTransform targetRt, RectTransform tooltipRt, Vector2 offset)
     {
-        if (_character.IsAlly)
-        {
+        Vector3 screenPosition = RectTransformUtility.WorldToScreenPoint(null, targetRt.position);
 
-        }
-        else
-        {
-            SetEnemyToolTip(_character);
-        }
+        Vector2 localPosition;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            canvasRt, screenPosition,
+            null, out localPosition);
+        
+        tooltipRt.localPosition = localPosition + offset;
     }
 
     public void DeactivePopup()

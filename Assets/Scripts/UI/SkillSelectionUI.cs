@@ -111,10 +111,11 @@ public class SkillSelectionUI : MonoBehaviour
     
     public void SetSkillTooltip(BaseSkill skill, Transform tr)
     {
+        RectTransform targetRt = tr as RectTransform;
+        RectTransform tooltipRt = skillDescriptionUI.transform as RectTransform;
+        Vector2 offset = new Vector2(0, targetRt.rect.height * 1.5f);
+        UIManager.GetInstance.SetTooltipPosition(targetRt, tooltipRt, offset);
         skillDescriptionUI.Activate(skill);
-        RectTransform rt = tr as RectTransform;
-        RectTransform targetRt = skillDescriptionUI.transform as RectTransform;
-        targetRt.position = rt.position + new Vector3(0, rt.rect.height * 2f, 0);
         buffDescriptionUI.Activate(skill);
         buffDescriptionUI.SkillDescriptionUI = skillDescriptionUI;
         
