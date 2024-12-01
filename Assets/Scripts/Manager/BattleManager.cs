@@ -602,7 +602,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     /// <summary>
-    /// index 위치에 캐릭터가 있는지
+    /// index 위치에 살아있는 캐릭터가 있는지
     /// </summary>
     /// <param name="index"></param>
     /// <returns></returns>
@@ -610,11 +610,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         if(index < 4)
         {
-            return allies.formation[index] != null;
+            return (allies.formation[index] != null && allies.formation[index].IsDead == false);
         }
         else if(index < 8)
         {
-            return enemies.formation[index - 4] != null;
+            return (enemies.formation[index - 4] != null && allies.formation[index].IsDead == false);
         }
 
         return false;
@@ -795,5 +795,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     public Formation Enemies => enemies;
 
     public BaseSkill CurrentSelectedSkill => currentSelectedSkill;
+    
+    public TurnManager TurnManager => turnManager;
     #endregion
 }

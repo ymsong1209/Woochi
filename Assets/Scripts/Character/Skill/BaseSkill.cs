@@ -273,7 +273,7 @@ public class BaseSkill : MonoBehaviour
             if (i<4 && skillRadius[i])
             {
                 BaseCharacter ally = allies.formation[i];
-                if (!ally) continue;
+                if (!ally || ally.IsDead) continue;
                 
                 //아군의 Size가 2인 경우
                 if (ally.Size == 2)
@@ -293,7 +293,7 @@ public class BaseSkill : MonoBehaviour
             else if (i is >= 4 and < 8 && skillRadius[i])
             {
                 BaseCharacter enemy = enemies.formation[i - 4];
-                if(!enemy) continue;
+                if(!enemy || enemy.IsDead) continue;
 
                 //적의 Size가 2인 경우
                 if(enemy.Size == 2)
@@ -337,7 +337,7 @@ public class BaseSkill : MonoBehaviour
             if (i < 4 && skillRadius[i])
             {
                 BaseCharacter ally = allies.formation[i];
-                if (!ally) continue;
+                if (!ally || ally.IsDead) continue;
 
                 if (ally.Size == 2)
                 {
@@ -354,7 +354,7 @@ public class BaseSkill : MonoBehaviour
             else if (i is >= 4 and < 8 && skillRadius[i])
             {
                 BaseCharacter enemy = enemies.formation[i - 4];
-                if (!enemy) continue;
+                if (!enemy || enemy.IsDead) continue;
 
                 if (enemy.Size == 2)
                 {
