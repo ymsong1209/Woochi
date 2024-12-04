@@ -28,7 +28,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         if(DataCloud.playerData == null)
             LoadData();
     }
-
+    
     public void SaveData()
     {
         if (!DataCloud.dontSave)
@@ -41,6 +41,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     public void LoadData()
     {
         DataCloud.LoadPlayerData();
+        DataCloud.LoadGameSetting();
         library.Initialize();
     }
 
@@ -64,7 +65,12 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         Application.Quit();
 #endif
     }
-
+    
+    public void GoTitle()
+    {
+        HelperUtilities.MoveScene(SceneType.Title);
+    }
+    
     #region Getter Setter
     public Library Library => library;
     public bool UseDebugCharms => useDebugCharms;

@@ -1,8 +1,12 @@
+using System;
+using AK.Wwise;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
+    [SerializeField] private RTPC masterVolumeRTPC;
+    
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -17,6 +21,9 @@ public class SoundManager : MonoBehaviour
     {
         
     }
-    
-    
+
+    private void Start()
+    {
+        masterVolumeRTPC.SetGlobalValue(100f);    
+    }
 }

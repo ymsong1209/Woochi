@@ -118,6 +118,5 @@ public class SkillSelectionUI : MonoBehaviour
         skillDescriptionUI.Activate(skill);
         buffDescriptionUI.Activate(skill);
         buffDescriptionUI.SkillDescriptionUI = skillDescriptionUI;
-        
     }
 }

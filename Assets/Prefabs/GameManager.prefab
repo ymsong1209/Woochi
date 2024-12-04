@@ -96,3 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc54fc45b3ff3749ab67f27af5b56ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterVolumeRTPC:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 726948c50942f9542a165d417e2fa2ad, type: 2}

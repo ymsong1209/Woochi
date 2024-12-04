@@ -7,12 +7,12 @@ public class MapManager : SingletonMonobehaviour<MapManager>
     public MapView view;
 
     public Map CurrentMap { get; private set; }
-
+    
     private void Start()
     {
         if(DataCloud.playerData.currentMap != null)
         {
-            CurrentMap = DataCloud.playerData.currentMap;
+            CurrentMap = new Map(DataCloud.playerData.currentMap);
             config = mapConfigs.FirstOrDefault(c => c.name.Equals(CurrentMap.configName));
             view.ShowMap(CurrentMap);
 
@@ -40,7 +40,7 @@ public class MapManager : SingletonMonobehaviour<MapManager>
     {
         AllyFormation allies = BattleManager.GetInstance.Allies;
         allies.MoveNode();
-
+        
         if (_mapNode.Node.nodeType == NodeType.Strange)
         {
             StrangeManager.GetInstance.InitializeStrange(_mapNode.Node.strangeID);
@@ -61,8 +61,8 @@ public class MapManager : SingletonMonobehaviour<MapManager>
     public void SaveMap()
     {
         if (CurrentMap == null) return;
-
-        DataCloud.playerData.currentMap = CurrentMap;
+        
+        DataCloud.playerData.currentMap = new Map(CurrentMap);
         GameManager.GetInstance.SaveData();
     }
 }
