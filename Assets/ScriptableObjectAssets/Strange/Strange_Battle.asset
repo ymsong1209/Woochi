@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff990185a3556ba4ca3a1b76ab4cb6de, type: 3}
   m_Name: Strange_Battle
   m_EditorClassIdentifier: 
-  situationSprite: {fileID: 21300000, guid: d33b8f5d50ab9944797509583d5bdda7, type: 3}
+  situationSprite: {fileID: 21300000, guid: c398b26916d4d944d899a59bfc51aa53, type: 3}
   situationText: "\uAC11\uC790\uAE30 \uC8FC\uC704\uC5D0\uC11C \uC0AC\uB098\uC6B4
     \uC694\uAE30\uAC00 \uB290\uAEF4\uC9C4\uB2E4\n\uC804\uD22C\uB97C \uC900\uBE44\uD558\uC790"
   choices:
