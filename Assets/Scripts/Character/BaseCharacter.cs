@@ -48,7 +48,7 @@ public class BaseCharacter : MonoBehaviour
     #region BATTLE STATS
 
     [SerializeField, ReadOnly]
-    private bool isDead;
+    protected bool isDead;
 
     /// <summary>
     /// 나에게 적용된 버프

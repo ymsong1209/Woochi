@@ -29,11 +29,11 @@ public class CorruptedTree : BaseEnemy
             //30% 확률로 기술1, 40% 확률로 기술2, 30% 확률로 기술3
             System.Random random = new System.Random();
             int randomValue = random.Next(0, 100);
-            if (randomValue < 30)
+            if (randomValue < 0)
             {
                 FearWhisper();
             }
-            else if (randomValue < 70)
+            else if (randomValue <= 0)
             {
                 BasicAttack();
             }
@@ -47,7 +47,7 @@ public class CorruptedTree : BaseEnemy
             //40% 확률로 기술2, 60% 확률로 기술3
             System.Random random = new System.Random();
             int randomValue = random.Next(0, 100);
-            if (randomValue < 40)
+            if (randomValue < 0)
             {
                 BasicAttack();
             }
@@ -114,15 +114,17 @@ public class CorruptedTree : BaseEnemy
             if (index == 0)
             {
                 leftSoul.gameObject.SetActive(true);
-                leftSoul.Health.Resurrect();
-                leftSoul.Health.CurHealth = (int)(leftSoul.Health.MaxHealth * 0.44f);
+                leftSoul.Resurrect(true);
+                leftSoul.Health.CurHealth = 1;
+                //leftSoul.Health.CurHealth = (int)(leftSoul.Health.MaxHealth * 0.44f);
                 enemyFormation.formation[0] = leftSoul;
             }
             else if (index == 3)
             {
                 rightSoul.gameObject.SetActive(true);
-                rightSoul.Health.Resurrect();
-                rightSoul.Health.CurHealth = (int)(rightSoul.Health.MaxHealth * 0.44f);
+                rightSoul.Resurrect(true);
+                rightSoul.Health.CurHealth = 1;
+                //rightSoul.Health.CurHealth = (int)(rightSoul.Health.MaxHealth * 0.44f);
                 enemyFormation.formation[3] = rightSoul;
             }
         }

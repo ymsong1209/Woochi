@@ -614,7 +614,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
         else if(index < 8)
         {
-            return (enemies.formation[index - 4] != null && allies.formation[index].IsDead == false);
+            return (enemies.formation[index - 4] != null && enemies.formation[index-4].IsDead == false);
         }
 
         return false;

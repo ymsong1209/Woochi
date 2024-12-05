@@ -177,4 +177,6 @@ public class Formation : MonoBehaviour
     }
     
     public List<BaseCharacter> AllCharacter => allCharacter;
+    public float[] SinglePos => singlePos;
+    public float[] MultiPos => multiPos;
 }

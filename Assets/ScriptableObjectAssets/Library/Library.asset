@@ -41,6 +41,12 @@ MonoBehaviour:
     value: {fileID: 1980818747636440210, guid: a8c5bbb74066f224685f9f86f499d8eb, type: 3}
   - ID: 5005
     value: {fileID: 1980818747636440210, guid: b0ad1c98b3162214da8aacf398788fc3, type: 3}
+  - ID: 7001
+    value: {fileID: 1980818747636440210, guid: b59bd84777491334f95853d7e0f1cfa7, type: 3}
+  - ID: 7002
+    value: {fileID: 3657592949406269409, guid: c363fc954ec620b4086523978e857451, type: 3}
+  - ID: 7003
+    value: {fileID: 3657592949406269409, guid: 0b821b7e33be7594d81a81e9027b75ea, type: 3}
   - ID: 10000
     value: {fileID: 3657592949406269409, guid: b24138b9257965b41bec894d078458db, type: 3}
   abnormals:

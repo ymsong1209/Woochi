@@ -10,20 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f970e1487b951641bb3562062edf1db, type: 3}
-  m_Name: Tiger_Roar
+  m_Name: CT_LS_BasicAttack
   m_EditorClassIdentifier: 
-  skillIcon: {fileID: 21300000, guid: be611e6345604b345aa95dcae03b6c9e, type: 3}
-  skillName: "\uC0B0\uAD70\uC758 \uD3EC\uD6A8"
-  animType: 4
-  skillAvailableRadius: 0101000000000000
-  skillRadius: 0000000001010100
+  skillIcon: {fileID: 0}
+  skillName: "\uADC0\uBAA9\uC758 \uC804\uC728"
+  animType: 3
+  skillAvailableRadius: 0000000001010101
+  skillRadius: 0101010100000000
   skillType: 0
-  skillTargetType: 1
+  skillTargetType: 0
   skillElement: 0
   skillTargetCount: 1
   skillRandomCount: 0
-  bufflist:
-  - {fileID: 2569674945298275565, guid: 792e42c0644dbee4cb47bae86d650f7b, type: 3}
-  baseMultiplier: 0
+  bufflist: []
+  baseMultiplier: 100
   baseSkillAccuracy: 100
   skillSound: 
