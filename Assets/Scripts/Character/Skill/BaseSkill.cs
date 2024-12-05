@@ -509,7 +509,7 @@ public class BaseSkill : MonoBehaviour
     }
     
 
-    protected virtual void ApplyStat(BaseCharacter receiver, bool isCrit)
+    protected virtual int ApplyStat(BaseCharacter receiver, bool isCrit)
     {
         Health opponentHealth = receiver.Health;
        
@@ -518,21 +518,25 @@ public class BaseSkill : MonoBehaviour
             case SkillType.Attack:
             {
                 float Damage = CalculateDamage(receiver, isCrit);
-                //원소 버프.디버프는 최종 대미지 계산 후 적용
+                //원소 버프.디버프는 대미지 계산 후 적용
                 Damage = Mathf.Clamp(CalculateElementalDamageBuff(Damage),0,9999);
+                Damage = Mathf.Clamp(CalculateFinalDamage(Damage),0,9999);
                 opponentHealth.ApplyDamage((int)Mathf.Round(Damage), isCrit);
                 receiver.CheckDeadAndPlayAnim();
+                return (int)Mathf.Round(Damage);
             }
             break;
             case SkillType.Heal:
             {
                 float HealAmount = CalculateHeal(receiver, isCrit);
                 opponentHealth.Heal((int)Mathf.Round(HealAmount));
+                return (int)Mathf.Round(HealAmount);
             }
             break;
             default:
             {
                 //특수 스킬은 HP에 영향을 안 미침.
+                return 0;
             }
             break;
         }
@@ -543,8 +547,8 @@ public class BaseSkill : MonoBehaviour
         Stat finalStat = skillOwner.FinalStat;
         float randomStat = Random.Range(finalStat.GetValue(StatType.MinDamage), finalStat.GetValue(StatType.MaxDamage));
         randomStat *= (multiplier / 100);
-        float depense = receiver.FinalStat.GetValue(StatType.Defense);
-        randomStat = randomStat * (1 - depense / (depense + 100));
+        float defense = receiver.FinalStat.GetValue(StatType.Defense);
+        randomStat = randomStat * (1 - defense / (defense + 100));
         if (isCrit) randomStat = randomStat * 2;
         return randomStat;
     }
@@ -571,6 +575,24 @@ public class BaseSkill : MonoBehaviour
 
         return damage;
     }
+
+    protected float CalculateFinalDamage(float damage)
+    {
+        foreach (BaseBuff buff in SkillOwner.activeBuffs)
+        {
+            if (buff.BuffEffect == BuffEffect.Fear)
+            {
+                FearBuff fearBuff = buff as FearBuff;
+                if (fearBuff)
+                {
+                    damage = damage * (1 - fearBuff.DamageReduction / 100);
+                }
+            }
+        }
+
+        return damage;
+    }
+    
     protected virtual float CalculateHeal(BaseCharacter receiver, bool isCrit)
     {
         Stat finalStat = skillOwner.FinalStat;

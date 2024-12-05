@@ -88,6 +88,7 @@ public enum BuffEffect
     IncreaseCritOvertime,       //족자구 회피 증가 버프
     Troll,
     Poison,
+    Fear,                       //최종 대미지 감소
     Special,
     END
 }

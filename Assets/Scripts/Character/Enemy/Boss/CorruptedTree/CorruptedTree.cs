@@ -6,7 +6,6 @@ using UnityEngine;
 public class CorruptedTree : BaseEnemy
 {
     [SerializeField] private BaseBuff fearBuff;
-    [SerializeField] private BaseBuff soulBuff;
     private BaseCharacter leftSoul;
     private BaseCharacter rightSoul;
     public override void TriggerAI()

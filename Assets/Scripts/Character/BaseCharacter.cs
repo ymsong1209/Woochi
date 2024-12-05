@@ -311,7 +311,7 @@ public class BaseCharacter : MonoBehaviour
         }
     }
 
-    private void HandleDeath()
+    protected virtual void HandleDeath()
     {
         RemoveAllBuff();
         anim.PlayDeadAnimation();
