@@ -89,6 +89,7 @@ public enum BuffEffect
     Troll,
     Poison,
     Fear,                       //최종 대미지 감소
+    StunResist,
     Special,
     END
 }

@@ -243,7 +243,7 @@ public class BaseSkill : MonoBehaviour
             }
 
             // 버프 적용 가능 여부 판단
-            if (!CheckApplyBuff(buffToApply))
+            if (!CheckApplyBuff(buffToApply,_opponent))
             {
                 Destroy(clonedbuff);
                 continue;
@@ -396,7 +396,7 @@ public class BaseSkill : MonoBehaviour
         //치명타일 경우 명중, 회피, 저항 무시하고 바로 스킬 적용
         if (CheckCrit())
         {
-            Debug.Log(skillOwner.ToString() + "uses Crit Skill on "+ skillName + "to "+ _opponent.name.ToString());
+            Debug.Log(skillOwner.ToString() + "uses Crit Skill "+ skillName + "to "+ _opponent.name.ToString());
             _iscrit = true;
             skillResult.isHit.Add(true);
             skillResult.isCrit.Add(true);
@@ -425,7 +425,7 @@ public class BaseSkill : MonoBehaviour
         
         skillResult.isHit.Add(true);
         skillResult.isCrit.Add(false);
-        Debug.Log( skillOwner.ToString() + "uses Non Crit Skill on " + skillName + "to " + _opponent.name.ToString());
+        Debug.Log( skillOwner.ToString() + "uses Non Crit Skill " + skillName + "to " + _opponent.name.ToString());
         ApplyStat(_opponent, false);
 
         return true;
@@ -477,9 +477,19 @@ public class BaseSkill : MonoBehaviour
     /// 버프를 적용시킬 확률 계산
     /// 버프를 적용시킬 수 있으면 true 반환
     /// </summary>
-    protected bool CheckApplyBuff(BaseBuff _buff)
+    protected bool CheckApplyBuff(BaseBuff _buff, BaseCharacter _opponent)
     {
         if (_buff.IsAlwaysApplyBuff) return true;
+        //적용된 버프를 순회하면서 버프를 적용시킬 수 있는지 확인
+        foreach(BaseBuff buff in _opponent.activeBuffs)
+        {
+            if (buff.CanApplyBuff(_buff) == false)
+            {
+                Debug.Log(_buff.name + "버프 적용 실패 on" + skillName + "because of Buff" + buff.name);
+                return false;
+            }
+        }
+        
         int RandomValue = Random.Range(0, 100);
         if (RandomValue <= _buff.ChanceToApplyBuff) return true;
         Debug.Log(_buff.name + "버프 확률 굴림 실패 on" + skillName + "with RandomValue" + RandomValue + ", ChanceToApplyBuff" + _buff.ChanceToApplyBuff);

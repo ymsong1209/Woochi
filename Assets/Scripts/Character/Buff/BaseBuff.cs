@@ -154,6 +154,17 @@ public class BaseBuff : MonoBehaviour
         text.color = buffColor;
     }
 
+    /// <summary>
+    /// 인자로 들어온 buff를 적용시킬 수 있는지 확인
+    /// ex)기절 저항 버프가 있을때 기절 버프를 걸려고 하는 경우
+    /// </summary>
+    /// <param name="buff"></param>
+    /// <returns></returns>
+    public virtual bool CanApplyBuff(BaseBuff buff)
+    {
+        return true;
+    }
+
     #region Getter Setter
 
     public BaseCharacter Caster => caster;

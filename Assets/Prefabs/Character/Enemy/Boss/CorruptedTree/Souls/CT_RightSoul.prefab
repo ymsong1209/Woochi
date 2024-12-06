@@ -275,3 +275,4 @@ MonoBehaviour:
   rowOrder: 0
   dummySoulPrefab: {fileID: 4576191067643745311, guid: 34c9fa1daa1855342ab262aa98836dbf, type: 3}
   dummySoul: {fileID: 0}
+  stunResistBuff: {fileID: -6645214429770701296, guid: 34bea39e19122364a89ce341df34eadd, type: 3}

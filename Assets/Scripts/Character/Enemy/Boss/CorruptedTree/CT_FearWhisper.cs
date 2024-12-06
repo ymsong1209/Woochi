@@ -10,7 +10,9 @@ public class CT_FearWhisper : BaseSkill
        
         GameObject fearDebuffPrefab = BuffPrefabList[0];
         GameObject fearDebuffGameObject = Instantiate(fearDebuffPrefab, transform);
-        FearBuff elementalDebuff = fearDebuffGameObject.GetComponent<FearBuff>();
+        FearBuff fearBuff = fearDebuffGameObject.GetComponent<FearBuff>();
+        fearBuff.ChanceToApplyBuff = 100;
+        fearBuff.IsAlwaysApplyBuff = true;
         instantiatedBuffList.Add(fearDebuffGameObject);
         
         base.ActivateSkill(_Opponent);

@@ -24,7 +24,7 @@ MonoBehaviour:
   baseStat:
     list:
     - type: 0
-      value: 1
+      value: 17
     - type: 1
       value: 5
     - type: 2
@@ -87,10 +87,10 @@ MonoBehaviour:
     exp: 0
     plusExp: 0
   baseHealth:
-    maxHealth: 1
-    curHealth: 1
+    maxHealth: 17
+    curHealth: 17
     shield: 0
     countToResurrect: -1
   skills:
-  - {fileID: -8759090313018549695, guid: d97808bbc73292143a2480025ddbdb28, type: 3}
+  - {fileID: -4774276861529287447, guid: fb133728bd29a1c4381bf3399d36f2fa, type: 3}
   reinforcedSkills: []

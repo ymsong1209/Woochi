@@ -6,12 +6,31 @@ public class CT_RightSoul : BaseEnemy
 {
     [SerializeField] private CT_RightDummy dummySoulPrefab;
     [SerializeField] private CT_RightDummy dummySoul;
-
+    [SerializeField] private StunResistBuff stunResistBuff;
+    public override void Initialize()
+    {
+        base.Initialize();
+        GameObject instantiatedEvasionBuff = Instantiate(stunResistBuff.gameObject, transform);
+        StunResistBuff buff = instantiatedEvasionBuff.GetComponent<StunResistBuff>();
+        buff.IsRemovableDuringBattle = false;
+        buff.IsAlwaysApplyBuff = true;
+        buff.BuffDurationTurns = -1;
+        ApplyBuff(this,this,buff);
+    }
+    
     public override void TriggerAI()
     {
-        Debug.Log("RightSoulAI");
+        //50% 확률로 체력이 가장 낮은 아군을 대상으로 스킬 사용
+        //50% 확률로 모든 아군 캐릭터 중 하나를 무작위로 대상으로 스킬 사용
         BaseCharacter ally = null;
-        ally = BattleUtils.FindAllyFromIndex(0);
+        if (Random.Range(0, 2) == 0)
+        {
+            ally = BattleUtils.FindAllyWithLeastHP(0, 1, 2, 3);
+        }
+        else
+        {
+            ally = BattleUtils.FindRandomAlly(0,1,2,3);
+        }
         BattleManager.GetInstance.SkillSelected(activeSkills[0]);
         BattleManager.GetInstance.CharacterSelected(ally);
         BattleManager.GetInstance.ExecuteSelectedSkill(ally);

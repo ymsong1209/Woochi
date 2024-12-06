@@ -1,15 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CT_LeftSoul : BaseEnemy
 {
     [SerializeField] private CT_LeftDummy dummySoulPrefab;
     [SerializeField] private CT_LeftDummy dummySoul;
-
+    [SerializeField] private StunResistBuff stunResistBuff;
+    public override void Initialize()
+    {
+        base.Initialize();
+        GameObject instantiatedEvasionBuff = Instantiate(stunResistBuff.gameObject, transform);
+        StunResistBuff buff = instantiatedEvasionBuff.GetComponent<StunResistBuff>();
+        buff.IsRemovableDuringBattle = false;
+        buff.IsAlwaysApplyBuff = true;
+        buff.BuffDurationTurns = -1;
+        ApplyBuff(this,this,buff);
+    }
     public override void TriggerAI()
     {
-        Debug.Log("LeftsoulAI");
         BaseCharacter ally = null;
         ally = BattleUtils.FindAllyFromIndex(0);
         BattleManager.GetInstance.SkillSelected(activeSkills[0]);
