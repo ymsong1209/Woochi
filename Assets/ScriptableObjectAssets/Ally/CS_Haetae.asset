@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CS_Haetae
   m_EditorClassIdentifier: 
   ID: 3
-  portrait: {fileID: 21300000, guid: b549cdcd96833fc4292c3ddad663c744, type: 3}
+  portrait: {fileID: 21300000, guid: 9c6fce980476a364dbc71cd49179f09f, type: 3}
   icons:
   - {fileID: 21300000, guid: 8547f6cfa1dea6e4e85a18b88942821e, type: 3}
   - {fileID: 21300000, guid: 573771c4d311f384083501e31a47883c, type: 3}
@@ -22,35 +22,65 @@ MonoBehaviour:
   size: 2
   cost: 0
   baseStat:
-    maxHealth: 43
-    speed: 3
-    defense: 1
-    crit: 3
-    accuracy: 3
-    evasion: 5
-    resist: 10
-    minStat: 6
-    maxStat: 11
+    list:
+    - type: 0
+      value: 43
+    - type: 1
+      value: 3
+    - type: 2
+      value: 11
+    - type: 3
+      value: 3
+    - type: 4
+      value: 3
+    - type: 5
+      value: 7
+    - type: 6
+      value: 10
+    - type: 7
+      value: 6
+    - type: 8
+      value: 11
   levelUpStat:
-    maxHealth: 8
-    speed: 1
-    defense: 1
-    crit: 1
-    accuracy: 3
-    evasion: 1
-    resist: 0
-    minStat: 2
-    maxStat: 2
+    list:
+    - type: 0
+      value: 10
+    - type: 1
+      value: 1
+    - type: 2
+      value: 3
+    - type: 3
+      value: 1
+    - type: 4
+      value: 3
+    - type: 5
+      value: 2
+    - type: 6
+      value: 0
+    - type: 7
+      value: 3
+    - type: 8
+      value: 3
   rewardStat:
-    maxHealth: 0
-    speed: 0
-    defense: 0
-    crit: 0
-    accuracy: 0
-    evasion: 0
-    resist: 0
-    minStat: 0
-    maxStat: 0
+    list:
+    - type: 0
+      value: 0
+    - type: 1
+      value: 0
+    - type: 2
+      value: 0
+    - type: 3
+      value: 0
+    - type: 4
+      value: 0
+    - type: 5
+      value: 0
+    - type: 6
+      value: 0
+    - type: 7
+      value: 0
+    - type: 8
+      value: 0
   level:
     owner: {fileID: 0}
     rank: 1
@@ -60,6 +90,7 @@ MonoBehaviour:
     maxHealth: 43
     curHealth: 43
     shield: 0
+    countToResurrect: -1
   skills:
   - {fileID: 441969386495339808, guid: 222d7d92e17f7d3438a2bcc29a352091, type: 3}
   - {fileID: -7858980251531791972, guid: c140fb3f75d2846419eb23455bfc6a72, type: 3}

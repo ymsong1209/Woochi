@@ -23,7 +23,7 @@ public class CH_Stab : BaseSkill
             //40%의 확률로 적을 강제 이동
             if (randomValue < 40)
             {
-                BattleManager.GetInstance.MoveCharacter(SkillResult.Opponent[0], -1);
+                BattleManager.GetInstance.MoveCharacter(SkillResult.Opponent[0], -1,false);
             }
         }
     }

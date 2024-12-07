@@ -662,8 +662,21 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// 캐릭터의 위치를 이동시키는 함수
     /// </summary>
     /// <param name="move">얼마나 이동할 것인지, 음수면 뒤로 이동, 양수면 앞으로 이동</param>
-    public void MoveCharacter(BaseCharacter character, int move)
+    /// <param name="isForce">강제로 이동시킬 것인지, 아니면 버프 체크 후 이동</param>
+    public void MoveCharacter(BaseCharacter character, int move, bool isForce = true)
     {
+        if (!isForce && character.activeBuffs.Count > 0)
+        {
+            foreach (var buff in character.activeBuffs)
+            {
+                if (buff.BuffEffect == BuffEffect.MoveResist)
+                {
+                    Debug.Log(character.name + "은 이동 저항 버프로 이동할 수 없습니다.");
+                    return;
+                }
+            }
+        }
+        
         int from = GetCharacterIndex(character);
         int to = Mathf.Clamp(from - move, 0, 3);    // 이동하려는 위치
         if (character.IsAlly && GetCharacterFromIndex(to) && GetCharacterFromIndex(to) == character) //size가 2인 아군 캐릭터 고려

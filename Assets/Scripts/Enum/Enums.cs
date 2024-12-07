@@ -90,6 +90,7 @@ public enum BuffEffect
     Poison,
     Fear,                       //최종 대미지 감소
     StunResist,
+    MoveResist,                 //강제이동 저항
     Special,
     END
 }

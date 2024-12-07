@@ -274,3 +274,4 @@ MonoBehaviour:
   isSummoned: 0
   rowOrder: 0
   fearBuff: {fileID: -2415174106852129025, guid: df93194542ca1024a9605826f7c82158, type: 3}
+  moveResistBuff: {fileID: -3903121477151407018, guid: e0b04c70896f65e4f887395a3e4fb3ca, type: 3}

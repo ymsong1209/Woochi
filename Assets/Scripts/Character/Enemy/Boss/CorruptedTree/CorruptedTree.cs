@@ -8,6 +8,18 @@ public class CorruptedTree : BaseEnemy
     [SerializeField] private BaseBuff fearBuff;
     private BaseCharacter leftSoul;
     private BaseCharacter rightSoul;
+    [SerializeField] private MoveResistBuff moveResistBuff;
+    
+    public override void Initialize()
+    {
+        base.Initialize();
+        GameObject instantiatedMoveBuff = Instantiate(moveResistBuff.gameObject, transform);
+        MoveResistBuff movebuff = instantiatedMoveBuff.GetComponent<MoveResistBuff>();
+        movebuff.IsRemovableDuringBattle = false;
+        movebuff.IsAlwaysApplyBuff = true;
+        movebuff.BuffDurationTurns = -1;
+        ApplyBuff(this,this,movebuff);
+    }
     public override void TriggerAI()
     {
         Formation allyFormation = BattleManager.GetInstance.Allies;

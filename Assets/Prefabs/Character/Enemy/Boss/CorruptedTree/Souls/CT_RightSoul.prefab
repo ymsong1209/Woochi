@@ -276,3 +276,4 @@ MonoBehaviour:
   dummySoulPrefab: {fileID: 4576191067643745311, guid: 34c9fa1daa1855342ab262aa98836dbf, type: 3}
   dummySoul: {fileID: 0}
   stunResistBuff: {fileID: -6645214429770701296, guid: 34bea39e19122364a89ce341df34eadd, type: 3}
+  moveResistBuff: {fileID: -3903121477151407018, guid: e0b04c70896f65e4f887395a3e4fb3ca, type: 3}
