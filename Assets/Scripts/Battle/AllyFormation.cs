@@ -25,14 +25,8 @@ public class AllyFormation : Formation
         // 플레이어가 소유한 소환수를 일단 모두 생성(우치 포함)
         foreach (GameObject prefab in prefabs)
         {
-            GameObject characterPrefab = Instantiate(prefab, transform);
-            BaseCharacter character = characterPrefab.GetComponent<BaseCharacter>();
-
-            character.IsAlly = isAllyFormation;
-            character.Initialize();
-            SetProperty(character, false, -1);
-            character.gameObject.SetActive(false);
-            allCharacter.Add(character);
+            CreateAlly(prefab);
+           
         }
 
         // 포메이션에 등록한 소환수를 포메이션에 등록
@@ -58,6 +52,18 @@ public class AllyFormation : Formation
         #endregion
 
         Positioning();
+    }
+
+    public void CreateAlly(GameObject prefab)
+    {
+        GameObject characterPrefab = Instantiate(prefab, transform);
+        BaseCharacter character = characterPrefab.GetComponent<BaseCharacter>();
+
+        character.IsAlly = isAllyFormation;
+        character.Initialize();
+        SetProperty(character, false, -1);
+        character.gameObject.SetActive(false);
+        allCharacter.Add(character);
     }
 
     public void MoveNode()

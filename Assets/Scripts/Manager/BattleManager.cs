@@ -74,6 +74,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         
     }
 
+    public void AddAlly(GameObject prefab)
+    {
+        allies.CreateAlly(prefab);
+        allyCards.Initialize(allies);
+    }
+
     public void InitializeBattle(int[] enemyIDs, int abnormalID = 100, bool isElite = false)
     {
         if (enemyIDs == null || enemyIDs.Length == 0) 

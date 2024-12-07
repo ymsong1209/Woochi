@@ -340,10 +340,6 @@ public class BaseCharacter : MonoBehaviour
                 activeBuffs.RemoveAt(i);
                 buff.RemoveBuff();
             }
-            else
-            {
-                buff.BuffDurationTurns--;
-            }
         }
     }
 
