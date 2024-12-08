@@ -1,24 +1,36 @@
 Event	ID	Name			Wwise Object Path	Notes
+	39226162	Event_Click			\Default Work Unit\Event_Click	
 	115002250	Ground_Skill			\Default Work Unit\Ground_Skill	
 	117036824	Skill_Mouse			\Default Work Unit\Skill_Mouse	
+	221498635	Heal_Use			\Default Work Unit\Heal_Use	
 	286100424	Swap			\Default Work Unit\Swap	
 	410006513	Title_Mouse			\Default Work Unit\Title_Mouse	
 	654742305	Main_Title			\Default Work Unit\Main_Title	
+	716963261	Paper_Use			\Default Work Unit\Paper_Use	
+	748252872	Paper_Get			\Default Work Unit\Paper_Get	
 	777931932	Haetae_Join			\Default Work Unit\Haetae_Join	
+	1037822516	Fight_Start			\Default Work Unit\Fight_Start	
+	1131978445	Event_Movement			\Default Work Unit\Event_Movement	
 	1362914800	Water_Skill			\Default Work Unit\Water_Skill	
+	1405224191	Event_Positive			\Default Work Unit\Event_Positive	
 	1471171747	Tree_Skill			\Default Work Unit\Tree_Skill	
 	1614233980	Metal_Skill			\Default Work Unit\Metal_Skill	
 	1667288597	Reward_Click			\Default Work Unit\Reward_Click	
 	1785041727	Fox_Join			\Default Work Unit\Fox_Join	
+	1901157005	Event_Arrived			\Default Work Unit\Event_Arrived	
 	1946638119	Announce_Down			\Default Work Unit\Announce_Down	
 	1971761969	Tiger_Join			\Default Work Unit\Tiger_Join	
 	2130970777	Map_Mouse			\Default Work Unit\Map_Mouse	
+	2335153107	Event_Negative			\Default Work Unit\Event_Negative	
 	2349436841	Pet_Return			\Default Work Unit\Pet_Return	
+	2387832805	Movement_Mouse_Edit			\Default Work Unit\Movement_Mouse_Edit	
 	2455846824	Power_Up			\Default Work Unit\Power_Up	
 	2480411368	Map_Click			\Default Work Unit\Map_Click	
 	3036007183	Movement_Click			\Default Work Unit\Movement_Click	
+	3046553211	Skill_Mouse_Edit			\Default Work Unit\Skill_Mouse_Edit	
 	3302781919	Reward_Arrow_Click			\Default Work Unit\Reward_Arrow_Click	
 	3415311978	Reward_Arrow_Mouse			\Default Work Unit\Reward_Arrow_Mouse	
+	3587852286	Movement_Click_Edit			\Default Work Unit\Movement_Click_Edit	
 	3680301402	Movement_Mouse			\Default Work Unit\Movement_Mouse	
 	4057793579	Fire_Skill			\Default Work Unit\Fire_Skill	
 	4199180592	Title_Click			\Default Work Unit\Title_Click	
@@ -27,10 +39,16 @@ Event	ID	Name			Wwise Object Path	Notes
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	55501940	Water_Skill	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Water_Skill_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Water_Skill		576096
 	62276585	Tree_Skill	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Tree_Skill_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tree_Skill		576096
+	81999487	Event_Positive	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Event_Positive_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Event_Positive		576096
 	165554327	Map_Click	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Map_Click_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Map_Click		120096
+	199352336	Event_Arrived	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Event_Arrived_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Event_Arrived		528096
+	234231556	Movement_Click_Edit	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Movement_Click_Edit_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Movement_Click_Edit		504096
 	275618036	Title_Mouse	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Title_Mouse_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Title_Mouse		54096
 	319263385	Skill_Mouse	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Skill_Mouse_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Skill_Mouse		54096
+	321173188	Paper_Use	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Paper_Use_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Paper_Use		576096
 	324781318	Reward_Arrow_Click	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Reward_Arrow_Click_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Reward_Arrow_Click		192096
+	328838393	Fight_Start	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Fight_Start_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Fight_Start		504096
+	342798534	Movement_Mouse_Edit	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Movement_Mouse_Edit_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Movement_Mouse_Edit		504096
 	378946344	Haetae_Join	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Haetae_Join_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Haetae_Join		336096
 	447256061	Swap	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Swap_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Swap		192096
 	465945705	Fox_Join	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Fox_Join_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Fox_Join		336096
@@ -42,11 +60,17 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	609286879	Map_Mouse	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Map_Mouse_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Map_Mouse		120096
 	666968424	Tiger_Join	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Tiger_Join_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tiger_Join		336096
 	691791290	Ground_Skill	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Ground_Skill_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ground_Skill		576096
+	711383366	Skill_Mouse_Edit	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Skill_Mouse_Edit_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Skill_Mouse_Edit		504096
 	726742060	Fire_Skill	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Fire_Skill_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Fire_Skill		576096
+	745894469	Paper_Get	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Paper_Get_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Paper_Get		576096
 	777192762	Movement_Mouse	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Movement_Mouse_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Movement_Mouse		54096
 	790595291	Title_Click	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Title_Click_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Title_Click		54096
 	798960966	Reward_Mouse	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Reward_Mouse_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Reward_Mouse		192096
+	816032374	Event_Negative	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Event_Negative_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Event_Negative		576096
 	820875912	Pet_Return	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Pet_Return_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Pet_Return		336096
+	865351906	Event_Movement	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Event_Movement_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Event_Movement		504096
+	879237363	Event_Click	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Event_Click_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Event_Click		504096
 	926927899	Main_Title	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Main_Title_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Main_Title		528096
+	932057400	Heal_Use	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Heal_Use_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Heal_Use		576096
 	975968143	Announce_Down	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Announce_Down_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Announce_Down		336096
 
