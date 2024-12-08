@@ -13,6 +13,7 @@ public class MC_Charm : BaseSkill
        ActivateCharm(opponent);
        PlayAnimation(opponent);
        RemoveCharm();
+       GameManager.GetInstance.soundManager.PlaySFX("Paper_Use");
    }
 
    private void ActivateCharm(BaseCharacter opponent)

@@ -48,13 +48,13 @@ public class RewardUI : MonoBehaviour, ITooltipiable
             popupText = reward.GetError();
         }
         
-        AkSoundEngine.PostEvent("Reward_Click", gameObject);
+        GameManager.GetInstance.soundManager.PlaySFX("Reward_Click");
         OnUIEvent?.Invoke(this, UIEvent.MouseClick);
     }
 
     public void ShowTooltip()
     {
-        AkSoundEngine.PostEvent("Reward_Mouse", gameObject);
+        GameManager.GetInstance.soundManager.PlaySFX("Reward_Mouse");
         OnUIEvent?.Invoke(this, UIEvent.MouseEnter);
     }
 

@@ -55,7 +55,7 @@ public class SkillIcon : MonoBehaviour, ITooltipiable
     {
         if (btn.interactable)
         {
-            AkSoundEngine.PostEvent("Movement_Mouse", gameObject);
+            GameManager.GetInstance.soundManager.PlaySFX("Movement_Mouse_Edit");
             OnShowTooltip?.Invoke(skill, transform);
         }
     }

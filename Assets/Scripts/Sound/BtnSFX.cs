@@ -25,12 +25,13 @@ public class BtnSFX : MonoBehaviour, IPointerEnterHandler
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (cursorSFX == string.Empty) return;
-        AkSoundEngine.PostEvent(cursorSFX, gameObject);
+        GameManager.GetInstance.soundManager.PlaySFX(cursorSFX);
+
     }
     
     public void OnClick()
     {
         if (clickSFX == string.Empty) return;
-        AkSoundEngine.PostEvent(clickSFX, gameObject);
+        GameManager.GetInstance.soundManager.PlaySFX(clickSFX);
     }
 }
