@@ -66,7 +66,7 @@ public class MapNode : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler,
         image.transform.DOKill();
         image.transform.DOScale(initScale * HoverScaleFactor, 0.3f);
         
-        AkSoundEngine.PostEvent("Map_Mouse", gameObject);
+        GameManager.GetInstance.soundManager.PlaySFX("Map_Mouse");
     }
     public void OnPointerExit(PointerEventData eventData)
     {

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
-    [SerializeField] private RTPC masterVolumeRTPC;
+    // [SerializeField] private RTPC masterVolumeRTPC;
     
     private void OnEnable()
     {
@@ -24,6 +24,11 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        masterVolumeRTPC.SetGlobalValue(100f);    
+        // masterVolumeRTPC.SetGlobalValue(100f);    
+    }
+
+    public void PlaySFX(string sfxName)
+    {
+        AkSoundEngine.PostEvent(sfxName, gameObject);
     }
 }

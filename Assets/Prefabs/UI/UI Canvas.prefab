@@ -4684,7 +4684,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7432339723188322866
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5020,7 +5020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb73cf3725e81f540821c5c469689c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorSFX: Skill_Mouse
+  cursorSFX: Skill_Mouse_Edit
   clickSFX: 
 --- !u!1 &1523723055981817247
 GameObject:
@@ -7607,7 +7607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb73cf3725e81f540821c5c469689c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorSFX: Skill_Mouse
+  cursorSFX: Skill_Mouse_Edit
   clickSFX: 
 --- !u!1 &2043352615021903821
 GameObject:
@@ -14984,7 +14984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb73cf3725e81f540821c5c469689c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorSFX: Skill_Mouse
+  cursorSFX: Skill_Mouse_Edit
   clickSFX: 
 --- !u!1 &4125623796911915424
 GameObject:
@@ -15426,7 +15426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb73cf3725e81f540821c5c469689c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorSFX: Skill_Mouse
+  cursorSFX: Skill_Mouse_Edit
   clickSFX: 
 --- !u!1 &4204546398883174189
 GameObject:
@@ -19993,7 +19993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb73cf3725e81f540821c5c469689c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorSFX: Skill_Mouse
+  cursorSFX: Skill_Mouse_Edit
   clickSFX: 
 --- !u!1 &5416649636826974315
 GameObject:
@@ -23285,6 +23285,7 @@ GameObject:
   - component: {fileID: 3727895679933916258}
   - component: {fileID: 521116658611122288}
   - component: {fileID: 6433869917681947237}
+  - component: {fileID: 882867058832516422}
   m_Layer: 0
   m_Name: Next
   m_TagString: Untagged
@@ -23393,6 +23394,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &882867058832516422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6363878860311228109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb73cf3725e81f540821c5c469689c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorSFX: Reward_Arrow_Mouse
+  clickSFX: Reward_Arrow_Click
 --- !u!1 &6387711498570359982
 GameObject:
   m_ObjectHideFlags: 0
@@ -24684,6 +24699,7 @@ GameObject:
   - component: {fileID: 7523942147791426259}
   - component: {fileID: 6446833335701960642}
   - component: {fileID: 3401364041922324908}
+  - component: {fileID: 893155783310199787}
   m_Layer: 0
   m_Name: Choice (2)
   m_TagString: Untagged
@@ -24706,9 +24722,9 @@ RectTransform:
   - {fileID: 1864723549405270761}
   m_Father: {fileID: 4412994040346459759}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -199.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7523942147791426259
@@ -24793,6 +24809,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &893155783310199787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6770090158541308824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb73cf3725e81f540821c5c469689c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorSFX: Event_Movement
+  clickSFX: Event_Click
 --- !u!1 &6815431797881426214
 GameObject:
   m_ObjectHideFlags: 0
@@ -27364,6 +27394,7 @@ GameObject:
   - component: {fileID: 2689681964038459364}
   - component: {fileID: 1686613875477415031}
   - component: {fileID: 118167195303827727}
+  - component: {fileID: 8661455075665008711}
   m_Layer: 0
   m_Name: Choice (1)
   m_TagString: Untagged
@@ -27386,9 +27417,9 @@ RectTransform:
   - {fileID: 5320492977192759352}
   m_Father: {fileID: 4412994040346459759}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -114.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2689681964038459364
@@ -27473,6 +27504,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8661455075665008711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7333307497662432966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb73cf3725e81f540821c5c469689c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorSFX: Event_Movement
+  clickSFX: Event_Click
 --- !u!1 &7346594587688723190
 GameObject:
   m_ObjectHideFlags: 0
@@ -29913,7 +29958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb73cf3725e81f540821c5c469689c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorSFX: Skill_Mouse
+  cursorSFX: Skill_Mouse_Edit
   clickSFX: 
 --- !u!1 &7945533495269512020
 GameObject:
@@ -34775,6 +34820,7 @@ GameObject:
   - component: {fileID: 3186022336479001789}
   - component: {fileID: 3173440598628365196}
   - component: {fileID: 4151065673665847334}
+  - component: {fileID: 6664735883835408564}
   m_Layer: 0
   m_Name: Choice
   m_TagString: Untagged
@@ -34797,9 +34843,9 @@ RectTransform:
   - {fileID: 5710180059817382355}
   m_Father: {fileID: 4412994040346459759}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -29.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3186022336479001789
@@ -34884,6 +34930,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6664735883835408564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9025421147525403190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb73cf3725e81f540821c5c469689c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorSFX: Event_Movement
+  clickSFX: Event_Click
 --- !u!1 &9029402952307940128
 GameObject:
   m_ObjectHideFlags: 0

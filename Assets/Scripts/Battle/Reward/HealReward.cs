@@ -17,6 +17,7 @@ public class HealReward : Reward
         }
 
         resultTxt = $"모든 소환수의 체력을 {healAmount}만큼 회복했습니다";
+        GameManager.GetInstance.soundManager.PlaySFX("Heal_Use");
         return true;
     }
 }

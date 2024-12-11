@@ -50,7 +50,7 @@ public class MapPlayerTracker : MonoBehaviour
         view.SetLineColors();
         mapNode.ShowVisitAnimation();
         
-        AkSoundEngine.PostEvent("Map_Click", gameObject);
+        GameManager.GetInstance.soundManager.PlaySFX("Map_Click");
         DOTween.Sequence().AppendInterval(enterNodeDelay).OnComplete(() => EnterNode(mapNode));
     }
 

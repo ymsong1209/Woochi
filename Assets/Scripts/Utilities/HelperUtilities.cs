@@ -176,6 +176,7 @@ public static class HelperUtilities
         int randomCharmID = UnityEngine.Random.Range(0, charmCount);
         charmList.Add(randomCharmID);
         text = $"{GameManager.GetInstance.Library.GetCharm(randomCharmID).CharmName}을 얻었습니다";
+        GameManager.GetInstance.soundManager.PlaySFX("Paper_Get");
         return true;
     }
 
