@@ -16,6 +16,7 @@ public class T1_MudFloor : MainCharacterSkill
         statDeBuff.BuffDurationTurns = 2;
         statDeBuff.ChanceToApplyBuff = 70;
         statDeBuff.changeStat.SetValue(StatType.Speed, -2);
+        statDeBuff.changeStat.SetValue(StatType.Evasion, -2);
         instantiatedBuffList.Add(statDebuffGameObject);
         
         BaseCharacter opponent = BattleUtils.FindRandomEnemy(this);
@@ -30,7 +31,8 @@ public class T1_MudFloor : MainCharacterSkill
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "감탕밭\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "랜덤한 단일 대상에게 70%의 확률로 2턴동안 속도 -2 부여";
+                    "랜덤한 단일 대상에게 70%의 확률로\n" +
+                    "2턴동안 속도 -2, 회피 -2 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
@@ -42,8 +44,8 @@ public class T1_MudFloor : MainCharacterSkill
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "랜덤한 단일 대상에게\n"+
-                                "70%의 확률로\n" +
-                                "2턴동안 속도 -2 부여";
+                                "70%의 확률로 2턴동안\n" +
+                                "속도 -2, 회피 -2 부여";
     }
     
     public override void SetEnhancedSkillScrollDescription(int curskillid, TextMeshProUGUI skillDescription)
@@ -58,12 +60,12 @@ public class T1_MudFloor : MainCharacterSkill
         MainCharacterSkillSO enhancedMainCharacterSkillSo = enhancedSkill.SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "랜덤한 단일 대상에게\n" +
-                                "70%의 확률로\n" +
-                                "2턴동안 속도 -2 부여\n" +
+                                "70%의 확률로 2턴동안\n" +
+                                "속도 -2, 회피 -2 부여\n" +
                                 "-\n" +
                                 "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
                                 "랜덤한 단일 대상에게\n" +
-                                "<color=#FFFF00>90%</color>의 확률로\n" +
-                                "2턴동안 속도 <color=#FFFF00>-4</color> 부여";
+                                "<color=#FFFF00>90</color>%의 확률로 2턴동안\n" +
+                                "속도 <color=#FFFF00>-5</color>, 회피 <color=#FFFF00>-5</color> 부여";
     }
 }

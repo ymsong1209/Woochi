@@ -13,7 +13,7 @@ public class T2_StarlightFlow : MainCharacterSkill
         statBuff.BuffName = "미리내";
         statBuff.BuffDurationTurns = 3;
         statBuff.IsAlwaysApplyBuff = true;
-        statBuff.changeStat.SetValue(StatType.Evasion, 5);
+        statBuff.changeStat.SetValue(StatType.Evasion, 20);
         statBuff.changeStat.SetValue(StatType.Speed, 3);
         instantiatedBuffList.Add(statbuffGameObject);
         
@@ -27,7 +27,7 @@ public class T2_StarlightFlow : MainCharacterSkill
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "미리내\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "아군 전체에게 3턴동안 회피 5, 속도 3만큼 부여";
+                    "아군 전체에게 3턴동안 회피 20, 속도 3만큼 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
@@ -39,7 +39,7 @@ public class T2_StarlightFlow : MainCharacterSkill
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "아군 전체에게 3턴동안\n" +
-                                "회피 5, 속도 3만큼 부여";
+                                "회피 20, 속도 3만큼 부여";
     }
     
     public override void SetEnhancedSkillScrollDescription(int curskillid, TextMeshProUGUI skillDescription)
@@ -54,10 +54,10 @@ public class T2_StarlightFlow : MainCharacterSkill
         MainCharacterSkillSO enhancedMainCharacterSkillSo = enhancedSkill.SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "아군 전체에게 3턴동안\n" +
-                                "회피 5, 속도 3만큼 부여\n" + 
+                                "회피 20, 속도 3만큼 부여\n" + 
                                 "-\n" +
                                 "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
                                 "아군 전체에게 3턴동안\n" +
-                                "회피 <color=#FFFF00>10</color>, 속도 <color=#FFFF00>6</color>만큼 부여";
+                                "회피 <color=#FFFF00>40</color>, 속도 <color=#FFFF00>6</color>만큼 부여";
     }
 }

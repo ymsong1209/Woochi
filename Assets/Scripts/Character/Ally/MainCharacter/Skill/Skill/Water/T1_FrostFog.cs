@@ -13,8 +13,9 @@ public class T1_FrostFog : MainCharacterSkill
         StatDeBuff statDeBuff = statDebuffGameObject.GetComponent<StatDeBuff>();
         statDeBuff.BuffName = "시야 차단";
         statDeBuff.BuffDurationTurns = 2;
-        statDeBuff.ChanceToApplyBuff = 80;
-        statDeBuff.changeStat.SetValue(StatType.Accuracy, -2);
+        statDeBuff.ChanceToApplyBuff = 70;
+        statDeBuff.changeStat.SetValue(StatType.MinDamage, -1);
+        statDeBuff.changeStat.SetValue(StatType.MaxDamage, -1);
         instantiatedBuffList.Add(statDebuffGameObject);
 
         BaseCharacter opponent = BattleUtils.FindRandomEnemy(this);
@@ -29,7 +30,7 @@ public class T1_FrostFog : MainCharacterSkill
         text.text = "서리 안개\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "랜덤한 단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "80%의 확률로 2턴동안 명중 -2만큼 부여";
+                    "70%의 확률로 2턴동안 피해 -1만큼 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
@@ -41,7 +42,7 @@ public class T1_FrostFog : MainCharacterSkill
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "랜덤한 단일 대상에게 " + SkillSO.BaseMultiplier + "%피해\n" + 
-                                "80%의 확률로 2턴동안 명중 -2 부여";
+                                "70%의 확률로 2턴동안 피해 -1 부여";
     }
     
     public override void SetEnhancedSkillScrollDescription(int curskillid, TextMeshProUGUI skillDescription)
@@ -56,10 +57,10 @@ public class T1_FrostFog : MainCharacterSkill
         MainCharacterSkillSO enhancedMainCharacterSkillSo = enhancedSkill.SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "랜덤한 단일 대상에게 " + SkillSO.BaseMultiplier + "%피해\n" + 
-                                "80%의 확률로 2턴동안 명중 -2 부여\n" + 
+                                "70%의 확률로 2턴동안 피해 -1 부여\n" + 
                                 "-\n" +
                                 "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
                                 "랜덤한 단일 대상에게 <color=#FFFF00>" + enhancedMainCharacterSkillSo.BaseMultiplier + "</color>% 피해\n" +
-                                "80%의 확률로 <color=#FFFF00>3</color>턴동안 명중 -2 부여";
+                                "<color=#FFFF00>90</color>%의 확률로 <color=#FFFF00>3</color>턴동안 피해 -1 부여";
     }
 }

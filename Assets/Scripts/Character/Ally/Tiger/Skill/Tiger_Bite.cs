@@ -10,8 +10,12 @@ public class Tiger_Bite : BaseSkill
         float Damage =  base.CalculateDamage(receiver, isCrit);
         
         // 물어뜯기로 피해를 입히면 적의 잃은 체력의 20% 만큼 추가 피해를 줌
+        // 이 추가 피해는 적 최대 체력의 10%를 넘을 수 없음
         Health opponentHealth = receiver.Health;
-        Damage +=  (opponentHealth.MaxHealth - opponentHealth.CurHealth) * 0.2f;
+        float extraDamage = (opponentHealth.MaxHealth - opponentHealth.CurHealth) * 0.2f;
+        extraDamage = Mathf.Min(extraDamage, opponentHealth.MaxHealth * 0.1f);
+
+        Damage += extraDamage;
         
         return Damage;
     }
@@ -30,7 +34,8 @@ public class Tiger_Bite : BaseSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "물어뜯기\n" + "대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + "잃은 체력 비례 20%의 추가 데미지\n" + "피해의 40%만큼 회복";
+        text.text = "물어뜯기\n" + "대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
+                    "잃은 체력 비례 최대 20%의 추가 데미지\n" + "피해의 40%만큼 회복";
     }
     
 }

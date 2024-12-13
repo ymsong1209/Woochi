@@ -12,7 +12,7 @@ public class T1_FireSpark_P : MainCharacterSkill
         GameObject burnGameObject = Instantiate(BurnPrefab, transform);
         BurnDebuff burnDebuff = burnGameObject.GetComponent<BurnDebuff>();
         burnDebuff.BuffDurationTurns = 3;
-        burnDebuff.ChanceToApplyBuff = 50;
+        burnDebuff.ChanceToApplyBuff = 90;
         instantiatedBuffList.Add(burnGameObject);
         
         base.ActivateSkill(_opponent);
@@ -26,7 +26,7 @@ public class T1_FireSpark_P : MainCharacterSkill
         text.text = "불티+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "50%의 확률로 화상 디버프 부여";
+                    "90%의 확률로 화상 디버프 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
@@ -38,6 +38,6 @@ public class T1_FireSpark_P : MainCharacterSkill
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 대상에게 " + SkillSO.BaseMultiplier + "%피해\n" +
-                                "50%의 확률로 화상 부여";
+                                "90%의 확률로 화상 부여";
     }
 }

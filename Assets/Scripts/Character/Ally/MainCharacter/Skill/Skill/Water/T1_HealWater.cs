@@ -5,7 +5,7 @@ using TMPro;
 
 public class T1_HealWater : MainCharacterSkill
 {
-    private int healamount = 3;
+    private int healamount = 5;
     
     protected override float CalculateHeal(BaseCharacter receiver, bool isCrit)
     {

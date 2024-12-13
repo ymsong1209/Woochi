@@ -11,7 +11,7 @@ public class Tiger_Slam_P : BaseSkill
         StunDeBuff stunDebuff = stunDebuffGameObject.GetComponent<StunDeBuff>();
         stunDebuff.BuffDurationTurns = 1;
         
-        stunDebuff.ChanceToApplyBuff = 30;
+        stunDebuff.ChanceToApplyBuff = 40;
         instantiatedBuffList.Add(stunDebuffGameObject);
         
         base.ActivateSkill(_Opponent);
@@ -21,6 +21,6 @@ public class Tiger_Slam_P : BaseSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "내려찍기+\n" + "대상 전체에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + "30%의 확률로 기절 부여";
+        text.text = "내려찍기+\n" + "대상 전체에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + "40%의 확률로 기절 부여";
     }
 }
