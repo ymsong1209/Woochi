@@ -48,7 +48,19 @@ public class StrangeManager : SingletonMonobehaviour<StrangeManager>
 
         Strange strange = GameManager.GetInstance.Library.GetStrange(strangeID);
         currentStrange = strange;
-
+        
+        if(strangeID >= 1000 && strangeID < 2000)
+        {
+            GameManager.GetInstance.soundManager.PlaySFX("Event_Positive");
+        }
+        else if (strangeID >= 2000 && strangeID < 3000)
+        {
+            GameManager.GetInstance.soundManager.PlaySFX("Event_Arrived");
+        }
+        else
+        {
+            GameManager.GetInstance.soundManager.PlaySFX("Event_Negative");
+        }
         SetUI();
     }
     

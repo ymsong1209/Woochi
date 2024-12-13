@@ -115,16 +115,17 @@ public class AllyFormation : Formation
         #region 소환수 효과음(임시)
         if (_character.ID == 1)
         {
-            AkSoundEngine.PostEvent("Fox_Join", gameObject);
+            GameManager.GetInstance.soundManager.PlaySFX("Fox_Join");
         }
         else if (_character.ID == 2)
         {
-            AkSoundEngine.PostEvent("Tiger_Join", gameObject);
+            GameManager.GetInstance.soundManager.PlaySFX("Tiger_Join");
         }
         else if (_character.ID == 3)
-        {
-            AkSoundEngine.PostEvent("Haetae_Join", gameObject);
+        {            
+            GameManager.GetInstance.soundManager.PlaySFX("Haetae_Join");
         }
+        
         #endregion
         
         int rowOrder = _index;
@@ -153,8 +154,7 @@ public class AllyFormation : Formation
 
     public void UnSummon(BaseCharacter _character)
     {
-        AkSoundEngine.PostEvent("Pet_Return", gameObject);
-        
+        GameManager.GetInstance.soundManager.PlaySFX("Pet_Return");
         for(int i = 0; i < 4; i++)
         {
             if (formation[i] == _character)

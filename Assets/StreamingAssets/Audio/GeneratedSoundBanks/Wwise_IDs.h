@@ -14,16 +14,27 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID ANNOUNCE_DOWN = 1946638119U;
+        static const AkUniqueID EVENT_ARRIVED = 1901157005U;
+        static const AkUniqueID EVENT_CLICK = 39226162U;
+        static const AkUniqueID EVENT_MOVEMENT = 1131978445U;
+        static const AkUniqueID EVENT_NEGATIVE = 2335153107U;
+        static const AkUniqueID EVENT_POSITIVE = 1405224191U;
+        static const AkUniqueID FIGHT_START = 1037822516U;
         static const AkUniqueID FIRE_SKILL = 4057793579U;
         static const AkUniqueID FOX_JOIN = 1785041727U;
         static const AkUniqueID GROUND_SKILL = 115002250U;
         static const AkUniqueID HAETAE_JOIN = 777931932U;
+        static const AkUniqueID HEAL_USE = 221498635U;
         static const AkUniqueID MAIN_TITLE = 654742305U;
         static const AkUniqueID MAP_CLICK = 2480411368U;
         static const AkUniqueID MAP_MOUSE = 2130970777U;
         static const AkUniqueID METAL_SKILL = 1614233980U;
         static const AkUniqueID MOVEMENT_CLICK = 3036007183U;
+        static const AkUniqueID MOVEMENT_CLICK_EDIT = 3587852286U;
         static const AkUniqueID MOVEMENT_MOUSE = 3680301402U;
+        static const AkUniqueID MOVEMENT_MOUSE_EDIT = 2387832805U;
+        static const AkUniqueID PAPER_GET = 748252872U;
+        static const AkUniqueID PAPER_USE = 716963261U;
         static const AkUniqueID PET_RETURN = 2349436841U;
         static const AkUniqueID POWER_UP = 2455846824U;
         static const AkUniqueID REWARD_ARROW_CLICK = 3302781919U;
@@ -31,6 +42,7 @@ namespace AK
         static const AkUniqueID REWARD_CLICK = 1667288597U;
         static const AkUniqueID REWARD_MOUSE = 4232491148U;
         static const AkUniqueID SKILL_MOUSE = 117036824U;
+        static const AkUniqueID SKILL_MOUSE_EDIT = 3046553211U;
         static const AkUniqueID SWAP = 286100424U;
         static const AkUniqueID TIGER_JOIN = 1971761969U;
         static const AkUniqueID TITLE_CLICK = 4199180592U;

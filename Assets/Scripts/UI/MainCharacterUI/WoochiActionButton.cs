@@ -33,12 +33,12 @@ public class WoochiActionButton : MonoBehaviour, IPointerEnterHandler
     {
         if (toggle.interactable)
         {
-            AkSoundEngine.PostEvent("Movement_Mouse", gameObject);
+            GameManager.GetInstance.soundManager.PlaySFX("Movement_Mouse_Edit");
         }
     }
 
     public void PlaySFX(bool isOn)
     {
-        AkSoundEngine.PostEvent("Movement_Click", gameObject);
+        GameManager.GetInstance.soundManager.PlaySFX("Movement_Click_Edit");
     }
 }

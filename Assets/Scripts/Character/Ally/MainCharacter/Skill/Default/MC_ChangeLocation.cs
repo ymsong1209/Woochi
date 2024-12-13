@@ -4,6 +4,6 @@ public class MC_ChangeLocation : BaseSkill
     {
         BattleManager.GetInstance.ChangeCharacterLocation();
         SkillOwner.onPlayAnimation(AnimationType.Skill4);
-        AkSoundEngine.PostEvent("Swap", gameObject);
+        GameManager.GetInstance.soundManager.PlaySFX("Swap");
     }
 }

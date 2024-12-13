@@ -11,7 +11,7 @@ public class AllyCardUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI tooltipStatusText;
 
     [Header("Popup")] 
-    [SerializeField] private GameObject popup;
+    [SerializeField] private Popup popup;
     [SerializeField] private TextMeshProUGUI popupText;
     [SerializeField] private Button yesBtn;
     [SerializeField] private Button noBtn;
@@ -23,7 +23,6 @@ public class AllyCardUI : MonoBehaviour
     private void Awake()    
     {
         tooltip.SetActive(false);
-        popup.SetActive(false);
     }
 
     private void Start()
@@ -99,7 +98,7 @@ public class AllyCardUI : MonoBehaviour
             ShowButton(isEnable);
         }
         
-        popup.SetActive(true);
+        popup.Show();
     }
 
     private void ShowButton(bool isEnable)

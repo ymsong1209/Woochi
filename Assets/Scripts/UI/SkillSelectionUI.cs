@@ -91,7 +91,7 @@ public class SkillSelectionUI : MonoBehaviour
         // BattleManager의 SkillSelected 호출
         // SkillTriggerSelector의 Activate 메서드 호출
         onSkillSelected.Invoke(selectedIcon.Skill);
-        AkSoundEngine.PostEvent("Movement_Click", gameObject);
+        GameManager.GetInstance.soundManager.PlaySFX("Movement_Click_Edit");
     }
 
     /// <summary>
@@ -118,6 +118,5 @@ public class SkillSelectionUI : MonoBehaviour
         skillDescriptionUI.Activate(skill);
         buffDescriptionUI.Activate(skill);
         buffDescriptionUI.SkillDescriptionUI = skillDescriptionUI;
-        
     }
 }

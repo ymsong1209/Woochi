@@ -103,7 +103,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         result.isElite = isElite;
         
         ShowCharacterUI?.Invoke(allies.GetWoochi(), false);
-
+        GameManager.GetInstance.soundManager.PlaySFX("Fight_Start");
         #region PreRound 상태로 넘어감
         StopAllCoroutines();
         PreRound();

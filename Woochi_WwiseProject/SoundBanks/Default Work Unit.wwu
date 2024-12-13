@@ -8,26 +8,38 @@
 						<ObjectRef Name="Reward_Click" ID="{6A4175A9-0EF7-404A-8C8C-955A5ABF92B6}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Tiger_Join" ID="{4CD19FEE-1AF2-4055-9CE3-2266C8142A60}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Main_Title" ID="{DA9EB300-CB4D-40B1-8908-B005C2DC5B16}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Skill_Mouse_Edit" ID="{2D2ACF3A-2D9D-4100-A742-6182AFC5B8AD}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Map_Click" ID="{FB9DCDE8-7D6E-4137-B544-C6DBCEF08465}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Event_Arrived" ID="{C9F051A7-068C-41A4-9718-F608A8E4FEB8}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Skill_Mouse" ID="{B2B1655B-2A86-422D-937F-3D612FA93E31}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Title_Mouse" ID="{9CD0FF9B-4474-423C-962F-D64926AA553E}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Reward_Arrow_Mouse" ID="{B58D261B-AB14-4260-BA18-FFE3F1472424}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Heal_Use" ID="{702D870F-12F2-42CE-B70C-E636992631BE}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Reward_Arrow_Click" ID="{2A92FEC9-C338-44D4-B3AC-904960239CC3}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Pet_Return" ID="{CB1D7484-B065-4578-A393-CA00256A0C48}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Title_Click" ID="{285DD759-BE62-458B-9D04-3C3FCEB5EE6A}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Tree_Skill" ID="{9627BABE-518F-459E-A87B-8CEF34DB2F6B}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Fire_Skill" ID="{0E9C5AB5-680F-4625-A8A0-D00E2473E5AE}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Swap" ID="{F2F860D1-4A87-4687-91AB-B27C494C600A}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Event_Negative" ID="{90639A4A-00F0-4700-B7E8-3B259D06D960}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Paper_Get" ID="{A7E70FAF-6D66-47E6-AE08-68979931CF32}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Event_Movement" ID="{D35BD29D-D2AE-47F8-83D6-B939A096FFFA}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Ground_Skill" ID="{CC16BD6A-8AD9-485D-A5EF-67BD528E420B}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Metal_Skill" ID="{192F9D41-D8EC-485D-B45D-9D989A7954F8}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Movement_Click_Edit" ID="{697B7A67-E201-48C3-A841-7D559FF3991E}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Water_Skill" ID="{F9DABD79-F308-48E0-986B-656C8D534E92}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Reward_Mouse" ID="{BF31960F-DF54-497A-95F3-4EFA376D3807}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Power_Up" ID="{EE32F128-F684-49C6-9861-09128490DF53}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Map_Mouse" ID="{7E910020-9FD2-4AFD-8267-0D715008B757}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Announce_Down" ID="{7D939A44-E959-4B7C-8323-40FADC6B7805}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Event_Click" ID="{FAD32BB3-2078-4BE9-B0CF-10570884B0B4}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Fight_Start" ID="{4D1C3C6D-8384-4C31-940E-60F724326FBB}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Event_Positive" ID="{55D7EE65-13F6-4CE7-9536-2C84B16048AA}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Movement_Click" ID="{F6C44E59-D402-4D37-9D7D-0390E50F8D09}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Movement_Mouse" ID="{4C38972B-72C4-4D9D-A9AE-718BF4425D75}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Paper_Use" ID="{F1CCFBAE-CE0E-4E1D-A5B6-65AE05051B81}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Haetae_Join" ID="{1CCC0854-8926-4ED3-B045-BB2A00855DEE}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Movement_Mouse_Edit" ID="{07FAD67E-49DE-4F3E-987E-1EFAEEE969A1}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Fox_Join" ID="{7407B918-047B-4F57-8632-66EBDB6B5770}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>

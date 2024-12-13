@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb73cf3725e81f540821c5c469689c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorSFX: Skill_Mouse
+  cursorSFX: Skill_Mouse_Edit
   clickSFX: 
 --- !u!1 &8369952837767494641
 GameObject:

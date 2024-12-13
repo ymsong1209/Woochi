@@ -35,16 +35,18 @@ public class BattleCameraController : MonoBehaviour
 
     public void FocusIn()
     {
+        DataCloud.IsFocusing = true;
         battleBg.SetActive(true);
 
         mainCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("HUD"));
         volume.enabled = true;
-
+        SetCameraSize();
         Place();
     }
 
     public void FocusOut()
     {
+        DataCloud.IsFocusing = false;
         battleBg.SetActive(false);
 
         mainCamera.cullingMask |= 1 << LayerMask.NameToLayer("HUD");
@@ -58,6 +60,11 @@ public class BattleCameraController : MonoBehaviour
         foucsCharacters.Add(character);
     }
 
+    private void SetCameraSize()
+    {
+        focusCamera.orthographicSize = mainCamera.orthographicSize;
+    }
+    
     private void Place()
     {
         var sortedCharacters = foucsCharacters.
@@ -97,7 +104,7 @@ public class BattleCameraController : MonoBehaviour
     {
         float newShakeAmount = shakeAmount;
         float elapsed = 0f;
-
+        
         if(_isCrit)
         {
             newShakeAmount *= 2;

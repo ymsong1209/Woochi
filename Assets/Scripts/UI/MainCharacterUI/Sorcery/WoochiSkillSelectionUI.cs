@@ -130,10 +130,15 @@ public class WoochiSkillSelectionUI : MonoBehaviour
     }
 
 
-    private void SetSkillTooltip(BaseSkill skill, Transform transform)
+    private void SetSkillTooltip(BaseSkill skill, Transform tr)
     {
         skillDescriptionUI.Activate(skill);
-        skillDescriptionUI.transform.position = transform.position + new Vector3(0, 100, 0);
+        
+        RectTransform targetRt = tr as RectTransform;
+        RectTransform tooltipRt = skillDescriptionUI.transform as RectTransform;
+        Vector2 offset = new Vector2(0, targetRt.rect.height);
+        UIManager.GetInstance.SetTooltipPosition(targetRt, tooltipRt, offset);
+        
         buffDescriptionUI.Activate(skill);
         buffDescriptionUI.SkillDescriptionUI = skillDescriptionUI;
     }

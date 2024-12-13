@@ -116,7 +116,7 @@ public class BaseSkill : MonoBehaviour
         string skillSound = skillSO.GetSkillSound();
         if (!string.IsNullOrEmpty(skillSound))
         {
-            AkSoundEngine.PostEvent(skillSound, gameObject);
+            GameManager.GetInstance.soundManager.PlaySFX(skillSound);
         }
         
         skillResult.Init();
