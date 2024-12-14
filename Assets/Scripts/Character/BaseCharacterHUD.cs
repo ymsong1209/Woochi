@@ -24,7 +24,7 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     private void Start()
     {
-        hpBar.SetOwner(owner);
+        hpBar?.SetOwner(owner);
     }
 
     public void SetDamageText(AttackResult _result, int damage = 0, bool isCrit = false)
@@ -82,10 +82,6 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         // 캐릭터 마우스 올리면 표시
         ground.DOColor(Color.black, 0f);
-
-        if (owner.IsAlly)
-            return;
-
         UIManager.GetInstance.SetCharacterToolTip(owner);
     }
 

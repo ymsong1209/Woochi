@@ -535,20 +535,17 @@ public class BaseSkill : MonoBehaviour
                 receiver.CheckDeadAndPlayAnim();
                 return (int)Mathf.Round(Damage);
             }
-            break;
             case SkillType.Heal:
             {
                 float HealAmount = CalculateHeal(receiver, isCrit);
                 opponentHealth.Heal((int)Mathf.Round(HealAmount));
                 return (int)Mathf.Round(HealAmount);
             }
-            break;
             default:
             {
                 //특수 스킬은 HP에 영향을 안 미침.
                 return 0;
             }
-            break;
         }
     }
     

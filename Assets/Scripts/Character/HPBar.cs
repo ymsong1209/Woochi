@@ -1,7 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class HPBar : MonoBehaviour, ITooltipiable
+public class HPBar : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer guage;
     private BaseCharacter owner;
@@ -20,15 +20,5 @@ public class HPBar : MonoBehaviour, ITooltipiable
 
         float nextScale = curHealth / maxHealth;
         guage.transform.DOScaleX(nextScale, 1f).SetEase(Ease.OutCubic);
-    }
-
-    public void ShowTooltip()
-    {
-        UIManager.GetInstance.SetCharacterToolTip(owner);
-    }
-
-    public void HideTooltip()
-    {
-        UIManager.GetInstance.characterTooltip.SetActive(false);
     }
 }
