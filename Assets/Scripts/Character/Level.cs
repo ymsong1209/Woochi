@@ -65,6 +65,6 @@ public class Level
 
     public int GetRequireExp()
     {
-        return 200 * (int)Mathf.Pow(2.5f, rank) + 4500;
+        return 200 * (int)Mathf.Pow(2.5f, rank) + 2500;
     }
 }

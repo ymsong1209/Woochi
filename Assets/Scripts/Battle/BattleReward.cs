@@ -18,11 +18,7 @@ public class BattleReward : MonoBehaviour
     [SerializeField] private Button rerollBtn;
     [SerializeField] private TextMeshProUGUI rerollPriceTxt;
     [SerializeField] private int rerollPrice = 100;
-
-    [Header("Exp")]
-    [SerializeField] private int[] normalExps;
-    [SerializeField] private int[] eliteExps;
-
+    
     [Header("Result")]
     [SerializeField] private BattleResultUI resultUI;
 
@@ -90,15 +86,12 @@ public class BattleReward : MonoBehaviour
     private void GetExpReward(bool isElite)
     {
         AllyFormation allyFormation = BattleManager.GetInstance.Allies;
-
+        int exp = DataCloud.GetExp(grade, isElite);
+        
         foreach (var character in allyFormation.GetBattleCharacter())
         {
             if(character.IsDead) continue;
-
-            if(isElite)
-                character.level.plusExp += eliteExps[grade];
-            else
-                character.level.plusExp += normalExps[grade];
+            character.level.plusExp += exp;
         }
 
         GameManager.GetInstance.SaveData();

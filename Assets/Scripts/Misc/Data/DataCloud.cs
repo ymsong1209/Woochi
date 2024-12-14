@@ -1,4 +1,3 @@
-using System.IO;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -16,6 +15,9 @@ public static class DataCloud
 
     public static bool IsFocusing = false;
     
+    private static int[] normalExps = new int[] { 300, 360, 432, 518, 622, 746, 895, 1074, 1289, 1547 };
+    private static int[] eliteExps = new int[] { 700, 760, 832, 918, 1022, 1246, 1395, 1574, 1789, 1947 };
+
     public static void SavePlayerData()
     {
         string json = JsonConvert.SerializeObject(playerData, Formatting.Indented,
@@ -71,5 +73,10 @@ public static class DataCloud
             PlayerPrefs.DeleteKey("PlayerData");
 
         playerData = null;
+    }
+    
+    public static int GetExp(int grade, bool isElite)
+    {
+        return isElite ? eliteExps[grade] : normalExps[grade];
     }
 }
