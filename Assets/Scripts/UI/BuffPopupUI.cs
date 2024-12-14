@@ -15,7 +15,7 @@ public class BuffPopupUI : MonoBehaviour
     {
         gameObject.SetActive(true);
         UpdatePanelSize();
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint(icon.transform.position);
+        Vector3 screenPosition = icon.transform.position;
         Vector2 canvasPosition;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasRt, screenPosition, null, out canvasPosition);
         PanelRt.localPosition = ClampToScreen(canvasPosition); // 팝업 위치를 마우스 위치로 설정
