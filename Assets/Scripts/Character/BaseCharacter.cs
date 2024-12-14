@@ -399,7 +399,7 @@ public class BaseCharacter : MonoBehaviour
 
 
     #region 기본 스탯 초기화, 레벨업
-    public void InitializeStatSO() => characterStat.Initialize();
+    public void InitializeStatSO() => characterStat?.Initialize();
 
     /// <summary>
     /// 기본 스탯 초기화
@@ -413,6 +413,7 @@ public class BaseCharacter : MonoBehaviour
     
     protected void InitializeStat()
     {
+        InitializeStatSO();
         baseStat = new Stat(characterStat.BaseStat);
         levelUpStat = new Stat(characterStat.LevelUpStat);
         rewardStat = new Stat(characterStat.RewardStat);
@@ -420,7 +421,6 @@ public class BaseCharacter : MonoBehaviour
         
         level = new Level(characterStat.Level);
         level.owner = this;
-        InitializeStatSO();
     }
 
     protected void InitializeHealth()
