@@ -100,7 +100,14 @@ public class MapView : MonoBehaviour
 
     public void ActiveMap(bool isActiveScroll)
     {
-        mapObject.SetActive(isActiveScroll);
+        if (isActiveScroll)
+        {
+            mapObject.transform.localPosition = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            mapObject.transform.localPosition = new Vector3(0, 10000, 0);
+        }
     }
 
     protected void CreateMapBackground(Map m)
@@ -274,35 +281,57 @@ public class MapView : MonoBehaviour
             node.transform.rotation = Quaternion.identity;
     }
 
-    protected void AddLineConnection(MapNode from, MapNode to)
+    /// <summary>
+    /// 라인 연결 부분 개선
+    /// Screen Space - Camera 환경에서도 정상 작동하도록 anchorePosition 기반으로 처리
+    /// </summary>
+    private void AddLineConnection(MapNode from, MapNode to)
     {
         if (uiLinePrefab == null) return;
+        
         UILineRenderer lineRenderer = Instantiate(uiLinePrefab, mapParent.transform, false);
-        lineRenderer.transform.SetAsFirstSibling();
+
         RectTransform fromRT = from.transform as RectTransform;
         RectTransform toRT = to.transform as RectTransform;
-        Vector2 fromPoint = fromRT.anchoredPosition +
-                            (toRT.anchoredPosition - fromRT.anchoredPosition).normalized * offsetFromNodes;
+        RectTransform lineRT = lineRenderer.transform as RectTransform;
 
-        Vector2 toPoint = toRT.anchoredPosition +
-                          (fromRT.anchoredPosition - toRT.anchoredPosition).normalized * offsetFromNodes;
+        Vector2 fromPos = fromRT.anchoredPosition;
+        Vector2 toPos = toRT.anchoredPosition;
 
-        // drawing lines in local space:
-        lineRenderer.transform.position = from.transform.position +
-                                          (Vector3)(toRT.anchoredPosition - fromRT.anchoredPosition).normalized *
-                                          offsetFromNodes;
+        // fromPos에서 offset만큼 떨어진 시작점
+        Vector2 direction = (toPos - fromPos).normalized;
+        Vector2 start = fromPos + direction * offsetFromNodes;
 
-        // line renderer with 2 points only does not handle transparency properly:
-        List<Vector2> list = new List<Vector2>();
-        Vector2 currentPoint = Vector2.zero;
+        // toPos에서 offset만큼 떨어진 끝점
+        Vector2 end = toPos - direction * offsetFromNodes;
 
-        while (Vector2.Distance(currentPoint, toPoint - fromPoint) > lineSpacing)
+        // LineRenderer의 위치를 start와 end의 중간지점으로 설정
+        Vector2 midPoint = (start + end) / 2f;
+        lineRT.anchoredPosition = midPoint; 
+        
+        // 라인 포인트를 lineRenderer의 local space에서 계산하기 위해 start와 end를 lineRT 기준 local 좌표로 변환
+        // 이미 parent가 동일하므로 anchorePosition 기준으로 보면 lineRT의 anchorePosition가 midPoint 이므로
+        // start, end 상대좌표 = start - midPoint, end - midPoint
+        Vector2 relativeStart = start - midPoint;
+        Vector2 relativeEnd = end - midPoint;
+
+        // lineRenderer는 points를 로컬 좌표로 받으므로 relativeStart에서 relativeEnd까지 lineSpacing 간격으로 점 생성
+        List<Vector2> points = new List<Vector2>();
+        Vector2 currentPoint = relativeStart;
+        Vector2 targetDirection = (relativeEnd - relativeStart).normalized;
+        float totalDistance = Vector2.Distance(relativeStart, relativeEnd);
+
+        while (Vector2.Distance(currentPoint, relativeEnd) > lineSpacing)
         {
-            currentPoint = Vector2.MoveTowards(currentPoint, toPoint - fromPoint, lineSpacing);
-            list.Add(currentPoint);
+            currentPoint = Vector2.MoveTowards(currentPoint, relativeEnd, lineSpacing);
+            points.Add(currentPoint);
         }
 
-        lineRenderer.Points = list.ToArray();
+        // 마지막 점이 엔드포인트와 너무 떨어져 있지 않도록 end도 추가 (필요시)
+        if (points.Count == 0 || Vector2.Distance(points[points.Count - 1], relativeEnd) > 0.01f)
+            points.Add(relativeEnd);
+
+        lineRenderer.Points = points.ToArray();
 
         lineConnections.Add(new LineConnection(lineRenderer, from, to));
     }

@@ -31,8 +31,7 @@ public class HPBar : MonoBehaviour, ITooltipiable
     {
         float height = bar.bounds.size.y;
         Vector3 worldPos = bar.bounds.center - height * Vector3.up;
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
-        return screenPos;
+        return worldPos;
     }
 
     public void ShowTooltip()

@@ -53,8 +53,10 @@ public class GameSettingUI : MonoBehaviour
         data.isFullScreen = fullScreen.isOn;
         data.resolution = new Vector2Int(resolutionList[resolutionDropdown.value].width, resolutionList[resolutionDropdown.value].height);
         
+        Screen.fullScreen = data.isFullScreen;
+        Screen.SetResolution(data.resolution.x, data.resolution.y, data.isFullScreen);
+        
         DataCloud.SaveGameSetting();
-        SettingManager.GetInstance.ApplySetting();
     }
     
     private void ClassifyResolution()
