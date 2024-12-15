@@ -56,6 +56,22 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2494040430787170251, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494040430787170251, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494040430787170251, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494040430787170251, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 6.38
+      objectReference: {fileID: 0}
     - target: {fileID: 2767518271787080996, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: size
       value: 2
@@ -136,6 +152,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CorruptedTree
       objectReference: {fileID: 0}
+    - target: {fileID: 4932393424013574486, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6138628374481102021, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -144,6 +164,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 1d4db804235a16c44b5a9b8ec14af320, type: 2}
+    - target: {fileID: 9164802793276151542, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164802793276151542, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2767518271787080996, guid: 13333dec91112de4684af90796b86443, type: 3}
     m_RemovedGameObjects: []

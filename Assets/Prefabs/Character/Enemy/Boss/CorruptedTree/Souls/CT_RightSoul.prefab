@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CT_RightSoul
       objectReference: {fileID: 0}
+    - target: {fileID: 3891390787038251034, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4651224405074788822, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -99,6 +103,14 @@ PrefabInstance:
     - target: {fileID: 5451275638499511753, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5831882708600604295, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.259
+      objectReference: {fileID: 0}
+    - target: {fileID: 5831882708600604295, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.7
       objectReference: {fileID: 0}
     - target: {fileID: 8559900783289802040, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_LocalPosition.y

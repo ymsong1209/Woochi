@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScrollDog
       objectReference: {fileID: 0}
+    - target: {fileID: 3891390787038251034, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4022390012342359057, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -151,6 +155,14 @@ PrefabInstance:
     - target: {fileID: 5451275638499511753, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5831882708600604295, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.268
+      objectReference: {fileID: 0}
+    - target: {fileID: 5831882708600604295, guid: d65a7aefa191b904c8dded1547849368, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.171
       objectReference: {fileID: 0}
     - target: {fileID: 7354132385316029122, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_IsActive
