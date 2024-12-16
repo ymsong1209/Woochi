@@ -99,29 +99,29 @@ public class SkillScroll : MonoBehaviour
     {
         if (skillid == 0) return;
         
-        //동일한 스킬 아이콘 눌렀을 경우 선택 해제
-        if(isIconSelected && selectedSkillID == skillid)
-        {
-            Reset();
-            return;
-        }
+        // //동일한 스킬 아이콘 눌렀을 경우 선택 해제
+        // if(isIconSelected && selectedSkillID == skillid)
+        // {
+        //     Reset();
+        //     return;
+        // }
         
         
         isIconSelected = true;
         selectedSkillID = skillid;
         
-        //selected 이미지 설정
-        for (int i = 0; i < 5; ++i)
-        {
-            for (int j = 0; j < 5; ++j)
-            {
-                skillScrollIcons[i * 5 + j].Selected.SetActive(false);
-                if(skillScrollIcons[i * 5 + j].SkillID == skillid)
-                {
-                    skillScrollIcons[i * 5 + j].Selected.SetActive(true);
-                }
-            }
-        }
+        // //빨간테두리 이미지 설정
+        // for (int i = 0; i < 5; ++i)
+        // {
+        //     for (int j = 0; j < 5; ++j)
+        //     {
+        //         skillScrollIcons[i * 5 + j].Selected.SetActive(false);
+        //         if(skillScrollIcons[i * 5 + j].SkillID == skillid)
+        //         {
+        //             skillScrollIcons[i * 5 + j].Selected.SetActive(true);
+        //         }
+        //     }
+        // }
       
         
         skillScrollDescription.Reset();
@@ -133,13 +133,14 @@ public class SkillScroll : MonoBehaviour
     {
         isIconSelected = false;
         selectedSkillID = 0;
-        for (int i = 0; i < 5; ++i)
-        {
-            for (int j = 0; j < 5; ++j)
-            {
-                skillScrollIcons[i * 5 + j].Selected.SetActive(false);
-            }
-        }
+        // //스킬 아이콘에 빨간 테두리 설정
+        // for (int i = 0; i < 5; ++i)
+        // {
+        //     for (int j = 0; j < 5; ++j)
+        //     {
+        //         skillScrollIcons[i * 5 + j].Selected.SetActive(false);
+        //     }
+        // }
         skillScrollDescription.Reset();
     }
     

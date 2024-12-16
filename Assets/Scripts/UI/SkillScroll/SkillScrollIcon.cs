@@ -6,8 +6,6 @@ using TMPro;
 
 public class SkillScrollIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private GameObject selected;
-    
     [SerializeField] private SkillScroll skillScroll;
     
     [SerializeField] private CanvasGroup canvasGroup;
@@ -23,18 +21,10 @@ public class SkillScrollIcon : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void Init(int skillid)
     {
-        selected.SetActive(false);
-        SetSkillInfo(skillid);
+       SetSkillInfo(skillid);
     }
 
-    public void HighLight()
-    {
-        selected.SetActive(true);
-    }
-    public void RemoveHighLight()
-    {
-        selected.SetActive(false);
-    }
+
     public void SetSkillInfo(int id)
     {
         skillID = id;
@@ -82,10 +72,7 @@ public class SkillScrollIcon : MonoBehaviour, IPointerEnterHandler, IPointerExit
         get => skillScroll;
         set => skillScroll = value;
     }
-    public GameObject Selected
-    {
-        get => selected;
-    }
+
     public int SkillID
     {
         get => skillID;
