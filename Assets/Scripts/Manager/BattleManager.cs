@@ -67,7 +67,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         allies.Initialize(allyList);
         allyCards.Initialize(allies);
-        
+
+        UIManager.GetInstance.sorceryGuageUI.Init();
     }
 
     public void AddAlly(GameObject prefab)

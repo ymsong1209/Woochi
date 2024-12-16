@@ -29,7 +29,6 @@ public class MainCharacter : BaseCharacter
 
         summonSkill.SkillRadius = new bool[] {true, true, true, true, false, false, false, false};
         changeLocation.SkillRadius = new bool[] {true, true, true, true, false, false, false, false};
-
     }
 
     public override void InitializeSkill()
