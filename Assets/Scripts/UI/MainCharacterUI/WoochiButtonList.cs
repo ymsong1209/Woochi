@@ -4,7 +4,7 @@ using UnityEngine;
 public class WoochiButtonList : MonoBehaviour
 {
     [SerializeField] private List<WoochiActionButton> buttonList;
-    private WoochiActionButton selectedBtn;     // ¼±ÅÃÇÑ ¹öÆ°ÀÌ ¹«¾ùÀÎÁö
+    private WoochiActionButton selectedBtn;     // ì„ íƒí•œ ë²„íŠ¼ì´ ë¬´ì—‡ì¸ì§€
 
     public void Activate(bool isEnable)
     {
@@ -35,6 +35,7 @@ public class WoochiButtonList : MonoBehaviour
         foreach (var button in buttonList)
         {
             button.Deactivate();
+            button.SetAlpha(0);
         }
     }
 
@@ -43,7 +44,7 @@ public class WoochiButtonList : MonoBehaviour
         if (selectedBtn == button) return;
         selectedBtn = button;
 
-        // ¿ìÄ¡ Çàµ¿ Áß ´Ù¸¥ ¹öÆ° ´©¸£¸é Äİ¶óÀÌ´õ, È­»ìÇ¥ ºñÈ°¼ºÈ­
+        // ìš°ì¹˜ í–‰ë™ ì¤‘ ë‹¤ë¥¸ ë²„íŠ¼ ëˆ„ë¥´ë©´ ì½œë¼ì´ë”, í™”ì‚´í‘œ ë¹„í™œì„±í™”
         BattleManager.GetInstance.RemoveSelectedSkill();
         BattleManager.GetInstance.DisableColliderArrow();
 
