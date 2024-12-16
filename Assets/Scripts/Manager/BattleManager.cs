@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BattleManager : SingletonMonobehaviour<BattleManager>
 {
@@ -43,24 +44,19 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     private bool isSkillExecuted = false;
     #endregion
 
-#if UNITY_EDITOR
-    // 테스트해보고 싶은 적 캐릭터들이 있을 때 사용
-    [Header("Test")]
-    [SerializeField] private bool isTest = false;
-    [SerializeField] private int[] testEnemy;
-#endif
+    [Header("Tutorial")]
+    [SerializeField] private bool isTutorial = false;
+    [SerializeField] private int[] tutorialEnemy;
 
     private void Start()
     {
         InitializeAlly();
-        #region 테스트할 수 있게
-#if UNITY_EDITOR
-        if (isTest)
+        #region 튜토리얼
+        if (isTutorial)
         {
             DataCloud.dontSave = true;
-            InitializeBattle(testEnemy);
+            InitializeBattle(tutorialEnemy);
         }
-#endif
         #endregion
     }
 
