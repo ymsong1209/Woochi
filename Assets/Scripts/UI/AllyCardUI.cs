@@ -27,7 +27,7 @@ public class AllyCardUI : MonoBehaviour
 
     private void Start()
     {
-        yesBtn.onClick.AddListener(() => OnSummon?.Invoke(currentCard));
+        yesBtn.onClick.AddListener(OnClickYes);
     }
 
     public void ShowTooltip(AllyCard allyCard)
@@ -106,5 +106,11 @@ public class AllyCardUI : MonoBehaviour
         yesBtn.gameObject.SetActive(isEnable);
         noBtn.gameObject.SetActive(isEnable);
         confirmBtn.gameObject.SetActive(!isEnable);
+    }
+
+    private void OnClickYes()
+    {
+        ScenarioManager.GetInstance.NextPlot(PlotEvent.Click);
+        OnSummon?.Invoke(currentCard);
     }
 }

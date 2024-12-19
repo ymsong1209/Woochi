@@ -393,6 +393,15 @@ public class BaseSkill : MonoBehaviour
     }
     bool AttackLogic(BaseCharacter _opponent, ref bool _iscrit)
     {
+        // 시나리오 모드에서는 무조건 비크리로 맞춤
+        if (DataCloud.IsScenarioMode)
+        {
+            skillResult.isHit.Add(true);
+            skillResult.isCrit.Add(false);
+            ApplyStat(_opponent, false);
+            return true;
+        }
+        
         //치명타일 경우 명중, 회피, 저항 무시하고 바로 스킬 적용
         if (CheckCrit())
         {

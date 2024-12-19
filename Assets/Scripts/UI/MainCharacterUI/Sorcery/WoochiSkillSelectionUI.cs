@@ -24,8 +24,7 @@ public class WoochiSkillSelectionUI : MonoBehaviour
             skillIcons[i].OnHideTooltip += () => buffDescriptionUI.gameObject.SetActive(false);
         }
     }
-
-
+    
     public void Initialize(bool isEnable)
     {
         gameObject.SetActive(false);
@@ -49,8 +48,6 @@ public class WoochiSkillSelectionUI : MonoBehaviour
         
         UIManager.GetInstance.sorceryGuageUI.SetUI();
         
-        //우치 위치에 따른 스킬 체크
-        // mainCharacter.CheckSkillsOnTurnStart();
         //모든 스킬 비활성화
         DisableSkills();
 
@@ -123,7 +120,8 @@ public class WoochiSkillSelectionUI : MonoBehaviour
     {
         if (_skill == null)
             return;
-
+        
+        ScenarioManager.GetInstance.NextPlot(PlotEvent.Click);
         // BattleManager의 SkillSelected 호출
         // SkillTriggerSelector의 Activate 메서드 호출
         onSkillSelected.Invoke(_skill);

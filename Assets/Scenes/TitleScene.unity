@@ -1288,6 +1288,8 @@ MonoBehaviour:
   continueBtn: {fileID: 1783005893}
   exitBtn: {fileID: 1097397608}
   deleteBtn: {fileID: 1290797553}
+  firstPlayPanel: {fileID: 0}
+  firstPlayBtn: {fileID: 0}
 --- !u!114 &1349630259
 MonoBehaviour:
   m_ObjectHideFlags: 0

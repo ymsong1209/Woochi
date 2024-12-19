@@ -46,6 +46,19 @@ public class AllyCardList : MonoBehaviour
             }
         }
     }
+
+    public void Add(BaseCharacter ally)
+    {
+        for(int i = 0; i < cards.Count; i++)
+        {
+            if(cards[i].Ally == null)
+            {
+                cards[i].Show(ally);
+                break;
+            }
+        }
+    }
+    
     public void SelectCard(AllyCard card)
     {
         if(!canSummon) return;

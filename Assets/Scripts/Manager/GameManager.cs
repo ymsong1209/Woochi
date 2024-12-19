@@ -31,11 +31,8 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     
     public void SaveData()
     {
-        if (!DataCloud.dontSave)
-        {
-            DataCloud.playerData.hasSaveData = true;
-            DataCloud.SavePlayerData();
-        }
+        DataCloud.playerData.hasSaveData = true;
+        DataCloud.SavePlayerData();
     }
 
     public void LoadData()
