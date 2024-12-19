@@ -103,6 +103,8 @@ public class Stat
         }
         return result;
     }
+    
+    public List<StatValue> StatList => list;
 }
 
 [System.Serializable]
@@ -111,3 +113,4 @@ public class StatValue
     public StatType type;
     public float value;
 }
+

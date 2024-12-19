@@ -104,10 +104,82 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         
         ShowCharacterUI?.Invoke(allies.GetWoochi(), false);
         GameManager.GetInstance.soundManager.PlaySFX("Fight_Start");
+        
+        var currentPoint = MapManager.GetInstance.CurrentMap.path[MapManager.GetInstance.CurrentMap.path.Count - 1];
+        int currentFloor = currentPoint.y;
+        string log = GenerateBattleStartLog(currentFloor);
+        Logger.Log(log, "BattleStart", "Floor" + currentFloor);
         #region PreRound 상태로 넘어감
         StopAllCoroutines();
         PreRound();
         #endregion
+    }
+    
+    private string GenerateBattleStartLog(int currentFloor)
+    {
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+        sb.AppendLine($"----Battle Start Log: Floor {currentFloor} ----");
+        sb.AppendLine($"Difficulty (Hardship): {result.hardShipGrade}");
+        sb.AppendLine("-- Ally List --");
+
+        for (int row = 0; row < allies.formation.Length; row++)
+        {
+            BaseCharacter character = allies.formation[row];
+           
+            if (character != null)
+            {
+                AppendCharacterInfo(sb, character, row, true);
+                if(character.Size == 2)
+                {
+                    ++row;
+                }
+            }
+        }
+
+        sb.AppendLine("-- Enemy List --");
+
+        for (int row = 0; row < enemies.formation.Length; row++)
+        {
+            BaseCharacter character = enemies.formation[row];
+            if (character != null)
+            {
+                AppendCharacterInfo(sb, character, row, false);
+                if(character.Size == 2)
+                {
+                    ++row;
+                }
+            }
+        }
+
+        sb.AppendLine("------------------------");
+        return sb.ToString();
+    }
+    
+    private void AppendCharacterInfo(System.Text.StringBuilder sb, BaseCharacter character, int row, bool isAlly)
+    {
+        sb.AppendLine($"Row {row}: {character.Name} (HP: {character.Health.CurHealth}/{character.Health.MaxHealth})");
+        sb.AppendLine("  Stats:");
+
+        foreach (var statValue in character.FinalStat.StatList)
+        {
+            sb.AppendLine($"    {statValue.type}: {statValue.value}");
+        }
+
+        sb.AppendLine($"  Level: {character.level.rank}, EXP: {character.level.exp}/{character.level.GetRequireExp()}");
+
+        // 아군의 경우 스킬 정보를 추가
+        if (isAlly && character is MainCharacter mainCharacter)
+        {
+            sb.AppendLine("  Skills:");
+            foreach (BaseSkill skill in mainCharacter.MainCharacterSkills)
+            {
+                if (skill != null)
+                {
+                    sb.AppendLine($"    - {skill.Name}");
+                }
+            }
+        }
     }
 
     private void InitializeAbnormal()
