@@ -21,11 +21,6 @@ public class WoochiCharmSelectionUI : MonoBehaviour
             charmIcons[i].OnHideTooltip += () => skillDescriptionUI.gameObject.SetActive(false);
         }
     }
-
-    public void Initialize(bool isEnable)
-    {
-        gameObject.SetActive(false);
-    }
     
     public void Activate()
     {

@@ -25,16 +25,6 @@ public class WoochiSkillSelectionUI : MonoBehaviour
         }
     }
     
-    public void Initialize(bool isEnable)
-    {
-        gameObject.SetActive(false);
-        //다른 캐릭터가 우치를 공격해서 우치 ui가 활성화된 경우에는, 이후 코드 실행 안해도됨.
-        if (!isEnable) return;
-
-        //우치 차례 시작할때는 도력 초기화로직 추가
-        UIManager.GetInstance.sorceryGuageUI.SetUI();
-    }
-    
     public void Activate()
     {
         gameObject.SetActive(true);

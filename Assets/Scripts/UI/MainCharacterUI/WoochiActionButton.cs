@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class WoochiActionButton : MonoBehaviour, IPointerEnterHandler
 {
     [SerializeField] protected Image icon;
-    [SerializeField] protected Sprite[] onoffSprites;
     [SerializeField] protected Toggle toggle;
 
     private Coroutine fadeCoroutine;
@@ -16,24 +15,21 @@ public class WoochiActionButton : MonoBehaviour, IPointerEnterHandler
         toggle.onValueChanged.AddListener(PlaySFX);
     }
 
-    public virtual void Initialize(bool isEnable)
+    public void Initialize(bool isEnable)
     {
         toggle.interactable = isEnable;
         if (isEnable)
         {
             FadeToAlpha(1f, 0.5f); // 천천히 알파값 1로 증가
         }
-        Deactivate();
     }
     
     public virtual void Activate()
     {
-        icon.sprite = onoffSprites[0];
     }
 
     public virtual void Deactivate()
     {
-        icon.sprite = onoffSprites[1];
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -46,7 +42,10 @@ public class WoochiActionButton : MonoBehaviour, IPointerEnterHandler
 
     public void PlaySFX(bool isOn)
     {
-        GameManager.GetInstance.soundManager.PlaySFX("Movement_Click_Edit");
+        if (isOn)
+        {
+            GameManager.GetInstance.soundManager.PlaySFX("Movement_Click_Edit");
+        }
     }
     
     private void FadeToAlpha(float targetAlpha, float duration)
@@ -79,4 +78,6 @@ public class WoochiActionButton : MonoBehaviour, IPointerEnterHandler
         color.a = alpha;
         icon.color = color;
     }
+    
+    public bool IsOn => toggle.isOn;
 }

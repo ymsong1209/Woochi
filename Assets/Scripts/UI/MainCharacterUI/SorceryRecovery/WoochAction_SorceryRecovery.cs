@@ -4,12 +4,6 @@ public class WoochAction_SorceryRecovery : WoochiActionButton
 {
     [SerializeField] WoochiRecoveryUI recoveryUI;
     
-    public override void Initialize(bool isEnable)
-    {
-        base.Initialize(isEnable);
-        recoveryUI.Initialize();
-    }
-
     public override void Activate()
     {
         base.Activate();
