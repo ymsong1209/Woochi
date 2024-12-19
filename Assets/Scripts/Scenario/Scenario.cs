@@ -42,6 +42,7 @@ public class Scenario : ScriptableObject
     {
         ScenarioManager.GetInstance.ActivateUI(false);
         DataCloud.IsScenarioMode = false;
+        DataCloud.playerData.scenarioID++;
     }
     
     public Plot CurrentPlot => currentPlot;

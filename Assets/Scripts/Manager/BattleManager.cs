@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class BattleManager : SingletonMonobehaviour<BattleManager>
 {
@@ -43,21 +42,10 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     private bool isSkillSelected = false;
     private bool isSkillExecuted = false;
     #endregion
-
-    [Header("Tutorial")]
-    [SerializeField] private bool isTutorial = false;
-    [SerializeField] private int[] tutorialEnemy;
-
+    
     private void Start()
     {
         InitializeAlly();
-        #region 튜토리얼
-        if (isTutorial)
-        {
-            DataCloud.dontSave = true;
-            InitializeBattle(tutorialEnemy);
-        }
-        #endregion
     }
 
     public void InitializeAlly()
@@ -73,8 +61,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
     public void AddAlly(GameObject prefab)
     {
-        allies.CreateAlly(prefab);
-        allyCards.Initialize(allies);
+        BaseCharacter ally = allies.CreateAlly(prefab);
+        allyCards.Add(ally);
     }
 
     public void InitializeBattle(int[] enemyIDs, int abnormalID = 100, bool isElite = false)
@@ -270,7 +258,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 PostBattle();
                 yield break;
             }
-
+            
+            ScenarioManager.GetInstance.NextPlot(PlotEvent.Action);
+            
             yield return null;
         }
 
@@ -482,7 +472,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 {
                     isAnyDead = true;
                 }
-                
             }
         }
 
@@ -579,8 +568,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         allies.BattleEnd();
         enemies.BattleEnd();
+        
+        ScenarioManager.GetInstance.NextPlot(PlotEvent.BattleEnd);
+        if (DataCloud.playerData.scenarioID == 0) return;
+        
         //승리 화면 뜬 후 보상 정산
-        resultUI.Show(result);
+        resultUI?.Show(result);
     }
 
     /// <summary>

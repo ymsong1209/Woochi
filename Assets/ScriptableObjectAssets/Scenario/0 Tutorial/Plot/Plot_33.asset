@@ -19,7 +19,6 @@ MonoBehaviour:
   text: "\uB3C4\uAE68\uBE44\uB97C \uACF5\uACA9\uD574\uBCF4\uC138\uC694"
   plotEvent: 2
   showBattle: 1
-  isCloseUp: 0
   isTextUp: 0
-  showText: 1
+  showText: 0
   isBlind: 1

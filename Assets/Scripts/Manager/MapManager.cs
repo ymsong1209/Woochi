@@ -10,6 +10,18 @@ public class MapManager : SingletonMonobehaviour<MapManager>
     
     private void Start()
     {
+        if (DataCloud.playerData.isFirstPlay)
+        {
+            DataCloud.playerData.ResetData();
+            ScenarioManager.GetInstance.Play(0);
+            return;
+        }
+        
+        LoadMap();
+    }
+
+    public void LoadMap()
+    {
         if(DataCloud.playerData.currentMap != null)
         {
             CurrentMap = new Map(DataCloud.playerData.currentMap);

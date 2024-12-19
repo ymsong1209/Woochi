@@ -31,6 +31,13 @@ public class MainCharacter : BaseCharacter
         changeLocation.SkillRadius = new bool[] {true, true, true, true, false, false, false, false};
     }
 
+    public override void InitializeHealth()
+    {
+        base.InitializeHealth();
+        
+        SorceryPoints = maxSorceryPoints;
+    }
+
     public override void InitializeSkill()
     {
         DeleteCharacterSkill();

@@ -431,7 +431,7 @@ public class BaseCharacter : MonoBehaviour
         level.owner = this;
     }
 
-    protected void InitializeHealth()
+    public virtual void InitializeHealth()
     {
         health.Initialize(this, characterStat.BaseHealth);
         onHealthChanged?.Invoke();
