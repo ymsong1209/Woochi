@@ -121,13 +121,15 @@ public class BaseSkill : MonoBehaviour
         
         skillResult.Init();
         skillResult.Caster = skillOwner;
+        
+        Logger.BattleLog($"\"{skillOwner.Name}\"이(가) \"{_Opponent.Name}\"에게 {skillName}을 사용", "UseSkill");
         //아군 보호 스킬등으로 보호 할 수 있음
         //최종적으로 공격해야하는 적 판정
         BaseCharacter opponent = CheckOpponentValid(_Opponent);
         
         if(opponent == null)
         {
-            Debug.LogError("opponent is null");
+            Logger.BattleLog($"opponent가 존재하지 않습니다", "CheckOpponentValid");
             skillResult.Opponent.Add(opponent);
             skillResult.isHit.Add(false);
             skillResult.isCrit.Add(false);
@@ -451,7 +453,7 @@ public class BaseSkill : MonoBehaviour
                 if(protectbuff) finaltarget = protectbuff.ProtectionOwner;
             }
         }
-
+        Logger.BattleLog($"{skillName}의 최종 목적지 : {_Opponent.Name}", "CheckOpponentValid");
         return finaltarget;
     }
 
