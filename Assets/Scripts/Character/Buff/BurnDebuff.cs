@@ -9,12 +9,12 @@ public class BurnDebuff : BaseBuff
     
     public override int ApplyTurnStartBuff()
     {
+        --buffDurationTurns;
+        Logger.BattleLog($"\"{buffOwner.Name}\"({buffOwner.RowOrder + 1}열)은 화상 상태입니다, 남은 화상 턴 : {buffDurationTurns}", "화상버프");
         //전체체력에서 burnDamage%만큼 대미지를 줌
         float burnAmount = buffOwner.Health.MaxHealth * burnDamage / 100f;
         buffOwner.Health.ApplyDamage((int)Mathf.Round(burnAmount));
-
-        --buffDurationTurns;
-
+        
         Debug.Log(buffOwner.name + "is Burning. Burn leftover turn : " + buffDurationTurns.ToString());
 
         //checkdead는 캐릭터가 죽었을경우 true 반환
@@ -27,6 +27,7 @@ public class BurnDebuff : BaseBuff
     {
         base.buffDurationTurns += 3;
         base.buffBattleDurationTurns += _buff.BuffBattleDurationTurns;
+        Logger.BattleLog($"\"{buffOwner.Name}\"({buffOwner.RowOrder + 1}열)에 화상 중첩, 남은 화상 턴 : {buffDurationTurns}", "화상버프");
     }
     
     public override void SetBuffDescription(TextMeshProUGUI text)

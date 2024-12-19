@@ -49,6 +49,14 @@ MonoBehaviour:
   buffEffect: 12
   buffType: 1
   chanceToApplyBuff: 0
-  buffName: 
+  buffName: "\uB9F9\uACF5"
+  buffColor: {r: 0, g: 0, b: 0, a: 0}
+  buffBattleDurationTurns: 0
+  isRemoveWhenBattleEnd: 1
+  isRemovableDuringBattle: 1
+  isBuffAppliedThisTurn: 1
+  isAlwaysApplyBuff: 0
+  isSaveBuff: 0
+  isSpecialBuff: 0
   statBuffGameObject: {fileID: 2569674945298275565, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
   critStack: 0

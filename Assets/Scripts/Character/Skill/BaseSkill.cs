@@ -122,7 +122,7 @@ public class BaseSkill : MonoBehaviour
         skillResult.Init();
         skillResult.Caster = skillOwner;
         
-        Logger.BattleLog($"\"{skillOwner.Name}\"이(가) \"{_Opponent.Name}\"에게 {skillName}을 사용", "UseSkill");
+        Logger.BattleLog($"\"{skillOwner.Name}\"({skillOwner.RowOrder + 1}열)이(가) \"{_Opponent.Name}\"({_Opponent.RowOrder + 1}열)에게 \"{skillName}\"시전", "스킬 시전(클릭)");
         //아군 보호 스킬등으로 보호 할 수 있음
         //최종적으로 공격해야하는 적 판정
         BaseCharacter opponent = CheckOpponentValid(_Opponent);
@@ -185,6 +185,7 @@ public class BaseSkill : MonoBehaviour
     
     protected virtual void ApplySkill(BaseCharacter _opponent)
     {
+        Logger.BattleLog($"\"{skillOwner.Name}\"({skillOwner.RowOrder + 1}열)이(가) \"{_opponent.Name}\"({_opponent.RowOrder + 1}열)에게 \"{skillName}\"시전", "스킬 로직 계산 시작");
         skillResult.Opponent.Add(_opponent);
         bool isCrit = false;
 
@@ -398,7 +399,6 @@ public class BaseSkill : MonoBehaviour
         //치명타일 경우 명중, 회피, 저항 무시하고 바로 스킬 적용
         if (CheckCrit())
         {
-            Debug.Log(skillOwner.ToString() + "uses Crit Skill "+ skillName + "to "+ _opponent.name.ToString());
             _iscrit = true;
             skillResult.isHit.Add(true);
             skillResult.isCrit.Add(true);
@@ -407,9 +407,8 @@ public class BaseSkill : MonoBehaviour
         }
         
         //명중 체크
-        if (CheckAccuracy() == false)
+        if (CheckAccuracy(_opponent) == false)
         {
-            Debug.Log("Accuracy Failed on" + _opponent.name.ToString());
             skillResult.isHit.Add(false);
             skillResult.isCrit.Add(false);
             _opponent.onAttacked(AttackResult.Miss, 0, false);
@@ -418,7 +417,6 @@ public class BaseSkill : MonoBehaviour
         //회피 체크
         if (CheckEvasion(_opponent) == false)
         {
-            Debug.Log(_opponent.name.ToString() + "Evaded skill" + skillName);
             skillResult.isHit.Add(false);
             skillResult.isCrit.Add(false);
             _opponent.onAttacked(AttackResult.Evasion, 0, false);
@@ -427,7 +425,6 @@ public class BaseSkill : MonoBehaviour
         
         skillResult.isHit.Add(true);
         skillResult.isCrit.Add(false);
-        Debug.Log( skillOwner.ToString() + "uses Non Crit Skill " + skillName + "to " + _opponent.name.ToString());
         ApplyStat(_opponent, false);
 
         return true;
@@ -444,7 +441,10 @@ public class BaseSkill : MonoBehaviour
                 if(protectbuff) finaltarget = protectbuff.ProtectionOwner;
             }
         }
-        Logger.BattleLog($"{skillName}의 최종 목적지 : {_Opponent.Name}", "CheckOpponentValid");
+        if (_Opponent != finaltarget)
+        {
+            Logger.BattleLog($"{skillName}의 최종 목적지 : {_Opponent.Name}", "CheckOpponentValid");
+        }
         return finaltarget;
     }
 
@@ -454,12 +454,20 @@ public class BaseSkill : MonoBehaviour
     /// 스킬 명중 수치 + 캐릭터 명중 수치로 계산
     /// 명중했을 경우 true 반환
     /// </summary>
-    protected bool CheckAccuracy()
+    protected bool CheckAccuracy(BaseCharacter _opponent)
     {
         if (isAlwaysHit) return true;
         int RandomValue = Random.Range(0, 100);
         if (RandomValue < skillAccuracy + skillOwner.FinalStat.GetValue(StatType.Accuracy)) return true;
-        else return false;
+        else
+        {
+            Logger.BattleLog(
+                $"\"{skillOwner.Name}\"({skillOwner.RowOrder + 1}열)이 \"{skillName}\" 명중 실패 on \"{_opponent.Name}\"({_opponent.RowOrder + 1}열)\n"+
+                $"명중 수치 : {skillAccuracy + skillOwner.FinalStat.GetValue(StatType.Accuracy)}, RandomValue : {RandomValue}", 
+                "명중 판정"
+            );
+            return false;
+        }
     }
 
     /// <summary>
@@ -470,8 +478,12 @@ public class BaseSkill : MonoBehaviour
     {
         if (isAlwaysHit) return true;
         int RandomValue = Random.Range(0, 100);
-        if (RandomValue > _opponent.FinalStat.GetValue(StatType.Accuracy)) return true;
-        Debug.Log(_opponent.name + "Evaded skill " + skillName + "with evasion" + _opponent.FinalStat.GetValue(StatType.Evasion) + ", RandomValue" + RandomValue);
+        if (RandomValue > _opponent.FinalStat.GetValue(StatType.Evasion)) return true;
+        Logger.BattleLog(
+            $"\"{_opponent.Name}\"({_opponent.RowOrder + 1}열)이 \"{skillName}\"에 회피\n" +
+            $"회피 수치 : {_opponent.FinalStat.GetValue(StatType.Evasion)}, RandomValue : {RandomValue}",
+            "회피 판정"
+        );
         return false;
     }
 
@@ -487,14 +499,15 @@ public class BaseSkill : MonoBehaviour
         {
             if (buff.CanApplyBuff(_buff) == false)
             {
-                Debug.Log(_buff.name + "버프 적용 실패 on" + skillName + "because of Buff" + buff.name);
+                Logger.BattleLog($"\"{skillName}\"내부의 \"{_buff.name}\" 버프 적용 실패 on \"{_opponent.Name}\"({_opponent.RowOrder + 1}열) because of Buff \"{buff.name}\"", "버프 적용 가능 여부");
                 return false;
             }
         }
         
         int RandomValue = Random.Range(0, 100);
         if (RandomValue <= _buff.ChanceToApplyBuff) return true;
-        Debug.Log(_buff.name + "버프 확률 굴림 실패 on" + skillName + "with RandomValue" + RandomValue + ", ChanceToApplyBuff" + _buff.ChanceToApplyBuff);
+        Logger.BattleLog($"\"{skillName}\"내부의 \"{_buff.BuffName}\" 버프 확률 굴림 실패 on \"{_opponent.Name}\"({_opponent.RowOrder + 1}열) with RandomValue {RandomValue}, 버프 걸릴 확률 : {_buff.ChanceToApplyBuff}", "버프 확률 굴림 실패");
+        //Debug.Log("\""+skillName+"\""+"내부의 "+"\""+_buff.name+"\"" + "버프 확률 굴림 실패 with RandomValue" + RandomValue + ", 버프 걸릴 확률 : " + _buff.ChanceToApplyBuff);
         return false;
     }
 
@@ -506,7 +519,9 @@ public class BaseSkill : MonoBehaviour
     {
         int RandomValue = Random.Range(0, 100);
         if (RandomValue > _opponent.FinalStat.GetValue(StatType.Resist)) return true;
-        Debug.Log(_opponent.name + "Resisted skill " + skillName + "with resist" + _opponent.FinalStat.GetValue(StatType.Resist) + ", RandomValue" + RandomValue);
+        Logger.BattleLog($"\"{_opponent.Name}\"({_opponent.RowOrder + 1}열)이 \"{skillName}\"에 저항\n"+
+                         $"저항 수치 : {_opponent.FinalStat.GetValue(StatType.Resist)}, RandomValue : {RandomValue}", "저항 판정");
+        //Debug.Log(_opponent.name + "Resisted skill " + skillName + "with resist" + _opponent.FinalStat.GetValue(StatType.Resist) + ", RandomValue" + RandomValue);
         return false;
     }
 
@@ -516,7 +531,12 @@ public class BaseSkill : MonoBehaviour
     protected bool CheckCrit()
     {
         int RandomValue = Random.Range(0, 100);
-        if (RandomValue < skillOwner.FinalStat.GetValue(StatType.Crit)) return true;
+        if (RandomValue < skillOwner.FinalStat.GetValue(StatType.Crit))
+        {
+            Logger.BattleLog($"\"{skillOwner.Name}\"({skillOwner.RowOrder + 1}열)이 \"{skillName}\"에 치명타 성공\n"+
+                             $"치명타 수치 : {skillOwner.FinalStat.GetValue(StatType.Crit)}, RandomValue : {RandomValue}", "치명타 판정 성공");
+            return true;
+        }
         return false;
     }
     

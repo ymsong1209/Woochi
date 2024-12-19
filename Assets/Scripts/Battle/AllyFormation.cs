@@ -36,7 +36,7 @@ public class AllyFormation : Formation
             if (battleFormation[i] == -1) continue;
 
             BaseCharacter character = allCharacter.FirstOrDefault(c => c.ID == battleFormation[i]);
-            SetProperty(character, true, i);
+            SetProperty(character, true, totalSize);
             character.gameObject.SetActive(true);
             for(int s = 0; s < character.Size; s++)
             {

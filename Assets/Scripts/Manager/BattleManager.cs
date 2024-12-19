@@ -129,7 +129,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
            
             if (character != null)
             {
-                AppendCharacterInfo(sb, character, row, true);
+                AppendCharacterInfo(sb, character, true);
                 if(character.Size == 2)
                 {
                     ++row;
@@ -144,7 +144,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             BaseCharacter character = enemies.formation[row];
             if (character != null)
             {
-                AppendCharacterInfo(sb, character, row, false);
+                AppendCharacterInfo(sb, character, false);
                 if(character.Size == 2)
                 {
                     ++row;
@@ -156,9 +156,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         return sb.ToString();
     }
     
-    private void AppendCharacterInfo(System.Text.StringBuilder sb, BaseCharacter character, int row, bool isAlly)
+    private void AppendCharacterInfo(System.Text.StringBuilder sb, BaseCharacter character, bool isAlly)
     {
-        sb.AppendLine($"Row {row}: {character.Name} (HP: {character.Health.CurHealth}/{character.Health.MaxHealth})");
+        sb.AppendLine($"Row {character.RowOrder + 1} : {character.Name} (HP: {character.Health.CurHealth}/{character.Health.MaxHealth})");
         sb.AppendLine("  Stats:");
 
         foreach (var statValue in character.FinalStat.StatList)
@@ -233,6 +233,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// </summary>
     void PreRound()
     {
+        Logger.BattleLog($"----------{currentRound}라운드 시작----------", "RoundStart");
         ++currentRound;
         turnManager.SetRound(currentRound);
         turnManager.CheckBuffs(BuffTiming.RoundStart);
@@ -253,6 +254,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         //캐릭터를 속도순으로 정렬하면서 모두 전투에 참여할 수 있도록 변경
         turnManager.ReorderCombatQueue(true);
+        turnManager.PrintCombatQueue();
         CharacterTurn();
     }
 
@@ -281,6 +283,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             {
                 continue;
             }
+            
+            Logger.BattleLog($"----------{currentCharacter.Name}({currentCharacter.RowOrder + 1}열)의 Turn----------", "TurnStart");
 
             // 자신의 차례가 됐을 때 버프 적용후, 살아있으면 턴 시작
             if (currentCharacter.TriggerBuff(BuffTiming.TurnStart))
@@ -749,7 +753,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             {
                 if (buff.BuffEffect == BuffEffect.MoveResist)
                 {
-                    Debug.Log(character.name + "은 이동 저항 버프로 이동할 수 없습니다.");
+                    Logger.BattleLog($"\"{character.Name}\"은 이동 저항 버프로 이동할 수 없습니다.", "이동 불가");
                     return;
                 }
             }

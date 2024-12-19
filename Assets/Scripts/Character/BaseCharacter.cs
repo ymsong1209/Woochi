@@ -316,6 +316,7 @@ public class BaseCharacter : MonoBehaviour
         RemoveAllBuff();
         anim.PlayDeadAnimation();
         isDead = true;
+        Logger.BattleLog($"{Name}이(가) 사망했습니다.", "사망 처리");
     }
 
     public void RemoveAllBuff(bool battleEnd = false)

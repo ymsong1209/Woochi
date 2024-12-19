@@ -49,11 +49,11 @@ public static class Logger
         }
     }
     
-    public static void BattleLog(string message, string eventType)
+    public static void BattleLog(object message, string eventType)
     {
         var currentPoint = MapManager.GetInstance.CurrentMap.path[MapManager.GetInstance.CurrentMap.path.Count - 1];
         int currentFloor = currentPoint.y;
-        Log(message, eventType, "Floor" + currentFloor);
+        Log(message.ToString(), eventType, "Floor" + currentFloor);
     }
     
 }
