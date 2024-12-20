@@ -60,4 +60,15 @@ public static class Logger
         Log(message.ToString(), eventType, "Floor" + currentFloor);
     }
     
+    public static void ResultLog(object message, string eventType)
+    {
+        if(MapManager.GetInstance.CurrentMap == null)
+        {
+            return;
+        }
+        var currentPoint = MapManager.GetInstance.CurrentMap.path[MapManager.GetInstance.CurrentMap.path.Count - 1];
+        int currentFloor = currentPoint.y;
+        Log(message.ToString(), eventType, "Floor" + currentFloor + " Result");
+    }
+    
 }

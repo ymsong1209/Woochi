@@ -110,7 +110,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         System.Text.StringBuilder sb = new System.Text.StringBuilder();
 
         sb.AppendLine($"----Battle Start Log: Floor {currentFloor} ----");
-        sb.AppendLine($"Difficulty (Hardship): {result.hardShipGrade}");
+        sb.AppendLine($"Difficulty (Hardship): {result.hardShipGrade + 1}");
         sb.AppendLine("-- Ally List --");
 
         for (int row = 0; row < allies.formation.Length; row++)
@@ -224,7 +224,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// </summary>
     void PreRound()
     {
-        Logger.BattleLog($"----------{currentRound}라운드 시작----------", "RoundStart");
+        Logger.BattleLog($"---------------{currentRound}라운드 시작---------------", "RoundStart");
         ++currentRound;
         turnManager.SetRound(currentRound);
         turnManager.CheckBuffs(BuffTiming.RoundStart);
@@ -275,7 +275,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 continue;
             }
             
-            Logger.BattleLog($"----------{currentCharacter.Name}({currentCharacter.RowOrder + 1}열)의 Turn----------", "TurnStart");
+            Logger.BattleLog($"--------{currentCharacter.Name}({currentCharacter.RowOrder + 1}열)의 Turn--------", "TurnStart");
 
             // 자신의 차례가 됐을 때 버프 적용후, 살아있으면 턴 시작
             if (currentCharacter.TriggerBuff(BuffTiming.TurnStart))
@@ -654,8 +654,44 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         ScenarioManager.GetInstance.NextPlot(PlotEvent.BattleEnd);
         if (DataCloud.playerData.scenarioID == 0) return;
         
+        
         //승리 화면 뜬 후 보상 정산
         resultUI?.Show(result);
+        GenerateBattleEndLog();
+    }
+    
+    private void GenerateBattleEndLog()
+    {
+        if(MapManager.GetInstance.CurrentMap == null)
+        {
+            return;
+        }
+        var currentPoint = MapManager.GetInstance.CurrentMap.path[MapManager.GetInstance.CurrentMap.path.Count - 1];
+        int currentFloor = currentPoint.y;
+        
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+        sb.AppendLine($"----Battle End Log: Floor {currentFloor} ----");
+        sb.AppendLine($"Difficulty (Hardship): {result.hardShipGrade + 1}");
+        sb.AppendLine("-- Ally List --");
+
+        for (int row = 0; row < allies.formation.Length; row++)
+        {
+            BaseCharacter character = allies.formation[row];
+           
+            if (character != null)
+            {
+                AppendCharacterInfo(sb, character, true);
+                if(character.Size == 2)
+                {
+                    ++row;
+                }
+            }
+        }
+
+        sb.AppendLine("------------------------");
+        
+        Logger.BattleLog(sb.ToString(), "BattleEnd");
     }
 
     /// <summary>

@@ -83,7 +83,7 @@ public class MapManager : SingletonMonobehaviour<MapManager>
                         Node targetNode = map.GetNode(target);
                         if (targetNode != null && targetNode.point.y == currentLayer.Key) // 현재 층과 연결된 경우만 출력
                         {
-                            sb.AppendLine($"    ({node.point}) {node.nodeType} -> ({target}) {targetNode.nodeType}");
+                            sb.AppendLine($"    ({node.point.x}) {node.nodeType} -> ({target.x}) {targetNode.nodeType}");
                         }
                     }
                 }
@@ -101,6 +101,10 @@ public class MapManager : SingletonMonobehaviour<MapManager>
         AllyFormation allies = BattleManager.GetInstance.Allies;
         allies.MoveNode();
         
+        int floor = _mapNode.Node.point.y;
+        NodeType nodeType = _mapNode.Node.nodeType;
+        Logger.Log($"플레이어가 {floor}층에서 ({_mapNode.Node.point.x}) {nodeType} 노드를 선택했습니다.", "NodeSelection","GeneratedMap");
+        
         if (_mapNode.Node.nodeType == NodeType.Strange)
         {
             StrangeManager.GetInstance.InitializeStrange(_mapNode.Node.strangeID);
@@ -111,6 +115,7 @@ public class MapManager : SingletonMonobehaviour<MapManager>
         }
         view.ActiveMap(false);
     }
+    
 
     public void CompleteNode()
     {
