@@ -49,7 +49,7 @@ MonoBehaviour:
   buffEffect: 16
   buffType: 1
   chanceToApplyBuff: 0
-  buffName: 
+  buffName: "\uAE30\uC808 \uC800\uD56D"
   buffColor: {r: 0, g: 0, b: 0, a: 0}
   buffBattleDurationTurns: 0
   isRemoveWhenBattleEnd: 1

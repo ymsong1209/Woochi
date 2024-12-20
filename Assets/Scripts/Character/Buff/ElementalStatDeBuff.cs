@@ -17,6 +17,7 @@ public class ElementalStatDeBuff : BaseBuff
     {
         ElementalStatDeBuff elementalStatDeBuff = inputBuff as ElementalStatDeBuff;
         if (!elementalStatDeBuff || elementalStatDeBuff.BuffName!= this.BuffName || elementalStatDeBuff.element!= this.element) return;
+        Logger.BattleLog($"\"{buffOwner.Name}({buffOwner.RowOrder + 1})\"에게 \"{buffName}\" 버프가 중첩되었습니다.", "버프 중첩");
         //중첩시키려는 버프의 지속시간이 무한인경우 기존 버프 지속시간 무한으로 변경
         if(inputBuff.BuffDurationTurns == -1) base.buffDurationTurns = -1;
         //아닐 경우 버프 지속시간은 갱신

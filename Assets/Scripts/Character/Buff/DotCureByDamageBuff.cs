@@ -19,7 +19,7 @@ public class DotCureByDamageBuff : BaseBuff
     
     public override int ApplyTurnStartBuff()
     {
-        //maxDamage의 dorCureAmount%만큼 힐
+        //maxDamage의 dotCureAmount%만큼 힐
         float healAmount = baseDotCureAmount + maxDamage * dotCureAmount / 100f;
         buffOwner.Health.Heal((int)Mathf.Round(healAmount),false);
 

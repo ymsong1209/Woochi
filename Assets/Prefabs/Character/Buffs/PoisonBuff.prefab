@@ -49,8 +49,14 @@ MonoBehaviour:
   buffEffect: 14
   buffType: 2
   chanceToApplyBuff: 0
-  buffName: 
+  buffName: "\uC911\uB3C5"
   buffColor: {r: 0, g: 0, b: 0, a: 0}
-  isRemoveWhenBattleEnd: 1
   buffBattleDurationTurns: 0
+  isRemoveWhenBattleEnd: 1
   isRemovableDuringBattle: 1
+  isBuffAppliedThisTurn: 1
+  isAlwaysApplyBuff: 0
+  isSaveBuff: 0
+  isSpecialBuff: 0
+  tempPoisonStack: 0
+  poisonStack: 0

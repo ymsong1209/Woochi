@@ -25,7 +25,7 @@ public class Formation : MonoBehaviour
             formation[i] = null;
         }
 
-        int order = 0;
+        //int order = 0;
         totalSize = 0;
         foreach (GameObject prefab in prefabs)
         {
@@ -39,7 +39,7 @@ public class Formation : MonoBehaviour
             BaseCharacter character = characterPrefab.GetComponent<BaseCharacter>();
 
             character.IsAlly = isAllyFormation;
-            character.RowOrder = order++;
+            character.RowOrder = totalSize;
             character.Initialize();
             allCharacter.Add(character);
 

@@ -33,6 +33,7 @@ public class BaseBuff : MonoBehaviour
         caster = _caster;
         buffOwner = receiver;
         buffOwner.activeBuffs.Add(this);
+        Logger.BattleLog($"\"{_caster.Name}\"({caster.RowOrder + 1}열)이 \"{receiver.Name}\"({receiver.RowOrder + 1}열)에게 \"{buffName}\" 버프를 걸었습니다.", "버프 적용");
     }
 
     /// <summary>

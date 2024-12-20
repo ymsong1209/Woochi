@@ -65,6 +65,7 @@ public class Health
                 shield = 0;
             }
         }
+        Logger.BattleLog($"\"{owner.Name}\"({owner.RowOrder + 1}열)\"이 {_damage}의 대미지를 입음, 체력 : {curHealth}/{maxHealth}", "데미지 적용");
 
         owner.onAttacked?.Invoke(AttackResult.Normal, _damage, _isCrit);
     }
@@ -80,6 +81,7 @@ public class Health
     public void Heal(int _healamount, bool playAnimation = true)
     {
         CurHealth = Mathf.Clamp(CurHealth + _healamount, 0, maxHealth);
+        Logger.BattleLog($"\"{owner.Name}\"({owner.RowOrder + 1}열)이 {_healamount}만큼 회복함, 체력 : {curHealth}/{maxHealth}", "회복 적용");
         if (playAnimation)
         {
             owner.onPlayAnimation?.Invoke(AnimationType.Heal);
