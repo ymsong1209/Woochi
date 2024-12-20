@@ -88,6 +88,8 @@ public class SkillSelectionUI : MonoBehaviour
         selectedIcon = _skillIcon;
         selectedIcon.SetMark(true);
         
+        ScenarioManager.GetInstance.NextPlot(PlotEvent.Click);
+        
         // BattleManager의 SkillSelected 호출
         // SkillTriggerSelector의 Activate 메서드 호출
         onSkillSelected.Invoke(selectedIcon.Skill);

@@ -42,26 +42,10 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     private bool isSkillSelected = false;
     private bool isSkillExecuted = false;
     #endregion
-
-#if UNITY_EDITOR
-    // 테스트해보고 싶은 적 캐릭터들이 있을 때 사용
-    [Header("Test")]
-    [SerializeField] private bool isTest = false;
-    [SerializeField] private int[] testEnemy;
-#endif
-
+    
     private void Start()
     {
         InitializeAlly();
-        #region 테스트할 수 있게
-#if UNITY_EDITOR
-        if (isTest)
-        {
-            DataCloud.dontSave = true;
-            InitializeBattle(testEnemy);
-        }
-#endif
-        #endregion
     }
 
     public void InitializeAlly()
@@ -71,13 +55,14 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         allies.Initialize(allyList);
         allyCards.Initialize(allies);
-        
+
+        UIManager.GetInstance.sorceryGuageUI.Init();
     }
 
     public void AddAlly(GameObject prefab)
     {
-        allies.CreateAlly(prefab);
-        allyCards.Initialize(allies);
+        BaseCharacter ally = allies.CreateAlly(prefab);
+        allyCards.Add(ally);
     }
 
     public void InitializeBattle(int[] enemyIDs, int abnormalID = 100, bool isElite = false)
@@ -349,7 +334,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 PostBattle();
                 yield break;
             }
-
+            
+            ScenarioManager.GetInstance.NextPlot(PlotEvent.Action);
+            
             yield return null;
         }
 
@@ -561,7 +548,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 {
                     isAnyDead = true;
                 }
-                
             }
         }
 
@@ -658,8 +644,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         allies.BattleEnd();
         enemies.BattleEnd();
+        
+        ScenarioManager.GetInstance.NextPlot(PlotEvent.BattleEnd);
+        if (DataCloud.playerData.scenarioID == 0) return;
+        
         //승리 화면 뜬 후 보상 정산
-        resultUI.Show(result);
+        resultUI?.Show(result);
     }
 
     /// <summary>

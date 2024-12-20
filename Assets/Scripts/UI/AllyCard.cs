@@ -19,13 +19,12 @@ public class AllyCard : MonoBehaviour, ITooltipiable
     
     private void Awake()
     {
-        SetActivate(false);
         originPos = transform.localPosition;
     }
 
     private void Start()
     {
-        front.onClick.AddListener(() => OnUIEvent?.Invoke(this, UIEvent.MouseClick));
+        front.onClick.AddListener(OnClick);
     }
 
     public void UpdateHP()
@@ -79,6 +78,12 @@ public class AllyCard : MonoBehaviour, ITooltipiable
         isDead = true;
     }
 
+    private void OnClick()
+    {
+        ScenarioManager.GetInstance.NextPlot(PlotEvent.Click);
+        OnUIEvent?.Invoke(this, UIEvent.MouseClick);
+    }
+    
     #region Getter
     public BaseCharacter Ally => ally;
     #endregion

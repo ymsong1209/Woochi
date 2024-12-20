@@ -65,11 +65,11 @@ public class BaseCharacter : MonoBehaviour
 
     [SerializeField, ReadOnly] protected bool isAlly;
     protected bool isTurnUsed = false; //한 라운드 내에서 자신의 턴을 사용했을 경우
+    [HideInInspector] public bool canUseTurn = true;
     protected bool isIdle = true;
 
     public bool isDummy = false; // 우치 소환전용 더미 캐릭터인지
     [HideInInspector] public bool isSummoned = false; // 캐릭터가 소환되었는지
-
     // 캐릭터가 앞 열에서부터 몇 번째 순서인지
     [SerializeField, ReadOnly] private int rowOrder;
 
@@ -84,6 +84,13 @@ public class BaseCharacter : MonoBehaviour
     public Action<AttackResult, int, bool> onAttacked;
     public Action onLevelUp;
 
+    private void SetCanTurn(int _ID, bool _canUseTurn)
+    {
+        if (ID == _ID)
+        {
+            canUseTurn = _canUseTurn;
+        }
+    }
     #endregion
 
     private void Awake()
@@ -94,6 +101,7 @@ public class BaseCharacter : MonoBehaviour
         buffList = GetComponentInChildren<BuffList>();
 
         onLevelUp += LevelUp;
+        EventManager.GetInstance.onCanUseTurn += SetCanTurn;
     }
 
     public virtual void CheckSkillsOnTurnStart()
@@ -424,7 +432,7 @@ public class BaseCharacter : MonoBehaviour
         level.owner = this;
     }
 
-    protected void InitializeHealth()
+    public virtual void InitializeHealth()
     {
         health.Initialize(this, characterStat.BaseHealth);
         onHealthChanged?.Invoke();

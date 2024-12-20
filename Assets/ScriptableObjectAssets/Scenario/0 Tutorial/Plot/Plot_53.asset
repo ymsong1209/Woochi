@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: affcc82dda958f3428ba9b330c115742, type: 3}
+  m_Name: Plot_53
+  m_EditorClassIdentifier: 
+  type: 1
+  illustrations:
+  - sprite: {fileID: 21300000, guid: 08be320f6ae1c6f4aae540b26c561cbe, type: 3}
+    direction: 1
+  blindImage: {fileID: 0}
+  speaker: 
+  text: "\uC5EC\uC6B0\uAC00 \uC54C\uC544\uB4E4\uC5C8\uB2E4\uB294 \uB4EF \uC6B8\uC5C8\uB2E4."
+  showBattle: 0
+  isCloseUp: 0
+  isTextUp: 0
+  showText: 1
+  isBlind: 0
+  isEvent: 0

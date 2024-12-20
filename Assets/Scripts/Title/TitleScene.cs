@@ -7,7 +7,7 @@ public class TitleScene : MonoBehaviour
     [SerializeField] private Button continueBtn;
     [SerializeField] private Button exitBtn;
     [SerializeField] private Button deleteBtn;
-
+    
     void Start()
     {
         #region Event
@@ -32,12 +32,12 @@ public class TitleScene : MonoBehaviour
     }
 
     /// <summary>
-    /// ó������ ������ ��
+    /// 처음 시작 버튼
     /// </summary>
     private void Begin() => Departure(true);
 
     /// <summary>
-    /// ����ϱ� ������ ��
+    /// 이어하기 버튼
     /// </summary>
     private void Continue() => Departure(false);
 

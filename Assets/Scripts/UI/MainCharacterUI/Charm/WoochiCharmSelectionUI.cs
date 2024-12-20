@@ -16,14 +16,10 @@ public class WoochiCharmSelectionUI : MonoBehaviour
             int index = i;
             Button btn = charmIcons[i].btn;
             btn.onClick.AddListener(() => CharmButtonClicked(charmIcons[index].Charm));
+            btn.onClick.AddListener(() => ScenarioManager.GetInstance.NextPlot(PlotEvent.Click));
             charmIcons[i].OnShowTooltip += SetCharmTooltip;
             charmIcons[i].OnHideTooltip += () => skillDescriptionUI.gameObject.SetActive(false);
         }
-    }
-
-    public void Initialize(bool isEnable)
-    {
-        gameObject.SetActive(false);
     }
     
     public void Activate()

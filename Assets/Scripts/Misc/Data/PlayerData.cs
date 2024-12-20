@@ -23,7 +23,11 @@ public class PlayerData
 
     // Default
     public int gold = 0;
-
+    public int scenarioID = 0;      // 현재 진행중인 시나리오 ID
+    
+    // Game State
+    public bool isFirstPlay = true;
+    
     public PlayerData()
     {
         ResetData();
@@ -33,7 +37,7 @@ public class PlayerData
     {
         hasSaveData = false;
 
-        battleData = new BattleData();
+        battleData = new BattleData(isFirstPlay);
         currentMap = null;
 
         maxSorceryPoints = 200;

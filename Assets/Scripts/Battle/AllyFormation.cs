@@ -54,7 +54,7 @@ public class AllyFormation : Formation
         Positioning();
     }
 
-    public void CreateAlly(GameObject prefab)
+    public BaseCharacter CreateAlly(GameObject prefab)
     {
         GameObject characterPrefab = Instantiate(prefab, transform);
         BaseCharacter character = characterPrefab.GetComponent<BaseCharacter>();
@@ -64,6 +64,9 @@ public class AllyFormation : Formation
         SetProperty(character, false, -1);
         character.gameObject.SetActive(false);
         allCharacter.Add(character);
+        DataCloud.playerData.battleData.AddAlly(character.ID);
+        
+        return character;
     }
 
     public void MoveNode()
@@ -276,12 +279,12 @@ public class AllyFormation : Formation
     {
         int[] newFormation = new int[4] { -1, -1, -1, -1 };
         List<BaseCharacter> characters = GetBattleCharacter();
-
+        
         for (int i = 0; i < characters.Count; i++)
         {
             newFormation[i] = characters[i].ID;
         }
-        DataCloud.playerData.battleData.formation = newFormation;
+        DataCloud.playerData.battleData.SetFormation(newFormation);
     }
 
     private void SetProperty(BaseCharacter _character, bool isSummoned, int rowOrder)

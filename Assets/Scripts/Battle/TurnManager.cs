@@ -101,7 +101,7 @@ public class TurnManager : MonoBehaviour
         UpdateUI();
         BaseCharacter currentCharacter = combatQueue.Dequeue();
 
-        if (currentCharacter.IsDead || currentCharacter.Health.CheckHealthZero())
+        if (currentCharacter.IsDead || currentCharacter.Health.CheckHealthZero() || currentCharacter.canUseTurn == false)
         {
             processedCharacters.Add(currentCharacter);
             return false;
@@ -199,7 +199,7 @@ public class TurnManager : MonoBehaviour
         foreach (var character in combatQueue)
         {
             if (order >= turnIcons.Length) return;
-            if(character.IsDead || character.Health.CheckHealthZero())
+            if(character.IsDead || character.Health.CheckHealthZero() || character.canUseTurn == false)
             {
                 continue;
             }

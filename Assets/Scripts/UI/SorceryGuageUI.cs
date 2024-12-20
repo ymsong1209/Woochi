@@ -11,7 +11,7 @@ public class SorceryGuageUI : MonoBehaviour
     [SerializeField] private Image sorceryGuageBackground;
     [SerializeField] private TextMeshProUGUI sorceryGuageText;
 
-    private void Start()
+    public void Init()
     {
         woochi = BattleManager.GetInstance.Allies.GetWoochi();
         woochi.OnSorceryPointsChanged += SetUI;

@@ -50,6 +50,8 @@ public class BackManager : SingletonMonobehaviour<BackManager>
         
         if (popupStack.Count > 0)
         {
+            if (DataCloud.IsScenarioMode) return;
+            
             Popup popup = popupStack.Pop();
             popup.Activate(false);
         }

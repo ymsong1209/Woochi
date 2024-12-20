@@ -2,6 +2,7 @@ using System;
 
 public class EventManager : SingletonMonobehaviour<EventManager>
 {
-    public Action onChangedGold;        // ÀçÈ­ º¯È­ ½Ã È£ÃâÇÒ ÇÔ¼öµé
-    public Action<bool> onSelectReward;       // º¸»ó ¼±ÅÃ ½Ã È£ÃâÇÒ ÇÔ¼ö
+    public Action onChangedGold;        // ê³¨ë“œ ë³€ê²½ ì‹œ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜
+    public Action<bool> onSelectReward;       // ë³´ìƒ ì„ íƒ ì‹œ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜
+    public Action<int, bool> onCanUseTurn;
 }
