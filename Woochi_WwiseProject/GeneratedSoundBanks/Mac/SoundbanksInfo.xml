@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{D326F752-7CA2-0A14-FDB1-63ECE89D0199}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{6DE14F48-5EB9-21F2-7125-120CC1B395E5}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -21,18 +21,21 @@
 			<Busses>
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
+			<GameParameters>
+				<GameParameter Id="2918011349" Name="MasterVolume"/>
+			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{A53A7E7F-DE86-F356-0F62-EF1E3B18A1BC}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{ECD67E1B-81E1-8BF6-9544-9BEA29DB0C6D}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
 				<File Id="55501940" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Water_Skill.wav</ShortName>
-					<CachePath>SFX/Water_Skill_818F3B66.wem</CachePath>
+					<CachePath>SFX/Water_Skill_C5E17880.wem</CachePath>
 				</File>
 				<File Id="62276585" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Tree_Skill.wav</ShortName>
-					<CachePath>SFX/Tree_Skill_818F3B66.wem</CachePath>
+					<CachePath>SFX/Tree_Skill_FBB40CCC.wem</CachePath>
 				</File>
 				<File Id="81999487" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Event_Positive.wav</ShortName>
@@ -48,11 +51,11 @@
 				</File>
 				<File Id="234231556" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Movement_Click_Edit.wav</ShortName>
-					<CachePath>SFX/Movement_Click_Edit_818F3B66.wem</CachePath>
+					<CachePath>SFX/Movement_Click_Edit_B6F7D0D3.wem</CachePath>
 				</File>
 				<File Id="275618036" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Title_Mouse.wav</ShortName>
-					<CachePath>SFX/Title_Mouse_818F3B66.wem</CachePath>
+					<CachePath>SFX/Title_Mouse_D9E863B3.wem</CachePath>
 				</File>
 				<File Id="319263385" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Skill_Mouse.wav</ShortName>
@@ -60,11 +63,11 @@
 				</File>
 				<File Id="321173188" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Paper_Use.wav</ShortName>
-					<CachePath>SFX/Paper_Use_818F3B66.wem</CachePath>
+					<CachePath>SFX/Paper_Use_5FCEAA7F.wem</CachePath>
 				</File>
 				<File Id="324781318" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Reward_Arrow_Click.wav</ShortName>
-					<CachePath>SFX/Reward_Arrow_Click_818F3B66.wem</CachePath>
+					<CachePath>SFX/Reward_Arrow_Click_E85D8425.wem</CachePath>
 				</File>
 				<File Id="328838393" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Fight_Start.wav</ShortName>
@@ -72,7 +75,7 @@
 				</File>
 				<File Id="342798534" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Movement_Mouse_Edit.wav</ShortName>
-					<CachePath>SFX/Movement_Mouse_Edit_818F3B66.wem</CachePath>
+					<CachePath>SFX/Movement_Mouse_Edit_9AA05703.wem</CachePath>
 				</File>
 				<File Id="378946344" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Haetae_Join.wav</ShortName>
@@ -92,11 +95,11 @@
 				</File>
 				<File Id="533650088" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Power_Up.wav</ShortName>
-					<CachePath>SFX/Power_Up_818F3B66.wem</CachePath>
+					<CachePath>SFX/Power_Up_E85D8425.wem</CachePath>
 				</File>
 				<File Id="551719493" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Reward_Arrow_Mouse.wav</ShortName>
-					<CachePath>SFX/Reward_Arrow_Mouse_818F3B66.wem</CachePath>
+					<CachePath>SFX/Reward_Arrow_Mouse_C70033A3.wem</CachePath>
 				</File>
 				<File Id="578610578" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Metal_Skill.wav</ShortName>
@@ -104,7 +107,7 @@
 				</File>
 				<File Id="609249654" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Reward_Click.wav</ShortName>
-					<CachePath>SFX/Reward_Click_818F3B66.wem</CachePath>
+					<CachePath>SFX/Reward_Click_00225573.wem</CachePath>
 				</File>
 				<File Id="609286879" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Map_Mouse.wav</ShortName>
@@ -116,11 +119,11 @@
 				</File>
 				<File Id="691791290" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Ground_Skill.wav</ShortName>
-					<CachePath>SFX/Ground_Skill_818F3B66.wem</CachePath>
+					<CachePath>SFX/Ground_Skill_FBB40CCC.wem</CachePath>
 				</File>
 				<File Id="711383366" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Skill_Mouse_Edit.wav</ShortName>
-					<CachePath>SFX/Skill_Mouse_Edit_818F3B66.wem</CachePath>
+					<CachePath>SFX/Skill_Mouse_Edit_B6F7D0D3.wem</CachePath>
 				</File>
 				<File Id="726742060" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Fire_Skill.wav</ShortName>
@@ -140,7 +143,7 @@
 				</File>
 				<File Id="798960966" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Reward_Mouse.wav</ShortName>
-					<CachePath>SFX/Reward_Mouse_818F3B66.wem</CachePath>
+					<CachePath>SFX/Reward_Mouse_B6F7D0D3.wem</CachePath>
 				</File>
 				<File Id="816032374" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Event_Negative.wav</ShortName>
@@ -148,19 +151,19 @@
 				</File>
 				<File Id="820875912" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Pet_Return.wav</ShortName>
-					<CachePath>SFX/Pet_Return_818F3B66.wem</CachePath>
+					<CachePath>SFX/Pet_Return_C0DA48C3.wem</CachePath>
 				</File>
 				<File Id="865351906" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Event_Movement.wav</ShortName>
-					<CachePath>SFX/Event_Movement_818F3B66.wem</CachePath>
+					<CachePath>SFX/Event_Movement_9AA05703.wem</CachePath>
 				</File>
 				<File Id="879237363" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Event_Click.wav</ShortName>
-					<CachePath>SFX/Event_Click_818F3B66.wem</CachePath>
+					<CachePath>SFX/Event_Click_71893BB8.wem</CachePath>
 				</File>
 				<File Id="926927899" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Main_Title.wav</ShortName>
-					<CachePath>SFX/Main_Title_818F3B66.wem</CachePath>
+					<CachePath>SFX/Main_Title_E7A2DC0E.wem</CachePath>
 				</File>
 				<File Id="932057400" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Heal_Use.wav</ShortName>
@@ -168,11 +171,11 @@
 				</File>
 				<File Id="975968143" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Announce_Down.wav</ShortName>
-					<CachePath>SFX/Announce_Down_818F3B66.wem</CachePath>
+					<CachePath>SFX/Announce_Down_C70033A3.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
-				<Event Id="1946638119" Name="Announce_Down" DurationType="OneShot" DurationMin="1.75" DurationMax="1.75">
+				<Event Id="1946638119" Name="Announce_Down" DurationType="OneShot" DurationMin="0.4" DurationMax="0.4">
 					<MediaRefs>
 						<MediaRef Id="975968143"/>
 					</MediaRefs>
@@ -182,12 +185,12 @@
 						<MediaRef Id="199352336"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="39226162" Name="Event_Click" DurationType="OneShot" DurationMin="2.625" DurationMax="2.625">
+				<Event Id="39226162" Name="Event_Click" DurationType="OneShot" DurationMin="0.3" DurationMax="0.3">
 					<MediaRefs>
 						<MediaRef Id="879237363"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1131978445" Name="Event_Movement" DurationType="OneShot" DurationMin="2.625" DurationMax="2.625">
+				<Event Id="1131978445" Name="Event_Movement" DurationType="OneShot" DurationMin="0.1" DurationMax="0.1">
 					<MediaRefs>
 						<MediaRef Id="865351906"/>
 					</MediaRefs>
@@ -217,7 +220,7 @@
 						<MediaRef Id="465945705"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="115002250" Name="Ground_Skill" DurationType="OneShot" DurationMin="3" DurationMax="3">
+				<Event Id="115002250" Name="Ground_Skill" DurationType="OneShot" DurationMin="2" DurationMax="2">
 					<MediaRefs>
 						<MediaRef Id="691791290"/>
 					</MediaRefs>
@@ -232,7 +235,7 @@
 						<MediaRef Id="932057400"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="654742305" Name="Main_Title" DurationType="OneShot" DurationMin="2.75" DurationMax="2.75">
+				<Event Id="654742305" Name="Main_Title" DurationType="OneShot" DurationMin="2.3" DurationMax="2.3">
 					<MediaRefs>
 						<MediaRef Id="926927899"/>
 					</MediaRefs>
@@ -257,7 +260,7 @@
 						<MediaRef Id="479722376"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3587852286" Name="Movement_Click_Edit" DurationType="OneShot" DurationMin="2.625" DurationMax="2.625">
+				<Event Id="3587852286" Name="Movement_Click_Edit" DurationType="OneShot" DurationMin="0.2" DurationMax="0.2">
 					<MediaRefs>
 						<MediaRef Id="234231556"/>
 					</MediaRefs>
@@ -267,7 +270,7 @@
 						<MediaRef Id="777192762"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2387832805" Name="Movement_Mouse_Edit" DurationType="OneShot" DurationMin="2.625" DurationMax="2.625">
+				<Event Id="2387832805" Name="Movement_Mouse_Edit" DurationType="OneShot" DurationMin="0.1" DurationMax="0.1">
 					<MediaRefs>
 						<MediaRef Id="342798534"/>
 					</MediaRefs>
@@ -277,37 +280,37 @@
 						<MediaRef Id="745894469"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="716963261" Name="Paper_Use" DurationType="OneShot" DurationMin="3" DurationMax="3">
+				<Event Id="716963261" Name="Paper_Use" DurationType="OneShot" DurationMin="2.1" DurationMax="2.1">
 					<MediaRefs>
 						<MediaRef Id="321173188"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2349436841" Name="Pet_Return" DurationType="OneShot" DurationMin="1.75" DurationMax="1.75">
+				<Event Id="2349436841" Name="Pet_Return" DurationType="OneShot" DurationMin="1" DurationMax="1">
 					<MediaRefs>
 						<MediaRef Id="820875912"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2455846824" Name="Power_Up" DurationType="OneShot" DurationMin="1" DurationMax="1">
+				<Event Id="2455846824" Name="Power_Up" DurationType="OneShot" DurationMin="0.7" DurationMax="0.7">
 					<MediaRefs>
 						<MediaRef Id="533650088"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3302781919" Name="Reward_Arrow_Click" DurationType="OneShot" DurationMin="1" DurationMax="1">
+				<Event Id="3302781919" Name="Reward_Arrow_Click" DurationType="OneShot" DurationMin="0.7" DurationMax="0.7">
 					<MediaRefs>
 						<MediaRef Id="324781318"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3415311978" Name="Reward_Arrow_Mouse" DurationType="OneShot" DurationMin="1" DurationMax="1">
+				<Event Id="3415311978" Name="Reward_Arrow_Mouse" DurationType="OneShot" DurationMin="0.4" DurationMax="0.4">
 					<MediaRefs>
 						<MediaRef Id="551719493"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1667288597" Name="Reward_Click" DurationType="OneShot" DurationMin="1" DurationMax="1">
+				<Event Id="1667288597" Name="Reward_Click" DurationType="OneShot" DurationMin="0.5" DurationMax="0.5">
 					<MediaRefs>
 						<MediaRef Id="609249654"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="4232491148" Name="Reward_Mouse" DurationType="OneShot" DurationMin="1" DurationMax="1">
+				<Event Id="4232491148" Name="Reward_Mouse" DurationType="OneShot" DurationMin="0.2" DurationMax="0.2">
 					<MediaRefs>
 						<MediaRef Id="798960966"/>
 					</MediaRefs>
@@ -317,7 +320,7 @@
 						<MediaRef Id="319263385"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3046553211" Name="Skill_Mouse_Edit" DurationType="OneShot" DurationMin="2.625" DurationMax="2.625">
+				<Event Id="3046553211" Name="Skill_Mouse_Edit" DurationType="OneShot" DurationMin="0.2" DurationMax="0.2">
 					<MediaRefs>
 						<MediaRef Id="711383366"/>
 					</MediaRefs>
@@ -337,17 +340,17 @@
 						<MediaRef Id="790595291"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="410006513" Name="Title_Mouse" DurationType="OneShot" DurationMin="0.28125" DurationMax="0.28125">
+				<Event Id="410006513" Name="Title_Mouse" DurationType="OneShot" DurationMin="0.05" DurationMax="0.05">
 					<MediaRefs>
 						<MediaRef Id="275618036"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1471171747" Name="Tree_Skill" DurationType="OneShot" DurationMin="3" DurationMax="3">
+				<Event Id="1471171747" Name="Tree_Skill" DurationType="OneShot" DurationMin="2" DurationMax="2">
 					<MediaRefs>
 						<MediaRef Id="62276585"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1362914800" Name="Water_Skill" DurationType="OneShot" DurationMin="3" DurationMax="3">
+				<Event Id="1362914800" Name="Water_Skill" DurationType="OneShot" DurationMin="2.5" DurationMax="2.5">
 					<MediaRefs>
 						<MediaRef Id="55501940"/>
 					</MediaRefs>
@@ -355,5 +358,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{44E68BE5-6A3F-2A5B-4CF5-5A53171C65A7}</FileHash>
+	<FileHash>{2E1E2E92-F16F-9B32-04D8-5A58CF571180}</FileHash>
 </SoundBanksInfo>

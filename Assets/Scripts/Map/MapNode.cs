@@ -18,7 +18,8 @@ public class MapNode : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler,
     private float mouseDownTime;
 
     private const float MaxClickDuration = 0.5f;
-
+    private NodeState state;
+    
     public void SetUp(Node _node, NodeBlueprint _blueprint)
     {
         Node = _node;
@@ -38,7 +39,8 @@ public class MapNode : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler,
     public void SetState(NodeState _state)
     {
         if (circleImage != null) circleImage.gameObject.SetActive(false);
-
+        state = _state;
+        
         switch (_state)
         {
             case NodeState.Locked:
@@ -66,8 +68,10 @@ public class MapNode : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler,
         image.transform.DOKill();
         image.transform.DOScale(initScale * HoverScaleFactor, 0.3f);
         
-        GameManager.GetInstance.soundManager.PlaySFX("Map_Mouse");
+        if(state == NodeState.Attainable)
+            GameManager.GetInstance.soundManager.PlaySFX("Map_Mouse");
     }
+    
     public void OnPointerExit(PointerEventData eventData)
     {
         image.transform.DOKill();

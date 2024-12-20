@@ -22,13 +22,13 @@ public class SoundManager : MonoBehaviour
         
     }
 
-    private void Start()
-    {
-        masterVolumeRTPC.SetGlobalValue(0);    
-    }
-
     public void PlaySFX(string sfxName)
     {
         AkSoundEngine.PostEvent(sfxName, gameObject);
+    }
+    
+    public void SetVolume(float masterVolume, float bgmVolume)
+    {
+        masterVolumeRTPC.SetGlobalValue(masterVolume);
     }
 }

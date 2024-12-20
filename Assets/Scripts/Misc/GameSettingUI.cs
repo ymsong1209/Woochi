@@ -53,6 +53,7 @@ public class GameSettingUI : MonoBehaviour
         data.isFullScreen = fullScreen.isOn;
         data.resolution = new Vector2Int(resolutionList[resolutionDropdown.value].width, resolutionList[resolutionDropdown.value].height);
         
+        GameManager.GetInstance.soundManager.SetVolume(masterVolume.value, bgmVolume.value);
         Screen.fullScreen = data.isFullScreen;
         Screen.SetResolution(data.resolution.x, data.resolution.y, data.isFullScreen);
         
@@ -89,8 +90,8 @@ public class GameSettingUI : MonoBehaviour
 [System.Serializable]
 public class GameSettingData
 {
-    public float masterVolume = 1.0f;
-    public float bgmVolume = 1.0f;
+    public float masterVolume = 100.0f;
+    public float bgmVolume = 100.0f;
 
     public bool isFullScreen = true;
     public Vector2Int resolution = new Vector2Int(Screen.currentResolution.width, Screen.currentResolution.height);

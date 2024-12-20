@@ -956,7 +956,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 7198539072432827888}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -2519,6 +2519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   setting: {fileID: 5261174031699967459}
   exit: {fileID: 6787461908943519550}
+  exitYes: {fileID: 0}
   pausePopup: {fileID: 6508210587883803508}
   settingPopup: {fileID: 1901539536827464133}
   exitPopup: {fileID: 6741827127836725726}
@@ -3728,7 +3729,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 7150448518199427803}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:

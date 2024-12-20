@@ -1714,6 +1714,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 538959037938206855, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
+      propertyPath: masterVolumeRTPC.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 703946b7e3ddeda48aafa33fc20bd32e, type: 2}
     - target: {fileID: 4765174429504772050, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -2582,6 +2586,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7314678273353241787, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
+      propertyPath: m_MaxValue
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7398044500581181545, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
       propertyPath: m_Camera
       value: 
@@ -2657,6 +2665,10 @@ PrefabInstance:
     - target: {fileID: 8090960739206387643, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8294803399590183023, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
+      propertyPath: m_MaxValue
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8297814260124602772, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
       propertyPath: m_AnchorMax.y

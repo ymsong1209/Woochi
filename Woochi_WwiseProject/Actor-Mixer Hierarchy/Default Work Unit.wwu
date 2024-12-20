@@ -14,6 +14,9 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Main_Title" ID="{24CD3253-EA56-4029-884A-C53696270DB5}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="2.3"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Main_Title.wav</AudioFile>
 							<MediaIDList>
@@ -36,6 +39,9 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Title_Mouse" ID="{8E3A0EFF-D9E1-4254-B576-DA1DBB913939}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="0.05"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Title_Mouse.wav</AudioFile>
 							<MediaIDList>
@@ -80,6 +86,9 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Skill_Mouse" ID="{A9D3075A-519E-4E17-B9F6-42BA94A833B7}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Skill_Mouse.wav</AudioFile>
 							<MediaIDList>
@@ -212,6 +221,9 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Ground_Skill" ID="{27CB92C1-D2C9-4970-B4F7-6DCF6C5D785E}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="2"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Ground_Skill.wav</AudioFile>
 							<MediaIDList>
@@ -256,6 +268,9 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Power_Up" ID="{C8829D3F-5335-4A2B-8892-E37D9DE4DB63}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="0.7"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Power_Up.wav</AudioFile>
 							<MediaIDList>
@@ -278,6 +293,9 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Reward_Arrow_Click" ID="{BC980579-3B38-4449-9765-FF0D2BD84473}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="0.7"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Reward_Arrow_Click.wav</AudioFile>
 							<MediaIDList>
@@ -300,6 +318,9 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Reward_Arrow_Mouse" ID="{CAE0A69B-66E8-4B78-9EA2-00D1720E30DC}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="0.4"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Reward_Arrow_Mouse.wav</AudioFile>
 							<MediaIDList>
@@ -322,6 +343,9 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Reward_Click" ID="{783CE2CE-DB19-4FBB-862C-5A1C33199C04}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="0.5"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Reward_Click.wav</AudioFile>
 							<MediaIDList>
@@ -344,6 +368,9 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Reward_Mouse" ID="{DC9301AE-014B-4994-ABA8-DEB4EC548105}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="0.2"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Reward_Mouse.wav</AudioFile>
 							<MediaIDList>
@@ -388,6 +415,9 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Tree_Skill" ID="{5FCDF83F-B7BA-4418-B5C0-1843E4B24FE3}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="2"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Tree_Skill.wav</AudioFile>
 							<MediaIDList>
@@ -410,6 +440,9 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Water_Skill" ID="{A12216CB-01B1-4222-A7B2-EDC5F0DD15CE}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="2.5"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Water_Skill.wav</AudioFile>
 							<MediaIDList>
@@ -432,6 +465,10 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Announce_Down" ID="{29F1605D-7DFD-49FE-8BC7-96487C727487}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.4"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Announce_Down.wav</AudioFile>
 							<MediaIDList>
@@ -498,6 +535,11 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Pet_Return" ID="{938D8624-3DAA-4757-B405-E8144BF88784}">
+							<PropertyList>
+								<Property Name="LoopBegin" Type="Real64" Value="0"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="1"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Pet_Return.wav</AudioFile>
 							<MediaIDList>
@@ -564,6 +606,9 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Event_Click" ID="{1F5F2CA3-3EA0-447F-8AC5-3477D084C7B2}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="0.3"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Event_Click.wav</AudioFile>
 							<MediaIDList>
@@ -586,6 +631,9 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Event_Movement" ID="{2D75AB53-3BB3-4C21-825F-E748A92DB87A}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="0.1"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Event_Movement.wav</AudioFile>
 							<MediaIDList>
@@ -696,6 +744,9 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Movement_Click_Edit" ID="{1EDFF73F-DD0A-4586-A49D-04D1A427B820}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="0.2"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Movement_Click_Edit.wav</AudioFile>
 							<MediaIDList>
@@ -718,6 +769,9 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Movement_Mouse_Edit" ID="{8041AA67-F087-46AF-B20B-3D5785F90AC5}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="0.1"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Movement_Mouse_Edit.wav</AudioFile>
 							<MediaIDList>
@@ -762,6 +816,9 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Paper_Use" ID="{51389FB5-3BE0-4CCF-B2F7-EB660937482E}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="2.1"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Paper_Use.wav</AudioFile>
 							<MediaIDList>
@@ -784,6 +841,9 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Skill_Mouse_Edit" ID="{9C99EAAA-DF15-4690-BB0C-A71E5FED240E}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="0.2"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Skill_Mouse_Edit.wav</AudioFile>
 							<MediaIDList>
