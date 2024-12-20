@@ -64,6 +64,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2494040430787170251, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494040430787170251, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494040430787170251, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494040430787170251, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 7.58
+      objectReference: {fileID: 0}
     - target: {fileID: 2767518271787080996, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: size
       value: 2
@@ -175,6 +191,10 @@ PrefabInstance:
     - target: {fileID: 4716238156241379999, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Name
       value: Troll_Hammer_Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 4932393424013574486, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7353766205308395991, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Size.x
@@ -314,6 +334,7 @@ MonoBehaviour:
   activeSkills: []
   activeSkillCheckBox: 0101
   isAlly: 0
+  canUseTurn: 1
   isDummy: 0
   isSummoned: 0
   rowOrder: 0
