@@ -89,19 +89,24 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         
         ShowCharacterUI?.Invoke(allies.GetWoochi(), false);
         GameManager.GetInstance.soundManager.PlaySFX("Fight_Start");
+
+        GenerateBattleStartLog();
         
-        var currentPoint = MapManager.GetInstance.CurrentMap.path[MapManager.GetInstance.CurrentMap.path.Count - 1];
-        int currentFloor = currentPoint.y;
-        string log = GenerateBattleStartLog(currentFloor);
-        Logger.Log(log, "BattleStart", "Floor" + currentFloor);
         #region PreRound 상태로 넘어감
         StopAllCoroutines();
         PreRound();
         #endregion
     }
     
-    private string GenerateBattleStartLog(int currentFloor)
+    private void GenerateBattleStartLog()
     {
+        if(MapManager.GetInstance.CurrentMap == null)
+        {
+            return;
+        }
+        var currentPoint = MapManager.GetInstance.CurrentMap.path[MapManager.GetInstance.CurrentMap.path.Count - 1];
+        int currentFloor = currentPoint.y;
+        
         System.Text.StringBuilder sb = new System.Text.StringBuilder();
 
         sb.AppendLine($"----Battle Start Log: Floor {currentFloor} ----");
@@ -138,7 +143,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
 
         sb.AppendLine("------------------------");
-        return sb.ToString();
+        
+        Logger.Log(sb.ToString(), "BattleStart", "Floor" + currentFloor);
     }
     
     private void AppendCharacterInfo(System.Text.StringBuilder sb, BaseCharacter character, bool isAlly)

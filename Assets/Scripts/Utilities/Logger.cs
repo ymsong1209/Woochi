@@ -10,7 +10,7 @@ public static class Logger
 
     public static void Log(string message, string eventType = "Info",  string customFileName = "GeneratedMap")
     {
-        if(!GameManager.GetInstance.UseDebugLogs)
+        if(!GameManager.GetInstance.UseDebugLogs || MapManager.GetInstance.CurrentMap == null)
         {
             return;
         }
@@ -51,6 +51,10 @@ public static class Logger
     
     public static void BattleLog(object message, string eventType)
     {
+        if(MapManager.GetInstance.CurrentMap == null)
+        {
+            return;
+        }
         var currentPoint = MapManager.GetInstance.CurrentMap.path[MapManager.GetInstance.CurrentMap.path.Count - 1];
         int currentFloor = currentPoint.y;
         Log(message.ToString(), eventType, "Floor" + currentFloor);
