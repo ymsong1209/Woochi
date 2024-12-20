@@ -2,7 +2,7 @@ using System;
 using OneLine;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Plot_", menuName = "Scriptable Objects/Plot/Normal")]
+[CreateAssetMenu(fileName = "Actor_", menuName = "Scriptable Objects/Plot/Normal")]
 public class Plot : ScriptableObject
 {
     private Action<int> onComplete;
@@ -10,7 +10,7 @@ public class Plot : ScriptableObject
     public ScenarioType type;
     [OneLineWithHeader] public Illustration[] illustrations;
     public Sprite blindImage;
-    public string speaker;
+    public Actor speaker;
     [TextArea(3, 10)] public string text;
     public PlotEvent plotEvent = PlotEvent.None;     // 이벤트가 들어올 때 해당 이벤트와 일치해야 함
     
@@ -50,6 +50,6 @@ public class Plot : ScriptableObject
 [Serializable]
 public struct Illustration
 {
-    public Sprite sprite;
+    public Actor actor;
     public int direction;   // 0 : left, 1 : center, 2 : right
 }

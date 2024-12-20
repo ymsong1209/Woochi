@@ -14,19 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   illustrations:
-  - sprite: {fileID: 21300000, guid: 5314308457ea6314a81464d2a9089ac3, type: 3}
+  - actor: {fileID: 11400000, guid: 849179a248edaba4ab1a2c2f60ad2648, type: 2}
     direction: 0
-  - sprite: {fileID: 21300000, guid: 1cc5976855fc717439ee36c6bc7a187c, type: 3}
+  - actor: {fileID: 11400000, guid: 6126dda2673a5c5439b01dc9c2605963, type: 2}
     direction: 2
   blindImage: {fileID: 0}
-  speaker: "\uAE38\uC7A1\uC774"
+  speaker: {fileID: 11400000, guid: ed3bdf174d6942149b91f3fbe73bc777, type: 2}
   text: "\uB3C4\uC220\uC5D0\uB294 \uD654, \uC218, \uBAA9, \uAE08, \uD1A0\uC758 5\uAC1C
     \uC18D\uC131\uC774 \uC874\uC7AC\uD569\uB2C8\uB2E4.\n\uC18D\uC131\uC5D0 \uB530\uB77C
     \uB3C4\uC220\uC758 \uD2B9\uC131\uACFC \uD6A8\uACFC\uAC00 \uBCC0\uD558\uBBC0\uB85C,
     \uC804\uB7B5\uC801\uC73C\uB85C \uC0AC\uC6A9\uD558\uB294 \uAC83\uC774 \uC911\uC694\uD569\uB2C8\uB2E4."
   plotEvent: 0
   showBattle: 0
-  isCloseUp: 0
   isTextUp: 0
   showText: 1
   isBlind: 0

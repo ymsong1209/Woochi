@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: affcc82dda958f3428ba9b330c115742, type: 3}
   m_Name: Plot_98
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   illustrations: []
   blindImage: {fileID: 0}
-  speaker: 
+  speaker: {fileID: 0}
   text: 
   plotEvent: 3
   showBattle: 1
-  isCloseUp: 0
   isTextUp: 0
   showText: 0
   isBlind: 0

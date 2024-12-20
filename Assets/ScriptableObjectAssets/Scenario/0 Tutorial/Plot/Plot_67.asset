@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 2
   illustrations: []
   blindImage: {fileID: 21300000, guid: bc2ebb38baa346445ab3e8ad4d80bf5c, type: 3}
-  speaker: "\uAE38\uC7A1\uC774"
+  speaker: {fileID: 11400000, guid: ed3bdf174d6942149b91f3fbe73bc777, type: 2}
   text: "\uADF8\uB7F0 \uACB0\uB9D0\uC744 \uB9C9\uAE30 \uC704\uD574\uC11C\uB294, \uC77C\uB2E8
     \uCCB4\uB825\uC744 \uD68C\uBCF5\uD574\uC57C \uD569\uB2C8\uB2E4.\n\uC774\uBC88\uC5D0\uB294
     \u201C\uBD80\uC801 \uC0AC\uC6A9\u201D \uD589\uB3D9\uC744 \uD1B5\uD574 \uCCB4\uB825\uC744
@@ -24,7 +24,6 @@ MonoBehaviour:
     \uC218 \uC788\uC2B5\uB2C8\uB2E4."
   plotEvent: 1
   showBattle: 1
-  isCloseUp: 0
   isTextUp: 1
   showText: 1
   isBlind: 1

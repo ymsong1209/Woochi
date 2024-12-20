@@ -15,10 +15,11 @@ MonoBehaviour:
   type: 2
   illustrations: []
   blindImage: {fileID: 21300000, guid: b7aa54e967a9e024b872db20f0edbd05, type: 3}
-  speaker: "\uAE38\uC7A1\uC774"
+  speaker: {fileID: 11400000, guid: ed3bdf174d6942149b91f3fbe73bc777, type: 2}
   text: "\uC774\uC81C \uB3C4\uC220\uC744 \uC0AC\uC6A9\uD558\uC5EC \uC801\uACFC \uC804\uD22C\uD574
     \uBD05\uC2DC\uB2E4."
+  plotEvent: 0
   showBattle: 1
-  isCloseUp: 0
   isTextUp: 1
+  showText: 1
   isBlind: 1

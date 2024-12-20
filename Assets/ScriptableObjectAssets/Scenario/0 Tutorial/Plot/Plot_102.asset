@@ -14,15 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   illustrations:
-  - sprite: {fileID: 21300000, guid: 5314308457ea6314a81464d2a9089ac3, type: 3}
+  - actor: {fileID: 11400000, guid: 849179a248edaba4ab1a2c2f60ad2648, type: 2}
     direction: 1
   blindImage: {fileID: 0}
-  speaker: "\uC6B0\uCE58"
+  speaker: {fileID: 11400000, guid: 849179a248edaba4ab1a2c2f60ad2648, type: 2}
   text: "\u201C\uADF8\uB7FC \uC774\uC81C \uC800\uB3C4 \uADC0\uAC11\uC0AC\uAC00 \uB41C
     \uAC83\uC785\uB2C8\uAE4C?\u201D\r"
   plotEvent: 0
   showBattle: 0
-  isCloseUp: 0
   isTextUp: 0
   showText: 1
   isBlind: 0

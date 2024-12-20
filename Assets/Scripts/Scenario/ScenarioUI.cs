@@ -91,7 +91,7 @@ public class ScenarioUI : MonoBehaviour
             for(int i = 0; i < currentPlot.illustrations.Length; i++)
             {
                 int direction = currentPlot.illustrations[i].direction;
-                illustrations[direction].sprite = currentPlot.illustrations[i].sprite;
+                illustrations[direction].sprite = currentPlot.illustrations[i].actor.actorImage;
                 illustrations[direction].SetNativeSize();
                 illustrations[direction].gameObject.SetActive(true);
             }
@@ -113,13 +113,13 @@ public class ScenarioUI : MonoBehaviour
         {
             colorCode = "#CABEB4";
             text.lineSpacing = 64f;
-            result = $"[{currentPlot.speaker}]\n";
+            result = $"[{currentPlot.speaker.actorName}]\n";
         }
         else if (currentPlot.type == ScenarioType.Guide)
         {
             colorCode = "#E4C36A";
             text.lineSpacing = 64f;
-            result = $"[{currentPlot.speaker}]\n";
+            result = $"[{currentPlot.speaker.actorName}]\n";
         }
         
         Color newColor;

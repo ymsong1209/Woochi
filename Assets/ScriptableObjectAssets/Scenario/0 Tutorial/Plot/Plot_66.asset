@@ -14,17 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   illustrations:
-  - sprite: {fileID: 21300000, guid: 5314308457ea6314a81464d2a9089ac3, type: 3}
+  - actor: {fileID: 11400000, guid: 849179a248edaba4ab1a2c2f60ad2648, type: 2}
     direction: 1
   blindImage: {fileID: 0}
-  speaker: "\uAE38\uC7A1\uC774"
+  speaker: {fileID: 11400000, guid: ed3bdf174d6942149b91f3fbe73bc777, type: 2}
   text: "\uAC15\uD55C \uCC99 \uB9D0\uD574 \uBD10\uB3C4, \uC6B0\uCE58 \uB610\uD55C
     \uC778\uAC04\uC785\uB2C8\uB2E4.\n\uC6B0\uCE58\uC758 \uCCB4\uB825\uC774 \uBAA8\uB450
     \uB2F3\uB294\uB2E4\uBA74, \uC6B0\uCE58\uC758 \uC774\uC57C\uAE30\uAC00 \uC88B\uC9C0
     \uC54A\uC740 \uACB0\uB9D0\uC744 \uB9DE\uAC8C \uB429\uB2C8\uB2E4."
+  plotEvent: 0
   showBattle: 0
-  isCloseUp: 0
   isTextUp: 0
   showText: 1
   isBlind: 0
-  isEvent: 0

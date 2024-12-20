@@ -13,8 +13,16 @@ MonoBehaviour:
   m_Name: Plot_12
   m_EditorClassIdentifier: 
   type: 1
-  illustrations: []
-  speaker: 
+  illustrations:
+  - actor: {fileID: 11400000, guid: 849179a248edaba4ab1a2c2f60ad2648, type: 2}
+    direction: 1
+  blindImage: {fileID: 0}
+  speaker: {fileID: 0}
   text: "\uC544\uBB34\uB9AC \uD6CC\uB96D\uD55C \uC2A4\uC2B9\uC774 \uC788\uC5B4\uB3C4
     \uBCF8\uC778\uC758 \uADFC\uC6D0\uAE4C\uC9C0\uB294 \uACE0\uCCD0\uC9C0\uC9C0 \uBABB\uD55C
     \uC6B0\uCE58\uC600\uB2E4."
+  plotEvent: 0
+  showBattle: 0
+  isTextUp: 0
+  showText: 1
+  isBlind: 0

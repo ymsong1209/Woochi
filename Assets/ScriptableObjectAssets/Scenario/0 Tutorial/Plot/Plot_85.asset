@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: affcc82dda958f3428ba9b330c115742, type: 3}
   m_Name: Plot_85
   m_EditorClassIdentifier: 
-  type: 2
+  type: 1
   illustrations: []
   blindImage: {fileID: 21300000, guid: f4fbad883f287ac4492d63d485c5becd, type: 3}
-  speaker: 
+  speaker: {fileID: 0}
   text: 
   plotEvent: 2
   showBattle: 1
