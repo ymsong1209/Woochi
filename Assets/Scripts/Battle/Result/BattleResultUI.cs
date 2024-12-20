@@ -72,7 +72,8 @@ public class BattleResultUI : MonoBehaviour
 
     private void SetGold(BattleResult result)
     {
-        int gold = (result.hardShipGrade + 1) * result.enemyCount * 10;
+        int alpha = Random.Range(48, 73);
+        int gold = (result.hardShipGrade + 1) * result.enemyCount * alpha;
         HelperUtilities.AddGold(gold);
         goldTxt.text = $"+ {gold}";
     }

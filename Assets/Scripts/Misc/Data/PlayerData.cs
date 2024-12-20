@@ -69,7 +69,7 @@ public class PlayerData
 
         realization = 4;
         
-        gold = 10000;
+        gold = 0;
     }
 
     public CharacterInfoData LoadInfo(int ID)

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ScenarioManager : SingletonMonobehaviour<ScenarioManager>
@@ -10,7 +11,15 @@ public class ScenarioManager : SingletonMonobehaviour<ScenarioManager>
 
     [Header("Default")] 
     [SerializeField] private int plotIndex;
-    
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            NextPlot(PlotEvent.None);
+        }
+    }
+
     public void Play(int index)
     {
         if (index < 0 || index >= scenarios.Length) return;
