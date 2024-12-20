@@ -282,6 +282,7 @@ public class BaseCharacter : MonoBehaviour
         {
             // 기존 버프와 중첩
             activeBuff.StackBuff(buff);
+            Destroy(buff.gameObject);
             return activeBuff;
         }
 
