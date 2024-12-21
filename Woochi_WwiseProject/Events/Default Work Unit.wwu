@@ -509,6 +509,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Main_Title_Bgm" ID="{79B3AAF6-DD5B-4FB1-B3C7-96C7F7729757}">
+					<ChildrenList>
+						<Action Name="" ID="{E95EFF3E-ACA6-4192-B764-B43F00224079}" ShortID="488067195">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Main_Title_Bgm" ID="{0557F1AF-4EAF-4E86-8762-7D25222B3C9E}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Preference_Mouse" ID="{CE0D947D-E5C5-4432-AB53-762DA1248833}">
+					<ChildrenList>
+						<Action Name="" ID="{47979FA6-4246-41EA-89AB-D1AD5E8CC441}" ShortID="683518201">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Preference_Mouse" ID="{D07AEA36-B810-450F-B3C6-E649B2D3700D}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

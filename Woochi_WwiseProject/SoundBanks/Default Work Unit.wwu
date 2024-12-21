@@ -16,6 +16,7 @@
 						<ObjectRef Name="Title_Mouse" ID="{9CD0FF9B-4474-423C-962F-D64926AA553E}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Reward_Arrow_Mouse" ID="{B58D261B-AB14-4260-BA18-FFE3F1472424}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Heal_Use" ID="{702D870F-12F2-42CE-B70C-E636992631BE}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Preference_Mouse" ID="{CE0D947D-E5C5-4432-AB53-762DA1248833}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Reward_Arrow_Click" ID="{2A92FEC9-C338-44D4-B3AC-904960239CC3}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Pet_Return" ID="{CB1D7484-B065-4578-A393-CA00256A0C48}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Title_Click" ID="{285DD759-BE62-458B-9D04-3C3FCEB5EE6A}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
@@ -51,6 +52,7 @@
 						<ObjectRef Name="Dosul_Click" ID="{3294BD95-7D02-4F37-93E6-E105EFF8FA6A}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Movement_Mouse_Edit" ID="{07FAD67E-49DE-4F3E-987E-1EFAEEE969A1}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Fox_Join" ID="{7407B918-047B-4F57-8632-66EBDB6B5770}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Main_Title_Bgm" ID="{79B3AAF6-DD5B-4FB1-B3C7-96C7F7729757}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
