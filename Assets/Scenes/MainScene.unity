@@ -2747,6 +2747,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
+--- !u!114 &5996471962718802777 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7322305544567960909, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
+  m_PrefabInstance: {fileID: 5996471962718802776}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afe890f573253b43b0984eaebf027a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6074001674675329078 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4363817715269884159, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
@@ -2950,6 +2961,10 @@ PrefabInstance:
       propertyPath: woochiActionList
       value: 
       objectReference: {fileID: 2409883771774394281}
+    - target: {fileID: 6025553260394843139, guid: d61eec6b39f557142b23940b4b4ae377, type: 3}
+      propertyPath: enemySkillNamePopup
+      value: 
+      objectReference: {fileID: 5996471962718802777}
     - target: {fileID: 6827326818132283292, guid: d61eec6b39f557142b23940b4b4ae377, type: 3}
       propertyPath: m_Name
       value: UIManager

@@ -121,6 +121,9 @@ public class Library : ScriptableObject
         // 랜덤 값을 생성 (0부터 totalProbability 사이)
         float randomValue = Random.Range(0f, totalProbability);
 
+        // 2티어 이상 도술 아이콘이 없어서 1티어만 반환
+        return GetRandomSkillIdByRarity(1);
+        
         // 확률에 따라 기본 스킬 ID 선택
         if (randomValue <= data.Lowest)
         {

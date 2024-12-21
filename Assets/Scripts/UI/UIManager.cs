@@ -26,6 +26,8 @@ public class UIManager : SingletonMonobehaviour<UIManager>
     
     public RecruitUI recruitUI; 
     
+    public EnemySkillNamePopup enemySkillNamePopup;
+    
     private void Start()
     {
         BattleManager.GetInstance.OnFocusStart += DeactivateBuffPopUp;

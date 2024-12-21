@@ -525,7 +525,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         UIManager.GetInstance.DeactivePopup();
 
         DisableColliderArrow();
-
+        if (!caster.IsAlly)
+        {
+            yield return UIManager.GetInstance.enemySkillNamePopup.ShowUI(currentSelectedSkill.Name);
+        }
+        
         currentSelectedSkill.ActivateSkill(receiver);
         InitSelect();
 
