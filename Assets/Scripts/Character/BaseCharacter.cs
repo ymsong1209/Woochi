@@ -483,7 +483,7 @@ public class BaseCharacter : MonoBehaviour
         activeSkills.Add(newSkill);
     }
 
-    protected void LevelUp()
+    protected virtual void LevelUp()
     {
         baseStat += levelUpStat;
         health.LevelUp();

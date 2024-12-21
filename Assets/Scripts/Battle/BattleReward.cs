@@ -88,7 +88,7 @@ public class BattleReward : MonoBehaviour
         AllyFormation allyFormation = BattleManager.GetInstance.Allies;
         int exp = DataCloud.GetExp(grade, isElite);
         
-        foreach (var character in allyFormation.GetBattleCharacter())
+        foreach (var character in allyFormation.AllCharacter)
         {
             if(character.IsDead) continue;
             character.level.plusExp += exp;

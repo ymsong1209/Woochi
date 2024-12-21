@@ -105,7 +105,13 @@ public class MainCharacter : BaseCharacter
         int value = Mathf.CeilToInt(maxSorceryPoints * percent);
         UpdateSorceryPoints(value, isAdd);
     }
-    
+
+    protected override void LevelUp()
+    {
+        base.LevelUp();
+        SorceryPoints = maxSorceryPoints;
+    }
+
     public BaseSkill[] MainCharacterSkills => mainCharacterSkills;
     
     public int SorceryPoints
