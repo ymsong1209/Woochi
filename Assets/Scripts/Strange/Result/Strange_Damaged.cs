@@ -16,8 +16,7 @@ public class Strange_Damaged : StrangeResult
             MainCharacter woochi = BattleManager.GetInstance.Allies.GetWoochi();
 
             int damage = (int)(woochi.Health.MaxHealth * percent);
-            woochi.Health.Heal(-damage, false);
-            // woochi.Health.ApplyDamage(damage, false, false);
+            woochi.Health.ApplyDamage(damage, false, false);
         }
         else
         {
@@ -25,8 +24,7 @@ public class Strange_Damaged : StrangeResult
             for(int i = 0; i < allies.Count; i++)
             {
                 int damage = (int)(allies[i].Health.MaxHealth * percent);
-                allies[i].Health.Heal(-damage, false);
-                // allies[i].Health.ApplyDamage(damage, false, false);
+                allies[i].Health.ApplyDamage(damage, false, false);
             }
         }
     }
