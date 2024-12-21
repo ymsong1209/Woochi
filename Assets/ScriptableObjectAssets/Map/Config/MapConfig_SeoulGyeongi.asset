@@ -76,7 +76,7 @@ MonoBehaviour:
     distanceFromPreviousLayer:
       min: 0
       max: 0
-    nodesApartDistance: 3
+    nodesApartDistance: 2.5
     isRandomNode: 0
     isRandomEnemy: 0
     enemyIDs: e8030000e8030000
@@ -85,7 +85,7 @@ MonoBehaviour:
     distanceFromPreviousLayer:
       min: 3
       max: 3
-    nodesApartDistance: 3
+    nodesApartDistance: 2.5
     isRandomNode: 0
     isRandomEnemy: 1
     enemyIDs: 
@@ -94,7 +94,7 @@ MonoBehaviour:
     distanceFromPreviousLayer:
       min: 3
       max: 3
-    nodesApartDistance: 3
+    nodesApartDistance: 2.5
     isRandomNode: 0
     isRandomEnemy: 1
     enemyIDs: 
@@ -103,7 +103,7 @@ MonoBehaviour:
     distanceFromPreviousLayer:
       min: 3
       max: 3
-    nodesApartDistance: 3
+    nodesApartDistance: 2.5
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -112,7 +112,7 @@ MonoBehaviour:
     distanceFromPreviousLayer:
       min: 3
       max: 3
-    nodesApartDistance: 3
+    nodesApartDistance: 2.5
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -121,7 +121,7 @@ MonoBehaviour:
     distanceFromPreviousLayer:
       min: 3
       max: 3
-    nodesApartDistance: 3
+    nodesApartDistance: 2.5
     isRandomNode: 0
     isRandomEnemy: 0
     enemyIDs: 88130000
@@ -130,7 +130,7 @@ MonoBehaviour:
     distanceFromPreviousLayer:
       min: 3
       max: 3
-    nodesApartDistance: 3
+    nodesApartDistance: 2.5
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -139,7 +139,7 @@ MonoBehaviour:
     distanceFromPreviousLayer:
       min: 3
       max: 3
-    nodesApartDistance: 3
+    nodesApartDistance: 2.5
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -148,7 +148,7 @@ MonoBehaviour:
     distanceFromPreviousLayer:
       min: 3
       max: 3
-    nodesApartDistance: 3
+    nodesApartDistance: 2.5
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
@@ -157,7 +157,7 @@ MonoBehaviour:
     distanceFromPreviousLayer:
       min: 3
       max: 3
-    nodesApartDistance: 3
+    nodesApartDistance: 2.5
     isRandomNode: 1
     isRandomEnemy: 1
     enemyIDs: 
