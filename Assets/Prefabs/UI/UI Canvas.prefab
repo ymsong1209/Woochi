@@ -1367,6 +1367,7 @@ GameObject:
   - component: {fileID: 9126370578136876531}
   - component: {fileID: 7195768401155428873}
   - component: {fileID: 2969609540145592236}
+  - component: {fileID: 1337323733545925120}
   m_Layer: 5
   m_Name: SkillScrollOpenBtn
   m_TagString: Untagged
@@ -1475,6 +1476,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1337323733545925120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440848935126839416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb73cf3725e81f540821c5c469689c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorSFX: Dosul_Paper_Mouse
+  clickSFX: Dosul_Paper_Click
 --- !u!1 &478414116991048922
 GameObject:
   m_ObjectHideFlags: 0
@@ -14416,6 +14431,7 @@ GameObject:
   - component: {fileID: 7433418692361623195}
   - component: {fileID: 8489436634714017438}
   - component: {fileID: 5381751528252626688}
+  - component: {fileID: 8408021027497463074}
   m_Layer: 5
   m_Name: BackBtn
   m_TagString: Untagged
@@ -14525,6 +14541,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8408021027497463074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4221959914230318425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb73cf3725e81f540821c5c469689c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorSFX: Dosul_ReinForce_Mouse
+  clickSFX: Announce_Down
 --- !u!1 &4228827783265211834
 GameObject:
   m_ObjectHideFlags: 0
@@ -19933,6 +19963,7 @@ GameObject:
   - component: {fileID: 7062372340766387518}
   - component: {fileID: 4533240246056410885}
   - component: {fileID: 5007883777767006693}
+  - component: {fileID: 2927069276571255510}
   m_Layer: 5
   m_Name: EquipButton
   m_TagString: Untagged
@@ -20057,6 +20088,20 @@ MonoBehaviour:
   icon: {fileID: 4533240246056410885}
   defaultIcon: {fileID: 21300000, guid: af47ef507d9004b4baed550801bd1b67, type: 3}
   hoveredIcon: {fileID: 21300000, guid: 6804b3dc14bc13b49b3efe9bc999acf2, type: 3}
+--- !u!114 &2927069276571255510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5986782409724237265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb73cf3725e81f540821c5c469689c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorSFX: Dosul_ReinForce_Mouse
+  clickSFX: Dosul_Equip
 --- !u!1 &6039051455128597411
 GameObject:
   m_ObjectHideFlags: 0
@@ -26662,6 +26707,7 @@ GameObject:
   - component: {fileID: 8898468913842897305}
   - component: {fileID: 5157465477111548350}
   - component: {fileID: 478857661249809357}
+  - component: {fileID: 6156114814914359457}
   m_Layer: 5
   m_Name: EnhanceButton
   m_TagString: Untagged
@@ -26790,6 +26836,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6156114814914359457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7854758230605199354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb73cf3725e81f540821c5c469689c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorSFX: Dosul_ReinForce_Mouse
+  clickSFX: 
 --- !u!1 &7877641496386710366
 GameObject:
   m_ObjectHideFlags: 0
@@ -32063,6 +32123,7 @@ GameObject:
   - component: {fileID: 1288882495327018018}
   - component: {fileID: 3879888730342725882}
   - component: {fileID: 7875158379667354069}
+  - component: {fileID: 936729337765265176}
   m_Layer: 5
   m_Name: ConfimBtn
   m_TagString: Untagged
@@ -32172,6 +32233,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &936729337765265176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9182392244816693245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb73cf3725e81f540821c5c469689c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorSFX: Dosul_ReinForce_Mouse
+  clickSFX: Dosul_ReinForce
 --- !u!1 &9190441477914205776
 GameObject:
   m_ObjectHideFlags: 0
@@ -37607,9 +37682,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1723297802768271566}
     m_Modifications:
+    - target: {fileID: 1286678194955958209, guid: 011c713dab210e5418c4e9fd350f13d7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0e0ea6e5148189d4f87c9a35d8cec7f5, type: 3}
+    - target: {fileID: 1598991084875000425, guid: 011c713dab210e5418c4e9fd350f13d7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 1598991084875000425, guid: 011c713dab210e5418c4e9fd350f13d7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 6340891098534505892, guid: 011c713dab210e5418c4e9fd350f13d7, type: 3}
       propertyPath: m_Name
       value: ScenarioUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7067295762551772516, guid: 011c713dab210e5418c4e9fd350f13d7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 7067295762551772516, guid: 011c713dab210e5418c4e9fd350f13d7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 7343714727882263135, guid: 011c713dab210e5418c4e9fd350f13d7, type: 3}
       propertyPath: m_Pivot.x
@@ -37690,6 +37785,10 @@ PrefabInstance:
     - target: {fileID: 7343714727882263135, guid: 011c713dab210e5418c4e9fd350f13d7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8236918758857745937, guid: 011c713dab210e5418c4e9fd350f13d7, type: 3}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
