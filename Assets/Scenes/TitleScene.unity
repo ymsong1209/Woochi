@@ -1288,8 +1288,6 @@ MonoBehaviour:
   continueBtn: {fileID: 1783005893}
   exitBtn: {fileID: 1097397608}
   deleteBtn: {fileID: 1290797553}
-  firstPlayPanel: {fileID: 0}
-  firstPlayBtn: {fileID: 0}
 --- !u!114 &1349630259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1446,6 +1444,10 @@ PrefabInstance:
     - target: {fileID: 4765174429504772050, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5410856791570014626, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
+      propertyPath: useDebugLogs
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5775089594791431015, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: m_LocalPosition.x
