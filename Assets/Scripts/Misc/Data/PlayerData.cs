@@ -61,7 +61,6 @@ public class PlayerData
         //TODO : 도술 두루마리 세팅
         totalSkillIDs = new int[5, 5];
         totalSkillIDs[0, 0] = 1101;
-        totalSkillIDs[0, 1] = 1102;
         totalSkillIDs[1, 0] = 1201;
         totalSkillIDs[2, 0] = 1301;
         totalSkillIDs[3, 0] = 1401;

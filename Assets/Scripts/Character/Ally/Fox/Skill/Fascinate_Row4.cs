@@ -11,7 +11,7 @@ public class Fascinate_Row4 : BaseSkill
         GameObject stunDebuffGameObject = Instantiate(stunDebuffPrefab, transform);
         StunDeBuff stunDebuff = stunDebuffGameObject.GetComponent<StunDeBuff>();
         stunDebuff.BuffDurationTurns = 1;
-        stunDebuff.ChanceToApplyBuff = 70;
+        stunDebuff.ChanceToApplyBuff = 65;
         instantiatedBuffList.Add(stunDebuffGameObject);
         
         base.ActivateSkill(_Opponent);
@@ -23,6 +23,6 @@ public class Fascinate_Row4 : BaseSkill
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "홀리기(단일)\n" + 
                     "대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + 
-                    "70%의 확률로 기절 부여";
+                    "65%의 확률로 기절 부여";
     }
 }
