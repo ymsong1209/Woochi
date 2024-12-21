@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class GameSettingUI : MonoBehaviour
 {
     [Header("Sound")]
-    [SerializeField] private Slider masterVolume;
-    [SerializeField] private Slider bgmVolume;
+    [SerializeField] private SoundBar masterVolume;
+    [SerializeField] private SoundBar bgmVolume;
     
     [Header("Mode")]
     [SerializeField] private Toggle fullScreen;
@@ -31,9 +31,9 @@ public class GameSettingUI : MonoBehaviour
     private void Show()
     {
         GameSettingData data = DataCloud.gameSettingData;
-        
-        masterVolume.value = data.masterVolume;
-        bgmVolume.value = data.bgmVolume;
+
+        masterVolume.SetValue(data.masterVolume);
+        bgmVolume.SetValue(data.bgmVolume);
         
         fullScreen.isOn = data.isFullScreen;
         windowed.isOn = !data.isFullScreen;
@@ -47,8 +47,8 @@ public class GameSettingUI : MonoBehaviour
     {
         GameSettingData data = DataCloud.gameSettingData;
         
-        data.masterVolume = masterVolume.value;
-        data.bgmVolume = bgmVolume.value;
+        data.masterVolume = masterVolume.GetValue();
+        data.bgmVolume = bgmVolume.GetValue();
         
         data.isFullScreen = fullScreen.isOn;
         data.resolution = new Vector2Int(resolutionList[resolutionDropdown.value].width, resolutionList[resolutionDropdown.value].height);
@@ -82,6 +82,12 @@ public class GameSettingUI : MonoBehaviour
         }
         resolutionDropdown.AddOptions(options);
     }
+
+    public void ClickSoundBar()
+    {
+        GameManager.GetInstance.soundManager.PlaySFX("Sound_Click");
+    }
+
 }
 
 [System.Serializable]

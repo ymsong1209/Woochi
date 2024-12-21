@@ -25,7 +25,7 @@
 				<GameParameter Id="2918011349" Name="MasterVolume"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{ECD67E1B-81E1-8BF6-9544-9BEA29DB0C6D}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{CC60C7A9-C398-FEF9-CC6C-E226882780A9}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -40,6 +40,10 @@
 				<File Id="81999487" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Event_Positive.wav</ShortName>
 					<CachePath>SFX/Event_Positive_818F3B66.wem</CachePath>
+				</File>
+				<File Id="155826996" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Item_LevelUp.wav</ShortName>
+					<CachePath>SFX/Item_LevelUp_FCAD78D4.wem</CachePath>
 				</File>
 				<File Id="165554327" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Map_Click.wav</ShortName>
@@ -77,13 +81,25 @@
 					<ShortName>Movement_Mouse_Edit.wav</ShortName>
 					<CachePath>SFX/Movement_Mouse_Edit_9AA05703.wem</CachePath>
 				</File>
+				<File Id="363300053" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dosul_Equip.wav</ShortName>
+					<CachePath>SFX/Dosul_Equip_FBB40CCC.wem</CachePath>
+				</File>
 				<File Id="378946344" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Haetae_Join.wav</ShortName>
 					<CachePath>SFX/Haetae_Join_818F3B66.wem</CachePath>
 				</File>
+				<File Id="430474485" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dosul_ReinForce_Mouse.wav</ShortName>
+					<CachePath>SFX/Dosul_ReinForce_Mouse_3745EBEE.wem</CachePath>
+				</File>
 				<File Id="447256061" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Swap.wav</ShortName>
 					<CachePath>SFX/Swap_818F3B66.wem</CachePath>
+				</File>
+				<File Id="462118044" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dosul_Mouse.wav</ShortName>
+					<CachePath>SFX/Dosul_Mouse_00225573.wem</CachePath>
 				</File>
 				<File Id="465945705" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Fox_Join.wav</ShortName>
@@ -101,6 +117,10 @@
 					<ShortName>Reward_Arrow_Mouse.wav</ShortName>
 					<CachePath>SFX/Reward_Arrow_Mouse_C70033A3.wem</CachePath>
 				</File>
+				<File Id="576676912" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dosul_Click.wav</ShortName>
+					<CachePath>SFX/Dosul_Click_00225573.wem</CachePath>
+				</File>
 				<File Id="578610578" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Metal_Skill.wav</ShortName>
 					<CachePath>SFX/Metal_Skill_818F3B66.wem</CachePath>
@@ -112,6 +132,10 @@
 				<File Id="609286879" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Map_Mouse.wav</ShortName>
 					<CachePath>SFX/Map_Mouse_818F3B66.wem</CachePath>
+				</File>
+				<File Id="624271836" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Preference_Mouse.wav</ShortName>
+					<CachePath>SFX/Preference_Mouse_818F3B66.wem</CachePath>
 				</File>
 				<File Id="666968424" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Tiger_Join.wav</ShortName>
@@ -137,6 +161,10 @@
 					<ShortName>Movement_Mouse.wav</ShortName>
 					<CachePath>SFX/Movement_Mouse_818F3B66.wem</CachePath>
 				</File>
+				<File Id="787626657" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dosul_Paper_Mouse.wav</ShortName>
+					<CachePath>SFX/Dosul_Paper_Mouse_C0DA48C3.wem</CachePath>
+				</File>
 				<File Id="790595291" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Title_Click.wav</ShortName>
 					<CachePath>SFX/Title_Click_818F3B66.wem</CachePath>
@@ -153,9 +181,21 @@
 					<ShortName>Pet_Return.wav</ShortName>
 					<CachePath>SFX/Pet_Return_C0DA48C3.wem</CachePath>
 				</File>
+				<File Id="859128289" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dosul_Paper_Click.wav</ShortName>
+					<CachePath>SFX/Dosul_Paper_Click_48DE7A2B.wem</CachePath>
+				</File>
+				<File Id="863793327" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Main_Title_Bgm.wav</ShortName>
+					<CachePath>SFX/Main_Title_Bgm_0253DC48.wem</CachePath>
+				</File>
 				<File Id="865351906" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Event_Movement.wav</ShortName>
 					<CachePath>SFX/Event_Movement_9AA05703.wem</CachePath>
+				</File>
+				<File Id="870375303" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dosul_ReinForce.wav</ShortName>
+					<CachePath>SFX/Dosul_ReinForce_A6DE39B8.wem</CachePath>
 				</File>
 				<File Id="879237363" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Event_Click.wav</ShortName>
@@ -173,11 +213,54 @@
 					<ShortName>Announce_Down.wav</ShortName>
 					<CachePath>SFX/Announce_Down_C70033A3.wem</CachePath>
 				</File>
+				<File Id="1007398356" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Sound_Click.wav</ShortName>
+					<CachePath>SFX/Sound_Click_38BC34B2.wem</CachePath>
+				</File>
+				<File Id="1061526397" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Item_Flow.wav</ShortName>
+					<CachePath>SFX/Item_Flow_AC4A847B.wem</CachePath>
+				</File>
 			</Media>
 			<Events>
 				<Event Id="1946638119" Name="Announce_Down" DurationType="OneShot" DurationMin="0.4" DurationMax="0.4">
 					<MediaRefs>
 						<MediaRef Id="975968143"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1598930947" Name="Dosul_Click" DurationType="OneShot" DurationMin="0.5" DurationMax="0.5">
+					<MediaRefs>
+						<MediaRef Id="576676912"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3535104491" Name="Dosul_Equip" DurationType="OneShot" DurationMin="2" DurationMax="2">
+					<MediaRefs>
+						<MediaRef Id="363300053"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="802719446" Name="Dosul_Mouse" DurationType="OneShot" DurationMin="0.5" DurationMax="0.5">
+					<MediaRefs>
+						<MediaRef Id="462118044"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="245881412" Name="Dosul_Paper_Click" DurationType="OneShot" DurationMin="1.5" DurationMax="1.5">
+					<MediaRefs>
+						<MediaRef Id="859128289"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2450753133" Name="Dosul_Paper_Mouse" DurationType="OneShot" DurationMin="1" DurationMax="1">
+					<MediaRefs>
+						<MediaRef Id="787626657"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3682660368" Name="Dosul_ReinForce" DurationType="OneShot" DurationMin="1.637" DurationMax="1.637">
+					<MediaRefs>
+						<MediaRef Id="870375303"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3784954276" Name="Dosul_ReinForce_Mouse" DurationType="OneShot" DurationMin="0.51" DurationMax="0.51">
+					<MediaRefs>
+						<MediaRef Id="430474485"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1901157005" Name="Event_Arrived" DurationType="OneShot" DurationMin="2.75" DurationMax="2.75">
@@ -235,9 +318,24 @@
 						<MediaRef Id="932057400"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="992090999" Name="Item_Flow" DurationType="OneShot" DurationMin="2.895" DurationMax="2.895">
+					<MediaRefs>
+						<MediaRef Id="1061526397"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1210662472" Name="Item_LevelUp" DurationType="OneShot" DurationMin="3" DurationMax="3">
+					<MediaRefs>
+						<MediaRef Id="155826996"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="654742305" Name="Main_Title" DurationType="OneShot" DurationMin="2.3" DurationMax="2.3">
 					<MediaRefs>
 						<MediaRef Id="926927899"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3423249410" Name="Main_Title_Bgm" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="863793327"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="2480411368" Name="Map_Click" DurationType="OneShot" DurationMin="0.625" DurationMax="0.625">
@@ -295,6 +393,11 @@
 						<MediaRef Id="533650088"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="510404310" Name="Preference_Mouse" DurationType="OneShot" DurationMin="3" DurationMax="3">
+					<MediaRefs>
+						<MediaRef Id="624271836"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="3302781919" Name="Reward_Arrow_Click" DurationType="OneShot" DurationMin="0.7" DurationMax="0.7">
 					<MediaRefs>
 						<MediaRef Id="324781318"/>
@@ -323,6 +426,11 @@
 				<Event Id="3046553211" Name="Skill_Mouse_Edit" DurationType="OneShot" DurationMin="0.2" DurationMax="0.2">
 					<MediaRefs>
 						<MediaRef Id="711383366"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1396668031" Name="Sound_Click" DurationType="OneShot" DurationMin="0.605" DurationMax="0.605">
+					<MediaRefs>
+						<MediaRef Id="1007398356"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="286100424" Name="Swap" DurationType="OneShot" DurationMin="1" DurationMax="1">
@@ -358,5 +466,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{2E1E2E92-F16F-9B32-04D8-5A58CF571180}</FileHash>
+	<FileHash>{101BDD19-8407-0372-920E-93B9BECA088F}</FileHash>
 </SoundBanksInfo>

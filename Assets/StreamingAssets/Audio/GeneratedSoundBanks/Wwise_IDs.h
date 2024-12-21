@@ -14,6 +14,13 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID ANNOUNCE_DOWN = 1946638119U;
+        static const AkUniqueID DOSUL_CLICK = 1598930947U;
+        static const AkUniqueID DOSUL_EQUIP = 3535104491U;
+        static const AkUniqueID DOSUL_MOUSE = 802719446U;
+        static const AkUniqueID DOSUL_PAPER_CLICK = 245881412U;
+        static const AkUniqueID DOSUL_PAPER_MOUSE = 2450753133U;
+        static const AkUniqueID DOSUL_REINFORCE = 3682660368U;
+        static const AkUniqueID DOSUL_REINFORCE_MOUSE = 3784954276U;
         static const AkUniqueID EVENT_ARRIVED = 1901157005U;
         static const AkUniqueID EVENT_CLICK = 39226162U;
         static const AkUniqueID EVENT_MOVEMENT = 1131978445U;
@@ -25,7 +32,10 @@ namespace AK
         static const AkUniqueID GROUND_SKILL = 115002250U;
         static const AkUniqueID HAETAE_JOIN = 777931932U;
         static const AkUniqueID HEAL_USE = 221498635U;
+        static const AkUniqueID ITEM_FLOW = 992090999U;
+        static const AkUniqueID ITEM_LEVELUP = 1210662472U;
         static const AkUniqueID MAIN_TITLE = 654742305U;
+        static const AkUniqueID MAIN_TITLE_BGM = 3423249410U;
         static const AkUniqueID MAP_CLICK = 2480411368U;
         static const AkUniqueID MAP_MOUSE = 2130970777U;
         static const AkUniqueID METAL_SKILL = 1614233980U;
@@ -37,12 +47,14 @@ namespace AK
         static const AkUniqueID PAPER_USE = 716963261U;
         static const AkUniqueID PET_RETURN = 2349436841U;
         static const AkUniqueID POWER_UP = 2455846824U;
+        static const AkUniqueID PREFERENCE_MOUSE = 510404310U;
         static const AkUniqueID REWARD_ARROW_CLICK = 3302781919U;
         static const AkUniqueID REWARD_ARROW_MOUSE = 3415311978U;
         static const AkUniqueID REWARD_CLICK = 1667288597U;
         static const AkUniqueID REWARD_MOUSE = 4232491148U;
         static const AkUniqueID SKILL_MOUSE = 117036824U;
         static const AkUniqueID SKILL_MOUSE_EDIT = 3046553211U;
+        static const AkUniqueID SOUND_CLICK = 1396668031U;
         static const AkUniqueID SWAP = 286100424U;
         static const AkUniqueID TIGER_JOIN = 1971761969U;
         static const AkUniqueID TITLE_CLICK = 4199180592U;

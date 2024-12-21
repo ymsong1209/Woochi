@@ -485,6 +485,7 @@ public class BaseCharacter : MonoBehaviour
 
     protected virtual void LevelUp()
     {
+        GameManager.GetInstance.soundManager.PlaySFX("Item_LevelUp");
         baseStat += levelUpStat;
         health.LevelUp();
     }

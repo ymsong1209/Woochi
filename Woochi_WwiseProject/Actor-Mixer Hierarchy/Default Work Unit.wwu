@@ -855,6 +855,273 @@
 						<ActiveSource Name="Skill_Mouse_Edit" ID="{9C99EAAA-DF15-4690-BB0C-A71E5FED240E}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="Dosul_Click" ID="{34989A97-21EF-4C78-B538-0A8162CF10A7}" ShortID="849767772">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Dosul_Click" ID="{C7B7C3DF-7341-4128-9EF9-36D0A7D1F850}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="0.5"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Dosul_Click.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="576676912"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Dosul_Click" ID="{C7B7C3DF-7341-4128-9EF9-36D0A7D1F850}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Dosul_Equip" ID="{0D5F690D-3C00-4E98-B263-20A8C9C594DF}" ShortID="458248588">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Dosul_Equip" ID="{7CBAE127-9166-4085-A910-E27277A09A68}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="2"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Dosul_Equip.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="363300053"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Dosul_Equip" ID="{7CBAE127-9166-4085-A910-E27277A09A68}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Dosul_Mouse" ID="{E5283C6C-3F02-4B8C-9024-3AED475AE729}" ShortID="663184660">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Dosul_Mouse" ID="{2F587817-BD73-4D17-ACFC-159113B19DC8}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="0.5"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Dosul_Mouse.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="462118044"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Dosul_Mouse" ID="{2F587817-BD73-4D17-ACFC-159113B19DC8}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Dosul_Paper_Click" ID="{DD9DCE15-85A9-45EF-96EC-A9E017837B6E}" ShortID="585682238">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Dosul_Paper_Click" ID="{7EDD7C13-4BE2-4297-8F77-906B68F2C4B4}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="1.5"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Dosul_Paper_Click.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="859128289"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Dosul_Paper_Click" ID="{7EDD7C13-4BE2-4297-8F77-906B68F2C4B4}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Dosul_Paper_Mouse" ID="{C3F20230-2DDF-4A72-B0B2-C8B43CFF6C72}" ShortID="528422941">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Dosul_Paper_Mouse" ID="{CB761D67-B74E-4AB3-A3D3-98338F04492A}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="1"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Dosul_Paper_Mouse.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="787626657"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Dosul_Paper_Mouse" ID="{CB761D67-B74E-4AB3-A3D3-98338F04492A}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Dosul_ReinForce" ID="{D013D05E-FB8C-429F-A183-4E8F3C25708F}" ShortID="437321632">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-8</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Dosul_ReinForce" ID="{F0D2AF50-282A-4F4B-B0B2-529F94BE42B7}">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.134133042529989"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="1.637"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Dosul_ReinForce.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="870375303"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Dosul_ReinForce" ID="{F0D2AF50-282A-4F4B-B0B2-529F94BE42B7}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Dosul_ReinForce_Mouse" ID="{6A8F450B-FD29-432F-B8E8-FD0E25534B98}" ShortID="316695748">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Dosul_ReinForce_Mouse" ID="{8B0307E3-B735-4D43-92E3-3E7B353790ED}">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.0687022900763359"/>
+								<Property Name="LoopBegin" Type="Real64" Value="0"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.51"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Dosul_ReinForce_Mouse.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="430474485"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Dosul_ReinForce_Mouse" ID="{8B0307E3-B735-4D43-92E3-3E7B353790ED}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Item_Flow" ID="{FF134FF7-76FD-45C5-8F51-0B396C99A149}" ShortID="832013251">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Item_Flow" ID="{A5630C69-A6DB-4939-9BE3-FA768C42001B}">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.088331515812432"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="2.895"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Item_Flow.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="1061526397"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Item_Flow" ID="{A5630C69-A6DB-4939-9BE3-FA768C42001B}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Item_LevelUp" ID="{DD64F961-A9CE-420B-A18D-4CFD5AEBA478}" ShortID="295333686">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Item_LevelUp" ID="{A9CDBFED-1525-44A0-BBCF-928BF85E5524}">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.0392584514721919"/>
+								<Property Name="LoopBegin" Type="Real64" Value="0"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Item_LevelUp.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="155826996"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Item_LevelUp" ID="{A9CDBFED-1525-44A0-BBCF-928BF85E5524}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Sound_Click" ID="{FF21C2DA-A868-4B9C-B8BC-488CA325F55D}" ShortID="221324238">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Sound_Click" ID="{BDA2AB41-10AC-4392-B8DF-3DBA5BDE3903}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.605"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Sound_Click.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="1007398356"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Sound_Click" ID="{BDA2AB41-10AC-4392-B8DF-3DBA5BDE3903}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
