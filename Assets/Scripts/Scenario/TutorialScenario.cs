@@ -13,7 +13,8 @@ public class TutorialScenario : Scenario
         {
             characters[i].InitializeHealth();
         }
-        
+
+        DataCloud.playerData.battleData.charms.Insert(2, 9);
         MapManager.GetInstance.LoadMap();
         MapManager.GetInstance.SaveMap();
     }

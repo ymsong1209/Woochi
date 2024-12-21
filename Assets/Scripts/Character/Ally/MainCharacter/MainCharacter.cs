@@ -97,7 +97,7 @@ public class MainCharacter : BaseCharacter
         if(isAdd == false)
             value *= -1;
         
-        sorceryPoints = Mathf.Clamp(sorceryPoints + value, 0, maxSorceryPoints);
+        SorceryPoints = Mathf.Clamp(sorceryPoints + value, 0, maxSorceryPoints);
     }
     
     public void UpdateSorceryPoints(float percent, bool isAdd)
