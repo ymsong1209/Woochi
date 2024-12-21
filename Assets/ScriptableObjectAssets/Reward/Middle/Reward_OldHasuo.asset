@@ -16,20 +16,14 @@ MonoBehaviour:
   rarity: 2
   rewardName: "\uC624\uB798 \uBB35\uC740 \uD558\uC218\uC624"
   description: "\uC6B0\uCE58\uC758 \uBB34\uC791\uC704 \uB2A5\uB825\uCE58 \uC601\uAD6C\uC801\uC73C\uB85C
-    +2"
+    +4"
   resultTxt: 
+  errorTxt: 
   heal: 0
   healAmount: 0
   sorceryHeal: 0
+  fixedStatUp: 0
+  fixType: 0
   randomStatUp: 1
-  statUpAmount: 2
-  addStat:
-    maxHealth: 0
-    speed: 0
-    defense: 0
-    crit: 0
-    accuracy: 0
-    evasion: 0
-    resist: 0
-    minStat: 0
-    maxStat: 0
+  allStatUp: 0
+  statUpAmount: 4

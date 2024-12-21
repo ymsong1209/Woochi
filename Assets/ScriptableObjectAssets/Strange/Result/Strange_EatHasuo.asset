@@ -16,6 +16,6 @@ MonoBehaviour:
   text: "\uB0B4 \uB3C4\uB825\uC774 \uC0C1\uC2B9\uD558\uB294 \uAC83 \uAC19\uB2E4!
     \n\uBA39\uAE38 \uC798 \uD588\uB2E4"
   effect: "\uC601\uAD6C\uC801\uC73C\uB85C \uC6B0\uCE58\uC758 \uB3C4\uB825 +5, \uD53C\uD574
-    +5\n"
+    +2\n"
   sorceryPoints: 5
-  stat: 5
+  stat: 2
