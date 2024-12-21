@@ -52,7 +52,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	55501940	Water_Skill	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Water_Skill_C5E17880.wem		\Actor-Mixer Hierarchy\Default Work Unit\Water_Skill		480096
 	62276585	Tree_Skill	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Tree_Skill_FBB40CCC.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tree_Skill		384096
 	81999487	Event_Positive	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Event_Positive_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Event_Positive		576096
-	155826996	Item_LevelUp	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Item_LevelUp_FCAD78D4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Item_LevelUp		576096
+	155826996	Item_LevelUp	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Item_LevelUp_55F0B4CB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Item_LevelUp		576096
 	165554327	Map_Click	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Map_Click_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Map_Click		120096
 	199352336	Event_Arrived	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Event_Arrived_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Event_Arrived		528096
 	234231556	Movement_Click_Edit	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Movement_Click_Edit_B6F7D0D3.wem		\Actor-Mixer Hierarchy\Default Work Unit\Movement_Click_Edit		38496
@@ -64,7 +64,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	342798534	Movement_Mouse_Edit	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Movement_Mouse_Edit_9AA05703.wem		\Actor-Mixer Hierarchy\Default Work Unit\Movement_Mouse_Edit		19296
 	363300053	Dosul_Equip	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_Equip_FBB40CCC.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_Equip		384096
 	378946344	Haetae_Join	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Haetae_Join_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Haetae_Join		336096
-	430474485	Dosul_ReinForce_Mouse	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_ReinForce_Mouse_3745EBEE.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_ReinForce_Mouse		98016
+	430474485	Dosul_ReinForce_Mouse	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_ReinForce_Mouse_92F0A803.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_ReinForce_Mouse		98016
 	447256061	Swap	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Swap_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Swap		192096
 	462118044	Dosul_Mouse	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_Mouse_00225573.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_Mouse		96096
 	465945705	Fox_Join	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Fox_Join_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Fox_Join		336096
@@ -90,11 +90,11 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	859128289	Dosul_Paper_Click	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_Paper_Click_48DE7A2B.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_Paper_Click		288096
 	863793327	Main_Title_Bgm	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Main_Title_Bgm_0253DC48.wem		\Actor-Mixer Hierarchy\Default Work Unit\Main_Title_Bgm		19883608
 	865351906	Event_Movement	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Event_Movement_9AA05703.wem		\Actor-Mixer Hierarchy\Default Work Unit\Event_Movement		19296
-	870375303	Dosul_ReinForce	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_ReinForce_A6DE39B8.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_ReinForce		314400
+	870375303	Dosul_ReinForce	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_ReinForce_66E713C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_ReinForce		314400
 	879237363	Event_Click	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Event_Click_71893BB8.wem		\Actor-Mixer Hierarchy\Default Work Unit\Event_Click		57696
 	926927899	Main_Title	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Main_Title_E7A2DC0E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Main_Title		441696
 	932057400	Heal_Use	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Heal_Use_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Heal_Use		576096
 	975968143	Announce_Down	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Announce_Down_C70033A3.wem		\Actor-Mixer Hierarchy\Default Work Unit\Announce_Down		76896
 	1007398356	Sound_Click	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Sound_Click_38BC34B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sound_Click		116256
-	1061526397	Item_Flow	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Item_Flow_AC4A847B.wem		\Actor-Mixer Hierarchy\Default Work Unit\Item_Flow		555936
+	1061526397	Item_Flow	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Item_Flow_C7CA70E8.wem		\Actor-Mixer Hierarchy\Default Work Unit\Item_Flow		555936
 
