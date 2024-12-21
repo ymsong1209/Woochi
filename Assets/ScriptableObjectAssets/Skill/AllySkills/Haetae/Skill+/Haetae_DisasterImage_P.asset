@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f970e1487b951641bb3562062edf1db, type: 3}
   m_Name: Haetae_DisasterImage_P
   m_EditorClassIdentifier: 
-  skillIcon: {fileID: 21300000, guid: 82de216d0b0fe2747bc782afcbf50dc3, type: 3}
+  skillIcon: {fileID: 21300000, guid: bed90b33416bc454da3b551a86c04e46, type: 3}
   skillName: "\uC8C4\uC545\uC758 \uD615\uC0C1+"
   animType: 6
   skillAvailableRadius: 0101010100000000
@@ -26,3 +26,4 @@ MonoBehaviour:
   - {fileID: 2569674945298275565, guid: 792e42c0644dbee4cb47bae86d650f7b, type: 3}
   baseMultiplier: 70
   baseSkillAccuracy: 77
+  skillSound: 
