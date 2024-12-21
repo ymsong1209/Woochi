@@ -52,11 +52,8 @@ public class GameSettingUI : MonoBehaviour
         
         data.isFullScreen = fullScreen.isOn;
         data.resolution = new Vector2Int(resolutionList[resolutionDropdown.value].width, resolutionList[resolutionDropdown.value].height);
-        
-        GameManager.GetInstance.soundManager.SetVolume(masterVolume.value, bgmVolume.value);
-        Screen.fullScreen = data.isFullScreen;
-        Screen.SetResolution(data.resolution.x, data.resolution.y, data.isFullScreen);
-        
+
+        GameManager.GetInstance.ApplySetting();
         DataCloud.SaveGameSetting();
     }
     

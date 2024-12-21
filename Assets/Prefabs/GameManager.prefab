@@ -52,6 +52,7 @@ MonoBehaviour:
   charmIDs: 070000000000000000000000
   useDebugSkills: 0
   skillIDs: 0000000000000000000000000000000000000000
+  useDebugLogs: 0
 --- !u!1 &8992082059508905557
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,6 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc54fc45b3ff3749ab67f27af5b56ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterVolumeRTPC:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 703946b7e3ddeda48aafa33fc20bd32e, type: 2}
 --- !u!114 &2087857147857400854
 MonoBehaviour:
   m_ObjectHideFlags: 0

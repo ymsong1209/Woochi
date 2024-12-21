@@ -29,7 +29,12 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         if(DataCloud.playerData == null)
             LoadData();
     }
-    
+
+    private void Start()
+    {
+        ApplySetting();
+    }
+
     public void SaveData()
     {
         DataCloud.playerData.hasSaveData = true;
@@ -69,6 +74,16 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         HelperUtilities.MoveScene(SceneType.Title);
     }
     
+    public void ApplySetting()
+    {
+        GameSettingData data = DataCloud.gameSettingData;
+        float masterVolume = data.masterVolume;
+        float bgmVolume = data.bgmVolume;
+        soundManager.SetVolume(masterVolume, bgmVolume);
+        Screen.fullScreen = data.isFullScreen;
+        Screen.SetResolution(data.resolution.x, data.resolution.y, data.isFullScreen);
+    }
+
     #region Getter Setter
     public Library Library => library;
     public bool UseDebugCharms => useDebugCharms;
