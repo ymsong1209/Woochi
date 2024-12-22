@@ -7,6 +7,7 @@ public class WoochiCharmSelectionUI : MonoBehaviour
 {
     [SerializeField] private SkillDescriptionUI skillDescriptionUI;
     [SerializeField] private List<CharmIcon> charmIcons = new List<CharmIcon>(5);
+    [SerializeField] private Sprite[] charmIconsSprite = new Sprite[6];
     private MainCharacter mainCharacter;
 
     public void Start()
@@ -50,7 +51,8 @@ public class WoochiCharmSelectionUI : MonoBehaviour
             if(i < charmIDs.Count)
             {
                 BaseCharm charm = GameManager.GetInstance.Library.GetCharm(charmIDs[i]);
-                charmIcons[i].SetCharm(charm, IsCharmSetAvailable(charm));
+                
+                charmIcons[i].SetCharm(charm, IsCharmSetAvailable(charm), charmIconsSprite[GetRandomCharmIconIndex()]);
             }
             else
             {
@@ -58,7 +60,13 @@ public class WoochiCharmSelectionUI : MonoBehaviour
             }
         }
     }
-
+    
+    private int GetRandomCharmIconIndex()
+    {
+        int index = UnityEngine.Random.Range(0, charmIconsSprite.Length);
+        return index;
+    }
+    
     private bool IsCharmSetAvailable(BaseCharm charm)
     {
         if (!mainCharacter) return false;
