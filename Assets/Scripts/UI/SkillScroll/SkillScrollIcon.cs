@@ -1,8 +1,6 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using TMPro;
 
 public class SkillScrollIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -16,7 +14,7 @@ public class SkillScrollIcon : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void Start()
     {
-        button.onClick.AddListener(() => skillScroll.OnSkillSelected.Invoke(skillID));
+        button.onClick.AddListener(Click);
     }
 
     public void Init(int skillid)
@@ -51,14 +49,19 @@ public class SkillScrollIcon : MonoBehaviour, IPointerEnterHandler, IPointerExit
             
         }
     }
-    
+
+    private void Click()
+    {
+        skillScroll.OnSkillSelected.Invoke(skillID);
+        GameManager.GetInstance.soundManager.PlaySFX("Dosul_Click");
+    }
     
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
         if (skillID == 0 || canvasGroup.interactable == false) return;
-
-        skillScroll.OnIconHovered?.Invoke(skillID);
         
+        GameManager.GetInstance.soundManager.PlaySFX("Dosul_Mouse");
+        skillScroll.OnIconHovered?.Invoke(skillID);
     }
 
     public virtual void OnPointerExit(PointerEventData eventData)
@@ -77,4 +80,5 @@ public class SkillScrollIcon : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         get => skillID;
     }
+
 }

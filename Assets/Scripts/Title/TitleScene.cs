@@ -18,7 +18,7 @@ public class TitleScene : MonoBehaviour
         #endregion
 
         continueBtn.interactable = DataCloud.playerData.hasSaveData;
-        GameManager.GetInstance.soundManager.PlaySFX("Main_Title_Bgm");
+        GameManager.GetInstance.soundManager.PlaySFX("Main_Title");
     }
 
     public void Departure(bool isBegin)
