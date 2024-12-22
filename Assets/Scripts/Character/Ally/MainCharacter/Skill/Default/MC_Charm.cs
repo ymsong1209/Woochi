@@ -63,7 +63,7 @@ public class MC_Charm : BaseSkill
            if (i<4 && charm.CharmRadius[i])
            {
                BaseCharacter ally = allies.formation[i];
-               if (!ally) continue;
+               if (!ally || ally.IsDead) continue;
                 
                //아군의 Size가 2인 경우
                if (ally.Size == 2)
@@ -83,7 +83,7 @@ public class MC_Charm : BaseSkill
            else if (i is >= 4 and < 8 && charm.CharmRadius[i])
            {
                BaseCharacter enemy = enemies.formation[i - 4];
-               if(!enemy) continue;
+               if(!enemy || enemy.IsDead) continue;
 
                //적의 Size가 2인 경우
                if(enemy.Size == 2)
@@ -155,7 +155,7 @@ public class MC_Charm : BaseSkill
            if (i<4 && charm.CharmRadius[i])
            {
                BaseCharacter ally = allies.formation[i];
-               if (!ally) continue;
+               if (!ally || ally.IsDead) continue;
                 
                //아군의 Size가 2인 경우
                if (ally.Size == 2)
@@ -175,7 +175,7 @@ public class MC_Charm : BaseSkill
            else if (i is >= 4 and < 8 && charm.CharmRadius[i])
            {
                BaseCharacter enemy = enemies.formation[i - 4];
-               if(!enemy) continue;
+               if(!enemy || enemy.IsDead) continue;
 
                //적의 Size가 2인 경우
                if(enemy.Size == 2)

@@ -10,7 +10,7 @@ public class BuffCharm : BaseCharm
 
     public override void Activate(BaseCharacter opponent)
     {
-        if(opponent == null) return;
+        if(opponent == null || opponent.IsDead) return;
 
         BaseCharm charmObject = Instantiate(this);
         StatBuff buff = charmObject.GetComponent<StatBuff>();
