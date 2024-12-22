@@ -51,7 +51,7 @@ MonoBehaviour:
   charmRadius: 0000000001010101
   charmType: 1
   charmTargetType: 1
-  charmIcon: {fileID: 21300000, guid: 7bb98969aebdbe540a05134ca6c72ede, type: 3}
+  charmIcon: {fileID: 21300000, guid: f4580b1bc72d5514a96d6e7ce8037b5e, type: 3}
   changeStat:
     list:
     - type: 0
@@ -91,13 +91,11 @@ MonoBehaviour:
   chanceToApplyBuff: 0
   buffName: 
   buffColor: {r: 0, g: 0, b: 0, a: 0}
-  buffBattleDurationTurns: 0
   isRemoveWhenBattleEnd: 1
+  buffBattleDurationTurns: 0
   isRemovableDuringBattle: 1
   isBuffAppliedThisTurn: 1
   isAlwaysApplyBuff: 0
-  isSaveBuff: 0
-  isSpecialBuff: 0
   changeStat:
     list:
     - type: 0
