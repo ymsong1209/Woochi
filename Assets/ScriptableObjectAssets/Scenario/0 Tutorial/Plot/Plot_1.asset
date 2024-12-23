@@ -20,7 +20,7 @@ MonoBehaviour:
     direction: 2
   blindImage: {fileID: 0}
   speaker: {fileID: 0}
-  text: "\uD654\uB2F4\uC774 \uBD80\uCC44\uB85C \uC6B0\uCE58\uC758 \uBA38\uB9AC\uB97C
+  text: "\uD654\uB2F4\uC774 \uACF0\uBC29\uB300\uB85C \uC6B0\uCE58\uC758 \uBA38\uB9AC\uB97C
     \uB531 \uD558\uACE0 \uB54C\uB9AC\uBA70 \uB9D0\uD588\uB2E4."
   plotEvent: 0
   showBattle: 0
