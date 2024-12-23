@@ -38,6 +38,7 @@ public enum SkillType
     Heal,               // 힐 관련
     SpecialNegative,    // 특수기, 상대 피격 애니메이션
     SpecialPositive,    // 특수기, 상대 힐 애니메이션
+    CustomSkill,        // 애니메이션 재정의 필요
     END
 }
 public enum SkillElement

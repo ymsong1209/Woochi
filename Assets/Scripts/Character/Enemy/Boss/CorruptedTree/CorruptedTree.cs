@@ -6,8 +6,8 @@ using UnityEngine;
 public class CorruptedTree : BaseEnemy
 {
     [SerializeField] private BaseBuff fearBuff;
-    private BaseCharacter leftSoul;
-    private BaseCharacter rightSoul;
+    private CT_LeftSoul leftSoul;
+    private CT_RightSoul rightSoul;
     [SerializeField] private MoveResistBuff moveResistBuff;
     
     public override void Initialize()
@@ -45,10 +45,10 @@ public class CorruptedTree : BaseEnemy
             {
                 FearWhisper();
             }
-            else if (randomValue < 70)
-            {
-                BasicAttack();
-            }
+            // else if (randomValue < 70)
+            // {
+            //     BasicAttack();
+            // }
             else
             {
                 ResurrectAndBuff();
@@ -56,17 +56,18 @@ public class CorruptedTree : BaseEnemy
         }
         else
         {
-            //40% 확률로 기술2, 60% 확률로 기술3
-            System.Random random = new System.Random();
-            int randomValue = random.Next(0, 100);
-            if (randomValue < 40)
-            {
-                BasicAttack();
-            }
-            else
-            {
-                ResurrectAndBuff();
-            }
+            // //40% 확률로 기술2, 60% 확률로 기술3
+            // System.Random random = new System.Random();
+            // int randomValue = random.Next(0, 100);
+            // if (randomValue < 40)
+            // {
+            //     BasicAttack();
+            // }
+            // else
+            // {
+            //     ResurrectAndBuff();
+            // }
+            ResurrectAndBuff();
         }
     }
 
@@ -105,6 +106,7 @@ public class CorruptedTree : BaseEnemy
     private void ResurrectAndBuff()
     {
         BaseCharacter receiver = null;
+        int deadNum = -1;
         Formation enemyFormation = BattleManager.GetInstance.Enemies;
         List<BaseCharacter> deadSouls = new List<BaseCharacter>();
         if (enemyFormation.formation[0] && enemyFormation.formation[0].IsDead)
@@ -147,12 +149,12 @@ public class CorruptedTree : BaseEnemy
         
     }
 
-    public BaseCharacter LeftSoul
+    public CT_LeftSoul LeftSoul
     {
         get => leftSoul;
         set => leftSoul = value;
     }
-    public BaseCharacter RightSoul
+    public CT_RightSoul RightSoul
     {
         get => rightSoul;
         set => rightSoul = value;

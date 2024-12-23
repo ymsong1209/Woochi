@@ -687,6 +687,7 @@ MonoBehaviour:
   activeSkills: []
   activeSkillCheckBox: 
   isAlly: 0
+  canUseTurn: 1
   isDummy: 0
   isSummoned: 0
   rowOrder: 0
@@ -702,7 +703,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df12015b6fb52754fa5df63cc4e6ba25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 4947313877317803005}
+  bodies:
+  - {fileID: 4947313877317803005}
   shadow: {fileID: 3868256798898168193}
   shadowSprites: []
 --- !u!95 &317045070324450805

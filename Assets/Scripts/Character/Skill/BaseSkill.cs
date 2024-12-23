@@ -230,6 +230,13 @@ public class BaseSkill : MonoBehaviour
                 if (AttackLogic(_opponent, ref isCrit) == false) return;
             }
                 break;
+            case SkillType.CustomSkill:
+            {
+                CustomSkillLogic(_opponent);
+                //공격 실패시 버프 적용 안함
+                if (AttackLogic(_opponent, ref isCrit) == false) return;
+            }
+                break;
         }
        
 
@@ -262,6 +269,11 @@ public class BaseSkill : MonoBehaviour
                 Destroy(clonedbuff);
             }
         }
+    }
+
+    protected virtual void CustomSkillLogic(BaseCharacter _opponent)
+    {
+        
     }
 
     //SkillRadius에 있는 적들 전체에게 스킬 적용

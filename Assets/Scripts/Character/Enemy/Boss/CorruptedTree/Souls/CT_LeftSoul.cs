@@ -9,6 +9,12 @@ public class CT_LeftSoul : BaseEnemy
     [SerializeField] private CT_LeftDummy dummySoul;
     [SerializeField] private StunResistBuff stunResistBuff;
     [SerializeField] private MoveResistBuff moveResistBuff;
+    [SerializeField] private SpriteRenderer body;
+    [SerializeField] private SpriteRenderer back;
+    [SerializeField] private GameObject ground;
+    [SerializeField] private GameObject hp;
+
+    [SerializeField] private bool soulDead = false; //IsDead와 별개로 죽었는지 판단. 부활스킬 사용위해 변수 따로 만듬
     public override void Initialize()
     {
         base.Initialize();
@@ -58,5 +64,23 @@ public class CT_LeftSoul : BaseEnemy
         dummySoul.RowOrder = RowOrder;
         dummySoul.gameObject.SetActive(true);
         BattleManager.GetInstance.Enemies.formation[0] = dummySoul;
+        body.gameObject.SetActive(false);
+        back.gameObject.SetActive(false);
+        ground.SetActive(false);
+        hp.SetActive(false);
+        soulDead = true;
     }
+
+    public void Revive()
+    {
+        back.gameObject.SetActive(true);
+        Resurrect(true);
+        Health.CurHealth = (int)(Health.MaxHealth * 0.30f);
+        ground.SetActive(true);
+        hp.SetActive(true);
+        soulDead = false;
+    }
+    
+    public bool SoulDead=>soulDead;
+    public SpriteRenderer Body => body;
 }

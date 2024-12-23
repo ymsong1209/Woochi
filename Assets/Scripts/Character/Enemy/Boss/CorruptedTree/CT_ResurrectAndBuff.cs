@@ -21,4 +21,39 @@ public class CT_ResurrectAndBuff : BaseSkill
         instantiatedBuffList.Add(statBuffGameObject);
         base.ActivateSkill(_Opponent);
     }
+    
+    protected override void CustomSkillLogic(BaseCharacter _Opponent)
+    {
+        CT_LeftSoul leftSoul = _Opponent as CT_LeftSoul;
+        if (leftSoul)
+        {
+            if (leftSoul.SoulDead)
+            {
+                leftSoul.Body.gameObject.SetActive(true);
+                leftSoul.anim.Animator.Play("Skill4");
+                leftSoul.Body.sprite = null;
+                leftSoul.onPlayAnimation?.Invoke(AnimationType.Skill1);
+            }
+            else
+            {
+                leftSoul.onPlayAnimation?.Invoke(AnimationType.Heal);
+            }
+        }
+        
+        CT_RightSoul rightSoul = _Opponent as CT_RightSoul;
+        if (rightSoul)
+        {
+            if (rightSoul.SoulDead)
+            {
+                rightSoul.Body.gameObject.SetActive(true);
+                rightSoul.anim.Animator.Play("Skill4");
+                rightSoul.Body.sprite = null;
+                rightSoul.onPlayAnimation?.Invoke(AnimationType.Skill1);
+            }
+            else
+            {
+                rightSoul.onPlayAnimation?.Invoke(AnimationType.Heal);
+            }
+        }
+    }
 }

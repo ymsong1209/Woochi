@@ -7,7 +7,7 @@ public class BaseCharacterAnimation : MonoBehaviour
 {
     protected BaseCharacter owner;
     protected Animator animator;
-    [SerializeField] protected SpriteRenderer body;
+    [SerializeField] protected SpriteRenderer[] bodies;
     [SerializeField] protected SpriteRenderer shadow;
     [SerializeField] protected Sprite[] shadowSprites;      // 0 : Selectable, 1 : Selected
 
@@ -80,23 +80,38 @@ public class BaseCharacterAnimation : MonoBehaviour
     /// </summary>
     public void SetSortLayer(int _rowOrder)
     {
-        body.sortingOrder = _rowOrder;
+        foreach (SpriteRenderer body in bodies)
+        {
+            body.sortingOrder = _rowOrder;
+        }
     }
 
     public void ResetAnim()
     {
-        body.color = Color.white;
+        foreach (SpriteRenderer body in bodies)
+        {
+            body.color = Color.white;
+        }
+        
     }
     
     void FocusIn()
     {
-        body.gameObject.layer = LayerMask.NameToLayer("Focus");
+        foreach(SpriteRenderer body in bodies)
+        {
+            body.gameObject.layer = LayerMask.NameToLayer("Focus");
+        }
         BattleManager.GetInstance.OnFocusEnter?.Invoke(owner);
     }
 
     void FocusOut()
     {
-        body.gameObject.layer = LayerMask.NameToLayer("Default");
+        foreach (SpriteRenderer body in bodies)
+        {
+            body.gameObject.layer = LayerMask.NameToLayer("Default");
+        }
     }
+    
+    public Animator Animator => animator;
 
 }
