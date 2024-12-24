@@ -19,6 +19,7 @@ public class TitleScene : MonoBehaviour
 
         continueBtn.interactable = DataCloud.playerData.hasSaveData;
         GameManager.GetInstance.soundManager.PlaySFX("Main_Title");
+        GameManager.GetInstance.soundManager.PlayBGM(BGMState.Title);
     }
 
     public void Departure(bool isBegin)
