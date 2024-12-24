@@ -530,6 +530,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             yield return UIManager.GetInstance.enemySkillNamePopup.ShowUI(currentSelectedSkill.Name);
         }
         
+        currentSelectedSkill.PlaySound();
         currentSelectedSkill.ActivateSkill(receiver);
         InitSelect();
 

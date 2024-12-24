@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{44F87F38-50AF-43F3-8E88-8629EC89C2CB}" SchemaVersion="119" RootDocumentID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}" ParentDocumentID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}">
+	<AudioObjects>
+		<WorkUnit Name="Strange" ID="{44F87F38-50AF-43F3-8E88-8629EC89C2CB}" OwnerID="{394D5FE3-4C0A-4148-A84A-8EA86E42CA04}" PersistMode="Nested">
+			<ChildrenList>
+				<Sound Name="Event_Negative" ID="{B6A8F673-4E00-40C6-AE3A-140CB9697CFC}" ShortID="485695171">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Event_Negative" ID="{6B34A56B-09E8-42EF-B1E5-85E02CF34CF6}">
+							<Language>SFX</Language>
+							<AudioFile>Event_Negative.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="816032374"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Event_Negative" ID="{6B34A56B-09E8-42EF-B1E5-85E02CF34CF6}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Event_Arrived" ID="{70F09483-AED4-4554-8258-75A54AE7D504}" ShortID="676214302">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Event_Arrived" ID="{B3E61D08-8479-40B5-AA83-1C8F68E54D57}">
+							<Language>SFX</Language>
+							<AudioFile>Event_Arrived.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="199352336"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Event_Arrived" ID="{B3E61D08-8479-40B5-AA83-1C8F68E54D57}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Event_Click" ID="{EEF1CD71-8B6F-4891-93D4-43B2046C467B}" ShortID="402371586">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Event_Click" ID="{1F5F2CA3-3EA0-447F-8AC5-3477D084C7B2}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="0.3"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Event_Click.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="879237363"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Event_Click" ID="{1F5F2CA3-3EA0-447F-8AC5-3477D084C7B2}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Event_Movement" ID="{2C87E707-F651-4895-A7DC-09412F934FAA}" ShortID="537868780">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Event_Movement" ID="{2D75AB53-3BB3-4C21-825F-E748A92DB87A}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="0.1"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Event_Movement.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="865351906"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Event_Movement" ID="{2D75AB53-3BB3-4C21-825F-E748A92DB87A}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Event_Positive" ID="{0D2406A4-A2B6-4F5F-ACF5-B51327F3EFD2}" ShortID="743525101">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Event_Positive" ID="{02172317-EF86-4E9C-838C-52859B1FA3B0}">
+							<Language>SFX</Language>
+							<AudioFile>Event_Positive.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="81999487"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Event_Positive" ID="{02172317-EF86-4E9C-838C-52859B1FA3B0}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

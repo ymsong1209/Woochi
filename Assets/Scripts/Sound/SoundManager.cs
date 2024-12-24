@@ -1,27 +1,30 @@
 using System;
 using AK.Wwise;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Event = AK.Wwise.Event;
+
+public enum BGMState
+{
+    None,
+    Title,
+    Map,
+    Battle,
+    Reward,
+    End
+}
 
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] private RTPC masterVolumeRTPC;
+    [SerializeField] private RTPC bgmVolumeRTPC;
+    [SerializeField] private Event[] bgmEvents;
+
+    public void PlayBGM(BGMState bgmState)
+    {
+        AkSoundEngine.StopAll();
+        bgmEvents[(int) bgmState].Post(gameObject);
+    }
     
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
-    {
-        
-    }
-
     public void PlaySFX(string sfxName)
     {
         AkSoundEngine.PostEvent(sfxName, gameObject);
@@ -30,5 +33,6 @@ public class SoundManager : MonoBehaviour
     public void SetVolume(float masterVolume, float bgmVolume)
     {
         masterVolumeRTPC.SetGlobalValue(masterVolume);
+        bgmVolumeRTPC.SetGlobalValue(bgmVolume);
     }
 }
