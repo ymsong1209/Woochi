@@ -22,35 +22,65 @@ MonoBehaviour:
   size: 2
   cost: 3
   baseStat:
-    maxHealth: 32
-    speed: 2
-    defense: 0
-    crit: 1
-    accuracy: 0
-    evasion: 1
-    resist: 20
-    minStat: 10
-    maxStat: 16
+    list:
+    - type: 0
+      value: 0
+    - type: 1
+      value: 0
+    - type: 2
+      value: 0
+    - type: 3
+      value: 0
+    - type: 4
+      value: 0
+    - type: 5
+      value: 0
+    - type: 6
+      value: 0
+    - type: 7
+      value: 0
+    - type: 8
+      value: 0
   levelUpStat:
-    maxHealth: 0
-    speed: 0
-    defense: 0
-    crit: 0
-    accuracy: 0
-    evasion: 0
-    resist: 0
-    minStat: 0
-    maxStat: 0
+    list:
+    - type: 0
+      value: 0
+    - type: 1
+      value: 0
+    - type: 2
+      value: 0
+    - type: 3
+      value: 0
+    - type: 4
+      value: 0
+    - type: 5
+      value: 0
+    - type: 6
+      value: 0
+    - type: 7
+      value: 0
+    - type: 8
+      value: 0
   rewardStat:
-    maxHealth: 0
-    speed: 0
-    defense: 0
-    crit: 0
-    accuracy: 0
-    evasion: 0
-    resist: 0
-    minStat: 0
-    maxStat: 0
+    list:
+    - type: 0
+      value: 0
+    - type: 1
+      value: 0
+    - type: 2
+      value: 0
+    - type: 3
+      value: 0
+    - type: 4
+      value: 0
+    - type: 5
+      value: 0
+    - type: 6
+      value: 0
+    - type: 7
+      value: 0
+    - type: 8
+      value: 0
   level:
     owner: {fileID: 0}
     rank: 1
@@ -60,8 +90,8 @@ MonoBehaviour:
     maxHealth: 32
     curHealth: 32
     shield: 0
+    countToResurrect: 0
   skills:
-  - {fileID: -394506694602018230, guid: 52d3ba7f9b437a24fbd7f67063c03199, type: 3}
-  - {fileID: -7748879869553992000, guid: 47402f7ab1ca8b344ad549be23fe6dbd, type: 3}
-  - {fileID: -6314356362126969723, guid: 7330f8c75f3e7d54bad3dfccbfdbd7a7, type: 3}
+  - {fileID: -3174952838590696531, guid: 5753f2d52f54eca4d8f8ee2cbca27f30, type: 3}
+  - {fileID: 4334153321131598469, guid: 614679781ca8f3b4faae6531b573e519, type: 3}
   reinforcedSkills: []
