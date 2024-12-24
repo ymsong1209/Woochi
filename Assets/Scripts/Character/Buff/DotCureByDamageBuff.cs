@@ -55,7 +55,7 @@ public class DotCureByDamageBuff : BaseBuff
     public override void SetBuffDescription(TextMeshProUGUI text)
     {
         string description = "";
-        description = BuffName + ": 매턴이 시작할 때마다 "+  (int)Mathf.Round(baseDotCureAmount + maxDamage * dotCureAmount / 100f)+"만큼 회복.";
+        description = BuffName + " " + buffDurationTurns + ": 매턴이 시작할 때마다 "+  (int)Mathf.Round(baseDotCureAmount + maxDamage * dotCureAmount / 100f)+"만큼 회복.";
         description += "\n";
         text.text += description;
         SetBuffColor(text);

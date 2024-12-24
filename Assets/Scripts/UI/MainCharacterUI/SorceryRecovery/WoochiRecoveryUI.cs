@@ -16,8 +16,8 @@ public class WoochiRecoveryUI : MonoBehaviour
         }
 
         int recovery = Mathf.CeilToInt(mainCharacter.SorceryRecoveryPoints * mainCharacter.MaxSorceryPoints);
-        int ableRecovery = Mathf.Clamp(mainCharacter.MaxSorceryPoints - mainCharacter.SorceryPoints, 0, recovery);
-        string description = $"우치의 도력을 {mainCharacter.SorceryRecoveryPoints * 100}%({ableRecovery}) 회복합니다";
+        //int ableRecovery = Mathf.Clamp(mainCharacter.MaxSorceryPoints - mainCharacter.SorceryPoints, 0, recovery);
+        string description = $"우치의 도력을 {mainCharacter.SorceryRecoveryPoints * 100}%({recovery}) 회복합니다";
         recoveryText.text = description;
     }
     

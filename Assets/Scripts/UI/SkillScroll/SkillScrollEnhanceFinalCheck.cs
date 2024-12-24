@@ -16,7 +16,7 @@ public class SkillScrollEnhanceFinalCheck : MonoBehaviour
     {
         skillID = id;
         BaseSkill skill = GameManager.GetInstance.Library.GetSkill(id);
-        description.SetText(skill.SkillSO.SkillName + "을(를) 강화하시겠습니까?");
+        description.SetText($"{skill.SkillSO.SkillName} 을(를) 강화하시겠습니까?\n(강화권 : {DataCloud.playerData.realization}개 남음)");
     }
     // Start is called before the first frame update
     void Start()

@@ -56,6 +56,7 @@ public class Formation : MonoBehaviour
     {
         //모든 character에 대해 체력이 0이하인지 검사 후, 죽었으면 formation을 null로 채움.
         //괴목 우두머리 쫄처럼 부활 메커니즘을 가진 몹들은 IsDead로 처리한 캐릭터들도 있기 때문에 체력으로 판별.
+       
         foreach (BaseCharacter character in formation)
         {
             if (character && character.Health.CheckHealthZero())
@@ -67,6 +68,16 @@ public class Formation : MonoBehaviour
                         formation[i] = null; // 자기 자신을 null로 설정
                     }
                 }
+            }
+        }
+        HashSet<BaseCharacter> processedCharacters = new HashSet<BaseCharacter>();
+        totalSize = 0;
+        foreach (BaseCharacter character in formation)
+        {
+            if (character != null && !processedCharacters.Contains(character))
+            {
+                totalSize += character.Size;
+                processedCharacters.Add(character);
             }
         }
     }
