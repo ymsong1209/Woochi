@@ -61,6 +61,7 @@ public class SkillScrollDescription : MonoBehaviour
         {
             enhanceButton.gameObject.SetActive(true);
             enhanceButton.SetSkill(skillid);
+            enhanceCount.text = "도술 강화("+DataCloud.playerData.realization.ToString()+")";
             enhanceButton.EnhanceButton.interactable = DataCloud.playerData.realization > 0;
         }
         else
@@ -83,7 +84,7 @@ public class SkillScrollDescription : MonoBehaviour
         
         skillName.SetText("");
         skillDescription.SetText("");
-        enhanceCount.text = DataCloud.playerData.realization.ToString();
+        
         
         enhanceButton.Reset();
         equipButton.Reset();
