@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{9D506ECE-4158-4D62-B50A-8373085FD3F5}" SchemaVersion="119" RootDocumentID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}" ParentDocumentID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}">
+	<AudioObjects>
+		<WorkUnit Name="Battle" ID="{9D506ECE-4158-4D62-B50A-8373085FD3F5}" OwnerID="{394D5FE3-4C0A-4148-A84A-8EA86E42CA04}" PersistMode="Nested">
+			<ChildrenList>
+				<Sound Name="Fight_Start" ID="{4C1C9DD9-84F8-4D51-BA50-9200495271EE}" ShortID="1028563756">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Fight_Start" ID="{F1186D6B-CE7E-4D83-9925-58F177AC0683}">
+							<Language>SFX</Language>
+							<AudioFile>Fight_Start.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="328838393"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Fight_Start" ID="{F1186D6B-CE7E-4D83-9925-58F177AC0683}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{2F3C2AA6-9D55-4640-97C9-FB9F875A5DA0}" SchemaVersion="119" RootDocumentID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}" ParentDocumentID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}">
+	<AudioObjects>
+		<WorkUnit Name="Title" ID="{2F3C2AA6-9D55-4640-97C9-FB9F875A5DA0}" OwnerID="{394D5FE3-4C0A-4148-A84A-8EA86E42CA04}" PersistMode="Nested">
+			<ChildrenList>
+				<Sound Name="Title_Mouse" ID="{5FC614E8-AF37-438D-AD18-6780B059368A}" ShortID="916688384">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Title_Mouse" ID="{8E3A0EFF-D9E1-4254-B576-DA1DBB913939}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="0.05"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Title_Mouse.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="275618036"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Title_Mouse" ID="{8E3A0EFF-D9E1-4254-B576-DA1DBB913939}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Title_Click" ID="{90C422BF-7EC0-4EB1-BC1F-2D0C3FFF39A3}" ShortID="1058130584">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Title_Click" ID="{E35FDB30-3B7C-4187-BA2E-E676B3FD6035}">
+							<Language>SFX</Language>
+							<AudioFile>Title_Click.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="790595291"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Title_Click" ID="{E35FDB30-3B7C-4187-BA2E-E676B3FD6035}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Main_Title" ID="{A5394807-601F-4F4A-A931-78F677256041}" ShortID="436383678">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Main_Title" ID="{24CD3253-EA56-4029-884A-C53696270DB5}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="2.3"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Main_Title.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="926927899"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Main_Title" ID="{24CD3253-EA56-4029-884A-C53696270DB5}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

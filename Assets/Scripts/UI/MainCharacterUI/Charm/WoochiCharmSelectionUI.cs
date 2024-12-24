@@ -101,7 +101,7 @@ public class WoochiCharmSelectionUI : MonoBehaviour
         
         RectTransform targetRt = transform as RectTransform;
         RectTransform tooltipRt = skillDescriptionUI.transform as RectTransform;
-        Vector2 offset = new Vector2(0, targetRt.rect.height);
+        Vector2 offset = new Vector2(0, targetRt.rect.height * 1.25f);
         UIManager.GetInstance.SetTooltipPosition(targetRt, tooltipRt, offset);
     }
 }

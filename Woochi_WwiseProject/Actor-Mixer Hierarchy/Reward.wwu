@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{46757A00-4684-4ADA-BD7A-0E0C9E3E9915}" SchemaVersion="119" RootDocumentID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}" ParentDocumentID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}">
+	<AudioObjects>
+		<WorkUnit Name="Reward" ID="{46757A00-4684-4ADA-BD7A-0E0C9E3E9915}" OwnerID="{394D5FE3-4C0A-4148-A84A-8EA86E42CA04}" PersistMode="Nested">
+			<ChildrenList>
+				<Sound Name="Reward_Mouse" ID="{070AA000-8B08-485A-9606-AFD438DAB8C5}" ShortID="350031462">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Reward_Mouse" ID="{DC9301AE-014B-4994-ABA8-DEB4EC548105}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="0.2"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Reward_Mouse.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="798960966"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Reward_Mouse" ID="{DC9301AE-014B-4994-ABA8-DEB4EC548105}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Reward_Arrow_Click" ID="{DDC28285-4182-4C29-B4B0-A8427059CAA5}" ShortID="149260045">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Reward_Arrow_Click" ID="{BC980579-3B38-4449-9765-FF0D2BD84473}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="0.7"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Reward_Arrow_Click.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="324781318"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Reward_Arrow_Click" ID="{BC980579-3B38-4449-9765-FF0D2BD84473}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Reward_Click" ID="{EBA5DA0F-A6D6-4D9A-8235-0F2357422F50}" ShortID="264925453">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Reward_Click" ID="{783CE2CE-DB19-4FBB-862C-5A1C33199C04}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="0.5"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Reward_Click.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="609249654"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Reward_Click" ID="{783CE2CE-DB19-4FBB-862C-5A1C33199C04}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Reward_Arrow_Mouse" ID="{51D63EEF-FFC3-4A62-BD60-ABF244617B55}" ShortID="247645240">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Reward_Arrow_Mouse" ID="{CAE0A69B-66E8-4B78-9EA2-00D1720E30DC}">
+							<PropertyList>
+								<Property Name="TrimEnd" Type="Real64" Value="0.4"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Reward_Arrow_Mouse.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="551719493"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Reward_Arrow_Mouse" ID="{CAE0A69B-66E8-4B78-9EA2-00D1720E30DC}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Heal_Use" ID="{A1EFFD37-5653-44F3-8408-A0C99FEF6F27}" ShortID="443743686">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Heal_Use" ID="{593029BA-3070-4935-B88F-13D06F5E03FD}">
+							<Language>SFX</Language>
+							<AudioFile>Heal_Use.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="932057400"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Heal_Use" ID="{593029BA-3070-4935-B88F-13D06F5E03FD}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Item_Flow" ID="{FF134FF7-76FD-45C5-8F51-0B396C99A149}" ShortID="832013251">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Item_Flow" ID="{A5630C69-A6DB-4939-9BE3-FA768C42001B}">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.088331515812432"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="2.895"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Item_Flow.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="1061526397"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Item_Flow" ID="{A5630C69-A6DB-4939-9BE3-FA768C42001B}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>
