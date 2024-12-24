@@ -59,7 +59,7 @@ public class StatDeBuff : BaseBuff
         }
         else
         {
-            description = buffName + " " + BuffDurationTurns + ": ";
+            description = buffName + " " + BuffDurationTurns + "턴: ";
         }
         
         for(int i = 1; i < (int)StatType.MaxDamage; i++)

@@ -26,7 +26,7 @@ public class FoxFire_BlueFire_P : BaseSkill
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * 70f / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * 70f / 100f);
         text.text = "푸른 불꽃+\n" + 
-                    "3턴 동안 아군의 체력을 턴 시작당 6+\n" +
-                    minStat + " ~ " + maxStat + " * 0.7 만큼 회복";
+                    "3턴 동안 아군의 체력을 턴 시작당\n" +
+                    (6 + minStat)*0.7 + " ~ " + (6 +maxStat) * 0.7 +" 만큼 회복";
     }
 }

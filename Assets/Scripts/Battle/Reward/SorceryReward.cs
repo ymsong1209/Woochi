@@ -35,7 +35,8 @@ public class SorceryReward : Reward
         }
         else if (result.isSameSkill)
         {
-            resultTxt = $"{result.enhancedSkillName}은 이미 강화되었습니다";
+            resultTxt = $"{result.skillName}을 획득하였습니다.\n" +
+                        $"그러나, {result.skillName}은 이미 강화되었습니다";
             return true;
         }
         

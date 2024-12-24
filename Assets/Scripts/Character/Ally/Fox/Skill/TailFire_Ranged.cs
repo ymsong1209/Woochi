@@ -30,6 +30,6 @@ public class TailFire_Ranged : BaseSkill
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "꼬리불(원거리)\n" + 
                     "대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + 
-                    "20%의 확률로 화상 부여";
+                    "20%의 확률로 화상 3턴 부여";
     }
 }

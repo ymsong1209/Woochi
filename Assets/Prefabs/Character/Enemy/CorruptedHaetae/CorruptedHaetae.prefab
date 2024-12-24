@@ -298,6 +298,7 @@ MonoBehaviour:
   activeSkills: []
   activeSkillCheckBox: 01010101
   isAlly: 0
+  canUseTurn: 1
   isDummy: 0
   isSummoned: 0
   rowOrder: 0
