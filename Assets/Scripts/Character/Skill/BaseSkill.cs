@@ -519,6 +519,12 @@ public class BaseSkill : MonoBehaviour
     protected bool CheckApplyBuff(BaseBuff _buff, BaseCharacter _opponent)
     {
         if (_buff.IsAlwaysApplyBuff) return true;
+
+        if (_opponent.IsDead)
+        {
+            Logger.BattleLog($"\"{skillName}\"내부의 \"{_buff.BuffName}\" 버프 적용 실패 on \"{_opponent.Name}\"({_opponent.RowOrder + 1}열) because is Dead", "버프 적용 가능 여부");
+            return false;
+        }
         //적용된 버프를 순회하면서 버프를 적용시킬 수 있는지 확인
         foreach(BaseBuff buff in _opponent.activeBuffs)
         {

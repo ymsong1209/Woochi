@@ -16,11 +16,7 @@ public class PoisonBuff : BaseBuff
             Logger.BattleLog($"\"{buffOwner.Name}\"({buffOwner.RowOrder + 1}열)에 중독 터짐, 중독 피해 : {poisonStack}", "중독버프");
             damage = poisonStack;
             buffOwner.Health.ApplyDamage(damage);
-            poisonStack = 0;
-            if (tempPoisonStack == 0)
-            {
-                buffDurationTurns = 0;
-            }
+            --poisonStack;
             //버프 제거를 removebuff로 호출하면 TriggerBuffs에서 index오류가 난다.
             //buffOwner.RemoveBuff(this);
         }
@@ -33,6 +29,11 @@ public class PoisonBuff : BaseBuff
         {
             poisonStack += tempPoisonStack;
             tempPoisonStack = 0;
+        }
+
+        if (poisonStack < 1)
+        {
+            buffDurationTurns = 0;
         }
         return damage;
     }
@@ -62,7 +63,7 @@ public class PoisonBuff : BaseBuff
     public override void SetBuffDescription(TextMeshProUGUI text)
     {
         
-        string description = "중독 : 피격시"+ poisonStack + "만큼 추가 피해를 입습니다.";
+        string description = "중독 : 피격시"+ poisonStack + "만큼 추가 피해를 입고 1스택 감소.";
         text.text = description;
         SetBuffColor(text);
     }

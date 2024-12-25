@@ -17,19 +17,7 @@ public class CT_RightSoul : BaseEnemy
     public override void Initialize()
     {
         base.Initialize();
-        GameObject instantiatedEvasionBuff = Instantiate(stunResistBuff.gameObject, transform);
-        StunResistBuff buff = instantiatedEvasionBuff.GetComponent<StunResistBuff>();
-        buff.IsRemovableDuringBattle = false;
-        buff.IsAlwaysApplyBuff = true;
-        buff.BuffDurationTurns = -1;
-        ApplyBuff(this,this,buff);
-        
-        GameObject instantiatedMoveBuff = Instantiate(moveResistBuff.gameObject, transform);
-        MoveResistBuff movebuff = instantiatedMoveBuff.GetComponent<MoveResistBuff>();
-        movebuff.IsRemovableDuringBattle = false;
-        movebuff.IsAlwaysApplyBuff = true;
-        movebuff.BuffDurationTurns = -1;
-        ApplyBuff(this,this,movebuff);
+        InitializeBuffs();
     }
     
     public override void TriggerAI()
@@ -48,6 +36,23 @@ public class CT_RightSoul : BaseEnemy
         BattleManager.GetInstance.SkillSelected(activeSkills[0]);
         BattleManager.GetInstance.CharacterSelected(ally);
         BattleManager.GetInstance.ExecuteSelectedSkill(ally);
+    }
+    
+    private void InitializeBuffs()
+    {
+        GameObject instantiatedStunBuff = Instantiate(stunResistBuff.gameObject, transform);
+        StunResistBuff buff = instantiatedStunBuff.GetComponent<StunResistBuff>();
+        buff.IsRemovableDuringBattle = false;
+        buff.IsAlwaysApplyBuff = true;
+        buff.BuffDurationTurns = -1;
+        ApplyBuff(this,this,buff);
+        
+        GameObject instantiatedMoveBuff = Instantiate(moveResistBuff.gameObject, transform);
+        MoveResistBuff movebuff = instantiatedMoveBuff.GetComponent<MoveResistBuff>();
+        movebuff.IsRemovableDuringBattle = false;
+        movebuff.IsAlwaysApplyBuff = true;
+        movebuff.BuffDurationTurns = -1;
+        ApplyBuff(this,this,movebuff);
     }
 
 
@@ -71,6 +76,7 @@ public class CT_RightSoul : BaseEnemy
         dummySoul.RowOrder = RowOrder;
         dummySoul.gameObject.SetActive(true);
         BattleManager.GetInstance.Enemies.formation[3] = dummySoul;
+        BuffList.gameObject.SetActive(false);
         body.gameObject.SetActive(false);
         back.gameObject.SetActive(false);
         ground.SetActive(false);
@@ -86,6 +92,8 @@ public class CT_RightSoul : BaseEnemy
         ground.SetActive(true);
         hp.SetActive(true);
         soulDead = false;
+        BuffList.gameObject.SetActive(true);
+        InitializeBuffs();
     }
     
     public bool SoulDead=>soulDead;

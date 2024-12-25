@@ -41,7 +41,6 @@ public static class Logger
         try
         {
             System.IO.File.AppendAllText(filePath, logMessage + "\n");
-            Debug.Log($"File saved at: {filePath}");
         }
         catch (Exception ex)
         {

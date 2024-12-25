@@ -18,6 +18,19 @@ public class CT_LeftSoul : BaseEnemy
     public override void Initialize()
     {
         base.Initialize();
+        InitializeBuffs();
+    }
+    public override void TriggerAI()
+    {
+        BaseCharacter ally = null;
+        ally = BattleUtils.FindAllyFromIndex(0);
+        BattleManager.GetInstance.SkillSelected(activeSkills[0]);
+        BattleManager.GetInstance.CharacterSelected(ally);
+        BattleManager.GetInstance.ExecuteSelectedSkill(ally);
+    }
+
+    private void InitializeBuffs()
+    {
         GameObject instantiatedStunBuff = Instantiate(stunResistBuff.gameObject, transform);
         StunResistBuff buff = instantiatedStunBuff.GetComponent<StunResistBuff>();
         buff.IsRemovableDuringBattle = false;
@@ -32,15 +45,6 @@ public class CT_LeftSoul : BaseEnemy
         movebuff.BuffDurationTurns = -1;
         ApplyBuff(this,this,movebuff);
     }
-    public override void TriggerAI()
-    {
-        BaseCharacter ally = null;
-        ally = BattleUtils.FindAllyFromIndex(0);
-        BattleManager.GetInstance.SkillSelected(activeSkills[0]);
-        BattleManager.GetInstance.CharacterSelected(ally);
-        BattleManager.GetInstance.ExecuteSelectedSkill(ally);
-    }
-
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +68,7 @@ public class CT_LeftSoul : BaseEnemy
         dummySoul.RowOrder = RowOrder;
         dummySoul.gameObject.SetActive(true);
         BattleManager.GetInstance.Enemies.formation[0] = dummySoul;
+        BuffList.gameObject.SetActive(false);
         body.gameObject.SetActive(false);
         back.gameObject.SetActive(false);
         ground.SetActive(false);
@@ -79,6 +84,8 @@ public class CT_LeftSoul : BaseEnemy
         ground.SetActive(true);
         hp.SetActive(true);
         soulDead = false;
+        BuffList.gameObject.SetActive(true);
+        InitializeBuffs();
     }
     
     public bool SoulDead=>soulDead;
