@@ -875,7 +875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorSFX: Reward_Arrow_Mouse
-  clickSFX: Reward_Arrow_Click
+  clickSFX: 
 --- !u!1 &6824418520264816866
 GameObject:
   m_ObjectHideFlags: 0

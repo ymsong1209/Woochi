@@ -28,15 +28,11 @@ public class Plot : ScriptableObject
         Effect();
     }
 
-    public void Next(int index = -1)
-    {
-        onComplete?.Invoke(index);
-    }
-    
     public void Next(PlotEvent plotEvent, int index = -1)
     {
         if (this.plotEvent == plotEvent)
         {
+            GameManager.GetInstance.soundManager.PlaySFX("Reward_Arrow_Click");
             onComplete?.Invoke(index);
         }
     }

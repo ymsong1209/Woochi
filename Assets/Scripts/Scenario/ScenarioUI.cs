@@ -132,6 +132,6 @@ public class ScenarioUI : MonoBehaviour
     
     private void Click()
     {
-        currentPlot.Next();
+        currentPlot.Next(PlotEvent.None);
     }
 }
