@@ -10,7 +10,6 @@ public class CT_LeftSoul : BaseEnemy
     [SerializeField] private StunResistBuff stunResistBuff;
     [SerializeField] private MoveResistBuff moveResistBuff;
     [SerializeField] private SpriteRenderer body;
-    [SerializeField] private SpriteRenderer back;
     [SerializeField] private GameObject ground;
     [SerializeField] private GameObject hp;
 
@@ -70,7 +69,6 @@ public class CT_LeftSoul : BaseEnemy
         BattleManager.GetInstance.Enemies.formation[0] = dummySoul;
         BuffList.gameObject.SetActive(false);
         body.gameObject.SetActive(false);
-        back.gameObject.SetActive(false);
         ground.SetActive(false);
         hp.SetActive(false);
         soulDead = true;
@@ -78,7 +76,6 @@ public class CT_LeftSoul : BaseEnemy
 
     public void Revive()
     {
-        back.gameObject.SetActive(true);
         Resurrect(true);
         Health.CurHealth = (int)(Health.MaxHealth * 0.30f);
         ground.SetActive(true);
