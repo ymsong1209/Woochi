@@ -25,7 +25,7 @@
 				<GameParameter Id="2918011349" Name="MasterVolume"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{00C8B804-F97E-21A6-EFB0-56057B739C09}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{76AC20F2-7E78-6A51-472E-F168BC50BCA9}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -301,6 +301,10 @@
 					<ShortName>Dosul_Paper_Close.wav</ShortName>
 					<CachePath>SFX/Dosul_Paper_Close_818F3B66.wem</CachePath>
 				</File>
+				<File Id="962758318" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Map_BGM.wav</ShortName>
+					<CachePath>SFX/Map_BGM_818F3B66.wem</CachePath>
+				</File>
 				<File Id="965008807" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Haetae_Skill_2.wav</ShortName>
 					<CachePath>SFX/Haetae_Skill_2_818F3B66.wem</CachePath>
@@ -540,6 +544,11 @@
 						<MediaRef Id="863793327"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="3811411294" Name="Map_BGM">
+					<MediaRefs>
+						<MediaRef Id="962758318"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="2480411368" Name="Map_Click">
 					<MediaRefs>
 						<MediaRef Id="165554327"/>
@@ -718,5 +727,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{DF0E3C8D-AE84-303B-6BB1-ED5FF377EC13}</FileHash>
+	<FileHash>{65AF2F2F-4F8A-49E3-12D3-5EE5AB0EF202}</FileHash>
 </SoundBanksInfo>

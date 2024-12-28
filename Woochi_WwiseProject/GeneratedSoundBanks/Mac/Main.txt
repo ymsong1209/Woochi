@@ -66,6 +66,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	3680301402	Movement_Mouse			\Default Work Unit\Movement_Mouse	
 	3682660368	Dosul_ReinForce			\Default Work Unit\Dosul_ReinForce	
 	3784954276	Dosul_ReinForce_Mouse			\Default Work Unit\Dosul_ReinForce_Mouse	
+	3811411294	Map_BGM			\Default Work Unit\Map_BGM	
 	3856529392	Monster_Attack_1			\Default Work Unit\Monster_Attack_1	
 	3856529395	Monster_Attack_2			\Default Work Unit\Monster_Attack_2	
 	3963569196	Dog_Attack			\Default Work Unit\Dog_Attack	
@@ -145,6 +146,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	926927899	Main_Title	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Main_Title_E7A2DC0E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Main_Title		441696
 	932057400	Heal_Use	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Heal_Use_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Heal_Use		576096
 	958025226	Dosul_Paper_Close	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_Paper_Close_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_Paper_Close		384096
+	962758318	Map_BGM	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Map_BGM_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Map_BGM		18409948
 	965008807	Haetae_Skill_2	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Haetae_Skill_2_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Haetae_Skill_2		984096
 	974009338	Dokebi_Attack_3	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dokebi_Attack_3_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dokebi_Attack_3		288096
 	975968143	Announce_Down	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Announce_Down_C70033A3.wem		\Actor-Mixer Hierarchy\Default Work Unit\Announce_Down		76896
