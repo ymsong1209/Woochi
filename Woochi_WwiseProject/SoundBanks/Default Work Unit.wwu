@@ -28,6 +28,7 @@
 						<ObjectRef Name="Event_Negative" ID="{90639A4A-00F0-4700-B7E8-3B259D06D960}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Paper_Get" ID="{A7E70FAF-6D66-47E6-AE08-68979931CF32}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Event_Movement" ID="{D35BD29D-D2AE-47F8-83D6-B939A096FFFA}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Dokebi_Attack_1" ID="{D33BAE7B-5800-480B-A97B-37432A883471}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Ground_Skill" ID="{CC16BD6A-8AD9-485D-A5EF-67BD528E420B}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Metal_Skill" ID="{192F9D41-D8EC-485D-B45D-9D989A7954F8}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Movement_Click_Edit" ID="{697B7A67-E201-48C3-A841-7D559FF3991E}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
@@ -48,6 +49,7 @@
 						<ObjectRef Name="Movement_Click" ID="{F6C44E59-D402-4D37-9D7D-0390E50F8D09}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Movement_Mouse" ID="{4C38972B-72C4-4D9D-A9AE-718BF4425D75}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Paper_Use" ID="{F1CCFBAE-CE0E-4E1D-A5B6-65AE05051B81}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Dog_Attack" ID="{0CBDB035-C010-4E4D-8F3D-6D6B6CCC189F}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Haetae_Join" ID="{1CCC0854-8926-4ED3-B045-BB2A00855DEE}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Dosul_Click" ID="{3294BD95-7D02-4F37-93E6-E105EFF8FA6A}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Movement_Mouse_Edit" ID="{07FAD67E-49DE-4F3E-987E-1EFAEEE969A1}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>

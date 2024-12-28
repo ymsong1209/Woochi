@@ -1178,6 +1178,50 @@
 						<ActiveSource Name="Preference_Mouse" ID="{EED1F9AC-70E9-459D-8EA9-743198B9F7B7}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="Dog_Attack" ID="{D782F0D7-C2C8-4385-90E4-1424B5B7C134}" ShortID="512791646">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Dog_Attack" ID="{69DBFE72-9CD1-4B96-A76F-07C859FF05FD}">
+							<Language>SFX</Language>
+							<AudioFile>Dog_Attack.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="608071437"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Dog_Attack" ID="{69DBFE72-9CD1-4B96-A76F-07C859FF05FD}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Dokebi_Attack_1" ID="{5492D051-0B0C-45A5-9778-FBC2E205BC98}" ShortID="889448755">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Dokebi_Attack_1" ID="{48B2F863-0E70-40C6-B393-8C79E7DE8DD5}">
+							<Language>SFX</Language>
+							<AudioFile>Dokebi_Attack_1.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="869618840"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Dokebi_Attack_1" ID="{48B2F863-0E70-40C6-B393-8C79E7DE8DD5}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

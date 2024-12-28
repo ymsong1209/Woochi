@@ -531,6 +531,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Dog_Attack" ID="{0CBDB035-C010-4E4D-8F3D-6D6B6CCC189F}">
+					<ChildrenList>
+						<Action Name="" ID="{4C3E6583-CA19-4B6F-9D2C-B2B1B46A2E7C}" ShortID="167565376">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dog_Attack" ID="{D782F0D7-C2C8-4385-90E4-1424B5B7C134}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Dokebi_Attack_1" ID="{D33BAE7B-5800-480B-A97B-37432A883471}">
+					<ChildrenList>
+						<Action Name="" ID="{D17512B6-7C3D-4007-9C9F-C053352EFAA0}" ShortID="159086404">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dokebi_Attack_1" ID="{5492D051-0B0C-45A5-9778-FBC2E205BC98}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

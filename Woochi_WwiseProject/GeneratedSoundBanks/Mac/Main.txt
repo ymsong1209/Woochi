@@ -16,6 +16,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	1037822516	Fight_Start			\Default Work Unit\Fight_Start	
 	1131978445	Event_Movement			\Default Work Unit\Event_Movement	
 	1210662472	Item_LevelUp			\Default Work Unit\Item_LevelUp	
+	1261339924	Dokebi_Attack_1			\Default Work Unit\Dokebi_Attack_1	
 	1362914800	Water_Skill			\Default Work Unit\Water_Skill	
 	1396668031	Sound_Click			\Default Work Unit\Sound_Click	
 	1405224191	Event_Positive			\Default Work Unit\Event_Positive	
@@ -92,6 +93,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	859128289	Dosul_Paper_Click	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_Paper_Click_48DE7A2B.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_Paper_Click		288096
 	863793327	Main_Title_Bgm	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Main_Title_Bgm_0253DC48.wem		\Actor-Mixer Hierarchy\Default Work Unit\Main_Title_Bgm		19883608
 	865351906	Event_Movement	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Event_Movement_9AA05703.wem		\Actor-Mixer Hierarchy\Default Work Unit\Event_Movement		19296
+	869618840	Dokebi_Attack_1	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dokebi_Attack_1_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dokebi_Attack_1		288096
 	870375303	Dosul_ReinForce	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_ReinForce_66E713C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_ReinForce		314400
 	879237363	Event_Click	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Event_Click_71893BB8.wem		\Actor-Mixer Hierarchy\Default Work Unit\Event_Click		57696
 	926927899	Main_Title	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Main_Title_E7A2DC0E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Main_Title		441696

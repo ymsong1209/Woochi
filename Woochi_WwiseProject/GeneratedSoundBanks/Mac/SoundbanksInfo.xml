@@ -25,7 +25,7 @@
 				<GameParameter Id="2918011349" Name="MasterVolume"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{48481FEF-1F73-110D-217E-29AA16961A66}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{C32E4136-D94A-6B91-B861-1A4C398C5469}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -197,6 +197,10 @@
 					<ShortName>Event_Movement.wav</ShortName>
 					<CachePath>SFX/Event_Movement_9AA05703.wem</CachePath>
 				</File>
+				<File Id="869618840" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dokebi_Attack_1.wav</ShortName>
+					<CachePath>SFX/Dokebi_Attack_1_818F3B66.wem</CachePath>
+				</File>
 				<File Id="870375303" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Dosul_ReinForce.wav</ShortName>
 					<CachePath>SFX/Dosul_ReinForce_66E713C5.wem</CachePath>
@@ -235,6 +239,11 @@
 				<Event Id="3963569196" Name="Dog_Attack">
 					<MediaRefs>
 						<MediaRef Id="608071437"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1261339924" Name="Dokebi_Attack_1">
+					<MediaRefs>
+						<MediaRef Id="869618840"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1598930947" Name="Dosul_Click">
@@ -475,5 +484,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{592D4DFB-70E4-1103-E668-1EF423C4F4C9}</FileHash>
+	<FileHash>{A8D3BE22-F8C7-0AFA-86AC-8E37FF1BC204}</FileHash>
 </SoundBanksInfo>
