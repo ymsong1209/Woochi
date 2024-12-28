@@ -25,7 +25,7 @@
 				<GameParameter Id="2918011349" Name="MasterVolume"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{3DE5ECA7-02AF-02DC-E4F3-DC3011CADC10}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{48481FEF-1F73-110D-217E-29AA16961A66}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -124,6 +124,10 @@
 				<File Id="578610578" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Metal_Skill.wav</ShortName>
 					<CachePath>SFX/Metal_Skill_818F3B66.wem</CachePath>
+				</File>
+				<File Id="608071437" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dog_Attack.wav</ShortName>
+					<CachePath>SFX/Dog_Attack_818F3B66.wem</CachePath>
 				</File>
 				<File Id="609249654" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Reward_Click.wav</ShortName>
@@ -226,6 +230,11 @@
 				<Event Id="1946638119" Name="Announce_Down">
 					<MediaRefs>
 						<MediaRef Id="975968143"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3963569196" Name="Dog_Attack">
+					<MediaRefs>
+						<MediaRef Id="608071437"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1598930947" Name="Dosul_Click">
@@ -466,5 +475,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{795E5BA3-AAE3-7F19-B586-DED42D6CC265}</FileHash>
+	<FileHash>{592D4DFB-70E4-1103-E668-1EF423C4F4C9}</FileHash>
 </SoundBanksInfo>

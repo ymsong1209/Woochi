@@ -44,6 +44,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	3680301402	Movement_Mouse			\Default Work Unit\Movement_Mouse	
 	3682660368	Dosul_ReinForce			\Default Work Unit\Dosul_ReinForce	
 	3784954276	Dosul_ReinForce_Mouse			\Default Work Unit\Dosul_ReinForce_Mouse	
+	3963569196	Dog_Attack			\Default Work Unit\Dog_Attack	
 	4057793579	Fire_Skill			\Default Work Unit\Fire_Skill	
 	4199180592	Title_Click			\Default Work Unit\Title_Click	
 	4232491148	Reward_Mouse			\Default Work Unit\Reward_Mouse	
@@ -73,6 +74,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	551719493	Reward_Arrow_Mouse	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Reward_Arrow_Mouse_C70033A3.wem		\Actor-Mixer Hierarchy\Default Work Unit\Reward_Arrow_Mouse		76896
 	576676912	Dosul_Click	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_Click_00225573.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_Click		96096
 	578610578	Metal_Skill	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Metal_Skill_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Metal_Skill		576096
+	608071437	Dog_Attack	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dog_Attack_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dog_Attack		288096
 	609249654	Reward_Click	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Reward_Click_00225573.wem		\Actor-Mixer Hierarchy\Default Work Unit\Reward_Click		96096
 	609286879	Map_Mouse	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Map_Mouse_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Map_Mouse		120096
 	624271836	Preference_Mouse	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Preference_Mouse_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Preference_Mouse		576096
