@@ -25,14 +25,10 @@
 				<GameParameter Id="2918011349" Name="MasterVolume"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{76AC20F2-7E78-6A51-472E-F168BC50BCA9}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{F8ABE12C-3BAB-E99F-E562-18FC72E53C50}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
-				<File Id="4229754" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Fight_BGM.wav</ShortName>
-					<CachePath>SFX/Fight_BGM_818F3B66.wem</CachePath>
-				</File>
 				<File Id="45772769" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Haetae_Skill_4.wav</ShortName>
 					<CachePath>SFX/Haetae_Skill_4_818F3B66.wem</CachePath>
@@ -297,6 +293,10 @@
 					<ShortName>Heal_Use.wav</ShortName>
 					<CachePath>SFX/Heal_Use_818F3B66.wem</CachePath>
 				</File>
+				<File Id="952769722" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Fighting_BGM.wav</ShortName>
+					<CachePath>SFX/Fighting_BGM_818F3B66.wem</CachePath>
+				</File>
 				<File Id="958025226" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Dosul_Paper_Close.wav</ShortName>
 					<CachePath>SFX/Dosul_Paper_Close_818F3B66.wem</CachePath>
@@ -451,7 +451,7 @@
 				</Event>
 				<Event Id="3570634942" Name="Fight_BGM">
 					<MediaRefs>
-						<MediaRef Id="4229754"/>
+						<MediaRef Id="952769722"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1037822516" Name="Fight_Start">
@@ -727,5 +727,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{65AF2F2F-4F8A-49E3-12D3-5EE5AB0EF202}</FileHash>
+	<FileHash>{8CD619D4-47B3-BE6C-AB76-BE6247509628}</FileHash>
 </SoundBanksInfo>

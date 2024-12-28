@@ -1139,7 +1139,7 @@
 						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-20</Value>
+								<Value>-12</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -1254,33 +1254,6 @@
 					</ChildrenList>
 					<ActiveSourceList>
 						<ActiveSource Name="Dokebi_Attack_2" ID="{35205AF3-9EB1-400D-8DBD-555DC45374E4}" Platform="Linked"/>
-					</ActiveSourceList>
-				</Sound>
-				<Sound Name="Fight_BGM" ID="{4B829CD6-8643-45C9-8F38-D25F9BFE5744}" ShortID="430119606">
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<AudioFileSource Name="Fight_BGM" ID="{56557E4F-549B-4E54-A25A-B96811D6A325}">
-							<PropertyList>
-								<Property Name="LoopBegin" Type="Real64" Value="4.52917638499859"/>
-								<Property Name="LoopEnd" Type="Real64" Value="81.4239399864376"/>
-								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-							</PropertyList>
-							<Language>SFX</Language>
-							<AudioFile>Fight_BGM.wav</AudioFile>
-							<MediaIDList>
-								<MediaID ID="4229754"/>
-							</MediaIDList>
-						</AudioFileSource>
-					</ChildrenList>
-					<ActiveSourceList>
-						<ActiveSource Name="Fight_BGM" ID="{56557E4F-549B-4E54-A25A-B96811D6A325}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="Dokebi_Attack_3" ID="{9060C906-27CE-46EF-95BF-144F378B369A}" ShortID="443680951">
@@ -1812,6 +1785,13 @@
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="Map_BGM" ID="{6CA3BB0B-5261-4663-BBA4-0C36E16FD2D0}" ShortID="826716819">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-20</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
@@ -1831,6 +1811,39 @@
 					</ChildrenList>
 					<ActiveSourceList>
 						<ActiveSource Name="Map_BGM" ID="{6F7D4D8F-B7C0-4129-BB23-C6DCEC8F2743}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Fight_BGM" ID="{E1008198-0FE6-4D29-B8D4-4461C123A590}" ShortID="827317782">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-18</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Fighting_BGM" ID="{AA1A0A45-AFDA-425F-93C5-CB54CAA2BA2E}">
+							<PropertyList>
+								<Property Name="LoopBegin" Type="Real64" Value="4.61500786116134"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Fighting_BGM.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="952769722"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Fighting_BGM" ID="{AA1A0A45-AFDA-425F-93C5-CB54CAA2BA2E}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>
