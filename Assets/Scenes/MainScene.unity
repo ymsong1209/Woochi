@@ -1067,6 +1067,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1263443467 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3677451205528200277, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
+  m_PrefabInstance: {fileID: 5996471962718802776}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1263443472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263443467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb73cf3725e81f540821c5c469689c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorSFX: Reward_Arrow_Mouse
+  clickSFX: Reward_Arrow_Click
 --- !u!114 &1314812943 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2045326469015148754, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
@@ -2166,6 +2185,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2844913031423247249, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
+      propertyPath: clickSFX
+      value: Scene_Changed
+      objectReference: {fileID: 0}
     - target: {fileID: 3480788125439102452, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2685,7 +2708,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3677451205528200277, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1263443472}
   m_SourcePrefab: {fileID: 100100000, guid: e4577e7a80e46a0448b3fa0236d3ed1e, type: 3}
 --- !u!114 &5996471962718802777 stripped
 MonoBehaviour:

@@ -15,6 +15,10 @@ MonoBehaviour:
   skillIcon: {fileID: 0}
   skillName: "\uC2E0\uAE30\uC804"
   animType: 3
+  skillSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: af9cc90ff33d46b4ca961a60cb337ede, type: 2}
   skillAvailableRadius: 0101010100000000
   skillRadius: 0000000001010101
   skillType: 0
@@ -26,6 +30,5 @@ MonoBehaviour:
   - {fileID: 2569674945298275565, guid: 792e42c0644dbee4cb47bae86d650f7b, type: 3}
   baseMultiplier: 70
   baseSkillAccuracy: 80
-  skillSound: 
   requiredSorceryPoints: 50
   rarity: 2

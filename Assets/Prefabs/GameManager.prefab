@@ -113,6 +113,12 @@ MonoBehaviour:
   - idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 7d0dc76b49f7bfb4eb626c6e0c3b642d, type: 2}
+  - idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  - idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 9f5e97fc74ab4f94da385c168b259246, type: 2}
 --- !u!114 &2087857147857400854
 MonoBehaviour:
   m_ObjectHideFlags: 0

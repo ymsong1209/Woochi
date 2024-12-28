@@ -15,10 +15,17 @@ MonoBehaviour:
   skillIcon: {fileID: 0}
   skillName: "\uD6C4\uD1F4 \uC0AC\uACA9"
   animType: 3
+  skillSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 816dae008564e52419b158d3699bf220, type: 2}
   skillAvailableRadius: 0000000001000000
   skillRadius: 0101000000000000
   skillType: 0
   skillTargetType: 0
+  skillElement: 0
+  skillTargetCount: 1
+  skillRandomCount: 0
   bufflist: []
   baseMultiplier: 100
   baseSkillAccuracy: 60

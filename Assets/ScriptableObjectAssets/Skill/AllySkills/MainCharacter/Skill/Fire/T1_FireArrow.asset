@@ -15,6 +15,10 @@ MonoBehaviour:
   skillIcon: {fileID: 21300000, guid: 9644ea1b906536c48a2efe986533298f, type: 3}
   skillName: "\uBD88\uD654\uC0B4"
   animType: 3
+  skillSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: af9cc90ff33d46b4ca961a60cb337ede, type: 2}
   skillAvailableRadius: 0101010100000000
   skillRadius: 0000000001010101
   skillType: 0

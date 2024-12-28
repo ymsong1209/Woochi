@@ -20,7 +20,8 @@ public class ResurrectionReward : Reward
             int randomIndex = Random.Range(0, deadCharacters.Count);
             deadCharacters[randomIndex].Resurrect(true);
             resultTxt = $"{deadCharacters[randomIndex].Name}이(가) 부활했습니다";
-
+            
+            GameManager.GetInstance.soundManager.PlaySFX("Revival");
             return true;
         }
     }

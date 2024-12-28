@@ -67,9 +67,6 @@ public class BaseSkill : MonoBehaviour
     private List<GameObject> buffPrefabList = new List<GameObject>();
     private int skillRandomCount = 0;
     protected List<BuffEffect> buffDescriptionList = new List<BuffEffect>();//스킬에 포함된 버프 설명 무엇 넣을것인지.
-
-    [Header("Sound")] 
-    [SerializeField] protected Event skillSound;
     
     /// <summary>
     /// 스킬 적중시 적용시킬 버프 리스트
@@ -117,12 +114,6 @@ public class BaseSkill : MonoBehaviour
 
     public virtual void ActivateSkill(BaseCharacter _Opponent)
     {
-        string skillSound = skillSO.GetSkillSound();
-        if (!string.IsNullOrEmpty(skillSound))
-        {
-            GameManager.GetInstance.soundManager.PlaySFX(skillSound);
-        }
-        
         skillResult.Init();
         skillResult.Caster = skillOwner;
         
@@ -428,6 +419,7 @@ public class BaseSkill : MonoBehaviour
             skillResult.isHit.Add(true);
             skillResult.isCrit.Add(true);
             ApplyStat(_opponent, true);
+            _opponent.PlayHitSound();
             return true;
         }
         
@@ -451,7 +443,8 @@ public class BaseSkill : MonoBehaviour
         skillResult.isHit.Add(true);
         skillResult.isCrit.Add(false);
         ApplyStat(_opponent, false);
-
+        _opponent.PlayHitSound();
+        
         return true;
     }
 
@@ -664,9 +657,10 @@ public class BaseSkill : MonoBehaviour
 
     public void PlaySound()
     {
-        if(skillSound != null)
+        if (skillSO)
         {
-            skillSound.Post(gameObject);
+            Event skillSound = skillSO.skillSound;
+            skillSound?.Post(gameObject);
         }
     }
     

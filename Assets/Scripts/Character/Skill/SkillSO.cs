@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Event = AK.Wwise.Event;
 
 [CreateAssetMenu(fileName = "Skill_", menuName = "Scriptable Objects/Character/Skill")]
 public class SkillSO : ScriptableObject
@@ -16,6 +17,7 @@ public class SkillSO : ScriptableObject
 
     [SerializeField] private string             skillName;
     [SerializeField] private AnimationType      animType;
+    public Event             skillSound;
     /// <summary>
     /// 스킬을 사용할 수 있는 열
     /// 0~4 : 아군 1~4열
@@ -47,8 +49,6 @@ public class SkillSO : ScriptableObject
 
     [SerializeField] private float baseMultiplier;        // 피해량 계수
     [SerializeField] private float baseSkillAccuracy;     // 스킬 명중 수치
-
-    [SerializeField] private string skillSound;
     
     #region Getter Setter
     public string SkillName => skillName;
@@ -65,11 +65,6 @@ public class SkillSO : ScriptableObject
     public float BaseMultiplier => baseMultiplier;
 
     public float BaseSkillAccuracy => baseSkillAccuracy;
-
-    public virtual string GetSkillSound()
-    {
-        return skillSound;
-    }
     #endregion
 
 }

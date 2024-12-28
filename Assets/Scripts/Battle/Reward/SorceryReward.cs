@@ -14,32 +14,35 @@ public class SorceryReward : Reward
         int skillID = GameManager.GetInstance.Library.GetRandomSkillIDByRank();
 
         SkillSetResult result = GameManager.GetInstance.Library.SetSkillOnScroll(skillID);
-
+        bool isSuccess = true;
+        
         if (result.isSuccess)
         {
             if (result.isEnhanced)
             {
                 resultTxt = $"{result.skillName}이 {result.enhancedSkillName}으로 강화되었습니다";
-                return true;
             }
             else
             {
                 resultTxt = $"{result.skillName}을 획득했습니다";
-                return true;
             }
         }
         else if (result.isScrollFull)
         {
             errorTxt = "스크롤이 가득 찼습니다";
-            return false;
+            isSuccess = false;
         }
         else if (result.isSameSkill)
         {
             resultTxt = $"{result.skillName}을 획득하였습니다.\n" +
                         $"그러나, {result.skillName}은 이미 강화되었습니다";
-            return true;
+        }
+
+        if (isSuccess)
+        {
+            GameManager.GetInstance.soundManager.PlaySFX("Dosul_get");
         }
         
-        return false;
+        return isSuccess;
     }
 }

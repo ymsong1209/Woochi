@@ -102,6 +102,7 @@ public class MapView : MonoBehaviour
     {
         if (isActiveScroll)
         {
+            GameManager.GetInstance.soundManager.PlayBGM(BGMState.Map);
             mapObject.transform.localPosition = new Vector3(0, 0, 0);
         }
         else

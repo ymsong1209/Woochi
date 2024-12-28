@@ -147,6 +147,18 @@ public class BaseCharacter : MonoBehaviour
         }
     }
 
+    public void PlayHitSound()
+    {
+        if (Size == 1)
+        {
+            GameManager.GetInstance.soundManager.PlaySFX("Small_Attack");
+        }
+        else
+        {
+            GameManager.GetInstance.soundManager.PlaySFX("Medium_Attack");
+        }
+    }
+    
     #region Skill Check
 
     public virtual bool CheckUsableSkill()

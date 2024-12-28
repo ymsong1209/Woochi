@@ -89,6 +89,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         
         ShowCharacterUI?.Invoke(allies.GetWoochi(), false);
         GameManager.GetInstance.soundManager.PlaySFX("Fight_Start");
+        GameManager.GetInstance.soundManager.PlayBGM(BGMState.Battle);
 
         GenerateBattleStartLog();
         
