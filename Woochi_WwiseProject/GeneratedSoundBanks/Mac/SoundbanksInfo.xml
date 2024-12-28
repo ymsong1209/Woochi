@@ -25,14 +25,10 @@
 				<GameParameter Id="2918011349" Name="MasterVolume"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{00C8B804-F97E-21A6-EFB0-56057B739C09}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{F8ABE12C-3BAB-E99F-E562-18FC72E53C50}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
-				<File Id="4229754" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Fight_BGM.wav</ShortName>
-					<CachePath>SFX/Fight_BGM_818F3B66.wem</CachePath>
-				</File>
 				<File Id="45772769" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Haetae_Skill_4.wav</ShortName>
 					<CachePath>SFX/Haetae_Skill_4_818F3B66.wem</CachePath>
@@ -297,9 +293,17 @@
 					<ShortName>Heal_Use.wav</ShortName>
 					<CachePath>SFX/Heal_Use_818F3B66.wem</CachePath>
 				</File>
+				<File Id="952769722" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Fighting_BGM.wav</ShortName>
+					<CachePath>SFX/Fighting_BGM_818F3B66.wem</CachePath>
+				</File>
 				<File Id="958025226" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Dosul_Paper_Close.wav</ShortName>
 					<CachePath>SFX/Dosul_Paper_Close_818F3B66.wem</CachePath>
+				</File>
+				<File Id="962758318" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Map_BGM.wav</ShortName>
+					<CachePath>SFX/Map_BGM_818F3B66.wem</CachePath>
 				</File>
 				<File Id="965008807" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Haetae_Skill_2.wav</ShortName>
@@ -447,7 +451,7 @@
 				</Event>
 				<Event Id="3570634942" Name="Fight_BGM">
 					<MediaRefs>
-						<MediaRef Id="4229754"/>
+						<MediaRef Id="952769722"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1037822516" Name="Fight_Start">
@@ -538,6 +542,11 @@
 				<Event Id="3423249410" Name="Main_Title_Bgm">
 					<MediaRefs>
 						<MediaRef Id="863793327"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3811411294" Name="Map_BGM">
+					<MediaRefs>
+						<MediaRef Id="962758318"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="2480411368" Name="Map_Click">
@@ -718,5 +727,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{DF0E3C8D-AE84-303B-6BB1-ED5FF377EC13}</FileHash>
+	<FileHash>{8CD619D4-47B3-BE6C-AB76-BE6247509628}</FileHash>
 </SoundBanksInfo>

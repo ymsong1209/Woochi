@@ -35,6 +35,7 @@
 						<ObjectRef Name="Tiger_Skill_2" ID="{483350AC-A6B2-4668-9378-49D3E25D5F22}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Swap" ID="{F2F860D1-4A87-4687-91AB-B27C494C600A}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Event_Negative" ID="{90639A4A-00F0-4700-B7E8-3B259D06D960}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Map_BGM" ID="{B718E211-137E-472F-A750-D078ACDB7626}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Small_Attack" ID="{584A8D6A-5928-477B-A4F3-D97CBEA9A747}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Revival" ID="{16C84898-6AFE-4798-9F07-BDDBFFDAB646}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Paper_Get" ID="{A7E70FAF-6D66-47E6-AE08-68979931CF32}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
