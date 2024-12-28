@@ -1222,6 +1222,55 @@
 						<ActiveSource Name="Dokebi_Attack_1" ID="{48B2F863-0E70-40C6-B393-8C79E7DE8DD5}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="Dokebi_Attack_2" ID="{3C812CBC-F559-4178-82B0-BC93C58E9ADE}" ShortID="69237940">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Dokebi_Attack_2" ID="{35205AF3-9EB1-400D-8DBD-555DC45374E4}">
+							<Language>SFX</Language>
+							<AudioFile>Dokebi_Attack_2.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="384357284"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Dokebi_Attack_2" ID="{35205AF3-9EB1-400D-8DBD-555DC45374E4}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Fight_BGM" ID="{4B829CD6-8643-45C9-8F38-D25F9BFE5744}" ShortID="430119606">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D6F31BE6-CFDA-4319-AA54-F291698AA2A5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Fight_BGM" ID="{56557E4F-549B-4E54-A25A-B96811D6A325}">
+							<PropertyList>
+								<Property Name="LoopBegin" Type="Real64" Value="4.52917638499859"/>
+								<Property Name="LoopEnd" Type="Real64" Value="81.4239399864376"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Fight_BGM.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="4229754"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Fight_BGM" ID="{56557E4F-549B-4E54-A25A-B96811D6A325}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

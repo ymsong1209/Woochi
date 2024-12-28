@@ -553,6 +553,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Dokebi_Attack_2" ID="{F4F1E13B-1117-404C-A162-50AED9B3EA58}">
+					<ChildrenList>
+						<Action Name="" ID="{2D5EFC99-A934-4DE9-BA15-07220918B91F}" ShortID="453281259">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dokebi_Attack_2" ID="{3C812CBC-F559-4178-82B0-BC93C58E9ADE}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Fight_BGM" ID="{8A0A26A4-E122-49DC-884B-97B92D134540}">
+					<ChildrenList>
+						<Action Name="" ID="{A4430859-8582-44C8-B2CE-3DA64E332C28}" ShortID="449232347">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Fight_BGM" ID="{4B829CD6-8643-45C9-8F38-D25F9BFE5744}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

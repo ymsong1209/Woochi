@@ -25,10 +25,14 @@
 				<GameParameter Id="2918011349" Name="MasterVolume"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{C32E4136-D94A-6B91-B861-1A4C398C5469}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{089149A3-F80A-C2B3-11A7-B40C61E4215A}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
+				<File Id="4229754" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Fight_BGM.wav</ShortName>
+					<CachePath>SFX/Fight_BGM_818F3B66.wem</CachePath>
+				</File>
 				<File Id="55501940" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Water_Skill.wav</ShortName>
 					<CachePath>SFX/Water_Skill_C5E17880.wem</CachePath>
@@ -88,6 +92,10 @@
 				<File Id="378946344" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Haetae_Join.wav</ShortName>
 					<CachePath>SFX/Haetae_Join_818F3B66.wem</CachePath>
+				</File>
+				<File Id="384357284" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dokebi_Attack_2.wav</ShortName>
+					<CachePath>SFX/Dokebi_Attack_2_818F3B66.wem</CachePath>
 				</File>
 				<File Id="430474485" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Dosul_ReinForce_Mouse.wav</ShortName>
@@ -246,6 +254,11 @@
 						<MediaRef Id="869618840"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="1261339927" Name="Dokebi_Attack_2">
+					<MediaRefs>
+						<MediaRef Id="384357284"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="1598930947" Name="Dosul_Click">
 					<MediaRefs>
 						<MediaRef Id="576676912"/>
@@ -304,6 +317,11 @@
 				<Event Id="1405224191" Name="Event_Positive">
 					<MediaRefs>
 						<MediaRef Id="81999487"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3570634942" Name="Fight_BGM">
+					<MediaRefs>
+						<MediaRef Id="4229754"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1037822516" Name="Fight_Start">
@@ -484,5 +502,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{A8D3BE22-F8C7-0AFA-86AC-8E37FF1BC204}</FileHash>
+	<FileHash>{54CB9A37-E672-97B6-3990-C2A4E43231D6}</FileHash>
 </SoundBanksInfo>

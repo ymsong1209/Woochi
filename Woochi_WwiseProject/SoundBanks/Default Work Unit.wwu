@@ -6,6 +6,7 @@
 				<SoundBank Name="Main" ID="{8CC95A92-3B55-4D1E-8E0A-7E1A1BA3C54A}">
 					<ObjectInclusionList>
 						<ObjectRef Name="Reward_Click" ID="{6A4175A9-0EF7-404A-8C8C-955A5ABF92B6}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Dokebi_Attack_2" ID="{F4F1E13B-1117-404C-A162-50AED9B3EA58}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Dosul_Paper_Click" ID="{59724778-5055-4050-933A-9CF64C9320FE}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Tiger_Join" ID="{4CD19FEE-1AF2-4055-9CE3-2266C8142A60}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Main_Title" ID="{DA9EB300-CB4D-40B1-8908-B005C2DC5B16}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
@@ -36,6 +37,7 @@
 						<ObjectRef Name="Dosul_Equip" ID="{BAD43225-6503-4955-A16B-F4DA58858AA1}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Reward_Mouse" ID="{BF31960F-DF54-497A-95F3-4EFA376D3807}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Power_Up" ID="{EE32F128-F684-49C6-9861-09128490DF53}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Fight_BGM" ID="{8A0A26A4-E122-49DC-884B-97B92D134540}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Dosul_Paper_Mouse" ID="{E3931A49-0BB3-4A76-AD42-263CFBCC1EDE}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Map_Mouse" ID="{7E910020-9FD2-4AFD-8267-0D715008B757}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Item_LevelUp" ID="{F9DE8A64-9751-4B69-8F8A-BFA643CD627F}" WorkUnitID="{E47B0D49-B012-4D44-BA57-17CC6FCA923A}" Origin="Manual" Filter="7"/>

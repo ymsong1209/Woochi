@@ -17,6 +17,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	1131978445	Event_Movement			\Default Work Unit\Event_Movement	
 	1210662472	Item_LevelUp			\Default Work Unit\Item_LevelUp	
 	1261339924	Dokebi_Attack_1			\Default Work Unit\Dokebi_Attack_1	
+	1261339927	Dokebi_Attack_2			\Default Work Unit\Dokebi_Attack_2	
 	1362914800	Water_Skill			\Default Work Unit\Water_Skill	
 	1396668031	Sound_Click			\Default Work Unit\Sound_Click	
 	1405224191	Event_Positive			\Default Work Unit\Event_Positive	
@@ -41,6 +42,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	3415311978	Reward_Arrow_Mouse			\Default Work Unit\Reward_Arrow_Mouse	
 	3423249410	Main_Title_Bgm			\Default Work Unit\Main_Title_Bgm	
 	3535104491	Dosul_Equip			\Default Work Unit\Dosul_Equip	
+	3570634942	Fight_BGM			\Default Work Unit\Fight_BGM	
 	3587852286	Movement_Click_Edit			\Default Work Unit\Movement_Click_Edit	
 	3680301402	Movement_Mouse			\Default Work Unit\Movement_Mouse	
 	3682660368	Dosul_ReinForce			\Default Work Unit\Dosul_ReinForce	
@@ -51,6 +53,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	4232491148	Reward_Mouse			\Default Work Unit\Reward_Mouse	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	4229754	Fight_BGM	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Fight_BGM_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Fight_BGM		16099292
 	55501940	Water_Skill	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Water_Skill_C5E17880.wem		\Actor-Mixer Hierarchy\Default Work Unit\Water_Skill		480096
 	62276585	Tree_Skill	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Tree_Skill_FBB40CCC.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tree_Skill		384096
 	81999487	Event_Positive	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Event_Positive_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Event_Positive		576096
@@ -66,6 +69,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	342798534	Movement_Mouse_Edit	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Movement_Mouse_Edit_9AA05703.wem		\Actor-Mixer Hierarchy\Default Work Unit\Movement_Mouse_Edit		19296
 	363300053	Dosul_Equip	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_Equip_FBB40CCC.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_Equip		384096
 	378946344	Haetae_Join	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Haetae_Join_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Haetae_Join		336096
+	384357284	Dokebi_Attack_2	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dokebi_Attack_2_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dokebi_Attack_2		456096
 	430474485	Dosul_ReinForce_Mouse	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_ReinForce_Mouse_92F0A803.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_ReinForce_Mouse		98016
 	447256061	Swap	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Swap_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Swap		192096
 	462118044	Dosul_Mouse	C:\Users\boom2\OneDrive\문서\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_Mouse_00225573.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_Mouse		96096
