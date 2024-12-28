@@ -27,7 +27,7 @@
 				<GameParameter Id="2918011349" Name="MasterVolume"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{4F735358-F649-4665-4E24-022E8BE66031}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{1F7B0BE6-24C8-214E-DBA2-21323F0D9BEB}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -297,7 +297,7 @@
 				</File>
 				<File Id="952769722" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Fighting_BGM.wav</ShortName>
-					<CachePath>SFX/Fighting_BGM_818F3B66.wem</CachePath>
+					<CachePath>SFX/Fighting_BGM_556CB244.wem</CachePath>
 				</File>
 				<File Id="958025226" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Dosul_Paper_Close.wav</ShortName>
@@ -451,7 +451,7 @@
 						<MediaRef Id="81999487"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3570634942" Name="Fight_BGM" DurationType="OneShot" DurationMin="81.44998" DurationMax="81.44998">
+				<Event Id="3570634942" Name="Fight_BGM" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="952769722"/>
 					</MediaRefs>
@@ -729,5 +729,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{7D1E8787-DA96-3D74-9707-53FCA1899D59}</FileHash>
+	<FileHash>{F2D5D5BF-3251-76B0-92F1-AB5EA3F0BEF9}</FileHash>
 </SoundBanksInfo>
