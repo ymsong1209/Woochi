@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8a3ff459c3db04db52ae01995cbe12, type: 3}
   m_Name: T1_MudFloor
   m_EditorClassIdentifier: 
-  skillIcon: {fileID: 21300000, guid: 4fc6e2ff0b389e7428765f5505ca2f45, type: 3}
+  skillIcon: {fileID: 21300000, guid: a5b51281cf788a5499f3b492a9500e77, type: 3}
   skillName: "\uAC10\uD0D5\uBC2D"
   animType: 3
   skillAvailableRadius: 0101010100000000

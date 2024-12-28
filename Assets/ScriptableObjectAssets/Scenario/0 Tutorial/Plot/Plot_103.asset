@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: affcc82dda958f3428ba9b330c115742, type: 3}
+  m_Name: Plot_103
+  m_EditorClassIdentifier: 
+  type: 0
+  illustrations:
+  - actor: {fileID: 11400000, guid: 62e1cfad19f94af4f907d7984a5e467b, type: 2}
+    direction: 1
+  blindImage: {fileID: 0}
+  speaker: {fileID: 11400000, guid: 62e1cfad19f94af4f907d7984a5e467b, type: 2}
+  text: "\u201C\uADF8\uB798, \uB0B4 \uC57D\uC870\uD558\uC9C0 \uC54A\uC558\uB354\uB0D0.
+    \uB108\uB294 \uC774\uC81C\uBD80\uD130 \uADC0\uAC11\uC0AC\uB2E4.\u201D"
+  plotEvent: 0
+  showBattle: 0
+  isTextUp: 0
+  showText: 1
+  isBlind: 0

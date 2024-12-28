@@ -15,6 +15,8 @@ public class WoochiActionList : MonoBehaviour
 
     private void ShowUI(BaseCharacter character, bool isTurn = false)
     {
+        buttonList.InitButtonList();
+
         if (character.IsAlly)
         {
             if (character.IsMainCharacter)

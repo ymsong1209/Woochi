@@ -42,4 +42,38 @@ public class T1_MetalWind : MainCharacterSkill
                     "단일 대상에게 4 + " + finalStat.GetValue(StatType.Defense) * 20 / 100 + "의 방어 기반 고정 피해를 주고\n" +
                     "40%의 확률로 우치에게 3턴동안 방어력 3만큼 부여";
     }
+    
+    public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "단일 대상에게 4 + 방어*10% 피해\n" +
+                                "40%의 확률로 우치에게\n" +
+                                "3턴동안 방어 3 부여";
+    }
+    
+    public override void SetEnhancedSkillScrollDescription(int curskillid, TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        int enhancedSkillID = GameManager.GetInstance.Library.GetEnhancedSkillID(curskillid);
+        MainCharacterSkill enhancedSkill = GameManager.GetInstance.Library.GetSkill(enhancedSkillID) as MainCharacterSkill;
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        MainCharacterSkillSO enhancedMainCharacterSkillSo = enhancedSkill.SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "단일 대상에게 4 + 방어*10% 피해\n" +
+                                "40%의 확률로 우치에게\n" +
+                                "3턴동안 방어 +3\n" + 
+                                "-\n" +
+                                "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
+                                "단일 대상에게 4 + 방어*<color=#FFFF00>20</color>% 피해\n" +
+                                "<color=#FFFF00>50</color>%의 확률로 우치에게\n" +
+                                "3턴동안 방어 <color=#FFFF00>5</color> 부여";
+    }
 }

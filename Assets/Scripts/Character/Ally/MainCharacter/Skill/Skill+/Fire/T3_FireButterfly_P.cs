@@ -14,7 +14,7 @@ public class T3_FireButterfly_P : MainCharacterSkill
         statDeBuff.BuffName = "갑옷 융해+";
         statDeBuff.BuffDurationTurns = 3;
         statDeBuff.ChanceToApplyBuff = 90;
-        statDeBuff.changeStat.SetValue(StatType.Defense, -5);
+        statDeBuff.changeStat.SetValue(StatType.Defense, -10);
 
         instantiatedBuffList.Add(statDebuffGameObject);
 
@@ -30,6 +30,18 @@ public class T3_FireButterfly_P : MainCharacterSkill
         text.text = "화접+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "랜덤한 대상 2명에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "90%의 확률로 2턴동안 방어 -5만큼 부여";
+                    "90%의 확률로 3턴동안 방어 -10만큼 부여";
+    }
+    
+    public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "랜덤한 대상 2명에게 " + SkillSO.BaseMultiplier + "%피해\n" +
+                                "90%의 확률로 3턴동안 방어 -10 부여";
     }
 }

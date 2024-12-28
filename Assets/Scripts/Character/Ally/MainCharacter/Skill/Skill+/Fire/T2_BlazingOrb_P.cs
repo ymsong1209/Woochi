@@ -28,4 +28,15 @@ public class T2_BlazingOrb_P : MainCharacterSkill
                     "랜덤한 대상 2명에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
                     "70%의 확률로 화상 디버프 부여";
     }
+    public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "랜덤한 대상 2명에게 " + SkillSO.BaseMultiplier + "%피해\n" +
+                                "70%의 확률로 화상 부여";
+    }
 }

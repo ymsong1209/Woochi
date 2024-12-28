@@ -7,7 +7,7 @@ public class MC_Heal : MainCharacterSkill
 {
     [SerializeField]  int healAmount;
     
-    protected override void ApplyStat(BaseCharacter _opponent, bool _isCrit)
+    protected override int ApplyStat(BaseCharacter _opponent, bool _isCrit)
     {
         Health opponentHealth = _opponent.Health;
         //최소, 최대 대미지 사이의 수치를 고름
@@ -15,6 +15,7 @@ public class MC_Heal : MainCharacterSkill
         int heal = healAmount;
         if (_isCrit) heal = heal * 2;
         opponentHealth.Heal((int)Mathf.Round(heal));
+        return heal;
     }
 
     public MC_Heal()

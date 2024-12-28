@@ -1,13 +1,9 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using TMPro;
 
 public class SkillScrollIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private GameObject selected;
-    
     [SerializeField] private SkillScroll skillScroll;
     
     [SerializeField] private CanvasGroup canvasGroup;
@@ -18,23 +14,15 @@ public class SkillScrollIcon : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void Start()
     {
-        button.onClick.AddListener(() => skillScroll.OnSkillSelected.Invoke(skillID));
+        button.onClick.AddListener(Click);
     }
 
     public void Init(int skillid)
     {
-        selected.SetActive(false);
-        SetSkillInfo(skillid);
+       SetSkillInfo(skillid);
     }
 
-    public void HighLight()
-    {
-        selected.SetActive(true);
-    }
-    public void RemoveHighLight()
-    {
-        selected.SetActive(false);
-    }
+
     public void SetSkillInfo(int id)
     {
         skillID = id;
@@ -61,14 +49,19 @@ public class SkillScrollIcon : MonoBehaviour, IPointerEnterHandler, IPointerExit
             
         }
     }
-    
+
+    private void Click()
+    {
+        skillScroll.OnSkillSelected.Invoke(skillID);
+        GameManager.GetInstance.soundManager.PlaySFX("Dosul_Click");
+    }
     
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
         if (skillID == 0 || canvasGroup.interactable == false) return;
-
-        skillScroll.OnIconHovered?.Invoke(skillID);
         
+        GameManager.GetInstance.soundManager.PlaySFX("Dosul_Mouse");
+        skillScroll.OnIconHovered?.Invoke(skillID);
     }
 
     public virtual void OnPointerExit(PointerEventData eventData)
@@ -82,12 +75,10 @@ public class SkillScrollIcon : MonoBehaviour, IPointerEnterHandler, IPointerExit
         get => skillScroll;
         set => skillScroll = value;
     }
-    public GameObject Selected
-    {
-        get => selected;
-    }
+
     public int SkillID
     {
         get => skillID;
     }
+
 }

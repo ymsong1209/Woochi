@@ -42,26 +42,10 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     private bool isSkillSelected = false;
     private bool isSkillExecuted = false;
     #endregion
-
-#if UNITY_EDITOR
-    // 테스트해보고 싶은 적 캐릭터들이 있을 때 사용
-    [Header("Test")]
-    [SerializeField] private bool isTest = false;
-    [SerializeField] private int[] testEnemy;
-#endif
-
+    
     private void Start()
     {
         InitializeAlly();
-        #region 테스트할 수 있게
-#if UNITY_EDITOR
-        if (isTest)
-        {
-            DataCloud.dontSave = true;
-            InitializeBattle(testEnemy);
-        }
-#endif
-        #endregion
     }
 
     public void InitializeAlly()
@@ -71,7 +55,14 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         allies.Initialize(allyList);
         allyCards.Initialize(allies);
-        
+
+        UIManager.GetInstance.sorceryGuageUI.Init();
+    }
+
+    public void AddAlly(GameObject prefab)
+    {
+        BaseCharacter ally = allies.CreateAlly(prefab);
+        allyCards.Add(ally);
     }
 
     public void InitializeBattle(int[] enemyIDs, int abnormalID = 100, bool isElite = false)
@@ -97,11 +88,89 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         result.isElite = isElite;
         
         ShowCharacterUI?.Invoke(allies.GetWoochi(), false);
+        GameManager.GetInstance.soundManager.PlaySFX("Fight_Start");
 
+        GenerateBattleStartLog();
+        
         #region PreRound 상태로 넘어감
         StopAllCoroutines();
         PreRound();
         #endregion
+    }
+    
+    private void GenerateBattleStartLog()
+    {
+        if(MapManager.GetInstance.CurrentMap == null)
+        {
+            return;
+        }
+        var currentPoint = MapManager.GetInstance.CurrentMap.path[MapManager.GetInstance.CurrentMap.path.Count - 1];
+        int currentFloor = currentPoint.y;
+        
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+        sb.AppendLine($"----Battle Start Log: Floor {currentFloor} ----");
+        sb.AppendLine($"Difficulty (Hardship): {result.hardShipGrade + 1}");
+        sb.AppendLine("-- Ally List --");
+
+        for (int row = 0; row < allies.formation.Length; row++)
+        {
+            BaseCharacter character = allies.formation[row];
+           
+            if (character != null)
+            {
+                AppendCharacterInfo(sb, character, true);
+                if(character.Size == 2)
+                {
+                    ++row;
+                }
+            }
+        }
+
+        sb.AppendLine("-- Enemy List --");
+
+        for (int row = 0; row < enemies.formation.Length; row++)
+        {
+            BaseCharacter character = enemies.formation[row];
+            if (character != null)
+            {
+                AppendCharacterInfo(sb, character, false);
+                if(character.Size == 2)
+                {
+                    ++row;
+                }
+            }
+        }
+
+        sb.AppendLine("------------------------");
+        
+        Logger.Log(sb.ToString(), "BattleStart", "Floor" + currentFloor);
+    }
+    
+    private void AppendCharacterInfo(System.Text.StringBuilder sb, BaseCharacter character, bool isAlly)
+    {
+        sb.AppendLine($"Row {character.RowOrder + 1} : {character.Name} (HP: {character.Health.CurHealth}/{character.Health.MaxHealth})");
+        sb.AppendLine("  Stats:");
+
+        foreach (var statValue in character.FinalStat.StatList)
+        {
+            sb.AppendLine($"    {statValue.type}: {statValue.value}");
+        }
+
+        sb.AppendLine($"  Level: {character.level.rank}, EXP: {character.level.exp}/{character.level.GetRequireExp()}");
+
+        // 아군의 경우 스킬 정보를 추가
+        if (isAlly && character is MainCharacter mainCharacter)
+        {
+            sb.AppendLine("  Skills:");
+            foreach (BaseSkill skill in mainCharacter.MainCharacterSkills)
+            {
+                if (skill != null)
+                {
+                    sb.AppendLine($"    - {skill.Name}");
+                }
+            }
+        }
     }
 
     private void InitializeAbnormal()
@@ -155,6 +224,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// </summary>
     void PreRound()
     {
+        Logger.BattleLog($"---------------{currentRound}라운드 시작---------------", "RoundStart");
         ++currentRound;
         turnManager.SetRound(currentRound);
         turnManager.CheckBuffs(BuffTiming.RoundStart);
@@ -175,6 +245,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         //캐릭터를 속도순으로 정렬하면서 모두 전투에 참여할 수 있도록 변경
         turnManager.ReorderCombatQueue(true);
+        turnManager.PrintCombatQueue();
         CharacterTurn();
     }
 
@@ -203,6 +274,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             {
                 continue;
             }
+            
+            Logger.BattleLog($"--------{currentCharacter.Name}({currentCharacter.RowOrder + 1}열)의 Turn--------", "TurnStart");
 
             // 자신의 차례가 됐을 때 버프 적용후, 살아있으면 턴 시작
             if (currentCharacter.TriggerBuff(BuffTiming.TurnStart))
@@ -267,7 +340,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 PostBattle();
                 yield break;
             }
-
+            
+            ScenarioManager.GetInstance.NextPlot(PlotEvent.Action);
+            
             yield return null;
         }
 
@@ -450,7 +525,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         UIManager.GetInstance.DeactivePopup();
 
         DisableColliderArrow();
-
+        if (!caster.IsAlly)
+        {
+            yield return UIManager.GetInstance.enemySkillNamePopup.ShowUI(currentSelectedSkill.Name);
+        }
+        
         currentSelectedSkill.ActivateSkill(receiver);
         InitSelect();
 
@@ -479,7 +558,6 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
                 {
                     isAnyDead = true;
                 }
-                
             }
         }
 
@@ -576,8 +654,48 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         allies.BattleEnd();
         enemies.BattleEnd();
+        
+        ScenarioManager.GetInstance.NextPlot(PlotEvent.BattleEnd);
+        if (DataCloud.playerData.scenarioID == 0) return;
+        
+        
         //승리 화면 뜬 후 보상 정산
-        resultUI.Show(result);
+        resultUI?.Show(result);
+        GenerateBattleEndLog();
+    }
+    
+    private void GenerateBattleEndLog()
+    {
+        if(MapManager.GetInstance.CurrentMap == null)
+        {
+            return;
+        }
+        var currentPoint = MapManager.GetInstance.CurrentMap.path[MapManager.GetInstance.CurrentMap.path.Count - 1];
+        int currentFloor = currentPoint.y;
+        
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+        sb.AppendLine($"----Battle End Log: Floor {currentFloor} ----");
+        sb.AppendLine($"Difficulty (Hardship): {result.hardShipGrade + 1}");
+        sb.AppendLine("-- Ally List --");
+
+        for (int row = 0; row < allies.formation.Length; row++)
+        {
+            BaseCharacter character = allies.formation[row];
+           
+            if (character != null)
+            {
+                AppendCharacterInfo(sb, character, true);
+                if(character.Size == 2)
+                {
+                    ++row;
+                }
+            }
+        }
+
+        sb.AppendLine("------------------------");
+        
+        Logger.BattleLog(sb.ToString(), "BattleEnd");
     }
 
     /// <summary>
@@ -602,7 +720,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     }
 
     /// <summary>
-    /// index 위치에 캐릭터가 있는지
+    /// index 위치에 살아있는 캐릭터가 있는지
     /// </summary>
     /// <param name="index"></param>
     /// <returns></returns>
@@ -610,11 +728,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         if(index < 4)
         {
-            return allies.formation[index] != null;
+            return (allies.formation[index] != null && allies.formation[index].IsDead == false);
         }
         else if(index < 8)
         {
-            return enemies.formation[index - 4] != null;
+            return (enemies.formation[index - 4] != null && enemies.formation[index-4].IsDead == false);
         }
 
         return false;
@@ -662,8 +780,21 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// 캐릭터의 위치를 이동시키는 함수
     /// </summary>
     /// <param name="move">얼마나 이동할 것인지, 음수면 뒤로 이동, 양수면 앞으로 이동</param>
-    public void MoveCharacter(BaseCharacter character, int move)
+    /// <param name="isForce">강제로 이동시킬 것인지, 아니면 버프 체크 후 이동</param>
+    public void MoveCharacter(BaseCharacter character, int move, bool isForce = true)
     {
+        if (!isForce && character.activeBuffs.Count > 0)
+        {
+            foreach (var buff in character.activeBuffs)
+            {
+                if (buff.BuffEffect == BuffEffect.MoveResist)
+                {
+                    Logger.BattleLog($"\"{character.Name}\"은 이동 저항 버프로 이동할 수 없습니다.", "이동 불가");
+                    return;
+                }
+            }
+        }
+        
         int from = GetCharacterIndex(character);
         int to = Mathf.Clamp(from - move, 0, 3);    // 이동하려는 위치
         if (character.IsAlly && GetCharacterFromIndex(to) && GetCharacterFromIndex(to) == character) //size가 2인 아군 캐릭터 고려
@@ -795,5 +926,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     public Formation Enemies => enemies;
 
     public BaseSkill CurrentSelectedSkill => currentSelectedSkill;
+    
+    public TurnManager TurnManager => turnManager;
     #endregion
 }

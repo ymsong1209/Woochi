@@ -23,7 +23,11 @@ public class PlayerData
 
     // Default
     public int gold = 0;
-
+    public int scenarioID = 0;      // 현재 진행중인 시나리오 ID
+    
+    // Game State
+    public bool isFirstPlay = true;
+    
     public PlayerData()
     {
         ResetData();
@@ -33,7 +37,7 @@ public class PlayerData
     {
         hasSaveData = false;
 
-        battleData = new BattleData();
+        battleData = new BattleData(isFirstPlay);
         currentMap = null;
 
         maxSorceryPoints = 200;
@@ -57,15 +61,14 @@ public class PlayerData
         //TODO : 도술 두루마리 세팅
         totalSkillIDs = new int[5, 5];
         totalSkillIDs[0, 0] = 1101;
-        totalSkillIDs[0, 1] = 1102;
         totalSkillIDs[1, 0] = 1201;
         totalSkillIDs[2, 0] = 1301;
         totalSkillIDs[3, 0] = 1401;
         totalSkillIDs[4, 0] = 1501;
 
-        realization = 0;
+        realization = 4;
         
-        gold = 10000;
+        gold = 0;
     }
 
     public CharacterInfoData LoadInfo(int ID)

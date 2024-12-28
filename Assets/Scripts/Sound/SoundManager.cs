@@ -1,8 +1,12 @@
+using System;
+using AK.Wwise;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
+    [SerializeField] private RTPC masterVolumeRTPC;
+    
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -17,6 +21,14 @@ public class SoundManager : MonoBehaviour
     {
         
     }
+
+    public void PlaySFX(string sfxName)
+    {
+        AkSoundEngine.PostEvent(sfxName, gameObject);
+    }
     
-    
+    public void SetVolume(float masterVolume, float bgmVolume)
+    {
+        masterVolumeRTPC.SetGlobalValue(masterVolume);
+    }
 }

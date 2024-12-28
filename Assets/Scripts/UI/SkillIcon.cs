@@ -20,7 +20,6 @@ public class SkillIcon : MonoBehaviour, ITooltipiable
     private void Start()
     {
         BattleManager.GetInstance.OnFocusStart += () => SetCanInteract(false);
-        BattleManager.GetInstance.OnSkillExecuteFinished += () => SetCanInteract(true);
     }
 
     private void SetCanInteract(bool value)
@@ -55,7 +54,7 @@ public class SkillIcon : MonoBehaviour, ITooltipiable
     {
         if (btn.interactable)
         {
-            AkSoundEngine.PostEvent("Movement_Mouse", gameObject);
+            GameManager.GetInstance.soundManager.PlaySFX("Movement_Mouse_Edit");
             OnShowTooltip?.Invoke(skill, transform);
         }
     }

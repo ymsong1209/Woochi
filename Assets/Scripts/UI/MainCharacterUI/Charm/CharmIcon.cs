@@ -13,12 +13,12 @@ public class CharmIcon : MonoBehaviour, ITooltipiable
 
     protected BaseCharm charm;
 
-    public void SetCharm(BaseCharm _charm, bool isEnable = true)
+    public void SetCharm(BaseCharm _charm, bool isEnable = true, Sprite sprite = null)
     {
         if (_charm != null)
         {
             gameObject.SetActive(isEnable);
-            icon.sprite = _charm.CharmIcon;
+            icon.sprite = sprite;
             charm = _charm;
         }
         //_charm null일 경우 빈 charm icon으로 초기화

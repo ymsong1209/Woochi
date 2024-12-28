@@ -19,6 +19,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     [SerializeField] private List<int> charmIDs = new List<int>(5);
     [SerializeField] private bool useDebugSkills = false;
     [SerializeField] private int[] skillIDs = new int[5];
+    [SerializeField] private bool useDebugLogs = false; //로그 기록 여부
 
     protected override void Awake()
     {
@@ -29,18 +30,21 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             LoadData();
     }
 
+    private void Start()
+    {
+        ApplySetting();
+    }
+
     public void SaveData()
     {
-        if (!DataCloud.dontSave)
-        {
-            DataCloud.playerData.hasSaveData = true;
-            DataCloud.SavePlayerData();
-        }
+        DataCloud.playerData.hasSaveData = true;
+        DataCloud.SavePlayerData();
     }
 
     public void LoadData()
     {
         DataCloud.LoadPlayerData();
+        DataCloud.LoadGameSetting();
         library.Initialize();
     }
 
@@ -64,6 +68,21 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         Application.Quit();
 #endif
     }
+    
+    public void GoTitle()
+    {
+        HelperUtilities.MoveScene(SceneType.Title);
+    }
+    
+    public void ApplySetting()
+    {
+        GameSettingData data = DataCloud.gameSettingData;
+        float masterVolume = data.masterVolume;
+        float bgmVolume = data.bgmVolume;
+        soundManager.SetVolume(masterVolume, bgmVolume);
+        Screen.fullScreen = data.isFullScreen;
+        Screen.SetResolution(data.resolution.x, data.resolution.y, data.isFullScreen);
+    }
 
     #region Getter Setter
     public Library Library => library;
@@ -71,6 +90,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     public List<int> Charms => charmIDs;
     public bool UseDebugSkills => useDebugSkills;
     public int[] Skills => skillIDs;
+    public bool UseDebugLogs => useDebugLogs;
 
     #endregion
 }

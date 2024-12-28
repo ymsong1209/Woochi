@@ -17,7 +17,8 @@ public class StunDeBuff : BaseBuff
     public override int ApplyTurnStartBuff()
     {
         --buffDurationTurns;
-        Debug.Log(buffOwner.name + "is Stunned. Stun leftover turn : " + buffDurationTurns.ToString());
+        Logger.BattleLog($"\"{buffOwner.Name}\"({buffOwner.RowOrder + 1}열)은 기절 상태입니다, 남은 기절 턴 : {buffDurationTurns}", "기절버프");
+        //Debug.Log(buffOwner.name + "is Stunned. Stun leftover turn : " + buffDurationTurns.ToString());
         //턴이 스킵되었으므로 -1 반환
         return -1;
     }

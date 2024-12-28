@@ -24,17 +24,16 @@ public class SkillScrollDescription : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI skillName; //스킬 이름
     [SerializeField] private TextMeshProUGUI skillDescription; //스킬 설명
-    [SerializeField] private TextMeshProUGUI enhancedSkillDescription; //강화된 스킬 설명
     
     [SerializeField] private SkillScrollEnhanceBtn enhanceButton; //강화 버튼
-    [SerializeField] private Button equipButton; //스킬 장착 버튼
+    [SerializeField] private SkillScrollEquipButton equipButton; //스킬 장착 버튼
   
 
     // Start is called before the first frame update
     void Start()
     {
         gameObject.SetActive(false);
-        equipButton.onClick.AddListener(()=>
+        equipButton.Btn.onClick.AddListener(()=>
         {
             Debug.Log("Equip Skill : " + curSkillID);
             BaseSkill skill = GameManager.GetInstance.Library.GetSkill(curSkillID);
@@ -62,6 +61,7 @@ public class SkillScrollDescription : MonoBehaviour
         {
             enhanceButton.gameObject.SetActive(true);
             enhanceButton.SetSkill(skillid);
+            enhanceButton.EnhanceButton.interactable = DataCloud.playerData.realization > 0;
         }
         else
         {
@@ -83,22 +83,22 @@ public class SkillScrollDescription : MonoBehaviour
         
         skillName.SetText("");
         skillDescription.SetText("");
-        enhancedSkillDescription.gameObject.SetActive(false);
-        enhanceCount.text = "";
+        enhanceCount.text = DataCloud.playerData.realization.ToString();
         
+        enhanceButton.Reset();
+        equipButton.Reset();
         enhanceButton.gameObject.SetActive(false);
         equipButton.gameObject.SetActive(false); }
 
     
     public void SetEnhancedSkillDescription()
     {
-        enhancedSkillDescription.gameObject.SetActive(true);
-        curSkill.SetEnhancedSkillScrollDescription(curSkillID,enhancedSkillDescription);
+        curSkill.SetEnhancedSkillScrollDescription(curSkillID, skillDescription);
     }
 
     public void ResetEnhancedSkillDescription()
     {
-        enhancedSkillDescription.gameObject.SetActive(false);
+        curSkill.SetSkillScrollDescription(skillDescription);
     }
 
 

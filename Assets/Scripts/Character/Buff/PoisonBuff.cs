@@ -13,6 +13,7 @@ public class PoisonBuff : BaseBuff
         int damage = 0;
         if (!isBuffAppliedThisTurn && skill.SkillSO.SkillType == SkillType.Attack && skill.SkillResult.IsHit(buffOwner))
         {
+            Logger.BattleLog($"\"{buffOwner.Name}\"({buffOwner.RowOrder + 1}열)에 중독 터짐, 중독 피해 : {poisonStack}", "중독버프");
             damage = poisonStack;
             buffOwner.Health.ApplyDamage(damage);
             poisonStack = 0;
@@ -45,8 +46,7 @@ public class PoisonBuff : BaseBuff
         }
         return 0;
     }
-
-    //화상 스택이 쌓일 경우 지속 시간이 3턴만큼 늘어난다.
+    
     public override void StackBuff(BaseBuff _buff)
     {
         PoisonBuff buff = _buff as PoisonBuff;
@@ -54,6 +54,8 @@ public class PoisonBuff : BaseBuff
         if (buff)
         {
             tempPoisonStack += buff.poisonStack;
+            Logger.BattleLog($"\"{buffOwner.Name}\"({buffOwner.RowOrder + 1}열)에 중독 중첩, 중독 피해 : {tempPoisonStack}",
+                "중독버프");
         }
     }
     

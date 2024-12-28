@@ -38,4 +38,17 @@ public class T3_DisasterRain_P : MainCharacterSkill
                     "1,2,3열의 적에게\n" +
                     "90%의 확률로 중독 3, 3턴동안 최소,최대스탯 -3만큼 부여";
     }
+    
+    public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "1,2,3열의 적에게 3턴동안\n " + 
+                                "최소, 최대스탯 -3만큼 부여\n" +
+                                "90%의 확률로 중독 3 부여";
+    }
 }

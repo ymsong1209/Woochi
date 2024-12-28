@@ -4,11 +4,6 @@ using TMPro;
 public class WoochiRecoveryUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI recoveryText;
-  
-    public void Initialize()
-    {
-        gameObject.SetActive(false);
-    }
     
     public void Activate()
     {

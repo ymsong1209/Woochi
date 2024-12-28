@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8a3ff459c3db04db52ae01995cbe12, type: 3}
   m_Name: T1_TreeBind
   m_EditorClassIdentifier: 
-  skillIcon: {fileID: 21300000, guid: 994a24198557c8441a03e68e2518cc7c, type: 3}
+  skillIcon: {fileID: 21300000, guid: 34812a5672e10124f8196ecc93591640, type: 3}
   skillName: "\uC62D\uC544\uB9E4\uAE30"
   animType: 3
   skillAvailableRadius: 0101010100000000

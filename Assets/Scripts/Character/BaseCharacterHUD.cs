@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -18,13 +19,12 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private void Awake()
     {
         owner = GetComponent<BaseCharacter>();
-        owner.onHealthChanged += UpdateHPBar;
         owner.onAttacked += SetDamageText;
     }
 
-    public void UpdateHPBar()
+    private void Start()
     {
-        hpBar.SetHPBar(owner.Health);
+        hpBar?.SetOwner(owner);
     }
 
     public void SetDamageText(AttackResult _result, int damage = 0, bool isCrit = false)
@@ -82,17 +82,13 @@ public class BaseCharacterHUD : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         // 캐릭터 마우스 올리면 표시
         ground.DOColor(Color.black, 0f);
-
-        if (owner.IsAlly)
-            return;
-
-        UIManager.GetInstance.SetEnemyToolTip(owner);
+        UIManager.GetInstance.SetCharacterToolTip(owner);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         ground.DOColor(Color.white, 0f);
-        UIManager.GetInstance.enemyTooltip.SetActive(false);
+        UIManager.GetInstance.characterTooltip.SetActive(false);
     }
     #endregion
 }

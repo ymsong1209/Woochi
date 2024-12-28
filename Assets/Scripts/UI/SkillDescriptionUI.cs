@@ -28,7 +28,6 @@ public class SkillDescriptionUI : MonoBehaviour
         gameObject.SetActive(true);
         _skill.SetSkillDescription(skillTxt);
         UpdatePanelSize();
-        
     }
     
     public void Activate(BaseCharm _charm)

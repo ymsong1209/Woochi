@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a5111dcf82c2834eac689fbff9861a6, type: 3}
   m_Name: Strange_Ghost_Ignore_Failed
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: b825d28bd1ff9f545b1e8eca8a46f215, type: 3}
   text: "\uADC0\uC2E0\uC758 \uBD09\uC778\uC774 \uAC11\uC790\uAE30 \uD480\uB824 \uACF5\uACA9\uD569\uB2C8\uB2E4!"
   effect: "\uBAA8\uB4E0 \uC544\uAD70 \uCD5C\uB300 \uCCB4\uB825 10%\uB9CC\uD07C \uAC10\uC18C"
   onlyWoochi: 0

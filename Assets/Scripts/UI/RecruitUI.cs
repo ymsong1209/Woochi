@@ -36,7 +36,7 @@ public class RecruitUI : MonoBehaviour
         }
         
         DataCloud.playerData.battleData.allies.Add(allyid);
-        BattleManager.GetInstance.InitializeAlly();
+        BattleManager.GetInstance.AddAlly(GameManager.GetInstance.Library.GetCharacter(allyid));
         BaseCharacter ally = GameManager.GetInstance.Library.GetCharacter(allyid).GetComponent<BaseCharacter>();
         recruitText.text = ally.Name + "이(가) 파티에 합류했습니다";
         gameObject.SetActive(true);

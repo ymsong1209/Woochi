@@ -14,17 +14,17 @@ public class AllyCard : MonoBehaviour, ITooltipiable
 
     public Action<AllyCard, UIEvent> OnUIEvent;
     private bool isDead = false;
+    
     private Vector3 originPos;
     
     private void Awake()
     {
-        SetActivate(false);
         originPos = transform.localPosition;
     }
 
     private void Start()
     {
-        front.onClick.AddListener(() => OnUIEvent?.Invoke(this, UIEvent.MouseClick));
+        front.onClick.AddListener(OnClick);
     }
 
     public void UpdateHP()
@@ -57,11 +57,11 @@ public class AllyCard : MonoBehaviour, ITooltipiable
     {
         if (cursorOn)
         {
-            transform.DOLocalMoveY(originPos.y + 5, 0.1f).SetEase(Ease.OutQuad);
+            transform.DOLocalMoveY(originPos.y + 5f, 0.5f).SetEase(Ease.OutCubic);
         }
         else
         {
-            transform.DOLocalMoveY(originPos.y, 0.1f).SetEase(Ease.OutQuad);
+            transform.DOLocalMoveY(originPos.y, 0.5f).SetEase(Ease.OutCubic);
         }
     }
     
@@ -78,6 +78,12 @@ public class AllyCard : MonoBehaviour, ITooltipiable
         isDead = true;
     }
 
+    private void OnClick()
+    {
+        ScenarioManager.GetInstance.NextPlot(PlotEvent.Click);
+        OnUIEvent?.Invoke(this, UIEvent.MouseClick);
+    }
+    
     #region Getter
     public BaseCharacter Ally => ally;
     #endregion

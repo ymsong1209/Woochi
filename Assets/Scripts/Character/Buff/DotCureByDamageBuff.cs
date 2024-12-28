@@ -9,6 +9,7 @@ public class DotCureByDamageBuff : BaseBuff
     [SerializeField] private float dotCureAmount;
     [SerializeField] private float minDamage;
     [SerializeField] private float maxDamage;
+    [SerializeField] private float baseDotCureAmount;
     
     public DotCureByDamageBuff()
     {
@@ -18,8 +19,8 @@ public class DotCureByDamageBuff : BaseBuff
     
     public override int ApplyTurnStartBuff()
     {
-        //maxDamage의 dorCureAmount%만큼 힐
-        float healAmount = maxDamage * dotCureAmount / 100f;
+        //maxDamage의 dotCureAmount%만큼 힐
+        float healAmount = baseDotCureAmount + maxDamage * dotCureAmount / 100f;
         buffOwner.Health.Heal((int)Mathf.Round(healAmount),false);
 
         --buffDurationTurns;
@@ -45,6 +46,7 @@ public class DotCureByDamageBuff : BaseBuff
         // 버프 지속시간은 갱신
         base.buffDurationTurns = damageBuff.BuffDurationTurns;
         // 힐량은 덮어씌움.
+        baseDotCureAmount = damageBuff.BaseDotCureAmount;
         dotCureAmount = damageBuff.DotCureAmount;
         minDamage = damageBuff.MinDamage;
         maxDamage = damageBuff.MaxDamage;
@@ -53,7 +55,7 @@ public class DotCureByDamageBuff : BaseBuff
     public override void SetBuffDescription(TextMeshProUGUI text)
     {
         string description = "";
-        description = BuffName + ": 매턴이 시작할 때마다 "+  (int)Mathf.Round(maxDamage * dotCureAmount / 100f)+"만큼 회복.";
+        description = BuffName + ": 매턴이 시작할 때마다 "+  (int)Mathf.Round(baseDotCureAmount + maxDamage * dotCureAmount / 100f)+"만큼 회복.";
         description += "\n";
         text.text += description;
         SetBuffColor(text);
@@ -68,6 +70,12 @@ public class DotCureByDamageBuff : BaseBuff
     }
     public float MinDamage => minDamage;
     public float MaxDamage => maxDamage;
+    
+    public float BaseDotCureAmount
+    {
+        get => baseDotCureAmount;
+        set => baseDotCureAmount = value;
+    }
 
     #endregion
 }

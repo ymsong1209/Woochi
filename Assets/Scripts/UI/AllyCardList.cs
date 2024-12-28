@@ -16,8 +16,6 @@ public class AllyCardList : MonoBehaviour
 
     private void Start()
     {
-        BattleManager.GetInstance.ShowCharacterUI += ShowUI;
-
         #region Event Register
         for(int i = 0; i < cards.Count; i++)
         {
@@ -48,13 +46,19 @@ public class AllyCardList : MonoBehaviour
             }
         }
     }
-    
-    public void ShowUI(BaseCharacter character, bool isEnable = true)
-    {
-        if (character.IsMainCharacter) gameObject.SetActive(false);
-        else gameObject.SetActive(true);
-    }
 
+    public void Add(BaseCharacter ally)
+    {
+        for(int i = 0; i < cards.Count; i++)
+        {
+            if(cards[i].Ally == null)
+            {
+                cards[i].Show(ally);
+                break;
+            }
+        }
+    }
+    
     public void SelectCard(AllyCard card)
     {
         if(!canSummon) return;

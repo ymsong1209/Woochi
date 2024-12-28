@@ -49,12 +49,13 @@ MonoBehaviour:
   buffEffect: 0
   buffType: 2
   chanceToApplyBuff: 0
-  changeDefense: 0
-  changeCrit: 0
-  changeAccuracy: 0
-  changeEvasion: 0
-  changeResist: 0
-  changeMinStat: 0
-  changeMaxStat: 0
-  changeSpeed: 0
+  buffName: "\uCD9C\uD608"
+  buffColor: {r: 0, g: 0, b: 0, a: 0}
+  buffBattleDurationTurns: 0
+  isRemoveWhenBattleEnd: 1
+  isRemovableDuringBattle: 1
+  isBuffAppliedThisTurn: 1
+  isAlwaysApplyBuff: 0
+  isSaveBuff: 0
+  isSpecialBuff: 0
   bleedPercent: 0

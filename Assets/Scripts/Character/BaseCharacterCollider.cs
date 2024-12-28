@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class BaseCharacterCollider : MonoBehaviour
+public class BaseCharacterCollider : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private BaseCharacter owner;
     [SerializeField] private Collider2D collider;
@@ -13,19 +14,6 @@ public class BaseCharacterCollider : MonoBehaviour
         canInteract = false;
         owner = GetComponent<BaseCharacter>();
         collider = GetComponent<Collider2D>();
-    }
-
-    void Update()
-    {
-        // Check if canInteract is true and the left mouse button is clicked
-        if (canInteract && Input.GetMouseButtonDown(0))
-        {
-            // 마우스 클릭시 스킬 발동
-            if (IsMouseOverCollider())
-            {
-                BattleManager.GetInstance.ExecuteSelectedSkill(owner);
-            }
-        }
     }
 
     private bool IsMouseOverCollider()
@@ -54,5 +42,16 @@ public class BaseCharacterCollider : MonoBehaviour
     {
         get => canInteract;
         set => canInteract = value;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (canInteract)
+        {
+            if (IsMouseOverCollider())
+            {
+                BattleManager.GetInstance.ExecuteSelectedSkill(owner);
+            }
+        }
     }
 }

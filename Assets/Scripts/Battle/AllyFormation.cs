@@ -25,14 +25,8 @@ public class AllyFormation : Formation
         // 플레이어가 소유한 소환수를 일단 모두 생성(우치 포함)
         foreach (GameObject prefab in prefabs)
         {
-            GameObject characterPrefab = Instantiate(prefab, transform);
-            BaseCharacter character = characterPrefab.GetComponent<BaseCharacter>();
-
-            character.IsAlly = isAllyFormation;
-            character.Initialize();
-            SetProperty(character, false, -1);
-            character.gameObject.SetActive(false);
-            allCharacter.Add(character);
+            CreateAlly(prefab);
+           
         }
 
         // 포메이션에 등록한 소환수를 포메이션에 등록
@@ -42,7 +36,7 @@ public class AllyFormation : Formation
             if (battleFormation[i] == -1) continue;
 
             BaseCharacter character = allCharacter.FirstOrDefault(c => c.ID == battleFormation[i]);
-            SetProperty(character, true, i);
+            SetProperty(character, true, totalSize);
             character.gameObject.SetActive(true);
             for(int s = 0; s < character.Size; s++)
             {
@@ -58,6 +52,21 @@ public class AllyFormation : Formation
         #endregion
 
         Positioning();
+    }
+
+    public BaseCharacter CreateAlly(GameObject prefab)
+    {
+        GameObject characterPrefab = Instantiate(prefab, transform);
+        BaseCharacter character = characterPrefab.GetComponent<BaseCharacter>();
+
+        character.IsAlly = isAllyFormation;
+        character.Initialize();
+        SetProperty(character, false, -1);
+        character.gameObject.SetActive(false);
+        allCharacter.Add(character);
+        DataCloud.playerData.battleData.AddAlly(character.ID);
+        
+        return character;
     }
 
     public void MoveNode()
@@ -106,6 +115,22 @@ public class AllyFormation : Formation
             return false;
         }
 
+        #region 소환수 효과음(임시)
+        if (_character.ID == 1)
+        {
+            GameManager.GetInstance.soundManager.PlaySFX("Fox_Join");
+        }
+        else if (_character.ID == 2)
+        {
+            GameManager.GetInstance.soundManager.PlaySFX("Tiger_Join");
+        }
+        else if (_character.ID == 3)
+        {            
+            GameManager.GetInstance.soundManager.PlaySFX("Haetae_Join");
+        }
+        
+        #endregion
+        
         int rowOrder = _index;
         for(int i = _index; i < formation.Length; i++)
         {
@@ -132,6 +157,7 @@ public class AllyFormation : Formation
 
     public void UnSummon(BaseCharacter _character)
     {
+        GameManager.GetInstance.soundManager.PlaySFX("Pet_Return");
         for(int i = 0; i < 4; i++)
         {
             if (formation[i] == _character)
@@ -143,7 +169,7 @@ public class AllyFormation : Formation
                 break;
             }
         }
-
+        
         totalSize -= _character.Size;
         SetProperty(_character, false, -1);
     }
@@ -253,12 +279,12 @@ public class AllyFormation : Formation
     {
         int[] newFormation = new int[4] { -1, -1, -1, -1 };
         List<BaseCharacter> characters = GetBattleCharacter();
-
+        
         for (int i = 0; i < characters.Count; i++)
         {
             newFormation[i] = characters[i].ID;
         }
-        DataCloud.playerData.battleData.formation = newFormation;
+        DataCloud.playerData.battleData.SetFormation(newFormation);
     }
 
     private void SetProperty(BaseCharacter _character, bool isSummoned, int rowOrder)

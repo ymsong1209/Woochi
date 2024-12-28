@@ -10,13 +10,12 @@ public class RewardPopup : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gradeTxt;
 
     [Header("Result")]
-    [SerializeField] private GameObject resultPopup;
+    [SerializeField] private Popup resultPopup;
     [SerializeField] private TextMeshProUGUI resultDescTxt;
 
     void Start()
     {
         infoPopup.SetActive(false);
-        resultPopup.SetActive(false);
     }
 
     public void ShowTooltip(RewardUI rewardUI)
@@ -58,7 +57,7 @@ public class RewardPopup : MonoBehaviour
     public void ShowResult(string text)
     {
         infoPopup.SetActive(false);
-        resultPopup.SetActive(true);
+        resultPopup.Show();
 
         resultDescTxt.text = text;
     }
@@ -70,7 +69,11 @@ public class RewardPopup : MonoBehaviour
 
     private void SetTransform(Transform transform)
     {
-        Vector3 pos = transform.position;
-        infoPopup.transform.position = pos + new Vector3(0, -175, 0);
+        RectTransform targetRt = transform as RectTransform;
+        RectTransform tooltipRt = infoPopup.transform as RectTransform;
+        
+        Vector2 offset = new Vector2(0, -targetRt.rect.height);
+        UIManager.GetInstance.SetTooltipPosition(targetRt, tooltipRt, offset);
     }
+    
 }

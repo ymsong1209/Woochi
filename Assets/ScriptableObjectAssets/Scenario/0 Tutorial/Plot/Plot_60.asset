@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d0dc161368291448e2dc7e442162b4, type: 3}
+  m_Name: Plot_60
+  m_EditorClassIdentifier: 
+  type: 1
+  illustrations:
+  - actor: {fileID: 11400000, guid: 06b7b9aed280e434d94285bfc4a5f360, type: 2}
+    direction: 1
+  blindImage: {fileID: 0}
+  speaker: {fileID: 0}
+  text: "\uAC11\uC790\uAE30 \uC6B0\uCE58\uB97C \uACF5\uACA9\uD55C\uB2E4!"
+  plotEvent: 0
+  showBattle: 0
+  isTextUp: 0
+  showText: 1
+  isBlind: 0
+  isSetCanTurn: 1
+  setCanTurns:
+  - ID: 0
+    canTurn: 1
+  stopTime: 1
+  isGuageEmpty: 0

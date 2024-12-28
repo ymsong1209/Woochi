@@ -28,4 +28,38 @@ public class T1_WildRose : MainCharacterSkill
                     "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
                     "50%의 확률로 단일 대상에게 중독 디버프 2만큼 부여";
     }
+    
+    public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "단일 대상에게 " + SkillSO.BaseMultiplier + "%피해\n" +
+                                "50%의 확률로 단일 대상에게\n" +
+                                "중독 2 부여";
+    }
+    
+    public override void SetEnhancedSkillScrollDescription(int curskillid, TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        int enhancedSkillID = GameManager.GetInstance.Library.GetEnhancedSkillID(curskillid);
+        MainCharacterSkill enhancedSkill = GameManager.GetInstance.Library.GetSkill(enhancedSkillID) as MainCharacterSkill;
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        MainCharacterSkillSO enhancedMainCharacterSkillSo = enhancedSkill.SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "단일 대상에게 " + SkillSO.BaseMultiplier + "%피해\n" +
+                                "50%의 확률로 단일 대상에게\n" +
+                                "중독 2 부여\n" + 
+                                "-\n" +
+                                "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
+                                "단일 대상에게 <color=#FFFF00>" + enhancedMainCharacterSkillSo.BaseMultiplier + "</color>% 피해\n" +
+                                "<color=#FFFF00>70</color>%의 확률로 단일 대상에게\n" +
+                                "중독 <color=#FFFF00>3</color> 부여";
+    }
 }

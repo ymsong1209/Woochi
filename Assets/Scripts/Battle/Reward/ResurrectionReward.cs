@@ -19,7 +19,7 @@ public class ResurrectionReward : Reward
         {
             int randomIndex = Random.Range(0, deadCharacters.Count);
             deadCharacters[randomIndex].Resurrect(true);
-            resultTxt = $"{deadCharacters[randomIndex].Name}ÀÌ(°¡) ºÎÈ°Çß½À´Ï´Ù";
+            resultTxt = $"{deadCharacters[randomIndex].Name}ì´(ê°€) ë¶€í™œí–ˆìŠµë‹ˆë‹¤";
 
             return true;
         }

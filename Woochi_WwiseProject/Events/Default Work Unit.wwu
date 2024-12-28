@@ -399,6 +399,138 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Dosul_Click" ID="{3294BD95-7D02-4F37-93E6-E105EFF8FA6A}">
+					<ChildrenList>
+						<Action Name="" ID="{2F1E7C95-D1BB-450E-9A9F-E7B3FAF8E733}" ShortID="386885930">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dosul_Click" ID="{34989A97-21EF-4C78-B538-0A8162CF10A7}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Dosul_Equip" ID="{BAD43225-6503-4955-A16B-F4DA58858AA1}">
+					<ChildrenList>
+						<Action Name="" ID="{77425BF9-7F9B-4028-AA8B-5F2233B2AEED}" ShortID="676545903">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dosul_Equip" ID="{0D5F690D-3C00-4E98-B263-20A8C9C594DF}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Dosul_Mouse" ID="{49D07E2C-284E-4C1D-BAD5-6DCF03031A6E}">
+					<ChildrenList>
+						<Action Name="" ID="{B03E78BE-0459-4D73-B22B-BEFC1A98FB44}" ShortID="394279200">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dosul_Mouse" ID="{E5283C6C-3F02-4B8C-9024-3AED475AE729}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Dosul_Paper_Click" ID="{59724778-5055-4050-933A-9CF64C9320FE}">
+					<ChildrenList>
+						<Action Name="" ID="{5DA04E3D-F711-4085-BFF4-9C3288E6DA73}" ShortID="51146802">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dosul_Paper_Click" ID="{DD9DCE15-85A9-45EF-96EC-A9E017837B6E}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Dosul_Paper_Mouse" ID="{E3931A49-0BB3-4A76-AD42-263CFBCC1EDE}">
+					<ChildrenList>
+						<Action Name="" ID="{0B2CF533-FDFE-4644-BB2B-C5FFBFE2F317}" ShortID="1070447156">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dosul_Paper_Mouse" ID="{C3F20230-2DDF-4A72-B0B2-C8B43CFF6C72}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Dosul_ReinForce" ID="{967F4001-9087-4604-ABDB-4AAEF06D3BD4}">
+					<ChildrenList>
+						<Action Name="" ID="{FE1B0CEA-AC48-4BDB-9A32-589FB550F678}" ShortID="951911078">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dosul_ReinForce" ID="{D013D05E-FB8C-429F-A183-4E8F3C25708F}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Dosul_ReinForce_Mouse" ID="{1B096701-968F-4B75-B604-36E9FB8BCA91}">
+					<ChildrenList>
+						<Action Name="" ID="{5246E380-32C0-403D-9515-95822C90D863}" ShortID="508129980">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dosul_ReinForce_Mouse" ID="{6A8F450B-FD29-432F-B8E8-FD0E25534B98}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Item_Flow" ID="{8F9AE935-45A5-4597-988D-8DAA2811901F}">
+					<ChildrenList>
+						<Action Name="" ID="{49AE8857-7C8B-4097-B3A2-C181F5ED1463}" ShortID="781191941">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Item_Flow" ID="{FF134FF7-76FD-45C5-8F51-0B396C99A149}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Item_LevelUp" ID="{F9DE8A64-9751-4B69-8F8A-BFA643CD627F}">
+					<ChildrenList>
+						<Action Name="" ID="{AE8C9813-28C8-4A32-B260-8516FFC969EC}" ShortID="890592417">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Item_LevelUp" ID="{DD64F961-A9CE-420B-A18D-4CFD5AEBA478}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Sound_Click" ID="{FBB4F980-C314-4B76-9DFA-D15280320321}">
+					<ChildrenList>
+						<Action Name="" ID="{32B3026E-457B-48E1-9E10-EF4D00AA9DBD}" ShortID="202149592">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Sound_Click" ID="{FF21C2DA-A868-4B9C-B8BC-488CA325F55D}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Main_Title_Bgm" ID="{79B3AAF6-DD5B-4FB1-B3C7-96C7F7729757}">
+					<ChildrenList>
+						<Action Name="" ID="{E95EFF3E-ACA6-4192-B764-B43F00224079}" ShortID="488067195">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Main_Title_Bgm" ID="{0557F1AF-4EAF-4E86-8762-7D25222B3C9E}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Preference_Mouse" ID="{CE0D947D-E5C5-4432-AB53-762DA1248833}">
+					<ChildrenList>
+						<Action Name="" ID="{47979FA6-4246-41EA-89AB-D1AD5E8CC441}" ShortID="683518201">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Preference_Mouse" ID="{D07AEA36-B810-450F-B3C6-E649B2D3700D}" WorkUnitID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

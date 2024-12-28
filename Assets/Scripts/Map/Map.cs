@@ -8,6 +8,7 @@ public class Map
     public List<Node> nodes;        // 맵의 노드들
     public List<Vector2Int> path;   // 플레이어가 이동한 경로
     public string configName;       // 이 Map을 만들 때 사용한 config의 이름 => Json 저장 위해 string
+    public string createdTime;      // 맵이 언제 생성되었는지 -> Logger와 연동하기 위해
 
     [JsonConstructor]
     public Map(string configName, List<Node> nodes, List<Vector2Int> path)
@@ -15,6 +16,7 @@ public class Map
         this.configName = configName;
         this.nodes = nodes;
         this.path = path;
+        createdTime = System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
     }
 
     public Map(Map _map)
@@ -22,6 +24,7 @@ public class Map
         configName = _map.configName;
         nodes = new List<Node>(_map.nodes);
         path = new List<Vector2Int>(_map.path);
+        createdTime = _map.createdTime;
     }
 
     public Node GetBossNode()

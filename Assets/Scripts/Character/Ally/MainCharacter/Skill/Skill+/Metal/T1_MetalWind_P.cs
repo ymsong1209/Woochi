@@ -41,4 +41,17 @@ public class T1_MetalWind_P : MainCharacterSkill
                     "단일 대상에게 4 + " + finalStat.GetValue(StatType.Defense) * 20 / 100 + "의 방어 기반 고정 피해를 주고\n" +
                     "50%의 확률로 우치에게 3턴동안 방어력 5만큼 부여";
     }
+    
+    public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "단일 대상에게 4 + 방어*20% 피해\n" +
+                                "50%의 확률로 우치에게\n" +
+                                "3턴동안 방어 5 부여";
+    }
 }

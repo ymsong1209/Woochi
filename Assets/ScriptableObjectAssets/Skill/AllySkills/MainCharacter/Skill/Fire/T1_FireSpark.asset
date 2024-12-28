@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8a3ff459c3db04db52ae01995cbe12, type: 3}
   m_Name: T1_FireSpark
   m_EditorClassIdentifier: 
-  skillIcon: {fileID: 0}
+  skillIcon: {fileID: 21300000, guid: 8e201cfddf9adf14f92495f74ec7ff53, type: 3}
   skillName: "\uBD88\uD2F0"
   animType: 3
   skillAvailableRadius: 0101010100000000
@@ -21,9 +21,11 @@ MonoBehaviour:
   skillTargetType: 0
   skillElement: 1
   skillTargetCount: 1
+  skillRandomCount: 0
   bufflist:
   - {fileID: 2569674945298275565, guid: 6c7ad47b10204044b84e8f76de3989c9, type: 3}
-  baseMultiplier: 40
+  baseMultiplier: 50
   baseSkillAccuracy: 70
+  skillSound: 
   requiredSorceryPoints: 50
   rarity: 1

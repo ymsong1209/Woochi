@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8a3ff459c3db04db52ae01995cbe12, type: 3}
   m_Name: T1_WildRose+
   m_EditorClassIdentifier: 
-  skillIcon: {fileID: 0}
+  skillIcon: {fileID: 21300000, guid: 770467c8c7a392a47adb973cded469e0, type: 3}
   skillName: "\uCC14\uB808\uAF43+"
   animType: 3
   skillAvailableRadius: 0101010100000000
@@ -21,6 +21,7 @@ MonoBehaviour:
   skillTargetType: 0
   skillElement: 3
   skillTargetCount: 1
+  skillRandomCount: 0
   bufflist:
   - {fileID: 2569674945298275565, guid: 36461d30c5282b14f984655313365a61, type: 3}
   baseMultiplier: 50

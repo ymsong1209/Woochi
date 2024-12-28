@@ -11,6 +11,7 @@ public class CleanseSingleDebuffCharm : BaseCharm
         {
             if(buff.BuffType == BuffType.Negative && buff.IsRemovableDuringBattle)
             {
+                Logger.BattleLog($"\"{opponent.Name}\"({opponent.RowOrder + 1}열)의 \"{buff.BuffName}\" 제거", "정화 부적");
                 opponent.RemoveBuff(buff);
                 break;
             }

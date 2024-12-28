@@ -15,6 +15,8 @@ public class BleedDeBuff : BaseBuff
     [SerializeField,ReadOnly] private int bleedPercent = 0;
     public override int ApplyTurnStartBuff()
     {
+        Logger.BattleLog($"\"{buffOwner.Name}\"({buffOwner.RowOrder + 1}열)은 출혈 상태입니다\n"+
+                         $"출혈 중첩 : {bleedPercent}, 남은 횟수 : {buffDurationTurns}", "출혈버프");
         //전체체력에서 bleedApply%만큼 피를 깎는다.
         float bleedDamage = buffOwner.Health.MaxHealth * bleedPercent / 100f;
         buffOwner.Health.ApplyDamage((int)Mathf.Round(bleedDamage));
@@ -31,6 +33,8 @@ public class BleedDeBuff : BaseBuff
         base.buffBattleDurationTurns += _buff.BuffBattleDurationTurns;
         BleedDeBuff bleedDeBuff = _buff as BleedDeBuff;
         bleedPercent += bleedDeBuff.BleedPercent;
+        Logger.BattleLog($"\"{buffOwner.Name}\"({buffOwner.RowOrder + 1}열)에게 출혈 중첩\n"+
+                         $"출혈 중첩 : {bleedPercent}, 남은 횟수 : {buffDurationTurns}", "출혈버프");
     }
 
     public override void SetBuffDescription(TextMeshProUGUI text)

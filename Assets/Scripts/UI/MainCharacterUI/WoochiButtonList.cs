@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WoochiButtonList : MonoBehaviour
 {
     [SerializeField] private List<WoochiActionButton> buttonList;
-    private WoochiActionButton selectedBtn;     // º±≈√«— πˆ∆∞¿Ã π´æ˘¿Œ¡ˆ
+    [SerializeField] private ToggleGroup toggleGroup;
+    private WoochiActionButton selectedBtn;     // ÏÑ†ÌÉùÌïú Î≤ÑÌäºÏù¥ Î¨¥ÏóáÏù∏ÏßÄ
 
     public void Activate(bool isEnable)
     {
@@ -15,53 +17,38 @@ public class WoochiButtonList : MonoBehaviour
     public void Deactivate()
     {
         gameObject.SetActive(false);
-        DeactivateAllButtons();
     }
     
     public void InitializeAllButtons(bool isEnable)
     {
-        selectedBtn = null;
-
         foreach (var button in buttonList)
         {
             button.Initialize(isEnable);
         }
     }
-    
-    public void DeactivateAllButtons()
-    {
-        selectedBtn = null;
 
-        foreach (var button in buttonList)
+    public void SelectButton(WoochiActionButton button)
+    {
+        toggleGroup.allowSwitchOff = false;
+        
+        if (button.IsOn)
+        {
+            if (button == selectedBtn) return;
+            button.Activate();
+            selectedBtn = button;
+
+            ScenarioManager.GetInstance.NextPlot(PlotEvent.Click);
+        }
+        else
         {
             button.Deactivate();
         }
     }
-
-    public void SelectButton(WoochiActionButton button)
-    {
-        if (selectedBtn == button) return;
-        selectedBtn = button;
-
-        // øÏƒ° «‡µø ¡ﬂ ¥Ÿ∏• πˆ∆∞ ¥©∏£∏È ƒ›∂Û¿Ã¥ı, »≠ªÏ«• ∫Ò»∞º∫»≠
-        BattleManager.GetInstance.RemoveSelectedSkill();
-        BattleManager.GetInstance.DisableColliderArrow();
-
-        ActivateButton(button);
-    }
     
-    public void ActivateButton(WoochiActionButton button)
+    public void InitButtonList()
     {
-        for (int i = 0; i < buttonList.Count; i++)
-        {
-            if (buttonList[i] == button)
-            {
-                buttonList[i].Activate();
-            }
-            else
-            {
-                buttonList[i].Deactivate();
-            }
-        }
+        toggleGroup.allowSwitchOff = true;
+        toggleGroup.SetAllTogglesOff();
+        selectedBtn = null;
     }
 }

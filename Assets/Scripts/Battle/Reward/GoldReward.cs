@@ -8,6 +8,7 @@ public class GoldReward : Reward
     public override bool ApplyReward()
     {
         resultTxt = $"{rewardGold} 흐름을 획득했습니다";
+        GameManager.GetInstance.soundManager.PlaySFX("Item_Flow");
         HelperUtilities.AddGold(rewardGold);
         return true;
     }

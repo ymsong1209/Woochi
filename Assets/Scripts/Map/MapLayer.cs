@@ -10,7 +10,7 @@ public class MapLayer
     [OneLineWithHeader] public FloatMinMax distanceFromPreviousLayer;   // 이전 Layer와 얼마나 떨어져 있는지
 
     [Tooltip("Layer에 있는 노드 간 기본적으로 떨어져 있는 거리")]
-    public float nodesApartDistance = 3f;
+    public float nodesApartDistance = 2.5f;
 
     [Tooltip("이 Layer에 랜덤 노드 생성을 허용할 지 말지")]
     public bool isRandomNode = true;

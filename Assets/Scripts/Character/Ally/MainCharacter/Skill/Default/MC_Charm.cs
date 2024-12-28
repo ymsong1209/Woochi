@@ -13,6 +13,7 @@ public class MC_Charm : BaseSkill
        ActivateCharm(opponent);
        PlayAnimation(opponent);
        RemoveCharm();
+       GameManager.GetInstance.soundManager.PlaySFX("Paper_Use");
    }
 
    private void ActivateCharm(BaseCharacter opponent)
@@ -30,6 +31,8 @@ public class MC_Charm : BaseSkill
            Debug.LogError("No Opponent");
            return;
        }
+       Logger.BattleLog($"\"{SkillOwner.Name}\"({SkillOwner.RowOrder + 1}열)이(가) \"{opponent.Name}\"({opponent.RowOrder + 1}열)에게 \"{charm.CharmName}\"시전", "우치 스킬[부적]");
+       
        SkillRadius = charm.CharmRadius;
        if (charm.CharmTargetType == CharmTargetType.Singular)
        {

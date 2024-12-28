@@ -52,6 +52,7 @@ MonoBehaviour:
   charmIDs: 070000000000000000000000
   useDebugSkills: 0
   skillIDs: 0000000000000000000000000000000000000000
+  useDebugLogs: 0
 --- !u!1 &8992082059508905557
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,6 +63,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8119519104073334293}
   - component: {fileID: 538959037938206855}
+  - component: {fileID: 2087857147857400854}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -96,3 +98,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc54fc45b3ff3749ab67f27af5b56ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterVolumeRTPC:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 703946b7e3ddeda48aafa33fc20bd32e, type: 2}
+--- !u!114 &2087857147857400854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8992082059508905557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0d4186272d07fc4494b37b1456bc7e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 1
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1

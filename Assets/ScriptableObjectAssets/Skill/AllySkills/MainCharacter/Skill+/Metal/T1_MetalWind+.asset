@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8a3ff459c3db04db52ae01995cbe12, type: 3}
   m_Name: T1_MetalWind+
   m_EditorClassIdentifier: 
-  skillIcon: {fileID: 0}
+  skillIcon: {fileID: 21300000, guid: 328de4f8ffb0d3843911ef69c1fe41a5, type: 3}
   skillName: "\uC1E0\uBC14\uB78C+"
   animType: 3
   skillAvailableRadius: 0101010100000000
@@ -21,6 +21,7 @@ MonoBehaviour:
   skillTargetType: 0
   skillElement: 4
   skillTargetCount: 1
+  skillRandomCount: 0
   bufflist: []
   baseMultiplier: 0
   baseSkillAccuracy: 100

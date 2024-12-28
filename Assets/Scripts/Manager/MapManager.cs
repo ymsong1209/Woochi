@@ -7,12 +7,24 @@ public class MapManager : SingletonMonobehaviour<MapManager>
     public MapView view;
 
     public Map CurrentMap { get; private set; }
-
+    
     private void Start()
+    {
+        if (DataCloud.playerData.isFirstPlay)
+        {
+            DataCloud.playerData.ResetData();
+            ScenarioManager.GetInstance.Play(0);
+            return;
+        }
+        
+        LoadMap();
+    }
+
+    public void LoadMap()
     {
         if(DataCloud.playerData.currentMap != null)
         {
-            CurrentMap = DataCloud.playerData.currentMap;
+            CurrentMap = new Map(DataCloud.playerData.currentMap);
             config = mapConfigs.FirstOrDefault(c => c.name.Equals(CurrentMap.configName));
             view.ShowMap(CurrentMap);
 
@@ -34,13 +46,65 @@ public class MapManager : SingletonMonobehaviour<MapManager>
         Map map = MapGenerator.GetMap(config);
         CurrentMap = map;
         view.ShowMap(map);
+        
+        
+        string mapLog = GenerateNewMapLog(map);
+        Logger.Log(mapLog, "MapGeneration", "GeneratedMap");
     }
+    
+    private string GenerateNewMapLog(Map map)
+    {
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+        sb.AppendLine("----Generated Map----");
+        sb.AppendLine($"MapConfig: {config.name}");
+
+        // 각 계층별로 역순으로 처리 (10층 -> 0층)
+        var groupedNodes = map.nodes.GroupBy(n => n.point.y).OrderByDescending(g => g.Key).ToList();
+
+        for (int i = 0; i < groupedNodes.Count; i++)
+        {
+            var currentLayer = groupedNodes[i]; // 현재 계층
+            sb.Append($"{currentLayer.Key}\t");
+            foreach (var node in currentLayer)
+            {
+                sb.Append($"{node.nodeType} ");
+            }
+            sb.AppendLine();
+
+            // 다음 계층(아래 층)과 연결 정보 표시
+            if (i < groupedNodes.Count - 1)
+            {
+                var lowerLayer = groupedNodes[i + 1];
+                foreach (var node in lowerLayer)
+                {
+                    foreach (var target in node.outgoing)
+                    {
+                        Node targetNode = map.GetNode(target);
+                        if (targetNode != null && targetNode.point.y == currentLayer.Key) // 현재 층과 연결된 경우만 출력
+                        {
+                            sb.AppendLine($"    ({node.point.x}) {node.nodeType} -> ({target.x}) {targetNode.nodeType}");
+                        }
+                    }
+                }
+            }
+        }
+
+        sb.AppendLine("-------------------------");
+        return sb.ToString();
+    }
+
+
 
     public void SelectNode(MapNode _mapNode)
     {
         AllyFormation allies = BattleManager.GetInstance.Allies;
         allies.MoveNode();
-
+        
+        int floor = _mapNode.Node.point.y;
+        NodeType nodeType = _mapNode.Node.nodeType;
+        Logger.Log($"플레이어가 {floor}층에서 ({_mapNode.Node.point.x}) {nodeType} 노드를 선택했습니다.", "NodeSelection","GeneratedMap");
+        
         if (_mapNode.Node.nodeType == NodeType.Strange)
         {
             StrangeManager.GetInstance.InitializeStrange(_mapNode.Node.strangeID);
@@ -51,6 +115,7 @@ public class MapManager : SingletonMonobehaviour<MapManager>
         }
         view.ActiveMap(false);
     }
+    
 
     public void CompleteNode()
     {
@@ -61,8 +126,8 @@ public class MapManager : SingletonMonobehaviour<MapManager>
     public void SaveMap()
     {
         if (CurrentMap == null) return;
-
-        DataCloud.playerData.currentMap = CurrentMap;
+        
+        DataCloud.playerData.currentMap = new Map(CurrentMap);
         GameManager.GetInstance.SaveData();
     }
 }

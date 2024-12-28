@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f970e1487b951641bb3562062edf1db, type: 3}
   m_Name: Haetae_MoveDebuff
   m_EditorClassIdentifier: 
-  skillIcon: {fileID: 21300000, guid: 82de216d0b0fe2747bc782afcbf50dc3, type: 3}
+  skillIcon: {fileID: 21300000, guid: 6c4aa28ec6a8e824ca9fef8e2d52e1d2, type: 3}
   skillName: "\uC218\uC2E0\uC758 \uC728\uBC95"
   animType: 5
   skillAvailableRadius: 0101010100000000
@@ -21,6 +21,8 @@ MonoBehaviour:
   skillTargetType: 0
   skillElement: 0
   skillTargetCount: 1
+  skillRandomCount: 0
   bufflist: []
   baseMultiplier: 0
   baseSkillAccuracy: 97
+  skillSound: 

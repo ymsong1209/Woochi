@@ -88,10 +88,12 @@ public class SkillSelectionUI : MonoBehaviour
         selectedIcon = _skillIcon;
         selectedIcon.SetMark(true);
         
+        ScenarioManager.GetInstance.NextPlot(PlotEvent.Click);
+        
         // BattleManager의 SkillSelected 호출
         // SkillTriggerSelector의 Activate 메서드 호출
         onSkillSelected.Invoke(selectedIcon.Skill);
-        AkSoundEngine.PostEvent("Movement_Click", gameObject);
+        GameManager.GetInstance.soundManager.PlaySFX("Movement_Click_Edit");
     }
 
     /// <summary>
@@ -109,10 +111,13 @@ public class SkillSelectionUI : MonoBehaviour
         }
     }
     
-    public void SetSkillTooltip(BaseSkill skill, Transform transform)
+    public void SetSkillTooltip(BaseSkill skill, Transform tr)
     {
+        RectTransform targetRt = tr as RectTransform;
+        RectTransform tooltipRt = skillDescriptionUI.transform as RectTransform;
+        Vector2 offset = new Vector2(0, targetRt.rect.height * 1.5f);
+        UIManager.GetInstance.SetTooltipPosition(targetRt, tooltipRt, offset);
         skillDescriptionUI.Activate(skill);
-        skillDescriptionUI.transform.position = transform.position + new Vector3(0, 100, 0);
         buffDescriptionUI.Activate(skill);
         buffDescriptionUI.SkillDescriptionUI = skillDescriptionUI;
     }

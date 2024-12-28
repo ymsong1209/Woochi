@@ -88,6 +88,9 @@ public enum BuffEffect
     IncreaseCritOvertime,       //족자구 회피 증가 버프
     Troll,
     Poison,
+    Fear,                       //최종 대미지 감소
+    StunResist,
+    MoveResist,                 //강제이동 저항
     Special,
     END
 }
@@ -165,6 +168,7 @@ public enum SceneType
     Title,
     Battle,
     Loading,
+    Tutorial,
     END
 }
 
@@ -205,5 +209,22 @@ public enum UIEvent
     MouseEnter,
     MouseExit,
     MouseClick,
+    END
+}
+
+public enum ScenarioType
+{
+    Dialogue,
+    Narration,
+    Guide,
+    END
+}
+
+public enum PlotEvent
+{
+    None,       // 이벤트 없음
+    Click,      // 클릭 이벤트
+    Action,     // 행동 이벤트
+    BattleEnd,  // 전투 종료 이벤트
     END
 }

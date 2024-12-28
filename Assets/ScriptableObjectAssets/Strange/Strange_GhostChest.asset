@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff990185a3556ba4ca3a1b76ab4cb6de, type: 3}
   m_Name: Strange_GhostChest
   m_EditorClassIdentifier: 
-  situationSprite: {fileID: 0}
+  situationSprite: {fileID: 21300000, guid: 19b108db71c4b1142af21710fb0d4e20, type: 3}
   situationText: "\uB545\uC5D0 \uBB3B\uD600 \uC788\uB358 \uBD09\uADC0\uD568\uC744
     \uBC1C\uACAC\uD588\uB2E4\n\uD568\uC774 \uBBF8\uCE5C \uB4EF\uC774 \uB5A8\uB9AC\uACE0
     \uC788\uB2E4!"

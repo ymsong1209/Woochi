@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8a3ff459c3db04db52ae01995cbe12, type: 3}
   m_Name: T1_MetalArmor
   m_EditorClassIdentifier: 
-  skillIcon: {fileID: 21300000, guid: b1cc600243b7fbd4ca96aa00f54152a2, type: 3}
+  skillIcon: {fileID: 21300000, guid: b71bbea431559f74193f5b2683000372, type: 3}
   skillName: "\uCCA0\uAC11"
   animType: 3
   skillAvailableRadius: 0101010100000000

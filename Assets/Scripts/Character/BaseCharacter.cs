@@ -48,7 +48,7 @@ public class BaseCharacter : MonoBehaviour
     #region BATTLE STATS
 
     [SerializeField, ReadOnly]
-    private bool isDead;
+    protected bool isDead;
 
     /// <summary>
     /// 나에게 적용된 버프
@@ -65,11 +65,11 @@ public class BaseCharacter : MonoBehaviour
 
     [SerializeField, ReadOnly] protected bool isAlly;
     protected bool isTurnUsed = false; //한 라운드 내에서 자신의 턴을 사용했을 경우
+    [HideInInspector] public bool canUseTurn = true;
     protected bool isIdle = true;
 
     public bool isDummy = false; // 우치 소환전용 더미 캐릭터인지
     [HideInInspector] public bool isSummoned = false; // 캐릭터가 소환되었는지
-
     // 캐릭터가 앞 열에서부터 몇 번째 순서인지
     [SerializeField, ReadOnly] private int rowOrder;
 
@@ -84,6 +84,13 @@ public class BaseCharacter : MonoBehaviour
     public Action<AttackResult, int, bool> onAttacked;
     public Action onLevelUp;
 
+    private void SetCanTurn(int _ID, bool _canUseTurn)
+    {
+        if (ID == _ID)
+        {
+            canUseTurn = _canUseTurn;
+        }
+    }
     #endregion
 
     private void Awake()
@@ -94,6 +101,7 @@ public class BaseCharacter : MonoBehaviour
         buffList = GetComponentInChildren<BuffList>();
 
         onLevelUp += LevelUp;
+        EventManager.GetInstance.onCanUseTurn += SetCanTurn;
     }
 
     public virtual void CheckSkillsOnTurnStart()
@@ -274,6 +282,7 @@ public class BaseCharacter : MonoBehaviour
         {
             // 기존 버프와 중첩
             activeBuff.StackBuff(buff);
+            Destroy(buff.gameObject);
             return activeBuff;
         }
 
@@ -311,11 +320,12 @@ public class BaseCharacter : MonoBehaviour
         }
     }
 
-    private void HandleDeath()
+    protected virtual void HandleDeath()
     {
         RemoveAllBuff();
         anim.PlayDeadAnimation();
         isDead = true;
+        Logger.BattleLog($"{Name}이(가) 사망했습니다.", "사망 처리");
     }
 
     public void RemoveAllBuff(bool battleEnd = false)
@@ -339,10 +349,6 @@ public class BaseCharacter : MonoBehaviour
             {
                 activeBuffs.RemoveAt(i);
                 buff.RemoveBuff();
-            }
-            else
-            {
-                buff.BuffDurationTurns--;
             }
         }
     }
@@ -403,7 +409,7 @@ public class BaseCharacter : MonoBehaviour
 
 
     #region 기본 스탯 초기화, 레벨업
-    public void InitializeStatSO() => characterStat.Initialize();
+    public void InitializeStatSO() => characterStat?.Initialize();
 
     /// <summary>
     /// 기본 스탯 초기화
@@ -417,6 +423,7 @@ public class BaseCharacter : MonoBehaviour
     
     protected void InitializeStat()
     {
+        InitializeStatSO();
         baseStat = new Stat(characterStat.BaseStat);
         levelUpStat = new Stat(characterStat.LevelUpStat);
         rewardStat = new Stat(characterStat.RewardStat);
@@ -424,10 +431,9 @@ public class BaseCharacter : MonoBehaviour
         
         level = new Level(characterStat.Level);
         level.owner = this;
-        InitializeStatSO();
     }
 
-    protected void InitializeHealth()
+    public virtual void InitializeHealth()
     {
         health.Initialize(this, characterStat.BaseHealth);
         onHealthChanged?.Invoke();
@@ -477,8 +483,9 @@ public class BaseCharacter : MonoBehaviour
         activeSkills.Add(newSkill);
     }
 
-    protected void LevelUp()
+    protected virtual void LevelUp()
     {
+        GameManager.GetInstance.soundManager.PlaySFX("Item_LevelUp");
         baseStat += levelUpStat;
         health.LevelUp();
     }

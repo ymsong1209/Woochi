@@ -14,6 +14,8 @@ public class WoochiAction_ChangeLocation : WoochiActionButton
         base.Deactivate();
 
         BattleManager.GetInstance.InitSelect();
+        BattleManager.GetInstance.RemoveSelectedSkill();
+        BattleManager.GetInstance.DisableColliderArrow();
     }
 
     void SelectSkill()

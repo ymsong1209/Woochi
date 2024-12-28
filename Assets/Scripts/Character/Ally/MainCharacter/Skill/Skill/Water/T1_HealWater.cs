@@ -5,7 +5,7 @@ using TMPro;
 
 public class T1_HealWater : MainCharacterSkill
 {
-    private int healamount = 3;
+    private int healamount = 5;
     
     protected override float CalculateHeal(BaseCharacter receiver, bool isCrit)
     {
@@ -31,7 +31,7 @@ public class T1_HealWater : MainCharacterSkill
             SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
         }
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
-        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모하여\n" +
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 대상을 " + healamount +  "만큼 회복";
     }
     
@@ -43,9 +43,13 @@ public class T1_HealWater : MainCharacterSkill
         }
         int enhancedSkillID = GameManager.GetInstance.Library.GetEnhancedSkillID(curskillid);
         T1_HealWater_P enhancedSkill = GameManager.GetInstance.Library.GetSkill(enhancedSkillID) as T1_HealWater_P;
-        MainCharacterSkillSO mainCharacterSkillSo = enhancedSkill.SkillSO as MainCharacterSkillSO;
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        MainCharacterSkillSO enhancedMainCharacterSkillSo = enhancedSkill.SkillSO as MainCharacterSkillSO;
         
-        skillDescription.text = "도력 <color=#FFFF00>" + mainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모하여\n" +
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "단일 대상을 " + healamount +  "만큼 회복\n" +
+                                "-\n" +
+                                "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
                                 "단일 대상을 <color=#FFFF00>" +  enhancedSkill.HealAmount + "</color>만큼 회복";
     }
 }

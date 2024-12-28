@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: affcc82dda958f3428ba9b330c115742, type: 3}
+  m_Name: Plot_29
+  m_EditorClassIdentifier: 
+  type: 2
+  illustrations: []
+  blindImage: {fileID: 21300000, guid: b7aa54e967a9e024b872db20f0edbd05, type: 3}
+  speaker: {fileID: 11400000, guid: ed3bdf174d6942149b91f3fbe73bc777, type: 2}
+  text: "\uC774\uC81C \uB3C4\uC220\uC744 \uC0AC\uC6A9\uD558\uC5EC \uC801\uACFC \uC804\uD22C\uD574
+    \uBD05\uC2DC\uB2E4."
+  plotEvent: 0
+  showBattle: 1
+  isTextUp: 1
+  showText: 1
+  isBlind: 1

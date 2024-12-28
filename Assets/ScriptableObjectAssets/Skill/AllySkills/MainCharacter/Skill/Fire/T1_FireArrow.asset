@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8a3ff459c3db04db52ae01995cbe12, type: 3}
   m_Name: T1_FireArrow
   m_EditorClassIdentifier: 
-  skillIcon: {fileID: 21300000, guid: ad60a3d88252e0f42b705541b6d5cf77, type: 3}
+  skillIcon: {fileID: 21300000, guid: 9644ea1b906536c48a2efe986533298f, type: 3}
   skillName: "\uBD88\uD654\uC0B4"
   animType: 3
   skillAvailableRadius: 0101010100000000

@@ -5,7 +5,7 @@ using TMPro;
 
 public class T1_HealWater_P : MainCharacterSkill
 {
-    private int healamount = 5;
+    private int healamount = 8;
     
     protected override float CalculateHeal(BaseCharacter receiver, bool isCrit)
     {
@@ -22,6 +22,17 @@ public class T1_HealWater_P : MainCharacterSkill
         text.text = "약수+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "단일 대상을 " + healamount +  "만큼 회복";
+    }
+    
+    public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
+    {
+        if (SkillOwner == null)
+        {
+            SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
+        }
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "단일 대상을 " + healamount +  "만큼 회복";
     }
     
     public int HealAmount

@@ -41,8 +41,16 @@ MonoBehaviour:
     value: {fileID: 1980818747636440210, guid: a8c5bbb74066f224685f9f86f499d8eb, type: 3}
   - ID: 5005
     value: {fileID: 1980818747636440210, guid: b0ad1c98b3162214da8aacf398788fc3, type: 3}
+  - ID: 7001
+    value: {fileID: 1980818747636440210, guid: b59bd84777491334f95853d7e0f1cfa7, type: 3}
+  - ID: 7002
+    value: {fileID: 3657592949406269409, guid: c363fc954ec620b4086523978e857451, type: 3}
+  - ID: 7003
+    value: {fileID: 3657592949406269409, guid: 0b821b7e33be7594d81a81e9027b75ea, type: 3}
   - ID: 10000
     value: {fileID: 3657592949406269409, guid: b24138b9257965b41bec894d078458db, type: 3}
+  - ID: 10005
+    value: {fileID: 1980818747636440210, guid: 8727210a32279f94e847166c85a2a596, type: 3}
   abnormals:
   - ID: 100
     value: {fileID: 11400000, guid: 551b024820da5b944a960bd8ff04ccb5, type: 2}
@@ -110,6 +118,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 8af0629b8c058494e9dd092deefef816, type: 2}
     - {fileID: 11400000, guid: 7b23636fe1c9fad4e9c8508949113b4e, type: 2}
     - {fileID: 11400000, guid: 6635536e62b9ec04587d54a62ad7c2f2, type: 2}
+    - {fileID: 11400000, guid: ced21c69e818f824cbb5c4941dd73bfa, type: 2}
   - rarity: 4
     rewards:
     - {fileID: 11400000, guid: 21ffee9d76dc09a47a69e2b6c0b5622f, type: 2}

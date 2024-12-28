@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d0dc161368291448e2dc7e442162b4, type: 3}
+  m_Name: Plot_84
+  m_EditorClassIdentifier: 
+  type: 2
+  illustrations: []
+  blindImage: {fileID: 21300000, guid: cdad2e25623b6e94a98633c7c8e90043, type: 3}
+  speaker: {fileID: 11400000, guid: ed3bdf174d6942149b91f3fbe73bc777, type: 2}
+  text: "\uC0BC\uBBF8\uD638 \uB54C\uC640 \uAC19\uC774 \uCCAB \uBC88\uC9F8 \uD589\uB3D9
+    \uADF8\uB9BC\uC744 \uB20C\uB7EC \uD638\uB791\uC774\uC758 \u201C\uB0B4\uB824\uCC0D\uAE30\u201D\uB97C
+    \uC0AC\uC6A9\uD574 \uBD05\uC2DC\uB2E4."
+  plotEvent: 1
+  showBattle: 1
+  isTextUp: 1
+  showText: 1
+  isBlind: 1
+  isSetCanTurn: 1
+  setCanTurns:
+  - ID: 0
+    canTurn: 1
+  - ID: 2
+    canTurn: 0
+  stopTime: 0
+  isGuageEmpty: 0

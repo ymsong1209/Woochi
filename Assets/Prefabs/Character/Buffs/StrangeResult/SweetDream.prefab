@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1179807483198325553, guid: e6f95c9d508ed434bb6931883a437f85, type: 3}
       propertyPath: buffEffect
-      value: 15
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1179807483198325553, guid: e6f95c9d508ed434bb6931883a437f85, type: 3}
       propertyPath: forEnemies

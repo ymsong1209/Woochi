@@ -10,9 +10,12 @@ public class RecoveryConfirmButton : MonoBehaviour
             Debug.LogError("우치가 아님");
             return;
         }
+        
+        ScenarioManager.GetInstance.NextPlot(PlotEvent.Click);
+        
         MC_SorceryRecovery recoveryskill = mainCharacter.SorceryRecoverySkill; 
-       BattleManager.GetInstance.SkillSelected(recoveryskill);
-       BattleManager.GetInstance.CharacterSelected(mainCharacter);
-       BattleManager.GetInstance.ExecuteSelectedSkill(mainCharacter);
+        BattleManager.GetInstance.SkillSelected(recoveryskill);
+        BattleManager.GetInstance.CharacterSelected(mainCharacter);
+        BattleManager.GetInstance.ExecuteSelectedSkill(mainCharacter);
     }
 }

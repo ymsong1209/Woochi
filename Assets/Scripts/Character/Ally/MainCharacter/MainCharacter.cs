@@ -29,7 +29,13 @@ public class MainCharacter : BaseCharacter
 
         summonSkill.SkillRadius = new bool[] {true, true, true, true, false, false, false, false};
         changeLocation.SkillRadius = new bool[] {true, true, true, true, false, false, false, false};
+    }
 
+    public override void InitializeHealth()
+    {
+        base.InitializeHealth();
+        
+        SorceryPoints = maxSorceryPoints;
     }
 
     public override void InitializeSkill()
@@ -91,7 +97,7 @@ public class MainCharacter : BaseCharacter
         if(isAdd == false)
             value *= -1;
         
-        sorceryPoints = Mathf.Clamp(sorceryPoints + value, 0, maxSorceryPoints);
+        SorceryPoints = Mathf.Clamp(sorceryPoints + value, 0, maxSorceryPoints);
     }
     
     public void UpdateSorceryPoints(float percent, bool isAdd)
@@ -99,7 +105,13 @@ public class MainCharacter : BaseCharacter
         int value = Mathf.CeilToInt(maxSorceryPoints * percent);
         UpdateSorceryPoints(value, isAdd);
     }
-    
+
+    protected override void LevelUp()
+    {
+        base.LevelUp();
+        SorceryPoints = maxSorceryPoints;
+    }
+
     public BaseSkill[] MainCharacterSkills => mainCharacterSkills;
     
     public int SorceryPoints

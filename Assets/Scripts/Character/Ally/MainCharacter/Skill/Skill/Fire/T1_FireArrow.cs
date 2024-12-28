@@ -22,8 +22,8 @@ public class T1_FireArrow : MainCharacterSkill
             SkillOwner = BattleManager.GetInstance.Allies.GetWoochi();
         }
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
-        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모하여\n" +
-                                "단일 대상에게 " + SkillSO.BaseMultiplier + "%피해를 줍니다";
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "단일 대상에게 " + SkillSO.BaseMultiplier + "%피해";
     }
     
     public override void SetEnhancedSkillScrollDescription(int curskillid, TextMeshProUGUI skillDescription)
@@ -34,8 +34,12 @@ public class T1_FireArrow : MainCharacterSkill
         }
         int enhancedSkillID = GameManager.GetInstance.Library.GetEnhancedSkillID(curskillid);
         MainCharacterSkill enhancedSkill = GameManager.GetInstance.Library.GetSkill(enhancedSkillID) as MainCharacterSkill;
-        MainCharacterSkillSO mainCharacterSkillSo = enhancedSkill.SkillSO as MainCharacterSkillSO;
-        skillDescription.text = "도력 <color=#FFFF00>" + mainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모하여\n" +
-                                "단일 대상에게 <color=#FFFF00>" + mainCharacterSkillSo.BaseMultiplier + "</color>% 피해를 줍니다";
+        MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
+        MainCharacterSkillSO enhancedMainCharacterSkillSo = enhancedSkill.SkillSO as MainCharacterSkillSO;
+        skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
+                                "단일 대상에게 " + SkillSO.BaseMultiplier + "%피해\n" + 
+                                "-\n" +
+                                "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
+                                "단일 대상에게 <color=#FFFF00>" + enhancedMainCharacterSkillSo.BaseMultiplier + "</color>% 피해";
     }
 }

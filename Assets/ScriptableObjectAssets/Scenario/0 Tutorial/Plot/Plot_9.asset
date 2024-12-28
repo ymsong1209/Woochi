@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: affcc82dda958f3428ba9b330c115742, type: 3}
+  m_Name: Plot_9
+  m_EditorClassIdentifier: 
+  type: 0
+  illustrations:
+  - actor: {fileID: 11400000, guid: 849179a248edaba4ab1a2c2f60ad2648, type: 2}
+    direction: 1
+  blindImage: {fileID: 0}
+  speaker: {fileID: 11400000, guid: 849179a248edaba4ab1a2c2f60ad2648, type: 2}
+  text: "\u201C\uC5B5\uC6B8\uD569\uB2C8\uB2E4, \uC2A4\uC2B9\uB2D8. \uC800\uB294 \u2026\n\uADF8\uB798,
+    \uBA85\uC0C1! \n\uC911\uC694\uD55C \uB0A0\uC778 \uB9CC\uD07C \uC815\uC2E0 \uC9D1\uC911\uC744
+    \uC704\uD574 \uBA85\uC0C1\uC744 \uD558\uACE0 \uC788\uC5C8\uC744 \uBFD0\uC785\uB2C8\uB2E4.\u201D"
+  plotEvent: 0
+  showBattle: 0
+  isTextUp: 0
+  showText: 1
+  isBlind: 0

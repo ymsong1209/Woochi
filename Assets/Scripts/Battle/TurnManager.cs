@@ -101,7 +101,7 @@ public class TurnManager : MonoBehaviour
         UpdateUI();
         BaseCharacter currentCharacter = combatQueue.Dequeue();
 
-        if (currentCharacter.IsDead || currentCharacter.Health.CheckHealthZero())
+        if (currentCharacter.IsDead || currentCharacter.Health.CheckHealthZero() || currentCharacter.canUseTurn == false)
         {
             processedCharacters.Add(currentCharacter);
             return false;
@@ -199,7 +199,7 @@ public class TurnManager : MonoBehaviour
         foreach (var character in combatQueue)
         {
             if (order >= turnIcons.Length) return;
-            if(character.IsDead || character.Health.CheckHealthZero())
+            if(character.IsDead || character.Health.CheckHealthZero() || character.canUseTurn == false)
             {
                 continue;
             }
@@ -212,5 +212,26 @@ public class TurnManager : MonoBehaviour
         {
             turnIcons[i].SetEmpty(emptyIcon);
         }
+    }
+
+    public void PrintCombatQueue()
+    {
+        List<string> characterInfoList = new List<string>();
+
+        foreach (var character in combatQueue)
+        {
+            if (!character.IsDead && !character.Health.CheckHealthZero())
+            {
+                // character.RowOrder는 0부터 시작하므로 +1
+                int rowNumber = character.RowOrder + 1;
+                characterInfoList.Add($"{character.Name}({rowNumber}열)");
+            }
+        }
+
+        // 리스트를 " - " 구분자로 한 줄 문장으로 합침
+        string result = "캐릭터 순서 : " + string.Join(" - ", characterInfoList);
+
+        // 로그 출력
+        Logger.BattleLog(result, "RowInfo");
     }
 }
