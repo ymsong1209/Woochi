@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{2F3C2AA6-9D55-4640-97C9-FB9F875A5DA0}" SchemaVersion="119" RootDocumentID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}" ParentDocumentID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}">
+<WwiseDocument Type="WorkUnit" ID="{2F3C2AA6-9D55-4640-97C9-FB9F875A5DA0}" SchemaVersion="119">
 	<AudioObjects>
-		<WorkUnit Name="Title" ID="{2F3C2AA6-9D55-4640-97C9-FB9F875A5DA0}" OwnerID="{394D5FE3-4C0A-4148-A84A-8EA86E42CA04}" PersistMode="Nested">
+		<WorkUnit Name="Title" ID="{2F3C2AA6-9D55-4640-97C9-FB9F875A5DA0}" PersistMode="Standalone">
 			<ChildrenList>
 				<Sound Name="Title_Mouse" ID="{5FC614E8-AF37-438D-AD18-6780B059368A}" ShortID="916688384">
 					<ReferenceList>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{5BBFFD6D-08EB-442E-99EC-0835DCAE9954}" SchemaVersion="119" RootDocumentID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}" ParentDocumentID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}">
+<WwiseDocument Type="WorkUnit" ID="{5BBFFD6D-08EB-442E-99EC-0835DCAE9954}" SchemaVersion="119">
 	<AudioObjects>
-		<WorkUnit Name="Map" ID="{5BBFFD6D-08EB-442E-99EC-0835DCAE9954}" OwnerID="{394D5FE3-4C0A-4148-A84A-8EA86E42CA04}" PersistMode="Nested">
+		<WorkUnit Name="Map" ID="{5BBFFD6D-08EB-442E-99EC-0835DCAE9954}" PersistMode="Standalone">
 			<ChildrenList>
 				<Sound Name="Map_Mouse" ID="{A7CF92D6-6C59-4E86-B391-B64E9677EF85}" ShortID="784854713">
 					<ReferenceList>

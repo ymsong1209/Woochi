@@ -115,10 +115,10 @@ MonoBehaviour:
     WwiseObjectReference: {fileID: 11400000, guid: 7d0dc76b49f7bfb4eb626c6e0c3b642d, type: 2}
   - idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
+    WwiseObjectReference: {fileID: 11400000, guid: 7202f0189fbbd6141b1819b4fa9a9c0c, type: 2}
   - idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 9f5e97fc74ab4f94da385c168b259246, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: 696c3dc374ac2a24daa6df46a240c116, type: 2}
 --- !u!114 &2087857147857400854
 MonoBehaviour:
   m_ObjectHideFlags: 0

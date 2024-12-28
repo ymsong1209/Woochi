@@ -27,10 +27,14 @@
 				<GameParameter Id="2918011349" Name="MasterVolume"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{456018D5-AD4B-7FB1-9CF6-EC9F0826ABC1}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{4F735358-F649-4665-4E24-022E8BE66031}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
+				<File Id="45772769" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Haetae_Skill_4.wav</ShortName>
+					<CachePath>SFX/Haetae_Skill_4_818F3B66.wem</CachePath>
+				</File>
 				<File Id="55501940" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Water_Skill.wav</ShortName>
 					<CachePath>SFX/Water_Skill_C5E17880.wem</CachePath>
@@ -42,6 +46,22 @@
 				<File Id="81999487" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Event_Positive.wav</ShortName>
 					<CachePath>SFX/Event_Positive_818F3B66.wem</CachePath>
+				</File>
+				<File Id="94963068" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Snake_Skill.wav</ShortName>
+					<CachePath>SFX/Snake_Skill_818F3B66.wem</CachePath>
+				</File>
+				<File Id="103278702" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Revival.wav</ShortName>
+					<CachePath>SFX/Revival_818F3B66.wem</CachePath>
+				</File>
+				<File Id="105387131" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Haetae_Skill_3.wav</ShortName>
+					<CachePath>SFX/Haetae_Skill_3_818F3B66.wem</CachePath>
+				</File>
+				<File Id="137885880" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dosul_get.wav</ShortName>
+					<CachePath>SFX/Dosul_get_818F3B66.wem</CachePath>
 				</File>
 				<File Id="155826996" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Item_LevelUp.wav</ShortName>
@@ -62,6 +82,10 @@
 				<File Id="275618036" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Title_Mouse.wav</ShortName>
 					<CachePath>SFX/Title_Mouse_D9E863B3.wem</CachePath>
+				</File>
+				<File Id="281775348" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Tiger_Skill_2.wav</ShortName>
+					<CachePath>SFX/Tiger_Skill_2_818F3B66.wem</CachePath>
 				</File>
 				<File Id="319263385" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Skill_Mouse.wav</ShortName>
@@ -91,6 +115,10 @@
 					<ShortName>Haetae_Join.wav</ShortName>
 					<CachePath>SFX/Haetae_Join_818F3B66.wem</CachePath>
 				</File>
+				<File Id="384357284" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dokebi_Attack_2.wav</ShortName>
+					<CachePath>SFX/Dokebi_Attack_2_818F3B66.wem</CachePath>
+				</File>
 				<File Id="430474485" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Dosul_ReinForce_Mouse.wav</ShortName>
 					<CachePath>SFX/Dosul_ReinForce_Mouse_92F0A803.wem</CachePath>
@@ -107,9 +135,17 @@
 					<ShortName>Fox_Join.wav</ShortName>
 					<CachePath>SFX/Fox_Join_818F3B66.wem</CachePath>
 				</File>
+				<File Id="476892368" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Tiger_Skill_1.wav</ShortName>
+					<CachePath>SFX/Tiger_Skill_1_818F3B66.wem</CachePath>
+				</File>
 				<File Id="479722376" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Movement_Click.wav</ShortName>
 					<CachePath>SFX/Movement_Click_818F3B66.wem</CachePath>
+				</File>
+				<File Id="487878062" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dokebi_Attack_5.wav</ShortName>
+					<CachePath>SFX/Dokebi_Attack_5_818F3B66.wem</CachePath>
 				</File>
 				<File Id="533650088" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Power_Up.wav</ShortName>
@@ -127,6 +163,10 @@
 					<ShortName>Metal_Skill.wav</ShortName>
 					<CachePath>SFX/Metal_Skill_818F3B66.wem</CachePath>
 				</File>
+				<File Id="608071437" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dog_Attack.wav</ShortName>
+					<CachePath>SFX/Dog_Attack_818F3B66.wem</CachePath>
+				</File>
 				<File Id="609249654" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Reward_Click.wav</ShortName>
 					<CachePath>SFX/Reward_Click_00225573.wem</CachePath>
@@ -139,13 +179,29 @@
 					<ShortName>Preference_Mouse.wav</ShortName>
 					<CachePath>SFX/Preference_Mouse_818F3B66.wem</CachePath>
 				</File>
+				<File Id="632998297" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Monster_Attack_1.wav</ShortName>
+					<CachePath>SFX/Monster_Attack_1_818F3B66.wem</CachePath>
+				</File>
 				<File Id="666968424" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Tiger_Join.wav</ShortName>
 					<CachePath>SFX/Tiger_Join_818F3B66.wem</CachePath>
 				</File>
+				<File Id="672793048" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Small_Attack.wav</ShortName>
+					<CachePath>SFX/Small_Attack_818F3B66.wem</CachePath>
+				</File>
 				<File Id="691791290" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Ground_Skill.wav</ShortName>
 					<CachePath>SFX/Ground_Skill_FBB40CCC.wem</CachePath>
+				</File>
+				<File Id="707170708" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Fox_Skill_1.wav</ShortName>
+					<CachePath>SFX/Fox_Skill_1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="709848293" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Fox_Skill_3.wav</ShortName>
+					<CachePath>SFX/Fox_Skill_3_818F3B66.wem</CachePath>
 				</File>
 				<File Id="711383366" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Skill_Mouse_Edit.wav</ShortName>
@@ -158,6 +214,14 @@
 				<File Id="745894469" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Paper_Get.wav</ShortName>
 					<CachePath>SFX/Paper_Get_818F3B66.wem</CachePath>
+				</File>
+				<File Id="760151867" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Medium_Attack.wav</ShortName>
+					<CachePath>SFX/Medium_Attack_818F3B66.wem</CachePath>
+				</File>
+				<File Id="769070472" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dosul_Arrow_Mouse.wav</ShortName>
+					<CachePath>SFX/Dosul_Arrow_Mouse_818F3B66.wem</CachePath>
 				</File>
 				<File Id="777192762" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Movement_Mouse.wav</ShortName>
@@ -183,6 +247,10 @@
 					<ShortName>Pet_Return.wav</ShortName>
 					<CachePath>SFX/Pet_Return_C0DA48C3.wem</CachePath>
 				</File>
+				<File Id="856276093" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Tiger_Skill_3.wav</ShortName>
+					<CachePath>SFX/Tiger_Skill_3_818F3B66.wem</CachePath>
+				</File>
 				<File Id="859128289" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Dosul_Paper_Click.wav</ShortName>
 					<CachePath>SFX/Dosul_Paper_Click_48DE7A2B.wem</CachePath>
@@ -195,6 +263,10 @@
 					<ShortName>Event_Movement.wav</ShortName>
 					<CachePath>SFX/Event_Movement_9AA05703.wem</CachePath>
 				</File>
+				<File Id="869618840" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dokebi_Attack_1.wav</ShortName>
+					<CachePath>SFX/Dokebi_Attack_1_818F3B66.wem</CachePath>
+				</File>
 				<File Id="870375303" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Dosul_ReinForce.wav</ShortName>
 					<CachePath>SFX/Dosul_ReinForce_66E713C5.wem</CachePath>
@@ -202,6 +274,18 @@
 				<File Id="879237363" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Event_Click.wav</ShortName>
 					<CachePath>SFX/Event_Click_71893BB8.wem</CachePath>
+				</File>
+				<File Id="886505247" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Fox_Skill_2.wav</ShortName>
+					<CachePath>SFX/Fox_Skill_2_818F3B66.wem</CachePath>
+				</File>
+				<File Id="912592282" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Scene_Changed.wav</ShortName>
+					<CachePath>SFX/Scene_Changed_818F3B66.wem</CachePath>
+				</File>
+				<File Id="915405375" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Fox_Skill_4.wav</ShortName>
+					<CachePath>SFX/Fox_Skill_4_818F3B66.wem</CachePath>
 				</File>
 				<File Id="926927899" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Main_Title.wav</ShortName>
@@ -211,6 +295,26 @@
 					<ShortName>Heal_Use.wav</ShortName>
 					<CachePath>SFX/Heal_Use_818F3B66.wem</CachePath>
 				</File>
+				<File Id="952769722" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Fighting_BGM.wav</ShortName>
+					<CachePath>SFX/Fighting_BGM_818F3B66.wem</CachePath>
+				</File>
+				<File Id="958025226" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dosul_Paper_Close.wav</ShortName>
+					<CachePath>SFX/Dosul_Paper_Close_818F3B66.wem</CachePath>
+				</File>
+				<File Id="962758318" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Map_BGM.wav</ShortName>
+					<CachePath>SFX/Map_BGM_818F3B66.wem</CachePath>
+				</File>
+				<File Id="965008807" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Haetae_Skill_2.wav</ShortName>
+					<CachePath>SFX/Haetae_Skill_2_818F3B66.wem</CachePath>
+				</File>
+				<File Id="974009338" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dokebi_Attack_3.wav</ShortName>
+					<CachePath>SFX/Dokebi_Attack_3_818F3B66.wem</CachePath>
+				</File>
 				<File Id="975968143" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Announce_Down.wav</ShortName>
 					<CachePath>SFX/Announce_Down_C70033A3.wem</CachePath>
@@ -219,15 +323,62 @@
 					<ShortName>Sound_Click.wav</ShortName>
 					<CachePath>SFX/Sound_Click_38BC34B2.wem</CachePath>
 				</File>
+				<File Id="1016739738" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dokebi_Attack_4.wav</ShortName>
+					<CachePath>SFX/Dokebi_Attack_4_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1049632825" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Monster_Attack_2.wav</ShortName>
+					<CachePath>SFX/Monster_Attack_2_818F3B66.wem</CachePath>
+				</File>
 				<File Id="1061526397" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Item_Flow.wav</ShortName>
 					<CachePath>SFX/Item_Flow_C7CA70E8.wem</CachePath>
+				</File>
+				<File Id="1063863137" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Haetae_Skill_1.wav</ShortName>
+					<CachePath>SFX/Haetae_Skill_1_818F3B66.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
 				<Event Id="1946638119" Name="Announce_Down" DurationType="OneShot" DurationMin="0.4" DurationMax="0.4">
 					<MediaRefs>
 						<MediaRef Id="975968143"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3963569196" Name="Dog_Attack" DurationType="OneShot" DurationMin="1.5" DurationMax="1.5">
+					<MediaRefs>
+						<MediaRef Id="608071437"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1261339924" Name="Dokebi_Attack_1" DurationType="OneShot" DurationMin="1.5" DurationMax="1.5">
+					<MediaRefs>
+						<MediaRef Id="869618840"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1261339927" Name="Dokebi_Attack_2" DurationType="OneShot" DurationMin="2.375" DurationMax="2.375">
+					<MediaRefs>
+						<MediaRef Id="384357284"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1261339926" Name="Dokebi_Attack_3" DurationType="OneShot" DurationMin="1.5" DurationMax="1.5">
+					<MediaRefs>
+						<MediaRef Id="974009338"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1261339921" Name="Dokebi_Attack_4" DurationType="OneShot" DurationMin="1.5" DurationMax="1.5">
+					<MediaRefs>
+						<MediaRef Id="1016739738"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1261339920" Name="Dokebi_Attack_5" DurationType="OneShot" DurationMin="2.5" DurationMax="2.5">
+					<MediaRefs>
+						<MediaRef Id="487878062"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="214299160" Name="Dosul_Arrow_Mouse" DurationType="OneShot" DurationMin="0.125" DurationMax="0.125">
+					<MediaRefs>
+						<MediaRef Id="769070472"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1598930947" Name="Dosul_Click" DurationType="OneShot" DurationMin="0.5" DurationMax="0.5">
@@ -240,6 +391,11 @@
 						<MediaRef Id="363300053"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="2805182011" Name="Dosul_get" DurationType="OneShot" DurationMin="5" DurationMax="5">
+					<MediaRefs>
+						<MediaRef Id="137885880"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="802719446" Name="Dosul_Mouse" DurationType="OneShot" DurationMin="0.5" DurationMax="0.5">
 					<MediaRefs>
 						<MediaRef Id="462118044"/>
@@ -248,6 +404,11 @@
 				<Event Id="245881412" Name="Dosul_Paper_Click" DurationType="OneShot" DurationMin="1.5" DurationMax="1.5">
 					<MediaRefs>
 						<MediaRef Id="859128289"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="246175544" Name="Dosul_Paper_Close" DurationType="OneShot" DurationMin="2" DurationMax="2">
+					<MediaRefs>
+						<MediaRef Id="958025226"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="2450753133" Name="Dosul_Paper_Mouse" DurationType="OneShot" DurationMin="1" DurationMax="1">
@@ -290,6 +451,11 @@
 						<MediaRef Id="81999487"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="3570634942" Name="Fight_BGM" DurationType="OneShot" DurationMin="81.44998" DurationMax="81.44998">
+					<MediaRefs>
+						<MediaRef Id="952769722"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="1037822516" Name="Fight_Start" DurationType="OneShot" DurationMin="2.625" DurationMax="2.625">
 					<MediaRefs>
 						<MediaRef Id="328838393"/>
@@ -305,6 +471,26 @@
 						<MediaRef Id="465945705"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="792738854" Name="Fox_Skill_1" DurationType="OneShot" DurationMin="1.25" DurationMax="1.25">
+					<MediaRefs>
+						<MediaRef Id="707170708"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="792738853" Name="Fox_Skill_2" DurationType="OneShot" DurationMin="2.25" DurationMax="2.25">
+					<MediaRefs>
+						<MediaRef Id="886505247"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="792738852" Name="Fox_Skill_3" DurationType="OneShot" DurationMin="2.75" DurationMax="2.75">
+					<MediaRefs>
+						<MediaRef Id="709848293"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="792738851" Name="Fox_Skill_4" DurationType="OneShot" DurationMin="2.75" DurationMax="2.75">
+					<MediaRefs>
+						<MediaRef Id="915405375"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="115002250" Name="Ground_Skill" DurationType="OneShot" DurationMin="2" DurationMax="2">
 					<MediaRefs>
 						<MediaRef Id="691791290"/>
@@ -313,6 +499,26 @@
 				<Event Id="777931932" Name="Haetae_Join" DurationType="OneShot" DurationMin="1.75" DurationMax="1.75">
 					<MediaRefs>
 						<MediaRef Id="378946344"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="161093091" Name="Haetae_Skill_1" DurationType="OneShot" DurationMin="1" DurationMax="1">
+					<MediaRefs>
+						<MediaRef Id="1063863137"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="161093088" Name="Haetae_Skill_2" DurationType="OneShot" DurationMin="5.125" DurationMax="5.125">
+					<MediaRefs>
+						<MediaRef Id="965008807"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="161093089" Name="Haetae_Skill_3" DurationType="OneShot" DurationMin="2.5" DurationMax="2.5">
+					<MediaRefs>
+						<MediaRef Id="105387131"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="161093094" Name="Haetae_Skill_4" DurationType="OneShot" DurationMin="4.5" DurationMax="4.5">
+					<MediaRefs>
+						<MediaRef Id="45772769"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="221498635" Name="Heal_Use" DurationType="OneShot" DurationMin="3" DurationMax="3">
@@ -340,6 +546,11 @@
 						<MediaRef Id="863793327"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="3811411294" Name="Map_BGM" DurationType="OneShot" DurationMin="95.88464" DurationMax="95.88464">
+					<MediaRefs>
+						<MediaRef Id="962758318"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="2480411368" Name="Map_Click" DurationType="OneShot" DurationMin="0.625" DurationMax="0.625">
 					<MediaRefs>
 						<MediaRef Id="165554327"/>
@@ -350,9 +561,24 @@
 						<MediaRef Id="609286879"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="3138834631" Name="Medium_Attack" DurationType="OneShot" DurationMin="1.25" DurationMax="1.25">
+					<MediaRefs>
+						<MediaRef Id="760151867"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="1614233980" Name="Metal_Skill" DurationType="OneShot" DurationMin="3" DurationMax="3">
 					<MediaRefs>
 						<MediaRef Id="578610578"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3856529392" Name="Monster_Attack_1" DurationType="OneShot" DurationMin="1.5" DurationMax="1.5">
+					<MediaRefs>
+						<MediaRef Id="632998297"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3856529395" Name="Monster_Attack_2" DurationType="OneShot" DurationMin="1.5" DurationMax="1.5">
+					<MediaRefs>
+						<MediaRef Id="1049632825"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="3036007183" Name="Movement_Click" DurationType="OneShot" DurationMin="0.625" DurationMax="0.625">
@@ -400,12 +626,17 @@
 						<MediaRef Id="624271836"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="1760225406" Name="Revival" DurationType="OneShot" DurationMin="5" DurationMax="5">
+					<MediaRefs>
+						<MediaRef Id="103278702"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="3302781919" Name="Reward_Arrow_Click" DurationType="OneShot" DurationMin="0.7" DurationMax="0.7">
 					<MediaRefs>
 						<MediaRef Id="324781318"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3415311978" Name="Reward_Arrow_Mouse" DurationType="OneShot" DurationMin="0.4" DurationMax="0.4">
+				<Event Id="3415311978" Name="Reward_Arrow_Mouse" DurationType="OneShot" DurationMin="0.6423383" DurationMax="0.6423383">
 					<MediaRefs>
 						<MediaRef Id="551719493"/>
 					</MediaRefs>
@@ -420,6 +651,11 @@
 						<MediaRef Id="798960966"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="786610998" Name="Scene_Changed" DurationType="OneShot" DurationMin="5" DurationMax="5">
+					<MediaRefs>
+						<MediaRef Id="912592282"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="117036824" Name="Skill_Mouse" DurationType="OneShot" DurationMin="0.28125" DurationMax="0.28125">
 					<MediaRefs>
 						<MediaRef Id="319263385"/>
@@ -428,6 +664,16 @@
 				<Event Id="3046553211" Name="Skill_Mouse_Edit" DurationType="OneShot" DurationMin="0.2" DurationMax="0.2">
 					<MediaRefs>
 						<MediaRef Id="711383366"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2654814169" Name="Small_Attack" DurationType="OneShot" DurationMin="1.25" DurationMax="1.25">
+					<MediaRefs>
+						<MediaRef Id="672793048"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1676453053" Name="Snake_Skill" DurationType="OneShot" DurationMin="1.5" DurationMax="1.5">
+					<MediaRefs>
+						<MediaRef Id="94963068"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1396668031" Name="Sound_Click" DurationType="OneShot" DurationMin="0.605" DurationMax="0.605">
@@ -443,6 +689,21 @@
 				<Event Id="1971761969" Name="Tiger_Join" DurationType="OneShot" DurationMin="1.75" DurationMax="1.75">
 					<MediaRefs>
 						<MediaRef Id="666968424"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4228246380" Name="Tiger_Skill_1" DurationType="OneShot" DurationMin="1.375" DurationMax="1.375">
+					<MediaRefs>
+						<MediaRef Id="476892368"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4228246383" Name="Tiger_Skill_2" DurationType="OneShot" DurationMin="1" DurationMax="1">
+					<MediaRefs>
+						<MediaRef Id="281775348"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4228246382" Name="Tiger_Skill_3" DurationType="OneShot" DurationMin="1" DurationMax="1">
+					<MediaRefs>
+						<MediaRef Id="856276093"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="4199180592" Name="Title_Click" DurationType="OneShot" DurationMin="0.28125" DurationMax="0.28125">
@@ -468,5 +729,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{256EB0E6-ED27-1A9B-C6F3-C32D9884D1FF}</FileHash>
+	<FileHash>{7D1E8787-DA96-3D74-9707-53FCA1899D59}</FileHash>
 </SoundBanksInfo>

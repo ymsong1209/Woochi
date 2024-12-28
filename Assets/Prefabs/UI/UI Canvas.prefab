@@ -12773,6 +12773,7 @@ GameObject:
   - component: {fileID: 2067417145050663615}
   - component: {fileID: 7060900569817455365}
   - component: {fileID: 7637773805037954237}
+  - component: {fileID: 680803555881294738}
   m_Layer: 5
   m_Name: Reward
   m_TagString: Untagged
@@ -12893,6 +12894,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &680803555881294738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3677451205528200277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb73cf3725e81f540821c5c469689c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorSFX: Reward_Arrow_Mouse
+  clickSFX: Reward_Arrow_Click
 --- !u!1 &3757297058888005808
 GameObject:
   m_ObjectHideFlags: 0
@@ -29784,7 +29799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorSFX: Reward_Arrow_Mouse
-  clickSFX: Reward_Arrow_Click
+  clickSFX: Scene_Changed
 --- !u!1 &8490226059129378563
 GameObject:
   m_ObjectHideFlags: 0

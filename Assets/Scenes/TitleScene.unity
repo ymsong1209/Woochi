@@ -1562,10 +1562,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 538959037938206855, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
-      propertyPath: bgmEvents.Array.data[3].WwiseObjectReference
-      value: 
-      objectReference: {fileID: 11400000, guid: 9f5e97fc74ab4f94da385c168b259246, type: 2}
     - target: {fileID: 4765174429504772050, guid: 55b3cbbc569921e4c833b5f6999af150, type: 3}
       propertyPath: m_Name
       value: GameManager

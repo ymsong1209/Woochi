@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{46757A00-4684-4ADA-BD7A-0E0C9E3E9915}" SchemaVersion="119" RootDocumentID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}" ParentDocumentID="{E346F87F-71C9-482D-98D6-3837AF6FD06C}">
+<WwiseDocument Type="WorkUnit" ID="{46757A00-4684-4ADA-BD7A-0E0C9E3E9915}" SchemaVersion="119">
 	<AudioObjects>
-		<WorkUnit Name="Reward" ID="{46757A00-4684-4ADA-BD7A-0E0C9E3E9915}" OwnerID="{394D5FE3-4C0A-4148-A84A-8EA86E42CA04}" PersistMode="Nested">
+		<WorkUnit Name="Reward" ID="{46757A00-4684-4ADA-BD7A-0E0C9E3E9915}" PersistMode="Standalone">
 			<ChildrenList>
-				<Sound Name="Reward_Mouse" ID="{070AA000-8B08-485A-9606-AFD438DAB8C5}" ShortID="350031462">
+				<Sound Name="Reward_Mouse" ID="{0FF0B473-128B-4413-BDC3-F0681A3188C5}" ShortID="350031463">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
@@ -13,7 +13,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<AudioFileSource Name="Reward_Mouse" ID="{DC9301AE-014B-4994-ABA8-DEB4EC548105}">
+						<AudioFileSource Name="Reward_Mouse" ID="{BCCBDE8D-16FD-4DD1-AD4A-14994E31E632}">
 							<PropertyList>
 								<Property Name="TrimEnd" Type="Real64" Value="0.2"/>
 							</PropertyList>
@@ -25,10 +25,10 @@
 						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="Reward_Mouse" ID="{DC9301AE-014B-4994-ABA8-DEB4EC548105}" Platform="Linked"/>
+						<ActiveSource Name="Reward_Mouse" ID="{BCCBDE8D-16FD-4DD1-AD4A-14994E31E632}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
-				<Sound Name="Reward_Arrow_Click" ID="{DDC28285-4182-4C29-B4B0-A8427059CAA5}" ShortID="149260045">
+				<Sound Name="Reward_Arrow_Click" ID="{B8585CBC-0765-4D44-AF8D-4CF2339BD4DB}" ShortID="149260046">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
@@ -38,7 +38,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<AudioFileSource Name="Reward_Arrow_Click" ID="{BC980579-3B38-4449-9765-FF0D2BD84473}">
+						<AudioFileSource Name="Reward_Arrow_Click" ID="{EAC0BA0A-990C-4230-84D1-9FA64B89EB6A}">
 							<PropertyList>
 								<Property Name="TrimEnd" Type="Real64" Value="0.7"/>
 							</PropertyList>
@@ -50,10 +50,10 @@
 						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="Reward_Arrow_Click" ID="{BC980579-3B38-4449-9765-FF0D2BD84473}" Platform="Linked"/>
+						<ActiveSource Name="Reward_Arrow_Click" ID="{EAC0BA0A-990C-4230-84D1-9FA64B89EB6A}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
-				<Sound Name="Reward_Click" ID="{EBA5DA0F-A6D6-4D9A-8235-0F2357422F50}" ShortID="264925453">
+				<Sound Name="Reward_Click" ID="{02C03912-0398-4A07-9E83-9FB036F78240}" ShortID="264925454">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
@@ -63,7 +63,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<AudioFileSource Name="Reward_Click" ID="{783CE2CE-DB19-4FBB-862C-5A1C33199C04}">
+						<AudioFileSource Name="Reward_Click" ID="{374E54C5-F4EF-4099-8671-BED30F4756E2}">
 							<PropertyList>
 								<Property Name="TrimEnd" Type="Real64" Value="0.5"/>
 							</PropertyList>
@@ -75,10 +75,10 @@
 						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="Reward_Click" ID="{783CE2CE-DB19-4FBB-862C-5A1C33199C04}" Platform="Linked"/>
+						<ActiveSource Name="Reward_Click" ID="{374E54C5-F4EF-4099-8671-BED30F4756E2}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
-				<Sound Name="Reward_Arrow_Mouse" ID="{51D63EEF-FFC3-4A62-BD60-ABF244617B55}" ShortID="247645240">
+				<Sound Name="Reward_Arrow_Mouse" ID="{6E780EA8-6969-475B-B8FA-97D20D07FEDB}" ShortID="247645241">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
@@ -88,7 +88,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<AudioFileSource Name="Reward_Arrow_Mouse" ID="{CAE0A69B-66E8-4B78-9EA2-00D1720E30DC}">
+						<AudioFileSource Name="Reward_Arrow_Mouse" ID="{6BA83BFE-26B7-4A73-BB96-67424ECD5054}">
 							<PropertyList>
 								<Property Name="TrimEnd" Type="Real64" Value="0.4"/>
 							</PropertyList>
@@ -100,10 +100,10 @@
 						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="Reward_Arrow_Mouse" ID="{CAE0A69B-66E8-4B78-9EA2-00D1720E30DC}" Platform="Linked"/>
+						<ActiveSource Name="Reward_Arrow_Mouse" ID="{6BA83BFE-26B7-4A73-BB96-67424ECD5054}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
-				<Sound Name="Heal_Use" ID="{A1EFFD37-5653-44F3-8408-A0C99FEF6F27}" ShortID="443743686">
+				<Sound Name="Heal_Use" ID="{F1E52AD6-5608-414F-B78F-8C3A5C44282C}" ShortID="443743687">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
@@ -113,7 +113,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<AudioFileSource Name="Heal_Use" ID="{593029BA-3070-4935-B88F-13D06F5E03FD}">
+						<AudioFileSource Name="Heal_Use" ID="{05223AB5-0DA1-46C4-89CA-C81C6015DA6D}">
 							<Language>SFX</Language>
 							<AudioFile>Heal_Use.wav</AudioFile>
 							<MediaIDList>
@@ -122,10 +122,10 @@
 						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="Heal_Use" ID="{593029BA-3070-4935-B88F-13D06F5E03FD}" Platform="Linked"/>
+						<ActiveSource Name="Heal_Use" ID="{05223AB5-0DA1-46C4-89CA-C81C6015DA6D}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
-				<Sound Name="Item_Flow" ID="{FF134FF7-76FD-45C5-8F51-0B396C99A149}" ShortID="832013251">
+				<Sound Name="Item_Flow" ID="{2094974E-4054-462D-ADEE-22AB796605C1}" ShortID="832013252">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{04F36124-24DB-42A0-911B-F0538BC74ECD}"/>
@@ -135,7 +135,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<AudioFileSource Name="Item_Flow" ID="{A5630C69-A6DB-4939-9BE3-FA768C42001B}">
+						<AudioFileSource Name="Item_Flow" ID="{1C3FB59E-3A4B-460A-BEB9-9770FF22B9CB}">
 							<PropertyList>
 								<Property Name="FadeOutDuration" Type="Real64" Value="0.088331515812432"/>
 								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
@@ -149,7 +149,7 @@
 						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="Item_Flow" ID="{A5630C69-A6DB-4939-9BE3-FA768C42001B}" Platform="Linked"/>
+						<ActiveSource Name="Item_Flow" ID="{1C3FB59E-3A4B-460A-BEB9-9770FF22B9CB}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>

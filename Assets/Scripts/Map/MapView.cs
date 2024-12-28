@@ -80,7 +80,7 @@ public class MapView : MonoBehaviour
         }
 
         Map = m;
-
+        
         ClearMap();
 
         CreateMapParent();
@@ -96,6 +96,8 @@ public class MapView : MonoBehaviour
         SetLineColors();
 
         CreateMapBackground(m);
+
+        ActiveMap(true);
     }
 
     public void ActiveMap(bool isActiveScroll)
