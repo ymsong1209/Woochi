@@ -9,7 +9,6 @@ public class CT_RightSoul : BaseEnemy
     [SerializeField] private StunResistBuff stunResistBuff;
     [SerializeField] private MoveResistBuff moveResistBuff;
     [SerializeField] private SpriteRenderer body;
-    [SerializeField] private SpriteRenderer back;
     [SerializeField] private GameObject ground;
     [SerializeField] private GameObject hp;
     
@@ -17,19 +16,7 @@ public class CT_RightSoul : BaseEnemy
     public override void Initialize()
     {
         base.Initialize();
-        GameObject instantiatedEvasionBuff = Instantiate(stunResistBuff.gameObject, transform);
-        StunResistBuff buff = instantiatedEvasionBuff.GetComponent<StunResistBuff>();
-        buff.IsRemovableDuringBattle = false;
-        buff.IsAlwaysApplyBuff = true;
-        buff.BuffDurationTurns = -1;
-        ApplyBuff(this,this,buff);
-        
-        GameObject instantiatedMoveBuff = Instantiate(moveResistBuff.gameObject, transform);
-        MoveResistBuff movebuff = instantiatedMoveBuff.GetComponent<MoveResistBuff>();
-        movebuff.IsRemovableDuringBattle = false;
-        movebuff.IsAlwaysApplyBuff = true;
-        movebuff.BuffDurationTurns = -1;
-        ApplyBuff(this,this,movebuff);
+        InitializeBuffs();
     }
     
     public override void TriggerAI()
@@ -48,6 +35,23 @@ public class CT_RightSoul : BaseEnemy
         BattleManager.GetInstance.SkillSelected(activeSkills[0]);
         BattleManager.GetInstance.CharacterSelected(ally);
         BattleManager.GetInstance.ExecuteSelectedSkill(ally);
+    }
+    
+    private void InitializeBuffs()
+    {
+        GameObject instantiatedStunBuff = Instantiate(stunResistBuff.gameObject, transform);
+        StunResistBuff buff = instantiatedStunBuff.GetComponent<StunResistBuff>();
+        buff.IsRemovableDuringBattle = false;
+        buff.IsAlwaysApplyBuff = true;
+        buff.BuffDurationTurns = -1;
+        ApplyBuff(this,this,buff);
+        
+        GameObject instantiatedMoveBuff = Instantiate(moveResistBuff.gameObject, transform);
+        MoveResistBuff movebuff = instantiatedMoveBuff.GetComponent<MoveResistBuff>();
+        movebuff.IsRemovableDuringBattle = false;
+        movebuff.IsAlwaysApplyBuff = true;
+        movebuff.BuffDurationTurns = -1;
+        ApplyBuff(this,this,movebuff);
     }
 
 
@@ -71,8 +75,8 @@ public class CT_RightSoul : BaseEnemy
         dummySoul.RowOrder = RowOrder;
         dummySoul.gameObject.SetActive(true);
         BattleManager.GetInstance.Enemies.formation[3] = dummySoul;
+        BuffList.gameObject.SetActive(false);
         body.gameObject.SetActive(false);
-        back.gameObject.SetActive(false);
         ground.SetActive(false);
         hp.SetActive(false);
         soulDead = true;
@@ -80,12 +84,13 @@ public class CT_RightSoul : BaseEnemy
 
     public void Revive()
     {
-        back.gameObject.SetActive(true);
         Resurrect(true);
         Health.CurHealth = (int)(Health.MaxHealth * 0.30f);
         ground.SetActive(true);
         hp.SetActive(true);
         soulDead = false;
+        BuffList.gameObject.SetActive(true);
+        InitializeBuffs();
     }
     
     public bool SoulDead=>soulDead;

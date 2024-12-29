@@ -15,20 +15,20 @@ MonoBehaviour:
   ID: 7001
   portrait: {fileID: 21300000, guid: b1736809d31f1184fa7a543126fe9e38, type: 3}
   icons:
-  - {fileID: 21300000, guid: d531c4b83d0d2f74f8cb50aa556278d6, type: 3}
-  - {fileID: 21300000, guid: c8adbf12aa863e34c81a46f67d95e2b5, type: 3}
-  - {fileID: 21300000, guid: 88c03dc1dfe8bb0429517938153eef1c, type: 3}
-  characterName: "\uD0C0\uB77D\uD55C \uD574\uD0DC"
+  - {fileID: 21300000, guid: a74d4727ff88415439e88fc93cfe78e0, type: 3}
+  - {fileID: 21300000, guid: c814f101238217542bc4f2cd41c4d261, type: 3}
+  - {fileID: 21300000, guid: 300b1d8cc1a68fe479f68b140797a707, type: 3}
+  characterName: "\uAD34\uBAA9"
   size: 2
-  cost: 4
+  cost: 1
   baseStat:
     list:
     - type: 0
-      value: 0
+      value: 80
     - type: 1
-      value: 0
+      value: 1
     - type: 2
-      value: 0
+      value: 30
     - type: 3
       value: 0
     - type: 4
@@ -36,11 +36,11 @@ MonoBehaviour:
     - type: 5
       value: 0
     - type: 6
-      value: 0
+      value: 30
     - type: 7
-      value: 0
+      value: 5
     - type: 8
-      value: 0
+      value: 10
   levelUpStat:
     list:
     - type: 0
@@ -87,10 +87,10 @@ MonoBehaviour:
     exp: 0
     plusExp: 0
   baseHealth:
-    maxHealth: 78
-    curHealth: 78
+    maxHealth: 80
+    curHealth: 80
     shield: 0
-    countToResurrect: 0
+    countToResurrect: -1
   skills:
   - {fileID: 4004762304355895936, guid: 857c54692fb3d7e4f9aea5cb705e258b, type: 3}
   - {fileID: 6120325173494801866, guid: b6abace76810d244baa7d4fdae14ca59, type: 3}
