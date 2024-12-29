@@ -79,47 +79,70 @@ Event	ID	Name			Wwise Object Path	Notes
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	45772769	Haetae_Skill_4	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Haetae_Skill_4_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Haetae_Skill_4		864096
+	55501940	Water_Skill	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Water_Skill_C5E17880.wem		\Actor-Mixer Hierarchy\Default Work Unit\Water_Skill		480096
+	62276585	Tree_Skill	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Tree_Skill_FBB40CCC.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tree_Skill		384096
+	81999487	Event_Positive	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Event_Positive_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Event_Positive		576096
 	94963068	Snake_Skill	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Snake_Skill_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Snake_Skill		288096
 	103278702	Revival	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Revival_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Revival		960096
 	105387131	Haetae_Skill_3	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Haetae_Skill_3_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Haetae_Skill_3		480096
 	137885880	Dosul_get	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_get_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_get		960096
 	155826996	Item_LevelUp	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Item_LevelUp_55F0B4CB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Item_LevelUp		576096
+	165554327	Map_Click	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Map_Click_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Map_Click		120096
+	199352336	Event_Arrived	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Event_Arrived_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Event_Arrived		528096
 	234231556	Movement_Click_Edit	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Movement_Click_Edit_B6F7D0D3.wem		\Actor-Mixer Hierarchy\Default Work Unit\Movement_Click_Edit		38496
+	275618036	Title_Mouse	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Title_Mouse_D9E863B3.wem		\Actor-Mixer Hierarchy\Default Work Unit\Title_Mouse		9696
 	281775348	Tiger_Skill_2	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Tiger_Skill_2_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tiger_Skill_2		192096
 	319263385	Skill_Mouse	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Skill_Mouse_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Skill_Mouse		54096
+	321173188	Paper_Use	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Paper_Use_5FCEAA7F.wem		\Actor-Mixer Hierarchy\Default Work Unit\Paper_Use		403296
 	324781318	Reward_Arrow_Click	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Reward_Arrow_Click_E85D8425.wem		\Actor-Mixer Hierarchy\Default Work Unit\Reward_Arrow_Click		134496
 	328838393	Fight_Start	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Fight_Start_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Fight_Start		504096
 	342798534	Movement_Mouse_Edit	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Movement_Mouse_Edit_9AA05703.wem		\Actor-Mixer Hierarchy\Default Work Unit\Movement_Mouse_Edit		19296
 	363300053	Dosul_Equip	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_Equip_FBB40CCC.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_Equip		384096
+	378946344	Haetae_Join	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Haetae_Join_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Haetae_Join		336096
 	384357284	Dokebi_Attack_2	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dokebi_Attack_2_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dokebi_Attack_2		456096
 	430474485	Dosul_ReinForce_Mouse	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_ReinForce_Mouse_92F0A803.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_ReinForce_Mouse		98016
+	447256061	Swap	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Swap_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Swap		192096
 	462118044	Dosul_Mouse	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_Mouse_00225573.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_Mouse		96096
+	465945705	Fox_Join	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Fox_Join_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Fox_Join		336096
 	476892368	Tiger_Skill_1	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Tiger_Skill_1_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tiger_Skill_1		264096
 	479722376	Movement_Click	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Movement_Click_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Movement_Click		120096
 	487878062	Dokebi_Attack_5	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dokebi_Attack_5_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dokebi_Attack_5		480096
+	533650088	Power_Up	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Power_Up_E85D8425.wem		\Actor-Mixer Hierarchy\Default Work Unit\Power_Up		134496
 	551719493	Reward_Arrow_Mouse	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Reward_Arrow_Mouse_C70033A3.wem		\Actor-Mixer Hierarchy\Default Work Unit\Reward_Arrow_Mouse		76896
 	576676912	Dosul_Click	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_Click_00225573.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_Click		96096
+	578610578	Metal_Skill	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Metal_Skill_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Metal_Skill		576096
 	608071437	Dog_Attack	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dog_Attack_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dog_Attack		288096
 	609249654	Reward_Click	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Reward_Click_00225573.wem		\Actor-Mixer Hierarchy\Default Work Unit\Reward_Click		96096
+	609286879	Map_Mouse	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Map_Mouse_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Map_Mouse		120096
 	624271836	Preference_Mouse	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Preference_Mouse_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Preference_Mouse		576096
 	632998297	Monster_Attack_1	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Monster_Attack_1_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Monster_Attack_1		288096
+	666968424	Tiger_Join	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Tiger_Join_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tiger_Join		336096
 	672793048	Small_Attack	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Small_Attack_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Small_Attack		240096
+	691791290	Ground_Skill	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Ground_Skill_FBB40CCC.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ground_Skill		384096
 	707170708	Fox_Skill_1	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Fox_Skill_1_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Fox_Skill_1		240096
 	709848293	Fox_Skill_3	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Fox_Skill_3_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Fox_Skill_3		528096
 	711383366	Skill_Mouse_Edit	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Skill_Mouse_Edit_B6F7D0D3.wem		\Actor-Mixer Hierarchy\Default Work Unit\Skill_Mouse_Edit		38496
+	726742060	Fire_Skill	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Fire_Skill_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Fire_Skill		576096
+	745894469	Paper_Get	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Paper_Get_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Paper_Get		576096
 	760151867	Medium_Attack	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Medium_Attack_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Medium_Attack		240096
 	769070472	Dosul_Arrow_Mouse	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_Arrow_Mouse_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_Arrow_Mouse		24096
 	777192762	Movement_Mouse	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Movement_Mouse_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Movement_Mouse		54096
 	787626657	Dosul_Paper_Mouse	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_Paper_Mouse_C0DA48C3.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_Paper_Mouse		192096
+	790595291	Title_Click	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Title_Click_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Title_Click		54096
 	798960966	Reward_Mouse	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Reward_Mouse_B6F7D0D3.wem		\Actor-Mixer Hierarchy\Default Work Unit\Reward_Mouse		38496
+	816032374	Event_Negative	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Event_Negative_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Event_Negative		576096
+	820875912	Pet_Return	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Pet_Return_C0DA48C3.wem		\Actor-Mixer Hierarchy\Default Work Unit\Pet_Return		192096
 	856276093	Tiger_Skill_3	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Tiger_Skill_3_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tiger_Skill_3		192096
 	859128289	Dosul_Paper_Click	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_Paper_Click_48DE7A2B.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_Paper_Click		288096
 	863793327	Main_Title_Bgm	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Main_Title_Bgm_0253DC48.wem		\Actor-Mixer Hierarchy\Default Work Unit\BGM\Main_Title_Bgm		19883608
+	865351906	Event_Movement	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Event_Movement_9AA05703.wem		\Actor-Mixer Hierarchy\Default Work Unit\Event_Movement		19296
 	869618840	Dokebi_Attack_1	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dokebi_Attack_1_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dokebi_Attack_1		288096
 	870375303	Dosul_ReinForce	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_ReinForce_66E713C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_ReinForce		314400
+	879237363	Event_Click	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Event_Click_71893BB8.wem		\Actor-Mixer Hierarchy\Default Work Unit\Event_Click		57696
 	886505247	Fox_Skill_2	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Fox_Skill_2_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Fox_Skill_2		432096
 	912592282	Scene_Changed	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Scene_Changed_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Scene_Changed		960096
 	915405375	Fox_Skill_4	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Fox_Skill_4_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Fox_Skill_4		528096
+	926927899	Main_Title	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Main_Title_E7A2DC0E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Main_Title		441696
 	932057400	Heal_Use	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Heal_Use_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Heal_Use		576096
 	952769722	Fight_BGM	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Fighting_BGM_556CB244.wem		\Actor-Mixer Hierarchy\Default Work Unit\BGM\Fight_BGM		15638540
 	958025226	Dosul_Paper_Close	C:\Unity\Woochi\Woochi_WwiseProject\.cache\Mac\SFX\Dosul_Paper_Close_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dosul_Paper_Close		384096
