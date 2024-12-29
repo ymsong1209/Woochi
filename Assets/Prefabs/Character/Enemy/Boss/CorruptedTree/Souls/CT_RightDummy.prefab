@@ -171,11 +171,11 @@ PrefabInstance:
     - target: {fileID: 5365637576824019810, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: shadowSprites.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: f3b270e2dc26ba546bffea10b90f4860, type: 3}
+      objectReference: {fileID: 21300000, guid: 06dccbda532a94c4c9380511b0169bc0, type: 3}
     - target: {fileID: 5365637576824019810, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: shadowSprites.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: 34222d9e63a631c45926cc1fcd81a269, type: 3}
+      objectReference: {fileID: 21300000, guid: 91dc787006768d84ba5f57396bdd235b, type: 3}
     - target: {fileID: 5451275638499511753, guid: d65a7aefa191b904c8dded1547849368, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 3.5
