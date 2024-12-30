@@ -18,7 +18,7 @@ MonoBehaviour:
   skillSound:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: ce35ad551cd3a1f4e8dc853deb33df3d, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: 28045733b3b493a4c9e1e760648e40a1, type: 2}
   skillAvailableRadius: 0101010100000000
   skillRadius: 0000000001010101
   skillType: 0

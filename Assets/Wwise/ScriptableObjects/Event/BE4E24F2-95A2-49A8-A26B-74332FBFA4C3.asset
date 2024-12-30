@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b4a7ea1955cfde4abb8d15c1c4ff40d, type: 3}
+  m_Name: BE4E24F2-95A2-49A8-A26B-74332FBFA4C3
+  m_EditorClassIdentifier: 
+  objectName: Monster_Attack_2
+  id: 3856529395
+  guid: BE4E24F2-95A2-49A8-A26B-74332FBFA4C3

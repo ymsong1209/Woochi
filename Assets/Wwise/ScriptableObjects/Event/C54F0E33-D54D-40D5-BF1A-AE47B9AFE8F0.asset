@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b4a7ea1955cfde4abb8d15c1c4ff40d, type: 3}
+  m_Name: C54F0E33-D54D-40D5-BF1A-AE47B9AFE8F0
+  m_EditorClassIdentifier: 
+  objectName: Dokebi_Attack_3
+  id: 1261339926
+  guid: C54F0E33-D54D-40D5-BF1A-AE47B9AFE8F0
