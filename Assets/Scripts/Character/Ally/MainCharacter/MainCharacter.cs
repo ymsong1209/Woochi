@@ -87,9 +87,12 @@ public class MainCharacter : BaseCharacter
 
     public override void SetDead()
     {
-        GameManager.GetInstance.ResetGame();
-
-        HelperUtilities.MoveScene(SceneType.Title);
+        Invoke("PlayDeadScenario", 0.5f);
+    }
+    
+    private void PlayDeadScenario()
+    {
+        ScenarioManager.GetInstance.Play(1);
     }
     
     public void UpdateSorceryPoints(int value, bool isAdd)

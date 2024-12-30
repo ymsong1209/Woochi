@@ -8,7 +8,7 @@ public class Scenario : ScriptableObject
 
     protected Plot currentPlot;
 
-    public void Play(int index = 0)
+    public virtual void Play(int index = 0)
     {
         DataCloud.playerData.scenarioID = ID;
         DataCloud.IsScenarioMode = true;
