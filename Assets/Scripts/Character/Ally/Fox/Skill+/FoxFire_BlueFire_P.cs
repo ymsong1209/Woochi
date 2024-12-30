@@ -14,6 +14,8 @@ public class FoxFire_BlueFire_P : BaseSkill
         dotCureBuff.BuffDurationTurns = 3;
         dotCureBuff.IsAlwaysApplyBuff = true;
         dotCureBuff.DotCureAmount = 70;
+        dotCureBuff.MinDamage = SkillOwner.FinalStat.GetValue(StatType.MinDamage);
+        dotCureBuff.MaxDamage = SkillOwner.FinalStat.GetValue(StatType.MaxDamage);
         dotCureBuff.BaseDotCureAmount = 6;
         
         instantiatedBuffList.Add(dotCureGameObject);
@@ -27,6 +29,6 @@ public class FoxFire_BlueFire_P : BaseSkill
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * 70f / 100f);
         text.text = "푸른 불꽃+\n" + 
                     "3턴 동안 아군의 체력을 턴 시작당\n" +
-                    (int)(6 + minStat*0.7) + " ~ " + (int)(6 +maxStat * 0.7) +" 만큼 회복";
+                    (int)(6 + minStat) + " ~ " + (int)(6 +maxStat) +" 만큼 회복";
     }
 }

@@ -19,9 +19,11 @@ public class DotCureByDamageBuff : BaseBuff
     
     public override int ApplyTurnStartBuff()
     {
-        //maxDamage의 dotCureAmount%만큼 힐
-        float healAmount = baseDotCureAmount + maxDamage * dotCureAmount / 100f;
-        buffOwner.Health.Heal((int)Mathf.Round(healAmount),false);
+        //mindam~maxdam사이 dotCureAmount%만큼 힐
+        int minheal = (int)(baseDotCureAmount + Mathf.Round(minDamage * dotCureAmount / 100f));
+        int maxheal = (int)(baseDotCureAmount + Mathf.Round(maxDamage * dotCureAmount / 100f));
+        int healAmount = Random.Range(minheal, maxheal);
+        buffOwner.Health.Heal(healAmount,false);
 
         --buffDurationTurns;
         
@@ -55,7 +57,9 @@ public class DotCureByDamageBuff : BaseBuff
     public override void SetBuffDescription(TextMeshProUGUI text)
     {
         string description = "";
-        description = BuffName + " " + buffDurationTurns + ": 매턴이 시작할 때마다 "+  (int)Mathf.Round(baseDotCureAmount + maxDamage * dotCureAmount / 100f)+"만큼 회복.";
+        int minheal = (int)(baseDotCureAmount + Mathf.Round(minDamage * dotCureAmount / 100f));
+        int maxheal = (int)(baseDotCureAmount + Mathf.Round(maxDamage * dotCureAmount / 100f));
+        description = BuffName + " " + buffDurationTurns + "턴: 매턴이 시작할 때마다 "+ minheal + " ~ " + maxheal+"만큼 회복.";
         description += "\n";
         text.text += description;
         SetBuffColor(text);
@@ -68,8 +72,18 @@ public class DotCureByDamageBuff : BaseBuff
         get => dotCureAmount;
         set => dotCureAmount = value;
     }
-    public float MinDamage => minDamage;
-    public float MaxDamage => maxDamage;
+
+    public float MinDamage
+    {
+        get => minDamage;
+        set => minDamage = value;
+    }
+
+    public float MaxDamage
+    {
+        get => maxDamage;
+        set => maxDamage = value;
+    }
     
     public float BaseDotCureAmount
     {

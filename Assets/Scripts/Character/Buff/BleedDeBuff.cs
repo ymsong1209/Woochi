@@ -39,7 +39,7 @@ public class BleedDeBuff : BaseBuff
 
     public override void SetBuffDescription(TextMeshProUGUI text)
     {
-        string description = "출혈" + buffDurationTurns+ " : 매턴마다 최대 체력의 " + bleedPercent + "% 만큼 피해를 입습니다.";
+        string description = "출혈" + buffDurationTurns+ "턴 : 매턴마다 최대 체력의 " + bleedPercent + "% 만큼 피해를 입습니다.";
         text.text = description;
         SetBuffColor(text);
     }
