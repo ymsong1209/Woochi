@@ -53,6 +53,9 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         var allyIDs = DataCloud.playerData.battleData.allies.ToArray();
         var allyList = GameManager.GetInstance.Library.GetCharacterList(allyIDs);
 
+        //CreateAlly에서 다시 아군 정보 추가
+        DataCloud.playerData.battleData.allies.Clear();
+        
         allies.Initialize(allyList);
         allyCards.Initialize(allies);
 
