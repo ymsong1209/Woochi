@@ -540,15 +540,24 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
         OnFocusStart?.Invoke();
 
-        // 더미 캐릭터가 receiver인 경우 caster의 UI를 활성화 or 정비 중이면 caster의 UI를 활성화
-        if (receiver.isDummy)
-            ShowCharacterUI?.Invoke(caster, false);
-        else
-            ShowCharacterUI?.Invoke(receiver, false);
+        // 공격받은 캐릭터의 UI가 뜨는 코드
+        // ChangeLoccation같은 스킬은 Deactivate때 Skill을 null로 초기화하기 때문에 아래 로직 임시로 주석
+        // // 더미 캐릭터가 receiver인 경우 caster의 UI를 활성화 or 정비 중이면 caster의 UI를 활성화
+        // if (receiver.isDummy)
+        //     ShowCharacterUI?.Invoke(caster, false);
+        // else
+        //     ShowCharacterUI?.Invoke(receiver, false);
         
         yield return new WaitUntil(() => caster.IsIdle);
         
         OnFocusEnd?.Invoke();
+        //ChangeLocation같은 스킬은 사용시 currentSelectedSkill을 null로 채움
+        //하단 로직은 중독버프 같이 스킬로 트리거 되는 버프 체크용
+        if (currentSelectedSkill)
+        {
+            
+        }
+        
         bool isAnyDead = false;
         foreach (BaseCharacter skillreceiver in currentSelectedSkill.SkillResult.Opponent)
         {
@@ -849,6 +858,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         }
 
         (list[0].RowOrder, list[1].RowOrder) = (list[1].RowOrder, list[0].RowOrder);
+        Logger.BattleLog($"\"{list[0].Name}\"({list[0].RowOrder + 1}열)이(가) \"{list[1].Name}\"({list[1].RowOrder + 1}열)이랑 자리바꿈 시전", "우치 스킬[자리바꿈]");
     }
 
     /// <summary>
