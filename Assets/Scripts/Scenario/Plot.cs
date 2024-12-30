@@ -2,7 +2,7 @@ using System;
 using OneLine;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Actor_", menuName = "Scriptable Objects/Plot/Normal")]
+[CreateAssetMenu(fileName = "Plot_", menuName = "Scriptable Objects/Plot/Normal")]
 public class Plot : ScriptableObject
 {
     private Action<int> onComplete;

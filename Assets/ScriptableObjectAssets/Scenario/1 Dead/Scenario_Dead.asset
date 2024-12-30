@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8a4e02b9bda6d640a4d6da5e102ef16, type: 3}
+  m_Name: Scenario_Dead
+  m_EditorClassIdentifier: 
+  ID: 1
+  plots:
+  - {fileID: 11400000, guid: b3ca9043546b9d34b8052a090695be24, type: 2}
+  - {fileID: 11400000, guid: d64d576521e80664db0e5fb9c12aa8de, type: 2}
+  - {fileID: 11400000, guid: 84f6297842b478747849f56f09d73af1, type: 2}
+  - {fileID: 11400000, guid: 02a8e2ab6858af543bb500b70413a519, type: 2}
+  - {fileID: 11400000, guid: 9c76f833ab5b7cd478bd8f665a622159, type: 2}
+  - {fileID: 11400000, guid: 50303e3e5f6d8f346bb89bf6ac53196a, type: 2}
+  - {fileID: 11400000, guid: b11988ed3980a8c48b4e85ddbb868765, type: 2}
+  - {fileID: 11400000, guid: faaa0d8805e1b414bb732ccfa6a241d2, type: 2}
