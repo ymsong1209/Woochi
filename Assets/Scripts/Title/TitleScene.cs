@@ -7,6 +7,9 @@ public class TitleScene : MonoBehaviour
     [SerializeField] private Button continueBtn;
     [SerializeField] private Button exitBtn;
     [SerializeField] private Button deleteBtn;
+    [SerializeField] private Button settingBtn;
+
+    [SerializeField] private Popup pausePopup;
     
     void Start()
     {
@@ -15,6 +18,7 @@ public class TitleScene : MonoBehaviour
         continueBtn.onClick.AddListener(Continue);
         exitBtn.onClick.AddListener(() => GameManager.GetInstance.ExitGame());
         deleteBtn.onClick.AddListener(() => GameManager.GetInstance.DeleteData());
+        settingBtn.onClick.AddListener(() => pausePopup.Show());
         #endregion
 
         continueBtn.interactable = DataCloud.playerData.hasSaveData;
