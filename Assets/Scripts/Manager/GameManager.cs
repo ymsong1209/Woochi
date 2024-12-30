@@ -56,6 +56,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     public void ResetGame()
     {
+        DataCloud.IsFocusing = false;
         DataCloud.ResetPlayerData();
         LoadData();
     }

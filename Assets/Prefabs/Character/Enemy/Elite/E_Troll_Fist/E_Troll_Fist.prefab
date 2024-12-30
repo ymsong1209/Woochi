@@ -126,19 +126,19 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 6de6afe88b1f33348a175123fa875360, type: 3}
     - target: {fileID: 4040513414615381807, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Size.x
-      value: 5.2559195
+      value: 4.381687
       objectReference: {fileID: 0}
     - target: {fileID: 4040513414615381807, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Size.y
-      value: 5.7113175
+      value: 5.4463983
       objectReference: {fileID: 0}
     - target: {fileID: 4040513414615381807, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Offset.x
-      value: -0.06386936
+      value: 0.081835866
       objectReference: {fileID: 0}
     - target: {fileID: 4040513414615381807, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Offset.y
-      value: 0.78915095
+      value: 0.6566913
       objectReference: {fileID: 0}
     - target: {fileID: 4040513414615381807, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
@@ -346,6 +346,7 @@ MonoBehaviour:
   activeSkills: []
   activeSkillCheckBox: 010101
   isAlly: 0
+  canUseTurn: 1
   isDummy: 0
   isSummoned: 0
   rowOrder: 0
