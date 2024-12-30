@@ -83,9 +83,9 @@ public class GameSettingUI : MonoBehaviour
         resolutionDropdown.AddOptions(options);
     }
 
-    public void ClickSoundBar()
+    public void PlayClickSound()
     {
-        GameManager.GetInstance.soundManager.PlaySFX("Sound_Click");
+        GameManager.GetInstance.soundManager.PlaySFX("Reward_Arrow_Click");
     }
 
 }

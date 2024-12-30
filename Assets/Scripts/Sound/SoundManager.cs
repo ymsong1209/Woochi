@@ -21,7 +21,6 @@ public class SoundManager : MonoBehaviour
 
     public void PlayBGM(BGMState bgmState)
     {
-        AkSoundEngine.StopAll();
         bgmEvents[(int) bgmState].Post(gameObject);
     }
     
