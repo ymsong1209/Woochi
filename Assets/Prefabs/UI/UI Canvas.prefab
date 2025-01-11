@@ -4410,6 +4410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recoveryText: {fileID: 2924306718215567312}
+  recoveryConfirmButton: {fileID: 5187911884432047330}
 --- !u!114 &3645443882699135681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13974,6 +13975,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: RecoveryConfirmButton, Assembly-CSharp
         m_MethodName: RecoveryConfirm
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5187911884432047330}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: set_interactable
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -36062,10 +36075,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4621789868258349693, guid: 91e952ffa565d834cb53bb776ee3ad85, type: 3}
-      propertyPath: exitYes
-      value: 
-      objectReference: {fileID: 769058902829856271}
     - target: {fileID: 5064966787677655283, guid: 91e952ffa565d834cb53bb776ee3ad85, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -36231,17 +36240,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91e952ffa565d834cb53bb776ee3ad85, type: 3}
---- !u!114 &769058902829856271 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6263854026624187552, guid: 91e952ffa565d834cb53bb776ee3ad85, type: 3}
-  m_PrefabInstance: {fileID: 6647753901000084143}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1876858131770661468 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5064966787677655283, guid: 91e952ffa565d834cb53bb776ee3ad85, type: 3}

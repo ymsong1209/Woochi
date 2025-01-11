@@ -14,6 +14,14 @@ public class WoochiSkillIcon : MonoBehaviour, ITooltipiable
     protected BaseSkill skill;
     [SerializeField] private SkillElement skillElement;
 
+    private void Start()
+    {
+        BattleManager.GetInstance.OnFocusStart += () =>
+        {
+            btn.interactable = false;
+        };
+    }
+    
     public void SetSkill(BaseSkill _skill, bool isEnable = true)
     {
         if (_skill != null)
@@ -33,7 +41,7 @@ public class WoochiSkillIcon : MonoBehaviour, ITooltipiable
 
     public void ShowTooltip()
     {
-        if (skill == null)
+        if (skill == null || btn.interactable == false)
             return;
 
         OnShowTooltip.Invoke(skill, transform);
@@ -58,20 +66,9 @@ public class WoochiSkillIcon : MonoBehaviour, ITooltipiable
 
         BaseSkill selectedSkill = BattleManager.GetInstance.CurrentSelectedSkill;
         //우치 스킬이 선택되지 않았으면 도력 게이지 다시 원래대로 회복
-        if (!selectedSkill)
+        if (!selectedSkill || btn.interactable == false)
         {
             UIManager.GetInstance.sorceryGuageUI.Restore();
-        }
-        else
-        {
-            MainCharacterSkill mainCharacterSkill = selectedSkill as MainCharacterSkill;
-            if (!mainCharacterSkill)
-            {
-                Debug.LogError("우치 스킬이 아님");
-                return;
-            }
-
-            UIManager.GetInstance.sorceryGuageUI.ShowAnimation(mainCharacterSkill.RequiredSorceryPoints, true);
         }
     }
 

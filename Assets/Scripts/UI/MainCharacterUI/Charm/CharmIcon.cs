@@ -17,6 +17,7 @@ public class CharmIcon : MonoBehaviour, ITooltipiable
     {
         if (_charm != null)
         {
+            btn.interactable = true;
             gameObject.SetActive(isEnable);
             icon.sprite = sprite;
             charm = _charm;
@@ -35,7 +36,7 @@ public class CharmIcon : MonoBehaviour, ITooltipiable
 
     public void ShowTooltip()
     {
-        if (charm == null)
+        if (charm == null || !btn.interactable)
             return;
 
         OnShowTooltip.Invoke(charm, transform);

@@ -16,6 +16,7 @@ public class WoochiCharmSelectionUI : MonoBehaviour
         {
             int index = i;
             Button btn = charmIcons[i].btn;
+            BattleManager.GetInstance.OnFocusStart += () =>charmIcons[index].btn.interactable = false;
             btn.onClick.AddListener(() => CharmButtonClicked(charmIcons[index].Charm));
             btn.onClick.AddListener(() => ScenarioManager.GetInstance.NextPlot(PlotEvent.Click));
             charmIcons[i].OnShowTooltip += SetCharmTooltip;

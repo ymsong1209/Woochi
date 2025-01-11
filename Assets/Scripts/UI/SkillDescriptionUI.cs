@@ -16,6 +16,7 @@ public class SkillDescriptionUI : MonoBehaviour
     {
         initialPanelSize = panelRt.sizeDelta;
         gameObject.SetActive(false);
+        BattleManager.GetInstance.OnFocusStart += Deactivate;
     }
 
     private void Update()

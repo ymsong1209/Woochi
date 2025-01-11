@@ -1,13 +1,16 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class WoochiRecoveryUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI recoveryText;
+    [SerializeField] private Button recoveryConfirmButton;
     
     public void Activate()
     {
         gameObject.SetActive(true);
+        recoveryConfirmButton.interactable = true;
         MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
         if (!mainCharacter)
         {

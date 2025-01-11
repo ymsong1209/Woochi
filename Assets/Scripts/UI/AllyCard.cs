@@ -25,6 +25,8 @@ public class AllyCard : MonoBehaviour, ITooltipiable
     private void Start()
     {
         front.onClick.AddListener(OnClick);
+        BattleManager.GetInstance.OnFocusStart += () => front.interactable = false;
+        BattleManager.GetInstance.OnFocusEnd += () => front.interactable = true;
     }
 
     public void UpdateHP()

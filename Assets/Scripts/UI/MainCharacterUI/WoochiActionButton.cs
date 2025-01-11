@@ -13,6 +13,7 @@ public class WoochiActionButton : MonoBehaviour, IPointerEnterHandler
     private void Start()
     {
         toggle.onValueChanged.AddListener(PlaySFX);
+        BattleManager.GetInstance.OnFocusStart += () => Initialize(false);
     }
 
     public void Initialize(bool isEnable)
