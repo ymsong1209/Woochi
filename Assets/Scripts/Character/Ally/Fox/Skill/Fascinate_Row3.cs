@@ -10,9 +10,10 @@ public class Fascinate_Row3 : BaseSkill
         GameObject statDebuffPrefab = BuffPrefabList[0];
         GameObject statDebuffGameObject = Instantiate(statDebuffPrefab, transform);
         StatDeBuff statDebuff = statDebuffGameObject.GetComponent<StatDeBuff>();
-        statDebuff.BuffName = "홀리기";
+        statDebuff.BuffName = "홀림";
         statDebuff.BuffDurationTurns = 2;
         statDebuff.ChanceToApplyBuff = 100;
+        statDebuff.BuffStackType = BuffStackType.ResetDuration;
         statDebuff.changeStat.SetValue(StatType.Accuracy, -2);
         statDebuff.changeStat.SetValue(StatType.Speed, -2);
         instantiatedBuffList.Add(statDebuffGameObject);

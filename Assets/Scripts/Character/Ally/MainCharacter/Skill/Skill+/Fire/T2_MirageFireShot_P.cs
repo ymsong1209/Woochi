@@ -13,6 +13,7 @@ public class T2_MirageFireShot_P : MainCharacterSkill
         statDeBuff.BuffName = "시야 차단+";
         statDeBuff.BuffDurationTurns = 2;
         statDeBuff.ChanceToApplyBuff = 70;
+        statDeBuff.BuffStackType = BuffStackType.ResetDuration;
         statDeBuff.changeStat.SetValue(StatType.MinDamage, -1);
         statDeBuff.changeStat.SetValue(StatType.MaxDamage, -1);
         instantiatedBuffList.Add(statDebuffGameObject);

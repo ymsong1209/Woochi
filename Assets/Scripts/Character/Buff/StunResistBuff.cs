@@ -5,6 +5,12 @@ using TMPro;
 
 public class StunResistBuff : BaseBuff
 {
+    public StunResistBuff()
+    {
+        buffEffect = BuffEffect.StunResist;
+        buffType = BuffType.Positive;
+        buffStackType = BuffStackType.ResetDuration;
+    }
     public override bool CanApplyBuff(BaseBuff buff)
     {
         if (buff.BuffEffect == BuffEffect.Stun)

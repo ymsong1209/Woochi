@@ -10,19 +10,21 @@ public class ElementalStatBuff : BaseBuff
         buffEffect = BuffEffect.ElementalStatStrengthen;
         buffType = BuffType.Positive;
         element = SkillElement.Defualt;
+        buffStackType = BuffStackType.ResetDuration;
     }
     
     public override void StackBuff(BaseBuff inputBuff)
     {
         ElementalStatBuff elementalStatBuff = inputBuff as ElementalStatBuff;
         if (!elementalStatBuff || elementalStatBuff.BuffName!= this.BuffName || elementalStatBuff.element!= this.element) return;
+        base.StackBuff(inputBuff);
         Logger.BattleLog($"\"{buffOwner.Name}({buffOwner.RowOrder + 1})\"에게 \"{buffName}\" 버프가 중첩되었습니다.", "버프 중첩");
-        //중첩시키려는 버프의 지속시간이 무한인경우 기존 버프 지속시간 무한으로 변경
-        if(inputBuff.BuffDurationTurns == -1) base.buffDurationTurns = -1;
-        //아닐 경우 버프 지속시간은 갱신
-        else base.buffDurationTurns = inputBuff.BuffDurationTurns;
-        base.buffBattleDurationTurns += inputBuff.BuffBattleDurationTurns;
-        changeStat = elementalStatBuff.ChangeStat;
+    }
+    
+    protected override void StackBuffEffect(BaseBuff _buff)
+    {
+        ElementalStatBuff elementalStatBuff = _buff as ElementalStatBuff;
+        changeStat += elementalStatBuff.changeStat;
     }
     
     public override void SetBuffDescription(TextMeshProUGUI text)

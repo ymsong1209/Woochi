@@ -6,6 +6,14 @@ using UnityEngine;
 public class BurnDebuff : BaseBuff
 {
     private float burnDamage;
+    public BurnDebuff()
+    {
+        buffEffect = BuffEffect.Burn;
+        buffType = BuffType.Negative;
+        buffStackType = BuffStackType.ExtendDuration;
+        buffDurationTurns = 3;
+        burnDamage = 5f;
+    }
     
     public override int ApplyTurnStartBuff()
     {
@@ -21,14 +29,13 @@ public class BurnDebuff : BaseBuff
         //ApplyTurnStartBuff는 버프 실행 후 캐릭터가 살았으면 true 반환
         return (int)Mathf.Round(burnAmount);
     }
-
-    //화상 스택이 쌓일 경우 지속 시간이 3턴만큼 늘어난다.
+    
     public override void StackBuff(BaseBuff _buff)
     {
-        base.buffDurationTurns += 3;
-        base.buffBattleDurationTurns += _buff.BuffBattleDurationTurns;
+        base.StackBuff(_buff);
         Logger.BattleLog($"\"{buffOwner.Name}\"({buffOwner.RowOrder + 1}열)에 화상 중첩, 남은 화상 턴 : {buffDurationTurns}", "화상버프");
     }
+    
     
     public override void SetBuffDescription(TextMeshProUGUI text)
     {
@@ -39,11 +46,6 @@ public class BurnDebuff : BaseBuff
         SetBuffColor(text);
     }
     
-    public BurnDebuff()
-    {
-        buffEffect = BuffEffect.Burn;
-        buffType = BuffType.Negative;
-        burnDamage = 5f;
-    }
+   
     
 }

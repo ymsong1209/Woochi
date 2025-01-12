@@ -13,6 +13,7 @@ public class Haetae_DisasterImage_P : BaseSkill
         statDebuff.BuffName = "죄악환영+";
         statDebuff.BuffDurationTurns = 3;
         statDebuff.IsAlwaysApplyBuff = true;
+        statDebuff.BuffStackType = BuffStackType.ResetDuration;
         statDebuff.changeStat.SetValue(StatType.Accuracy, -4);
         statDebuff.changeStat.SetValue(StatType.Evasion, -4);
         statDebuff.changeStat.SetValue(StatType.MinDamage, -4);

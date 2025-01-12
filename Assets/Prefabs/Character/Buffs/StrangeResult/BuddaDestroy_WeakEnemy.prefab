@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2569674945298275565, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
       propertyPath: m_Name
-      value: BuddaDestroy_Lucky
+      value: BuddaDestroy_WeakEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
       propertyPath: buffName
@@ -149,12 +149,14 @@ MonoBehaviour:
   chanceToApplyBuff: 0
   buffName: "\uC694\uAE30 \uC800\uD558"
   buffColor: {r: 0, g: 0, b: 0, a: 0}
-  isRemoveWhenBattleEnd: 1
   buffBattleDurationTurns: 0
+  buffStackType: 1
+  isRemoveWhenBattleEnd: 1
   isRemovableDuringBattle: 0
   isBuffAppliedThisTurn: 1
-  isAlwaysApplyBuff: 0
+  isAlwaysApplyBuff: 1
   isSaveBuff: 0
+  isSpecialBuff: 0
   changeStat:
     list:
     - type: 0

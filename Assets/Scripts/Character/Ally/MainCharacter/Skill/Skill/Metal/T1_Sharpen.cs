@@ -14,6 +14,7 @@ public class T1_Sharpen : MainCharacterSkill
         statBuff.BuffName = "연마";
         statBuff.BuffDurationTurns = 1;
         statBuff.IsAlwaysApplyBuff = true;
+        statBuff.BuffStackType = BuffStackType.ExtendDuration;
         statBuff.changeStat.SetValue(StatType.Accuracy, 5);
         statBuff.changeStat.SetValue(StatType.Crit, 5);
         instantiatedBuffList.Add(statbuffGameObject);

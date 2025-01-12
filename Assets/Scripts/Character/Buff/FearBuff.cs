@@ -4,6 +4,15 @@ using UnityEngine;
 using TMPro;
 public class FearBuff : BaseBuff
 {
+    public FearBuff()
+    {
+        buffEffect = BuffEffect.Fear;
+        buffType = BuffType.Negative;
+        damageReduction = 20f;
+        buffDurationTurns = -1;
+        buffStackType = BuffStackType.ResetDuration;
+
+    }
     private float damageReduction;
     
     public override void SetBuffDescription(TextMeshProUGUI text)
@@ -13,13 +22,7 @@ public class FearBuff : BaseBuff
         SetBuffColor(text);
     }
     
-    public FearBuff()
-    {
-        buffEffect = BuffEffect.Fear;
-        buffType = BuffType.Negative;
-        damageReduction = 20f;
-        buffDurationTurns = -1;
-    }
+    
     
     public float DamageReduction => damageReduction;
 }

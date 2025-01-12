@@ -11,7 +11,8 @@ public class CH_DisasterImage : BaseSkill
         StatDeBuff statDebuff = statDebuffGameObject.GetComponent<StatDeBuff>();
         statDebuff.BuffName = "재앙환영";
         statDebuff.BuffDurationTurns = 4;
-        statDebuff.ChanceToApplyBuff = 100;
+        statDebuff.IsAlwaysApplyBuff = true;
+        statDebuff.BuffStackType = BuffStackType.ResetDuration;
         statDebuff.changeStat.SetValue(StatType.Accuracy, -2);
         statDebuff.changeStat.SetValue(StatType.Evasion, -2);
         statDebuff.changeStat.SetValue(StatType.MinDamage, -2);

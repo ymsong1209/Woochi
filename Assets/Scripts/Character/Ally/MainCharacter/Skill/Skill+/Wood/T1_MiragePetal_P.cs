@@ -14,6 +14,7 @@ public class T1_MiragePetal_P : MainCharacterSkill
         statDeBuff.BuffName = "환영 꽃가루+";
         statDeBuff.BuffDurationTurns = 3;
         statDeBuff.ChanceToApplyBuff = 80;
+        statDeBuff.BuffStackType = BuffStackType.ResetDuration;
         statDeBuff.changeStat.SetValue(StatType.Defense, -10);
         instantiatedBuffList.Add(statDebuffGameObject);
         

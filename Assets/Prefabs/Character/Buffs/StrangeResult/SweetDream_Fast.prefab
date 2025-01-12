@@ -17,12 +17,20 @@ PrefabInstance:
       value: "\uAC00\uBCBC\uC6CC\uC9D0"
       objectReference: {fileID: 0}
     - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: buffStackType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
       propertyPath: changeStat.speed
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
       propertyPath: buffDurationTurns
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
+      propertyPath: isAlwaysApplyBuff
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6659213406999125084, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
       propertyPath: changeStat.evasion

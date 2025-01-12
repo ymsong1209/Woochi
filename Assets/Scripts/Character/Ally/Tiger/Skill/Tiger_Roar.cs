@@ -15,6 +15,7 @@ public class Tiger_Roar : BaseSkill
         statDebuff.BuffName = "위축";
         statDebuff.BuffDurationTurns = 2;
         statDebuff.ChanceToApplyBuff = 100;
+        statDebuff.BuffStackType = BuffStackType.ResetDuration;
         statDebuff.changeStat.SetValue(StatType.Accuracy, -2);
         statDebuff.changeStat.SetValue(StatType.Speed, -2);
         instantiatedBuffList.Add(statDebuffGameObject);
@@ -28,6 +29,7 @@ public class Tiger_Roar : BaseSkill
             roarBuff.BuffName = "산군의 위엄";
             roarBuff.BuffDurationTurns = 3;
             roarBuff.IsAlwaysApplyBuff = true;
+            roarBuff.BuffStackType = BuffStackType.ResetDuration;
             roarBuff.changeStat.SetValue(StatType.Defense, 10);
             SkillOwner.ApplyBuff(SkillOwner,SkillOwner,roarBuff);
         }

@@ -14,6 +14,7 @@ public class T1_Tamping : MainCharacterSkill
         statBuff.BuffName = "안정된 자세";
         statBuff.BuffDurationTurns = 3;
         statBuff.IsAlwaysApplyBuff = true;
+        statBuff.BuffStackType = BuffStackType.ResetDuration;
         statBuff.changeStat.SetValue(StatType.Accuracy, 5);
         statBuff.changeStat.SetValue(StatType.Resist, 10);
         instantiatedBuffList.Add(statbuffGameObject);

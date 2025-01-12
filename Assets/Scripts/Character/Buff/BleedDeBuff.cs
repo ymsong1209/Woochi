@@ -13,6 +13,14 @@ public class BleedDeBuff : BaseBuff
   
     //출혈 중첩 수
     [SerializeField,ReadOnly] private int bleedPercent = 0;
+    
+    public BleedDeBuff()
+    {
+        buffEffect = BuffEffect.Bleed;
+        buffType = BuffType.Negative;
+        buffStackType = BuffStackType.ResetAndStack;
+    }
+    
     public override int ApplyTurnStartBuff()
     {
         Logger.BattleLog($"\"{buffOwner.Name}\"({buffOwner.RowOrder + 1}열)은 출혈 상태입니다\n"+
@@ -26,15 +34,21 @@ public class BleedDeBuff : BaseBuff
         return (int)Mathf.Round(bleedDamage);
     }
     
-    //출혈 스택이 쌓일 경우 buffdurationturn과 bleedpercent이 중첩됨
-    public override void StackBuff(BaseBuff _buff)
+    
+    protected override void StackBuffEffect(BaseBuff _buff)
     {
-        base.buffDurationTurns += _buff.BuffDurationTurns;
-        base.buffBattleDurationTurns += _buff.BuffBattleDurationTurns;
         BleedDeBuff bleedDeBuff = _buff as BleedDeBuff;
-        bleedPercent += bleedDeBuff.BleedPercent;
-        Logger.BattleLog($"\"{buffOwner.Name}\"({buffOwner.RowOrder + 1}열)에게 출혈 중첩\n"+
-                         $"출혈 중첩 : {bleedPercent}, 남은 횟수 : {buffDurationTurns}", "출혈버프");
+        if (bleedDeBuff)
+        {
+            bleedPercent += bleedDeBuff.BleedPercent;
+            Logger.BattleLog($"\"{buffOwner.Name}\"({buffOwner.RowOrder + 1}열)에게 출혈 중첩\n"+
+                             $"출혈 중첩 : {bleedPercent}, 남은 횟수 : {buffDurationTurns}", "출혈버프");
+        }
+        else
+        {
+            Logger.BattleLog($"\"{buffOwner.Name}\"({buffOwner.RowOrder + 1}열)에게 출혈 중첩 실패\n"+
+                             $"인자로 들어온 출혈버프가 변환 불가!", "출혈버프 실패");
+        }
     }
 
     public override void SetBuffDescription(TextMeshProUGUI text)
@@ -44,11 +58,7 @@ public class BleedDeBuff : BaseBuff
         SetBuffColor(text);
     }
     
-    public BleedDeBuff()
-    {
-        buffEffect = BuffEffect.Bleed;
-        buffType = BuffType.Negative;
-    }
+   
     
     public int BleedPercent
     {

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using TMPro;
 
@@ -17,6 +18,7 @@ public class BaseBuff : MonoBehaviour
     [SerializeField] protected string buffName;
     [SerializeField] protected Color buffColor;
     [SerializeField] protected int buffBattleDurationTurns;//몇번의 전투동안 지속되어야할지
+    [SerializeField] protected BuffStackType buffStackType = BuffStackType.Default;
     [Header("Boolean")]
     [SerializeField] protected bool isRemoveWhenBattleEnd = true;
     [SerializeField] protected bool isRemovableDuringBattle = true;
@@ -131,8 +133,38 @@ public class BaseBuff : MonoBehaviour
     /// </summary>
     public virtual void StackBuff(BaseBuff _buff)
     {
-        buffDurationTurns += _buff.buffDurationTurns;
-        buffBattleDurationTurns += _buff.buffBattleDurationTurns;
+        switch (buffStackType)
+        {
+            //갱신 : 지속시간 처음으로 초기화
+            case BuffStackType.ResetDuration:
+                buffDurationTurns = Mathf.Max(-1,_buff.buffDurationTurns);
+                buffBattleDurationTurns = Mathf.Max(-1, _buff.buffDurationTurns);
+                break;
+            //중첩 : 효과 중첩하여 적용
+            case BuffStackType.StackEffect:
+                StackBuffEffect(_buff);
+                break;
+            //연장 : 남은 시간 + 새 지속시간
+            case BuffStackType.ExtendDuration:
+                buffDurationTurns += _buff.buffDurationTurns;
+                buffBattleDurationTurns += _buff.buffBattleDurationTurns;
+                buffDurationTurns = Mathf.Max(-1, buffDurationTurns);
+                buffBattleDurationTurns = Mathf.Max(-1, buffBattleDurationTurns);
+                break;
+            //갱신 및 중첩 : 효과 중첩 + 지속시간 처음으로 초기화
+            case BuffStackType.ResetAndStack:
+                buffDurationTurns = Mathf.Max(-1, _buff.buffDurationTurns);
+                buffBattleDurationTurns = Mathf.Max(-1, _buff.buffDurationTurns);
+                StackBuffEffect(_buff);
+                break;
+            default:
+                break;
+        }
+    }
+
+    protected virtual void StackBuffEffect(BaseBuff _buff)
+    {
+        
     }
 
     public virtual void SetBuffDescription(TextMeshProUGUI text)
@@ -173,6 +205,12 @@ public class BaseBuff : MonoBehaviour
     {
         get { return buffDurationTurns; }
         set { buffDurationTurns = value; }
+    }
+    
+    public BuffStackType BuffStackType
+    {
+        get => buffStackType;
+        set => buffStackType = value;
     }
     public BuffEffect BuffEffect
     {

@@ -13,6 +13,7 @@ public class T2_StarlightFlow_P : MainCharacterSkill
         statBuff.BuffName = "미리내+";
         statBuff.BuffDurationTurns = 3;
         statBuff.IsAlwaysApplyBuff = true;
+        statBuff.BuffStackType = BuffStackType.ExtendDuration;
         statBuff.changeStat.SetValue(StatType.Evasion, 40);
         statBuff.changeStat.SetValue(StatType.Speed, 6);
         instantiatedBuffList.Add(statbuffGameObject);

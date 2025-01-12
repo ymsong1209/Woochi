@@ -16,9 +16,10 @@ public class E_ScrollDog_Bark : BaseSkill
         GameObject statDebuffPrefab = BuffPrefabList[0];
         GameObject statDebuffGameObject = Instantiate(statDebuffPrefab, transform);
         StatDeBuff statDebuff = statDebuffGameObject.GetComponent<StatDeBuff>();
-        statDebuff.BuffName = "오싹한 짖기";
+        statDebuff.BuffName = "오싹함";
         statDebuff.BuffDurationTurns = 1;
-        statDebuff.ChanceToApplyBuff = 100;
+        statDebuff.IsAlwaysApplyBuff = true;
+        statDebuff.BuffStackType = BuffStackType.ResetDuration;
         statDebuff.changeStat.SetValue(StatType.Accuracy, -5);
         instantiatedBuffList.Add(statDebuffGameObject);
 
@@ -27,7 +28,8 @@ public class E_ScrollDog_Bark : BaseSkill
         GameObject instantiatedEvasionbuff = Instantiate(evasionBuffGameObject, transform);
         StatBuff evasionBuff = instantiatedEvasionbuff.GetComponent<StatBuff>();
         evasionBuff.BuffName = "오싹한 짖기";
-        evasionBuff.BuffDurationTurns = 2; //버프를 자신에게 걸고 이후 1턴동안 지속
+        evasionBuff.BuffDurationTurns = 1;
+        evasionBuff.BuffStackType = BuffStackType.ResetDuration;
         evasionBuff.changeStat.SetValue(StatType.Evasion, 5);
         SkillOwner.ApplyBuff(SkillOwner, SkillOwner, evasionBuff);
     }

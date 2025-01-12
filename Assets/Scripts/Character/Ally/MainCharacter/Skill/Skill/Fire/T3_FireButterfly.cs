@@ -14,6 +14,7 @@ public class T3_FireButterfly : MainCharacterSkill
         statDeBuff.BuffName = "갑옷 융해";
         statDeBuff.BuffDurationTurns = 2;
         statDeBuff.ChanceToApplyBuff = 70;
+        statDeBuff.BuffStackType = BuffStackType.ResetDuration;
         statDeBuff.changeStat.SetValue(StatType.Defense, -10);
         instantiatedBuffList.Add(statDebuffGameObject);
 

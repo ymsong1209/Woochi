@@ -14,6 +14,7 @@ public class T1_HeatHaze : MainCharacterSkill
         statBuff.BuffName = "아지랑이";
         statBuff.BuffDurationTurns = -1;
         statBuff.IsAlwaysApplyBuff = true;
+        statBuff.BuffStackType = BuffStackType.ResetDuration;
         statBuff.changeStat.SetValue(StatType.Evasion, 20);
         instantiatedBuffList.Add(statBuffGameObject);
         

@@ -11,6 +11,7 @@ public class StatDeBuff : BaseBuff
         changeStat = new Stat();
         buffEffect = BuffEffect.StatWeaken;
         buffType = BuffType.Negative;
+        buffStackType = BuffStackType.ResetDuration;
     }
     public override void AddBuff(BaseCharacter caster, BaseCharacter _buffOwner)
     {
@@ -32,14 +33,15 @@ public class StatDeBuff : BaseBuff
     public override void StackBuff(BaseBuff _buff)
     {
         StatDeBuff statDeBuff = _buff as StatDeBuff;
-        if (!statDeBuff) return;
+        if (!statDeBuff || _buff.BuffName != BuffName) return;
+        base.StackBuff(_buff);
         Logger.BattleLog($"\"{buffOwner.Name}({buffOwner.RowOrder + 1})\"에게 \"{buffName}\" 버프가 중첩되었습니다.", "버프 중첩");
-        //중첩시키려는 버프의 지속시간이 무한인경우 기존 버프 지속시간 무한으로 변경
-        if(_buff.BuffDurationTurns == -1) base.buffDurationTurns = -1;
-        else base.buffDurationTurns += _buff.BuffDurationTurns;
-        base.buffBattleDurationTurns += _buff.BuffBattleDurationTurns;
-        changeStat += statDeBuff.changeStat;
         buffOwner.CheckForStatChange();
+    }
+    protected override void StackBuffEffect(BaseBuff _buff)
+    {
+        StatDeBuff statDeBuff = _buff as StatDeBuff;
+        changeStat += statDeBuff.changeStat;
     }
 
     public override void RemoveBuff()

@@ -14,6 +14,7 @@ public class T1_MetalArmor_P : MainCharacterSkill
         statBuff.BuffName = "철갑+";
         statBuff.BuffDurationTurns = 3;
         statBuff.IsAlwaysApplyBuff = true;
+        statBuff.BuffStackType = BuffStackType.ResetDuration;
         statBuff.changeStat.SetValue(StatType.Defense, 10);
         instantiatedBuffList.Add(statbuffGameObject);
         

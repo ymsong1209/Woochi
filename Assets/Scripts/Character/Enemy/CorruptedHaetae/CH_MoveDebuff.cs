@@ -44,6 +44,7 @@ public class CH_MoveDebuff : BaseSkill
         StatBuff statBuff = instantiatedStat.GetComponent<StatBuff>();
         statBuff.BuffName = "저주 흡수";
         statBuff.BuffDurationTurns = -1;
+        statBuff.BuffStackType = BuffStackType.StackEffect;
         statBuff.changeStat.SetValue(StatType.Accuracy, 1);
         statBuff.changeStat.SetValue(StatType.Crit, 1);
         statBuff.changeStat.SetValue(StatType.Evasion, 1);

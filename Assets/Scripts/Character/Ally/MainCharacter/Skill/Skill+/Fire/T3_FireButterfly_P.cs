@@ -15,7 +15,7 @@ public class T3_FireButterfly_P : MainCharacterSkill
         statDeBuff.BuffDurationTurns = 3;
         statDeBuff.ChanceToApplyBuff = 90;
         statDeBuff.changeStat.SetValue(StatType.Defense, -10);
-
+        statDeBuff.BuffStackType = BuffStackType.ResetDuration;
         instantiatedBuffList.Add(statDebuffGameObject);
 
         BaseCharacter opponent = BattleUtils.FindRandomEnemy(this);

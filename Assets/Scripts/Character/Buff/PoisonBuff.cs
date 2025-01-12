@@ -8,6 +8,14 @@ public class PoisonBuff : BaseBuff
     [SerializeField] private int tempPoisonStack = 0;
     [SerializeField] private int poisonStack;
     
+    public PoisonBuff()
+    {
+        buffEffect = BuffEffect.Poison;
+        buffType = BuffType.Negative;
+        buffDurationTurns = -1;
+        buffStackType = BuffStackType.StackEffect;
+    }
+    
     public override int ApplyPostHitBuff(BaseSkill skill)
     {
         int damage = 0;
@@ -47,11 +55,10 @@ public class PoisonBuff : BaseBuff
         }
         return 0;
     }
-    
-    public override void StackBuff(BaseBuff _buff)
+
+    protected override void StackBuffEffect(BaseBuff _buff)
     {
         PoisonBuff buff = _buff as PoisonBuff;
-        base.buffDurationTurns = -1;
         if (buff)
         {
             tempPoisonStack += buff.poisonStack;
@@ -68,12 +75,7 @@ public class PoisonBuff : BaseBuff
         SetBuffColor(text);
     }
     
-    public PoisonBuff()
-    {
-        buffEffect = BuffEffect.Poison;
-        buffType = BuffType.Negative;
-        buffDurationTurns = -1;
-    }
+    
     
     public int PoisonStack
     {

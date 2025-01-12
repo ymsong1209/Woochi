@@ -14,6 +14,7 @@ public class T1_FrostFog_P : MainCharacterSkill
         statDeBuff.BuffName = "시야 차단+";
         statDeBuff.BuffDurationTurns = 3;
         statDeBuff.ChanceToApplyBuff = 90;
+        statDeBuff.BuffStackType = BuffStackType.ResetDuration;
         statDeBuff.changeStat.SetValue(StatType.MinDamage, -1);
         statDeBuff.changeStat.SetValue(StatType.MaxDamage, -1);
 

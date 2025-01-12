@@ -15,6 +15,7 @@ public class T1_MudFloor : MainCharacterSkill
         statDeBuff.BuffName = "진흙투성이";
         statDeBuff.BuffDurationTurns = 2;
         statDeBuff.ChanceToApplyBuff = 70;
+        statDeBuff.BuffStackType = BuffStackType.ResetDuration;
         statDeBuff.changeStat.SetValue(StatType.Speed, -2);
         statDeBuff.changeStat.SetValue(StatType.Evasion, -2);
         instantiatedBuffList.Add(statDebuffGameObject);

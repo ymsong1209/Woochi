@@ -13,7 +13,8 @@ public class T1_HeatHaze_P : MainCharacterSkill
         StatBuff statBuff = statBuffGameObject.GetComponent<StatBuff>();
         statBuff.BuffName = "아지랑이+";
         statBuff.BuffDurationTurns = -1;
-        statBuff.ChanceToApplyBuff = 100;
+        statBuff.IsAlwaysApplyBuff = true;
+        statBuff.BuffStackType = BuffStackType.ResetDuration;
         statBuff.changeStat.SetValue(StatType.Evasion, 35);
         instantiatedBuffList.Add(statBuffGameObject);
         

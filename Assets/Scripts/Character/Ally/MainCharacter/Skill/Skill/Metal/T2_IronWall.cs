@@ -13,8 +13,8 @@ public class T2_IronWall : MainCharacterSkill
         statBuff.BuffName = "철벽";
         statBuff.BuffDurationTurns = 2;
         statBuff.IsAlwaysApplyBuff = true;
+        statBuff.BuffStackType = BuffStackType.ExtendDuration;
         statBuff.changeStat.SetValue(StatType.Defense, 10);
-
         instantiatedBuffList.Add(statbuffGameObject);
         
         base.ActivateSkill(_opponent);

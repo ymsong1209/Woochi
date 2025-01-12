@@ -12,7 +12,8 @@ public class CT_ResurrectAndBuff : BaseSkill
         StatBuff statBuff = statBuffGameObject.GetComponent<StatBuff>();
         statBuff.BuffName = "혼령 공명";
         statBuff.BuffDurationTurns = 1;
-        statBuff.ChanceToApplyBuff = 100;
+        statBuff.IsAlwaysApplyBuff = true;
+        statBuff.BuffStackType = BuffStackType.ResetDuration;
         statBuff.changeStat.SetValue(StatType.Accuracy, 5);
         statBuff.changeStat.SetValue(StatType.Evasion, 5);
         statBuff.changeStat.SetValue(StatType.Defense, 5);

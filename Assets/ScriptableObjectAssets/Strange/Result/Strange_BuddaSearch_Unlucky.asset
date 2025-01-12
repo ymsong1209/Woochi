@@ -15,6 +15,6 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 4a19250a373bb8348b542031d26cbb70, type: 3}
   text: "\uADC0\uBD88\uC785\uB2C8\uB2E4!\n\uB2F9\uC2E0\uC5D0\uAC8C \uC800\uC8FC\uB97C
     \uB0B4\uB9BD\uB2C8\uB2E4"
-  effect: "\uB2E4\uC74C 3\uBC88\uC758 \uC804\uD22C\uB3D9\uC548\n\uBAA8\uB4E0 \uC544\uAD70\uC758
+  effect: "\uB2E4\uC74C \uC804\uD22C\uB3D9\uC548\n\uBAA8\uB4E0 \uC544\uAD70\uC758
     \uBA85\uC911 -10"
   buffObject: {fileID: 9077167037718295004, guid: 4b74e5517b2860d4fa0b0993481f8e05, type: 3}

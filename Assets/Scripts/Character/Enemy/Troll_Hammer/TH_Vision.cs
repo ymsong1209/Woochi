@@ -14,6 +14,7 @@ public class TH_Vision : BaseSkill
         statDebuff.BuffName = "기묘한 환상";
         statDebuff.BuffDurationTurns = 3;
         statDebuff.ChanceToApplyBuff = 100;
+        statDebuff.BuffStackType = BuffStackType.ResetDuration;
         statDebuff.changeStat.SetValue(StatType.Accuracy, -4);
         instantiatedBuffList.Add(statDebuffGameObject);
         

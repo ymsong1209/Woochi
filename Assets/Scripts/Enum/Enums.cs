@@ -41,6 +41,17 @@ public enum SkillType
     CustomSkill,        // 애니메이션 재정의 필요
     END
 }
+
+public enum BuffStackType
+{
+    Default,
+    ResetDuration,          //갱신 : 지속시간 처음으로 초기화
+    StackEffect,            //중첩 : 효과 중첩하여 적용
+    ExtendDuration,         //연장 : 남은 시간 + 새 지속시간
+    ResetAndStack,          //갱신 및 중첩 : 지속시간 처음으로 초기화 + 효과 중첩
+    END
+}
+
 public enum SkillElement
 {
     Defualt,

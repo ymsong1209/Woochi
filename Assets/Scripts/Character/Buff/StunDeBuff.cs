@@ -12,6 +12,8 @@ public class StunDeBuff : BaseBuff
     {
         buffEffect = BuffEffect.Stun;
         buffType = BuffType.Negative;
+        buffStackType = BuffStackType.ResetDuration;
+        buffDurationTurns = 1;
     }
 
     public override int ApplyTurnStartBuff()

@@ -14,6 +14,7 @@ public class T1_TreeBind : MainCharacterSkill
         statDeBuff.BuffName = "뿌리 속박";
         statDeBuff.BuffDurationTurns = 2;
         statDeBuff.ChanceToApplyBuff = 70;
+        statDeBuff.BuffStackType = BuffStackType.ResetDuration;
         statDeBuff.changeStat.SetValue(StatType.Speed, -5);
         instantiatedBuffList.Add(statDebuffGameObject);
         

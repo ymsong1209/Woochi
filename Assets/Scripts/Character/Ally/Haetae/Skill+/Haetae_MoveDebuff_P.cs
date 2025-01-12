@@ -55,6 +55,8 @@ public class Haetae_MoveDebuff_P : BaseSkill
         StatBuff statBuff = instantiatedStat.GetComponent<StatBuff>();
         statBuff.BuffName = "저주 흡수";
         statBuff.BuffDurationTurns = -1;
+        statBuff.IsAlwaysApplyBuff = true;
+        statBuff.BuffStackType = BuffStackType.StackEffect;
         statBuff.changeStat.SetValue(StatType.Speed, 2);
         statBuff.changeStat.SetValue(StatType.Defense, 2);
         statBuff.changeStat.SetValue(StatType.Crit, 2);

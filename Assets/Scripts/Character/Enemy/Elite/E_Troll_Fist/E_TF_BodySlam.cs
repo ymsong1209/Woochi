@@ -18,14 +18,16 @@ public class E_TF_BodySlam : BaseSkill
         
         base.ActivateSkill(_Opponent);
 
-        //스킬 적중시 씨름꾼의 끈기 버프 부여
+        //스킬 적중시 씨름꾼의 끈기+ 버프 부여
         if (SkillResult.IsHit(0))
         {
             //씨름꾼의 끈기 버프 중첩시 지속 시간과 수치 중첩
             GameObject instantiatedGritbuff = Instantiate(gritBuffGameObject, transform);
             StatBuff gritbuff = instantiatedGritbuff.GetComponent<StatBuff>();
-            gritbuff.BuffName = "씨름꾼의 끈기";
+            gritbuff.BuffName = "씨름꾼의 끈기+";
             gritbuff.BuffDurationTurns = 2;
+            gritbuff.IsAlwaysApplyBuff = true;
+            gritbuff.BuffStackType = BuffStackType.ResetAndStack;
             gritbuff.changeStat.SetValue(StatType.Defense, 5);
             SkillOwner.ApplyBuff(SkillOwner,SkillOwner,gritbuff);
         }

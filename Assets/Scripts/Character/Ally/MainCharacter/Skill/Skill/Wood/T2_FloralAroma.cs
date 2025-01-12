@@ -17,9 +17,10 @@ public class T2_FloralAroma : MainCharacterSkill
         GameObject statDebuffPrefab = BuffPrefabList[1];
         GameObject statDebuffGameObject = Instantiate(statDebuffPrefab, transform);
         StatDeBuff statDeBuff = statDebuffGameObject.GetComponent<StatDeBuff>();
-        statDeBuff.BuffName = "향긋한 꽃내음";
+        statDeBuff.BuffName = "꽃내음";
         statDeBuff.BuffDurationTurns = 2;
         statDeBuff.ChanceToApplyBuff = 70;
+        statDeBuff.BuffStackType = BuffStackType.ResetDuration;
         statDeBuff.changeStat.SetValue(StatType.MinDamage, -1);
         statDeBuff.changeStat.SetValue(StatType.MaxDamage, -1);
         instantiatedBuffList.Add(statDebuffGameObject);

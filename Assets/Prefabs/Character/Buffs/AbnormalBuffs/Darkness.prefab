@@ -51,18 +51,33 @@ MonoBehaviour:
   chanceToApplyBuff: 100
   buffName: "\uC5B4\uB460"
   buffColor: {r: 0, g: 0, b: 0, a: 0}
-  isRemoveWhenBattleEnd: 1
   buffBattleDurationTurns: 0
+  buffStackType: 1
+  isRemoveWhenBattleEnd: 1
   isRemovableDuringBattle: 0
+  isBuffAppliedThisTurn: 1
+  isAlwaysApplyBuff: 0
+  isSaveBuff: 0
+  isSpecialBuff: 0
   changeStat:
-    maxHealth: 0
-    speed: 0
-    defense: 0
-    crit: 0
-    accuracy: 0
-    evasion: 0
-    resist: 0
-    minStat: 0
-    maxStat: 0
+    list:
+    - type: 0
+      value: 0
+    - type: 1
+      value: 0
+    - type: 2
+      value: 0
+    - type: 3
+      value: 0
+    - type: 4
+      value: 0
+    - type: 5
+      value: 0
+    - type: 6
+      value: 0
+    - type: 7
+      value: 0
+    - type: 8
+      value: 0
   applyAlly: 0
   applyEnemy: 1

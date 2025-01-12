@@ -17,6 +17,10 @@ PrefabInstance:
       value: "\uC19F\uB300"
       objectReference: {fileID: 0}
     - target: {fileID: 3338260425068093797, guid: 792e42c0644dbee4cb47bae86d650f7b, type: 3}
+      propertyPath: buffStackType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338260425068093797, guid: 792e42c0644dbee4cb47bae86d650f7b, type: 3}
       propertyPath: buffDurationTurns
       value: -1
       objectReference: {fileID: 0}

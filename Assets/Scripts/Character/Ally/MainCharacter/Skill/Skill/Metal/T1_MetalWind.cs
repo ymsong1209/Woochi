@@ -17,8 +17,8 @@ public class T1_MetalWind : MainCharacterSkill
             defenseBuff.BuffName = "견고함";
             defenseBuff.BuffDurationTurns = 3;
             defenseBuff.IsAlwaysApplyBuff = true;
+            defenseBuff.BuffStackType = BuffStackType.ResetDuration;
             defenseBuff.changeStat.SetValue(StatType.Defense, 3);
-
             SkillOwner.ApplyBuff(SkillOwner,SkillOwner,defenseBuff);
         }
        

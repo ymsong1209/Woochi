@@ -14,6 +14,7 @@ public class T1_JadeWall : MainCharacterSkill
         statBuff.BuffName = "옥벽";
         statBuff.BuffDurationTurns = 2;
         statBuff.IsAlwaysApplyBuff = true;
+        statBuff.BuffStackType = BuffStackType.ResetDuration;
         statBuff.changeStat.SetValue(StatType.Defense, 5);
         instantiatedBuffList.Add(statbuffGameObject);
         

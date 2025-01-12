@@ -16,6 +16,7 @@ public class T2_EarthClone : MainCharacterSkill
         statBuff.BuffName = "분신술";
         statBuff.BuffDurationTurns = 3;
         statBuff.IsAlwaysApplyBuff = true;
+        statBuff.BuffStackType = BuffStackType.ResetDuration;
         statBuff.changeStat.SetValue(StatType.Evasion, 15);
         SkillOwner.ApplyBuff(SkillOwner,SkillOwner,statBuff);
     }

@@ -15,6 +15,7 @@ public class DotCureByDamageBuff : BaseBuff
     {
         buffEffect = BuffEffect.DotCureByDamage;
         buffType = BuffType.Positive;
+        buffStackType = BuffStackType.ResetDuration;
     }
     
     public override int ApplyTurnStartBuff()
@@ -39,14 +40,11 @@ public class DotCureByDamageBuff : BaseBuff
         maxDamage = stat.GetValue(StatType.MaxDamage);
     }
     
-    public override void StackBuff(BaseBuff _buff)
+
+    protected override void StackBuffEffect(BaseBuff _buff)
     {
         DotCureByDamageBuff damageBuff = _buff as DotCureByDamageBuff;
-        if (!damageBuff) return;
-        //같은 버프가 아니면 리턴
-        if (damageBuff.BuffName != BuffName) return;
-        // 버프 지속시간은 갱신
-        base.buffDurationTurns = damageBuff.BuffDurationTurns;
+        if (!damageBuff || damageBuff.BuffName != BuffName) return;
         // 힐량은 덮어씌움.
         baseDotCureAmount = damageBuff.BaseDotCureAmount;
         dotCureAmount = damageBuff.DotCureAmount;

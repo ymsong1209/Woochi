@@ -20,6 +20,7 @@ public class T3_DisasterRain : MainCharacterSkill
         statDeBuff.BuffName = "약화";
         statDeBuff.BuffDurationTurns = 2;
         statDeBuff.ChanceToApplyBuff = 80;
+        statDeBuff.BuffStackType = BuffStackType.ResetDuration;
         statDeBuff.changeStat.SetValue(StatType.MinDamage, -3);
         statDeBuff.changeStat.SetValue(StatType.MaxDamage, -3);
         instantiatedBuffList.Add(statDebuffGameObject);

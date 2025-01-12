@@ -49,12 +49,16 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1179807483198325553, guid: e6f95c9d508ed434bb6931883a437f85, type: 3}
+      propertyPath: isAlwaysApplyBuff
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1179807483198325553, guid: e6f95c9d508ed434bb6931883a437f85, type: 3}
       propertyPath: isRemoveWhenBattleEnd
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1179807483198325553, guid: e6f95c9d508ed434bb6931883a437f85, type: 3}
       propertyPath: buffBattleDurationTurns
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1179807483198325553, guid: e6f95c9d508ed434bb6931883a437f85, type: 3}
       propertyPath: isRemovableDuringBattle

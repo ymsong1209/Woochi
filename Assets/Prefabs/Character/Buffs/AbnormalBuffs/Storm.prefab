@@ -51,11 +51,14 @@ MonoBehaviour:
   chanceToApplyBuff: 100
   buffName: "\uD3ED\uD48D"
   buffColor: {r: 0, g: 0, b: 0, a: 0}
-  isRemoveWhenBattleEnd: 1
   buffBattleDurationTurns: 0
+  buffStackType: 1
+  isRemoveWhenBattleEnd: 1
   isRemovableDuringBattle: 0
   isBuffAppliedThisTurn: 1
   isAlwaysApplyBuff: 0
+  isSaveBuff: 0
+  isSpecialBuff: 0
   changeStat:
     list:
     - type: 0
