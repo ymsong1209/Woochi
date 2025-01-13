@@ -59,7 +59,7 @@ public class BuffDescriptionUI : MonoBehaviour
         Vector2 skillPanelSize = skillPanelRt.sizeDelta;
         
         // BuffDescriptionUI를 SkillDescriptionUI의 오른쪽에 배치
-        float horizontalOffset = 30f;
+        float horizontalOffset = 15f;
         Vector2 buffUIPosition = new Vector2(
             skillPanelRt.anchoredPosition.x + skillPanelSize.x / 2 + buffPanelRt.sizeDelta.x / 2 + horizontalOffset,
             skillPanelRt.anchoredPosition.y - skillPanelSize.y / 2 + buffPanelRt.sizeDelta.y / 2
