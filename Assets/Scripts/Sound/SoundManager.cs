@@ -28,7 +28,11 @@ public class SoundManager : MonoBehaviour
     {
         AkSoundEngine.PostEvent(sfxName, gameObject);
     }
-    
+
+    public void StopAllSound()
+    {
+        AkSoundEngine.StopAll();
+    }
     public void SetVolume(float masterVolume, float bgmVolume)
     {
         masterVolumeRTPC.SetGlobalValue(masterVolume);

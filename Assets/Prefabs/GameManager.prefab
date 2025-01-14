@@ -52,7 +52,7 @@ MonoBehaviour:
   charmIDs: 070000000000000000000000
   useDebugSkills: 0
   skillIDs: 0000000000000000000000000000000000000000
-  useDebugLogs: 0
+  useDebugLogs: 1
 --- !u!1 &8992082059508905557
 GameObject:
   m_ObjectHideFlags: 0

@@ -274,6 +274,12 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             currentSelectedSkill = null;
             #endregion
 
+            //우치 죽을때 시나리오 처리용으로 계속 대기
+            while (allies.GetWoochi().IsDead)
+            {
+                yield return null;
+            }
+
             if (turnManager.StartTurn() == false)
             {
                 continue;

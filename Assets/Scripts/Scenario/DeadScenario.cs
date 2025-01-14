@@ -14,6 +14,7 @@ public class DeadScenario : Scenario
     {
         DataCloud.IsScenarioMode = false;
         GameManager.GetInstance.ResetGame();
+        GameManager.GetInstance.soundManager.StopAllSound();
         HelperUtilities.MoveScene(SceneType.Title);
     }
 }
