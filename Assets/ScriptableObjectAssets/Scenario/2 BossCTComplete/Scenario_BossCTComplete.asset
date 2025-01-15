@@ -9,8 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58fcd6141ac92434983d3e8e1b26429f, type: 3}
+  m_Script: {fileID: 11500000, guid: 884efdac681d0a64e9aef7358562794b, type: 3}
   m_Name: Scenario_BossCTComplete
   m_EditorClassIdentifier: 
   ID: 2
-  plots: []
+  plots:
+  - {fileID: 11400000, guid: 885a14f12978740408ad1ef91e9e43b0, type: 2}
+  - {fileID: 11400000, guid: 58095d5d27fdf2d42975ad12afe3f39b, type: 2}
+  - {fileID: 11400000, guid: 3df42e6007b49cf43a91ddd44ab04a00, type: 2}
+  - {fileID: 11400000, guid: 6bbbae060189ab0489fd6072fe201042, type: 2}
+  - {fileID: 11400000, guid: f43685e0957a4ef4caa80cf8854c8d8d, type: 2}
+  - {fileID: 11400000, guid: e9f5f8829c0340b4f81679e50ffc2bb1, type: 2}
+  - {fileID: 11400000, guid: dbba5e0e0550d0047a92e0edd0d2fd5e, type: 2}

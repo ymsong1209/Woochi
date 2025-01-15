@@ -1,4 +1,5 @@
-using UnityEditor.Build;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Scenario_", menuName = "Scriptable Objects/Scenario/BossCTComplete")]
@@ -19,4 +20,3 @@ public class BossCTCompleteScenario : Scenario
         HelperUtilities.MoveScene(SceneType.Title);
     }
 }
-

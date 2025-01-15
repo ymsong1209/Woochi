@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: affcc82dda958f3428ba9b330c115742, type: 3}
   m_Name: Plot_5
   m_EditorClassIdentifier: 
-  type: 1
+  type: 0
   illustrations:
   - actor: {fileID: 11400000, guid: 849179a248edaba4ab1a2c2f60ad2648, type: 2}
     direction: 1
-  blindImage: {fileID: 21300000, guid: 1aa08cdc51d778640aefba4fd32a633d, type: 3}
+  blindImage: {fileID: 0}
   speaker: {fileID: 11400000, guid: 849179a248edaba4ab1a2c2f60ad2648, type: 2}
   text: "\u2018\uC81C \uC544\uBB34\uB9AC \uC2E0\uBAA9\uC774\uB77C \uD55C\uB4E4 \uB9C8\uAC00
     \uB07C\uBA74 \uC774\uB807\uAC8C \uB418\uB294 \uAC74\uAC00.\u2019"
   plotEvent: 0
+  backgroundImage: {fileID: 21300000, guid: 1aa08cdc51d778640aefba4fd32a633d, type: 3}
   showBattle: 0
   isTextUp: 0
   showText: 1
-  isBlind: 1
+  isBlind: 0

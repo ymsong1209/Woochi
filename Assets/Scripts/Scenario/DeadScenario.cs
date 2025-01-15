@@ -1,4 +1,3 @@
-using UnityEditor.Build;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Scenario_", menuName = "Scriptable Objects/Scenario/Dead")]
