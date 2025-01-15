@@ -148,6 +148,16 @@ public class CorruptedTree : BaseEnemy
         BattleManager.GetInstance.ExecuteSelectedSkill(receiver);
         
     }
+    
+    public override void SetDead()
+    {
+        Invoke("PlayDeadScenario", 0.5f);
+    }
+    
+    private void PlayDeadScenario()
+    {
+        ScenarioManager.GetInstance.Play(2);
+    }
 
     public CT_LeftSoul LeftSoul
     {

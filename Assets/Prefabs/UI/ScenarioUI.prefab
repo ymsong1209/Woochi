@@ -729,6 +729,7 @@ MonoBehaviour:
   upperPanel: {fileID: 3508651202030261478}
   lowerPanel: {fileID: 2999092839408488299}
   backgroundPanel: {fileID: 1064094524213302492}
+  defaultBackground: {fileID: 21300000, guid: 4d7298efa67e746429c1bfb9975fe591, type: 3}
   illustrationPanel: {fileID: 2760852144484409620}
   illustrations:
   - {fileID: 8236918758857745937}

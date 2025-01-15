@@ -266,7 +266,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     {
         WaitForSeconds delay = new WaitForSeconds(1.5f);
         
-        while (turnManager.IsContinueTurn())
+        while (turnManager.CombatQueue.Count > 0)
         {
             #region 이전 턴에 쓰인 변수 초기화
             isSkillSelected = false;
@@ -275,11 +275,11 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
             #endregion
 
             //우치 죽을때 시나리오 처리용으로 계속 대기
-            while (allies.GetWoochi().IsDead)
+            while (turnManager.CanContinueTurn == false)
             {
                 yield return null;
             }
-
+            
             if (turnManager.StartTurn() == false)
             {
                 continue;
@@ -919,7 +919,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
 
     IEnumerator Maintenance()
     {
-        while(turnManager.IsContinueTurn())
+        while(turnManager.CombatQueue.Count>0)
         {
             #region 변수 초기화
             isSkillSelected = false;

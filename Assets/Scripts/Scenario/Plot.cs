@@ -13,6 +13,7 @@ public class Plot : ScriptableObject
     public Actor speaker;
     [TextArea(3, 10)] public string text;
     public PlotEvent plotEvent = PlotEvent.None;     // 이벤트가 들어올 때 해당 이벤트와 일치해야 함
+    public Sprite backgroundImage;
     
     [Header("Option")] 
     public bool showBattle = false;

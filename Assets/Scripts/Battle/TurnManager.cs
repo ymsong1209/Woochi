@@ -13,6 +13,7 @@ public class TurnManager : MonoBehaviour
     /// </summary>
     private Queue<BaseCharacter> combatQueue = new Queue<BaseCharacter>();
     private List<BaseCharacter> processedCharacters = new List<BaseCharacter>();
+    [SerializeField] private bool canContinueTurn = true;
 
     [Header("UI")]
     [SerializeField] private TurnIcon[] turnIcons;
@@ -23,6 +24,7 @@ public class TurnManager : MonoBehaviour
     {
         BattleManager.GetInstance.OnFocusStart += () => gameObject.SetActive(false);
         BattleManager.GetInstance.OnFocusEnd += () => gameObject.SetActive(true);
+        canContinueTurn = true;
     }
 
     public void Init(Formation allies, Formation enemies)
@@ -87,8 +89,7 @@ public class TurnManager : MonoBehaviour
             combatQueue.Enqueue(character);
         }
     }
-
-    public bool IsContinueTurn() => combatQueue.Count > 0;
+    
     
     public void Processed(BaseCharacter character) => processedCharacters.Add(character);
 
@@ -234,4 +235,14 @@ public class TurnManager : MonoBehaviour
         // 로그 출력
         Logger.BattleLog(result, "RowInfo");
     }
+    
+    
+    public bool CanContinueTurn
+    {
+        get => canContinueTurn;
+        set => canContinueTurn = value;
+    }
+    
+
+    public Queue<BaseCharacter> CombatQueue => combatQueue;
 }

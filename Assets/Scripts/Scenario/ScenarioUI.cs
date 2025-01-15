@@ -8,6 +8,7 @@ public class ScenarioUI : MonoBehaviour
     [SerializeField] private GameObject upperPanel;
     [SerializeField] private GameObject lowerPanel;
     [SerializeField] private GameObject backgroundPanel;
+    [SerializeField] private Sprite defaultBackground;
     
     [Header("Illustration")]
     [SerializeField] private GameObject illustrationPanel;
@@ -57,6 +58,7 @@ public class ScenarioUI : MonoBehaviour
         upperPanel.SetActive(!showBattle);
         lowerPanel.SetActive(!showBattle);
         backgroundPanel.SetActive(!showBattle);
+        backgroundPanel.GetComponent<Image>().sprite = currentPlot.backgroundImage ? currentPlot.backgroundImage : defaultBackground;
         
         bool isTextUp = currentPlot.isTextUp;
         textPanel.transform.position = textPos[isTextUp ? 0 : 1].position;
