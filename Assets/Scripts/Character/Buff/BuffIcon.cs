@@ -1,40 +1,79 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
+using Sequence = DG.Tweening.Sequence;
 
 public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [FormerlySerializedAs("buffType")] [SerializeField] private BuffEffect buffEffect;
     [SerializeField] private BuffType bufftype;
     [SerializeField] private Animator animator;
-   
+    [SerializeField] private Image icon;
+    [SerializeField] private RectTransform icontransform;
     private bool canInteract;
+
+    private void Awake()
+    {
+        BattleManager.GetInstance.OnBattleStart += OnBattleStartTriggered;
+        icon.color = new Color(1, 1, 1, 0);
+        canInteract = true;
+    }
     private void Start()
     {
-        canInteract = true;
         BattleManager.GetInstance.OnFocusStart += () => SetCanInteract(false);
         BattleManager.GetInstance.OnSkillExecuteFinished += () => SetCanInteract(true);
     }
-    
+
+    private void OnDestroy()
+    {
+        BattleManager.GetInstance.OnBattleStart -= OnBattleStartTriggered;
+        BattleManager.GetInstance.OnFocusEnd -= OnFocusEndTriggered;
+    }
+
     private void SetCanInteract(bool value)
     {
         canInteract = value;
     }
-    
-    
+
+    public void OnBattleStartTriggered()
+    {
+        if (gameObject.activeSelf)
+        {
+            Activate();
+        }
+    }
+
+    public void OnFocusEndTriggered()
+    {
+        Activate();
+    }
     public void Activate()
     {
-        
+        Sequence sequence = DOTween.Sequence();
+        sequence.Join(icontransform.DOScale(1.3f, 0.3f));
+        sequence.Join(icon.DOFade(1f, 0.3f));
+        sequence.Append(icontransform.DOScale(1f, 0.3f));
+        sequence.onComplete += () =>
+        {
+            BattleManager.GetInstance.OnFocusEnd -= OnFocusEndTriggered;
+        };
     }
 
     public void DeActivate()
     {
-        gameObject.SetActive(false);
+        Sequence sequence = DOTween.Sequence();
+        sequence.Join(icon.rectTransform.DOScale(1.3f, 0.3f));
+        sequence.Append(icon.rectTransform.DOScale(1f, 0.3f));
+        sequence.Join(icon.DOFade(0f, 0.3f));
+        sequence.OnComplete(() => gameObject.SetActive(false));
+        //gameObject.SetActive(false);
     }
     
 

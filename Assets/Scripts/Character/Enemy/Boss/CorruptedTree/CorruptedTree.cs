@@ -106,7 +106,6 @@ public class CorruptedTree : BaseEnemy
     private void ResurrectAndBuff()
     {
         BaseCharacter receiver = null;
-        int deadNum = -1;
         Formation enemyFormation = BattleManager.GetInstance.Enemies;
         List<BaseCharacter> deadSouls = new List<BaseCharacter>();
         if (enemyFormation.formation[0] && enemyFormation.formation[0].IsDead)

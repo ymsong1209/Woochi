@@ -294,6 +294,7 @@ public class BaseCharacter : MonoBehaviour
         {
             // 기존 버프와 중첩
             activeBuff.StackBuff(buff);
+            BattleManager.GetInstance.OnFocusEnd += buffList.BuffIcons[(int)buff.BuffEffect].OnFocusEndTriggered;
             Destroy(buff.gameObject);
             return activeBuff;
         }

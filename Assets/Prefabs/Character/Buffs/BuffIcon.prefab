@@ -111,8 +111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb951702f2e1364d9e6789b19f313ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffType: 8
+  buffEffect: 8
+  bufftype: 0
   animator: {fileID: 0}
+  icon: {fileID: 4930120982142687122}
+  icontransform: {fileID: 8597311246260302965}
 --- !u!61 &353163672079654257
 BoxCollider2D:
   m_ObjectHideFlags: 0

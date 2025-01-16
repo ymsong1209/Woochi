@@ -22,13 +22,14 @@ public class BuffList : MonoBehaviour
         if(targetBuffIcon && !targetBuffIcon.gameObject.activeSelf)
         {
             targetBuffIcon.gameObject.SetActive(true);
-            targetBuffIcon.Activate();
+            BattleManager.GetInstance.OnFocusEnd += targetBuffIcon.OnFocusEndTriggered;
         }
         //buff.gameobject를 targetBuffIcon의 자식으로 설정
         buff.transform.SetParent(targetBuffIcon.transform, false);
         return buff;
-        
     }
+    
+    
 
     public BuffIcon[] BuffIcons => buffIcons;
 }

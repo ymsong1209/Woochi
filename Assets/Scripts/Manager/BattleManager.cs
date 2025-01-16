@@ -29,6 +29,8 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
     /// 캐릭터 턴이 시작될 때 호출되는 이벤트(UI 업데이트 등)
     /// </summary>
     public Action<BaseCharacter, bool> ShowCharacterUI;
+
+    public Action OnBattleStart;
     public Action OnFocusStart;
     public Action OnFocusEnd;
     public Action<BaseCharacter> OnFocusEnter;
@@ -93,6 +95,7 @@ public class BattleManager : SingletonMonobehaviour<BattleManager>
         ShowCharacterUI?.Invoke(allies.GetWoochi(), false);
         GameManager.GetInstance.soundManager.PlaySFX("Fight_Start");
         GameManager.GetInstance.soundManager.PlayBGM(BGMState.Battle);
+        OnBattleStart?.Invoke();
 
         GenerateBattleStartLog();
         

@@ -124,27 +124,28 @@ public class Library : ScriptableObject
         // 2티어 이상 도술 아이콘이 없어서 1티어만 반환
         return GetRandomSkillIdByRarity(1);
         
+        //1티어 도술만 있어서 하단 로직 주석처리
         // 확률에 따라 기본 스킬 ID 선택
-        if (randomValue <= data.Lowest)
-        {
-            return GetRandomSkillIdByRarity(1);
-        }
-        else if (randomValue <= data.Lowest + data.Lower)
-        {
-            return GetRandomSkillIdByRarity(2);
-        }
-        else if (randomValue <= data.Lowest + data.Lower + data.Middle)
-        {
-            return GetRandomSkillIdByRarity(3);
-        }
-        else if (randomValue <= data.Lowest + data.Lower + data.Middle + data.Higher)
-        {
-            return GetRandomSkillIdByRarity(4);
-        }
-        else
-        {
-            return GetRandomSkillIdByRarity(5);
-        }
+        // if (randomValue <= data.Lowest)
+        // {
+        //     return GetRandomSkillIdByRarity(1);
+        // }
+        // else if (randomValue <= data.Lowest + data.Lower)
+        // {
+        //     return GetRandomSkillIdByRarity(2);
+        // }
+        // else if (randomValue <= data.Lowest + data.Lower + data.Middle)
+        // {
+        //     return GetRandomSkillIdByRarity(3);
+        // }
+        // else if (randomValue <= data.Lowest + data.Lower + data.Middle + data.Higher)
+        // {
+        //     return GetRandomSkillIdByRarity(4);
+        // }
+        // else
+        // {
+        //     return GetRandomSkillIdByRarity(5);
+        // }
     }
     
     /// <summary>

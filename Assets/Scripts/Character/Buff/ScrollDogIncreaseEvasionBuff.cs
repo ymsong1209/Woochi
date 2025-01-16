@@ -33,6 +33,7 @@ public class ScrollDogIncreaseEvasionBuff : BaseBuff
             evasionBuff.BuffStackType = BuffStackType.StackEffect;
             evasionBuff.changeStat.SetValue(StatType.Evasion, 2);
             buffOwner.ApplyBuff(buffOwner,buffOwner,evasionBuff);
+            buffOwner.BuffList.BuffIcons[(int)evasionBuff.BuffEffect].Activate();//OnFocusEnd 이후에 ApplyTurnEndBuff가 호출되므로 별도로 활성화 로직 생성
             evasionStack++;
         }
         return 0;

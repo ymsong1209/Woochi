@@ -33,6 +33,7 @@ public class ScrollDogIncreaseCritBuff : BaseBuff
             critBuff.BuffStackType = BuffStackType.StackEffect;
             critBuff.changeStat.SetValue(StatType.Crit, 2);
             buffOwner.ApplyBuff(buffOwner,buffOwner,critBuff);
+            buffOwner.BuffList.BuffIcons[(int)critBuff.BuffEffect].Activate();//OnFocusEnd 이후에 ApplyTurnEndBuff가 호출되므로 별도로 활성화 로직 생성
             critStack++;
         }
         return 0;
