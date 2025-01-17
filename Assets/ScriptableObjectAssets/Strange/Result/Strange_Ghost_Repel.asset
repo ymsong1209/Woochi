@@ -15,5 +15,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 9a5f4c9ba337e7c4db3ef5af07948b83, type: 3}
   text: "\uB3C4\uB825\uC744 \uC18C\uBAA8\uD558\uC5EC \n\uC548\uC758 \uADC0\uC2E0\uC744
     \uC81C\uB839\uD588\uC2B5\uB2C8\uB2E4 "
-  effect: "\uC6B0\uCE58\uC758 \uCD5C\uB300 \uB3C4\uB825\uC758 5% \uC18C\uBAA8"
+  effect: "\uC6B0\uCE58\uC758 \uCD5C\uB300 \uB3C4\uB825\uC758 5% \uC18C\uBAA8\n1000
+    \uC7AC\uD654 \uD68D\uB4DD"
   percent: 0.05
+  gold: 1000
