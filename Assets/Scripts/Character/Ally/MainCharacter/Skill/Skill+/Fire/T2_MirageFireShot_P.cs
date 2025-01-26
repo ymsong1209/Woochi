@@ -29,7 +29,7 @@ public class T2_MirageFireShot_P : MainCharacterSkill
         text.text = "신기전+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "70%의 확률로 3턴동안 피해 -1만큼 부여";
+                    "70%의 확률로 3턴동안 공격력 -1 부여";
     }
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
     {
@@ -41,6 +41,6 @@ public class T2_MirageFireShot_P : MainCharacterSkill
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 대상에게 " + SkillSO.BaseMultiplier + "%피해\n" +
                                 "70%의 확률로 3턴동안\n"+
-                                "피해 -1 부여";
+                                "공격력 -1 부여";
     }
 }

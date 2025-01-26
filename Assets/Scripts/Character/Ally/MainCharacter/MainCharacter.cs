@@ -7,7 +7,7 @@ public class MainCharacter : BaseCharacter
     
     [SerializeField] private int maxSorceryPoints = 200;
     [SerializeField] private int sorceryPoints = 200;
-    [SerializeField] private float sorceryRecoveryPoints = .35f;
+    [SerializeField] private float sorceryRecoveryPoints = .5f;
 
     [SerializeField] private MC_SorceryRecovery recoverySkill;
     [SerializeField] private MC_Summon summonSkill;

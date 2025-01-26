@@ -27,7 +27,7 @@ public class T2_IronWall : MainCharacterSkill
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "철벽\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "아군 전체에게 2턴동안 방어 10만큼 부여";
+                    "아군 전체에게 2턴동안 방어 10 부여";
     }
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
     {
@@ -53,7 +53,7 @@ public class T2_IronWall : MainCharacterSkill
         MainCharacterSkillSO enhancedMainCharacterSkillSo = enhancedSkill.SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "아군 전체에게 2턴동안\n"+
-                                "방어 10 부여\n" + 
+                                "방어 10\n" + 
                                 "-\n" +
                                 "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
                                 "아군 전체에게 2턴동안\n"+

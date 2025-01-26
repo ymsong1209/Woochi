@@ -34,7 +34,7 @@ public class T1_MetalArmor : MainCharacterSkill
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "철갑\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "단일 대상과 우치에게 3턴동안 방어력 5만큼 부여";
+                    "단일 대상과 우치에게 3턴동안 방어 5 부여";
     }
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
     {
@@ -61,7 +61,7 @@ public class T1_MetalArmor : MainCharacterSkill
         
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 대상과 우치에게\n" +
-                                "3턴동안 방어력 5만큼 부여\n" + 
+                                "3턴동안 방어 5 부여\n" + 
                                 "-\n"+
                                 "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
                                 "단일 대상과 우치에게\n" +

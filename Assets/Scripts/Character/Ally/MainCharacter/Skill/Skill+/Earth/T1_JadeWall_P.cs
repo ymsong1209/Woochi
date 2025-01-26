@@ -27,7 +27,7 @@ public class T1_JadeWall_P : MainCharacterSkill
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "옥벽+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "우치 자신에게 2턴동안 방어력 15만큼 부여";
+                    "우치에게 2턴동안 방어 15 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)

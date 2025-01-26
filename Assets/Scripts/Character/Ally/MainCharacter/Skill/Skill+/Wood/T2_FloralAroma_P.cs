@@ -35,7 +35,7 @@ public class T2_FloralAroma_P : MainCharacterSkill
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "향긋한 꽃내음+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "90%의 확률로 중독 3, 2턴동안 피해 -3만큼 부여";
+                    "90%의 확률로 중독 3, 2턴동안 공격력 -3 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
@@ -47,7 +47,7 @@ public class T2_FloralAroma_P : MainCharacterSkill
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 대상에게 2턴동안\n"+
-                                "피해 -3만큼 부여\n" +
+                                "공격력 -3만큼 부여\n" +
                                 "90%의 확률로 중독 3 부여";
     }
 }

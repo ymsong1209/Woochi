@@ -28,7 +28,7 @@ public class T1_HeatHaze : MainCharacterSkill
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "아지랑이\n" +
                     "도력 " + requiredSorceryPoints + "을 소모하여\n" +
-                    "우치 자신에게 회피를 이번 전투동안 20만큼 부여";
+                    "우치에게 이번 전투동안 회피 20 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)

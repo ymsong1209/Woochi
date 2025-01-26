@@ -25,7 +25,7 @@ public class T1_MuddyWater : MainCharacterSkill
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "흙탕물\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "60%의 확률로 단일 대상에게 중독 디버프 3만큼 부여";
+                    "60%의 확률로 단일 대상에게 중독 3 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)

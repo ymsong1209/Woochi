@@ -26,7 +26,7 @@ public class T1_FireSpark_P : MainCharacterSkill
         text.text = "불티+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "90%의 확률로 화상 디버프 부여";
+                    "90%의 확률로 화상 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)

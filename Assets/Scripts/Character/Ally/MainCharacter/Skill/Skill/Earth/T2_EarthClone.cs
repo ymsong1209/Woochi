@@ -29,7 +29,7 @@ public class T2_EarthClone : MainCharacterSkill
         text.text = "흙 분신\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "우치에게 3턴동안 회피 15만큼 부여";
+                    "우치에게 3턴동안 회피 15 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)

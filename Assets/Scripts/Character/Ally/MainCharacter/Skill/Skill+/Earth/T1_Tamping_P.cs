@@ -30,7 +30,7 @@ public class T1_Tamping_P : MainCharacterSkill
         text.text = "땅 다지기+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "아군 전체에게 3턴동안\n" +
-                    "명중 10, 저항 20만큼 부여";
+                    "명중 10, 저항 20 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)

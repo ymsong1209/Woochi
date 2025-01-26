@@ -28,7 +28,7 @@ public class T1_MiragePetal_P : MainCharacterSkill
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "환영 꽃가루+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "단일 대상에게 80%의 확률로 3턴동안 방어 -10만큼 부여";
+                    "단일 대상에게 80%의 확률로 3턴동안 방어 -10 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
@@ -39,7 +39,7 @@ public class T1_MiragePetal_P : MainCharacterSkill
         }
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
-                                "단일 대상에게 80%의 롹률로\n" +
+                                "단일 대상에게 80%의 확률로\n" +
                                 "3턴동안 방어 -10 부여";
     }
     

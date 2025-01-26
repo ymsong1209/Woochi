@@ -30,7 +30,7 @@ public class T3_FireButterfly : MainCharacterSkill
         text.text = "화접\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "랜덤한 대상 2명에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "70%의 확률로 2턴동안 방어 -510큼 부여";
+                    "70%의 확률로 2턴동안 방어 -10 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)

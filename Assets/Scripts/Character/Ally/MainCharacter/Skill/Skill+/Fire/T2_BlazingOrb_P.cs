@@ -26,7 +26,7 @@ public class T2_BlazingOrb_P : MainCharacterSkill
         text.text = "불망울\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "랜덤한 대상 2명에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "70%의 확률로 화상 디버프 부여";
+                    "70%의 확률로 화상 부여";
     }
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
     {

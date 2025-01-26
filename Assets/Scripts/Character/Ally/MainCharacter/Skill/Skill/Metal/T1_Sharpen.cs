@@ -29,7 +29,7 @@ public class T1_Sharpen : MainCharacterSkill
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "연마\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "단일 아군에게 1턴동안 명중,치명 5만큼 부여";
+                    "단일 아군에게 1턴동안 명중 5, 치명 5 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
@@ -41,7 +41,7 @@ public class T1_Sharpen : MainCharacterSkill
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 아군에게 1턴 동안\n" +
-                                "명중, 치명 5 부여";
+                                "명중 5, 치명 5 부여";
     }
     
     public override void SetEnhancedSkillScrollDescription(int curskillid, TextMeshProUGUI skillDescription)
@@ -56,10 +56,10 @@ public class T1_Sharpen : MainCharacterSkill
         MainCharacterSkillSO enhancedMainCharacterSkillSo = enhancedSkill.SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 아군에게 1턴 동안\n" +
-                                "명중, 치명 +5\n"+ 
+                                "명중 5, 치명 5 부여\n"+ 
                                 "-\n" +
                                 "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
                                 "단일 아군에게 1턴 동안\n" +
-                                "명중, 치명 <color=#FFFF00>10</color> 부여";
+                                "명중 <color=#FFFF00>10</color>, 치명 <color=#FFFF00>10</color> 부여";
     }
 }

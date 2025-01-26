@@ -29,7 +29,7 @@ public class T1_TreeBind_P : MainCharacterSkill
         text.text = "옭아매기+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "90%의 확률로 4턴 동안 속도 -5만큼 부여";
+                    "90%의 확률로 3턴 동안 속도 -5 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)

@@ -32,7 +32,7 @@ public class T1_FrostFog_P : MainCharacterSkill
         text.text = "서리 안개+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "랜덤한 단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "90%의 확률로 3턴동안 피해 -1만큼 부여";
+                    "90%의 확률로 3턴동안 공격력 -1 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
@@ -44,6 +44,6 @@ public class T1_FrostFog_P : MainCharacterSkill
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "랜덤한 단일 대상에게 " + SkillSO.BaseMultiplier + "%피해\n" + 
-                                "90%의 확률로 3턴동안 피해 -1 부여";
+                                "90%의 확률로 3턴동안 공격력 -1 부여";
     }
 }

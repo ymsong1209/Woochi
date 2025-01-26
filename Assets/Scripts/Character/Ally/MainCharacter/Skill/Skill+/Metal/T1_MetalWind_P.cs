@@ -39,8 +39,8 @@ public class T1_MetalWind_P : MainCharacterSkill
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "쇠바람+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "단일 대상에게 4 + " + finalStat.GetValue(StatType.Defense) * 20 / 100 + "의 방어 기반 고정 피해를 주고\n" +
-                    "50%의 확률로 우치에게 3턴동안 방어력 5만큼 부여";
+                    "단일 대상에게 " + (4 + finalStat.GetValue(StatType.Defense) * 20 / 100) + "의 방어 기반 피해를 주고\n" +
+                    "50%의 확률로 우치에게 3턴동안 방어 5 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)

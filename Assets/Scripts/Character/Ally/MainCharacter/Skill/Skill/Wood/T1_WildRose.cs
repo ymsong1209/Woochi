@@ -26,7 +26,7 @@ public class T1_WildRose : MainCharacterSkill
         text.text = "찔레꽃\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "50%의 확률로 단일 대상에게 중독 디버프 2만큼 부여";
+                    "50%의 확률로 단일 대상에게 중독 2 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)

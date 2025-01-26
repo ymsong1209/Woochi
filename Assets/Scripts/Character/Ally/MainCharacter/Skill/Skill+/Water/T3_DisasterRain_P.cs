@@ -37,7 +37,7 @@ public class T3_DisasterRain_P : MainCharacterSkill
         text.text = "삼재의 비+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" +
                     "1,2,3열의 적에게\n" +
-                    "90%의 확률로 중독 3, 3턴동안 최소,최대스탯 -3만큼 부여";
+                    "90%의 확률로 중독 3, 3턴동안 공격력 -3만큼 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
@@ -49,7 +49,7 @@ public class T3_DisasterRain_P : MainCharacterSkill
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "1,2,3열의 적에게 3턴동안\n " + 
-                                "최소, 최대스탯 -3만큼 부여\n" +
+                                "공격력 -3만큼 부여\n" +
                                 "90%의 확률로 중독 3 부여";
     }
 }
