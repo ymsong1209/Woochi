@@ -33,9 +33,13 @@ public class SoundManager : MonoBehaviour
     {
         AkSoundEngine.StopAll();
     }
-    public void SetVolume(float masterVolume, float bgmVolume)
+    public void SetMasterVolume(float masterVolume)
     {
         masterVolumeRTPC.SetGlobalValue(masterVolume);
+    }
+    
+    public void SetBGMVolume(float bgmVolume)
+    {
         bgmVolumeRTPC.SetGlobalValue(bgmVolume);
     }
 }

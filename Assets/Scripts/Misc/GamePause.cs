@@ -8,6 +8,7 @@ public class GamePause : MonoBehaviour
     [SerializeField] private Button setting;
     [SerializeField] private Button exit;
     [SerializeField] private Button exitYes;
+    [SerializeField] private Button quitGame;
 
     [Header("Popup")] 
     [SerializeField] private Popup pausePopup;
@@ -22,6 +23,7 @@ public class GamePause : MonoBehaviour
         setting?.onClick.AddListener(Setting);
         exit?.onClick.AddListener(Exit);
         exitYes?.onClick.AddListener(() => HelperUtilities.MoveScene(SceneType.Title));
+        quitGame?.onClick.AddListener(GameManager.GetInstance.ExitGame);
     }
 
     public void Pause()

@@ -21,6 +21,10 @@ public class GameSettingUI : MonoBehaviour
     {
         resolutionDropdown.ClearOptions();
         ClassifyResolution();
+        masterVolume.Slider.onValueChanged.AddListener((value) => GameManager.GetInstance.soundManager.SetMasterVolume(value));
+        bgmVolume.Slider.onValueChanged.AddListener((value) => GameManager.GetInstance.soundManager.SetBGMVolume(value));
+        resolutionDropdown.onValueChanged.AddListener((value)=>GameManager.GetInstance.ApplyResolution(resolutionList[resolutionDropdown.value].width, resolutionList[resolutionDropdown.value].height, fullScreen.isOn));
+        fullScreen.onValueChanged.AddListener((value) => GameManager.GetInstance.ApplyResolution(resolutionList[resolutionDropdown.value].width, resolutionList[resolutionDropdown.value].height, value));
     }
 
     private void OnEnable()

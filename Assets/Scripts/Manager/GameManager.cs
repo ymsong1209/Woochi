@@ -75,14 +75,19 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         HelperUtilities.MoveScene(SceneType.Title);
     }
     
+    public void ApplyResolution(int width, int height, bool isFullScreen)
+    {
+        Screen.SetResolution(width, height, isFullScreen);
+    }
+
     public void ApplySetting()
     {
         GameSettingData data = DataCloud.gameSettingData;
         float masterVolume = data.masterVolume;
         float bgmVolume = data.bgmVolume;
-        soundManager.SetVolume(masterVolume, bgmVolume);
-        Screen.fullScreen = data.isFullScreen;
-        Screen.SetResolution(data.resolution.x, data.resolution.y, data.isFullScreen);
+        soundManager.SetMasterVolume(masterVolume);
+        soundManager.SetBGMVolume(bgmVolume);
+        ApplyResolution(data.resolution.x, data.resolution.y, data.isFullScreen);
     }
 
     #region Getter Setter
