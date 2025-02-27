@@ -11,7 +11,8 @@ public class Tiger_Rip : BaseSkill
         GameObject bleedDebuffGameObject = Instantiate(bleedDebuffPrefab, transform);
         BleedDeBuff bleedDebuff = bleedDebuffGameObject.GetComponent<BleedDeBuff>();
         bleedDebuff.BuffDurationTurns = 3;
-        bleedDebuff.ChanceToApplyBuff = 50;
+        bleedDebuff.BleedPercent = 3;
+        bleedDebuff.ChanceToApplyBuff = 60;
         instantiatedBuffList.Add(bleedDebuffGameObject);
         
         base.ActivateSkill(_Opponent);
@@ -24,8 +25,8 @@ public class Tiger_Rip : BaseSkill
         float RandomStat = Random.Range(finalStat.GetValue(StatType.MinDamage), finalStat.GetValue(StatType.MaxDamage));
         RandomStat *= (Multiplier / 100);
         
-        float depense = receiver.FinalStat.GetValue(StatType.Defense);
-        RandomStat = RandomStat * (1 - depense / (depense + 100));
+        float defense = receiver.FinalStat.GetValue(StatType.Defense);
+        RandomStat = RandomStat * (1 - defense / (defense + 100));
         //적에게 출혈 버프가 붙어있으면 1.5배의 대미지
         bool hasBleed = false;
         foreach(BaseBuff buff in receiver.activeBuffs)

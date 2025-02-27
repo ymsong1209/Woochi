@@ -22,35 +22,65 @@ MonoBehaviour:
   size: 0
   cost: 0
   baseStat:
-    maxHealth: 0
-    speed: 0
-    defense: 0
-    crit: 0
-    accuracy: 0
-    evasion: 0
-    resist: 0
-    minStat: 0
-    maxStat: 0
+    list:
+    - type: 0
+      value: 0
+    - type: 1
+      value: 0
+    - type: 2
+      value: 0
+    - type: 3
+      value: 0
+    - type: 4
+      value: 0
+    - type: 5
+      value: 0
+    - type: 6
+      value: 0
+    - type: 7
+      value: 0
+    - type: 8
+      value: 0
   levelUpStat:
-    maxHealth: 0
-    speed: 0
-    defense: 0
-    crit: 0
-    accuracy: 0
-    evasion: 0
-    resist: 0
-    minStat: 0
-    maxStat: 0
+    list:
+    - type: 0
+      value: 0
+    - type: 1
+      value: 0
+    - type: 2
+      value: 0
+    - type: 3
+      value: 0
+    - type: 4
+      value: 0
+    - type: 5
+      value: 0
+    - type: 6
+      value: 0
+    - type: 7
+      value: 0
+    - type: 8
+      value: 0
   rewardStat:
-    maxHealth: 0
-    speed: 0
-    defense: 0
-    crit: 0
-    accuracy: 0
-    evasion: 0
-    resist: 0
-    minStat: 0
-    maxStat: 0
+    list:
+    - type: 0
+      value: 0
+    - type: 1
+      value: 0
+    - type: 2
+      value: 0
+    - type: 3
+      value: 0
+    - type: 4
+      value: 0
+    - type: 5
+      value: 0
+    - type: 6
+      value: 0
+    - type: 7
+      value: 0
+    - type: 8
+      value: 0
   level:
     owner: {fileID: 0}
     rank: 1
@@ -60,11 +90,14 @@ MonoBehaviour:
     maxHealth: 0
     curHealth: 0
     shield: 0
+    countToResurrect: 0
   skills:
   - {fileID: 4178373846625572037, guid: 30581c30e239deb408c9ae9660f50cf7, type: 3}
   - {fileID: 1072596917953435454, guid: 753d55a461acbe947ad5f825c9769718, type: 3}
   - {fileID: 1026174406853336074, guid: accbdc9e59f96754eb7fe45e4edb09fa, type: 3}
+  - {fileID: 1851047506531757637, guid: 8c4a98e4e46c5c948ac9c004703812b1, type: 3}
   reinforcedSkills:
   - {fileID: -5083765727198964803, guid: dd223b4de6eb63e41875953fa932a0cc, type: 3}
   - {fileID: 1073127468314449789, guid: 1e7498897343f9047a387d1cb5441381, type: 3}
   - {fileID: -3561945622472173013, guid: 54b2386d002ad3748837ea9050e7301b, type: 3}
+  - {fileID: -8887154514364353623, guid: cd6981df38edd8f49b48b2396718cd0d, type: 3}

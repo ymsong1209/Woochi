@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 10f0ad67cf9f4734688a0bb3547ffd0c, type: 2}
     - target: {fileID: 2767518271787080996, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: activeSkillCheckBox.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2767518271787080996, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: activeSkillCheckBox.Array.data[0]
@@ -95,6 +95,18 @@ PrefabInstance:
     - target: {fileID: 2767518271787080996, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: activeSkillCheckBox.Array.data[2]
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767518271787080996, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: activeSkillCheckBox.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3612015704922532265, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_Size.x
+      value: 3.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 3612015704922532265, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_Size.y
+      value: 4.32
       objectReference: {fileID: 0}
     - target: {fileID: 3953031413515326129, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Size.x
@@ -171,6 +183,14 @@ PrefabInstance:
     - target: {fileID: 4932393424013574486, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353766205308395991, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353766205308395991, guid: 13333dec91112de4684af90796b86443, type: 3}
+      propertyPath: m_Size.y
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8508918373832428729, guid: 13333dec91112de4684af90796b86443, type: 3}
       propertyPath: m_Controller
