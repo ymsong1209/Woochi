@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class ThreeTailsFox : BaseCharacter
 {
-    public override void InitializeSkill()
-    {
-        DestroyActiveSkills();
-        AddFoxSkill();
-    }
-    public override void CheckSkillsOnTurnStart()
-    {
-        if(IsDead)
-        {
-            return;
-        }
-
-        DestroyActiveSkills();
-        AddFoxSkill();
-    }
+    // 이전에 삼미호가 스킬 8개 사용했을때 썼던 코드.
+    // public override void InitializeSkill()
+    // {
+    //     DestroyActiveSkills();
+    //     AddFoxSkill();
+    // }
+    // public override void CheckSkillsOnTurnStart()
+    // {
+    //     if(IsDead)
+    //     {
+    //         return;
+    //     }
+    //
+    //     DestroyActiveSkills();
+    //     AddFoxSkill();
+    // }
 
     private void AddFoxSkill()
     {

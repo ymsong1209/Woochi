@@ -23,9 +23,9 @@ MonoBehaviour:
   skillRadius: 0000000001000000
   skillType: 0
   skillTargetType: 0
-  skillElement: 0
+  skillElement: 4
   skillTargetCount: 1
   skillRandomCount: 0
   bufflist: []
-  baseMultiplier: 80
+  baseMultiplier: 0
   baseSkillAccuracy: 90

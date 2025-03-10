@@ -22,35 +22,65 @@ MonoBehaviour:
   size: 1
   cost: 0
   baseStat:
-    maxHealth: 22
-    speed: 7
-    defense: 0
-    crit: 5
-    accuracy: 0
-    evasion: 5
-    resist: 20
-    minStat: 5
-    maxStat: 9
+    list:
+    - type: 0
+      value: 0
+    - type: 1
+      value: 0
+    - type: 2
+      value: 0
+    - type: 3
+      value: 0
+    - type: 4
+      value: 0
+    - type: 5
+      value: 0
+    - type: 6
+      value: 0
+    - type: 7
+      value: 0
+    - type: 8
+      value: 0
   levelUpStat:
-    maxHealth: 8
-    speed: 2
-    defense: 1
-    crit: 1
-    accuracy: 1
-    evasion: 2
-    resist: 2
-    minStat: 2
-    maxStat: 2
+    list:
+    - type: 0
+      value: 0
+    - type: 1
+      value: 0
+    - type: 2
+      value: 0
+    - type: 3
+      value: 0
+    - type: 4
+      value: 0
+    - type: 5
+      value: 0
+    - type: 6
+      value: 0
+    - type: 7
+      value: 0
+    - type: 8
+      value: 0
   rewardStat:
-    maxHealth: 0
-    speed: 0
-    defense: 0
-    crit: 0
-    accuracy: 0
-    evasion: 0
-    resist: 0
-    minStat: 0
-    maxStat: 0
+    list:
+    - type: 0
+      value: 0
+    - type: 1
+      value: 0
+    - type: 2
+      value: 0
+    - type: 3
+      value: 0
+    - type: 4
+      value: 0
+    - type: 5
+      value: 0
+    - type: 6
+      value: 0
+    - type: 7
+      value: 0
+    - type: 8
+      value: 0
   level:
     owner: {fileID: 0}
     rank: 1
@@ -60,19 +90,14 @@ MonoBehaviour:
     maxHealth: 22
     curHealth: 22
     shield: 0
+    countToResurrect: 0
   skills:
-  - {fileID: -5643982786504562052, guid: c127ed199cecb14428b23e72d30f8e82, type: 3}
-  - {fileID: -696248697953917911, guid: 6d1d2c08657dbd940a71e3a6e69aabaa, type: 3}
-  - {fileID: -1727875589185713224, guid: 91328cbc870d1b44c9cb022cb976ec75, type: 3}
-  - {fileID: -4877563745760097264, guid: 1caa529344df84a4fb7a8bfea2dbb719, type: 3}
-  - {fileID: -3036146973187550543, guid: 313aa051e004d384d89a3207a4b983db, type: 3}
-  - {fileID: -8810357365272186011, guid: 20521276e7e72124398faf0dda81b449, type: 3}
-  - {fileID: 1313187954104550505, guid: 5115ef55ded755b47aa0741d7c986651, type: 3}
+  - {fileID: -7092376864061290477, guid: 29dac24b977b8c24cb2f2046ad54085b, type: 3}
+  - {fileID: 4425547207484225000, guid: 07e52f575db511c43854e459cd82bf5a, type: 3}
+  - {fileID: -5083177666327540716, guid: c0b8321285fce9346aa7f655f3fddca2, type: 3}
+  - {fileID: 1313187954104550505, guid: 020851d8949084141bade194133b97a5, type: 3}
   reinforcedSkills:
-  - {fileID: 6999345981261538658, guid: 9afe653430a359243bdbee63e68e19ae, type: 3}
-  - {fileID: -2935646728771929781, guid: 44ab9a60293b0e840b8fdfd4e14b308e, type: 3}
-  - {fileID: 2987927271558794969, guid: 427a5b547cd006b44bab1d059b471c13, type: 3}
-  - {fileID: 8977288703315584953, guid: 9a6a2c181b9595e4fa186c0b2370ab1d, type: 3}
-  - {fileID: -7048025046539015131, guid: 2ed7fc1bcfea2414182c7e91cdb063a8, type: 3}
-  - {fileID: 9091144211871302039, guid: 7dc8dd84b27ce3e419469204679278f5, type: 3}
-  - {fileID: -98674231614050169, guid: 776590f600d4c554c96a12f213f5e39b, type: 3}
+  - {fileID: 5711665675030919914, guid: a94a28a81f5aacf40b5a3e4598e3cfea, type: 3}
+  - {fileID: 5219999241249049605, guid: 148b81de3112d8b4598f67eb1cb4363e, type: 3}
+  - {fileID: 1504080198931844855, guid: 5cbae8021390b3147838a8d10f793523, type: 3}
+  - {fileID: -98674231614050169, guid: 1eade09014bf8ac41bbfceb6da600473, type: 3}

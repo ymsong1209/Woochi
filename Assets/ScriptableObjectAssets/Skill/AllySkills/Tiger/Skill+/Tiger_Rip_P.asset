@@ -22,11 +22,11 @@ MonoBehaviour:
   skillAvailableRadius: 0101000000000000
   skillRadius: 0000000001010101
   skillType: 0
-  skillTargetType: 1
-  skillElement: 0
+  skillTargetType: 0
+  skillElement: 4
   skillTargetCount: 1
   skillRandomCount: 0
   bufflist:
   - {fileID: 2569674945298275565, guid: d7bb49a2e6790ca4885ee21413a96b0b, type: 3}
-  baseMultiplier: 70
+  baseMultiplier: 60
   baseSkillAccuracy: 90
