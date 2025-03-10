@@ -23,45 +23,22 @@ public class BaseCharm : MonoBehaviour
       
     }
 
-    public virtual void SetCharmDescription(TextMeshProUGUI text)
+    public void SetCharmEffect(TextMeshProUGUI text)
     {
-        string description = charmName + "\n";
+        
+        SetCharmDescription(text);
 
-        if (charmType == CharmType.CleanseSingleDebuff)
-        {
-            description += "자신 및 아군에게 걸린 디버프 중 하나를 랜덤하게 제거";
-            text.text = description;
-            return;
-        }
-        else if (charmType == CharmType.Heal)
-        {
-            description += "아군 전체의 체력을 10만큼 회복";
-            text.text = description;
-            return;
-        }
+        string description = text.text;
+        
 
-        description += turns + "턴 동안 ";
-        if (charmType == CharmType.Buff)
-        {
-            description += "아군 ";
-        }
-        else if (charmType == CharmType.DeBuff)
-        {
-            description += "적군 ";
-        }
-
-        if (charmTargetType == CharmTargetType.Singular)
-        {
-            description += GetCharmRadiusDescription(false);
-        }
-        else if (charmTargetType == CharmTargetType.Multiple)
-        {
-            description += GetCharmRadiusDescription(false);
-        }
-        else if (charmTargetType == CharmTargetType.SingularWithSelf)
-        {
-            description += GetCharmRadiusDescription(true);
-        }
+        // if (charmTargetType == CharmTargetType.Singular || charmTargetType == CharmTargetType.Multiple)
+        // {
+        //     description += GetCharmRadiusDescription(false);
+        // }
+        // else if (charmTargetType == CharmTargetType.SingularWithSelf)
+        // {
+        //     description += GetCharmRadiusDescription(true);
+        // }
         // else if (charmTargetType == CharmTargetType.MultipleWithSelf)
         // {
         //     description += GetCharmRadiusDescription(true);
@@ -69,6 +46,12 @@ public class BaseCharm : MonoBehaviour
 
         text.text = description;
     }
+
+    protected virtual void SetCharmDescription(TextMeshProUGUI text)
+    {
+        text.text = charmName + "\n";
+    }
+    
 
     private string GetCharmRadiusDescription(bool includeSelf)
     {

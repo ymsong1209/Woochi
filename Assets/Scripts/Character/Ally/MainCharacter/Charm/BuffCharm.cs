@@ -18,18 +18,23 @@ public class BuffCharm : BaseCharm
         buff.BuffDurationTurns = Turns;
         buff.changeStat = changeStat;
         BaseCharacter caster = BattleManager.GetInstance.Allies.GetWoochi();
-        if (caster == opponent)
-        {
-            buff.BuffDurationTurns++;
-        }
         
         opponent.ApplyBuff( caster,opponent, buff);
     }
 
-    public override void SetCharmDescription(TextMeshProUGUI text)
+    protected override void SetCharmDescription(TextMeshProUGUI text)
     {
         base.SetCharmDescription(text);
         string description = text.text;
+        if (CharmTargetType == CharmTargetType.Singular)
+        {
+            description += Turns + "턴 동안 아군 ";
+        }
+        else if (CharmTargetType == CharmTargetType.SingularWithSelf)
+        {
+            description += Turns + "턴 동안 자신 및 아군 1명의 ";
+        }
+        
         int statCount = 0;
 
         for (int i = 1; i < (int)StatType.MaxDamage; i++)

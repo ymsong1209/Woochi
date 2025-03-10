@@ -69,6 +69,7 @@ public enum CharmType
     DeBuff,
     CleanseSingleDebuff,
     Heal,
+    Stun,
     END
 }
 

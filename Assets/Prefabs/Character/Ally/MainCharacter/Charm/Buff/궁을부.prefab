@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
-  turns: 2
+  turns: 1
   charmName: "\uAD81\uC744\uBD80"
   charmRadius: 0101010100000000
   charmType: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
     - type: 4
       value: 0
     - type: 5
-      value: 15
+      value: 100
     - type: 6
       value: 0
     - type: 7
@@ -91,11 +91,14 @@ MonoBehaviour:
   chanceToApplyBuff: 0
   buffName: 
   buffColor: {r: 0, g: 0, b: 0, a: 0}
-  isRemoveWhenBattleEnd: 1
   buffBattleDurationTurns: 0
+  buffStackType: 1
+  isRemoveWhenBattleEnd: 1
   isRemovableDuringBattle: 1
   isBuffAppliedThisTurn: 1
   isAlwaysApplyBuff: 0
+  isSaveBuff: 0
+  isSpecialBuff: 0
   changeStat:
     list:
     - type: 0

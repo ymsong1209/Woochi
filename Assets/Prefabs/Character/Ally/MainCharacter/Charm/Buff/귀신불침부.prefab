@@ -59,7 +59,7 @@ MonoBehaviour:
     - type: 1
       value: 0
     - type: 2
-      value: 5
+      value: 50
     - type: 3
       value: 0
     - type: 4
@@ -91,11 +91,14 @@ MonoBehaviour:
   chanceToApplyBuff: 0
   buffName: 
   buffColor: {r: 0, g: 0, b: 0, a: 0}
-  isRemoveWhenBattleEnd: 1
   buffBattleDurationTurns: 0
+  buffStackType: 1
+  isRemoveWhenBattleEnd: 1
   isRemovableDuringBattle: 1
   isBuffAppliedThisTurn: 1
   isAlwaysApplyBuff: 0
+  isSaveBuff: 0
+  isSpecialBuff: 0
   changeStat:
     list:
     - type: 0

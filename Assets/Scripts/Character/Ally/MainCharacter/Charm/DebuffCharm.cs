@@ -28,10 +28,14 @@ public class DebuffCharm : BaseCharm
         opponent.ApplyBuff( caster,opponent, buff);
     }
 
-    public override void SetCharmDescription(TextMeshProUGUI text)
+    protected override void SetCharmDescription(TextMeshProUGUI text)
     {
         base.SetCharmDescription(text);
         string description = text.text;
+        if (CharmTargetType == CharmTargetType.Singular)
+        {
+            description += Turns + "턴 동안 적군의 ";
+        }
         int statCount = 0;
         
         for (int i = 1; i < (int)StatType.MaxDamage; i++)

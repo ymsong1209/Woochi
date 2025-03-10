@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f970e1487b951641bb3562062edf1db, type: 3}
   m_Name: Tiger_Rip_P
   m_EditorClassIdentifier: 
-  skillIcon: {fileID: 21300000, guid: 5693a37ee066f6e4c913397e30aee47a, type: 3}
+  skillIcon: {fileID: 21300000, guid: 85ef4902ad90b5b49b84881e95235945, type: 3}
   skillName: "\uCC22\uC5B4\uBC1C\uAE30\uAE30+"
   animType: 6
   skillSound:

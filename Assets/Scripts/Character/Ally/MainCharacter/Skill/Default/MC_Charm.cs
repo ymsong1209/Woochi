@@ -133,7 +133,7 @@ public class MC_Charm : BaseSkill
                //TODO : 상대방 버프 받는 애니메이션 재생
                opponent?.onPlayAnimation?.Invoke(AnimationType.Idle);
            }
-           else if (charm.CharmType == CharmType.DeBuff)
+           else if (charm.CharmType == CharmType.DeBuff || charm.CharmType == CharmType.Stun)
            {
                opponent?.onPlayAnimation?.Invoke(AnimationType.Damaged);
            }
@@ -201,7 +201,7 @@ public class MC_Charm : BaseSkill
                //TODO : 상대방 버프 받는 애니메이션 재생
                opponent.onPlayAnimation?.Invoke(AnimationType.Idle);
            }
-           else if (charm.CharmType == CharmType.DeBuff)
+           else if (charm.CharmType == CharmType.DeBuff || charm.CharmType == CharmType.Stun)
            { 
                opponent.onPlayAnimation?.Invoke(AnimationType.Damaged);
            }
@@ -227,5 +227,10 @@ public class MC_Charm : BaseSkill
        if (!selectedCharm) return;
        this.charm = selectedCharm;
        SkillRadius = charm.CharmRadius;
+       if (charm.CharmTargetType == CharmTargetType.SingularWithSelf)
+       {
+           //우치 자기자신은 항상 제외되어야함.
+           SkillRadius[SkillOwner.RowOrder] = false;
+       }
    }
 }
