@@ -5,6 +5,18 @@ using TMPro;
 
 public class Tiger_Bite_P : BaseSkill
 {
+    public override void ActivateSkill(BaseCharacter _Opponent)
+    {
+        GameObject bleedDebuffPrefab = BuffPrefabList[0];
+        GameObject bleedDebuffGameObject = Instantiate(bleedDebuffPrefab, transform);
+        BleedDeBuff bleedDebuff = bleedDebuffGameObject.GetComponent<BleedDeBuff>();
+        bleedDebuff.BuffDurationTurns = 3;
+        bleedDebuff.BleedPercent = 3;
+        bleedDebuff.ChanceToApplyBuff = 100;
+        instantiatedBuffList.Add(bleedDebuffGameObject);
+        
+        base.ActivateSkill(_Opponent);
+    }
     protected override float CalculateDamage(BaseCharacter receiver, bool isCrit)
     {
         // 물어뜯기로 피해를 입히면 적의 잃은 체력의 40% 만큼 추가 피해를 줌
@@ -33,7 +45,8 @@ public class Tiger_Bite_P : BaseSkill
         text.text = "물어뜯기+\n" + 
                     "대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + 
                     "잃은 체력 비례 최대 30%의 추가 피해\n" + 
-                    "피해의 50%만큼 회복";
+                    "피해의 50%만큼 회복\n" +
+                    "3턴동안 100%의 확률로 출혈 3턴 부여";
     }
     
 }
