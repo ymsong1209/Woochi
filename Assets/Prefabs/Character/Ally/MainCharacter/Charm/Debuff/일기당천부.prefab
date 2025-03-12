@@ -51,6 +51,7 @@ MonoBehaviour:
   charmRadius: 0000000001010101
   charmType: 4
   charmTargetType: 1
+  charmEffect: 1
   charmIcon: {fileID: 0}
 --- !u!114 &-635258824502717654
 MonoBehaviour:

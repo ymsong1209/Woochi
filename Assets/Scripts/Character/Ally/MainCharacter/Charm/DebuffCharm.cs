@@ -28,7 +28,7 @@ public class DebuffCharm : BaseCharm
         opponent.ApplyBuff( caster,opponent, buff);
     }
 
-    protected override void SetCharmDescription(TextMeshProUGUI text)
+    public override void SetCharmDescription(TextMeshProUGUI text)
     {
         base.SetCharmDescription(text);
         string description = text.text;

@@ -82,6 +82,13 @@ public enum CharmTargetType
     End
 }
 
+public enum CharmEffect
+{
+    Positive,
+    Negative,
+    END
+}
+
 
 
 public enum BuffEffect

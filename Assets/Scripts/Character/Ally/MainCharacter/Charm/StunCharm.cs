@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class StunCharm : BaseCharm
 {
-    protected override void SetCharmDescription(TextMeshProUGUI text)
+    public override void SetCharmDescription(TextMeshProUGUI text)
     {
         base.SetCharmDescription(text);
         text.text += "모든 적에게 기절 부여";

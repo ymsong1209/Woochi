@@ -6,7 +6,7 @@ using UnityEngine;
 public class HealCharm : BaseCharm
 {
    
-    protected override void SetCharmDescription(TextMeshProUGUI text)
+    public override void SetCharmDescription(TextMeshProUGUI text)
     {
         base.SetCharmDescription(text);
         text.text += "아군 전체의 체력 50%만큼 회복";

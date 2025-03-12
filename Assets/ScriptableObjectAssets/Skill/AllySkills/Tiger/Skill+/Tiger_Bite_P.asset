@@ -19,7 +19,7 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: ed55999ee32c7fa4b8b4feba8ec43d47, type: 2}
-  skillAvailableRadius: 0101000000000000
+  skillAvailableRadius: 0101010100000000
   skillRadius: 0000000001000000
   skillType: 0
   skillTargetType: 0

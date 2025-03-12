@@ -128,12 +128,12 @@ public class MC_Charm : BaseSkill
        if (charm.CharmTargetType == CharmTargetType.Singular ||
            charm.CharmTargetType == CharmTargetType.SingularWithSelf)
        {
-           if ( charm.CharmType == CharmType.Buff || charm.CharmType == CharmType.CleanseSingleDebuff)
+           if ( charm.CharmEffect == CharmEffect.Positive)
            {
                //TODO : 상대방 버프 받는 애니메이션 재생
                opponent?.onPlayAnimation?.Invoke(AnimationType.Idle);
            }
-           else if (charm.CharmType == CharmType.DeBuff || charm.CharmType == CharmType.Stun)
+           else if (charm.CharmEffect == CharmEffect.Negative)
            {
                opponent?.onPlayAnimation?.Invoke(AnimationType.Damaged);
            }
@@ -196,12 +196,12 @@ public class MC_Charm : BaseSkill
        }
        foreach (BaseCharacter opponent in receivers)
        {
-           if (charm.CharmType == CharmType.Buff || charm.CharmType == CharmType.CleanseSingleDebuff)
+           if (charm.CharmEffect == CharmEffect.Positive)
            {
                //TODO : 상대방 버프 받는 애니메이션 재생
                opponent.onPlayAnimation?.Invoke(AnimationType.Idle);
            }
-           else if (charm.CharmType == CharmType.DeBuff || charm.CharmType == CharmType.Stun)
+           else if (charm.CharmEffect == CharmEffect.Negative)
            { 
                opponent.onPlayAnimation?.Invoke(AnimationType.Damaged);
            }
