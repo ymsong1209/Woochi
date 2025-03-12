@@ -258,8 +258,8 @@ MonoBehaviour:
   - ID: 3
     value: {fileID: 8207826904893543196, guid: a7f2ff85543b2d2459a56cd14d25ff4d, type: 3}
   - ID: 4
+    value: {fileID: 2178913504503232064, guid: 6fa22520f0b53a843b56d25f2a91e179, type: 3}
+  - ID: 5
     value: {fileID: -6204955769739045746, guid: 8f953c247893ac54196460aad14b28d3, type: 3}
-  - ID: 8
-    value: {fileID: -4831398473671491347, guid: d62c684cf4e85df41ac74545da90f05c, type: 3}
-  - ID: 9
+  - ID: 6
     value: {fileID: 803773050140297357, guid: 3c357a465bbb044498f664ab6ec32ff3, type: 3}

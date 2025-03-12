@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1049590893891560615}
-  - component: {fileID: -6204955769739045746}
-  - component: {fileID: -635258824502717654}
+  - component: {fileID: 2178913504503232064}
+  - component: {fileID: -5741432910155824487}
   m_Layer: 0
   m_Name: "\uC77C\uAE30\uB2F9\uCC9C\uBD80"
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-6204955769739045746
+--- !u!114 &2178913504503232064
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,18 +42,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1846958743404041513}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92fdec2c67cd6ea42bb308a4a4b52453, type: 3}
+  m_Script: {fileID: 11500000, guid: ee11e0ac903a5924ba08371078fb53f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 4
   turns: 1
   charmName: "\uC77C\uAE30\uB2F9\uCC9C\uBD80"
-  charmRadius: 0000000001010101
-  charmType: 4
-  charmTargetType: 1
-  charmEffect: 1
+  charmRadius: 0101010100000000
+  charmType: 0
+  charmTargetType: 2
+  charmEffect: 0
   charmIcon: {fileID: 0}
---- !u!114 &-635258824502717654
+--- !u!114 &-5741432910155824487
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -62,14 +62,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1846958743404041513}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 576b6569c7bb5e14ba34f9826ac966e1, type: 3}
+  m_Script: {fileID: 11500000, guid: cd165819c0623a445ba4795b9e0c588c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buffOwner: {fileID: 0}
   buffDurationTurns: 1
-  buffEffect: 2
-  buffType: 2
-  chanceToApplyBuff: 100
+  buffEffect: 4
+  buffType: 1
+  chanceToApplyBuff: 0
   buffName: 
   buffColor: {r: 0, g: 0, b: 0, a: 0}
   buffBattleDurationTurns: 0
@@ -80,3 +80,23 @@ MonoBehaviour:
   isAlwaysApplyBuff: 0
   isSaveBuff: 0
   isSpecialBuff: 0
+  changeStat:
+    list:
+    - type: 0
+      value: 0
+    - type: 1
+      value: 0
+    - type: 2
+      value: 0
+    - type: 3
+      value: 0
+    - type: 4
+      value: 0
+    - type: 5
+      value: 0
+    - type: 6
+      value: 0
+    - type: 7
+      value: 0
+    - type: 8
+      value: 0

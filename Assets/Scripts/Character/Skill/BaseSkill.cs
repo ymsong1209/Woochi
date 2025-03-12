@@ -631,19 +631,31 @@ public class BaseSkill : MonoBehaviour
 
     protected float CalculateFinalDamage(float damage)
     {
+        FearBuff fearBuff = null;
+        bool hasDoubleDamage = false;
         foreach (BaseBuff buff in SkillOwner.activeBuffs)
         {
-            if (buff.BuffEffect == BuffEffect.Fear)
+            if (buff is FearBuff fear) 
             {
-                FearBuff fearBuff = buff as FearBuff;
-                if (fearBuff)
-                {
-                    damage = damage * (1 - fearBuff.DamageReduction / 100);
-                }
+                fearBuff = fear;
+            }
+            else if (buff is DoubleDamageBuff) 
+            {
+                hasDoubleDamage = true;
             }
         }
 
+        if (fearBuff)
+        {
+            damage = damage * (1 - fearBuff.DamageReduction / 100);
+        }
+        if(hasDoubleDamage)
+        {
+            damage = damage * 2;
+        }
+
         return damage;
+        
     }
     
     protected virtual float CalculateHeal(BaseCharacter receiver, bool isCrit)
