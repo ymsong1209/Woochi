@@ -13,7 +13,7 @@ public class T3_FireButterfly : MainCharacterSkill
         StatDeBuff statDeBuff = statDebuffGameObject.GetComponent<StatDeBuff>();
         statDeBuff.BuffName = "갑옷 융해";
         statDeBuff.BuffDurationTurns = 2;
-        statDeBuff.ChanceToApplyBuff = 70;
+        statDeBuff.ChanceToApplyBuff = 75;
         statDeBuff.BuffStackType = BuffStackType.ResetDuration;
         statDeBuff.changeStat.SetValue(StatType.Defense, -10);
         instantiatedBuffList.Add(statDebuffGameObject);
@@ -30,7 +30,7 @@ public class T3_FireButterfly : MainCharacterSkill
         text.text = "화접\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "랜덤한 대상 2명에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "70%의 확률로 2턴동안 방어 -10 부여";
+                    "75%의 확률로 2턴동안 방어 -10 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
@@ -42,7 +42,7 @@ public class T3_FireButterfly : MainCharacterSkill
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "랜덤한 대상 2명에게 " + SkillSO.BaseMultiplier + "%피해\n" +
-                                "70%의 확률로 2턴동안 방어 -10 부여";
+                                "75%의 확률로 2턴동안 방어 -10 부여";
     }
     
     public override void SetEnhancedSkillScrollDescription(int curskillid, TextMeshProUGUI skillDescription)
@@ -57,10 +57,10 @@ public class T3_FireButterfly : MainCharacterSkill
         MainCharacterSkillSO enhancedMainCharacterSkillSo = enhancedSkill.SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "랜덤한 대상 2명에게 " + SkillSO.BaseMultiplier + "%피해\n" +
-                                "70%의 확률로 2턴동안 방어 -10 부여\n" + 
+                                "75%의 확률로 2턴동안 방어 -10 부여\n" + 
                                 "-\n" +
                                 "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
                                 "랜덤한 대상 2명에게 <color=#FFFF00>" + enhancedMainCharacterSkillSo.BaseMultiplier + "</color>% 피해\n" +
-                                "<color=#FFFF00>90</color>%의 확률로 <color=#FFFF00>3</color>턴동안 방어 -10 부여";
+                                "75%의 확률로 <color=#FFFF00>3</color>턴동안 방어 -10 부여";
     }
 }

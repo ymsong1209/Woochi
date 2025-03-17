@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8a3ff459c3db04db52ae01995cbe12, type: 3}
   m_Name: T2_IronWall+
   m_EditorClassIdentifier: 
-  skillIcon: {fileID: 0}
+  skillIcon: {fileID: 21300000, guid: 6abf261b3128b7c439cc431299a0b666, type: 3}
   skillName: "\uCCA0\uBCBD+"
   animType: 3
   skillSound:
@@ -30,5 +30,5 @@ MonoBehaviour:
   - {fileID: 2569674945298275565, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
   baseMultiplier: 0
   baseSkillAccuracy: 0
-  requiredSorceryPoints: 30
+  requiredSorceryPoints: 40
   rarity: 2

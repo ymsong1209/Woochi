@@ -13,7 +13,7 @@ public class T1_TreeBind_P : MainCharacterSkill
         StatDeBuff statDeBuff = statDebuffGameObject.GetComponent<StatDeBuff>();
         statDeBuff.BuffName = "뿌리 속박+";
         statDeBuff.BuffDurationTurns = 3;
-        statDeBuff.ChanceToApplyBuff = 90;
+        statDeBuff.ChanceToApplyBuff = 75;
         statDeBuff.BuffStackType = BuffStackType.ResetDuration;
         statDeBuff.changeStat.SetValue(StatType.Speed, -5);
         instantiatedBuffList.Add(statDebuffGameObject);
@@ -29,7 +29,7 @@ public class T1_TreeBind_P : MainCharacterSkill
         text.text = "옭아매기+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "90%의 확률로 3턴 동안 속도 -5 부여";
+                    "75%의 확률로 3턴 동안 속도 -5 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
@@ -41,7 +41,7 @@ public class T1_TreeBind_P : MainCharacterSkill
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 대상에게 " + SkillSO.BaseMultiplier + "%피해\n" +
-                                "90%의 확률로 3턴동안\n" +
+                                "750%의 확률로 3턴동안\n" +
                                 "속도 -5 부여";
     }
 }

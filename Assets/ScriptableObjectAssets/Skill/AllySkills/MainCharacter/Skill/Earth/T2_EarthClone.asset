@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8a3ff459c3db04db52ae01995cbe12, type: 3}
   m_Name: T2_EarthClone
   m_EditorClassIdentifier: 
-  skillIcon: {fileID: 0}
+  skillIcon: {fileID: 21300000, guid: 4caa265563a17834d8f6b89ad5821ee6, type: 3}
   skillName: "\uD759 \uBD84\uC2E0"
   animType: 3
   skillSound:
@@ -28,6 +28,6 @@ MonoBehaviour:
   skillRandomCount: 0
   bufflist: []
   baseMultiplier: 50
-  baseSkillAccuracy: 70
+  baseSkillAccuracy: 80
   requiredSorceryPoints: 40
   rarity: 2

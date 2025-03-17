@@ -29,6 +29,6 @@ MonoBehaviour:
   bufflist:
   - {fileID: 2569674945298275565, guid: 36461d30c5282b14f984655313365a61, type: 3}
   baseMultiplier: 40
-  baseSkillAccuracy: 70
+  baseSkillAccuracy: 80
   requiredSorceryPoints: 40
   rarity: 1

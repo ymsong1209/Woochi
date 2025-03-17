@@ -55,7 +55,7 @@ public class T2_IronWall : MainCharacterSkill
                                 "아군 전체에게 2턴동안\n"+
                                 "방어 10\n" + 
                                 "-\n" +
-                                "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
+                                "도력 " + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "아군 전체에게 2턴동안\n"+
                                 "방어 <color=#FFFF00>20</color> 부여";
     }

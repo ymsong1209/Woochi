@@ -29,5 +29,5 @@ MonoBehaviour:
   bufflist: []
   baseMultiplier: 100
   baseSkillAccuracy: 100
-  requiredSorceryPoints: 70
+  requiredSorceryPoints: 60
   rarity: 1

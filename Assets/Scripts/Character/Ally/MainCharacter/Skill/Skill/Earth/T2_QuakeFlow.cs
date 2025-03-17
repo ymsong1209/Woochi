@@ -56,6 +56,6 @@ public class T2_QuakeFlow : MainCharacterSkill
                                 "-\n" +
                                 "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
                                 "랜덤한 대상 2명에게 <color=#FFFF00>" + enhancedMainCharacterSkillSo.BaseMultiplier + "</color>% 피해\n" +
-                                "<color=#FFFF00>80</color>%의 확률로 기절 부여";
+                                "50%의 확률로 기절 부여";
     }
 }

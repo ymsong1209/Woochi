@@ -25,7 +25,7 @@ public class T2_QuakeFlow_P : MainCharacterSkill
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "땅너울+\n" + 
                     "랜덤한 대상 2명에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + 
-                    "80%의 확률로 기절 부여";
+                    "50%의 확률로 기절 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
@@ -37,6 +37,6 @@ public class T2_QuakeFlow_P : MainCharacterSkill
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "랜덤한 대상 2명에게" + SkillSO.BaseMultiplier + "%피해\n" +
-                                "80%의 확률로 기절 부여";
+                                "50%의 확률로 기절 부여";
     }
 }

@@ -58,8 +58,8 @@ public class T2_EarthClone : MainCharacterSkill
                                 "단일 대상에게 " + SkillSO.BaseMultiplier + "%피해\n" +
                                 "우치에게 3턴동안 회피 15 부여\n" + 
                                 "-\n" +
-                                "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
+                                "도력 " + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 대상에게 <color=#FFFF00>" + enhancedMainCharacterSkillSo.BaseMultiplier + "</color>% 피해\n" +
-                                "우치에게 3턴동안 회피 <color=#FFFF00>35</color> 부여" ;
+                                "우치에게 3턴동안 회피 <color=#FFFF00>25</color> 부여" ;
     }
 }

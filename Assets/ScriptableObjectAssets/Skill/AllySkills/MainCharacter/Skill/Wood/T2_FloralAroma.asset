@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8a3ff459c3db04db52ae01995cbe12, type: 3}
   m_Name: T2_FloralAroma
   m_EditorClassIdentifier: 
-  skillIcon: {fileID: 0}
+  skillIcon: {fileID: 21300000, guid: c913496a58a883747b2d1103ba00c6b9, type: 3}
   skillName: "\uD5A5\uAE0B\uD55C \uAF43\uB0B4\uC74C"
   animType: 3
   skillSound:
@@ -30,6 +30,6 @@ MonoBehaviour:
   - {fileID: 2569674945298275565, guid: 36461d30c5282b14f984655313365a61, type: 3}
   - {fileID: 2569674945298275565, guid: 792e42c0644dbee4cb47bae86d650f7b, type: 3}
   baseMultiplier: 0
-  baseSkillAccuracy: 70
-  requiredSorceryPoints: 60
+  baseSkillAccuracy: 80
+  requiredSorceryPoints: 50
   rarity: 2

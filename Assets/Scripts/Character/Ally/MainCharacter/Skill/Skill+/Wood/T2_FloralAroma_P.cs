@@ -10,7 +10,7 @@ public class T2_FloralAroma_P : MainCharacterSkill
         GameObject PoisonPrefab = BuffPrefabList[0];
         GameObject poisonGameObject = Instantiate(PoisonPrefab, transform);
         PoisonBuff poisonDebuff = poisonGameObject.GetComponent<PoisonBuff>();
-        poisonDebuff.ChanceToApplyBuff = 90;
+        poisonDebuff.ChanceToApplyBuff = 100;
         poisonDebuff.PoisonStack = 3;
         instantiatedBuffList.Add(poisonGameObject);
         
@@ -19,10 +19,10 @@ public class T2_FloralAroma_P : MainCharacterSkill
         StatDeBuff statDeBuff = statDebuffGameObject.GetComponent<StatDeBuff>();
         statDeBuff.BuffName = "꽃내음+";
         statDeBuff.BuffDurationTurns = 2;
-        statDeBuff.ChanceToApplyBuff = 90;
+        statDeBuff.ChanceToApplyBuff = 100;
         statDeBuff.BuffStackType = BuffStackType.ResetDuration;
-        statDeBuff.changeStat.SetValue(StatType.MinDamage, -3);
-        statDeBuff.changeStat.SetValue(StatType.MaxDamage, -3);
+        statDeBuff.changeStat.SetValue(StatType.MinDamage, -2);
+        statDeBuff.changeStat.SetValue(StatType.MaxDamage, -2);
         instantiatedBuffList.Add(statDebuffGameObject);
         
         base.ActivateSkill(_opponent);
@@ -35,7 +35,7 @@ public class T2_FloralAroma_P : MainCharacterSkill
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "향긋한 꽃내음+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "90%의 확률로 중독 3, 2턴동안 공격력 -3 부여";
+                    "100%의 확률로 중독 3, 2턴동안 공격력 -2 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
@@ -47,7 +47,7 @@ public class T2_FloralAroma_P : MainCharacterSkill
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 대상에게 2턴동안\n"+
-                                "공격력 -3만큼 부여\n" +
-                                "90%의 확률로 중독 3 부여";
+                                "공격력 -2만큼 부여\n" +
+                                "100%의 확률로 중독 3 부여";
     }
 }

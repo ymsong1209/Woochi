@@ -11,7 +11,7 @@ public class T1_WildRose : MainCharacterSkill
         GameObject PoisonPrefab = BuffPrefabList[0];
         GameObject poisonGameObject = Instantiate(PoisonPrefab, transform);
         PoisonBuff poisonDebuff = poisonGameObject.GetComponent<PoisonBuff>();
-        poisonDebuff.ChanceToApplyBuff = 50;
+        poisonDebuff.ChanceToApplyBuff = 75;
         poisonDebuff.PoisonStack = 2;
         instantiatedBuffList.Add(poisonGameObject);
         
@@ -26,7 +26,7 @@ public class T1_WildRose : MainCharacterSkill
         text.text = "찔레꽃\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "50%의 확률로 단일 대상에게 중독 2 부여";
+                    "75%의 확률로 단일 대상에게 중독 2 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
@@ -38,7 +38,7 @@ public class T1_WildRose : MainCharacterSkill
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 대상에게 " + SkillSO.BaseMultiplier + "%피해\n" +
-                                "50%의 확률로 단일 대상에게\n" +
+                                "75%의 확률로 단일 대상에게\n" +
                                 "중독 2 부여";
     }
     
@@ -54,12 +54,12 @@ public class T1_WildRose : MainCharacterSkill
         MainCharacterSkillSO enhancedMainCharacterSkillSo = enhancedSkill.SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 대상에게 " + SkillSO.BaseMultiplier + "%피해\n" +
-                                "50%의 확률로 단일 대상에게\n" +
+                                "75%의 확률로 단일 대상에게\n" +
                                 "중독 2 부여\n" + 
                                 "-\n" +
                                 "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
                                 "단일 대상에게 <color=#FFFF00>" + enhancedMainCharacterSkillSo.BaseMultiplier + "</color>% 피해\n" +
-                                "<color=#FFFF00>70</color>%의 확률로 단일 대상에게\n" +
+                                "75%의 확률로 단일 대상에게\n" +
                                 "중독 <color=#FFFF00>3</color> 부여";
     }
 }

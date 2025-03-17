@@ -11,7 +11,7 @@ public class T1_WildRose_P : MainCharacterSkill
         GameObject PoisonPrefab = BuffPrefabList[0];
         GameObject poisonGameObject = Instantiate(PoisonPrefab, transform);
         PoisonBuff poisonDebuff = poisonGameObject.GetComponent<PoisonBuff>();
-        poisonDebuff.ChanceToApplyBuff = 70;
+        poisonDebuff.ChanceToApplyBuff = 75;
         poisonDebuff.PoisonStack = 3;
         instantiatedBuffList.Add(poisonGameObject);
         
@@ -26,7 +26,7 @@ public class T1_WildRose_P : MainCharacterSkill
         text.text = "찔레꽃+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "70%의 확률로 단일 대상에게 중독 3 부여";
+                    "75%의 확률로 단일 대상에게 중독 3 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
@@ -38,7 +38,7 @@ public class T1_WildRose_P : MainCharacterSkill
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 대상에게 " + SkillSO.BaseMultiplier + "%피해\n" +
-                                "70%의 확률로 단일 대상에게\n" +
+                                "75%의 확률로 단일 대상에게\n" +
                                 "중독 3 부여";
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8a3ff459c3db04db52ae01995cbe12, type: 3}
   m_Name: T2_MirageFireShot
   m_EditorClassIdentifier: 
-  skillIcon: {fileID: 0}
+  skillIcon: {fileID: 21300000, guid: 66f83a641120fa342bb9ca82d57b0107, type: 3}
   skillName: "\uC2E0\uAE30\uC804"
   animType: 3
   skillSound:

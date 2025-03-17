@@ -11,8 +11,8 @@ public class T2_MirageFireShot_P : MainCharacterSkill
         GameObject statDebuffGameObject = Instantiate(statDebuffPrefab, transform);
         StatDeBuff statDeBuff = statDebuffGameObject.GetComponent<StatDeBuff>();
         statDeBuff.BuffName = "시야 차단+";
-        statDeBuff.BuffDurationTurns = 2;
-        statDeBuff.ChanceToApplyBuff = 70;
+        statDeBuff.BuffDurationTurns = 3;
+        statDeBuff.ChanceToApplyBuff = 75;
         statDeBuff.BuffStackType = BuffStackType.ResetDuration;
         statDeBuff.changeStat.SetValue(StatType.MinDamage, -1);
         statDeBuff.changeStat.SetValue(StatType.MaxDamage, -1);
@@ -29,7 +29,7 @@ public class T2_MirageFireShot_P : MainCharacterSkill
         text.text = "신기전+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "70%의 확률로 3턴동안 공격력 -1 부여";
+                    "75%의 확률로 3턴동안 공격력 -1 부여";
     }
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
     {
@@ -40,7 +40,7 @@ public class T2_MirageFireShot_P : MainCharacterSkill
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 대상에게 " + SkillSO.BaseMultiplier + "%피해\n" +
-                                "70%의 확률로 3턴동안\n"+
+                                "75%의 확률로 3턴동안\n"+
                                 "공격력 -1 부여";
     }
 }

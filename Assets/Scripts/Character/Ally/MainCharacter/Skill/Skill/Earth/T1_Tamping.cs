@@ -59,7 +59,7 @@ public class T1_Tamping : MainCharacterSkill
                                 "아군 전체에게 3턴동안\n" +
                                 "명중 5, 저항 10 부여\n" + 
                                 "-\n" +
-                                "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
+                                "도력 " + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "아군 전체에게 3턴동안\n" +
                                 "명중 <color=#FFFF00>10</color>, 저항 <color=#FFFF00>20</color> 부여";
     }

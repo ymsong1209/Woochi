@@ -10,7 +10,7 @@ public class T1_MetalWind : MainCharacterSkill
     {
         base.ActivateSkill(_opponent);
         int random = Random.Range(0, 100);
-        if (random < 40)
+        if (random < 20)
         {
             GameObject instantiatedDefensebuff = Instantiate(DefenseBuffGameObject, transform);
             StatBuff defenseBuff = instantiatedDefensebuff.GetComponent<StatBuff>();
@@ -27,7 +27,7 @@ public class T1_MetalWind : MainCharacterSkill
     protected override float CalculateDamage(BaseCharacter receiver, bool isCrit)
     {
         Stat finalStat = SkillOwner.FinalStat;
-        float FinalDamage = 4 + finalStat.GetValue(StatType.Defense) * 20 / 100;
+        float FinalDamage = 4 + finalStat.GetValue(StatType.Defense) * 10 / 100;
         if(isCrit) FinalDamage *= 2;
         return FinalDamage;
     }
@@ -40,7 +40,7 @@ public class T1_MetalWind : MainCharacterSkill
         text.text = "쇠바람\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "단일 대상에게" + (4 +finalStat.GetValue(StatType.Defense) * 10 / 100) + "의 방어 기반 피해를 주고\n" +
-                    "40%의 확률로 우치에게 3턴동안 방어 3 부여";
+                    "20%의 확률로 우치에게 3턴동안 방어 3 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
@@ -52,7 +52,7 @@ public class T1_MetalWind : MainCharacterSkill
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 대상에게 4 + 방어*10% 피해\n" +
-                                "40%의 확률로 우치에게\n" +
+                                "20%의 확률로 우치에게\n" +
                                 "3턴동안 방어 3 부여";
     }
     
@@ -68,12 +68,12 @@ public class T1_MetalWind : MainCharacterSkill
         MainCharacterSkillSO enhancedMainCharacterSkillSo = enhancedSkill.SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 대상에게 4 + 방어*10% 피해\n" +
-                                "40%의 확률로 우치에게\n" +
+                                "20%의 확률로 우치에게\n" +
                                 "3턴동안 방어 3\n" + 
                                 "-\n" +
                                 "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
                                 "단일 대상에게 4 + 방어*<color=#FFFF00>20</color>% 피해\n" +
-                                "<color=#FFFF00>50</color>%의 확률로 우치에게\n" +
+                                "<color=#FFFF00>30</color>%의 확률로 우치에게\n" +
                                 "3턴동안 방어 <color=#FFFF00>5</color> 부여";
     }
 }

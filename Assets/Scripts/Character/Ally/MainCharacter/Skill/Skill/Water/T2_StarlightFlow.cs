@@ -57,8 +57,8 @@ public class T2_StarlightFlow : MainCharacterSkill
                                 "아군 전체에게 3턴동안\n" +
                                 "회피 20, 속도 3 부여\n" + 
                                 "-\n" +
-                                "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
+                                "도력 " + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "아군 전체에게 3턴동안\n" +
-                                "회피 <color=#FFFF00>40</color>, 속도 <color=#FFFF00>6</color> 부여";
+                                "회피 <color=#FFFF00>30</color>, 속도 <color=#FFFF00>6</color> 부여";
     }
 }

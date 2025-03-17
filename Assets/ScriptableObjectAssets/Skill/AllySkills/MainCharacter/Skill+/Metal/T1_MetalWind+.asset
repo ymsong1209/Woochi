@@ -28,6 +28,6 @@ MonoBehaviour:
   skillRandomCount: 0
   bufflist: []
   baseMultiplier: 0
-  baseSkillAccuracy: 100
-  requiredSorceryPoints: 20
+  baseSkillAccuracy: 80
+  requiredSorceryPoints: 40
   rarity: 1

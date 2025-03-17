@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8a3ff459c3db04db52ae01995cbe12, type: 3}
   m_Name: T2_BlazingOrb
   m_EditorClassIdentifier: 
-  skillIcon: {fileID: 0}
+  skillIcon: {fileID: 21300000, guid: f1d938e5d19f7b94aa1e3bde9ad58f7d, type: 3}
   skillName: "\uBD88\uB9DD\uC6B8"
   animType: 3
   skillSound:
@@ -28,7 +28,7 @@ MonoBehaviour:
   skillRandomCount: 2
   bufflist:
   - {fileID: 2569674945298275565, guid: 6c7ad47b10204044b84e8f76de3989c9, type: 3}
-  baseMultiplier: 40
-  baseSkillAccuracy: 70
-  requiredSorceryPoints: 40
+  baseMultiplier: 50
+  baseSkillAccuracy: 80
+  requiredSorceryPoints: 30
   rarity: 2

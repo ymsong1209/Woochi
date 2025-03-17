@@ -49,7 +49,7 @@ public class T1_HealWater : MainCharacterSkill
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 대상을 " + healamount +  "만큼 회복\n" +
                                 "-\n" +
-                                "도력 <color=#FFFF00>" + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "</color>을 소모\n" +
+                                "도력 " + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 대상을 <color=#FFFF00>" +  enhancedSkill.HealAmount + "</color>만큼 회복";
     }
 }

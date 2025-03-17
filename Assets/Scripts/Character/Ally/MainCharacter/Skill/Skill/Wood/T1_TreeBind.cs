@@ -13,7 +13,7 @@ public class T1_TreeBind : MainCharacterSkill
         StatDeBuff statDeBuff = statDebuffGameObject.GetComponent<StatDeBuff>();
         statDeBuff.BuffName = "뿌리 속박";
         statDeBuff.BuffDurationTurns = 2;
-        statDeBuff.ChanceToApplyBuff = 70;
+        statDeBuff.ChanceToApplyBuff = 75;
         statDeBuff.BuffStackType = BuffStackType.ResetDuration;
         statDeBuff.changeStat.SetValue(StatType.Speed, -5);
         instantiatedBuffList.Add(statDebuffGameObject);
@@ -29,7 +29,7 @@ public class T1_TreeBind : MainCharacterSkill
         text.text = "옭아매기\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "70%의 확률로 2턴동안 속도 -5 부여";
+                    "75%의 확률로 2턴동안 속도 -5 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
@@ -41,7 +41,7 @@ public class T1_TreeBind : MainCharacterSkill
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 대상에게 " + SkillSO.BaseMultiplier + "%피해\n" +
-                                "70%의 확률로 2턴동안\n" +
+                                "75%의 확률로 2턴동안\n" +
                                 "속도 -5 부여";
     }
     
@@ -59,12 +59,12 @@ public class T1_TreeBind : MainCharacterSkill
         
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 대상에게 " + SkillSO.BaseMultiplier + "%피해\n" +
-                                "70%의 확률로 2턴동안\n" +
+                                "75%의 확률로 2턴동안\n" +
                                 "속도 -5 부여\n" +
                                 "-\n" +
                                 "도력 " + enhancedMainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 대상에게 <color=#FFFF00>" + enhancedMainCharacterSkillSo.BaseMultiplier + "</color>%피해\n" +
-                                "<color=#FFFF00>90%</color>의 확률로 <color=#FFFF00>3턴</color>동안\n" +
+                                "75%의 확률로 <color=#FFFF00>3턴</color>동안\n" +
                                 "속도 -5 부여";
     }
 }

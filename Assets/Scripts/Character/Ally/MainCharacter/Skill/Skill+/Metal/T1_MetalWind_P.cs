@@ -11,7 +11,7 @@ public class T1_MetalWind_P : MainCharacterSkill
 
         base.ActivateSkill(_opponent);
         int random = Random.Range(0, 100);
-        if (random < 50)
+        if (random < 30)
         {
             GameObject instantiatedDefensebuff = Instantiate(DefenseBuffGameObject, transform);
             StatBuff defenseBuff = instantiatedDefensebuff.GetComponent<StatBuff>();
@@ -40,7 +40,7 @@ public class T1_MetalWind_P : MainCharacterSkill
         text.text = "쇠바람+\n" +
                     "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
                     "단일 대상에게 " + (4 + finalStat.GetValue(StatType.Defense) * 20 / 100) + "의 방어 기반 피해를 주고\n" +
-                    "50%의 확률로 우치에게 3턴동안 방어 5 부여";
+                    "30%의 확률로 우치에게 3턴동안 방어 5 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
@@ -52,7 +52,7 @@ public class T1_MetalWind_P : MainCharacterSkill
         MainCharacterSkillSO mainCharacterSkillSo = SkillSO as MainCharacterSkillSO;
         skillDescription.text = "도력 " + mainCharacterSkillSo.RequiredSorceryPoints + "을 소모\n" +
                                 "단일 대상에게 4 + 방어*20% 피해\n" +
-                                "50%의 확률로 우치에게\n" +
+                                "30%의 확률로 우치에게\n" +
                                 "3턴동안 방어 5 부여";
     }
 }

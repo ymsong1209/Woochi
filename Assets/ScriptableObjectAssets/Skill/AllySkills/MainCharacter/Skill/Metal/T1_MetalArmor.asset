@@ -30,5 +30,5 @@ MonoBehaviour:
   - {fileID: 2569674945298275565, guid: 7494b86e9b118144ea08c4f925621526, type: 3}
   baseMultiplier: 100
   baseSkillAccuracy: 100
-  requiredSorceryPoints: 40
+  requiredSorceryPoints: 20
   rarity: 1
