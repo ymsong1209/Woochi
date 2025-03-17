@@ -306,10 +306,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be434f0ce7ce129479a77c86d01c28a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enabledIcon: {fileID: 8903902389130318790}
-  disabledIcon: {fileID: 8670678133063313686}
+  elementIcon: {fileID: 8903902389130318790}
+  backgroundIcon: {fileID: 8670678133063313686}
   btn: {fileID: 5161878466298584012}
   skillElement: 0
+  elementiconSprites:
+  - {fileID: 0}
+  - {fileID: 21300000, guid: 85a74f41eb5f9c44e9bb0693038347c1, type: 3}
+  - {fileID: 21300000, guid: 21e322c779b91cd418925ff7309a5f46, type: 3}
+  - {fileID: 21300000, guid: e2bc56fcba8f5a1459261a45cfe44da5, type: 3}
+  - {fileID: 21300000, guid: d1f7ea696c1c0c145b0e03e3660a2c75, type: 3}
+  - {fileID: 21300000, guid: b550185e67473af4b837518d1411c9a8, type: 3}
+  - {fileID: 0}
+  backgroundIconSprites:
+  - {fileID: 0}
+  - {fileID: 21300000, guid: 68fc780f98961a64ea7771b605e4d680, type: 3}
+  - {fileID: 21300000, guid: 8b9d068f4b9bff746be6fb0d8caaaae3, type: 3}
+  - {fileID: 21300000, guid: 8d2a6c854dc41f447aff68c6f29e39cd, type: 3}
+  - {fileID: 21300000, guid: a1f79ff39026eeb45a6e83db8cb6e1c0, type: 3}
+  - {fileID: 21300000, guid: db3ab60de5055704ab6b4e9f42f8da85, type: 3}
+  - {fileID: 0}
 --- !u!114 &8620179464507228656
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ public class MainCharacter : BaseCharacter
     [SerializeField] private MC_Charm charmSkill;
     [SerializeField] private MC_ChangeLocation changeLocation;
     
-    private BaseSkill[] mainCharacterSkills = new BaseSkill[(int)SkillElement.END];
+    private BaseSkill[] mainCharacterSkills = new BaseSkill[5];
     public override void Initialize()
     {
         base.Initialize();
@@ -48,9 +48,14 @@ public class MainCharacter : BaseCharacter
             if (skillId == 0) continue;
             
             BaseSkill skill = GameManager.GetInstance.Library.GetSkill(skillId);
-            BaseSkill newSkill = Instantiate(skill, this.transform);
-            newSkill.Initialize(this);
-            mainCharacterSkills[(int)skill.SkillSO.SkillElement] = newSkill;
+            mainCharacterSkills[i] = null;
+            if (skill)
+            {
+                BaseSkill newSkill = Instantiate(skill, this.transform);
+                newSkill.Initialize(this);
+                mainCharacterSkills[i] = newSkill;
+            }
+            
         }
     }
 

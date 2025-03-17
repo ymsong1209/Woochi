@@ -29,7 +29,8 @@ public class SorceryReward : Reward
         }
         else if (result.isScrollFull)
         {
-            errorTxt = "스크롤이 가득 찼습니다";
+            errorTxt = $"{result.skillName}을 획득하였습니다.\n" +
+                       "그러나, 해당 속성의 스크롤이 가득 찼습니다";
             isSuccess = false;
         }
         else if (result.isSameSkill)

@@ -37,7 +37,7 @@ public class SkillScrollDescription : MonoBehaviour
         {
             Debug.Log("Equip Skill : " + curSkillID);
             BaseSkill skill = GameManager.GetInstance.Library.GetSkill(curSkillID);
-            GameManager.GetInstance.Library.EquipSkill(curSkillID,(int)skill.SkillSO.SkillElement - 1);
+            GameManager.GetInstance.Library.EquipSkill(curSkillID);
             skillScroll.Reset();
             skillScroll.Activate();
         });

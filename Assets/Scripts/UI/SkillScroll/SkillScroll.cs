@@ -12,7 +12,9 @@ public class SkillScroll : MonoBehaviour
     
     //우치가 선택한 스킬들
     [SerializeField] private Sprite selectedIconDefault;
-    [SerializeField] private Image[] selectedIcons = new Image[5];
+
+    [SerializeField] private SkillScrollSelectedIcon[] selectedIcons; 
+    
     
     //도술 두루마리에 있는 아이콘들
     [SerializeField] private SkillScrollIcon[] skillScrollIcons = new SkillScrollIcon[25];
@@ -34,6 +36,11 @@ public class SkillScroll : MonoBehaviour
         OnIconHoverExit += HoverExit;
         OnSkillSelected += SkillIconClicked;
         skillScrollBackground.onClick.AddListener(()=>Reset());
+        for (int i = 0; i < selectedIcons.Length; ++i)
+        {
+            selectedIcons[i].Idx = i;
+            selectedIcons[i].Parent = this;
+        }
     }
 
     public void Activate()
@@ -44,24 +51,7 @@ public class SkillScroll : MonoBehaviour
         for (int i = 0; i < DataCloud.playerData.currentskillIDs.Length; i++)
         {
             int skillID = DataCloud.playerData.currentskillIDs[i];
-            //한 속성에 도술이 없는 경우
-            if (skillID == 0)
-            {
-                selectedIcons[i].sprite = selectedIconDefault;
-            }
-            else
-            {
-                Sprite woochiskillicon = GameManager.GetInstance.Library.GetSkill(skillID).SkillSO.skillIcon;
-                if (woochiskillicon)
-                {
-                    selectedIcons[i].sprite = woochiskillicon;
-                }
-                else
-                {
-                    selectedIcons[i].sprite = NoiconImg;
-                }
-                
-            }
+            selectedIcons[i].SetIcon(skillID);
         }
         
         //도술 두루마리에 가지고 있는 도술 세팅

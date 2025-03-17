@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class WoochiSkillSelectionUI : MonoBehaviour
 {
     public SkillEvent onSkillSelected;
-    [SerializeField] WoochiSkillIcon[] skillIcons = new WoochiSkillIcon[(int)SkillElement.END];
+    [SerializeField] WoochiSkillIcon[] skillIcons = new WoochiSkillIcon[5];
 
     [SerializeField] private SkillDescriptionUI skillDescriptionUI;
     [SerializeField] private BuffDescriptionUI buffDescriptionUI;
@@ -41,8 +41,37 @@ public class WoochiSkillSelectionUI : MonoBehaviour
         //모든 스킬 비활성화
         DisableSkills();
 
-        #region 스킬 아이콘 Enable, Disable 설정
-       
+        SetSkillBasedOnPosition();
+    }
+
+    //MainCharacterSkill에 배치된 스킬 기준 그대로 배치
+    private void SetSkillBasedOnPosition()
+    {
+        MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
+        
+        //각 버튼 오브젝트의 SkillElement에 맞춰서 스킬 세팅
+        for(int i = 0;i<mainCharacter.MainCharacterSkills.Length;++i)
+        {
+            BaseSkill skill = mainCharacter.MainCharacterSkills[i];
+            if (!skill) continue;
+            //스킬에 속성이 설정 안되어있을 경우 예외처리
+            if (skill.SkillSO.SkillElement == SkillElement.Defualt || skill.SkillSO.SkillElement == SkillElement.END)
+            {
+                Debug.LogError($"{skill.SkillSO.SkillName}의 스킬의 element가 None임");
+                continue;
+            }
+            
+            WoochiSkillIcon woochiskillIcon = skillIcons[i];
+            skillIcons[i].SetSkill(skill, (IsSkillSetAvailable(skill)));
+            
+        }
+    }
+    
+    //하나의 속성당 하나의 스킬만 배치 가능
+    private void SetSkillBasedOnElement()
+    {
+        MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
+        
         //각 버튼 오브젝트의 SkillElement에 맞춰서 스킬 세팅
         for(int i = 0;i<mainCharacter.MainCharacterSkills.Length;++i)
         {
@@ -72,8 +101,6 @@ public class WoochiSkillSelectionUI : MonoBehaviour
                 }
             }
         }
-        
-        #endregion
     }
     
     public void Deactivate()

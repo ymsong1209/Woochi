@@ -88,6 +88,10 @@ public class Library : ScriptableObject
 
     public BaseSkill GetSkill(int id)
     {
+        if(id<0)
+        {
+            return null;
+        }
         // id를 통해 skill을 찾아서 반환
         foreach (var skillEntry in woochiSkills)
         {
@@ -314,11 +318,26 @@ public class Library : ScriptableObject
         DataCloud.playerData.totalSkillIDs = totalskillIDs;
     }
 
-    public void EquipSkill(int skillid, int position)
+    public void EquipSkill(int skillid, int position = -1)
     {
         int[] currentskillIDs = DataCloud.playerData.currentskillIDs;
-        currentskillIDs[position] = skillid;
-        DataCloud.playerData.currentskillIDs = currentskillIDs;
+        if (position == -1)
+        {
+            for (int i = 0; i < 5; ++i)
+            {
+                if (currentskillIDs[i] == 0)
+                {
+                    currentskillIDs[i] = skillid;
+                    DataCloud.playerData.currentskillIDs = currentskillIDs;
+                    return;
+                }
+            }
+        }
+        else
+        {
+            currentskillIDs[position] = skillid;
+            DataCloud.playerData.currentskillIDs = currentskillIDs;
+        }
     }
     
     #endregion WoochiSkill

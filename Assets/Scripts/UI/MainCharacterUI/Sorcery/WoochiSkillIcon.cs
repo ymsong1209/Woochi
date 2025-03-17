@@ -7,13 +7,14 @@ public class WoochiSkillIcon : MonoBehaviour, ITooltipiable
     public Action<BaseSkill, Transform> OnShowTooltip;
     public Action OnHideTooltip;
 
-    [SerializeField] private  Image       enabledIcon;
-    [SerializeField] private  Image       disabledIcon;
+    [SerializeField] private  Image       elementIcon;
+    [SerializeField] private  Image       backgroundIcon;
     [SerializeField] private  Button      btn;
 
     protected BaseSkill skill;
     [SerializeField] private SkillElement skillElement;
-
+    [SerializeField] private Sprite[] elementiconSprites = new Sprite[Enum.GetValues(typeof(SkillElement)).Length];
+    [SerializeField] private Sprite[] backgroundIconSprites = new Sprite[Enum.GetValues(typeof(SkillElement)).Length];
     private void Start()
     {
         BattleManager.GetInstance.OnFocusStart += () =>
@@ -26,14 +27,19 @@ public class WoochiSkillIcon : MonoBehaviour, ITooltipiable
     {
         if (_skill != null)
         {
-            enabledIcon.gameObject.SetActive(true);
+            elementIcon.gameObject.SetActive(true);
+            elementIcon.sprite = elementiconSprites[(int)_skill.SkillSO.SkillElement];
+            backgroundIcon.gameObject.SetActive(true);
+            backgroundIcon.sprite = backgroundIconSprites[(int)_skill.SkillSO.SkillElement];
+            
             btn.interactable = isEnable;
             skill = _skill;
         }
         //_skill이 null일 경우 빈 skill로 초기화
         else
         {
-            enabledIcon.gameObject.SetActive(false);
+            elementIcon.gameObject.SetActive(false);
+            backgroundIcon.gameObject.SetActive(false);
             btn.interactable = false;
             skill = null;
         }
