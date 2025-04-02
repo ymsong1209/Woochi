@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 94703ce32a9268f43961d97052d5dd8f, type: 3}
   nodeType: 1
+  abnormalSprite: {fileID: 21300000, guid: 978e74fd14905294d810cdb870afbb11, type: 3}

@@ -1,11 +1,12 @@
 using UnityEngine;
 
 /// <summary>
-/// ³ëµåÀÇ Á¾·ù¿¡ µû¶ó ¾î¶² ¸ğ½ÀÀ» º¸ÀÌ´ÂÁö ³ªÅ¸³»´Â ½ºÅ©¸³ÅÍºí ¿ÀºêÁ§Æ®
+/// ë…¸ë“œì˜ ì¢…ë¥˜ì— ë”°ë¼ ì–´ë–¤ ëª¨ìŠµì„ ë³´ì´ëŠ”ì§€ ë‚˜íƒ€ë‚´ëŠ” ìŠ¤í¬ë¦½í„°ë¸” ì˜¤ë¸Œì íŠ¸
 /// </summary>
 [CreateAssetMenu(menuName = "Scriptable Objects/Map/NodeBlueprint")]
 public class NodeBlueprint : ScriptableObject
 {
     public Sprite sprite;
     public NodeType nodeType;
+    public Sprite abnormalSprite;
 }

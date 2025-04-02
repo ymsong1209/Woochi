@@ -26,6 +26,13 @@ public class MapNode : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler,
         NodeBlueprint = _blueprint;
 
         image.sprite = _blueprint.sprite;
+        if (_node.nodeType == NodeType.Normal || _node.nodeType == NodeType.Elite)
+        {
+            if (_node.abnormalID != 100)
+            {
+                image.sprite = _blueprint.abnormalSprite;
+            }
+        }
 
         if (_node.nodeType == NodeType.Boss) transform.localScale *= 1.5f;
         initScale = image.transform.localScale.x;
