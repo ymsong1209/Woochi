@@ -19,8 +19,8 @@ public class T1_HealWater : MainCharacterSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "약수\n" +
-                    "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
+        text.text = "[약수]\n" +
+                    "도력 "+ requiredSorceryPoints+"을 소모하여 " + 
                     "단일 대상을 " + healamount +  "만큼 회복";
     }
     

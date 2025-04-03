@@ -42,7 +42,7 @@ public class Tiger_Roar_P : BaseSkill
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
         text.text = "[산군의 포효+]\n" + 
                     "대상 전체에게 " + minStat + " ~ " + maxStat + "의 피해를 주고 " + 
-                    "100%의 확률로 명중, 속도 <color=#FFA1A1>-4</color>만큼 부여 " + 
-                    "자신에게 3턴동안 방어 <color=#8AAFDC>20</color> 부여";
+                    "100%의 확률로 명중, 속도 <color=#8AAFDC>-4</color>만큼 부여 " + 
+                    "자신에게 3턴동안 방어 <color=#FFA1A1>20</color> 부여";
     }
 }

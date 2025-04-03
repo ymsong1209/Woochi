@@ -27,9 +27,9 @@ public class T1_Sharpen_P : MainCharacterSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "연마+\n" +
-                    "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "단일 아군 대상에게 1턴동안 명중 10, 치명 10 부여";
+        text.text = "[연마+]\n" +
+                    "도력 "+ requiredSorceryPoints+"을 소모하여 " + 
+                    "단일 아군 대상에게 1턴동안 명중 <color=#FFA1A1>10</color>, 치명 <color=#FFA1A1>10</color> 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)

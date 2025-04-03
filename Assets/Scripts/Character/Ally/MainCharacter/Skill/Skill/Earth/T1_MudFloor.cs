@@ -30,10 +30,10 @@ public class T1_MudFloor : MainCharacterSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "감탕밭\n" +
-                    "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "랜덤한 단일 대상에게 100%의 확률로\n" +
-                    "2턴동안 속도 -2, 회피 -2 부여";
+        text.text = "[감탕밭]\n" +
+                    "도력 "+ requiredSorceryPoints+"을 소모하여 " + 
+                    "랜덤한 단일 대상에게 100%의 확률로 " +
+                    "2턴동안 속도 <color=#8AAFDC>-2</color>, 회피 <color=#8AAFDC>-2</color> 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)

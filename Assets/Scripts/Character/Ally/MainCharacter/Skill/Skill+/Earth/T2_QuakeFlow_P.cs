@@ -23,8 +23,8 @@ public class T2_QuakeFlow_P : MainCharacterSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "땅너울+\n" + 
-                    "랜덤한 대상 2명에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + 
+        text.text = "[땅너울+]\n" + 
+                    "랜덤한 대상 2명에게 " + minStat + " ~ " + maxStat + "의 피해를 주고 " + 
                     "50%의 확률로 기절 부여";
     }
     

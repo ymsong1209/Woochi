@@ -23,8 +23,8 @@ public class T1_MuddyWater_P : MainCharacterSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "흙탕물+\n" +
-                    "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
+        text.text = "[흙탕물+]\n" +
+                    "도력 "+ requiredSorceryPoints+"을 소모하여 " + 
                     "100%의 확률로 단일 대상에게 중독 5 부여";
     }
     

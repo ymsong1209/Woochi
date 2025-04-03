@@ -27,10 +27,10 @@ public class T1_Tamping : MainCharacterSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "땅 다지기\n" +
-                    "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "아군 전체에게 3턴동안\n" +
-                    "명중 5, 저항 10 부여";
+        text.text = "[땅 다지기]\n" +
+                    "도력 "+ requiredSorceryPoints+"을 소모하여 " + 
+                    "아군 전체에게 3턴동안 " +
+                    "명중 <color=#FFA1A1>5</color>, 저항 <color=#FFA1A1>10</color> 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)

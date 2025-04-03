@@ -23,9 +23,9 @@ public class T1_WildRose_P : MainCharacterSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "찔레꽃+\n" +
-                    "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
+        text.text = "[찔레꽃+]\n" +
+                    "도력 "+ requiredSorceryPoints+"을 소모하여 " + 
+                    "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고 " +
                     "75%의 확률로 단일 대상에게 중독 3 부여";
     }
     

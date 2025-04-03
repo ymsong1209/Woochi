@@ -26,9 +26,9 @@ public class T1_MiragePetal_P : MainCharacterSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "환영 꽃가루+\n" +
-                    "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "단일 대상에게 100%의 확률로 3턴동안 방어 -10 부여";
+        text.text = "[환영 꽃가루+]\n" +
+                    "도력 "+ requiredSorceryPoints+"을 소모하여 " + 
+                    "단일 대상에게 100%의 확률로 3턴동안 방어 <color=#8AAFDC>-10</color> 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)

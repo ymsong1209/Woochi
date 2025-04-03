@@ -26,10 +26,10 @@ public class T1_TreeBind_P : MainCharacterSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "옭아매기+\n" +
-                    "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "75%의 확률로 3턴 동안 속도 -5 부여";
+        text.text = "[옭아매기+]\n" +
+                    "도력 "+ requiredSorceryPoints+"을 소모하여 " + 
+                    "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고 " +
+                    "75%의 확률로 3턴 동안 속도 <color=#8AAFDC>-5</color> 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)

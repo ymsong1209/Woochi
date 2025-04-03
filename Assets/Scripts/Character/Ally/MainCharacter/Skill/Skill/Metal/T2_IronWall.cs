@@ -25,9 +25,9 @@ public class T2_IronWall : MainCharacterSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "철벽\n" +
-                    "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "아군 전체에게 2턴동안 방어 10 부여";
+        text.text = "[철벽]\n" +
+                    "도력 "+ requiredSorceryPoints+"을 소모하여 " + 
+                    "아군 전체에게 2턴동안 방어 <color=#FFA1A1>10</color> 부여";
     }
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
     {

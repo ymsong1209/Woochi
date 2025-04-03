@@ -26,10 +26,10 @@ public class T2_MirageFireShot : MainCharacterSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "신기전\n" +
-                    "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "75%의 확률로 2턴동안 공격력 -1 부여";
+        text.text = "[신기전]\n" +
+                    "도력 "+ requiredSorceryPoints+"을 소모하여 " + 
+                    "단일 대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고 " +
+                    "75%의 확률로 2턴동안 공격력 <color=#8AAFDC>-1</color> 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)

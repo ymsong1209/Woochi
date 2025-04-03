@@ -33,10 +33,10 @@ public class T3_DisasterRain : MainCharacterSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "삼재의 비\n" +
-                    "도력 "+ requiredSorceryPoints+"을 소모하여\n" +
-                    "1,2,3열의 적에게\n" +
-                    "100%의 확률로 중독 3, 2턴동안 공격력 -2 부여";
+        text.text = "[삼재의 비]\n" +
+                    "도력 "+ requiredSorceryPoints+"을 소모하여 " +
+                    "1,2,3열의 적에게 " +
+                    "100%의 확률로 중독 3, 2턴동안 공격력 <color=#8AAFDC>-2</color> 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)

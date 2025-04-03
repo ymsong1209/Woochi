@@ -26,9 +26,9 @@ public class T1_HeatHaze_P : MainCharacterSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "아지랑이+\n" +
-                    "도력 " + requiredSorceryPoints + "을 소모하여\n" +
-                    "우치에게 이번 전투동안 회피 35 부여";
+        text.text = "[아지랑이+]\n" +
+                    "도력 " + requiredSorceryPoints + "을 소모하여 " +
+                    "우치에게 이번 전투동안 회피 <color=#FFA1A1>35</color> 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)

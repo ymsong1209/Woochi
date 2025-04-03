@@ -27,10 +27,10 @@ public class T3_FireButterfly_P : MainCharacterSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "화접+\n" +
-                    "도력 "+ requiredSorceryPoints+"을 소모하여\n" + 
-                    "랜덤한 대상 2명에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "75%의 확률로 3턴동안 방어 -10만큼 부여";
+        text.text = "[화접+]\n" +
+                    "도력 "+ requiredSorceryPoints+"을 소모하여 " + 
+                    "랜덤한 대상 2명에게 " + minStat + " ~ " + maxStat + "의 피해를 주고 " +
+                    "75%의 확률로 3턴동안 방어 <color=#8AAFDC>-10</color>만큼 부여";
     }
     
     public override void SetSkillScrollDescription(TextMeshProUGUI skillDescription)
