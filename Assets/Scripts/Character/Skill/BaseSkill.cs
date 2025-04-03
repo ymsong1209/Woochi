@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using Event = AK.Wwise.Event;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// 스킬 결과를 저장할 클래스
@@ -109,6 +111,50 @@ public class BaseSkill : MonoBehaviour
     
     public virtual void SetSkillDescription(TextMeshProUGUI text)
     {
+        text.text = "[" + skillName + "]" + "\n";
+        // Stat finalstat = SkillOwner.FinalStat;
+        // int minStat = (int)Mathf.Round(finalstat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
+        // int maxStat = (int)Mathf.Round(finalstat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
+        // text.text = "[" + skillName + "]" + "\n";
+        // if (finalstat.GetValue(StatType.MaxDamage) != 0)
+        // {
+        //     switch (skillTargetType)
+        //     {
+        //         case SkillTargetType.Singular:
+        //             text.text += "단일 대상에게 ";
+        //             break;
+        //         case SkillTargetType.Multiple:
+        //             text.text += "대상 전체에게 ";
+        //             break;
+        //         case SkillTargetType.SingularWithoutSelf:
+        //             text.text += "대상과 우치에게 ";
+        //             break;
+        //         case SkillTargetType.Self:
+        //             text.text += "우치에게 ";
+        //             break;
+        //         case SkillTargetType.Random:
+        //             text.text += "랜덤한 대상에게 ";
+        //             break;
+        //         case SkillTargetType.END:
+        //             break;
+        //         default:
+        //             throw new ArgumentOutOfRangeException();
+        //     }
+        //
+        //     text.text += minStat + " ~ " + maxStat + "의 피해";
+        // }
+        // if(BuffPrefabList.Count > 0)
+        // {
+        //     text.text += "를 주고";
+        //     foreach (GameObject buff in BuffPrefabList)
+        //     {
+        //         BaseBuff baseBuff = buff.GetComponent<BaseBuff>();
+        //         if (baseBuff)
+        //         {
+        //             text.text += baseBuff.BuffName + " ";
+        //         }
+        //     }
+        // }
         
     }
 

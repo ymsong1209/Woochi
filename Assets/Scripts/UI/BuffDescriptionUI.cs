@@ -51,7 +51,7 @@ public class BuffDescriptionUI : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if(!skillDescriptionUI) return;
         //skillDescription의 panelRt의 위치를 고려해 buffDescriptionUI를 skillDescription의 오른쪽에 위치시킴.

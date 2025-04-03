@@ -26,8 +26,8 @@ public class Haetae_HolyWater : BaseSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "역치\n" + 
-                    "대상 전체에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + 
-                    "2턴동안 불속성 공격력 -2만큼 부여";
+        text.text = "[역치]\n" + 
+                    "대상 전체에게 " + minStat + " ~ " + maxStat + "의 피해를 주고 " + 
+                    "2턴동안 불속성 공격력 <color=#FFA1A1>-2</color>만큼 부여";
     }
 }

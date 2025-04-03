@@ -20,8 +20,8 @@ public class Haetae_MoveDebuff_P : BaseSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "수신의 율법+\n" + 
-                    "해태에게 부여된 모든 디버프를 이전하고\n" + 
+        text.text = "[수신의 율법+]\n" + 
+                    "해태에게 부여된 모든 디버프를 이전하고 " + 
                     "이전된 디버프의 수 만큼 모든 스탯을 2씩 상승";
     }
 

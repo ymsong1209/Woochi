@@ -42,10 +42,10 @@ public class Tiger_Bite_P : BaseSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "물어뜯기+\n" + 
-                    "대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + 
-                    "잃은 체력 비례 최대 30%의 추가 피해\n" + 
-                    "피해의 50%만큼 회복\n" +
+        text.text = "[물어뜯기+]\n" + 
+                    "대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고 " + 
+                    "잃은 체력 비례 최대 30%의 추가 피해 " + 
+                    "피해의 50%만큼 회복 " +
                     "3턴동안 100%의 확률로 출혈 3턴 부여";
     }
     

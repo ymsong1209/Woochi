@@ -23,8 +23,8 @@ public class TailFire_Rework : BaseSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "꼬리불\n" + 
-                    "대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + 
+        text.text = "[꼬리불]\n" + 
+                    "대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고 " + 
                     "25%의 확률로 화상 3턴 부여";
     }
 }

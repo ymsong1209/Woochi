@@ -61,9 +61,9 @@ public class Fascinate_Rework_P : BaseSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "홀리기+\n" + 
-                    "대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" +
-                    "100% 확률로 2턴동안 홀림 부여\n" +
+        text.text = "[홀리기+]\n" + 
+                    "대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고 " +
+                    "100% 확률로 2턴동안 홀림 부여, " +
                     "홀림이 걸려있을 경우 100% 확률로 기절로 변경";
     }
 }

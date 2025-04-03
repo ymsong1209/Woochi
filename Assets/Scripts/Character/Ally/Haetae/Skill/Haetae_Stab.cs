@@ -33,8 +33,8 @@ public class Haetae_Stab : BaseSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "심판의 뿔\n" + 
-                    "대상의 방어력을 무시하고 " + minStat + " ~ " + maxStat + "의 피해를 줌\n" + 
+        text.text = "[심판의 뿔]\n" + 
+                    "대상의 방어력을 무시하고 " + minStat + " ~ " + maxStat + "의 피해를 주고 " + 
                     "40%의 확률로 기절 부여";
     }
 }

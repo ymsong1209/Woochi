@@ -20,8 +20,8 @@ public class Tiger_Slam : BaseSkill
         Stat finalStat = SkillOwner.FinalStat;
         int minStat = (int)Mathf.Round(finalStat.GetValue(StatType.MinDamage) * SkillSO.BaseMultiplier / 100f);
         int maxStat = (int)Mathf.Round(finalStat.GetValue(StatType.MaxDamage) * SkillSO.BaseMultiplier / 100f);
-        text.text = "내려찍기\n" + 
-                    "대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고\n" + 
+        text.text = "[내려찍기]\n" + 
+                    "대상에게 " + minStat + " ~ " + maxStat + "의 피해를 주고 " + 
                     "50%의 확률로 기절 부여";
     }
 }
