@@ -68,40 +68,40 @@ public class WoochiSkillSelectionUI : MonoBehaviour
     }
     
     //하나의 속성당 하나의 스킬만 배치 가능
-    private void SetSkillBasedOnElement()
-    {
-        MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
-        
-        //각 버튼 오브젝트의 SkillElement에 맞춰서 스킬 세팅
-        for(int i = 0;i<mainCharacter.MainCharacterSkills.Length;++i)
-        {
-            BaseSkill skill = mainCharacter.MainCharacterSkills[i];
-            if (!skill) continue;
-            //스킬에 속성이 설정 안되어있을 경우 예외처리
-            if (skill.SkillSO.SkillElement == SkillElement.Defualt || skill.SkillSO.SkillElement == SkillElement.END)
-            {
-                Debug.LogError($"{skill.SkillSO.SkillName}의 스킬의 element가 None임");
-                continue;
-            }
-            //skillicon을 순회하면서 같은 element의 skill이 있으면 그곳에 할당
-            for (int j = 0; j < skillIcons.Length; ++j)
-            {
-                WoochiSkillIcon woochiskillIcon = skillIcons[j];
-                if (woochiskillIcon && woochiskillIcon.SkillElement == skill.SkillSO.SkillElement)
-                {
-                    //만약 이미 스킬이 할당되어있는 경우 예외처리
-                    if (woochiskillIcon.Skill)
-                    {
-                        Debug.LogError(skill.SkillSO.SkillName + "와 같은 속성의 스킬이 이미 할당되어있음");
-                        break;
-                    }
-
-                    skillIcons[j].SetSkill(skill, (IsSkillSetAvailable(skill)));
-                    break;
-                }
-            }
-        }
-    }
+    // private void SetSkillBasedOnElement()
+    // {
+    //     MainCharacter mainCharacter = BattleManager.GetInstance.currentCharacter as MainCharacter;
+    //     
+    //     //각 버튼 오브젝트의 SkillElement에 맞춰서 스킬 세팅
+    //     for(int i = 0;i<mainCharacter.MainCharacterSkills.Length;++i)
+    //     {
+    //         BaseSkill skill = mainCharacter.MainCharacterSkills[i];
+    //         if (!skill) continue;
+    //         //스킬에 속성이 설정 안되어있을 경우 예외처리
+    //         if (skill.SkillSO.SkillElement == SkillElement.Defualt || skill.SkillSO.SkillElement == SkillElement.END)
+    //         {
+    //             Debug.LogError($"{skill.SkillSO.SkillName}의 스킬의 element가 None임");
+    //             continue;
+    //         }
+    //         //skillicon을 순회하면서 같은 element의 skill이 있으면 그곳에 할당
+    //         for (int j = 0; j < skillIcons.Length; ++j)
+    //         {
+    //             WoochiSkillIcon woochiskillIcon = skillIcons[j];
+    //             if (woochiskillIcon && woochiskillIcon.SkillElement == skill.SkillSO.SkillElement)
+    //             {
+    //                 //만약 이미 스킬이 할당되어있는 경우 예외처리
+    //                 if (woochiskillIcon.Skill)
+    //                 {
+    //                     Debug.LogError(skill.SkillSO.SkillName + "와 같은 속성의 스킬이 이미 할당되어있음");
+    //                     break;
+    //                 }
+    //
+    //                 skillIcons[j].SetSkill(skill, (IsSkillSetAvailable(skill)));
+    //                 break;
+    //             }
+    //         }
+    //     }
+    // }
     
     public void Deactivate()
     {

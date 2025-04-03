@@ -7,14 +7,10 @@ public class WoochiSkillIcon : MonoBehaviour, ITooltipiable
     public Action<BaseSkill, Transform> OnShowTooltip;
     public Action OnHideTooltip;
 
-    [SerializeField] private  Image       elementIcon;
-    [SerializeField] private  Image       backgroundIcon;
+    [SerializeField] private  Image       Icon;
     [SerializeField] private  Button      btn;
 
-    protected BaseSkill skill;
-    [SerializeField] private SkillElement skillElement;
-    [SerializeField] private Sprite[] elementiconSprites = new Sprite[Enum.GetValues(typeof(SkillElement)).Length];
-    [SerializeField] private Sprite[] backgroundIconSprites = new Sprite[Enum.GetValues(typeof(SkillElement)).Length];
+    private BaseSkill skill;
     private void Start()
     {
         BattleManager.GetInstance.OnFocusStart += () =>
@@ -27,19 +23,15 @@ public class WoochiSkillIcon : MonoBehaviour, ITooltipiable
     {
         if (_skill != null)
         {
-            elementIcon.gameObject.SetActive(true);
-            elementIcon.sprite = elementiconSprites[(int)_skill.SkillSO.SkillElement];
-            backgroundIcon.gameObject.SetActive(true);
-            backgroundIcon.sprite = backgroundIconSprites[(int)_skill.SkillSO.SkillElement];
-            
-            btn.interactable = isEnable;
             skill = _skill;
+            Icon.gameObject.SetActive(true);
+            Icon.sprite = skill.SkillSO.skillIcon;
+            btn.interactable = isEnable;
         }
         //_skill이 null일 경우 빈 skill로 초기화
         else
         {
-            elementIcon.gameObject.SetActive(false);
-            backgroundIcon.gameObject.SetActive(false);
+            Icon.gameObject.SetActive(false);
             btn.interactable = false;
             skill = null;
         }
@@ -79,7 +71,6 @@ public class WoochiSkillIcon : MonoBehaviour, ITooltipiable
     }
 
     #region Getter Setter
-    public SkillElement SkillElement => skillElement;
     public BaseSkill Skill => skill;
     
     public Button Btn => btn;
