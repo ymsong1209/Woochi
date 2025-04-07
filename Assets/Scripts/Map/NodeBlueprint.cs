@@ -9,4 +9,5 @@ public class NodeBlueprint : ScriptableObject
     public Sprite sprite;
     public NodeType nodeType;
     public Sprite abnormalSprite;
+    public Sprite abnormalBackgroundSprite;
 }

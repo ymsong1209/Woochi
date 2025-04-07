@@ -6,7 +6,8 @@ using System;
 
 public class MapNode : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
 {
-    public Image image;                                                                                                                                                                                                                                                                        
+    public Image image;
+    public Image abnormalBackgroundImage;
     public Image circleImage;
     public Image visitedCircleImage;
 
@@ -30,6 +31,8 @@ public class MapNode : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler,
         {
             if (_node.abnormalID != 100)
             {
+                abnormalBackgroundImage.gameObject.SetActive(true);
+                abnormalBackgroundImage.sprite = _blueprint.abnormalBackgroundSprite;
                 image.sprite = _blueprint.abnormalSprite;
             }
         }
